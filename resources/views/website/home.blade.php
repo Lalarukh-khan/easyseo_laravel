@@ -1,4 +1,97 @@
 @extends('layouts.web_main')
+@section('css')
+<style>
+    .ppg-buy-now-btn {
+        display: inline-block;
+        /* background: #19cb92; */
+        border-radius: 29px;
+        color: #fff;
+        padding: 14px 42px;
+        margin: 10px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .ppg-checkout-modal {
+        z-index: 99999;
+        display: none;
+        background-color: transparent;
+        border: 0px none transparent;
+        visibility: visible;
+        margin: 0px;
+        padding: 0px;
+        -webkit-tap-highlight-color: transparent;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .ppg-checkout-modal.ppg-show {
+        display: block;
+    }
+
+    .ppg-btn-close {
+        position: absolute;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        top: 20px;
+        right: 35px;
+        background: rgb(0 0 0 / 35%);
+        height: 50px;
+        width: 50px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .ppg-btn-close.ppg-show {
+        display: flex;
+    }
+
+    .ppg-btn-close img {
+        width: 24px;
+    }
+
+    .ppg-iframe {
+        width: 50%;
+        height: 100%;
+        border: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .ppg-loader {
+        position: absolute;
+        top: calc(50% - 24px);
+        left: calc(50% - 24px);
+        width: 48px;
+        height: 48px;
+        border: 5px solid #000;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: ppg-rotation 1s linear infinite;
+    }
+
+    @keyframes ppg-rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+
+@endsection
 @section('content')
 <!-- Banner Section Starts Here -->
 <section class="banner-sec" id="bannersecwht">
@@ -778,7 +871,7 @@
                             @if (auth('web')->check())
                                 <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Current Plan </a>
                             @else
-                                <a href="{{route('register')}}" class="custom-btn3"> Start Free </a>
+                                <a href="{{route('login')}}" class="custom-btn3"> Start Free </a>
                             @endif
                         </div>
                     </div>
@@ -823,8 +916,8 @@
                         <div class="pricing-btn">
                             <a href="" class="custom-btn2" id="prcngwht225"><u> View All Details </u></a>
                             @if (auth('web')->check())
-                                <a href="https://store.payproglobal.com/checkout?products[1][id]=82354&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user={{ auth('web')->user()->unique_id }}"
-                                class="custom-btn3" id="buy-plan" data-current="{{ $words }}"> Upgrade </a>
+                                <a href="https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user={{ auth('web')->user()->unique_id }}&exfo=742"
+                                class="custom-btn3" onclick="showCheckout(event);" id="buy-plan" data-current="{{ $words }}"> Upgrade </a>
                                 <input type="hidden" id="is-login" value="1">
                                 <input type="hidden" id="logged-email" value="{{ auth('web')->user()->unique_id }}">
                             @else
@@ -1065,6 +1158,36 @@
 @endsection
 @section('js')
 <script>
+
+    var packageToggle = 1;
+    var isLogin = $('#is-login').val();
+    var loggedEmail = $('#logged-email').val();
+    var current = $('#buy-plan').data('current');
+
+function showCheckout(event){
+        event.preventDefault();
+        let checkoutUrl = event.target.attributes.href.value;
+        let body = document.getElementsByTagName('body')[0];
+        body.innerHTML +=
+            `<div class="ppg-checkout-modal ppg-show" id="ppg-checkout-modal">
+                <div class="ppg-btn-close" id="ppg-btn-close" onclick="hideCheckout(event)">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDQzLjYgMzg3LjEgMzEyLjQgMjU1LjRsMTMxLjUtMTMwYzUuNC01LjQgNS40LTE0LjIgMC0xOS42bC0zNy40LTM3LjZjLTIuNi0yLjYtNi4xLTQtOS44LTQtMy43IDAtNy4yIDEuNS05LjggNEwyNTYgMTk3LjggMTI0LjkgNjguM2MtMi42LTIuNi02LjEtNC05LjgtNC0zLjcgMC03LjIgMS41LTkuOCA0TDY4IDEwNS45Yy01LjQgNS40LTUuNCAxNC4yIDAgMTkuNmwxMzEuNSAxMzBMNjguNCAzODcuMWMtMi42IDIuNi00LjEgNi4xLTQuMSA5LjggMCAzLjcgMS40IDcuMiA0LjEgOS44bDM3LjQgMzcuNmMyLjcgMi43IDYuMiA0LjEgOS44IDQuMSAzLjUgMCA3LjEtMS4zIDkuOC00LjFMMjU2IDMxMy4xbDEzMC43IDEzMS4xYzIuNyAyLjcgNi4yIDQuMSA5LjggNC4xIDMuNSAwIDcuMS0xLjMgOS44LTQuMWwzNy40LTM3LjZjMi42LTIuNiA0LjEtNi4xIDQuMS05LjgtLjEtMy42LTEuNi03LjEtNC4yLTkuN3oiIGZpbGw9IiNmZmZmZmYiIGNsYXNzPSJmaWxsLTAwMDAwMCI+PC9wYXRoPjwvc3ZnPg==" >
+                </div>
+                <div class="ppg-loader"></div>
+                <iframe class="ppg-iframe" id="ppg-iframe" src="${checkoutUrl}" frameborder="0"></iframe>
+            </div>`;
+
+            document.getElementById('ppg-iframe').onload = function(){
+                document.getElementsByClassName('ppg-loader')[0].remove();
+                document.getElementById('ppg-btn-close').classList.add('ppg-show');
+            };
+    }
+
+    function hideCheckout(event){
+        event.preventDefault();
+        document.getElementById('ppg-checkout-modal').remove();
+    }
+
     document.getElementById("solo_proplan").oninput = function() {
         var value = (this.value-this.min)/(this.max-this.min)*100
         this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
@@ -1089,6 +1212,8 @@ const toggleyearly = document.getElementById('toggleyearly');
             }
         });
     function soloyearlyplan(){
+        packageToggle = 1;
+
         $("input#solo_proplan").val(0);
             $('#solo_proprice').html('$24.90');
             $('.solo_proprice_y').html('$24.90');
@@ -1108,19 +1233,22 @@ const toggleyearly = document.getElementById('toggleyearly');
 
             if(current < '20000'){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82354&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
 
             if(current > '20000'){
                 $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82354&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&exfo=742&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
     };
+
     function solomonthlyplan(){
+        packageToggle = 0;
+
         $("input#solo_proplan").val(0);
             $('#solo_proprice').html('$19.90');
             $('.solo_proprice_y').html('$19.90');
@@ -1140,19 +1268,20 @@ const toggleyearly = document.getElementById('toggleyearly');
 
             if(current < '20000'){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82354&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
 
             if(current > '20000'){
                 $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82354&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&exfo=742&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
     };
-    $("input#solo_proplan").on('change', function() {
+
+    $("input#solo_proplan").on('change', function() { 
         var value = $(this).val();
         $('#level').val(value);
         // var current = $('#buy-plan').data('current');
@@ -1175,14 +1304,23 @@ const toggleyearly = document.getElementById('toggleyearly');
 
             if(current < '20000'){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82354&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                } 
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
 
             if(current > '20000'){
                 $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82354&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                } 
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
@@ -1208,14 +1346,22 @@ const toggleyearly = document.getElementById('toggleyearly');
 
             if(current > '50000'){
                 $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82640&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
 
             if(current < '50000'){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82640&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
@@ -1242,14 +1388,22 @@ const toggleyearly = document.getElementById('toggleyearly');
 
             if(current > '200000'){
                 $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82641&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
 
             if(current < '200000'){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82641&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
@@ -1276,14 +1430,22 @@ const toggleyearly = document.getElementById('toggleyearly');
 
             if(current > '500000'){
                 $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82642&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
 
             if(current < '500000'){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82642&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
+                if(packageToggle === 0){
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }else{
+                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                }
                 $('#buy-plan').attr('href',Newhref);
                 return false;
             }
