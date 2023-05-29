@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 688 1024" width="688" height="1024">
+	<title>bg-circle1-svg</title>
+	<defs>
+		<radialGradient id="g1" cx="100.7" cy="427.8" r="439.3" gradientUnits="userSpaceOnUse">
+			<stop offset="0" stop-color="#9200ff" stop-opacity="1"/>
+			<stop offset="1" stop-color="#9200ff" stop-opacity="0"/>
+		</radialGradient>
+	</defs>
+	<style>
+		.s0 { opacity: .3;fill: url(#g1) } 
+	</style>
+	<path id="Layer" class="s0" d="m100.7 939.5c-289.1 0-522.7-228.7-522.7-511.7 0-283 233.6-511.8 522.7-511.8 289 0 522.6 228.8 522.6 511.8 0 283-233.6 511.7-522.6 511.7z"/>
+</svg>

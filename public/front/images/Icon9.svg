@@ -1,0 +1,14 @@
+<svg width="148" height="148" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 107.75V95.5V71V31.6C17 28.2397 17 26.5595 17.654 25.2761C18.2292 24.1471 19.1471 23.2292 20.2761 22.654C21.5595 22 23.2397 22 26.6 22H125.4C128.76 22 130.44 22 131.724 22.654C132.853 23.2292 133.771 24.1471 134.346 25.2761C135 26.5595 135 28.2397 135 31.6V120H76H46.5H31.75" stroke="white" stroke-width="4"/>
+<circle cx="17.5" cy="120.5" r="5.5" stroke="white" stroke-width="4"/>
+<circle cx="59.5" cy="76.5" r="5.5" stroke="white" stroke-width="4"/>
+<circle cx="24" cy="30" r="3" fill="white"/>
+<circle cx="34" cy="30" r="3" fill="white"/>
+<circle cx="44" cy="30" r="3" fill="white"/>
+<circle cx="76.5" cy="90.5" r="5.5" stroke="white" stroke-width="4"/>
+<circle cx="115.5" cy="50.5" r="5.5" stroke="white" stroke-width="4"/>
+<line x1="20.5858" y1="115.586" x2="55.5858" y2="80.5858" stroke="white" stroke-width="4"/>
+<line x1="80.5858" y1="85.5858" x2="111.586" y2="54.5858" stroke="white" stroke-width="4"/>
+<line x1="64.4142" y1="80.5858" x2="72.4142" y2="88.5858" stroke="white" stroke-width="4"/>
+<line x1="18.5" y1="37.5" x2="133.5" y2="37.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"/>
+</svg>

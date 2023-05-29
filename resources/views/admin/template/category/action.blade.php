@@ -1,0 +1,2 @@
+<a href="javascript:void(0);" onclick="add_category(true,'{{$data->hashid}}','{{$data->name}}','{{$data->status}}')" style="font-size:20px;"><i class="fadeIn animated bx bx-edit"></i></a>&nbsp;&nbsp;
+<a href="javascript:void(0);" onclick="ajaxRequest(this)" data-url="{{route('admin.template.category.delete',$data->hashid)}}" class="text-danger" style="font-size:20px;"><i class="fadeIn animated bx bx-trash"></i></a>
