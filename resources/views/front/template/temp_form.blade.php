@@ -336,6 +336,7 @@
 	impscore.addEventListener('click', function() {
     $('#ai-loader').show();
     $('#ans_div').hide();
+    $('#impscore').hide();
 	const content = document.querySelector('#details').value;
 	results(content); 
 	});
@@ -453,8 +454,12 @@
                         else if (number > 50 && number < 70) {
                         numberEl.style.border = "2px solid #f7831e";
                         }
-                        else {
+                        else if (number > 70 && number < 85) {
                         numberEl.style.border = "2px solid #39942f";
+                        }
+                        else {
+                            document.getElementById("resulted_phrase").innerHTML = "Upgrade";
+                            numberEl.style.border = "2px solid #39942f";
                         }
                         // html += `<p class="gnrtdtext">${generated_text}</p>`;
                         }
