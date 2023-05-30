@@ -6,6 +6,14 @@
     <title>@yield('title') - {{ env('APP_NAME') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDKR7EQ7G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TKDKR7EQ7G');
+</script>
     <!--favicon-->
 	{{-- <link rel="icon" href="{{asset('admin')}}/assets/images/favicon-32x32.png" type="image/png" /> --}}
 	<!-- loader-->

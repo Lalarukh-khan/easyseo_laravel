@@ -5,6 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> {{$title}} - Easy SEO </title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDKR7EQ7G"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TKDKR7EQ7G');
+    </script>
+
     <!-- Animate With CSS -->
     <link rel="stylesheet" type="text/css" href="{{asset('front')}}/css/animate.css">
     <!-- Slick CSS -->
