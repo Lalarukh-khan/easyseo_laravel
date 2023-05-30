@@ -169,6 +169,9 @@
                     <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader">
                 </div>
                 <div class="form-group" id="ans_div" style="display:none">
+                <button class="mt-4 btn btn-info nwtmcreatecontent" id="impscore" >Improve Score</button>
+                <br>
+                <br>
                     <!-- <label for="t-text" class="sr-only">Text</label> -->
                     <!-- <textarea name="" id="first_result_div" cols="30" rows="18" class="form-control" style=" color: black; "></textarea> -->
                     <div class="row rsltdwholebox">
@@ -178,6 +181,7 @@
                         <div class="col-lg-1">
                             <div id="resulted_phrase"></div>
                         </div>
+                        <textarea name="content" id="details" cols="30" rows="10" style="display: none !important;"></textarea>
                         {{--<form action="{{route('user.template.form_seo_score')}}" method="post">--}}
                         <form id="seo_content_form" style="display: none !important;">
                             @csrf
@@ -328,63 +332,140 @@
 		// .catch(error => console.error(error));
 	}
 
+    const impscore = document.querySelector('#impscore');
+	impscore.addEventListener('click', function() {
+    $('#ai-loader').show();
+    $('#ans_div').hide();
+	const content = document.querySelector('#details').value;
+	results(content); 
+	});
 
-	// function results(content) {
-	// 	const url = 'https://api.dataforseo.com/v3/content_generation/paraphrase/live';
-	// 	const post_array = [];
-	// 	post_array.push({
-	// 			"text": content,
-	// 			"language_name": "English (United States)"
-	// 	});
-	// 	const username = 'lidanex@gmail.com';
-	// 	const password = 'fc53e701e81bec41';
+    function results(content) {
+		const url = 'https://api.dataforseo.com/v3/content_generation/paraphrase/live';
+		const post_array = [];
+		post_array.push({
+				"text": content,
+				"language_name": "English (United States)"
+		});
+		const username = 'lidanex@gmail.com';
+		const password = 'fc53e701e81bec41';
 
-	// 	fetch(url, {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json',
-	// 		'Authorization': 'Basic ' + btoa(username + ':' + password)
-	// 	},
-	// 	body: JSON.stringify(post_array)
-	// 	})
-	// 	.then(response => response.json())
-	// 	.then(data => {
-	// 		const apiResponse = data;
-	// 		// document.getElementById("output").textContent = JSON.stringify(apiResponse, undefined, 2);
-    //         this.list.push({
-	// 			"response": apiResponse
-	// 	        })
-    //             for (const key of Object.keys(this.list)) {
-    //                 this.listvalues.push(this.list[key]);
-    //             }
-    //         // console.log("reached here: "+ JSON.stringify(this.list));
-    //         const finallist = this.list;
-    //         // finallist.forEach(obj => {
-    //         //     console.log(obj.response.status_message);
-    //         // });
-    //         const resulted_phrase = document.querySelector('#resulted_phrase');
-    //                 let html = '';
-    //                 for (let i = 0; i < finallist.length; i++) {
-    //                 const item = finallist[i];
-    //                 // html += `<li>${item.response.status_message}<ul>`;
-    //                 for (let j = 0; j < item.response.tasks.length; j++) {
-    //                     const subitem = item.response.tasks[j];
-    //                     // html += `<li>${subitem.result_count}</li><ul>`;
-    //                     for (let z = 0; z < subitem.result.length; z++) {
-    //                     const subitem2 = subitem.result[z];
-    //                     const generated_text = subitem2.generated_text;
-    //                     document.getElementById("resulted_phrase").innerHTML = generated_text;
-    //                     html += `<p class="gnrtdtext">${generated_text}</p>`;
-    //                     }
-    //                 }
-    //                 // html += '</ul></li>';
-    //                 }
+		fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Basic ' + btoa(username + ':' + password)
+		},
+		body: JSON.stringify(post_array)
+		})
+		.then(response => response.json())
+		.then(data => {
+			const apiResponse = data;
+			this.list.push({
+				"response": apiResponse
+		        })
+                for (const key of Object.keys(this.list)) {
+                    this.listvalues.push(this.list[key]);
+                }
+            const finallist = this.list;
+                    for (let i = 0; i < finallist.length; i++) {
+                    const item = finallist[i];
+                    for (let j = 0; j < item.response.tasks.length; j++) {
+                        const subitem = item.response.tasks[j];
+                        for (let z = 0; z < subitem.result.length; z++) {
+                        const subitem2 = subitem.result[z];
+                        const generated_text = subitem2.generated_text;
+                        $('#ai-loader').hide();
+                        $('#ans_div').show();
+                        document.getElementById("first_result_div").innerHTML = generated_text;
+                        const score = generated_text;
+	                    getImpSeoScore(score);
+                        }
+                    }
+                    }
+			})
+		// .catch(error => console.error(error));
+	}
+    function getImpSeoScore(content) {
+		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
+		const post_array = [];
+		post_array.push({
+				"text": content,
+				"language_name": "English (United States)"
+		});
+		const username = 'lidanex@gmail.com';
+		const password = 'fc53e701e81bec41';
 
-    //                 resulted_phrase.innerHTML = html;
-	// 		})
-	// 	// .catch(error => console.error(error));
-	// }
+		fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Basic ' + btoa(username + ':' + password)
+		},
+		body: JSON.stringify(post_array)
+		})
+		.then(response => response.json())
+		.then(data => {
+			const apiResponse = data;
+            this.list.push({
+				"response": apiResponse
+		        })
+                for (const key of Object.keys(this.list)) {
+                    this.listvalues.push(this.list[key]);
+                }
+			// document.getElementById("output").textContent = JSON.stringify(apiResponse, undefined, 2);
+            // console.log("reached here: "+ JSON.stringify(this.list));
+            const finallist = this.list;
+            // const resulted_phrase = document.querySelector('#resulted_phrase');
+                    let html = '';
+                    for (let i = 0; i < finallist.length; i++) {
+                    const item = apiResponse;
+                    // html += `<li>${item.response.status_message}<ul>`;
+                    for (let j = 0; j < item.tasks.length; j++) {
+                        const subitem = item.tasks[j];
+                        // html += `<li>${subitem.result_count}</li><ul>`;
+                        for (let z = 0; z < subitem.result.length; z++) {
+                        const subitem2 = subitem.result[z];
+                        const keyword_density = subitem2.keyword_density;
+                        const automated_readability_index = subitem2.automated_readability_index;
+                        const smog_readability_index = subitem2.smog_readability_index;
+                        let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
+                        let totalWords = content.split(' ').length;
+                        let keywordDensity = keywordCount / totalWords;
 
+                        // Calculate meta tags score
+                        let metaTagsScore = 1; // Set to 1 if all meta tags are present, else 0
+
+                        // Calculate weighted average
+                        // let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 1) + (smog_readability_index * 1);
+                        let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 8);
+                        let roundedscore = Math.round(seoScore);
+                        document.getElementById("resulted_phrase").innerHTML = roundedscore;
+                        const numberEl = document.getElementById("resulted_phrase");
+                        const number = parseInt(numberEl.textContent);
+
+                        numberEl.style.borderRadius = "50%";
+                        numberEl.style.padding = "10px";
+
+                        if (number < 50) {
+                        numberEl.style.border = "2px solid #f54c36";
+                        }
+                        else if (number > 50 && number < 70) {
+                        numberEl.style.border = "2px solid #f7831e";
+                        }
+                        else {
+                        numberEl.style.border = "2px solid #39942f";
+                        }
+                        // html += `<p class="gnrtdtext">${generated_text}</p>`;
+                        }
+                    }
+                    // html += '</ul></li>';
+                    }
+
+                    // resulted_phrase.innerHTML = html;
+			})
+		// .catch(error => console.error(error));
+	}
     // CKEDITOR.replace('first_result_div',
     // {
     //     height: 450,
@@ -490,6 +571,7 @@
                         $('#ai-loader').hide();
                         $('#ans_div').show();
                         document.getElementById("first_result_div").innerHTML = data.message;
+                        document.getElementById("details").value = data.message;
                         // $('#first_result_div').val(data.message);
                         // CKEDITOR.instances['first_result_div'].setData(data.message)
                         $('#prompt_word_count').html(`${data.word_count} words`);

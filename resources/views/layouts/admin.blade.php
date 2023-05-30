@@ -19,6 +19,15 @@
 
     <meta name="description" content="" />
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDKR7EQ7G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TKDKR7EQ7G');
+</script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{asset('admin_assets')}}/assets/img/favicon/favicon.ico" />
 
