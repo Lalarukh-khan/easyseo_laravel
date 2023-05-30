@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
 use App\Models\GptHistory;
+use App\Models\Package;
 use App\Models\UserPackage;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -92,7 +93,8 @@ class UserController extends Controller
             // 'user_packages_id' => UserPackage::where('user_id', $final),
             'user_packages_id' => UserPackage::get('user_packages.*')->where('user_id' , $final)->last(),
             // 'allusers' => UserPackage::get('user_packages.*'),
-            // 'user_packages_id' => $final, 
+            // 'user_packages_id' => $final,
+            'packages' => Package::select('id','words','price')->where('price','>',0)->orderBy('words')->get()
         );
         return view('admin.users.edit')->with($data);
     }
@@ -104,6 +106,8 @@ class UserController extends Controller
             'first_name' => 'max:255',
             'last_name' => 'max:255',
             'user_status' => 'required',
+            'words_limit' => 'required',
+            'end_date' => 'required',
         ];
 
         if (!empty($request->password)) {
@@ -121,15 +125,16 @@ class UserController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->is_active = $request->user_status;
-        $user->has_package = $request->user_package;
+        // $user->has_package = $request->user_package;
         $package_id->words = $request->words_limit;
+        $package_id->end_date = $request->end_date;
         if (!empty($request->password)) {
             $user->password = bcrypt($request->password);
         }
         $user->save();
         $package_id->save();
         session()->flash('success-msg','User Updated Successfully');
-        
+
         return response()->json([
             'redirect' => route('admin.user.all'),
         ]);
@@ -146,6 +151,39 @@ class UserController extends Controller
 
         return response()->json([
             'reload' => true,
+        ]);
+    }
+
+    public function update_subscription(Request $request){
+
+        $rules = [
+            'subscription' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(),$rules);
+
+        if ($validator->fails()) {
+            return ['errors' => $validator->errors()];
+        }
+
+        $package = Package::find($request->subscription);
+
+        $user_package = new UserPackage();
+        $user_package->package_id = $package->id;
+        $user_package->user_id = $request->user_id;
+        $user_package->words = $package->words;
+        $user_package->start_date = now()->format('Y-m-d');
+        $user_package->end_date = now()->addMonth()->format('Y-m-d');
+        $user_package->save();
+
+        $user = User::find($request->user_id);
+        $user->has_package = $package->id;
+        $user->save();
+
+        session()->flash('success-msg','User Subscription Updated Successfully');
+
+        return response()->json([
+            'redirect' => route('admin.user.all'),
         ]);
     }
 }

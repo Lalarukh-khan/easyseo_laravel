@@ -50,8 +50,8 @@ class UserIsActive
 				session()->put('package-details',__($planExp . ' Upgrade to a '.$premium_plan.' now.'));
 			}elseif (strtotime($currentDate) > $end_date && $words >= $userPackageWords) {
                 session()->put('package-error',__('error_msg.word_limit_reached'));
-            }elseif (strtotime($currentDate) > $end_date) {
-                session()->put('package-error',__('error_msg.word_limit_reached'));
+            }elseif (strtotime($currentDate) > $end_date) { 
+                session()->put('package-error',__('error_msg.expired'));
             }elseif ($words >= $userPackageWords) {
                 session()->put('package-error',__('error_msg.word_ended'));
             }else{

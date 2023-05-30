@@ -19,4 +19,6 @@ return [
 
     'word_limit_reached' => 'You have reached your words limit. please <a href="'.route('web.pricing').'" class="text-danger" style="text-decoration:underline;">upgrade here</a> to a higher plan or purchase additional words',
 
+    'expired' => 'Your subscription is expired. please <a href="'.route('web.pricing').'" class="text-danger" style="text-decoration:underline;">Buy here</a> to a new plan',
+
 ];
