@@ -70,12 +70,7 @@
         <br>
         <br>
         <ul class="metismenu nwmetismenu" id="menu">
-            <div class="nwsidebar-footer-top">
-                <img src="{{asset('front')}}/assets/images/sft.svg" alt="" class="nwsdftimage">
-                <h4 class="nwsdfttxt">Trial ends in 4 days</h4>
-                <p class="nwsdfttxtsm">You are on a free trial of the <b>Starter</b> plan on <b>monthly</b> billing.</p>
-                <a href="#" class="nwsdftbtn">View Details</a>
-            </div>
+            @include('components.sidebar_msg')
             <br>
 
             <li>

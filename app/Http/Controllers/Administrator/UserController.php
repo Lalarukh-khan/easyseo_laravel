@@ -16,15 +16,15 @@ use Hashids\Hashids;
 class UserController extends Controller
 {
     public function index()
-    {
+    { 
         $data = array(
             'title' => 'All Users',
         );
 
         if(request()->ajax()) {
             DB::statement(DB::raw('set @rownum=0'));
-            $data = User::latest('id')->get(['users.*',
-            DB::raw('@rownum  := @rownum  + 1 AS rownum')]);
+            $data = User::with('user_package')->latest('id')->get(['users.*',
+            DB::raw('@rownum  := @rownum  + 1 AS rownum')]); 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('first_name', function ($row) {
@@ -37,20 +37,23 @@ class UserController extends Controller
                 })
                 ->addColumn('package', function ($row) {
                     $span = '';
-                    if ($row->has_package == 1) {
-                        $span = '<span class="badge bg-info">Pro - A</span>';
+                    if(!empty($row->user_package)){
+                        if ($row->user_package->package_id == 1) {
+                            $span = '<span class="badge bg-success">Free - 5000</span>';
+                        }
+                        if ($row->user_package->package_id == 2) {
+                            $span = '<span class="badge bg-info">Pro - 20000</span>';
+                        }
+                        if ($row->user_package->package_id == 3) {
+                            $span = '<span class="badge bg-primary">Pro - 50000</span>';
+                        }
+                        if ($row->user_package->package_id == 4) {
+                            $span = '<span class="badge bg-warning">Pro - 200000</span>';
+                        }if ($row->user_package->package_id == 5) {
+                            $span = '<span class="badge bg-secondary">Pro - 500000</span>';
+                        } 
                     }
-                    elseif ($row->has_package == 2) {
-                        $span = '<span class="badge bg-info">Pro - B</span>';
-                    }
-                    elseif ($row->has_package == 3) {
-                        $span = '<span class="badge bg-info">Pro - C</span>';
-                    }
-                    elseif ($row->has_package == 4) {
-                        $span = '<span class="badge bg-info">Pro - D</span>';
-                    } else {
-                        $span = '<span class="badge bg-success">Free</span>';
-                    }
+                    
                     return $span;
                 })
                 ->addColumn('status', function ($row) {
@@ -83,7 +86,7 @@ class UserController extends Controller
     }
 
     public function edit($id)
-    {
+    {  
         $cnvrt = User::hashidFind($id);
         $final = $cnvrt->id;
         $data = array(
@@ -93,9 +96,9 @@ class UserController extends Controller
             // 'user_packages_id' => UserPackage::where('user_id', $final),
             'user_packages_id' => UserPackage::get('user_packages.*')->where('user_id' , $final)->last(),
             // 'allusers' => UserPackage::get('user_packages.*'),
-            // 'user_packages_id' => $final,
-            'packages' => Package::select('id','words','price')->where('price','>',0)->orderBy('words')->get()
-        );
+            // 'user_packages_id' => $final,   ->where('price','>',0)
+            'packages' => Package::select('id','words','price','plan_code')->orderBy('words')->get()
+        ); 
         return view('admin.users.edit')->with($data);
     }
 
@@ -155,7 +158,7 @@ class UserController extends Controller
     }
 
     public function update_subscription(Request $request){
-
+       
         $rules = [
             'subscription' => 'required',
         ];
@@ -167,13 +170,17 @@ class UserController extends Controller
         }
 
         $package = Package::find($request->subscription);
-
+        if($package->plan_code == 'FRP0'){
+            $end_date = now()->addDays(7)->format('Y-m-d');
+        }else{
+            $end_date = now()->addMonth()->format('Y-m-d');
+        }
         $user_package = new UserPackage();
         $user_package->package_id = $package->id;
         $user_package->user_id = $request->user_id;
         $user_package->words = $package->words;
         $user_package->start_date = now()->format('Y-m-d');
-        $user_package->end_date = now()->addMonth()->format('Y-m-d');
+        $user_package->end_date = $end_date;
         $user_package->save();
 
         $user = User::find($request->user_id);

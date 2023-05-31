@@ -126,7 +126,7 @@ class WebhookController extends Controller
                 if (empty($CheckEmail[0]->customer_id)) {
                     $User = User::find($CheckEmail[0]->id);
                     $User->customer_id = $data->CUSTOMER_ID;
-                    $User->has_package = 1;
+                    $User->has_package = $packageDetails->id;
                     $User->save();
                 }
 

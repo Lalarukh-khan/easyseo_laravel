@@ -47,14 +47,16 @@ class UserIsActive
 			session()->put('UserPackages', $user_package);
 			$premium_plan = '<a href="'.route('web.pricing').'" style="text-decoration:underline; color: #ff750a !important;" class="text-success">premium plan</a>';
             if (strtotime($currentDate) <= $end_date && $words <= $userPackageWords && $user_package->package_id == 1) {
-				session()->put('package-details',__($planExp . ' Upgrade to a '.$premium_plan.' now.'));
-			}elseif (strtotime($currentDate) > $end_date && $words >= $userPackageWords) {
-                session()->put('package-error',__('error_msg.word_limit_reached'));
+                session()->put('package-title-sidebar',__('Trial ends in '.$diff_in_days.' days'));
+                session()->put('package-msg-sidebar',__('You are on a free trial of the Starter plan on monthly billing.'));
+                session()->put('package-details',__($planExp . ' Upgrade to a '.$premium_plan.' now.'));
+			}elseif (strtotime($currentDate) > $end_date && $words >= $userPackageWords) { 
+                session()->put('package-error',__('error_msg.word_limit_reached')); 
             }elseif (strtotime($currentDate) > $end_date) { 
                 session()->put('package-error',__('error_msg.expired'));
-            }elseif ($words >= $userPackageWords) {
+            }elseif ($words >= $userPackageWords) { 
                 session()->put('package-error',__('error_msg.word_ended'));
-            }else{
+            }else{ 
                 session()->forget('package-error');
                 session()->forget('package-details');
             }
