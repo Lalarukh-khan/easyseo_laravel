@@ -885,6 +885,64 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
     /* box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25); */
 
 }
+.nwwbedtrtpbtn1{
+	background: transparent;
+	color: grey;
+	border-radius: 1.5rem;
+	border: 2px solid grey;
+	/* border-image: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	border-image-slice: 1; */
+	padding: 0.25rem 0.5rem;
+	font-size: 14px;
+}
+.nwwbedtrtpbtn{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+	border-radius: 1.5rem;
+	border: 2px solid #9200FF;
+	/* border-image: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	border-image-slice: 1; */
+	padding: 0.25rem 0.5rem;
+	font-size: 15px;
+}
+.nwwbedtrtpbtnmrrt{
+	margin-right: 20px;
+}
+.edtrtrgtrp{
+	margin: 30px 0px;
+	font-weight: 800;
+}
+.edtrp {
+	color: rgb(63, 63, 63);
+	font-weight: 700;
+}
+.edtrinp{
+	color: rgba(67, 0, 202, 0.3) !important;
+	border-radius: 1.5rem;
+	padding: 9px 20px;
+	border: 2px solid transparent;
+	width: 80%;
+	font-size: 17px;
+	border-image: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	border-image-slice: 1;
+	outline: none;
+}
+.edtrinp::placeholder{
+	color: rgba(67, 0, 202, 0.3) !important;
+	opacity: 1 !important;
+}
+.edtrrptbtn{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	margin: 20px 0px 5px 0px;
+	font-size: 17px;
+	color: #ffffff;
+	border-radius: 1.25rem;
+	padding: 10px 20px;
+	border: none !important;
+}
 .pricing-detail {
     display: block;
     margin-bottom: 25px;

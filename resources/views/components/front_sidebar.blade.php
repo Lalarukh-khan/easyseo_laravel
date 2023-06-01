@@ -29,6 +29,13 @@
             </a>
         </li>
         <li>
+            <a href="{{route('user.editor.all')}}">
+                <div class="parent-icon icon-color-2"><i class="bx bx-edit"></i>
+                </div>
+                <div class="menu-title">Editor</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route('user.chat.index')}}">
                 <div class="parent-icon icon-color-2"><i class="bx bx-chat"></i>
                 </div>

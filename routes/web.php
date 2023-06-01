@@ -251,6 +251,11 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
         Route::post('/seo_form_submit', 'TemplateController@seo_form_submit')->name('seo_form_submit');
     });
 
+    Route::prefix('editor')->as('editor.')->group(function () {
+        Route::get('/', 'EditorController@index')->name('all');
+        Route::get('/create', 'EditorController@create')->name('create');
+    });
+
     Route::group([
         'prefix' => 'history',
         'as' => 'history.'
