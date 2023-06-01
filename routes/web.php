@@ -254,6 +254,8 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
     Route::prefix('editor')->as('editor.')->group(function () {
         Route::get('/', 'EditorController@index')->name('all');
         Route::get('/create', 'EditorController@create')->name('create');
+        Route::get('/keywords', 'EditorController@keywords')->name('keywords');
+        Route::post('/ai_response', 'EditorController@ai_response')->name('ai_response');
     });
 
     Route::group([

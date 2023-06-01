@@ -920,7 +920,7 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	font-weight: 700;
 }
 .edtrinp{
-	color: rgba(67, 0, 202, 0.3) !important;
+	color: #000 !important;
 	border-radius: 1.5rem;
 	padding: 9px 20px;
 	border: 2px solid transparent;
