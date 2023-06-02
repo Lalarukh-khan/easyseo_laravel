@@ -1,3 +1,6 @@
+@php
+    $authUser = auth('web')->user();
+@endphp
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header nwsidebar-header">
         <div class="" style="display: none;">
@@ -35,6 +38,8 @@
                 <div class="menu-title">Editor</div>
             </a>
         </li>
+
+
         <li>
             <a href="{{route('user.chat.index')}}">
                 <div class="parent-icon icon-color-2"><i class="bx bx-chat"></i>
@@ -56,6 +61,15 @@
                 <div class="menu-title">History</div>
             </a>
         </li> --}}
+        @if ($authUser->user_type == 'main')
+
+        <li>
+            <a href="{{route('user.invite.all')}}">
+                <div class="parent-icon icon-color-2"><i class="bx bx-mail-send"></i>
+                </div>
+                <div class="menu-title">Invite Users</div>
+            </a>
+        </li>
         <li>
             <a href="{{route('user.subscription')}}">
                 <div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-package"></i>
@@ -70,6 +84,8 @@
                 <div class="menu-title">Plans & Billing</div>
             </a>
         </li>
+        @endif
+
     </ul>
     <div class="sidebar-footer">
         <br>
@@ -79,7 +95,7 @@
         <ul class="metismenu nwmetismenu" id="menu">
             @include('components.sidebar_msg')
             <br>
-
+            @if ($authUser->user_type == 'main')
             <li>
                 <a href="{{route('user.settings')}}">
                     <div class="parent-icon icon-color-2">
@@ -88,6 +104,7 @@
                     <div class="menu-title nwmenu-title">Settings</div>
                 </a>
             </li>
+            @endif
             <li>
                 <a href="{{route('user.help')}}" >
                     <div class="parent-icon icon-color-2">

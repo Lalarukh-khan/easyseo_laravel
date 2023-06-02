@@ -16,15 +16,15 @@ use Hashids\Hashids;
 class UserController extends Controller
 {
     public function index()
-    { 
+    {
         $data = array(
             'title' => 'All Users',
         );
 
         if(request()->ajax()) {
             DB::statement(DB::raw('set @rownum=0'));
-            $data = User::with('user_package')->latest('id')->get(['users.*',
-            DB::raw('@rownum  := @rownum  + 1 AS rownum')]); 
+            $data = User::with('user_package')->where('user_type','main')->latest('id')->get(['users.*',
+            DB::raw('@rownum  := @rownum  + 1 AS rownum')]);
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('first_name', function ($row) {
@@ -51,9 +51,9 @@ class UserController extends Controller
                             $span = '<span class="badge bg-warning">Pro - 200000</span>';
                         }if ($row->user_package->package_id == 5) {
                             $span = '<span class="badge bg-secondary">Pro - 500000</span>';
-                        } 
+                        }
                     }
-                    
+
                     return $span;
                 })
                 ->addColumn('status', function ($row) {
@@ -86,7 +86,7 @@ class UserController extends Controller
     }
 
     public function edit($id)
-    {  
+    {
         $cnvrt = User::hashidFind($id);
         $final = $cnvrt->id;
         $data = array(
@@ -98,7 +98,7 @@ class UserController extends Controller
             // 'allusers' => UserPackage::get('user_packages.*'),
             // 'user_packages_id' => $final,   ->where('price','>',0)
             'packages' => Package::select('id','words','price','plan_code')->orderBy('words')->get()
-        ); 
+        );
         return view('admin.users.edit')->with($data);
     }
 
@@ -158,7 +158,7 @@ class UserController extends Controller
     }
 
     public function update_subscription(Request $request){
-       
+
         $rules = [
             'subscription' => 'required',
         ];
@@ -179,6 +179,8 @@ class UserController extends Controller
         $user_package->package_id = $package->id;
         $user_package->user_id = $request->user_id;
         $user_package->words = $package->words;
+        $user_package->research_limit = $package->research_limit;
+        $user_package->workspace_users = $package->workspace_users;
         $user_package->start_date = now()->format('Y-m-d');
         $user_package->end_date = $end_date;
         $user_package->save();

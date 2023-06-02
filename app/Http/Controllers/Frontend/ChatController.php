@@ -77,8 +77,11 @@ class ChatController extends Controller
     public function ai_response(Request $request)
     {
         // checking remaining words start
+        $authUser = session()->get('authUser');
 
-        $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
+        // $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
+        $user_package = session()->get('UserPackages');
+
         $userPackageWords = $user_package->words;
 
         $From = $user_package->start_date;
@@ -86,7 +89,8 @@ class ChatController extends Controller
         $tomorrow = date('Y-m-d', strtotime(' +1 day'));
         $end_date = strtotime($user_package->end_date);
 
-        $used_words = GptHistory::where([ ['user_id',auth('web')->id()] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
+        // $used_words = GptHistory::where([ ['user_id',$authUser->user_type == 'workspace' ? $authUser->main_user_id : $authUser->main_user_id] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
+        $used_words = session()->get('gpt_words');
 
         if (strtotime($currentDate) > $end_date && $used_words >= $userPackageWords) {
             return response()->json(['error' => __('error_msg.word_limit_reached')]);

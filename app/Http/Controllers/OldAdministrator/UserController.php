@@ -20,7 +20,7 @@ class UserController extends Controller
 
         if(request()->ajax()) {
             DB::statement(DB::raw('set @rownum=0'));
-            $data = User::latest('id')->get(['users.*',
+            $data = User::where('user_type','main')->latest('id')->get(['users.*',
             DB::raw('@rownum  := @rownum  + 1 AS rownum')]);
             return DataTables::of($data)
                 ->addIndexColumn()

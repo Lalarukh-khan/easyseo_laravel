@@ -25,6 +25,7 @@
 
               <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('auth.register.submit') }}">
                 @csrf
+                <input type="hidden" name="invitation_code" id="invitation_code" value="{{@$invitation_code}}">
                 <input type="hidden" name="time_zone" id="user_time_zone">
                 <input type="hidden" name="country" value="{{$currentUserInfo->countryName ?? 'Unknown'}}">
                 <input type="hidden" name="city" value="{{$currentUserInfo->cityName ?? 'Unknown'}}">
@@ -47,7 +48,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="username" 
+                    id="username"
                     name="last_name" value="{{ old('last_name') }}" required
                     placeholder="Enter your Last Name"
                     autofocus
@@ -58,7 +59,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}"    required placeholder="Enter your email" />
+                  <input type="text" class="form-control" id="email" name="email" value="{{ old('email') ?? @$invited_email}}" {{ isset($invited_email) && !empty($invited_email) ? 'readonly' : '' }}   required placeholder="Enter your email" />
                     @error('email')
                     <span class="text-danger mt-0 mb-1">{{ $message }}</span>
                     @enderror

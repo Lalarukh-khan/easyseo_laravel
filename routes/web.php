@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 Auth::routes(['verify' => true]);
 
-//admin2 page 
+//admin2 page
 // Route::view('/admin-dashboard', 'admin2.content.dashboard.dashboards-analytics');
 // Route::view('/admin-crm', 'admin2.content.dashboard.dashboards-crm');
 
@@ -240,6 +240,7 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
     Route::get('/current-plain','DashboardController@subscription')->name('subscription');
 
     Route::get('/help','HelpController@index')->name('help');
+    
     Route::get('/settings','SettingController@index')->name('settings');
 
     Route::prefix('template')->as('template.')->group(function () {
@@ -281,6 +282,11 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
         Route::get('/get-languages','KeywordResearchController@get_languages')->name('get_languages');
         Route::get('/report/{id}','KeywordResearchController@keyword_report')->name('report');
         Route::get('/delete/{id}','KeywordResearchController@delete')->name('delete');
+    });
+
+    Route::prefix('invite')->as('invite.')->group(function(){
+        Route::get('/','InvitationController@index')->name('all');
+        Route::post('/send-invite','InvitationController@send_invitation')->name('send_invitation');
     });
 });
 

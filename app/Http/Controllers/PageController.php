@@ -11,11 +11,12 @@ class PageController extends Controller
 {
     public function index()
     {
+        $authUser = auth('web')->user();
         $blogs = Blog::where('status', 1)->take(3)->get();
         $data = array(
             'title' => "Home",
             'blogs' => $blogs,
-            'words' => auth('web')->check() ? UserPackage::where('user_id',auth('web')->id())->latest()->first()->words : 0,
+            'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
         );
         return view('website.home')->with($data);
     }
@@ -44,9 +45,10 @@ class PageController extends Controller
 
     public function pricing()
     {
+        $authUser = auth('web')->user();
         $data = array(
             'title' => "Pricing",
-            'words' => auth('web')->check() ? UserPackage::where('user_id',auth('web')->id())->latest()->first()->words : 0,
+            'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
         );
         return view('website.pages.pricing')->with($data);
     }

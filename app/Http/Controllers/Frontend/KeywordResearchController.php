@@ -16,11 +16,13 @@ class KeywordResearchController extends Controller
 {
     public function index()
     {
+        $authUserId = session()->get('authUserId');
+
         if (request()->ajax()) {
             DB::statement(DB::raw('set @rownum=0'));
             $KeywordResearch = new KeywordResearch();
 
-            $KeywordResearch = $KeywordResearch->where('user_id', auth('web')->id())->orderBy('id', 'DESC')->get([
+            $KeywordResearch = $KeywordResearch->where('user_id', $authUserId)->orderBy('id', 'DESC')->get([
                 'keyword_research.*',
                 DB::raw('@rownum  := @rownum  + 1 AS rownum')
             ]);
@@ -63,6 +65,21 @@ class KeywordResearchController extends Controller
 
     public function find_keywords(Request $request)
     {
+        $authUserId = session()->get('authUserId');
+
+
+        $UserPackages = session()->get('UserPackages');
+        $From = $UserPackages->start_date;
+        $tomorrow = date('Y-m-d', strtotime(' +1 day'));
+
+        $limit_check = KeywordResearch::withTrashed()->where('user_id',$authUserId)->whereBetween('created_at', [$From,$tomorrow]);
+
+        if ($limit_check->count() >= $UserPackages->research_limit) {
+            return response()->json([
+                'error' => 'Your Keywords Research Limit Reach',
+            ]);
+        }
+
         $rules = [
             'location' => 'required',
             'target_keyword' => 'required',
@@ -109,7 +126,7 @@ class KeywordResearchController extends Controller
                     ]);
                 }else{
                     $keyword_res = new KeywordResearch();
-                    $keyword_res->user_id = auth('web')->id();
+                    $keyword_res->user_id = $authUserId;
                     $keyword_res->keyword = $request->target_keyword;
                     $keyword_res->country_code = $request->location;
                     $keyword_res->save();

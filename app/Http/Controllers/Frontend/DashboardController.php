@@ -23,7 +23,9 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-        $user_id = Auth::user()->id;
+
+        $authUserId = session()->get('authUserId');
+
 
         if (request()->ajax()) {
             DB::statement(DB::raw('set @rownum=0'));
@@ -35,7 +37,7 @@ class DashboardController extends Controller
                 $dateE = new Carbon($daterage[1]);
                 $hisotry = $hisotry->whereBetween('created_at', [$dateS->format('Y-m-d') . " 00:00:00", $dateE->format('Y-m-d') . " 23:59:59"]);
             }
-            $hisotry = GptHistory::get(['gpt_histories.*', DB::raw('@rownum  := @rownum  + 1 AS rownum')])->where('user_id' , $user_id);
+            $hisotry = GptHistory::get(['gpt_histories.*', DB::raw('@rownum  := @rownum  + 1 AS rownum')])->where('user_id' , $authUserId);
             // $hisotry = $hisotry->where('user_id' == $user_id)->orderBy('id', 'DESC')->get([
             //     'gpt_histories.*',
             //     DB::raw('@rownum  := @rownum  + 1 AS rownum')
@@ -77,7 +79,7 @@ class DashboardController extends Controller
                 ->rawColumns(['time', 'result', 'words', 'type', 'score'])
                 ->make(true);
         }
-        $history = GptHistory::where('user_id',auth('web')->id());
+        $history = GptHistory::where('user_id',$authUserId);
         $user_package = session()->get('UserPackages');
 		$words  = session()->get('gpt_words');
 
@@ -87,12 +89,12 @@ class DashboardController extends Controller
             'month_req' => $history->whereMonth('created_at', Carbon::now()->month)->count(),
             'total_token' => $history->sum('total_tokens'),
             'month_words' => $history->whereMonth('created_at', Carbon::now()->month)->sum('total_words'),
-            // 'total_words' => $history->whereMonth('created_at', Carbon::now()->month)->sum('total_words'), 
+            // 'total_words' => $history->whereMonth('created_at', Carbon::now()->month)->sum('total_words'),
 			'user_package' => (!empty($user_package) ? $user_package : 0),
 			'total_words' => (!empty($user_package) ? $user_package : 0 ),
 			'words' => (!empty($words) ? $words : 0),
         );
-        
+
         return view('front.dashboard')->with($data);
     }
 
@@ -154,6 +156,10 @@ class DashboardController extends Controller
 
     public function subscription()
     {
+        if (session()->get('authUser')->user_type != 'main') {
+            abort(403,'You are not authorized to access that page');
+            die();
+        }
         $user_package = session()->get('UserPackages');
 		$words  = session()->get('gpt_words');
         $data = array(
@@ -166,7 +172,7 @@ class DashboardController extends Controller
 
         return view('front.subscription_details')->with($data);
     }
-    
+
     public function get_report(Request $request)
     {
         if (request()->ajax()) {

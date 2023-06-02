@@ -13,6 +13,8 @@ class HistoryController extends Controller
 {
     public function index(Request $request)
     {
+        $authUserId = session()->get('authUserId');
+
         if (request()->ajax()) {
             DB::statement(DB::raw('set @rownum=0'));
             $hisotry = new GptHistory();
@@ -26,7 +28,7 @@ class HistoryController extends Controller
                 $hisotry = $hisotry->whereMonth('created_at', Carbon::now()->month);
             }
 
-            $hisotry = $hisotry->where('user_id', auth('web')->id())->where('type','!=','chatbot')->orderBy('id', 'DESC')->get([
+            $hisotry = $hisotry->where('user_id', $authUserId)->where('type','!=','chatbot')->orderBy('id', 'DESC')->get([
                 'gpt_histories.*',
                 DB::raw('@rownum  := @rownum  + 1 AS rownum')
             ]);

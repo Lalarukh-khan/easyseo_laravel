@@ -28,12 +28,15 @@
 </style>
 @endsection
 @section('content')
+@if (auth('web')->user()->user_type == 'main')
 <div class="row">
     <div class="col-12 col-lg-3">
         <a  href="{{route('web.pricing')}}"  class="template-category btn bg-primary text-light">Upgrade Subscription</a>
     </div>
 </div>
 <br>
+@endif
+
 <div class="row">
     <div class="col-12 col-lg-6">
         <div class="card radius-15">
@@ -158,7 +161,7 @@
     <div class="col-lg-6 col-12">
         <div class="card radius-10">
             <div class="card-body">
-                {{-- 
+                {{--
                     <div class="row settings_row" style="display: none;">
                         <div class="col-lg-12">
                             <button type="button" class="btn btn-info btn-sm mb-2 float-right show_res">Show

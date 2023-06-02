@@ -31,8 +31,8 @@ class DashboardController extends Controller
         $history = new GptHistory();
         $data = array(
             'title' => 'Dashboard',
-            'total_users' => $user->count(),
-            'month_users' => $user->whereMonth('created_at', Carbon::now()->month)->count(),
+            'total_users' => $user->where('user_type','main')->count(),
+            'month_users' => $user->where('user_type','main')->whereMonth('created_at', Carbon::now()->month)->count(),
             'total_req' => $history->count(),
             'month_req' => $history->whereMonth('created_at', Carbon::now()->month)->count(),
             'total_token' => $history->sum('total_tokens'),

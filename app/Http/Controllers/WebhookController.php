@@ -135,6 +135,8 @@ class WebhookController extends Controller
                 $user_package->package_id = $packageId;
                 $user_package->subscription_id = $data->SUBSCRIPTION_ID;
                 $user_package->words = $MaxWords;
+                $user_package->research_limit = @$packageDetails->research_limit;
+                $user_package->workspace_users = @$packageDetails->workspace_users;
                 $user_package->data = json_encode($data);
                 $user_package->start_date = now()->format('Y-m-d');
                 $user_package->end_date = date('Y-m-d', strtotime($data->SUBSCRIPTION_NEXT_CHARGE_DATE));
@@ -173,6 +175,8 @@ class WebhookController extends Controller
                 $user_package->package_id = $packageId;
                 $user_package->subscription_id = $data->SUBSCRIPTION_ID;
                 $user_package->words = $MaxWords;
+                $user_package->research_limit = @$packageDetails->research_limit;
+                $user_package->workspace_users = @$packageDetails->workspace_users;
                 $user_package->data = json_encode($data);
                 $user_package->start_date = now()->format('Y-m-d');
                 $user_package->end_date = date('Y-m-d', strtotime($data->SUBSCRIPTION_NEXT_CHARGE_DATE));

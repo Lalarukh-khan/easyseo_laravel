@@ -18,14 +18,20 @@ class UserIsActive
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth('web')->user()->is_active == 1) {
-            $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
+        $authUser = auth('web')->user();
+        if ($authUser->is_active == 1) {
+
+            $authUserId = $authUser->user_type != 'main' ? $authUser->main_user_id : $authUser->id;
+
+            $user_package = UserPackage::where('user_id',$authUserId)->latest()->first();
+
             if($user_package->end_date == null){
                 $date = strtotime($user_package->created_at);
                 $end_date = strtotime("+7 day", $date);
                 $user_package->end_date = date('Y-m-d', $end_date);
                 $user_package->save();
             }
+
             $userPackageWords = $user_package->words;
             $From = $user_package->start_date;
 			$currentDate = date('Y-m-d');
@@ -39,26 +45,34 @@ class UserIsActive
 				$planExp = "Your trial expires in <b style='color: #000 !important; font-size: 15px; !important'>".$diff_in_days." days</b>.";
 			}
             $end_date = strtotime($user_package->end_date);
-			$words = GptHistory::where([ ['user_id',auth('web')->id()] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
+			$words = GptHistory::where([ ['user_id',$authUserId] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
 
             // dd($words);
+            // dd($user_package);
 
             session()->put('gpt_words', $words);
 			session()->put('UserPackages', $user_package);
+
+            session()->put('authUser',$authUser);
+            session()->put('authUserId',$authUserId);
+
 			$premium_plan = '<a href="'.route('web.pricing').'" style="text-decoration:underline; color: #ff750a !important;" class="text-success">premium plan</a>';
             if (strtotime($currentDate) <= $end_date && $words <= $userPackageWords && $user_package->package_id == 1) {
                 session()->put('package-title-sidebar',__('Trial ends in '.$diff_in_days.' days'));
                 session()->put('package-msg-sidebar',__('You are on a free trial of the Starter plan on monthly billing.'));
                 session()->put('package-details',__($planExp . ' Upgrade to a '.$premium_plan.' now.'));
-			}elseif (strtotime($currentDate) > $end_date && $words >= $userPackageWords) { 
-                session()->put('package-error',__('error_msg.word_limit_reached')); 
-            }elseif (strtotime($currentDate) > $end_date) { 
+			}elseif (strtotime($currentDate) > $end_date && $words >= $userPackageWords) {
+                session()->put('package-error',__('error_msg.word_limit_reached'));
+            }elseif (strtotime($currentDate) > $end_date) {
                 session()->put('package-error',__('error_msg.expired'));
-            }elseif ($words >= $userPackageWords) { 
+            }elseif ($words >= $userPackageWords) {
                 session()->put('package-error',__('error_msg.word_ended'));
-            }else{ 
+            }else{
                 session()->forget('package-error');
                 session()->forget('package-details');
+                session()->forget('package-title-sidebar');
+                session()->forget('package-msg-sidebar');
+
             }
 
             return $next($request);

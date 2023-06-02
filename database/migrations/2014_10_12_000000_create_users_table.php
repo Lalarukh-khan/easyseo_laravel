@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('customer_id')->nullable();
             $table->string('unique_id')->nullable();
+            $table->enum('user_type',['main', 'workspace'])->default('main');
+            $table->integer('main_user_id')->nullable();
             $table->string('provider_name')->default('web')->nullable();
             $table->string('provider_id')->nullable();
             $table->boolean('has_package')->default(0);
