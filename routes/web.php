@@ -293,5 +293,5 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
 
 // webhook routes
 Route::prefix('webhook')->namespace('App\Http\Controllers')->group(function () {
-    Route::any('/payment-handler', 'WebhookController@keyword_report');
+    Route::any('/payment-handler', 'WebhookController@payment_handler');
 });
