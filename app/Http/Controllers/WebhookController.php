@@ -27,9 +27,12 @@ class WebhookController extends Controller
         $webhook_data =  json_decode($webhookLog->data);
         $custom_string = explode('&',$webhook_data->CHECKOUT_QUERY_STRING);
 
+
         if(isset($custom_string[4])){
             $userUniqueId = str_replace('ORDER_CUSTOM_FIELDS=x-user%3d','',$custom_string[4]);
         }
+
+
 
         $IPNTypes = ['OrderCharged', 'SubscriptionChargeSucceed', 'SubscriptionChargeFailed', 'SubscriptionSuspended', 'SubscriptionRenewed', 'SubscriptionTerminated', 'SubscriptionFinished'];
 
@@ -85,7 +88,6 @@ class WebhookController extends Controller
 
 
         if ($webhook_data->ORDER_STATUS == "Processed" && $webhook_data->SUBSCRIPTION_STATUS_NAME == "Active" && $webhook_data->IPN_TYPE_NAME == "OrderCharged") {
-
             $this->newSubscription($webhook_data, $request->url(), $webCustomerEmail);
         } elseif ($webhook_data->ORDER_STATUS == "Processed" && $webhook_data->SUBSCRIPTION_STATUS_NAME == "Active" && $webhook_data->IPN_TYPE_NAME == "SubscriptionChargeSucceed") {
 
@@ -104,15 +106,22 @@ class WebhookController extends Controller
         try {
             $CheckEmail = User::where('email', $email)->get();
 
+
+
             if (isset($CheckEmail[0]) && !empty($CheckEmail[0])) {
+
 
                 if (!empty($data->ORDER_ITEM_SKU)) {
                     $packageDetails = Package::where('plan_code', $data->ORDER_ITEM_SKU)->get();
                     $MaxWords = $packageDetails[0]->words;
                     $packageId = $packageDetails[0]->id;
+                    $researchLimit = $packageDetails[0]->research_limit;
+                    $workspaceUsers = $packageDetails[0]->workspace_users;
                 } else {
                     $MaxWords = 0;
                     $packageId = 1;
+                    $researchLimit = 2;
+                    $workspaceUsers = 0;
                 }
 
                 // checking old subscriptions
@@ -120,14 +129,17 @@ class WebhookController extends Controller
                 $packages_sku = ['P20','P50','P200','P500'];
 
                 if (isset($check_old_subs[0]) && !empty($check_old_subs[0]) && in_array($check_old_subs[0]->package->plan_code,$packages_sku)) {
+
                     $this->suspendSubscription($check_old_subs[0]->subscription_id);
                 }
 
+
                 if (empty($CheckEmail[0]->customer_id)) {
-                    $User = User::find($CheckEmail[0]->id);
-                    $User->customer_id = $data->CUSTOMER_ID;
-                    $User->has_package = $packageDetails->id;
-                    $User->save();
+
+                    User::where('email',$email)->update([
+                        'customer_id' => $data->CUSTOMER_ID,
+                        'has_package' => $packageId,
+                    ]);
                 }
 
                 $user_package = new UserPackage();
@@ -135,15 +147,15 @@ class WebhookController extends Controller
                 $user_package->package_id = $packageId;
                 $user_package->subscription_id = $data->SUBSCRIPTION_ID;
                 $user_package->words = $MaxWords;
-                $user_package->research_limit = @$packageDetails->research_limit;
-                $user_package->workspace_users = @$packageDetails->workspace_users;
+                $user_package->research_limit = $researchLimit;
+                $user_package->workspace_users = $workspaceUsers;
                 $user_package->data = json_encode($data);
                 $user_package->start_date = now()->format('Y-m-d');
                 $user_package->end_date = date('Y-m-d', strtotime($data->SUBSCRIPTION_NEXT_CHARGE_DATE));
                 $user_package->save();
             }
 
-            Log::info('new subscription User Not Found With Email', $data);
+            Log::info('new subscription User Not Found With Email');
         } catch (\Exception $e) {
             $currenturl = $PageUrl;
             $code = $e->getCode();
@@ -183,7 +195,7 @@ class WebhookController extends Controller
                 $user_package->save();
             }
 
-            Log::info('Renew subscription User Not Found With Email and Customer id', $data);
+            Log::info('Renew subscription User Not Found With Email and Customer id');
         } catch (\Exception $e) {
             $currenturl = $PageUrl;
             $code = $e->getCode();
@@ -208,7 +220,7 @@ class WebhookController extends Controller
                 }
             }
 
-            Log::info('suspended subscription User Not Found With Customer id', $data);
+            Log::info('suspended subscription User Not Found With Customer id');
         } catch (\Exception $e) {
             $currenturl = $PageUrl;
             $code = $e->getCode();
