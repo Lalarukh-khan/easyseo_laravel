@@ -950,10 +950,37 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	margin: 30px 10px;
 }
 .edtrval{
-	font-size: 18px;
+	/* font-size: 20px;
 	color: rgb(41, 41, 41);
 	font-weight: 800;
-	padding: 20px 10px;
+	padding: 20px 10px; */
+		flex: 1;
+        max-width: 100%;
+        padding: 20.11497px 10.3449px;
+        gap: 5.11px;
+        background: transparent;
+        font-weight: 400;
+        font-size: 20px;
+        color: #011627;
+        white-space: pre-wrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+}
+.edtrvalques{
+		flex: 1;
+        max-width: 100%;
+        padding: 0.11497px 10.3449px;
+        gap: 5.11px;
+        background: transparent;
+        font-weight: 400;
+        font-size: 20px;
+        color: #011627;
+        white-space: pre-wrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+}
+#quesdata{
+	margin-top: 50px;
 }
 .semall{
 	background: transparent ;
@@ -973,6 +1000,7 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	border-radius: 25px;
 	font-size: 15px;
 	color: #fff;
+	cursor: pointer;
 }
 .edtdocrname{
 	border: none;
@@ -981,9 +1009,6 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	color: rgb(74, 74, 74);
 	outline: none;
 	margin-top: -10px;
-}
-.edtdocrname:hover{
-	border-bottom: 1px solid #000;
 }
 .edtdocrname::placeholder{
 	color: rgb(74, 74, 74) !important;
@@ -998,6 +1023,94 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	padding: 3px 7px;
 	border-radius: 50%;
 	cursor: pointer;
+}
+.brdrleft{
+	border-right: 1px solid rgb(175, 175, 175);
+	border-bottom: 1px solid rgb(175, 175, 175);
+	padding: 14px 10px 4px 10px;
+	background: rgb(247, 247, 247);
+	cursor: pointer;
+}
+.edtrbrdrn{
+	border-bottom: 1px solid rgb(175, 175, 175);
+	padding: 14px 10px 4px 10px;
+	background: rgb(247, 247, 247);
+}
+.edtrrwt{
+	font-size: 13px;
+	color: grey;
+	margin-bottom: 7px !important;
+	cursor: pointer;
+}
+.audtonelistval{
+	color: #000;
+	font-size: 1.125rem;
+    line-height: 1.75rem;
+	padding-left: 2rem;
+    padding-right: 2rem;
+	padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+	border-bottom: 1px solid rgb(179, 179, 179);
+	cursor: pointer;
+}
+.edtnbrdrbtm{
+	border-bottom: none !important;
+}
+.audttonelist{
+	display: flex;
+	flex-direction: column;
+	overflow: scroll;
+	overflow-x: hidden !important;
+	/* border-radius: 10px; */
+	position: relative;
+	width: auto;
+	height: 300px;
+}
+.edtrrws{
+	color: rgb(48, 48, 48);
+	font-size: 15px;
+	margin-bottom: 7px !important;
+	cursor: pointer;
+}
+.edtrttc{
+	font-size: .75rem;
+    line-height: 1rem;
+	padding-right: 0.625rem;
+	padding-top: 0.5rem;
+	color: rgb(195, 195, 195);
+}
+.edtrttm{
+	font-size: .75rem;
+    line-height: 1rem;
+	padding-right: 0.625rem;
+	padding-top: 0.5rem;
+	color: #e7c7ff;
+}
+.edtrmn{
+	border-bottom: 1px solid rgb(175, 175, 175);
+	margin-left: -11px;
+    margin-right: -12px;
+}
+.edtrmainval{
+	outline: none;
+	border: none !important;
+	font-weight: bolder;
+	font-size: 2.25rem;
+    line-height: 2.5rem;
+	padding-left: 2.5rem;
+    padding-right: 2.5rem;
+	width: 100%;
+	cursor: pointer;
+	color: rgb(23, 23, 23);
+}
+.edtrmainval::placeholder{
+	color: rgb(53, 53, 53);
+	opacity: .6 !important;
+}
+.edtrtpcard{
+	padding-top: 0px !important;
+	padding-left: 10px !important;
+	padding-right: 11px !important;
 }
 .edtrhd{
 	color: rgb(48, 48, 48);
@@ -1020,6 +1133,140 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	border-radius: 25px;
 	font-size: 14px;
 	color: rgb(48, 48, 48);
+}
+.edtrgnrt:hover{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) ;
+	color: #fff;
+}
+.edtdocrname::placeholder{
+	color: rgb(74, 74, 74) !important;
+	opacity: 1 !important;
+}
+.edtrbtrwf{
+	position: fixed;
+	bottom: 0;
+	padding: 30px 0px 25px 0px !important;
+	width: 65%;
+	margin-left: 2%;
+	/* background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) ; */
+}
+.edtrchoosefrmlist{
+	width: 100%;
+	border-radius: 25px;
+	box-shadow: inset 0 4px 4px rgba(0,0,0,.25);
+	border: 2px solid #9200FF;
+	box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25);
+	color: rgb(48, 48, 48);
+	font-size: 16px;
+	outline: none;
+	background: url("../../../admin_assets/assets/images/chatsender.png")no-repeat 97%;
+    background-size: 20px;
+	padding-right: 2.75rem;
+	padding-left: 1.25rem;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	overflow-y: hidden;
+	background-color: #fff !important;
+}
+.edtraudinp{
+	width: 90%;
+	border-radius: 25px;
+	box-shadow: inset 0 4px 4px rgba(0,0,0,.25);
+	border: 2px solid #9200FF;
+	color: rgb(48, 48, 48);
+	font-size: 16px;
+	outline: none;
+	padding-right: 2.75rem;
+	padding-left: 1.25rem;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	overflow-y: hidden;
+	background-color: #fff !important;
+	margin-bottom: 30px;
+}
+.edtraudfr{
+	padding-left: 2rem;
+	color: rgb(218, 218, 218);
+	text-transform: uppercase;
+}
+.edtrinput-container {
+	position: relative;
+	display: inline-block;
+  }
+  .edtrdropdownlist {
+	display: none;
+	position: absolute;
+	bottom: 80%;
+	left: 7%;
+	padding: 20px 20px 12px;
+	list-style: none;
+	background-color: #fff;
+    z-index: 200;
+    box-shadow: 0 4px 12px rgba(8,8,77,.25);
+    border-radius: 10px;
+    transition: opacity .3s ease;
+  }
+  .edtrdropdownlist li {
+	/* padding: 10px; */
+	font-size: 1rem;
+  	line-height: 1.5rem;
+	padding-bottom: 0.8rem;
+	white-space: nowrap;
+	cursor: pointer;
+    background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+  }
+  .edtrdropdownlist li:hover {
+	opacity: .75;
+  }
+  .edtrinput-container:hover .edtrdropdownlist {
+	display: block !important;
+  }
+  .edtrbrieftext{
+	border: 1px solid rgb(40, 40, 40);
+	font-size: 16px;
+	padding: 20px 12px;
+	outline: none;
+	width: 90%;
+	resize: none;
+	margin-bottom: 30px;
+  }
+.edtror{
+	color: #9200FF;
+	font-size: 14px;
+	padding: 10px 20px 10px 0px;
+	display: inline-block;
+}
+.edtrjstwm{
+	font-weight: 700;
+	font-size: .875rem;
+    line-height: 1.25rem;
+	padding-left: 1.75rem;
+    padding-right: 1.75rem;
+	padding-top: 0.95rem;
+    padding-bottom: 0.95rem;
+	border-radius: 9999px;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	border: none;
+	display: inline-block;
+}
+.edtrjstwm:hover{
+	background: linear-gradient(180deg, #E35F01 0%, #FD7E00 100%) !important;
+}
+.edtrmaincard{
+	display: flex;
+	/* height: 500px; */
+	flex-direction: column;
+	min-height: 100%;
+}
+.edtrmaincrdbody{
+	flex-grow: 1;
 }
 .pricing-detail {
     display: block;
