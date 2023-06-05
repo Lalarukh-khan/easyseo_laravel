@@ -14,7 +14,7 @@ class PageController extends Controller
         $authUser = auth('web')->user();
         $blogs = Blog::where('status', 1)->take(3)->get();
         $data = array(
-            'title' => "Home",
+            'title' => "Generate AI Content with EasySEO.ai: Best AI Writing Tool",
             'blogs' => $blogs,
             'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
         );

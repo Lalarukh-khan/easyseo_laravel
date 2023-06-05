@@ -4,7 +4,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('front') }}/images/favicon.ico" />
+
     <title> {{$title}} - Easy SEO </title>
+
+    <meta name="description" content="Boost your content creation with EasySEO.ai, the best AI content generator and writing tool. Create engaging copy effortlessly with our AI writer. Visit now!">
+
+    <meta name="keywords" content="ai content generator, ai content, best free ai content generator, ai writer, ai content writing, ai content writing tool, ai content writing tools, ai tools for content writing, ai writing tool, copywriting ai, ai tool for writing, content writing ai, copy writing ai, ai for copywriting, best ai writing generator, ai creative writing generator">
+
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://easyseo.ai/">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDKR7EQ7G"></script>
     <script>
@@ -624,16 +636,24 @@
         <div class="container">
             <div class="row ftrrow">
                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
-                    <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/fb.svg">
+                    <a href="https://www.facebook.com/easyseoai" target="_blank">
+                        <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/fb.svg">
+                    </a>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
-                    <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/insta.svg">
+                    <a href="https://www.instagram.com/easyseo.ai/" target="_blank">
+                      <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/insta.svg">
+                    </a>  
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
-                    <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/Vectors.svg">
+                    <a href="https://twitter.com/easyseo_ai" target="_blank">
+                        <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/Vectors.svg">
+                    </a>    
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
-                    <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/Linkedin.svg">
+                    <a href="https://www.linkedin.com/company/easy-seo-ai/" target="_blank">
+                        <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/Linkedin.svg">
+                    </a>
                 </div>
             </div>
         </div>
