@@ -104,7 +104,6 @@ class ChatController extends Controller
         $setting = Setting::latest()->first();
         $api_key = !empty($setting) ? base64_decode($setting::latest()->first()->api_key) : null;
 
-        $user = auth('web')->user();
 
         $old_prompt = json_decode($request->old_prompt);
         $old_prompt[] = array(
@@ -128,14 +127,14 @@ class ChatController extends Controller
 
         // user role chat save to db
         $userChat = new ChatBotHistory();
-        $userChat->user_id = $user->id;
+        $userChat->user_id = $authUser;
         $userChat->role = 'user';
         $userChat->content = $request->prompt;
         $userChat->save();
 
         // assistant role chat save to db
         $assistantChat = new ChatBotHistory();
-        $assistantChat->user_id = $user->id;
+        $assistantChat->user_id = $authUser;
         $assistantChat->role = 'assistant';
         $assistantChat->content = $save_res->original->bot;
         // $assistantChat->prompt_tokens = $save_res->original->usage->prompt_tokens;
@@ -149,7 +148,7 @@ class ChatController extends Controller
 
         $gpt_history = new GptHistory();
         $gpt_history->type = 'chatbot';
-        $gpt_history->user_id = $user->id;
+        $gpt_history->user_id = $authUser;
         $gpt_history->prompt = $request->prompt;
         $gpt_history->answer = $save_res->original->bot;
         // $gpt_history->prompt_tokens = $save_res->original->usage->prompt_tokens;

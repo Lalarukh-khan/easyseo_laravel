@@ -527,8 +527,8 @@
         <div class="container">
             <div class="header-row">
                 <div class="navbar-handler">
-                    <button class="navbar-trigger"> 
-                        <img alt="Hamburger Menu" id="nwwblogo"src="{{asset('front')}}/images/hamburger.png" style="margin-top: -5px;"> 
+                    <button class="navbar-trigger">
+                        <img alt="Hamburger Menu" id="nwwblogo"src="{{asset('front')}}/images/hamburger.png" style="margin-top: -5px;">
                     </button>
                 </div>
                 <div class="logo">
@@ -551,12 +551,19 @@
                     <div class="menu-item hdr-btn menuitemwht">
                         <a href="{{route('web.contact_us')}}" id="menuitemwht4"> Contact Us </a>
                     </div>
-                    <div class="menu-item hdr-btn menuitemwht">
-                        <a href="{{route('login')}}" id="menuitemwht5"> Sign In </a>
-                    </div>
-                    <div class="menu-item btn-trial">
-                        <a href="{{route('register')}}" id="functionchecker"> Start Free Trial <i class="fa fa-angle-down"> </i> </a>
-                    </div>
+                    @if (auth('web')->check())
+                        <div class="menu-item btn-trial">
+                            <a href="{{route('register')}}" id="functionchecker"> Dashboard <i class="fa fa-angle-down"> </i> </a>
+                        </div>
+                    @else
+                        <div class="menu-item hdr-btn menuitemwht">
+                            <a href="{{route('login')}}" id="menuitemwht5"> Sign In </a>
+                        </div>
+                        <div class="menu-item btn-trial">
+                            <a href="{{route('register')}}" id="functionchecker"> Start Free Trial <i class="fa fa-angle-down"> </i> </a>
+                        </div>
+                    @endif
+
                     <label class="switch">
                         <input type="checkbox" checked onclick="testFunction()">
                         <span class="slider round"></span>
