@@ -62,7 +62,7 @@
             </a>
         </li> --}}
         @if ($authUser->user_type == 'main')
-
+        {{-- @if (session()->get('UserPackages')->workspace_users > 0)
         <li>
             <a href="{{route('user.invite.all')}}">
                 <div class="parent-icon icon-color-2"><i class="bx bx-mail-send"></i>
@@ -70,6 +70,8 @@
                 <div class="menu-title">Invite Users</div>
             </a>
         </li>
+        @endif --}}
+
         <li>
             <a href="{{route('user.subscription')}}">
                 <div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-package"></i>
@@ -96,6 +98,7 @@
             @include('components.sidebar_msg')
             <br>
             @if ($authUser->user_type == 'main')
+
             <li>
                 <a href="{{route('user.settings')}}">
                     <div class="parent-icon icon-color-2">

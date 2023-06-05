@@ -26,7 +26,7 @@
             </div>  --}}
             <!--end row-->
 			<h5>Account Information:</h5>
-			
+
             <div class="tab-content mt-3">
                 <div class="tab-pane fade show active" id="Edit-Profile">
                     <div class="card border mb-0 radius-15 nwstcard">
@@ -87,6 +87,24 @@
 					</div>
 				</div>
 			</div>
+            @if (session()->get('UserPackages')->workspace_users > 0)
+                <br>
+                <br>
+                <h5>Add user to workspace:  <a  href="{{route('user.invite.all')}}"  class="template-category btn bg-primary text-light">Invite Users</a></h5>
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="card nwstcard2 radius-15">
+                            <div class="card-body text-center">
+                                <div class="widgets-icons mx-auto bg-light-primary text-primary rounded-circle"><i class='fadeIn animated bx bx-group'></i></i>
+                                </div>
+                                <h4 class="mb-0 font-weight-bold mt-3">{{ $user_package->workspace_users }}</h4>
+                                <p class="mb-0">Workspace Users Limit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>

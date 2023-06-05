@@ -7,7 +7,7 @@
     <meta name="description" content="" />
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="{{ asset('admin_assets') }}/assets/img/favicon/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="{{ asset('front') }}/images/favicon.ico" />
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDKR7EQ7G"></script>
@@ -42,7 +42,7 @@
 <!-- Vendor -->
 <link rel="stylesheet" href="{{ asset('admin_assets') }}/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
 <link href="{{ asset('admin_assets') }}/assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    
+
 <!-- Page CSS -->
 <!-- Page -->
 <link rel="stylesheet" href="{{ asset('admin_assets') }}/assets/vendor/css/pages/page-auth.css" />

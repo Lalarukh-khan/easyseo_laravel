@@ -65,9 +65,9 @@
                 <div class="col-lg-12 row pad-top-60">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12 scl">
                         <ul class="social-icons pad-top-100">
-                            <li><img class="twt" alt="Facebook" src="{{asset('front')}}/images/tweet.svg"></li>
-                            <li><img class="instag" alt="Instagram" src="{{asset('front')}}/images/instagram.svg"></li>
-                            <li><img class="game" alt="Twitter" src="{{asset('front')}}/images/game.svg"></li>
+                            {{-- <li><img class="twt" alt="Facebook" src="{{asset('front')}}/images/tweet.svg"></li> --}}
+                            <a href="https://www.instagram.com/easyseo.ai/" target="_blank"><li><img class="instag" alt="Instagram" src="{{asset('front')}}/images/instagram.svg"></li></a>
+                            <a href="https://twitter.com/easyseo_ai" target="_blank"><li><img class="game" alt="Twitter" src="{{asset('front')}}/images/game.svg"></li></a>
                         </ul>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12">
