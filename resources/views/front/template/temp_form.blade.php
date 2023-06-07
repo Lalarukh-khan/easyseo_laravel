@@ -5,6 +5,50 @@
 <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css'>
+
+<style>
+    .custom-loader {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        padding: 1px;
+        background: conic-gradient(#0000 10%, #766DF4) content-box;
+        -webkit-mask:
+            repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+            radial-gradient(farthest-side, #0000 calc(100% - 25px), #000 calc(100% - 25px));
+        -webkit-mask-composite: destination-in;
+        mask-composite: intersect;
+        animation: s4 1s infinite steps(10);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #ai-loader{
+        text-align: center;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding-top: 182px;
+    }
+
+    #loader-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: -140px;
+        top: 3px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    @keyframes s4 {
+      to {
+        transform: rotate(1turn)
+      }
+    }
+</style>
 @endsection
 @section('content')
 <!--breadcrumb-->
@@ -159,14 +203,17 @@
             </div>
 
             <div class="col-xl-6 col-lg-6 col-6">
-            
+
                 <!-- <pre id="output"></pre>
                 <div id="resulted_phrase"></div> -->
 
-                <div id="ai-loader" style="text-align:center;display:none">
+                <div id="ai-loader" style="text-align:center;">
                     {{-- <img src="{{asset('admin_assets')}}/assets/images/ai-loader.gif" alt=""> --}}
                     {{-- <img src="{{asset('admin_assets')}}/assets/images/new-ai-loader.gif" alt=""> --}}
-                    <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader">
+
+                    {{-- <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader"> --}}
+                    <div class="custom-loader"></div>
+                    <span id="loader-text">Generating</span>
                 </div>
                 <div class="form-group" id="ans_div" style="display:none">
                 <button class="mt-4 btn btn-info nwtmcreatecontent" id="impscore" >Improve Score</button>
@@ -305,7 +352,7 @@
                                 console.log(data);
                             }
                         });
-                        
+
                         const numberEl = document.getElementById("resulted_phrase");
                         const number = parseInt(numberEl.textContent);
 
@@ -334,11 +381,12 @@
 
     const impscore = document.querySelector('#impscore');
 	impscore.addEventListener('click', function() {
-    $('#ai-loader').show();
+    // $('#ai-loader').show();
+    templateLoader('#ai-loader','show');
     $('#ans_div').hide();
     $('#impscore').hide();
 	const content = document.querySelector('#details').value;
-	results(content); 
+	results(content);
 	});
 
     function results(content) {
@@ -376,7 +424,8 @@
                         for (let z = 0; z < subitem.result.length; z++) {
                         const subitem2 = subitem.result[z];
                         const generated_text = subitem2.generated_text;
-                        $('#ai-loader').hide();
+                        // $('#ai-loader').hide();
+                        templateLoader('#ai-loader','hide');
                         $('#ans_div').show();
                         document.getElementById("first_result_div").innerHTML = generated_text;
                         const score = generated_text;
@@ -547,7 +596,8 @@
 
     $('#form_submit').click(function(){
             document.getElementById("form_submit").disabled = true;
-            $('#ai-loader').show();
+            // $('#ai-loader').show();
+            templateLoader('#ai-loader','show');
             $('#ans_div').hide();
             var form = document.getElementById('content_form');
             var formData = new FormData(form);
@@ -563,17 +613,22 @@
                         $_html = alertMessage(data.error,false);
                         $('.error-msg-div').html($_html);
                         document.getElementById("form_submit").disabled = false;
-                        $('#ai-loader').hide();
+                        // $('#ai-loader').hide();
+                        templateLoader('#ai-loader','hide');
                         return false;
                     }
                     if (data.status == 400) {
                         $_html = alertMessage(data.message,false);
                         $('.error-msg-div').html($_html);
                         document.getElementById("form_submit").disabled = false;
-                        $('#ai-loader').hide();
+                        // $('#ai-loader').hide();
+                        templateLoader('#ai-loader','hide');
+
                         return false;
                     }else{
-                        $('#ai-loader').hide();
+                        // $('#ai-loader').hide();
+                        templateLoader('#ai-loader','hide');
+
                         $('#ans_div').show();
                         document.getElementById("first_result_div").innerHTML = data.message;
                         document.getElementById("details").value = data.message;
@@ -583,7 +638,7 @@
                         $('body #first_copy_btn').show();
                         document.getElementById("form_submit").disabled = false;
                         // console.log("data "+data.message);
-                        
+
                         // ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
                         // const score = $("#first_result_div").text();
                         const score = data.message;

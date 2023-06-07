@@ -170,6 +170,30 @@ function page_loader(status) {
     return;
 }
 
+function templateLoader(id,status){
+    var element = $('#loader-text');
+    var loaderDiv = $(id);
+
+    var timeoutRef = setTimeout(function() {
+        // Update the text
+        element.text('Analyzing');
+    }, 10000); // 10000 milliseconds = 10 seconds
+
+    if (status == 'hide') {
+        element.text('Generating');
+
+        loaderDiv.hide();
+        clearTimeout(timeoutRef);
+        return;
+    }
+
+    loaderDiv.show();
+    loaderDiv.css('display','flex','important');
+
+    element.text('Generating');
+    return;
+}
+
 function ajaxRequest(_self) {
     var href = $(_self).data('url');
     var nopopup = $(_self).hasClass('nopopup');

@@ -38,6 +38,7 @@
                                 <th style="color: black; display:none">id</th>
                                 <th style="color: black;">Email</th>
                                 <th style="color:black;">Status</th>
+                                <th style="color:black;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,6 +114,10 @@
                     {
                         data: 'status',
                         name: 'status',
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
                     }
                 ]
             });

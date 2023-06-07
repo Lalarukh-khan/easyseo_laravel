@@ -74,7 +74,7 @@
             </div>
 			<br>
 			<br>
-			<h5>Current Plan:  <a  href="{{route('web.pricing')}}"  class="template-category btn bg-primary text-light">Upgrade Subscription</a></h5>
+
 			<div class="row">
 				<div class="col-12 col-lg-12">
 					<div class="card nwstcard2 radius-15">
@@ -87,10 +87,11 @@
 					</div>
 				</div>
 			</div>
+            <h5>Current Plan:  <a  href="{{route('web.pricing')}}"  class="template-category btn bg-primary text-light">Upgrade Subscription</a></h5>
             @if (session()->get('UserPackages')->workspace_users > 0)
                 <br>
                 <br>
-                <h5>Add user to workspace:  <a  href="{{route('user.invite.all')}}"  class="template-category btn bg-primary text-light">Invite Users</a></h5>
+
                 <div class="row">
                     <div class="col-12 col-lg-12">
                         <div class="card nwstcard2 radius-15">
@@ -103,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+                <h5>Add user to workspace:  <a  href="{{route('user.invite.all')}}"  class="template-category btn bg-primary text-light">Invite Users</a></h5>
             @endif
 
         </div>

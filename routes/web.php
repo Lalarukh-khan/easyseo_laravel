@@ -11,7 +11,9 @@ Auth::routes(['verify' => true]);
 //admin2 page
 // Route::view('/admin-dashboard', 'admin2.content.dashboard.dashboards-analytics');
 // Route::view('/admin-crm', 'admin2.content.dashboard.dashboards-crm');
-
+Route::get('/', function () {
+    return redirect('https://easyseo.ai');
+});
 //admin auth routes
 Route::middleware(['auth:admin', 'XSS'])->prefix('admin')->as('admin.')->namespace('App\Http\Controllers\Administrator')->group(function () {
     Route::get('/', 'DashboardController@index')->name('home');
@@ -287,6 +289,7 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
     Route::prefix('invite')->as('invite.')->group(function(){
         Route::get('/','InvitationController@index')->name('all');
         Route::post('/send-invite','InvitationController@send_invitation')->name('send_invitation');
+        Route::get('/delete/{id}','InvitationController@delete')->name('delete');
     });
 });
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\SendInvite;
+use App\Models\User;
 use App\Models\WorkSpaceInvite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +39,10 @@ class InvitationController extends Controller
                         return '<span class="badge bg-success">Accepted</span>';
                     }
                 })
-                ->rawColumns(['email','status'])
+                ->addColumn('action',function($row){
+                    return "<a href='javascript:void(0);' onclick='ajaxRequest(this)' data-url='".route('user.invite.delete',$row->hashid)."' class='text-danger' title='delete' style='font-size:20px;'><i class='fadeIn animated bx bx-trash'></i></a>";
+                })
+                ->rawColumns(['email','status','action'])
                 ->make(true);
         }
 
@@ -97,6 +101,26 @@ class InvitationController extends Controller
 
         return response()->json([
             'status' => true,
+        ]);
+    }
+
+
+    public function delete($id)
+    {
+        $invite = WorkSpaceInvite::hashidFind($id);
+
+        $user = User::where('email',$invite->email);
+
+        if ($user->exists()) {
+            $user->forceDelete();
+        }
+
+        $invite->forceDelete();
+
+        session()->flash('success-msg','Invitation Deleted Successfully');
+
+        return response()->json([
+            'reload' => true,
         ]);
     }
 }
