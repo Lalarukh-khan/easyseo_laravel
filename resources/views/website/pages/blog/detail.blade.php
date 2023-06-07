@@ -438,6 +438,7 @@
 <script>
     var spans = document.getElementsByTagName("span");
     var ems = document.getElementsByTagName("em");
+    var strongs = document.getElementsByTagName("strong");
 
     for (var i = 0; i < spans.length; i++) {
     spans[i].style.color = "white"; // Replace "red" with the desired color
@@ -445,6 +446,10 @@
     for (var i = 0; i < ems.length; i++) {
     ems[i].style.color = "white"; // Replace "red" with the desired color
     }
+    for (var i = 0; i < strongs.length; i++) {
+    strongs[i].style.color = "white"; // Replace "red" with the desired color
+    }
+
 </script>
 <!-- Page Banner Section Ends Here -->
 @endsection

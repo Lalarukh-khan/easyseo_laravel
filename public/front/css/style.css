@@ -221,7 +221,7 @@
 .brdimg{
 background: linear-gradient(180deg, #E35F01 0%, #FD7E00 100%);
 border-radius: 15px;
-padding: 12px 38px;
+/* padding: 12px 38px; */
 }
 
 .ftr{
