@@ -59,7 +59,7 @@
 						<div style="text-align: right;">
 						 	<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
 						</div>
-						<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
+							<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
 						<div style="text-align: right;">
 							<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
 						</div>
@@ -67,7 +67,7 @@
 					<div id="ai-loader1" style="text-align:center;display:none">
 						<img src="{{asset('front')}}/images/ai-loader1.gif" alt="ai-loader" style="width:100%; height: auto;">
 					</div>
-					<div id="ans_div1" style="display:none">
+					<div id="ans_div1" style="display:none" contenteditable="true">
 						<div id="resultdata" style="display: none !important;"></div>
 						<div class="edtrval" id="extrcttngrsltdata"></div>
 						<div id="quesdata"></div>
@@ -87,7 +87,10 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-12 col-12">
 							<p class="edtror">or</p>
-							<button class="edtrjstwm" id="edtrjstwm">Just write more</button>
+							<form id="semform" style="display: inline-block;">
+							<input type="hidden" id="semmainrval" name="semmainrval">
+							<button type="submit" class="edtrjstwm" id="edtrjstwm">Just write more</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -112,6 +115,23 @@
 						<div id="norspnse">
 							<div id="semantics" style="display: none !important;"></div>
 							<div id="questions" style="display: none !important;"></div>
+							<div>
+								<h3 id="edtrtrgtkwrd" class="edtrtrgtkwrd"></h3>
+								
+								<div class="row">
+									<div class="col-lg-2"></div>
+									<div class="col-lg-8">
+									<svg viewBox="0 0 200 160" class="w-full block px-12 relative"><defs><linearGradient id="gradient0.7493432638616075" x1="99%" y1="41%" x2="1%" y2="59%"><stop offset="5.56%" stop-color="#FA517D"></stop><stop offset="39.64%" stop-color="#E49F32"></stop><stop offset="98.89%" stop-color="#43D975"></stop></linearGradient><filter id="filter0_i_6_30" x="0.432007" y="0" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dx="4" dy="4"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="shape" result="effect1_innerShadow_6_30"></feBlend></filter></defs><circle filter="url(#filter0_i_6_30)" transform="rotate(171 100 100)" id="path" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="220.53980428200347" fill="none" stroke="#504E58" stroke-linecap="butt"></circle><circle class="drop-shadow" transform="rotate(171 100 100)" id="takersltdscore" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="247.49466924980385" fill="none" stroke="url(#gradient0.7493432638616075)" stroke-linecap="butt" style="transition: stroke-dashoffset 0.5s ease 0s;"></circle></svg>
+										<div id="edtrscore">
+											<div id="resulted_score"></div>
+											<p class="edtrrws text-center" style="margin-top: -15px">SEO Score</p>
+										</div>
+									</div>
+									<div class="col-lg-2"></div>
+								</div>
+								<p class="edtrrwt text-center">Target Keyword</p>
+								<p class="edtrrwt text-center">Improve score by addressing report elements</p>
+							</div>
 							<div class="card radius-10 edtrcard">
 								<div class="card-body">
 									<h5>Semantic Keywords <i class="bx bx-chevron-down"></i></h5>
@@ -231,6 +251,48 @@
 		</div>
 	</div>
 </div>
+<div class="customdiv" id="ttcustomDiv">
+	<div class="row cstdvfd">
+		<div class="col-lg-10 col-md-10 col-sm-10 col-10">
+			<p class="cstmtttp">Title Competitive Score (TCS)</p>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: center;">
+			<button type="button" class="btn-close" id="closettdiv" style="margin-top: 5px; color: #fff !important;"></button>
+		</div>
+	</div>
+	<hr style="background: rgb(203, 203, 203) !important;">
+	<div class="row  m-b-20" style="padding-left: 30px;">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-4 cstm93 text-center">
+			<p class="ttcsm93">93</p>
+			<div class="cstm3p">
+				<p style="color: #fff; font-size: 15px; margin-bottom: 0px !important; padding: 0px 5px;">3%</p>
+				<p style="color: rgb(77, 145, 119); font-size: 12px; padding: 0px 5px;">vs competing <span style="margin-top: -5px;">score</span></p>
+			</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-8">
+			<p class="cstmsdtrgt" style="margin-top: 7px;">Include target keyword</p>
+			<p class="cstmsdtrgt">keyword string density</p>
+			<p class="cstmsdtrgt">Target keyword in initial part</p>
+			<p class="cstmsdtrgt">Between 40-60 characters long</p>
+			<p class="cstmsdtrgt">Uniqueness vs competitors</p>
+		</div>
+	</div>
+	<div class="cstmideas">
+		<h5 class="edtrideas">Ideas</h5>
+		<hr style="margin: 0px 0px 10px 0px;">
+		<div class="audtttlist">
+			<h4 class="audttlistval" id="tt1"></h4>
+			<h4 class="audttlistval" id="tt2"></h4>
+			<h4 class="audttlistval" id="tt3"></h4>
+			<h4 class="audttlistval" id="tt4"></h4>
+			<h4 class="audttlistval edtnbrdrbtm" id="tt5"></h4>
+		</div>
+		<br>
+		<div class="text-center">
+			<button class="ttgenm">Generate more</button>
+		</div>
+	</div>
+</div>
 <form id="quesform">
   <input type="hidden" id="quescontent" name="quescontent">
   <button type="submit" id="quesubmit" style="display: none !important;">Submit</button>
@@ -332,7 +394,6 @@
 			<h4 class="audtonelistval">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
 			<h4 class="audtonelistval">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
 			<h4 class="audtonelistval edtnbrdrbtm">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
-		</div>
       </div>
     </div>
   </div>
@@ -371,12 +432,13 @@
     </div>
   </div>
 </div>
+
 @endsection
 @section('page-scripts')
 <script>
-    // $(window).on('load', function() {
-    //     $('#exampleModalCenter').modal('show');
-    // });
+    $(window).on('load', function() {
+        $('#exampleModalCenter').modal('show');
+    });
 	$(document).ready(function() {
 		$(document).on('click', function(event) {
 			if (!$(event.target).closest('.edtrinput-container').length) {
@@ -384,6 +446,24 @@
 			}
 		});
 	});
+	var edtrmainval = document.getElementById("edtrmainval");
+	var customDiv = document.getElementById("ttcustomDiv");
+
+	edtrmainval.addEventListener("click", function() {
+	ttcustomDiv.style.display = "block";
+	ttcustomDiv.style.zIndex = "9999";
+	});
+
+	document.addEventListener("click", function(event) {
+	if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
+		ttcustomDiv.style.display = "none";
+		ttcustomDiv.style.zIndex = "-1";
+	}
+	});
+	const closettdiv = document.getElementById("closettdiv");
+	closettdiv.addEventListener("click", function() {
+		ttcustomDiv.style.display = "none";
+	})
 	document.getElementById("edtrbrieftext").addEventListener("input", function() {
 	var inputText = this.value;
 	document.getElementById("takeedtrbrieftext").textContent = inputText;
@@ -511,16 +591,14 @@
 			$('#ans_div1').show();
             const data = await response.json();
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-			console.log("Here we go again: "+parsedData);
 			typeText(messageDiv, parsedData);
             $('#old_prompt').val(data.old_prompt);
 			extrcttngrsltdata.innerHTML = parsedData;
-					const response2 = await fetch(apiUrl, {
+				const response2 = await fetch(apiUrl, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
 					},
-					// write long paragraph in double qoutes and write 9 questions in ordered list and 21 semantic keywords in ordered list without double qoutes about
 					body: JSON.stringify({
 						_token: token,
 						prompt: 'write firstly 9 questions and then 21 semantic keywords in ordered list about ' + majorprompt,
@@ -536,10 +614,10 @@
 					$('#ans_div').show();
 					const data = await response2.json();
 					const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-					$('#old_prompt').val(data.old_prompt)
+					$('#old_prompt').val(data.old_prompt);
 					// const div = document.getElementById(newval);
+					document.getElementById("edtrtrgtkwrd").innerHTML = majorprompt;
 					const content = String(parsedData);
-					console.log("Here is the result "+content);
 					const startWord1 = "1.";
 					const endWord1 = "9.";
 					const startWord2 = "1.";
@@ -568,6 +646,11 @@
 						// const final_text = trimmedContent1 + trimmedContent2;
 						document.getElementById("semantics").innerHTML = trimmedContent2;
 						document.getElementById("questions").innerHTML = trimmedContent1;
+
+						const upprcontnt = extrcttngrsltdata.innerHTML;
+						const score = upprcontnt + " " + content;
+						getSeoScore(score);
+
 						const semantics = document.getElementById("semantics").innerHTML;
 						startText2_1 = "1.";
 						endText2_1 = "2.";
@@ -823,7 +906,74 @@
 							const que8 = document.getElementById("que8");
 							que8.innerHTML = trimmedContent1_8;
 						}
-
+						
+					const response3 = await fetch(apiUrl, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							_token: token,
+							prompt: 'suggest 6 detailed titles in ordered list based upon ' + majorprompt,
+							old_prompt: majoroldprompt
+						})
+					})
+					if (response3.ok) {
+						const data = await response3.json();
+						const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+						$('#old_prompt').val(data.old_prompt);
+						const sugtitles = String(parsedData);
+						startTextt_1 = "1.";
+						endTextt_1 = "2.";
+						const startIndext_1 = sugtitles.indexOf(startTextt_1);
+						const endIndext_1 = sugtitles.indexOf(endTextt_1);
+						if (startIndext_1 !== -1 && endIndext_1 !== -1 && startIndext_1 < endIndext_1) {
+							const trimmedContentt_1 = sugtitles.substring(startIndext_1 + startTextt_1.length, endIndext_1);
+							const tt1 = document.getElementById("tt1");
+							tt1.innerHTML = trimmedContentt_1;
+						}
+						startTextt_2 = "2.";
+						endTextt_2 = "3.";
+						const startIndext_2 = sugtitles.indexOf(startTextt_2);
+						const endIndext_2 = sugtitles.indexOf(endTextt_2);
+						if (startIndext_2 !== -1 && endIndext_2 !== -1 && startIndext_2 < endIndext_2) {
+							const trimmedContentt_2 = sugtitles.substring(startIndext_2 + startTextt_2.length, endIndext_2);
+							const tt2 = document.getElementById("tt2");
+							tt2.innerHTML = trimmedContentt_2;
+						}
+						startTextt_3 = "3.";
+						endTextt_3 = "4.";
+						const startIndext_3 = sugtitles.indexOf(startTextt_3);
+						const endIndext_3 = sugtitles.indexOf(endTextt_3);
+						if (startIndext_3 !== -1 && endIndext_3 !== -1 && startIndext_3 < endIndext_3) {
+							const trimmedContentt_3 = sugtitles.substring(startIndext_3 + startTextt_3.length, endIndext_3);
+							const tt3 = document.getElementById("tt3");
+							tt3.innerHTML = trimmedContentt_3;
+						}
+						startTextt_4 = "4.";
+						endTextt_4 = "5.";
+						const startIndext_4 = sugtitles.indexOf(startTextt_4);
+						const endIndext_4 = sugtitles.indexOf(endTextt_4);
+						if (startIndext_4 !== -1 && endIndext_4 !== -1 && startIndext_4 < endIndext_4) {
+							const trimmedContentt_4 = sugtitles.substring(startIndext_4 + startTextt_4.length, endIndext_4);
+							const tt4 = document.getElementById("tt4");
+							tt4.innerHTML = trimmedContentt_4;
+						}
+						startTextt_5 = "5.";
+						endTextt_5 = "6.";
+						const startIndext_5 = sugtitles.indexOf(startTextt_5);
+						const endIndext_5 = sugtitles.indexOf(endTextt_5);
+						if (startIndext_5 !== -1 && endIndext_5 !== -1 && startIndext_5 < endIndext_5) {
+							const trimmedContentt_5 = sugtitles.substring(startIndext_5 + startTextt_5.length, endIndext_5);
+							const tt5 = document.getElementById("tt5");
+							tt5.innerHTML = trimmedContentt_5;
+						}
+					}
+					else {
+						const err = await response3.text();
+						messageDiv.innerHTML = "Something went wrong"
+						alert(err)
+					}
 					}
 				} else {
 					const err = await response2.text()
@@ -850,12 +1000,6 @@
     }
 
     form.addEventListener('submit', handleSubmit_main)
-	// form.addEventListener("submit", function(event) {
-	// event.preventDefault(); // Prevent the default button click behavior
-	// // Submit Form 1
-	// handleSubmit;
-	// handleSubmit_main;
-	// });
 
     // form.addEventListener('keyup', (e) => {
     //     if (e.keyCode === 13) {
@@ -1009,9 +1153,6 @@
             const data = await response1.json();
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
-            // const div = document.getElementById(newval);
-            // const content = String(parsedData);
-			console.log("These are totally separate: "+parsedData);
 			typeText1(messageDiv, parsedData);
         } else {
             const err = await response1.text()
@@ -1038,27 +1179,27 @@
 	const edtrshd = document.getElementById("edtrshd");
 	const edtrint = document.getElementById("edtrint");
 	const edtrfct = document.getElementById("edtrfct");
-	const edtrjstwm = document.getElementById("edtrjstwm");
+	// const edtrjstwm = document.getElementById("edtrjstwm");
 	const edtrmyInput = document.getElementById("edtrmyInput");
 	const contentform = document.getElementById("contentform");
 	const mncontent = document.getElementById("mncontent");
 	const getmnval = document.getElementById("getmnval");
-	edtrjstwm.addEventListener("click", function(event) {
-		const innerText = edtrmyInput.value;
-		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
-		document.getElementById("mainrval").value =  totalmainvalue;
-		event.preventDefault();
-		document.getElementById("mnsubmit").click();
-	});
+	// edtrjstwm.addEventListener("click", function(event) {
+	// 	const innerText = edtrmyInput.value;
+	// 	mncontent.value = innerText;
+	// 	const edtrmainval = document.getElementById("edtrmainval").value;
+	// 	getmnval.value = edtrmainval;
+	// 	const totalmainvalue = mncontent.value + " of " + getmnval.value;
+	// 	document.getElementById("mainrval").value =  totalmainvalue;
+	// 	event.preventDefault();
+	// 	document.getElementById("mnsubmit").click();
+	// });
 	edtrpara.addEventListener("click", function(event) {
 		const innerText = edtrpara.innerText;
 		mncontent.value = innerText;
 		const edtrmainval = document.getElementById("edtrmainval").value;
 		getmnval.value = edtrmainval;
-		const totalmainvalue = "write " + mncontent.value + " of " + getmnval.value;
+		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
@@ -1098,7 +1239,7 @@
 		mncontent.value = innerText;
 		const edtrmainval = document.getElementById("edtrmainval").value;
 		getmnval.value = edtrmainval;
-		const totalmainvalue = "write " + mncontent.value + " of " + getmnval.value;
+		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
@@ -1109,7 +1250,7 @@
         const data = new FormData(cntntform)
 
         // user's chatstripe
-        // chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
+        chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
 
         // to clear the textarea input
         cntntform.reset()
@@ -1169,5 +1310,232 @@
         }
     })
 
+</script>
+<script>
+	var list = [];
+    var listvalues = [];
+    var keywords = [];
+
+    function getSeoScore(content) {
+		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
+		const post_array = [];
+		post_array.push({
+				"text": content,
+				"language_name": "English (United States)"
+		});
+		const username = 'lidanex@gmail.com';
+		const password = 'fc53e701e81bec41';
+
+		fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Basic ' + btoa(username + ':' + password)
+		},
+		body: JSON.stringify(post_array)
+		})
+		.then(response => response.json())
+		.then(data => {
+			const apiResponse = data;
+            this.list.push({
+				"response": apiResponse
+		        })
+                for (const key of Object.keys(this.list)) {
+                    this.listvalues.push(this.list[key]);
+                }
+            const finallist = this.list;
+                    let html = '';
+                    for (let i = 0; i < finallist.length; i++) {
+                    const item = finallist[i];
+                    for (let j = 0; j < item.response.tasks.length; j++) {
+                        const subitem = item.response.tasks[j];
+                        for (let z = 0; z < subitem.result.length; z++) {
+                        const subitem2 = subitem.result[z];
+                        const keyword_density = subitem2.keyword_density;
+                        const automated_readability_index = subitem2.automated_readability_index;
+                        const smog_readability_index = subitem2.smog_readability_index;
+                        let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
+                        let totalWords = content.split(' ').length;
+                        let keywordDensity = keywordCount / totalWords;
+
+                        // Calculate meta tags score
+                        let metaTagsScore = 1; 
+                        let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
+                        let roundedscore = Math.round(seoScore);
+                        document.getElementById("resulted_score").innerHTML = roundedscore;
+                        const numberEl = document.getElementById("resulted_score");
+                        const number = parseInt(numberEl.textContent);
+						const takersltdscore = document.getElementById("takersltdscore");
+                        if (number <= 40) {
+							takersltdscore.setAttribute("stroke-dasharray", "368.0884539600077");
+                        }
+                        else if (number > 40 && number <= 50) {
+							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+                        }
+                        else if (number > 50 && number <= 55) {
+							takersltdscore.setAttribute("stroke-dasharray", "385.0884539600077");
+                        }
+                        else if (number > 55 && number <= 60) {
+							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
+                        }
+                        else if (number > 60 && number <= 65) {
+							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
+                        }
+                        else if (number > 65 && number <= 70) {
+							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
+                        }
+                        else if (number > 70 && number <= 75) {
+							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
+                        }
+                        else if (number > 75 && number <= 80) {
+							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
+                        }
+                        else if (number > 80 && number <= 85) {
+							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
+                        }
+                        else if (number > 85 && number <= 90) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+                        }
+                        else if (number > 90 && number <= 95) {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+                        }
+                        else {
+							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
+                        }
+                        }
+                    }
+                    }
+			})
+	}
+</script>
+<script>
+	var selectedsemValues = [];
+	document.getElementById("sem1").addEventListener("click", handleClick);
+	document.getElementById("sem2").addEventListener("click", handleClick);
+	document.getElementById("sem3").addEventListener("click", handleClick);
+	document.getElementById("sem4").addEventListener("click", handleClick);
+	document.getElementById("sem5").addEventListener("click", handleClick);
+	document.getElementById("sem6").addEventListener("click", handleClick);
+	document.getElementById("sem7").addEventListener("click", handleClick);
+	document.getElementById("sem8").addEventListener("click", handleClick);
+	document.getElementById("sem9").addEventListener("click", handleClick);
+	document.getElementById("sem10").addEventListener("click", handleClick);
+	document.getElementById("sem11").addEventListener("click", handleClick);
+	document.getElementById("sem12").addEventListener("click", handleClick);
+	document.getElementById("sem13").addEventListener("click", handleClick);
+	document.getElementById("sem14").addEventListener("click", handleClick);
+	document.getElementById("sem15").addEventListener("click", handleClick);
+	document.getElementById("sem16").addEventListener("click", handleClick);
+	document.getElementById("sem17").addEventListener("click", handleClick);
+	document.getElementById("sem18").addEventListener("click", handleClick);
+	document.getElementById("sem19").addEventListener("click", handleClick);
+	document.getElementById("sem20").addEventListener("click", handleClick);
+
+	function handleClick(event) {
+		event.target.classList.toggle('semclicked');
+		var semvalue = event.target.innerText;
+		selectedsemValues.push(semvalue);
+		var semstring = selectedsemValues.join(', ');
+		const semtoform = document.getElementById("semmainrval");
+		semtoform.value = semstring;
+	}
+	const semform = document.querySelector('#semform');
+	// semform.addEventListener('submit', checkingsem);
+	// function checkingsem(){
+	// 	event.preventDefault();
+	// 	// const confirmingsem = document.getElementById("semmainrval").value;
+	// 	// alert("The final values are: "+ confirmingsem);
+	// }
+	const handleSubmit3 = async (e) => {
+        e.preventDefault()
+
+        const data = new FormData(semform)
+		const edtrmainval = document.getElementById("edtrmainval").value;
+        // user's chatstripe
+        // chatContainer1.innerHTML += chatStripe(false, data.get('semmainrval'))
+
+        // to clear the textarea input
+        semform.reset()
+
+        // bot's chatstripe
+        const uniqueId = generateUniqueId1()
+        chatContainer1.innerHTML += chatStripe(true, " ", uniqueId)
+
+        // to focus scroll to the bottom
+        chatContainer1.scrollTop = chatContainer1.scrollHeight;
+
+        // specific message div
+        const messageDiv = document.getElementById(uniqueId)
+
+        // messageDiv.innerHTML = "..."
+        loader1(messageDiv)
+        const response1 = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _token: token,
+                prompt: "write about " + edtrmainval + " having these keywords " +data.get('semmainrval'),
+                old_prompt: data.get('old_prompt')
+            })
+        })
+
+        clearInterval(loadInterval)
+        messageDiv.innerHTML = " "
+
+        if (response1.ok) {
+			// $('#ai-loader').hide();
+            // $('#ans_div').show();
+            const data = await response1.json();
+            const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+            $('#old_prompt').val(data.old_prompt)
+			typeText1(messageDiv, parsedData);
+        } else {
+            const err = await response1.text()
+			// $('#ai-loader').hide();
+            // $('#ans_div').show();
+			// $('#norspnse').hide();
+            // $('#sww').show();
+            messageDiv.innerHTML = "Something went wrong"
+            alert(err)
+        }
+    }
+
+    semform.addEventListener('submit', handleSubmit3)
+
+    semform.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+            handleSubmit3(e)
+        }
+    })
+</script>
+<script>
+	const tt1 = document.querySelector("#tt1");
+	const tt2 = document.querySelector("#tt2");
+	const tt3 = document.querySelector("#tt3");
+	const tt4 = document.querySelector("#tt4");
+	const tt5 = document.querySelector("#tt5");
+	const edtrmainval1 = document.getElementById("edtrmainval");
+	tt1.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt2.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt3.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt4.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt5.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
 </script>
 @endsection

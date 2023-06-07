@@ -59,6 +59,7 @@
     <div id="writewht2a"></div>
     <div id="writewht2b"></div>
     <div id="prcngwht3"></div>
+    <div id="writewht1c"></div>
     <div id="writewht2c"></div>
     <div id="writewht3c"></div>
     <div id="prcngwht2"></div>
@@ -434,5 +435,16 @@
     <div id="atmtwhttimg7"></div>
     <div id="atmtwhttimg8"></div>
 </section>
+<script>
+    var spans = document.getElementsByTagName("span");
+    var ems = document.getElementsByTagName("em");
+
+    for (var i = 0; i < spans.length; i++) {
+    spans[i].style.color = "white"; // Replace "red" with the desired color
+    }
+    for (var i = 0; i < ems.length; i++) {
+    ems[i].style.color = "white"; // Replace "red" with the desired color
+    }
+</script>
 <!-- Page Banner Section Ends Here -->
 @endsection

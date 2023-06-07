@@ -113,10 +113,8 @@
                         <!-- <span class="col-orange"> with AI. </span> -->
                     </h3>
                     <ul class="custom-list1">
-                        <li id="main1wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> Free
-                            Register </li>
-                        <li id="main2wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> Great
-                            Service </li>
+                        <li id="main1wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> Free trial </li>
+                        <li id="main2wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> No credit card required </li>
                     </ul>
                     <!-- <a href="{{route('register')}}" class="custom-btn4 mr-3"> Get
                         Start </a>

@@ -4,7 +4,7 @@
     .chat-content {
         margin-left: 0px;
         padding: 15px 15px 15px 15px;
-        height: 450px;
+        /* height: 450px; */
     }
 
     .chat-footer {
@@ -34,9 +34,8 @@
 
     .chat {
         width: 100%;
-        max-width: 1280px;
+        max-width: 100%;
         margin: 0 auto;
-
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -168,7 +167,7 @@
                     <button type="submit" class="btn btn-info" id="submit-btn">
                     <i class="fadeIn animated bx bx-right-arrow-alt"></i></button>
             </div> -->
-            <div class="input-group nwctinput-group">
+            <div class="input-group nwctinput-group chatform">
                 <button class="btn btn-search nwctbtn-search" type="button"><i class="lni lni-emoji-smile"></i></button>
                 <textarea type="text" name="prompt" id="prompt" class="form-control nwcttempsearchbar2" placeholder="Message" required></textarea>
                 <button class="btn btn-search nwctbtn-search2" type="submit" id="submit-btn" {{
