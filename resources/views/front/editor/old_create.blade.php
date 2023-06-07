@@ -112,23 +112,6 @@
 						<div id="norspnse">
 							<div id="semantics" style="display: none !important;"></div>
 							<div id="questions" style="display: none !important;"></div>
-							<div>
-								<h3 id="edtrtrgtkwrd" class="edtrtrgtkwrd"></h3>
-								
-								<div class="row">
-									<div class="col-lg-2"></div>
-									<div class="col-lg-8">
-									<svg viewBox="0 0 200 160" class="w-full block px-12 relative"><defs><linearGradient id="gradient0.7493432638616075" x1="99%" y1="41%" x2="1%" y2="59%"><stop offset="5.56%" stop-color="#FA517D"></stop><stop offset="39.64%" stop-color="#E49F32"></stop><stop offset="98.89%" stop-color="#43D975"></stop></linearGradient><filter id="filter0_i_6_30" x="0.432007" y="0" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dx="4" dy="4"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="shape" result="effect1_innerShadow_6_30"></feBlend></filter></defs><circle filter="url(#filter0_i_6_30)" transform="rotate(171 100 100)" id="path" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="220.53980428200347" fill="none" stroke="#504E58" stroke-linecap="butt"></circle><circle class="drop-shadow" transform="rotate(171 100 100)" id="takersltdscore" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="247.49466924980385" fill="none" stroke="url(#gradient0.7493432638616075)" stroke-linecap="butt" style="transition: stroke-dashoffset 0.5s ease 0s;"></circle></svg>
-										<div id="edtrscore">
-											<div id="resulted_score"></div>
-											<p class="edtrrws text-center" style="margin-top: -15px">SEO Score</p>
-										</div>
-									</div>
-									<div class="col-lg-2"></div>
-								</div>
-								<p class="edtrrwt text-center">Target Keyword</p>
-								<p class="edtrrwt text-center">Improve score by addressing report elements</p>
-							</div>
 							<div class="card radius-10 edtrcard">
 								<div class="card-body">
 									<h5>Semantic Keywords <i class="bx bx-chevron-down"></i></h5>
@@ -391,9 +374,9 @@
 @endsection
 @section('page-scripts')
 <script>
-    $(window).on('load', function() {
-        $('#exampleModalCenter').modal('show');
-    });
+    // $(window).on('load', function() {
+    //     $('#exampleModalCenter').modal('show');
+    // });
 	$(document).ready(function() {
 		$(document).on('click', function(event) {
 			if (!$(event.target).closest('.edtrinput-container').length) {
@@ -528,6 +511,7 @@
 			$('#ans_div1').show();
             const data = await response.json();
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+			console.log("Here we go again: "+parsedData);
 			typeText(messageDiv, parsedData);
             $('#old_prompt').val(data.old_prompt);
 			extrcttngrsltdata.innerHTML = parsedData;
@@ -536,6 +520,7 @@
 					headers: {
 						'Content-Type': 'application/json',
 					},
+					// write long paragraph in double qoutes and write 9 questions in ordered list and 21 semantic keywords in ordered list without double qoutes about
 					body: JSON.stringify({
 						_token: token,
 						prompt: 'write firstly 9 questions and then 21 semantic keywords in ordered list about ' + majorprompt,
@@ -553,8 +538,8 @@
 					const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
 					$('#old_prompt').val(data.old_prompt)
 					// const div = document.getElementById(newval);
-					document.getElementById("edtrtrgtkwrd").innerHTML = majorprompt;
 					const content = String(parsedData);
+					console.log("Here is the result "+content);
 					const startWord1 = "1.";
 					const endWord1 = "9.";
 					const startWord2 = "1.";
@@ -583,11 +568,6 @@
 						// const final_text = trimmedContent1 + trimmedContent2;
 						document.getElementById("semantics").innerHTML = trimmedContent2;
 						document.getElementById("questions").innerHTML = trimmedContent1;
-
-						const upprcontnt = extrcttngrsltdata.innerHTML;
-						const score = upprcontnt + " " + content;
-						getSeoScore(score);
-
 						const semantics = document.getElementById("semantics").innerHTML;
 						startText2_1 = "1.";
 						endText2_1 = "2.";
@@ -870,6 +850,12 @@
     }
 
     form.addEventListener('submit', handleSubmit_main)
+	// form.addEventListener("submit", function(event) {
+	// event.preventDefault(); // Prevent the default button click behavior
+	// // Submit Form 1
+	// handleSubmit;
+	// handleSubmit_main;
+	// });
 
     // form.addEventListener('keyup', (e) => {
     //     if (e.keyCode === 13) {
@@ -1023,6 +1009,9 @@
             const data = await response1.json();
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
+            // const div = document.getElementById(newval);
+            // const content = String(parsedData);
+			console.log("These are totally separate: "+parsedData);
 			typeText1(messageDiv, parsedData);
         } else {
             const err = await response1.text()
@@ -1069,7 +1058,7 @@
 		mncontent.value = innerText;
 		const edtrmainval = document.getElementById("edtrmainval").value;
 		getmnval.value = edtrmainval;
-		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
+		const totalmainvalue = "write " + mncontent.value + " of " + getmnval.value;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
@@ -1109,7 +1098,7 @@
 		mncontent.value = innerText;
 		const edtrmainval = document.getElementById("edtrmainval").value;
 		getmnval.value = edtrmainval;
-		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
+		const totalmainvalue = "write " + mncontent.value + " of " + getmnval.value;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
@@ -1120,7 +1109,7 @@
         const data = new FormData(cntntform)
 
         // user's chatstripe
-        chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
+        // chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
 
         // to clear the textarea input
         cntntform.reset()
@@ -1180,127 +1169,5 @@
         }
     })
 
-</script>
-<script>
-	var list = [];
-    var listvalues = [];
-    var keywords = [];
-
-    function getSeoScore(content) {
-		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
-		const post_array = [];
-		post_array.push({
-				"text": content,
-				"language_name": "English (United States)"
-		});
-		const username = 'lidanex@gmail.com';
-		const password = 'fc53e701e81bec41';
-
-		fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': 'Basic ' + btoa(username + ':' + password)
-		},
-		body: JSON.stringify(post_array)
-		})
-		.then(response => response.json())
-		.then(data => {
-			const apiResponse = data;
-            this.list.push({
-				"response": apiResponse
-		        })
-                for (const key of Object.keys(this.list)) {
-                    this.listvalues.push(this.list[key]);
-                }
-            // console.log("reached here: "+ JSON.stringify(this.list));
-            const finallist = this.list;
-                    let html = '';
-                    for (let i = 0; i < finallist.length; i++) {
-                    const item = finallist[i];
-                    for (let j = 0; j < item.response.tasks.length; j++) {
-                        const subitem = item.response.tasks[j];
-                        for (let z = 0; z < subitem.result.length; z++) {
-                        const subitem2 = subitem.result[z];
-                        const keyword_density = subitem2.keyword_density;
-                        const automated_readability_index = subitem2.automated_readability_index;
-                        const smog_readability_index = subitem2.smog_readability_index;
-                        let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
-                        let totalWords = content.split(' ').length;
-                        let keywordDensity = keywordCount / totalWords;
-
-                        // Calculate meta tags score
-                        let metaTagsScore = 1; 
-                        let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
-                        let roundedscore = Math.round(seoScore);
-                        document.getElementById("resulted_score").innerHTML = roundedscore;
-                        const numberEl = document.getElementById("resulted_score");
-                        const number = parseInt(numberEl.textContent);
-						const takersltdscore = document.getElementById("takersltdscore");
-						// function fillBorderByNumber() {
-						// const element = document.getElementById('edtrscore');
-						// const numberSpan = document.getElementById("resulted_score");
-						// const number = parseFloat(numberSpan.innerText); // Get the number from the span
-
-						// const percentage = number > 100 ? 100 : (number < 0 ? 0 : number); // Clamp the number between 0 and 100
-						// const width = (percentage / 100) * (element.offsetWidth - 4); // Calculate the width based on the percentage
- 						// // element.style.background = `linear-gradient(to right, red ${width}px, #808080 ${width}px)`;
-						// 	element.style.position = `relative`;
-						// 	element.style.height = `100px`;
-						// 	element.style.border = `20px solid transparent`;
-						// 	element.style.borderImage = `linear-gradient(to right, #fa517e, #43d975 ${width}px, #504e58 ${width}px) 1`;
-						// 	element.style.borderRadius = `20px`;
-						// }
-
-						// // Example usage:
-						// fillBorderByNumber();
-
-                        // numberEl.style.borderRadius = "50%";
-                        // numberEl.style.padding = "12px";
-                        // numberEl.style.fontSize = "40px";
-                        // numberEl.style.textAlign = "center";
-                        // numberEl.style.marginBottom = "10px";
-
-                        if (number <= 40) {
-							takersltdscore.setAttribute("stroke-dasharray", "368.0884539600077");
-                        }
-                        else if (number > 40 && number <= 50) {
-							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
-                        }
-                        else if (number > 50 && number <= 55) {
-							takersltdscore.setAttribute("stroke-dasharray", "385.0884539600077");
-                        }
-                        else if (number > 55 && number <= 60) {
-							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
-                        }
-                        else if (number > 60 && number <= 65) {
-							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
-                        }
-                        else if (number > 65 && number <= 70) {
-							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
-                        }
-                        else if (number > 70 && number <= 75) {
-							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
-                        }
-                        else if (number > 75 && number <= 80) {
-							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
-                        }
-                        else if (number > 80 && number <= 85) {
-							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
-                        }
-                        else if (number > 85 && number <= 90) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-                        }
-                        else if (number > 90 && number <= 95) {
-							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-                        }
-                        else {
-							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
-                        }
-                        }
-                    }
-                    }
-			})
-	}
 </script>
 @endsection
