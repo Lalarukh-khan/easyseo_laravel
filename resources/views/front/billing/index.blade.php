@@ -112,7 +112,7 @@
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-4 col-4">
                         <label class="switch wow fadeInUp" data-wow-delay="0.3s">
-                            <input type="checkbox" id="toggleyearly" >
+                            <input type="checkbox" id="toggleyearly" checked>
                                 <span class="slider round"></span>
                         </label>
                     </div>
@@ -150,10 +150,11 @@
                                 <li id="prcngwht1e2"> <img src="{{asset('front')}}/images/tickorange.svg"> Live chat support </li>
                                 <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> 25+ languages </li>
                                 <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
+                                <br><br><br><br>
                             </ul>
                         </div>
                         <div class="pricing-btn">
-                            <a href="javascript:void(0);" class="custom-btn2"> <u> View All Details</u> </a>
+                            <a  href="{{route('web.pricing')}}" class="custom-btn2"> <u> View All Details</u> </a>
                             @if (auth('web')->check())
                                 <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Current Plan </a>
                             @else
@@ -200,7 +201,7 @@
                             </ul>
                         </div>
                         <div class="pricing-btn">
-                            <a href="" class="custom-btn2" id="prcngwht225"><u> View All Details </u></a>
+                            <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht225"><u> View All Details </u></a>
                             @if (auth('web')->check())
                             <a onclick="showCheckout(event);" href="https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user={{ auth('web')->user()->unique_id }}&exfo=742"
                                 class="custom-btn3" id="buy-plan" data-current="{{ $user_package->words }}"> Upgrade </a>
@@ -242,7 +243,7 @@
                             </ul>
                         </div>
                         <div class="pricing-btn">
-                            <a href="" class="custom-btn2" id="prcngwht3j"><u> View All Details </u></a>
+                            <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht3j"><u> View All Details </u></a>
                             <a href="" class="custom-btn3"> Contact Sales </a>
                         </div>
                     </div>
@@ -784,6 +785,8 @@
 
         // solo_proplan.classList.add('solo_proplan_y');
         toggleyearly.addEventListener('click', function() {
+           const checkingd =  document.getElementById("solo_proplan");
+           checkingd.setAttribute("style", "background: linear-gradient(to right,  #e3bfff  0%,  #e3bfff  ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%);");
             if (solo_proprice.classList.contains('solo_proprice_y')) {
                 solomonthlyplan();
                 packageToggle = 1;
@@ -805,10 +808,10 @@
         function soloyearlyplan(){
 
             $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$24.90');
-            $('.solo_proprice_y').html('$24.90');
-            $('#solo_proprice2').html('$24.90/Mon');
-            $('.solo_proprice2_y').html('$24.90/Mon');
+            $('#solo_proprice').html('$19.90');
+            $('.solo_proprice_y').html('$19.90');
+            $('#solo_proprice2').html('$19.90/Mon');
+            $('.solo_proprice2_y').html('$19.90/Mon');
             $('#solo_protoken').html('20,000 words');
             $('#solo_protoken2').html('20,000 words');
             $('#solo_proreport').html('10 reports');
@@ -854,10 +857,10 @@
 
 
             $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$19.90');
-            $('.solo_proprice_y').html('$19.90');
-            $('#solo_proprice2').html('$19.90/Mon');
-            $('.solo_proprice2_y').html('$19.90/Mon');
+            $('#solo_proprice').html('$24.90');
+            $('.solo_proprice_y').html('$24.90');
+            $('#solo_proprice2').html('$24.90/Mon');
+            $('.solo_proprice2_y').html('$24.90/Mon');
             $('#solo_protoken').html('20,000 words');
             $('#solo_protoken2').html('20,000 words');
             $('#solo_proreport').html('10 reports');
@@ -904,10 +907,10 @@
             $('#level').val(value);
             // var current = $('#buy-plan').data('current');
             if (value == 0) {
-                $('#solo_proprice').html('$19.90');
-                $('.solo_proprice_y').html('$24.90');
-                $('#solo_proprice2').html('$19.90/Mon');
-                $('.solo_proprice2_y').html('$24.90/Mon');
+                $('#solo_proprice').html('$24.90');
+                $('.solo_proprice_y').html('$19.90');
+                $('#solo_proprice2').html('$24.90/Mon');
+                $('.solo_proprice2_y').html('$19.90/Mon');
                 $('#solo_protoken').html('20,000 words');
                 $('#solo_protoken2').html('20,000 words');
                 $('#solo_proreport').html('10 reports');
@@ -945,10 +948,10 @@
             }
 
             if (value == 1) {
-                $('#solo_proprice').html('$29.90');
-                $('.solo_proprice_y').html('$34.90');
-                $('#solo_proprice2').html('$29.90/Mon');
-                $('.solo_proprice2_y').html('$34.90/Mon');
+                $('#solo_proprice').html('$34.90');
+                $('.solo_proprice_y').html('$29.90');
+                $('#solo_proprice2').html('$34.90/Mon');
+                $('.solo_proprice2_y').html('$29.90/Mon');
                 $('#solo_protoken').html('50,000 words');
                 $('#solo_protoken2').html('50,000 words');
                 $('#solo_proreport').html('30 reports');
@@ -986,10 +989,10 @@
             }
 
             if (value == 2) {
-                $('#solo_proprice').html('$79.90');
-                $('.solo_proprice_y').html('$99.90');
-                $('#solo_proprice2').html('$79.90/Mon');
-                $('.solo_proprice2_y').html('$99.90/Mon');
+                $('#solo_proprice').html('$99.90');
+                $('.solo_proprice_y').html('$79.90');
+                $('#solo_proprice2').html('$99.90/Mon');
+                $('.solo_proprice2_y').html('$79.90/Mon');
                 $('#solo_protoken').html('200,000 words');
                 $('#solo_protoken2').html('200,000 words');
                 $('#solo_proreport').html('80 reports');
@@ -1028,10 +1031,10 @@
             }
 
             if (value == 3) {
-                $('#solo_proprice').html('$129.90');
-                $('.solo_proprice_y').html('$159.90');
-                $('#solo_proprice2').html('$129.90/Mon');
-                $('.solo_proprice2_y').html('$159.90/Mon');
+                $('#solo_proprice').html('$159.90');
+                $('.solo_proprice_y').html('$129.90');
+                $('#solo_proprice2').html('$159.90/Mon');
+                $('.solo_proprice2_y').html('$129.90/Mon');
                 $('#solo_protoken').html('500,000 words');
                 $('#solo_protoken2').html('500,000 words');
                 $('#solo_proreport').html('200 reports');

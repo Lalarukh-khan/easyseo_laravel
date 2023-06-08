@@ -68,25 +68,25 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="row  bsnsmsn">
+                            <div class="bsnsmsn">
                                 <p class="col-white aiwrt3 nwwbaiwrt3 nwwbdfjhdsbf" id="writewht1c"><b>~ What is our company's mission? </b></p>
                                 <br><p class="aiwrt1" id="writewht2c">At easyseo.ai, our mission is to help businesses unlock the power of AI <br class="dn"> to achieve their SEO goals and succeed online & to help businesses achieve <br class="dn"> their SEO goals by harnessing the power of artificial intelligence.</p>
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="row bsnsmsns">
+                            <div class="bsnsmsns">
                                 <h3 class="col-white nwwbaiwrt3" id="writewht3c"><b>~ What inspired us to develop AI-powered <br class="dn"> SEO solutions? </b></h3>
                                 <br><p class="aiwrt1" id="prcngwht">We were inspired to develop AI-powered SEO solutions because we saw a need <br class="dn"> for more efficient and effective ways to optimize websites for search engines.</p>
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="row bsnsmsns">
+                            <div class="bsnsmsns">
                                 <h1 class="col-white nwwbaiwrt3" id="prcngwht1a"><b>~ What is our team's background <br class="dn"> and expertise? </b></h1>
                                 <br><p class="aiwrt1" id="prcngwht1b">Our team at easyseo.ai has years of experience in both SEO and AI, <br class="dn"> and we are dedicated to staying on the cutting edge of these rapidly <br class="dn"> evolving fields.</p>
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <div class="row bsnsmsns">
+                            <div class="bsnsmsns">
                                 <h3 class="col-white nwwbaiwrt3" id="prcngwht1c"><b>~ What makes our SEO AI solutions unique <br class="dn"> and effective? </b></h3>
                                 <br><p class="aiwrt1" id="prcngwht1d">Our SEO AI solutions are unique because they are tailored to each <br class="dn"> client's specific needs, and they are designed to deliver measurable <br class="dn"> results.</p>
                             </div>
@@ -163,28 +163,20 @@
                 <div class="col-lg-7 col-md-6 col-sm-12 col-12">
                     <div class="row bsnsrange">
                         <div class="col-lg-12 pad-bot-30">
-                            <div class="row">
                                 <h1 class="col-white aihd pad-bot-15 nwwbaiwrt3" id="prcngwht27"><b>~   What types of businesses do <br class="dn"> we work with? </b></h1>
                                 <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht28">We work with a wide range of businesses, from small startups to large <br class="dn"> enterprises across many different industries.</p>
-                            </div>
                         </div>
                         <div class="col-lg-12 pad-bot-30">
-                            <div class="row">
                                 <h3 class="col-white aihd pad-bot-15 nwwbaiwrt3" id="prcngwht29">~   How do we tailor our solutions to meet each <br> client's specific needs?</h3>
                                 <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht221">We tailor our solutions to each client's specific needs by conducting a <br> thorough analysis of their website and SEO goals, and then developing <br> a customized  plan to achieve those goals.</p>
-                            </div>
                         </div>
                         <div class="col-lg-12  pad-bot-30">
-                            <div class="row">
                                 <h3 class="col-white aihd pad-bot-15 nwwbaiwrt3" id="prcngwht222">~  What is our approach to customer service <br> and support? </h3>
                                 <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht223">At easyseo.ai, we are committed to providing exceptional customer service <br> and support, and we are always available to answer any questions or concerns <br> our clients may have.</p>
-                            </div>
                         </div>
                         <div class="col-lg-12  pad-bot-30">
-                            <div class="row">
                                 <h3 class="col-white aihd pad-bot-15 nwwbaiwrt3" id="prcngwht224">~  How can potential clients get in touch with <br> us to learn more about our SEO AI solutions? </h3>
                                 <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht3a">To learn more about how easyseo.ai can help you achieve your SEO goals, please <br> contact us today to schedule a consultation.</p>
-                            </div>
                         </div>
                             </div>
                         </div>

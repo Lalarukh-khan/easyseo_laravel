@@ -662,8 +662,10 @@
     <!-- Copyright Section Starts Here -->
     <section class="copyright-sec" id="cpywht">
         <div class="container">
-            <span  id="cpywht1"> {{date('Y')}} All rights reserved. - <a href="{{route('web.privacy')}}"  id="cpywht2"> Privacy Policy
-            </a> - <a href="{{route('web.terms')}}" id="cpywht3"> Terms of Services </a> </span>
+            <!-- <span  id="cpywht1"> {{date('Y')}} All rights reserved. - <a href="{{route('web.privacy')}}"  id="cpywht2"> Privacy Policy
+            </a> - <a href="{{route('web.terms')}}" id="cpywht3"> Terms of Services </a> </span> -->
+            <span  id="cpywht1"> © Branda Stock Ltd. - 2023. The trademarks and logos appearing herein are exclusively owned by Branda
+Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invite legal action.</span>
         </div>
     </section>
     <!-- Copyright Section Ends Here -->

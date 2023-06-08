@@ -110,7 +110,7 @@
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-4 col-4">
                             <label class="switch2">
-                                <input type="checkbox" id="toggleyearly">
+                                <input type="checkbox" id="toggleyearly" checked>
                                 <span class="slider2 round2"></span>
                             </label>
                         </div>
@@ -127,7 +127,7 @@
                     <div class="row align-items-center" style="width: 100%; height: auto;">
                         <div class="col-md-4 col-lg-4 col-sm-12 col-12 m-b-40">
                             <div class="pricing-box" id="prcngwht1">
-                                <h2 class="col-white col-lg-12 cntntm pad-bot-30" id="prcngwht1a"> Basic </h2>
+                                <h2 class="col-white col-lg-12 cntntm" id="prcngwht1a"> Basic </h2>
                                 <div class="pricing-box-head">
                                     <div class="pricing-icon">
                                         <img src="{{asset('front')}}/images/dollar-icon.svg">
@@ -135,7 +135,7 @@
                                     <div class="pricing-title">
                                         <h5 class="col-white d-f j-c-e" id="prcngwht1b"><b> 7 Days <br> free trial </b>
                                         </h5>
-                                        <p class="pad-bot-30" id="prcngwht1c"> to 2 000 words </p>
+                                        <p id="prcngwht1c"> to 2 000 words </p>
                                     </div>
                                 </div>
                                 <div class="pricing-detail">
@@ -151,10 +151,11 @@
                                             languages </li>
                                         <li class="pad-bot-40" id="cpywht2a"> <img
                                                 src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
+                                                <br><br><br>
                                     </ul>
                                 </div>
                                 <div class="pricing-btn">
-                                    <a href="javascript:void(0);" class="custom-btn2" id="prcngwht1f"> <u> View All
+                                    <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht1f"> <u> View All
                                             Details</u> </a>
                                     @if (auth('web')->check())
                                     <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Current Plan </a>
@@ -211,7 +212,7 @@
                                     </ul>
                                 </div>
                                 <div class="pricing-btn">
-                                    <a href="" class="custom-btn2" id="prcngwht225"><u> View All Details </u></a>
+                                    <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht225"><u> View All Details </u></a>
                                     @if (auth('web')->check())
                                     <a onclick="showCheckout(event);"
                                         href="https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=true&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user={{ auth('web')->user()->unique_id }}&exfo=742"
@@ -262,7 +263,7 @@
                                     </ul>
                                 </div>
                                 <div class="pricing-btn">
-                                    <a href="" class="custom-btn2" id="prcngwht3j"><u> View All Details </u></a>
+                                    <a href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht3j"><u> View All Details </u></a>
                                     <a href="" class="custom-btn3"> Upgrade </a>
                                 </div>
                             </div>
@@ -818,6 +819,8 @@
 
         // solo_proplan.classList.add('solo_proplan_y');
         toggleyearly.addEventListener('click', function() {
+           const checkingd =  document.getElementById("solo_proplan");
+           checkingd.setAttribute("style", "background: linear-gradient(to right,  #e3bfff  0%,  #e3bfff  ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%);");
             if (solo_proprice.classList.contains('solo_proprice_y')) {
                 solomonthlyplan();
                 packageToggle = 1;
@@ -837,12 +840,11 @@
         });
 
         function soloyearlyplan(){ 
-
             $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$24.90');
-            $('.solo_proprice_y').html('$24.90');
-            $('#solo_proprice2').html('$24.90/Mon');
-            $('.solo_proprice2_y').html('$24.90/Mon');
+            $('#solo_proprice').html('$19.90');
+            $('.solo_proprice_y').html('$19.90');
+            $('#solo_proprice2').html('$19.90/Mon');
+            $('.solo_proprice2_y').html('$19.90/Mon');
             $('#solo_protoken').html('20,000 words');
             $('#solo_protoken2').html('20,000 words');
             $('#solo_proreport').html('10 reports');
@@ -885,16 +887,22 @@
         };
 
         function solomonthlyplan(){
-           
-
             $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$19.90');
-            $('.solo_proprice_y').html('$19.90');
-            $('#solo_proprice2').html('$19.90/Mon');
-            $('.solo_proprice2_y').html('$19.90/Mon');
+            $('#solo_proprice').html('$24.90');
+            $('.solo_proprice_y').html('$24.90');
+            $('#solo_proprice2').html('$24.90/Mon');
+            $('.solo_proprice2_y').html('$24.90/Mon');
             $('#solo_protoken').html('20,000 words');
             $('#solo_protoken2').html('20,000 words');
             $('#solo_proreport').html('10 reports');
+            // document.getElementById("solo_proplan"), function() {
+            //     // var value = (this.value-this.min)/(this.max-this.min)*100
+            //     this.style.display = 'none !important';
+            // };
+    //  document.getElementById("solo_proplan").oninput = function() {
+    //     var value = (this.value-this.min)/(this.max-this.min)*100
+    //     this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
+    // };
 
 
             if (current == 20000) {
@@ -938,10 +946,10 @@
             $('#level').val(value);
             // var current = $('#buy-plan').data('current');
             if (value == 0) {
-                $('#solo_proprice').html('$19.90');
-                $('.solo_proprice_y').html('$24.90');
-                $('#solo_proprice2').html('$19.90/Mon');
-                $('.solo_proprice2_y').html('$24.90/Mon');
+                $('#solo_proprice').html('$24.90');
+                $('.solo_proprice_y').html('$19.90');
+                $('#solo_proprice2').html('$24.90/Mon');
+                $('.solo_proprice2_y').html('$19.90/Mon');
                 $('#solo_protoken').html('20,000 words');
                 $('#solo_protoken2').html('20,000 words');
                 $('#solo_proreport').html('10 reports');
@@ -979,10 +987,10 @@
             }
 
             if (value == 1) {
-                $('#solo_proprice').html('$29.90');
-                $('.solo_proprice_y').html('$34.90');
-                $('#solo_proprice2').html('$29.90/Mon');
-                $('.solo_proprice2_y').html('$34.90/Mon');
+                $('#solo_proprice').html('$34.90');
+                $('.solo_proprice_y').html('$29.90');
+                $('#solo_proprice2').html('$34.90/Mon');
+                $('.solo_proprice2_y').html('$29.90/Mon');
                 $('#solo_protoken').html('50,000 words');
                 $('#solo_protoken2').html('50,000 words');
                 $('#solo_proreport').html('30 reports');
@@ -1020,10 +1028,10 @@
             }
 
             if (value == 2) {
-                $('#solo_proprice').html('$79.90');
-                $('.solo_proprice_y').html('$99.90');
-                $('#solo_proprice2').html('$79.90/Mon');
-                $('.solo_proprice2_y').html('$99.90/Mon');
+                $('#solo_proprice').html('$99.90');
+                $('.solo_proprice_y').html('$79.90');
+                $('#solo_proprice2').html('$99.90/Mon');
+                $('.solo_proprice2_y').html('$79.90/Mon');
                 $('#solo_protoken').html('200,000 words');
                 $('#solo_protoken2').html('200,000 words');
                 $('#solo_proreport').html('80 reports');
@@ -1062,10 +1070,10 @@
             }
 
             if (value == 3) {
-                $('#solo_proprice').html('$129.90');
-                $('.solo_proprice_y').html('$159.90');
-                $('#solo_proprice2').html('$129.90/Mon');
-                $('.solo_proprice2_y').html('$159.90/Mon');
+                $('#solo_proprice').html('$159.90');
+                $('.solo_proprice_y').html('$129.90');
+                $('#solo_proprice2').html('$159.90/Mon');
+                $('.solo_proprice2_y').html('$129.90/Mon');
                 $('#solo_protoken').html('500,000 words');
                 $('#solo_protoken2').html('500,000 words');
                 $('#solo_proreport').html('200 reports');
@@ -1129,7 +1137,12 @@
         event.preventDefault();
         document.getElementById('ppg-checkout-modal').remove();
     }
-
+    // document.getElementById("solo_proplan").oninput = function() {
+    //     if($("input#solo_proplan").val()==0){
+    //         var value = (this.value-this.min)/(this.max-this.min)*100
+    //         this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
+    //     }
+    // };
     document.getElementById("solo_proplan").oninput = function() {
         var value = (this.value-this.min)/(this.max-this.min)*100
         this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
