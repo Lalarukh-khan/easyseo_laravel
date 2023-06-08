@@ -102,6 +102,9 @@ Route::middleware('XSS')->as('web.')->namespace('App\Http\Controllers')->group(f
     Route::get('/contact-us', 'PageController@contact_us')->name('contact_us');
     Route::get('/pricing', 'PageController@pricing')->name('pricing');
     Route::get('/faqs', 'PageController@index')->name('faqs');
+    Route::get('/term-of-services', 'PageController@terms')->name('terms');
+    Route::get('/cancellation-&-refund-policy', 'PageController@cancellation_policy')->name('cancellation_policy');
+    Route::get('/prohibited-content-policy', 'PageController@prohibited_content_policy')->name('prohibited_content_policy');
 
     Route::post('/submit-contact', 'ContactUsController@contactSave')->name('contact.submit');
 

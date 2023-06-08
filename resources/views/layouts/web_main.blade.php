@@ -662,8 +662,8 @@
     <!-- Copyright Section Starts Here -->
     <section class="copyright-sec" id="cpywht">
         <div class="container">
-            <span  id="cpywht1"> {{date('Y')}} All rights reserved. - <a href="#"  id="cpywht2"> Privacy Policy
-                </a> - <a href="#" id="cpywht3"> Terms of Services </a> </span>
+            <span  id="cpywht1"> {{date('Y')}} All rights reserved. - <a href="{{route('web.privacy')}}"  id="cpywht2"> Privacy Policy
+            </a> - <a href="{{route('web.terms')}}" id="cpywht3"> Terms of Services </a> </span>
         </div>
     </section>
     <!-- Copyright Section Ends Here -->

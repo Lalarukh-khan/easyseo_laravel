@@ -61,6 +61,30 @@ class PageController extends Controller
         return view('website.pages.faqs')->with($data);
     }
 
+    public function terms()
+    {
+        $data = array(
+            'title' => "TERMS OF SERVICE"
+        );
+        return view('website.pages.terms')->with($data);
+    }
+
+    public function cancellation_policy()
+    {
+        $data = array(
+            'title' => "CANCELLATION & REFUND POLICY"
+        );
+        return view('website.pages.cancellation_policy')->with($data);
+    }
+
+    public function prohibited_content_policy()
+    {
+        $data = array(
+            'title' => "PROHIBITED CONTENT POLICY"
+        );
+        return view('website.pages.prohibited_content_policy')->with($data);
+    }
+
     public function blogs(Request $request)
     {
         $blogs = Blog::where('status', 1)->latest()->paginate(6);
