@@ -1,10 +1,15 @@
 @extends('layouts.front')
 @section('after-css')
+<style>
+	body{
+		overflow-y: scroll !important;
+	}
+</style>
 @endsection
 @section('content')
 @include('components.flash-message')
 
-<div class="container">
+<div class="container" style="max-width: inherit !important;">
     <div class="row">
 		<div class="col-xl-8 col-lg-8 col-8">
 			<div class="row">
@@ -13,16 +18,16 @@
 					<input type="text" name="docname" placeholder="Untitled document" class="edtdocrname">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
-					<div class="edtrhd">H1</div>
-					<div class="edtrhd">H2</div>
-					<div class="edtrhd">H3</div>
-					<div class="edtrhd">B</div>
-					<div class="edtrhd"><span class="bx bx-italic"></span></div>
-					<div class="edtrhd"><span class="bx bx-list-ul"></span></div>
-					<div class="edtrhd"><span class="bx bx-list-ol"></span></div>
-					<div class="edtrhd"><span class="bx bx-comment"></span></div>
-					<div class="edtrhd"><span class="bx bx-link-alt"></span></div>
-					<div class="edtrhd"><span class="bx bx-copy"></span></div>
+					<button class="edtrhd" id="h1place">H1</button>
+					<button class="edtrhd" id="h2place">H2</button>
+					<button class="edtrhd" id="h3place">H3</button>
+					<button class="edtrhd" id="bplace">B</button>
+					<button class="edtrhd" id="iplace"><span class="bx bx-italic"></span></button>
+					<button class="edtrhd" id="ulplace"><span class="bx bx-list-ul"></span></button>
+					<button class="edtrhd" id="olplace"><span class="bx bx-list-ol"></span></button>
+					<button class="edtrhd" id="cplace"><span class="bx bx-comment"></span></button>
+					<button class="edtrhd" id="aplace"><span class="bx bx-link-alt"></span></button>
+					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
 					<!-- <div style="text-align: right; display: inline-block;">
 						<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
 					</div> -->
@@ -47,7 +52,8 @@
 						<div class="col-lg-3 col-md-3 col-12 col-sm-12 brdrleft"
 						data-bs-toggle="modal" data-bs-target="#toneModal">
 							<p class="edtrrwt">Tone of voice</p>
-							<p class="edtrrws">Professional, informat..</p>
+							<!-- <p class="edtrrws" id="edtrtvvalmain">Professional, informat..</p> -->
+							<p class="edtrrws" id="edtrtvvalmain"></p>
 						</div>
 						<div class="col-lg-3 col-md-3 col-12 col-sm-12 edtrbrdrn"
 						data-bs-toggle="modal" data-bs-target="#blogModal">
@@ -60,11 +66,13 @@
 						 	<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
 						</div>
 							<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
-						<div style="text-align: right;">
+							<br>
+							<br>
+						<!-- <div style="text-align: right;">
 							<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
-						</div>
+						</div> -->
 					</div>
-					<div contenteditable="true">
+					<div id="forscoring" contenteditable="true" style="outline: none;">
 						<div id="resultdata" style="display: none !important;"></div>
 						<div class="edtrval" id="extrcttngrsltdata"></div>
 						<div id="quesdata"></div>
@@ -73,7 +81,12 @@
 				<div class="edtrbtrwf">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-12 edtrinput-container">
+						<div class="edtrinputwithbutton">
 							<input type="text" placeholder="Fill in instructions for the AI or choose from list" class="edtrchoosefrmlist" id="edtrmyInput">
+							<button type="submit" id="manwrtnbyuser"><img src="{{asset('admin_assets')}}/assets/images/chatsender.png" alt=""></button>
+						</div>
+							<!-- <input type="text" placeholder="Fill in instructions for the AI or choose from list" class="edtrchoosefrmlist" id="edtrmyInput"> -->
+
 							<ul class="edtrdropdownlist">
 								<li id="edtrpara">Paraphrase</li>
 								<li id="edtrttls">Suggest titles</li>
@@ -118,7 +131,7 @@
 								<div class="row">
 									<div class="col-lg-2"></div>
 									<div class="col-lg-8">
-									<svg viewBox="0 0 200 160" class="w-full block px-12 relative"><defs><linearGradient id="gradient0.7493432638616075" x1="99%" y1="41%" x2="1%" y2="59%"><stop offset="5.56%" stop-color="#FA517D"></stop><stop offset="39.64%" stop-color="#E49F32"></stop><stop offset="98.89%" stop-color="#43D975"></stop></linearGradient><filter id="filter0_i_6_30" x="0.432007" y="0" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dx="4" dy="4"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="shape" result="effect1_innerShadow_6_30"></feBlend></filter></defs><circle filter="url(#filter0_i_6_30)" transform="rotate(171 100 100)" id="path" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="220.53980428200347" fill="none" stroke="#504E58" stroke-linecap="butt"></circle><circle class="drop-shadow" transform="rotate(171 100 100)" id="takersltdscore" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="247.49466924980385" fill="none" stroke="url(#gradient0.7493432638616075)" stroke-linecap="butt" style="transition: stroke-dashoffset 0.5s ease 0s;"></circle></svg>
+									<svg viewBox="0 0 200 160" class="w-full block px-12 relative"><defs><linearGradient id="gradient0.7493432638616075" x1="99%" y1="41%" x2="1%" y2="59%"><stop offset="5.56%" stop-color="#FA517D"></stop><stop offset="39.64%" stop-color="#E49F32"></stop><stop offset="98.89%" stop-color="#43D975"></stop></linearGradient><filter id="filter0_i_6_30" x="0.432007" y="0" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dx="4" dy="4"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="shape" result="effect1_innerShadow_6_30"></feBlend></filter></defs><circle filter="url(#filter0_i_6_30)" transform="rotate(171 100 100)" id="path" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="220.53980428200347" fill="none" stroke="#504E58" stroke-linecap="butt"></circle><circle class="drop-shadow" transform="rotate(171 100 100)" id="takersltdscore" cx="100" cy="100" r="78" stroke-width="28" fill="none" stroke="url(#gradient0.7493432638616075)" stroke-linecap="butt" style="transition: stroke-dashoffset 0.5s ease 0s;"></circle></svg>
 										<div id="edtrscore">
 											<div id="resulted_score"></div>
 											<p class="edtrrws text-center" style="margin-top: -15px">SEO Score</p>
@@ -244,7 +257,7 @@
 			<p class="cstmtttp">Title Competitive Score (TCS)</p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: center;">
-			<button type="button" class="btn-close" id="closettdiv" style="margin-top: 5px; color: #fff !important;"></button>
+			<button type="button" id="closettdiv" style="margin-top: -15px; border: none; font-size: 35px; color: #fff; background: transparent;"><span class="bx bx-x" ></span></button>
 		</div>
 	</div>
 	<hr style="background: rgb(203, 203, 203) !important;">
@@ -272,11 +285,18 @@
 			<h4 class="audttlistval" id="tt2"></h4>
 			<h4 class="audttlistval" id="tt3"></h4>
 			<h4 class="audttlistval" id="tt4"></h4>
-			<h4 class="audttlistval edtnbrdrbtm" id="tt5"></h4>
+			<h4 class="audttlistval" id="tt5"></h4>
+			<div id="ttgenshow" style="display: none;">
+				<h4 class="audttlistval" id="tt6"></h4>
+				<h4 class="audttlistval" id="tt7"></h4>
+				<h4 class="audttlistval" id="tt8"></h4>
+				<h4 class="audttlistval" id="tt9"></h4>
+				<h4 class="audttlistval edtnbrdrbtm" id="tt10"></h4>
+			</div>
 		</div>
 		<br>
 		<div class="text-center">
-			<button class="ttgenm">Generate more</button>
+			<button class="ttgenm" id="ttgenm">Generate more</button>
 		</div>
 	</div>
 </div>
@@ -367,20 +387,20 @@
 	  	<h5 class="text-center">Tone of voice</h5>
 		<p class="text-center">Choose what tone of voice style the AI shall try to <br> write content in.</p>
 		<div class="text-center">
-			<input type="text" class="edtraudinp" value="Professional, informative, straightforward; Write clearly and concisely.">
+			<input type="text" class="edtraudinp" id="edtrtvval" value="Professional, informative, straightforward; Write clearly and concisely.">
 		</div>
 		<h4 class="edtraudfr">Frequent used  Tone of voice</h4>
 		<div class="audttonelist">
-			<h4 class="audtonelistval">Formal, Professional: Showcase your expertise and attention to detail.</h4>
-			<h4 class="audtonelistval">Persuasive, Compelling: Inspire the reader to take action using solid arguments and emotional appeals.</h4>
-			<h4 class="audtonelistval">Conversational, Friendly: Use a casual tone, as if you were talking to a close friend.</h4>
-			<h4 class="audtonelistval">Analytical, Data-Driven: Present logical arguments and support your claims with evidence.</h4>
-			<h4 class="audtonelistval">First Person, Personal Experience: In the first person, use vivid language and sensory details to bring the experience to life.</h4>
-			<h4 class="audtonelistval">Sales-oriented, Persuasive: Create a sense of urgency and highlight the product or service's benefits.</h4>
-			<h4 class="audtonelistval">Empathetic, Compassionate: Connect with the reader emotionally and show that you understand their struggles.</h4>
-			<h4 class="audtonelistval">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
-			<h4 class="audtonelistval">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
-			<h4 class="audtonelistval edtnbrdrbtm">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
+			<h4 class="audtonelistval" id="tv1">Formal, Professional: Showcase your expertise and attention to detail.</h4>
+			<h4 class="audtonelistval" id="tv2">Persuasive, Compelling: Inspire the reader to take action using solid arguments and emotional appeals.</h4>
+			<h4 class="audtonelistval" id="tv3">Conversational, Friendly: Use a casual tone, as if you were talking to a close friend.</h4>
+			<h4 class="audtonelistval" id="tv4">Analytical, Data-Driven: Present logical arguments and support your claims with evidence.</h4>
+			<h4 class="audtonelistval" id="tv5">First Person, Personal Experience: In the first person, use vivid language and sensory details to bring the experience to life.</h4>
+			<h4 class="audtonelistval" id="tv6">Sales-oriented, Persuasive: Create a sense of urgency and highlight the product or service's benefits.</h4>
+			<h4 class="audtonelistval" id="tv7">Empathetic, Compassionate: Connect with the reader emotionally and show that you understand their struggles.</h4>
+			<h4 class="audtonelistval" id="tv8">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
+			<h4 class="audtonelistval" id="tv9">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
+			<h4 class="audtonelistval edtnbrdrbtm" id="tv10">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
       </div>
     </div>
   </div>
@@ -441,12 +461,12 @@
 	ttcustomDiv.style.zIndex = "9999";
 	});
 
-	document.addEventListener("click", function(event) {
-	if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
-		ttcustomDiv.style.display = "none";
-		ttcustomDiv.style.zIndex = "-1";
-	}
-	});
+	// document.addEventListener("click", function(event) {
+	// if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
+	// 	ttcustomDiv.style.display = "none";
+	// 	ttcustomDiv.style.zIndex = "-1";
+	// }
+	// });
 	const closettdiv = document.getElementById("closettdiv");
 	closettdiv.addEventListener("click", function() {
 		ttcustomDiv.style.display = "none";
@@ -615,10 +635,17 @@
 						// const final_text = trimmedContent1 + trimmedContent2;
 						document.getElementById("semantics").innerHTML = trimmedContent2;
 						document.getElementById("questions").innerHTML = trimmedContent1;
-
-						// const upprcontnt = extrcttngrsltdata.innerHTML;
-						const score =  content;
-						getSeoScore(score);
+						const forscoring = document.getElementById("forscoring");
+						const upprcontnt = forscoring.innerText;
+						if (upprcontnt == ''){
+								upprcontnt.innerText = "nothing";
+								getSeoScore(upprcontnt);
+						}
+						else{
+							getSeoScore(upprcontnt);
+						}
+						// const score =  content;
+						
 
 						const semantics = document.getElementById("semantics").innerHTML;
 						startText2_1 = "1.";
@@ -793,7 +820,7 @@
 						},
 						body: JSON.stringify({
 							_token: token,
-							prompt: 'suggest 6 detailed titles in ordered list based upon ' + majorprompt,
+							prompt: 'suggest 11 detailed titles in ordered list not inside double qoutes based upon ' + majorprompt,
 							old_prompt: majoroldprompt
 						})
 					})
@@ -846,6 +873,51 @@
 							const trimmedContentt_5 = sugtitles.substring(startIndext_5 + startTextt_5.length, endIndext_5);
 							const tt5 = document.getElementById("tt5");
 							tt5.innerHTML = trimmedContentt_5;
+						}
+						startTextt_6 = "6.";
+						endTextt_6 = "7.";
+						const startIndext_6 = sugtitles.indexOf(startTextt_6);
+						const endIndext_6 = sugtitles.indexOf(endTextt_6);
+						if (startIndext_6 !== -1 && endIndext_6 !== -1 && startIndext_6 < endIndext_6) {
+							const trimmedContentt_6 = sugtitles.substring(startIndext_6 + startTextt_6.length, endIndext_6);
+							const tt6 = document.getElementById("tt6");
+							tt6.innerHTML = trimmedContentt_6;
+						}
+						startTextt_7 = "7.";
+						endTextt_7 = "8.";
+						const startIndext_7 = sugtitles.indexOf(startTextt_7);
+						const endIndext_7 = sugtitles.indexOf(endTextt_7);
+						if (startIndext_7 !== -1 && endIndext_7 !== -1 && startIndext_7 < endIndext_7) {
+							const trimmedContentt_7 = sugtitles.substring(startIndext_7 + startTextt_7.length, endIndext_7);
+							const tt7 = document.getElementById("tt7");
+							tt7.innerHTML = trimmedContentt_7;
+						}
+						startTextt_8 = "8.";
+						endTextt_8 = "9.";
+						const startIndext_8 = sugtitles.indexOf(startTextt_8);
+						const endIndext_8 = sugtitles.indexOf(endTextt_8);
+						if (startIndext_8 !== -1 && endIndext_8 !== -1 && startIndext_8 < endIndext_8) {
+							const trimmedContentt_8 = sugtitles.substring(startIndext_8 + startTextt_8.length, endIndext_8);
+							const tt8 = document.getElementById("tt8");
+							tt8.innerHTML = trimmedContentt_8;
+						}
+						startTextt_9 = "9.";
+						endTextt_9 = "10.";
+						const startIndext_9 = sugtitles.indexOf(startTextt_9);
+						const endIndext_9 = sugtitles.indexOf(endTextt_9);
+						if (startIndext_9 !== -1 && endIndext_9 !== -1 && startIndext_9 < endIndext_9) {
+							const trimmedContentt_9 = sugtitles.substring(startIndext_9 + startTextt_9.length, endIndext_9);
+							const tt9 = document.getElementById("tt9");
+							tt9.innerHTML = trimmedContentt_9;
+						}
+						startTextt_10 = "10.";
+						endTextt_10 = "11.";
+						const startIndext_10 = sugtitles.indexOf(startTextt_10);
+						const endIndext_10 = sugtitles.indexOf(endTextt_10);
+						if (startIndext_10 !== -1 && endIndext_10 !== -1 && startIndext_10 < endIndext_10) {
+							const trimmedContentt_10 = sugtitles.substring(startIndext_10 + startTextt_10.length, endIndext_10);
+							const tt10 = document.getElementById("tt10");
+							tt10.innerHTML = trimmedContentt_10;
 						}
 					}
 					else {
@@ -1040,67 +1112,71 @@
 	const edtrshd = document.getElementById("edtrshd");
 	const edtrint = document.getElementById("edtrint");
 	const edtrfct = document.getElementById("edtrfct");
-	// const edtrjstwm = document.getElementById("edtrjstwm");
+	const manwrtnbyuser = document.getElementById("manwrtnbyuser");
 	const edtrmyInput = document.getElementById("edtrmyInput");
 	const contentform = document.getElementById("contentform");
 	const mncontent = document.getElementById("mncontent");
 	const getmnval = document.getElementById("getmnval");
-	// edtrjstwm.addEventListener("click", function(event) {
-	// 	const innerText = edtrmyInput.value;
-	// 	mncontent.value = innerText;
-	// 	const edtrmainval = document.getElementById("edtrmainval").value;
-	// 	getmnval.value = edtrmainval;
-	// 	const totalmainvalue = mncontent.value + " of " + getmnval.value;
-	// 	document.getElementById("mainrval").value =  totalmainvalue;
-	// 	event.preventDefault();
-	// 	document.getElementById("mnsubmit").click();
-	// });
+	manwrtnbyuser.addEventListener("click", function(event) {
+		const innerText = edtrmyInput.value;
+		mncontent.value = innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
+		const totalmainvalue =  mncontent.value
+		document.getElementById("mainrval").value =  totalmainvalue + " having tone of voice as " + edtrtvvalfrtxt;;
+		event.preventDefault();
+		document.getElementById("mnsubmit").click();
+	});
 	edtrpara.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrpara.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrttls.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrttls.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrshd.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrshd.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrint.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrint.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrfct.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrfct.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
@@ -1111,7 +1187,7 @@
         const data = new FormData(cntntform)
 
         // user's chatstripe
-        chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
+        // chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
 
         // to clear the textarea input
         cntntform.reset()
@@ -1210,59 +1286,112 @@
                     const item = finallist[i];
                     for (let j = 0; j < item.response.tasks.length; j++) {
                         const subitem = item.response.tasks[j];
-                        for (let z = 0; z < subitem.result.length; z++) {
-                        const subitem2 = subitem.result[z];
-                        const keyword_density = subitem2.keyword_density;
-                        const automated_readability_index = subitem2.automated_readability_index;
-                        const smog_readability_index = subitem2.smog_readability_index;
-                        let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
-                        let totalWords = content.split(' ').length;
-                        let keywordDensity = keywordCount / totalWords;
+						if(subitem.result == null){
+							document.getElementById("resulted_score").innerHTML = "0";
+						}
+						else{
+							for (let z = 0; z < subitem.result.length; z++) {
+							const subitem2 = subitem.result[z];
+							const keyword_density = subitem2.keyword_density;
+							const automated_readability_index = subitem2.automated_readability_index;
+							const smog_readability_index = subitem2.smog_readability_index;
+							let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
+							let totalWords = content.split(' ').length;
+							let keywordDensity = keywordCount / totalWords;
 
-                        // Calculate meta tags score
-                        let metaTagsScore = 1; 
-                        let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
-                        let roundedscore = Math.round(seoScore);
-                        document.getElementById("resulted_score").innerHTML = roundedscore;
+							// Calculate meta tags score
+							let metaTagsScore = 1; 
+							let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
+							let roundedscore = Math.round(seoScore);
+							document.getElementById("resulted_score").innerHTML = roundedscore;
+							}
+						}
                         const numberEl = document.getElementById("resulted_score");
                         const number = parseInt(numberEl.textContent);
 						const takersltdscore = document.getElementById("takersltdscore");
-                        if (number <= 40) {
-							takersltdscore.setAttribute("stroke-dasharray", "368.0884539600077");
+						if (number == 0) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
                         }
-                        else if (number > 40 && number <= 50) {
+                        else if (number > 0 && number <= 5) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
+                        }
+                        else if (number > 5 && number <= 10) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
+                        }
+                        else if (number > 10 && number <= 15) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
+                        }
+                        else if (number > 15 && number <= 20) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
+                        }
+                        else if (number > 20 && number <= 25) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
+                        }
+                        else if (number > 25 && number <= 30) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
+                        }
+                        else if (number > 30 && number <= 35) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
+                        }
+                        else if (number > 35 && number <= 40) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+                        }
+                        else if (number >40 && number <= 45) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+                        }
+                        else if (number > 45 && number <= 50) {
 							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "367.3554535791462");
                         }
                         else if (number > 50 && number <= 55) {
 							takersltdscore.setAttribute("stroke-dasharray", "385.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 55 && number <= 60) {
 							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 60 && number <= 65) {
 							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 65 && number <= 70) {
 							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 70 && number <= 75) {
 							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 75 && number <= 80) {
 							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 80 && number <= 85) {
 							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 85 && number <= 90) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number > 90 && number <= 95) {
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else {
 							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
-                        }
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                     }
                     }
@@ -1368,6 +1497,22 @@
 	const tt4 = document.querySelector("#tt4");
 	const tt5 = document.querySelector("#tt5");
 	const edtrmainval1 = document.getElementById("edtrmainval");
+	const edtrtvval = document.getElementById("edtrtvval");
+	const edtrtvvalmain = document.getElementById("edtrtvvalmain");
+	const ttgenm = document.getElementById("ttgenm");
+	var originalText = edtrtvval.value;
+	var truncatedText = originalText.slice(0, 21);
+	if (originalText.length > 21) {
+	truncatedText += "...";
+	}
+	edtrtvvalmain.innerHTML = truncatedText;
+	ttgenm.addEventListener("click", function(event) {
+		$('#ttgenshow').show();
+		ttgenm.disabled = true;
+		ttgenm.className = "edtrdisabled";
+		// ttcustomDiv2.style.display = "block";
+		// ttcustomDiv2.style.zIndex = "9999";
+	});
 	tt1.addEventListener("click", function(event) {
 		const divText = this.innerText;
 		edtrmainval1.value = divText;
@@ -1387,6 +1532,271 @@
 	tt5.addEventListener("click", function(event) {
 		const divText = this.innerText;
 		edtrmainval1.value = divText;
+	});
+	tt6.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt7.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt8.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt9.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt10.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tv1.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv2.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv3.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv4.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv5.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv6.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv7.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv8.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv9.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv10.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+
+</script>
+<script>
+
+	var h1place = document.getElementById("h1place");
+	var h2place = document.getElementById("h2place");
+	var h3place = document.getElementById("h3place");
+	var bplace = document.getElementById("bplace");
+	var iplace = document.getElementById("iplace");
+	var ulplace = document.getElementById("ulplace");
+	var olplace = document.getElementById("olplace");
+	var cplace = document.getElementById("cplace");
+	var aplace = document.getElementById("aplace");
+	var cpplace = document.getElementById("cpplace");
+	var contentEditable = document.getElementById("forscoring");
+	cpplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+
+		if (!selection.isCollapsed) {
+			var copiedText = selection.toString();
+			
+			// Copy the selected text to the clipboard
+			navigator.clipboard.writeText(copiedText)
+			.then(function() {
+				// Success callback
+				range.deleteContents();
+				range.insertNode(document.createTextNode(copiedText));
+				alert("Text copied to clipboard!");
+			})
+			.catch(function(error) {
+				// Error callback
+				console.error("Failed to copy text: ", error);
+			});
+		}
+	});
+	aplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+
+		if (!selection.isCollapsed) {
+			var linkUrl = prompt("Enter the URL for the link:");
+
+			if (linkUrl) {
+			var linkElement = document.createElement("a");
+			linkElement.href = linkUrl;
+			linkElement.textContent = selection.toString();
+
+			range.deleteContents();
+			range.insertNode(linkElement);
+			}
+		}
+	});
+	cplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+
+		if (!selection.isCollapsed) {
+			var commentSpan = document.createElement("span");
+			commentSpan.className = "edtrcomment";
+			commentSpan.textContent = selection.toString();
+
+			range.deleteContents();
+			range.insertNode(commentSpan);
+		}
+	});
+	h1place.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var h1Element = document.createElement("h1");
+		h1Element.appendChild(range.extractContents());
+		range.insertNode(h1Element);
+	});
+	h2place.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var h2Element = document.createElement("h2");
+		h2Element.appendChild(range.extractContents());
+		range.insertNode(h2Element);
+	});
+	h3place.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var h3Element = document.createElement("h3");
+		h3Element.appendChild(range.extractContents());
+		range.insertNode(h3Element);
+	});
+	bplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var boldElement = document.createElement("b");
+		boldElement.appendChild(range.extractContents());
+		range.insertNode(boldElement);
+	});
+	iplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var boldElement = document.createElement("i");
+		boldElement.appendChild(range.extractContents());
+		range.insertNode(boldElement);
+	});
+	ulplace.addEventListener("click", function() {
+		var selectedText = window.getSelection().toString().trim();
+		
+		if (selectedText !== "") {
+			var lines = selectedText.split("\n");
+			var listHtml = "<ul>";
+			
+			lines.forEach(function(line) {
+			listHtml += "<li>" + line + "</li>";
+			});
+			
+			listHtml += "</ul>";
+			
+			// Replace selected text with the list
+			document.execCommand("insertHTML", false, listHtml);
+		}
+	});
+	olplace.addEventListener("click", function() {
+		var selectedText = window.getSelection().toString().trim();
+		
+		if (selectedText !== "") {
+			var lines = selectedText.split("\n");
+			var listHtml = "<ol>";
+			
+			lines.forEach(function(line) {
+			listHtml += "<li>" + line + "</li>";
+			});
+			
+			listHtml += "</ol>";
+			
+			// Replace selected text with the list
+			document.execCommand("insertHTML", false, listHtml);
+		}
 	});
 </script>
 @endsection
