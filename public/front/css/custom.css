@@ -932,19 +932,20 @@ a.custom-btn2 {
     margin: 0px 3px;
 }
 .dots-2 .slick-dots li button {
+    /* background:rgba(255, 191, 131, 0.6); */
     font-size: 0;
     line-height: 0;
     display: block;
-    width: 20px;
-    height: 8px;
-    padding: 5px;
+    width: 6px;
+    height: 6px;
+    padding: 0px;
     cursor: pointer;
     color: transparent;
     border: 0;
-    margin: 0px;
+    margin: 0px 6px;
     outline: none;
-    background:rgba(255, 191, 131, 0.6);
-    border-radius: 5.08148px;
+    background: #FA7A00;
+    border-radius: 25px;
 }
 .dots-2 .slick-dots li.slick-active button {
     background: #FA7A00;
@@ -1413,7 +1414,7 @@ section.blog-detail-sec {
     font-weight: 300;
     letter-spacing: 0.5px;
     line-height: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 05px;
 }
 .blog-detail-sec .container .block-element>div {
     margin-bottom: 50px;

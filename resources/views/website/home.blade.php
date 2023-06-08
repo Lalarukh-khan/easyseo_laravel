@@ -113,10 +113,8 @@
                         <!-- <span class="col-orange"> with AI. </span> -->
                     </h3>
                     <ul class="custom-list1">
-                        <li id="main1wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> Free
-                            Register </li>
-                        <li id="main2wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> Great
-                            Service </li>
+                        <li id="main1wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> Free trial </li>
+                        <li id="main2wht"> <img alt="tick icon" src="{{asset('front')}}/images/check-icon2.svg"> No credit card required </li>
                     </ul>
                     <!-- <a href="{{route('register')}}" class="custom-btn4 mr-3"> Get
                         Start </a>
@@ -181,16 +179,25 @@
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                         <div class="custom-slider2 no-arrows dots-2">
                             <div class="brand-logo">
-                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brand-logo1.svg">
+                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brandlogo1.png">
                             </div>
                             <div class="brand-logo">
-                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brand-logo2.svg">
+                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brandlogo2.png">
                             </div>
                             <div class="brand-logo">
-                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brand-logo1.svg">
+                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brandlogo3.png">
                             </div>
                             <div class="brand-logo">
-                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brand-logo2.svg">
+                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brandlogo4.png">
+                            </div>
+                            <div class="brand-logo">
+                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brandlogo5.png">
+                            </div>
+                            <div class="brand-logo">
+                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brandlogo6.png">
+                            </div>
+                            <div class="brand-logo">
+                                <img class="brdimg" alt="Brand Logo" src="{{asset('front')}}/images/brandlogo7.png">
                             </div>
                         </div>
                     </div>
@@ -664,8 +671,8 @@
                                                                         and want to ensure that their website is
                                                                         optimized for search engines to attract
                                                                         customers.</p>
-                                                                    <a class="hdrbtn" href="{{route('login')}}"
-                                                                        id="bsnsadvntg1c"> Read more > </a>
+                                                                    <a class="hdrbtn" href="{{route('register')}}"
+                                                                        id="bsnsadvntg1c"> Start free > </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -691,8 +698,8 @@
                                                                         video
                                                                         or audio content is discoverable by search
                                                                         engines.</p>
-                                                                    <a class="hdrbtn" href="{{route('login')}}"
-                                                                        id="bsnsadvntg1f"> Read more > </a>
+                                                                    <a class="hdrbtn" href="{{route('register')}}"
+                                                                        id="bsnsadvntg1f"> Start free > </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -720,8 +727,8 @@
                                                                         scale. Social media managers who want to ensure
                                                                         that the content they share on social media is
                                                                         optimized for search engines.</p>
-                                                                    <a class="hdrbtn" href="{{route('login')}}"
-                                                                        id="bsnsadvntg1i"> Read more > </a>
+                                                                    <a class="hdrbtn" href="{{route('register')}}"
+                                                                        id="bsnsadvntg1i"> Start free > </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -744,8 +751,8 @@
                                                                         search engines. They could use an AI-powered SEO
                                                                         tool to automate certain tasks and improve the
                                                                         efficiency of their work.</p>
-                                                                    <a class="hdrbtn" href="{{route('login')}}"
-                                                                        id="bsnsadvntg1l"> Read more > </a>
+                                                                    <a class="hdrbtn" href="{{route('register')}}"
+                                                                        id="bsnsadvntg1l"> Start free > </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -770,8 +777,8 @@
                                                                         E-commerce website owners who want to optimize
                                                                         their product pages and improve their conversion
                                                                         rates.</p>
-                                                                    <a class="hdrbtn" href="{{route('login')}}"
-                                                                        id="bsnsadvntg1o"> Read more > </a>
+                                                                    <a class="hdrbtn" href="{{route('register')}}"
+                                                                        id="bsnsadvntg1o"> Start free > </a>
                                                                 </div>
                                                             </div>
                                                         </div>

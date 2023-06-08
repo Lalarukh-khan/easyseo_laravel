@@ -59,15 +59,12 @@
 						<div style="text-align: right;">
 						 	<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
 						</div>
-						<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
+							<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
 						<div style="text-align: right;">
 							<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
 						</div>
 					</div>
-					<div id="ai-loader1" style="text-align:center;display:none">
-						<img src="{{asset('front')}}/images/ai-loader1.gif" alt="ai-loader" style="width:100%; height: auto;">
-					</div>
-					<div id="ans_div1" style="display:none">
+					<div contenteditable="true">
 						<div id="resultdata" style="display: none !important;"></div>
 						<div class="edtrval" id="extrcttngrsltdata"></div>
 						<div id="quesdata"></div>
@@ -87,7 +84,10 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-12 col-12">
 							<p class="edtror">or</p>
-							<button class="edtrjstwm" id="edtrjstwm">Just write more</button>
+							<form id="semform" style="display: inline-block;">
+							<input type="hidden" id="semmainrval" name="semmainrval">
+							<button type="submit" class="edtrjstwm" id="edtrjstwm">Just write more</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -143,16 +143,6 @@
 									<div id="sem8" class="semall"></div>
 									<div id="sem9" class="semall"></div>
 									<div id="sem10" class="semall"></div>
-									<div id="sem11" class="semall"></div>
-									<div id="sem12" class="semall"></div>
-									<div id="sem13" class="semall"></div>
-									<div id="sem14" class="semall"></div>
-									<div id="sem15" class="semall"></div>
-									<div id="sem16" class="semall"></div>
-									<div id="sem17" class="semall"></div>
-									<div id="sem18" class="semall"></div>
-									<div id="sem19" class="semall"></div>
-									<div id="sem20" class="semall"></div>
 								</div>
 							</div>
 							<div class="card radius-10 edtrcard">
@@ -245,6 +235,48 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+<div class="customdiv" id="ttcustomDiv">
+	<div class="row cstdvfd">
+		<div class="col-lg-10 col-md-10 col-sm-10 col-10">
+			<p class="cstmtttp">Title Competitive Score (TCS)</p>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: center;">
+			<button type="button" class="btn-close" id="closettdiv" style="margin-top: 5px; color: #fff !important;"></button>
+		</div>
+	</div>
+	<hr style="background: rgb(203, 203, 203) !important;">
+	<div class="row  m-b-20" style="padding-left: 30px;">
+		<div class="col-lg-4 col-md-4 col-sm-4 col-4 cstm93 text-center">
+			<p class="ttcsm93">93</p>
+			<div class="cstm3p">
+				<p style="color: #fff; font-size: 15px; margin-bottom: 0px !important; padding: 0px 5px;">3%</p>
+				<p style="color: rgb(77, 145, 119); font-size: 12px; padding: 0px 5px;">vs competing <span style="margin-top: -5px;">score</span></p>
+			</div>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-8">
+			<p class="cstmsdtrgt" style="margin-top: 7px;">Include target keyword</p>
+			<p class="cstmsdtrgt">keyword string density</p>
+			<p class="cstmsdtrgt">Target keyword in initial part</p>
+			<p class="cstmsdtrgt">Between 40-60 characters long</p>
+			<p class="cstmsdtrgt">Uniqueness vs competitors</p>
+		</div>
+	</div>
+	<div class="cstmideas">
+		<h5 class="edtrideas">Ideas</h5>
+		<hr style="margin: 0px 0px 10px 0px;">
+		<div class="audtttlist">
+			<h4 class="audttlistval" id="tt1"></h4>
+			<h4 class="audttlistval" id="tt2"></h4>
+			<h4 class="audttlistval" id="tt3"></h4>
+			<h4 class="audttlistval" id="tt4"></h4>
+			<h4 class="audttlistval edtnbrdrbtm" id="tt5"></h4>
+		</div>
+		<br>
+		<div class="text-center">
+			<button class="ttgenm">Generate more</button>
 		</div>
 	</div>
 </div>
@@ -349,7 +381,6 @@
 			<h4 class="audtonelistval">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
 			<h4 class="audtonelistval">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
 			<h4 class="audtonelistval edtnbrdrbtm">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
-		</div>
       </div>
     </div>
   </div>
@@ -388,6 +419,7 @@
     </div>
   </div>
 </div>
+
 @endsection
 @section('page-scripts')
 <script>
@@ -401,6 +433,24 @@
 			}
 		});
 	});
+	var edtrmainval = document.getElementById("edtrmainval");
+	var customDiv = document.getElementById("ttcustomDiv");
+
+	edtrmainval.addEventListener("click", function() {
+	ttcustomDiv.style.display = "block";
+	ttcustomDiv.style.zIndex = "9999";
+	});
+
+	document.addEventListener("click", function(event) {
+	if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
+		ttcustomDiv.style.display = "none";
+		ttcustomDiv.style.zIndex = "-1";
+	}
+	});
+	const closettdiv = document.getElementById("closettdiv");
+	closettdiv.addEventListener("click", function() {
+		ttcustomDiv.style.display = "none";
+	})
 	document.getElementById("edtrbrieftext").addEventListener("input", function() {
 	var inputText = this.value;
 	document.getElementById("takeedtrbrieftext").textContent = inputText;
@@ -422,9 +472,7 @@
 	function submitForm(event) {
 		event.preventDefault();
 		$('#ai-loader').show();
-		$('#ai-loader1').show();
     	$('#ans_div').hide();
-    	$('#ans_div1').hide();
 		$('#exampleModalCenter').modal("hide");
 	}
 </script>
@@ -511,54 +559,38 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-			// write long paragraph in double qoutes and write 9 questions in ordered list and 21 semantic keywords in ordered list without double qoutes about
             body: JSON.stringify({
                 _token: token,
-                prompt: 'write Introduction and Details about ' + data.get('prompt'),
+                prompt: 'write firstly 9 questions and then 11 semantic keywords with maximum 2 words limit in ordered list about ' + data.get('prompt'),
                 old_prompt: data.get('old_prompt')
             })
         })
 		const majorprompt = data.get('prompt');
 		const majoroldprompt = data.get('old_prompt');
+
         clearInterval(loadInterval)
         messageDiv.innerHTML = " "
 
-        if (response.ok) {
-			$('#ai-loader1').hide();
-			$('#ans_div1').show();
-            const data = await response.json();
-            const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-			typeText(messageDiv, parsedData);
-            $('#old_prompt').val(data.old_prompt);
-			extrcttngrsltdata.innerHTML = parsedData;
-					const response2 = await fetch(apiUrl, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						_token: token,
-						prompt: 'write firstly 9 questions and then 21 semantic keywords in ordered list about ' + majorprompt,
-						old_prompt: majoroldprompt
-					})
-				})
-
-				clearInterval(loadInterval)
-				messageDiv.innerHTML = " "
-
-				if (response2.ok) {
+			// $('#ai-loader').hide();
+			// $('#ans_div').show();
+            // const data = await response.json();
+            // const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+			// typeText(messageDiv, parsedData);
+            // $('#old_prompt').val(data.old_prompt);
+			// extrcttngrsltdata.innerHTML = parsedData;
+			if (response.ok) {
 					$('#ai-loader').hide();
 					$('#ans_div').show();
-					const data = await response2.json();
+					const data = await response.json();
 					const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-					$('#old_prompt').val(data.old_prompt)
+					$('#old_prompt').val(data.old_prompt);
 					// const div = document.getElementById(newval);
 					document.getElementById("edtrtrgtkwrd").innerHTML = majorprompt;
 					const content = String(parsedData);
 					const startWord1 = "1.";
 					const endWord1 = "9.";
 					const startWord2 = "1.";
-					const endWord2 = "21.";
+					const endWord2 = "11.";
 					const startIndex1 = content.indexOf(startWord1);
 					const endIndex1 = content.indexOf(endWord1, startIndex1 + startWord1.length);
 
@@ -584,8 +616,8 @@
 						document.getElementById("semantics").innerHTML = trimmedContent2;
 						document.getElementById("questions").innerHTML = trimmedContent1;
 
-						const upprcontnt = extrcttngrsltdata.innerHTML;
-						const score = upprcontnt + " " + content;
+						// const upprcontnt = extrcttngrsltdata.innerHTML;
+						const score =  content;
 						getSeoScore(score);
 
 						const semantics = document.getElementById("semantics").innerHTML;
@@ -679,97 +711,7 @@
 							const sem10 = document.getElementById("sem10");
 							sem10.innerHTML = trimmedContent2_10;
 						}
-						startText2_11 = "11.";
-						endText2_11 = "12.";
-						const startIndex2_11 = semantics.indexOf(startText2_11);
-						const endIndex2_11 = semantics.indexOf(endText2_11);
-						if (startIndex2_11 !== -1 && endIndex2_11 !== -1 && startIndex2_11 < endIndex2_11) {
-							const trimmedContent2_11 = semantics.substring(startIndex2_11 + startText2_11.length, endIndex2_11);
-							const sem11 = document.getElementById("sem11");
-							sem11.innerHTML = trimmedContent2_11;
-						}
-						startText2_12 = "12.";
-						endText2_12 = "13.";
-						const startIndex2_12 = semantics.indexOf(startText2_12);
-						const endIndex2_12 = semantics.indexOf(endText2_12);
-						if (startIndex2_12 !== -1 && endIndex2_12 !== -1 && startIndex2_12 < endIndex2_12) {
-							const trimmedContent2_12 = semantics.substring(startIndex2_12 + startText2_12.length, endIndex2_12);
-							const sem12 = document.getElementById("sem12");
-							sem12.innerHTML = trimmedContent2_12;
-						}
-						startText2_13 = "13.";
-						endText2_13 = "14.";
-						const startIndex2_13 = semantics.indexOf(startText2_13);
-						const endIndex2_13 = semantics.indexOf(endText2_13);
-						if (startIndex2_13 !== -1 && endIndex2_13 !== -1 && startIndex2_13 < endIndex2_13) {
-							const trimmedContent2_13 = semantics.substring(startIndex2_13 + startText2_13.length, endIndex2_13);
-							const sem13 = document.getElementById("sem13");
-							sem13.innerHTML = trimmedContent2_13;
-						}
-						startText2_14 = "14.";
-						endText2_14 = "15.";
-						const startIndex2_14 = semantics.indexOf(startText2_14);
-						const endIndex2_14 = semantics.indexOf(endText2_14);
-						if (startIndex2_14 !== -1 && endIndex2_14 !== -1 && startIndex2_14 < endIndex2_14) {
-							const trimmedContent2_14 = semantics.substring(startIndex2_14 + startText2_14.length, endIndex2_14);
-							const sem14 = document.getElementById("sem14");
-							sem14.innerHTML = trimmedContent2_14;
-						}
-						startText2_15 = "15.";
-						endText2_15 = "16.";
-						const startIndex2_15 = semantics.indexOf(startText2_15);
-						const endIndex2_15 = semantics.indexOf(endText2_15);
-						if (startIndex2_15 !== -1 && endIndex2_15 !== -1 && startIndex2_15 < endIndex2_15) {
-							const trimmedContent2_15 = semantics.substring(startIndex2_15 + startText2_15.length, endIndex2_15);
-							const sem15 = document.getElementById("sem15");
-							sem15.innerHTML = trimmedContent2_15;
-						}
-						startText2_16 = "16.";
-						endText2_16 = "17.";
-						const startIndex2_16 = semantics.indexOf(startText2_16);
-						const endIndex2_16 = semantics.indexOf(endText2_16);
-						if (startIndex2_16 !== -1 && endIndex2_16 !== -1 && startIndex2_16 < endIndex2_16) {
-							const trimmedContent2_16 = semantics.substring(startIndex2_16 + startText2_16.length, endIndex2_16);
-							const sem16 = document.getElementById("sem16");
-							sem16.innerHTML = trimmedContent2_16;
-						}
-						startText2_17 = "17.";
-						endText2_17 = "18.";
-						const startIndex2_17 = semantics.indexOf(startText2_17);
-						const endIndex2_17 = semantics.indexOf(endText2_17);
-						if (startIndex2_17 !== -1 && endIndex2_17 !== -1 && startIndex2_17 < endIndex2_17) {
-							const trimmedContent2_17 = semantics.substring(startIndex2_17 + startText2_17.length, endIndex2_17);
-							const sem17 = document.getElementById("sem17");
-							sem17.innerHTML = trimmedContent2_17;
-						}
-						startText2_18 = "18.";
-						endText2_18 = "19.";
-						const startIndex2_18 = semantics.indexOf(startText2_18);
-						const endIndex2_18 = semantics.indexOf(endText2_18);
-						if (startIndex2_18 !== -1 && endIndex2_18 !== -1 && startIndex2_18 < endIndex2_18) {
-							const trimmedContent2_18 = semantics.substring(startIndex2_18 + startText2_18.length, endIndex2_18);
-							const sem18 = document.getElementById("sem18");
-							sem18.innerHTML = trimmedContent2_18;
-						}
-						startText2_19 = "19.";
-						endText2_19 = "20.";
-						const startIndex2_19 = semantics.indexOf(startText2_19);
-						const endIndex2_19 = semantics.indexOf(endText2_19);
-						if (startIndex2_19 !== -1 && endIndex2_19 !== -1 && startIndex2_19 < endIndex2_19) {
-							const trimmedContent2_19 = semantics.substring(startIndex2_19 + startText2_19.length, endIndex2_19);
-							const sem19 = document.getElementById("sem19");
-							sem19.innerHTML = trimmedContent2_19;
-						}
-						startText2_20 = "20.";
-						endText2_20 = "21.";
-						const startIndex2_20 = semantics.indexOf(startText2_20);
-						const endIndex2_20 = semantics.indexOf(endText2_20);
-						if (startIndex2_20 !== -1 && endIndex2_20 !== -1 && startIndex2_20 < endIndex2_20) {
-							const trimmedContent2_20 = semantics.substring(startIndex2_20 + startText2_20.length, endIndex2_20);
-							const sem20 = document.getElementById("sem20");
-							sem20.innerHTML = trimmedContent2_20;
-						}
-
+						//QUESTIONS SECTION STARTS FROM HERE
 						const questions = document.getElementById("questions").innerHTML;
 						startText1_1 = "1.";
 						endText1_1 = "2.";
@@ -843,30 +785,85 @@
 							const que8 = document.getElementById("que8");
 							que8.innerHTML = trimmedContent1_8;
 						}
-
+						
+					const response2 = await fetch(apiUrl, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							_token: token,
+							prompt: 'suggest 6 detailed titles in ordered list based upon ' + majorprompt,
+							old_prompt: majoroldprompt
+						})
+					})
+					if (response2.ok) {
+						const data = await response2.json();
+						const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+						$('#old_prompt').val(data.old_prompt);
+						const sugtitles = String(parsedData);
+						startTextt_1 = "1.";
+						endTextt_1 = "2.";
+						const startIndext_1 = sugtitles.indexOf(startTextt_1);
+						const endIndext_1 = sugtitles.indexOf(endTextt_1);
+						if (startIndext_1 !== -1 && endIndext_1 !== -1 && startIndext_1 < endIndext_1) {
+							const trimmedContentt_1 = sugtitles.substring(startIndext_1 + startTextt_1.length, endIndext_1);
+							const tt1 = document.getElementById("tt1");
+							tt1.innerHTML = trimmedContentt_1;
+						}
+						startTextt_2 = "2.";
+						endTextt_2 = "3.";
+						const startIndext_2 = sugtitles.indexOf(startTextt_2);
+						const endIndext_2 = sugtitles.indexOf(endTextt_2);
+						if (startIndext_2 !== -1 && endIndext_2 !== -1 && startIndext_2 < endIndext_2) {
+							const trimmedContentt_2 = sugtitles.substring(startIndext_2 + startTextt_2.length, endIndext_2);
+							const tt2 = document.getElementById("tt2");
+							tt2.innerHTML = trimmedContentt_2;
+						}
+						startTextt_3 = "3.";
+						endTextt_3 = "4.";
+						const startIndext_3 = sugtitles.indexOf(startTextt_3);
+						const endIndext_3 = sugtitles.indexOf(endTextt_3);
+						if (startIndext_3 !== -1 && endIndext_3 !== -1 && startIndext_3 < endIndext_3) {
+							const trimmedContentt_3 = sugtitles.substring(startIndext_3 + startTextt_3.length, endIndext_3);
+							const tt3 = document.getElementById("tt3");
+							tt3.innerHTML = trimmedContentt_3;
+						}
+						startTextt_4 = "4.";
+						endTextt_4 = "5.";
+						const startIndext_4 = sugtitles.indexOf(startTextt_4);
+						const endIndext_4 = sugtitles.indexOf(endTextt_4);
+						if (startIndext_4 !== -1 && endIndext_4 !== -1 && startIndext_4 < endIndext_4) {
+							const trimmedContentt_4 = sugtitles.substring(startIndext_4 + startTextt_4.length, endIndext_4);
+							const tt4 = document.getElementById("tt4");
+							tt4.innerHTML = trimmedContentt_4;
+						}
+						startTextt_5 = "5.";
+						endTextt_5 = "6.";
+						const startIndext_5 = sugtitles.indexOf(startTextt_5);
+						const endIndext_5 = sugtitles.indexOf(endTextt_5);
+						if (startIndext_5 !== -1 && endIndext_5 !== -1 && startIndext_5 < endIndext_5) {
+							const trimmedContentt_5 = sugtitles.substring(startIndext_5 + startTextt_5.length, endIndext_5);
+							const tt5 = document.getElementById("tt5");
+							tt5.innerHTML = trimmedContentt_5;
+						}
 					}
-				} else {
-					const err = await response2.text()
-					$('#ai-loader').hide();
-					$('#ans_div').show();
-					$('#ai-loader1').hide();
-					$('#ans_div1').show();
-					$('#norspnse').hide();
-					$('#sww').show();
-					messageDiv.innerHTML = "Something went wrong"
-					alert(err)
-				}
-        } else {
-            const err = await response.text()
+					else {
+						const err = await response2.text();
+						messageDiv.innerHTML = "Something went wrong"
+						alert(err)
+					}
+					}
+		} 
+		else {
+			const err = await response.text()
 			$('#ai-loader').hide();
-            $('#ans_div').show();
-			$('#ai-loader1').hide();
-            $('#ans_div1').show();
+			$('#ans_div').show();
 			$('#norspnse').hide();
-            $('#sww').show();
-            messageDiv.innerHTML = "Something went wrong"
-            alert(err)
-        }
+			$('#sww').show();
+			messageDiv.innerHTML = "Something went wrong"
+			alert(err)
+		}
     }
 
     form.addEventListener('submit', handleSubmit_main)
@@ -1018,18 +1015,12 @@
         messageDiv.innerHTML = " "
 
         if (response1.ok) {
-			$('#ai-loader').hide();
-            $('#ans_div').show();
             const data = await response1.json();
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
         } else {
             const err = await response1.text()
-			$('#ai-loader').hide();
-            $('#ans_div').show();
-			$('#norspnse').hide();
-            $('#sww').show();
             messageDiv.innerHTML = "Something went wrong"
             alert(err)
         }
@@ -1049,21 +1040,21 @@
 	const edtrshd = document.getElementById("edtrshd");
 	const edtrint = document.getElementById("edtrint");
 	const edtrfct = document.getElementById("edtrfct");
-	const edtrjstwm = document.getElementById("edtrjstwm");
+	// const edtrjstwm = document.getElementById("edtrjstwm");
 	const edtrmyInput = document.getElementById("edtrmyInput");
 	const contentform = document.getElementById("contentform");
 	const mncontent = document.getElementById("mncontent");
 	const getmnval = document.getElementById("getmnval");
-	edtrjstwm.addEventListener("click", function(event) {
-		const innerText = edtrmyInput.value;
-		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
-		document.getElementById("mainrval").value =  totalmainvalue;
-		event.preventDefault();
-		document.getElementById("mnsubmit").click();
-	});
+	// edtrjstwm.addEventListener("click", function(event) {
+	// 	const innerText = edtrmyInput.value;
+	// 	mncontent.value = innerText;
+	// 	const edtrmainval = document.getElementById("edtrmainval").value;
+	// 	getmnval.value = edtrmainval;
+	// 	const totalmainvalue = mncontent.value + " of " + getmnval.value;
+	// 	document.getElementById("mainrval").value =  totalmainvalue;
+	// 	event.preventDefault();
+	// 	document.getElementById("mnsubmit").click();
+	// });
 	edtrpara.addEventListener("click", function(event) {
 		const innerText = edtrpara.innerText;
 		mncontent.value = innerText;
@@ -1213,7 +1204,6 @@
                 for (const key of Object.keys(this.list)) {
                     this.listvalues.push(this.list[key]);
                 }
-            // console.log("reached here: "+ JSON.stringify(this.list));
             const finallist = this.list;
                     let html = '';
                     for (let i = 0; i < finallist.length; i++) {
@@ -1237,30 +1227,6 @@
                         const numberEl = document.getElementById("resulted_score");
                         const number = parseInt(numberEl.textContent);
 						const takersltdscore = document.getElementById("takersltdscore");
-						// function fillBorderByNumber() {
-						// const element = document.getElementById('edtrscore');
-						// const numberSpan = document.getElementById("resulted_score");
-						// const number = parseFloat(numberSpan.innerText); // Get the number from the span
-
-						// const percentage = number > 100 ? 100 : (number < 0 ? 0 : number); // Clamp the number between 0 and 100
-						// const width = (percentage / 100) * (element.offsetWidth - 4); // Calculate the width based on the percentage
- 						// // element.style.background = `linear-gradient(to right, red ${width}px, #808080 ${width}px)`;
-						// 	element.style.position = `relative`;
-						// 	element.style.height = `100px`;
-						// 	element.style.border = `20px solid transparent`;
-						// 	element.style.borderImage = `linear-gradient(to right, #fa517e, #43d975 ${width}px, #504e58 ${width}px) 1`;
-						// 	element.style.borderRadius = `20px`;
-						// }
-
-						// // Example usage:
-						// fillBorderByNumber();
-
-                        // numberEl.style.borderRadius = "50%";
-                        // numberEl.style.padding = "12px";
-                        // numberEl.style.fontSize = "40px";
-                        // numberEl.style.textAlign = "center";
-                        // numberEl.style.marginBottom = "10px";
-
                         if (number <= 40) {
 							takersltdscore.setAttribute("stroke-dasharray", "368.0884539600077");
                         }
@@ -1302,5 +1268,125 @@
                     }
 			})
 	}
+</script>
+<script>
+	var selectedsemValues = [];
+	document.getElementById("sem1").addEventListener("click", handleClick);
+	document.getElementById("sem2").addEventListener("click", handleClick);
+	document.getElementById("sem3").addEventListener("click", handleClick);
+	document.getElementById("sem4").addEventListener("click", handleClick);
+	document.getElementById("sem5").addEventListener("click", handleClick);
+	document.getElementById("sem6").addEventListener("click", handleClick);
+	document.getElementById("sem7").addEventListener("click", handleClick);
+	document.getElementById("sem8").addEventListener("click", handleClick);
+	document.getElementById("sem9").addEventListener("click", handleClick);
+	document.getElementById("sem10").addEventListener("click", handleClick);
+
+	function handleClick(event) {
+		event.target.classList.toggle('semclicked');
+		var semvalue = event.target.innerText;
+		selectedsemValues.push(semvalue);
+		var semstring = selectedsemValues.join(', ');
+		const semtoform = document.getElementById("semmainrval");
+		semtoform.value = semstring;
+	}
+	const semform = document.querySelector('#semform');
+	// semform.addEventListener('submit', checkingsem);
+	// function checkingsem(){
+	// 	event.preventDefault();
+	// 	// const confirmingsem = document.getElementById("semmainrval").value;
+	// 	// alert("The final values are: "+ confirmingsem);
+	// }
+	const handleSubmit3 = async (e) => {
+        e.preventDefault()
+
+        const data = new FormData(semform)
+		const edtrmainval = document.getElementById("edtrmainval").value;
+        // user's chatstripe
+        // chatContainer1.innerHTML += chatStripe(false, data.get('semmainrval'))
+
+        // to clear the textarea input
+        semform.reset()
+
+        // bot's chatstripe
+        const uniqueId = generateUniqueId1()
+        chatContainer1.innerHTML += chatStripe(true, " ", uniqueId)
+
+        // to focus scroll to the bottom
+        chatContainer1.scrollTop = chatContainer1.scrollHeight;
+
+        // specific message div
+        const messageDiv = document.getElementById(uniqueId)
+
+        // messageDiv.innerHTML = "..."
+        loader1(messageDiv)
+        const response1 = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _token: token,
+                prompt: "write about " + edtrmainval + " having these keywords " +data.get('semmainrval'),
+                old_prompt: data.get('old_prompt')
+            })
+        })
+
+        clearInterval(loadInterval)
+        messageDiv.innerHTML = " "
+
+        if (response1.ok) {
+			// $('#ai-loader').hide();
+            // $('#ans_div').show();
+            const data = await response1.json();
+            const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+            $('#old_prompt').val(data.old_prompt)
+			typeText1(messageDiv, parsedData);
+        } else {
+            const err = await response1.text()
+			// $('#ai-loader').hide();
+            // $('#ans_div').show();
+			// $('#norspnse').hide();
+            // $('#sww').show();
+            messageDiv.innerHTML = "Something went wrong"
+            alert(err)
+        }
+    }
+
+    semform.addEventListener('submit', handleSubmit3)
+
+    semform.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+            handleSubmit3(e)
+        }
+    })
+</script>
+<script>
+	const tt1 = document.querySelector("#tt1");
+	const tt2 = document.querySelector("#tt2");
+	const tt3 = document.querySelector("#tt3");
+	const tt4 = document.querySelector("#tt4");
+	const tt5 = document.querySelector("#tt5");
+	const edtrmainval1 = document.getElementById("edtrmainval");
+	tt1.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt2.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt3.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt4.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt5.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
 </script>
 @endsection
