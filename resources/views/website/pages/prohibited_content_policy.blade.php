@@ -258,6 +258,37 @@
                         your
                         account at risk;</li>
                 </ul>
+                <br>
+                <h4>Reservation of Right</h4>
+                <p>We reserve the right to remove any content that violates any of Terms, Prohibited Content Guidelines,
+                    or applicable
+                    law. </p>
+                <br>
+
+                <h4>Request Deletion of your Content</h4>
+                <p>All users can ask to have their profiles and content deleted. Please do so by writing to us at <a
+                        href="mailto:support@easyseo.ai">support@easyseo.ai</a> with
+                    your registered email account.
+                </p>
+
+                <br>
+
+                <h4>Contacting Us</h4>
+                <p>If you have any questions about this Prohibited Content Policy, or if you would like to report a violation, please
+                    contact us at <a
+                        href="mailto:support@easyseo.ai">support@easyseo.ai</a>.
+                </p>
+
+                <br>
+
+                <p>Last updated on <strong> April 25, 2023</strong>.</p>
+
+                <br>
+                <br>
+
+                <p>Thank you,</p>
+                <br>
+                <p><strong>Team Easyseo.ai</strong></p>
             </div>
         </div>
     </div>
