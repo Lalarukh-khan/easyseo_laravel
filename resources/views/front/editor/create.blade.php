@@ -820,7 +820,7 @@
 						},
 						body: JSON.stringify({
 							_token: token,
-							prompt: 'suggest 11 detailed titles in ordered list not inside double qoutes based upon ' + majorprompt,
+							prompt: 'suggest 11 detailed titles in ordered list without having double qoutes based upon ' + majorprompt,
 							old_prompt: majoroldprompt
 						})
 					})
@@ -829,6 +829,7 @@
 						const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
 						$('#old_prompt').val(data.old_prompt);
 						const sugtitles = String(parsedData);
+						console.log("Home "+parsedData);
 						startTextt_1 = "1.";
 						endTextt_1 = "2.";
 						const startIndext_1 = sugtitles.indexOf(startTextt_1);
