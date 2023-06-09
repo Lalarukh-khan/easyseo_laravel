@@ -447,9 +447,9 @@
 @endsection
 @section('page-scripts')
 <script>
-    // $(window).on('load', function() {
-    //     $('#exampleModalCenter').modal('show');
-    // });
+    $(window).on('load', function() {
+        $('#exampleModalCenter').modal('show');
+    });
 	$(document).ready(function() {
 		$(document).on('click', function(event) {
 			if (!$(event.target).closest('.edtrinput-container').length) {
