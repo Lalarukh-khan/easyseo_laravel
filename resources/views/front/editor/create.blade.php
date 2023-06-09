@@ -447,9 +447,9 @@
 @endsection
 @section('page-scripts')
 <script>
-    $(window).on('load', function() {
-        $('#exampleModalCenter').modal('show');
-    });
+    // $(window).on('load', function() {
+    //     $('#exampleModalCenter').modal('show');
+    // });
 	$(document).ready(function() {
 		$(document).on('click', function(event) {
 			if (!$(event.target).closest('.edtrinput-container').length) {
@@ -1739,10 +1739,9 @@
 		var range = selection.getRangeAt(0);
 
 		if (!selection.isCollapsed) {
-			var commentSpan = document.createElement("span");
+			var commentSpan = document.createElement("div");
 			commentSpan.className = "edtrcomment";
 			commentSpan.textContent = selection.toString();
-
 			range.deleteContents();
 			range.insertNode(commentSpan);
 		}
