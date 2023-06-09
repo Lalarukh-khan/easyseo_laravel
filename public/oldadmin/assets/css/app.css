@@ -1270,6 +1270,39 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	margin-left: 2%;
 	/* background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) ; */
 }
+.cpyhvtext{
+	font-size: 12px;
+	padding: 12px 0px;
+	color: #fff;
+	background: rgb(96, 96, 96);
+	display: none;
+	z-index: 9999;
+	width: 10%;
+	position: fixed;
+	right: 35%;
+	/* margin-left: 65%;
+	margin-top: 5px; */
+	text-align: center;
+}
+#cpydone{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	padding: 10px 8px 15px 8px;
+	width: 300px;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 8px;
+	position: fixed;
+	top: 15%;
+	right: 5%;
+	z-index: 9999;
+	text-align: center;
+}
+.edtrhidden{
+	display: none;
+}
+#cpplace:hover + .cpyhvtext {
+    display: block;
+  }
 .edtrinputwithbutton {
 	position: relative;
 	display: inline-block;
@@ -1277,6 +1310,9 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25);
 	background: transparent;
 	border-radius: 25px;
+	background: #fff !important;
+	border-top: 2px solid #9200FF;
+	border-bottom: 2px solid #9200FF;
 }
   
 /* .edtrinputwithbutton input[type="text"] {
@@ -2532,7 +2568,9 @@ sup {
 	transition: all .3s ease-out;
 
 }
-
+.bold{
+	font-weight: bolder;
+}
 .sidebar-wrapper .metismenu a .parent-icon {
 
 	font-size: 24px;
@@ -6296,25 +6334,45 @@ ul.icons li span {
 	.nwcttempsearchbar2{
 		max-width: 80%;
 	}
+	.cpyhvtext{
+		top: 23%;
+		right: 42%;
+	}
 }
 @media only screen and (min-width: 1880px) and (max-width: 1980px) {
 	.nwcttempsearchbar2{
 		max-width: 78%;
+	}
+	.cpyhvtext{
+		top: 25%;
+		right: 40%;
 	}
 }
 @media only screen and (min-width: 1780px) and (max-width: 1880px) {
 	.nwcttempsearchbar2{
 		max-width: 76%;
 	}
+	.cpyhvtext{
+		top: 26%;
+		right: 39%;
+	}
 }
 @media only screen and (min-width: 1580px) and (max-width: 1780px) {
 	.nwcttempsearchbar2{
 		max-width: 73%;
 	}
+	.cpyhvtext{
+		top: 29%;
+		right: 39%;
+	}
 }
 @media only screen and (min-width: 1000px) and (max-width: 1580px) {
 	.nwcttempsearchbar2{
 		max-width: 70%;
+	}
+	.cpyhvtext{
+		top: 33%;
+		right: 35%;
 	}
 }
 /* @media only screen and (max-width: 1280px) and (min-width: 2280px) {

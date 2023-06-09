@@ -18,10 +18,10 @@
 					<input type="text" name="docname" placeholder="Untitled document" class="edtdocrname">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
-					<button class="edtrhd" id="h1place">H1</button>
-					<button class="edtrhd" id="h2place">H2</button>
+					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
+					<button class="edtrhd" id="h2place" onclick="h2placenew()">H2</button>
 					<button class="edtrhd" id="h3place">H3</button>
-					<button class="edtrhd" id="bplace">B</button>
+					<button class="edtrhd" id="bplace" onclick="bplace()">B</button>
 					<button class="edtrhd" id="iplace"><span class="bx bx-italic"></span></button>
 					<button class="edtrhd" id="ulplace"><span class="bx bx-list-ul"></span></button>
 					<button class="edtrhd" id="olplace"><span class="bx bx-list-ol"></span></button>
@@ -35,6 +35,7 @@
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
 					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
 				</div>
+				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
 			<br>
 			<!-- style="height:500px; min-height: 100%; display: flex;flex-direction: column;" -->
@@ -251,6 +252,9 @@
 		</div>
 	</div>
 </div>
+<div id="cpydone" class="edtrhidden">
+ <span class="bx bx-check" style="color: #fff; font-size: 20px !important;"></span> &nbsp; Copied to clipboard successfully
+</div>
 <div class="customdiv" id="ttcustomDiv">
 	<div class="row cstdvfd">
 		<div class="col-lg-10 col-md-10 col-sm-10 col-10">
@@ -443,9 +447,9 @@
 @endsection
 @section('page-scripts')
 <script>
-    $(window).on('load', function() {
-        $('#exampleModalCenter').modal('show');
-    });
+    // $(window).on('load', function() {
+    //     $('#exampleModalCenter').modal('show');
+    // });
 	$(document).ready(function() {
 		$(document).on('click', function(event) {
 			if (!$(event.target).closest('.edtrinput-container').length) {
@@ -1667,11 +1671,10 @@
 
 </script>
 <script>
-
-	var h1place = document.getElementById("h1place");
+	// var h1place = document.getElementById("h1place");
 	var h2place = document.getElementById("h2place");
 	var h3place = document.getElementById("h3place");
-	var bplace = document.getElementById("bplace");
+	// var bplace = document.getElementById("bplace");
 	var iplace = document.getElementById("iplace");
 	var ulplace = document.getElementById("ulplace");
 	var olplace = document.getElementById("olplace");
@@ -1679,26 +1682,40 @@
 	var aplace = document.getElementById("aplace");
 	var cpplace = document.getElementById("cpplace");
 	var contentEditable = document.getElementById("forscoring");
-	cpplace.addEventListener("click", function() {
-		var selection = window.getSelection();
-		var range = selection.getRangeAt(0);
+	var selectedText = "";
+	cpplace.addEventListener('mouseover', function() {
+		var hoverDiv = document.querySelector('.cpyhvtext');
+		hoverDiv.style.display = 'block';
+	});
 
-		if (!selection.isCollapsed) {
-			var copiedText = selection.toString();
-			
-			// Copy the selected text to the clipboard
-			navigator.clipboard.writeText(copiedText)
-			.then(function() {
-				// Success callback
-				range.deleteContents();
-				range.insertNode(document.createTextNode(copiedText));
-				alert("Text copied to clipboard!");
-			})
-			.catch(function(error) {
-				// Error callback
-				console.error("Failed to copy text: ", error);
-			});
+	cpplace.addEventListener('mouseout', function() {
+		var hoverDiv = document.querySelector('.cpyhvtext');
+		hoverDiv.style.display = 'none';
+	});
+	cpplace.addEventListener("click", function() {
+		var editableDiv = document.getElementById("forscoring");
+		var selectedRange = window.getSelection().getRangeAt(0);
+
+		if (!selectedRange.toString()) {
+			var range = document.createRange();
+			range.selectNodeContents(editableDiv);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
 		}
+
+		try {
+			document.execCommand("copy");
+			console.log("Text copied to clipboard.");
+		} catch (err) {
+			console.error("Unable to copy text: ", err);
+		}
+
+		window.getSelection().removeAllRanges();
+		var cpydone = document.getElementById("cpydone");
+		cpydone.classList.remove("edtrhidden");
+		setTimeout(function() {
+		cpydone.classList.add("edtrhidden");
+		}, 3000);
 	});
 	aplace.addEventListener("click", function() {
 		var selection = window.getSelection();
@@ -1729,14 +1746,34 @@
 			range.deleteContents();
 			range.insertNode(commentSpan);
 		}
-	});
-	h1place.addEventListener("click", function() {
-		var selection = window.getSelection();
-		var range = selection.getRangeAt(0);
-		var h1Element = document.createElement("h1");
-		h1Element.appendChild(range.extractContents());
-		range.insertNode(h1Element);
-	});
+	}); 
+    function h1place() {
+        var selection = window.getSelection();
+        selectedText = selection.toString(); // Store the selected text
+        var h1Element = document.createElement("h1");
+        h1Element.innerHTML = selectedText;
+        selection.getRangeAt(0).surroundContents(h1Element);
+    }
+    function h2placenew() {
+        if (selectedText !== "") {
+            var h1Elements = document.getElementsByTagName("h1");
+            for (var i = 0; i < h1Elements.length; i++) {
+                if (h1Elements[i].innerHTML === selectedText) {
+                    var h2Element = document.createElement("h2");
+                    h2Element.innerHTML = selectedText;
+                    h1Elements[i].parentNode.replaceChild(h2Element, h1Elements[i]);
+                    break;
+                }
+            }
+        }
+    }
+	// h1place.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var h1Element = document.createElement("h1");
+	// 	h1Element.appendChild(range.extractContents());
+	// 	range.insertNode(h1Element);
+	// });
 	h2place.addEventListener("click", function() {
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
@@ -1751,13 +1788,29 @@
 		h3Element.appendChild(range.extractContents());
 		range.insertNode(h3Element);
 	});
-	bplace.addEventListener("click", function() {
-		var selection = window.getSelection();
-		var range = selection.getRangeAt(0);
-		var boldElement = document.createElement("b");
-		boldElement.appendChild(range.extractContents());
-		range.insertNode(boldElement);
-	});
+	function bplace() {
+            var selection = window.getSelection();
+            var range = selection.getRangeAt(0);
+            var boldElement = document.createElement("span");
+
+            if (range.commonAncestorContainer.parentNode.classList.contains("bold")) {
+                // Remove bold if already applied
+                range.commonAncestorContainer.parentNode.classList.remove("bold");
+            } else {
+                // Apply bold if not already applied
+                boldElement.innerHTML = range.extractContents().textContent;
+                boldElement.classList.add("bold");
+                range.insertNode(boldElement);
+            }
+			selection.removeAllRanges();
+        }
+	// bplace.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var boldElement = document.createElement("b");
+	// 	boldElement.appendChild(range.extractContents());
+	// 	range.insertNode(boldElement);
+	// });
 	iplace.addEventListener("click", function() {
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
