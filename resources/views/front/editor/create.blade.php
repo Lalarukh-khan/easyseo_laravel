@@ -4,23 +4,39 @@
 	body{
 		overflow-y: scroll !important;
 	}
+	/* h1 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	}
+	h2 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	}
+	h3 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	} */
 </style>
 @endsection
 @section('content')
 @include('components.flash-message')
 
 <div class="container" style="max-width: inherit !important;">
-    <div class="row">
+    <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
-					<i class="bx bx-arrow-back" id="edtrback"></i>
+					<a href="{{route('user.editor.all')}}"><i class="bx bx-arrow-back" id="edtrback"></i></a>
 					<input type="text" name="docname" placeholder="Untitled document" class="edtdocrname">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
 					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
 					<button class="edtrhd" id="h2place" onclick="h2placenew()">H2</button>
 					<button class="edtrhd" id="h3place">H3</button>
+					<button class="edtrhd" id="pplace">P</button>
 					<button class="edtrhd" id="bplace" onclick="bplace()">B</button>
 					<button class="edtrhd" id="iplace"><span class="bx bx-italic"></span></button>
 					<button class="edtrhd" id="ulplace"><span class="bx bx-list-ul"></span></button>
@@ -28,9 +44,6 @@
 					<button class="edtrhd" id="cplace"><span class="bx bx-comment"></span></button>
 					<button class="edtrhd" id="aplace"><span class="bx bx-link-alt"></span></button>
 					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
-					<!-- <div style="text-align: right; display: inline-block;">
-						<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
-					</div> -->
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
 					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
@@ -447,9 +460,9 @@
 @endsection
 @section('page-scripts')
 <script>
-    $(window).on('load', function() {
-        $('#exampleModalCenter').modal('show');
-    });
+    // $(window).on('load', function() {
+    //     $('#exampleModalCenter').modal('show');
+    // });
 	$(document).ready(function() {
 		$(document).on('click', function(event) {
 			if (!$(event.target).closest('.edtrinput-container').length) {
@@ -525,7 +538,7 @@
 
             // If the loading indicator has reached three dots, reset it
             if (element.textContent === '....') {
-                element.textContent = '';
+                element.textContent = '.';
             }
         }, 300);
     }
@@ -1019,8 +1032,8 @@
             element.textContent += '.';
 
             // If the loading indicator has reached three dots, reset it
-            if (element.textContent === '....') {
-                element.textContent = '';
+			if (element.textContent === '....') {
+                element.textContent = '.';
             }
         }, 300);
     }
@@ -1672,7 +1685,7 @@
 </script>
 <script>
 	// var h1place = document.getElementById("h1place");
-	var h2place = document.getElementById("h2place");
+	// var h2place = document.getElementById("h2place");
 	var h3place = document.getElementById("h3place");
 	// var bplace = document.getElementById("bplace");
 	var iplace = document.getElementById("iplace");
@@ -1687,7 +1700,6 @@
 		var hoverDiv = document.querySelector('.cpyhvtext');
 		hoverDiv.style.display = 'block';
 	});
-
 	cpplace.addEventListener('mouseout', function() {
 		var hoverDiv = document.querySelector('.cpyhvtext');
 		hoverDiv.style.display = 'none';
@@ -1747,25 +1759,93 @@
 		}
 	}); 
     function h1place() {
-        var selection = window.getSelection();
-        selectedText = selection.toString(); // Store the selected text
-        var h1Element = document.createElement("h1");
-        h1Element.innerHTML = selectedText;
-        selection.getRangeAt(0).surroundContents(h1Element);
+        // var selection = window.getSelection();
+        // selectedText = selection.toString(); // Store the selected text
+        // var h1Element = document.createElement("h1");
+		// // h1Element.classList.add("edtrh1");
+        // h1Element.innerHTML = selectedText;
+        // selection.getRangeAt(0).surroundContents(h1Element);
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h1Element = document.createElement("span");
+			h1Element.className = "edtrh1";
+			h1Element.textContent = selectedText;
+
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h1Element);
+			}
+		}
+		selection.removeAllRanges();
     }
     function h2placenew() {
-        if (selectedText !== "") {
-            var h1Elements = document.getElementsByTagName("h1");
-            for (var i = 0; i < h1Elements.length; i++) {
-                if (h1Elements[i].innerHTML === selectedText) {
-                    var h2Element = document.createElement("h2");
-                    h2Element.innerHTML = selectedText;
-                    h1Elements[i].parentNode.replaceChild(h2Element, h1Elements[i]);
-                    break;
-                }
-            }
-        }
+        // if (selectedText !== "") {
+        //     var h1Elements = document.getElementsByTagName("h1");
+        //     for (var i = 0; i < h1Elements.length; i++) {
+        //         if (h1Elements[i].innerHTML === selectedText) {
+        //             var h2Element = document.createElement("h2");
+        //             h2Element.innerHTML = selectedText;
+        //             h1Elements[i].parentNode.replaceChild(h2Element, h1Elements[i]);
+        //             break;
+        //         }
+        //     }
+        // }
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h2Element = document.createElement("span");
+			h2Element.className = "edtrh2";
+			h2Element.textContent = selectedText;
+
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh2")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h2Element);
+			}
+		}
+		selection.removeAllRanges();
     }
+	pplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		if (selectedText) {
+        // var selectionRange = getSelectionRange();
+        var selectedNode = range.commonAncestorContainer;
+
+        // Traverse the parent nodes of the selected text to check if any of them match the desired tag
+        while (selectedNode) {
+          if (selectedNode.tagName === 'H1') {
+			var parent = selectedNode.parentNode;
+            parent.replaceChild(selectedNode.firstChild, selectedNode);
+            break;
+          } else if (selectedNode.tagName === 'H2') {
+			var parent = selectedNode.parentNode;
+            parent.replaceChild(selectedNode.firstChild, selectedNode);
+            break;
+          }
+		  else if (selectedNode.tagName === 'H3') {
+			var parent = selectedNode.parentNode;
+            parent.replaceChild(selectedNode.firstChild, selectedNode);
+            break;
+          }
+
+          selectedNode = selectedNode.parentNode;
+        }
+      }
+		// var pElement = document.createElement("p");
+		if (range.commonAncestorContainer.parentNode == "h1"){
+			range.commonAncestorContainer.parentNode.remove("h1");
+		}
+		// pElement.appendChild(range.extractContents());
+		// range.insertNode(pElement);
+		selection.removeAllRanges();
+	});
 	// h1place.addEventListener("click", function() {
 	// 	var selection = window.getSelection();
 	// 	var range = selection.getRangeAt(0);
@@ -1773,19 +1853,36 @@
 	// 	h1Element.appendChild(range.extractContents());
 	// 	range.insertNode(h1Element);
 	// });
-	h2place.addEventListener("click", function() {
-		var selection = window.getSelection();
-		var range = selection.getRangeAt(0);
-		var h2Element = document.createElement("h2");
-		h2Element.appendChild(range.extractContents());
-		range.insertNode(h2Element);
-	});
+	// h2place.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var h2Element = document.createElement("h2");
+	// 	h2Element.appendChild(range.extractContents());
+	// 	range.insertNode(h2Element);
+	// });
 	h3place.addEventListener("click", function() {
+		// var selection = window.getSelection();
+		// var range = selection.getRangeAt(0);
+		// var h3Element = document.createElement("h3");
+		// h3Element.appendChild(range.extractContents());
+		// range.insertNode(h3Element);
+		// selection.removeAllRanges();
+
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
-		var h3Element = document.createElement("h3");
-		h3Element.appendChild(range.extractContents());
-		range.insertNode(h3Element);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h3Element = document.createElement("span");
+			h3Element.className = "edtrh3";
+			h3Element.textContent = selectedText;
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh3")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h3Element);
+			}
+		}
+		selection.removeAllRanges();
 	});
 	function bplace() {
             var selection = window.getSelection();
@@ -1802,7 +1899,7 @@
                 range.insertNode(boldElement);
             }
 			selection.removeAllRanges();
-        }
+    }
 	// bplace.addEventListener("click", function() {
 	// 	var selection = window.getSelection();
 	// 	var range = selection.getRangeAt(0);
@@ -1811,17 +1908,33 @@
 	// 	range.insertNode(boldElement);
 	// });
 	iplace.addEventListener("click", function() {
+		// var selection = window.getSelection();
+		// var range = selection.getRangeAt(0);
+		// var boldElement = document.createElement("i");
+		// boldElement.appendChild(range.extractContents());
+		// range.insertNode(boldElement);
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
-		var boldElement = document.createElement("i");
-		boldElement.appendChild(range.extractContents());
-		range.insertNode(boldElement);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var iElement = document.createElement("span");
+			iElement.className = "edtri";
+			iElement.textContent = selectedText;
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtri")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(iElement);
+			}
+		}
+		selection.removeAllRanges();
 	});
 	ulplace.addEventListener("click", function() {
 		var selectedText = window.getSelection().toString().trim();
 		
 		if (selectedText !== "") {
 			var lines = selectedText.split("\n");
+			var outerelemt = "<span>";
 			var listHtml = "<ul>";
 			
 			lines.forEach(function(line) {
@@ -1829,6 +1942,7 @@
 			});
 			
 			listHtml += "</ul>";
+			outerelemt += "</span>";
 			
 			// Replace selected text with the list
 			document.execCommand("insertHTML", false, listHtml);
@@ -1839,6 +1953,7 @@
 		
 		if (selectedText !== "") {
 			var lines = selectedText.split("\n");
+			var outerelemt = "<span>";
 			var listHtml = "<ol>";
 			
 			lines.forEach(function(line) {
@@ -1846,6 +1961,7 @@
 			});
 			
 			listHtml += "</ol>";
+			outerelemt += "</span>";
 			
 			// Replace selected text with the list
 			document.execCommand("insertHTML", false, listHtml);

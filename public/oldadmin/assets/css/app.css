@@ -1083,6 +1083,42 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	border-radius: 50%;
 	cursor: pointer;
 }
+.edtrh1 {
+	display: inline;
+	font-size: 2.5rem;
+	margin: 0;
+	padding: 0;
+}
+.edtrh2 {
+	display: inline;
+	font-size: 1.8rem;
+	margin: 0;
+	padding: 0;
+}
+.edtrh3 {
+	display: inline;
+	font-size: 1.5rem;
+	margin: 0;
+	padding: 0;
+}
+.edtri{
+	/* display: inline; */
+	font-style: italic;
+}
+/* h2 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+h3 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+} */
+#edtrback:hover{
+	color: #fff;
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+}
 .brdrleft{
 	border-right: 1px solid rgb(175, 175, 175);
 	border-bottom: 1px solid rgb(175, 175, 175);
@@ -1223,6 +1259,9 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	padding-top: 0px !important;
 	padding-left: 10px !important;
 	padding-right: 11px !important;
+}
+.edtrwholerow{
+	margin-bottom: 50px;
 }
 .edtrcomment{
 	background-color: rgb(240, 238, 238);
