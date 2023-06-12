@@ -40,7 +40,7 @@
                                 <img class="pad-bot-20 blkchnimg nwwbblkchnimg" alt="Icon" src="{{ check_file($blog->image) }}">
                                 <p class="col-white pad-bot-20 p-l-20 p-r-20 blkchnpara"  id="prcngwht1b"><span class="blkchn">{{ $blog->category->name }} </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
                                 <h4 class="col-white p-l-20 p-r-20 font-size-20"  id="prcngwht1c"> {{ $blog->title }} </h4>
-                                <p class="pad-bot-15 font-size-15 font-weight-lighter col-white p-l-20 p-r-20 lrm"  id="prcngwht1d">{{Str::limit($blog->description,150,$end='...')}} </p>
+                                <p class="pad-bot-15 font-size-15 font-weight-lighter col-white p-l-20 p-r-20 lrm"  id="prcngwht1d">{{Str::limit(strip_tags($blog->description,150))}}</p>
                                 <a class= "hdrbtn hdrbtns m-b-20 m-l-25"  href="{{ route('web.blog.details',$blog->slug) }}" id="writewht1c"> Read more > </a>
                             </div>
                         </div>

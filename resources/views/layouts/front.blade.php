@@ -19,7 +19,7 @@
 
     <!--plugins-->
     <link href="{{asset('oldadmin')}}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="{{asset('oldadmin')}}/assets/plugins/perfec t-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="{{asset('oldadmin')}}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="{{asset('oldadmin')}}/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
     <link href="{{asset('oldadmin')}}/assets/css/style.css" rel="stylesheet" />
     <!-- loader-->
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="{{asset('oldadmin')}}/assets/css/app.css" />
     <link rel="stylesheet" href="{{asset('oldadmin')}}/assets/css/dark-sidebar.css" />
 	<link rel="stylesheet" href="{{asset('oldadmin')}}/assets/css/dark-theme.css" />
+    <link rel="stylesheet" href="{{asset('admin_assets')}}/assets/vendor/libs/spinkit/spinkit.css" />
     <link href="{{ asset('oldadmin') }}/assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     
     <!-- Outer Bootstrap For modal in Help Desk -->
@@ -203,6 +204,8 @@
             }, 1000);
         });
     </script>
+   <!-- Tidio Installation -->
+   <script src="//code.tidio.co/c0tygrqeesm82zhrczpvh9pem48rnget.js"></script>
     @yield('page-scripts')
 </body>
 <!-- Google Tag Manager (noscript) -->

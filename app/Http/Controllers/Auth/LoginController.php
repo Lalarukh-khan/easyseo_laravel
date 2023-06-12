@@ -62,8 +62,8 @@ class LoginController extends Controller
         // if (session()->has('offset')) {
         //     session()->forget('offset');
         // }
-
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        $remember_me  = ( !empty( $request->remember_me ) )? TRUE : FALSE;
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $remember_me)) {
             // if (!empty($request->time_zone) || $request->time_zone == "0") {
             //     $user = User::find(auth('web')->id());
             //     $user->time_zone = $time_zone;

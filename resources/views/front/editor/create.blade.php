@@ -134,7 +134,21 @@
 			<div class="card" style="min-height: 500px;">
 				<div class="card-body">
 					<div id="ai-loader" style="text-align:center;display:none">
-						<img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;">
+						{{-- <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;"> --}}
+						<div class="sk-circle-fade sk-primary" style="text-align: center; margin: 50% auto 0% auto;">
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+						</div>
 					</div>
 					<div id="ans_div" style="display:none">
 						<h3 id="sww" style="display: none;">Something went wrong!</h3>

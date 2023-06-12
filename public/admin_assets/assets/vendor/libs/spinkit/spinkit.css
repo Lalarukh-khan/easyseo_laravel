@@ -691,7 +691,8 @@
   display: block;
   width: 15%;
   height: 15%;
-  background-color: var(--sk-color);
+  /* background-color: var(--sk-color); */
+  background-color: #696cff;
   border-radius: 100%;
   -webkit-animation: sk-circle-fade 1.2s infinite ease-in-out both;
           animation: sk-circle-fade 1.2s infinite ease-in-out both;

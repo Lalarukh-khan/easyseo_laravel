@@ -2443,6 +2443,7 @@ sup {
 	position: absolute;
 	/* top: 300px !important; */
 	bottom: -20px !important;
+	width: 100%;
 }
 .nwtempcatimg{
 	width: 80px;

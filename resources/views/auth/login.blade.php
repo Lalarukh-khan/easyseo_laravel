@@ -31,7 +31,7 @@
                 @enderror
                 @error('password')
                 <span class="text-danger">{{ $message }}</span>
-                @enderror
+                @enderror 
 
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="mb-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                    <input class="form-check-input" type="checkbox" id="remember-me" name="remember_me"/>
                     <label class="form-check-label" for="remember-me"> Remember Me </label>
                   </div>
                 </div>

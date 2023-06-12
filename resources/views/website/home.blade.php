@@ -1403,7 +1403,7 @@
                                                                 $blog->title }} </h4>
                                                             <p
                                                                 class="pad-bot-15 font-size-15 font-weight-lighter col-white p-l-20 p-r-20 lrm">
-                                                                {{Str::limit($blog->description,150,$end='...')}} </p>
+                                                                {{Str::limit(strip_tags($blog->description,150))}} </p>
                                                             <a class="hdrbtn hdrbtns m-b-20 m-l-25"
                                                                 href="{{ route('web.blog.details',$blog->slug) }}"> Read
                                                                 more > </a>
