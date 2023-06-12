@@ -75,22 +75,24 @@
 							<p class="edtrrws" id="takeblgedtraudinp">Blog post</p>
 						</div>
 					</div>
-					<div class="edtrmn">
-						<div style="text-align: right;">
-						 	<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
+					<!-- <div id="wholecntntscore" contenteditable="true"> -->
+						<div class="edtrmn">
+							<div style="text-align: right;">
+								<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
+							</div>
+								<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
+								<br>
+								<br>
+							<!-- <div style="text-align: right;">
+								<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
+							</div> -->
 						</div>
-							<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
-							<br>
-							<br>
-						<!-- <div style="text-align: right;">
-							<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
-						</div> -->
-					</div>
-					<div id="forscoring" contenteditable="true" style="outline: none;">
-						<div id="resultdata" style="display: none !important;"></div>
-						<div class="edtrval" id="extrcttngrsltdata"></div>
-						<div id="quesdata"></div>
-					</div>
+						<div id="forscoring" contenteditable="true" style="outline: none;">
+							<div id="resultdata" style="display: none !important;"></div>
+							<div class="edtrval" id="extrcttngrsltdata"></div>
+							<div id="quesdata"></div>
+						</div>
+					<!-- </div> -->
 				</div>
 				<div class="edtrbtrwf">
 					<div class="row">
@@ -460,9 +462,9 @@
 @endsection
 @section('page-scripts')
 <script>
-    // $(window).on('load', function() {
-    //     $('#exampleModalCenter').modal('show');
-    // });
+    $(window).on('load', function() {
+        $('#exampleModalCenter').modal('show');
+    });
 	$(document).ready(function() {
 		$(document).on('click', function(event) {
 			if (!$(event.target).closest('.edtrinput-container').length) {
@@ -470,14 +472,32 @@
 			}
 		});
 	});
+
+	var contentEditable = document.getElementById("forscoring");
+	contentEditable.addEventListener('input', function() {
+		var ceinner = contentEditable.innerText;
+		if(isContentEmpty(contentEditable)){
+			console.log("No content ");
+			document.getElementById("resulted_score").innerHTML = "0";
+			document.getElementById("takersltdscore").setAttribute("stroke-dasharray", "490.0884539600077");
+			document.getElementById("takersltdscore").setAttribute("stroke-dashoffset", "490.49466924980385");
+		}
+		else {
+			console.log("THis is content "+ ceinner);
+			getSeoScore(ceinner);
+		}
+    });
+	function isContentEmpty(element) {
+      const text = element.textContent.trim();
+      return text === '';
+    }
+
 	var edtrmainval = document.getElementById("edtrmainval");
 	var customDiv = document.getElementById("ttcustomDiv");
-
 	edtrmainval.addEventListener("click", function() {
 	ttcustomDiv.style.display = "block";
 	ttcustomDiv.style.zIndex = "9999";
 	});
-
 	// document.addEventListener("click", function(event) {
 	// if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
 	// 	ttcustomDiv.style.display = "none";
@@ -846,7 +866,6 @@
 						const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
 						$('#old_prompt').val(data.old_prompt);
 						const sugtitles = String(parsedData);
-						console.log("Home "+parsedData);
 						startTextt_1 = "1.";
 						endTextt_1 = "2.";
 						const startIndext_1 = sugtitles.indexOf(startTextt_1);
@@ -1109,6 +1128,9 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
             messageDiv.innerHTML = "Something went wrong"
@@ -1246,6 +1268,9 @@
             // const div = document.getElementById(newval);
             // const content = String(parsedData);
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1319,7 +1344,7 @@
 
 							// Calculate meta tags score
 							let metaTagsScore = 1; 
-							let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
+							let seoScore = (keywordDensity * 8) + (metaTagsScore * 2) + (automated_readability_index * 2) + (smog_readability_index * 2);
 							let roundedscore = Math.round(seoScore);
 							document.getElementById("resulted_score").innerHTML = roundedscore;
 							}
@@ -1330,6 +1355,11 @@
 						if (number == 0) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+                        }
+                        else if (number < 0) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+							document.getElementById("resulted_score").innerHTML = "0";
                         }
                         else if (number > 0 && number <= 5) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
@@ -1405,6 +1435,15 @@
                         }
                         else if (number > 90 && number <= 95) {
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number == 100) {
+							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number > 100) {
+							document.getElementById("resulted_score").innerHTML = "100";
+							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else {
@@ -1489,6 +1528,9 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1694,7 +1736,6 @@
 	var cplace = document.getElementById("cplace");
 	var aplace = document.getElementById("aplace");
 	var cpplace = document.getElementById("cpplace");
-	var contentEditable = document.getElementById("forscoring");
 	var selectedText = "";
 	cpplace.addEventListener('mouseover', function() {
 		var hoverDiv = document.querySelector('.cpyhvtext');
