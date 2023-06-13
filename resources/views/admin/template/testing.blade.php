@@ -96,10 +96,10 @@
                                 </i>
                                 @endif
                             </p>
-                            <p class="float-right update_length_{{$k}}">0/800</p>
+                            {{-- <p class="float-right update_length_{{$k}}">0/800</p> --}}
                         </div>
                         <input type="text" class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" value="{{$item->placeholder}}" maxlength="80" required>
+                            name="input[text{{++$k}}]" value="{{$item->placeholder}}"  required>
                     </div>
                     @endif
                     @if ($item->type == 'medium_text')
@@ -112,10 +112,10 @@
                                 </i>
                                 @endif
                             </p>
-                            <p class="float-right update_length_{{$k}}">0/140</p>
+                            {{-- <p class="float-right update_length_{{$k}}">0/140</p> --}}
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" id="" rows="5" maxlength="140"
+                            name="input[text{{++$k}}]" id="" rows="5"
                             required>{{$item->placeholder}} </textarea>
                     </div>
                     @endif
@@ -129,10 +129,10 @@
                                 </i>
                                 @endif
                             </p>
-                            <p class="float-right update_length_{{$k}}">0/800</p>
+                            {{-- <p class="float-right update_length_{{$k}}">0/800</p> --}}
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" id="" rows="10" maxlength="800"
+                            name="input[text{{++$k}}]" id="" rows="10" 
                             required>{{$item->placeholder}} </textarea>
                     </div>
                     @endif
@@ -146,7 +146,7 @@
                                 </i>
                                 @endif
                             </p>
-                            <p class="float-right update_length_{{$k}}">0/2</p>
+                            {{-- <p class="float-right update_length_{{$k}}">0/2</p> --}}
                         </div>
                         <input type="number" class="form-control input_length_validate" data-key=".update_length_{{$k}}"
                             name="input[text{{++$k}}]" value="{{$item->placeholder}}" maxlength="2" required>

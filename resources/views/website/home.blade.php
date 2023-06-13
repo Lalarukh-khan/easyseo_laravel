@@ -813,7 +813,7 @@
                                                             It has revolutionized the way we create content, and has
                                                             saved us so much time and effort. Highly recommended! </p>
                                                         <h4 id="bxswht1b">
-                                                            <img src="{{asset('front')}}/images/avatar-1.png">
+                                                            <img src="{{asset('front')}}/images/avatar-new-1.png">
                                                             Andrew Kozic 1
                                                             <span id="bxswht1c"> CEO and Founder at Perfomance </span>
                                                         </h4>
@@ -838,7 +838,7 @@
                                                             produces high-quality content with ease. I can't imagine
                                                             going back to the old ways.</p>
                                                         <h4 id="bxswht2b">
-                                                            <img src="{{asset('front')}}/images/avatar-2.png">
+                                                            <img src="{{asset('front')}}/images/avatar-new-2.png">
                                                             Brian Hartman 2
                                                             <span id="bxswht2c"> CEO and Founder at Perfomance </span>
                                                         </h4>
@@ -863,7 +863,7 @@
                                                             to focus on the bigger picture of our marketing strategy.
                                                             Our team is loving it! </p>
                                                         <h4 id="bxswht3b">
-                                                            <img src="{{asset('front')}}/images/avatar-3.png">
+                                                            <img src="{{asset('front')}}/images/avatar-new-3.png">
                                                             Arthur Isaksson 3
                                                             <span id="bxswht3c"> CEO and Founder at Perfomance </span>
                                                         </h4>
@@ -887,7 +887,7 @@
                                                             It has revolutionized the way we create content, and has
                                                             saved us so much time and effort. Highly recommended! </p>
                                                         <h4 id="bxswht4b">
-                                                            <img src="{{asset('front')}}/images/avatar-1.png">
+                                                            <img src="{{asset('front')}}/images/avatar-new-4.png">
                                                             Andrew Kozic 4
                                                             <span id="bxswht4c"> CEO and Founder at Perfomance </span>
                                                         </h4>
