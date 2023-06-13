@@ -5,14 +5,16 @@
 <link href="{{ asset('admin_assets') }}/assets/plugins/datatable/css/buttons.bootstrap4.min.css" rel="stylesheet"
     type="text/css">
 <style>
-
+    .dataTables_empty{
+        text-align: left !important;
+    }
 </style>
 @endsection
 @section('content')
 @include('components.flash-message')
 
 <div class="container">
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-12 col-12">
 			<h2>Legacy project - English (uk)</h2>
 		</div>
@@ -21,7 +23,10 @@
 			<a href="" class="nwwbedtrtpbtn nwwbedtrtpbtnmrrt"><i class="bx bx-share-alt"></i> Add Keywords</a>
 			<a href="{{ route('user.editor.create') }}" class="nwwbedtrtpbtn"><i class="bx bx-file"></i> Create Documents</a>
 		</div>
-	</div>
+	</div> -->
+</div>
+<div style="text-align:right;">
+    <a href="{{ route('user.editor.create') }}" class="nwwbedtrtpbtn"><i class="bx bx-file"></i> Create Documents</a>
 </div>
 <br>
 <br>
