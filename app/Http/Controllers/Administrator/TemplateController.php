@@ -369,6 +369,12 @@ class TemplateController extends Controller
         if($setting->model == 'gpt-3.5-turbo'){
             $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
         }
+        elseif($setting->model == 'gpt-3.5-turbo-0613'){
+            $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
+        }
+        elseif($setting->model == 'gpt-4-0613'){
+            $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
+        }
         else{
             $gpt_ans = $this->gpt3_ans($setting,$command,base64_decode($key->api_key));
         }
@@ -416,7 +422,7 @@ class TemplateController extends Controller
         );
         $curl = curl_init();
         $post_arry = array(
-            'model'  => 'gpt-3.5-turbo',
+            'model'  => $setting->model,
             'messages'  => $prompt,
             'temperature'  =>   (int)$setting->temperature,
             'max_tokens'  => (int)$setting->token_value,

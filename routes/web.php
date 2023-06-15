@@ -243,6 +243,7 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
     });
 
     Route::get('/current-plain','DashboardController@subscription')->name('subscription');
+    Route::get('/cencel-plain/{id}','DashboardController@concelSubscription')->name('cencel-subscription');
 
     Route::get('/help','HelpController@index')->name('help');
     

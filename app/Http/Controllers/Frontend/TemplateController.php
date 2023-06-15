@@ -148,6 +148,8 @@ Write your answer in '.$request->language.' language';
 
         $used_words = session()->get('gpt_words');
 
+        $remaining_words = $userPackageWords - $used_words;
+
         if (strtotime($currentDate) > $end_date && $used_words >= $userPackageWords) {
             return response()->json(['error' => __('error_msg.word_limit_reached')]);
         }elseif (strtotime($currentDate) > $end_date) {
@@ -168,13 +170,25 @@ Write your answer in '.$request->language.' language';
 
         if($setting->model == 'gpt-3.5-turbo'){
             $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
-        }else{
+        }elseif($setting->model == 'gpt-3.5-turbo-0613'){
+            $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
+        }
+        elseif($setting->model == 'gpt-4-0613'){
+            $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
+        }
+        else{
             $gpt_ans = $this->gpt3_ans($setting,$command,base64_decode($key->api_key));
         }
         // $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
 // dd(trim($gpt_ans['message']));
 
         $gpt_answer = removeFirstTwoBrTags($gpt_ans['answer']);
+        if (str_word_count($gpt_answer) >= $remaining_words) {
+            $gpt_answer = limitWords($gpt_answer,$remaining_words);
+            $total_words = str_word_count($gpt_answer);
+        }else{
+            $total_words = str_word_count($gpt_answer);
+        }
 
 
         $history = new GptHistory();
@@ -196,7 +210,7 @@ Write your answer in '.$request->language.' language';
             $history->prompt_tokens = $gpt_ans['prompt_tokens'];
             $history->completion_tokens = $gpt_ans['completion_tokens'];
             $history->total_tokens = $gpt_ans['total_tokens'];
-            $history->total_words = str_word_count($gpt_ans['answer']);
+            $history->total_words = $total_words;
             $history->save();
             $msg = [
                 'status' => 200,
@@ -241,7 +255,7 @@ Write your answer in '.$request->language.' language';
         );
         $curl = curl_init();
         $post_arry = array(
-            'model'  => 'gpt-3.5-turbo',
+            'model'  => $setting->model,
             'messages'  => $prompt,
             'temperature'  =>   (int)$setting->temperature,
             'max_tokens'  => (int)$setting->token_value,

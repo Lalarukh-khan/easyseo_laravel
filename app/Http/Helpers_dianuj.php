@@ -234,11 +234,12 @@ if (!function_exists('convertToHoursMins')) {
 }
 
 if (!function_exists('ads_check_counter')) {
-    function ads_check_counter($item,$match) {
+    function ads_check_counter($item, $match)
+    {
         $counter = 0;
         foreach ($item as $key => $value) {
             if ($match == $value) {
-                $counter = $counter+1;
+                $counter = $counter + 1;
             }
         }
         return $counter;
@@ -279,7 +280,8 @@ if (!function_exists('limit_text')) {
     }
 }
 if (!function_exists('removeFirstTwoBrTags')) {
-    function removeFirstTwoBrTags($text) {
+    function removeFirstTwoBrTags($text)
+    {
         $pattern = '/<br\s*\/?>/i'; // Regular expression pattern to match <br> tags (case-insensitive)
         $count = 0; // Counter to keep track of removed tags
         // Callback function to remove the first two <br> tags
@@ -288,5 +290,30 @@ if (!function_exists('removeFirstTwoBrTags')) {
             return ($count <= 2) ? '' : $matches[0]; // Remove the tag if it's one of the first two, otherwise keep it
         }, $text);
         return $cleanText;
+    }
+}
+
+if (!function_exists('limitWords')) {
+    function limitWords($string, $limit)
+    {
+        // Remove extra whitespaces
+        $string = trim($string);
+        $string = preg_replace('/\s+/', ' ', $string);
+
+        // Split the string into an array of words
+        $words = explode(' ', $string);
+
+        // Check if the word limit is greater than the total number of words
+        if ($limit >= count($words)) {
+            return $string; // Return the original string
+        }
+
+        // Slice the array to the specified word limit
+        $words = array_slice($words, 0, $limit);
+
+        // Join the words back into a string
+        $limitedString = implode(' ', $words);
+
+        return $limitedString;
     }
 }

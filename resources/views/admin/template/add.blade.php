@@ -285,6 +285,12 @@
                             <option value="text-davinci-003" {{isset($edit) &&
                                 !empty($edit->setting) && $edit->setting->model == 'text-davinci-003' ? 'selected' :
                                 null }}>text-davinci-003</option>
+                            <option value="gpt-3.5-turbo-0613" {{isset($edit) &&
+                                    !empty($edit->setting) && $edit->setting->model == 'gpt-3.5-turbo-0613' ? 'selected' :
+                                    null }}>gpt-3.5-turbo-0613</option>
+                            <option value="gpt-4-0613" {{isset($edit) &&
+                                        !empty($edit->setting) && $edit->setting->model == 'gpt-4-0613' ? 'selected' :
+                                        null }}>gpt-4-0613</option>
                         </select>
                     </div>
                     <div class="form-group  mb-2 mt-3">

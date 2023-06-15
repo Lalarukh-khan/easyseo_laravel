@@ -102,7 +102,7 @@
                             {{-- <p class="float-right update_length_{{$k}}">0/800</p> --}}
                         </div>
                         <input type="text" class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" value="{{$item->placeholder}}"  required>
+                            name="input[text{{++$k}}]" placeholder="{{$item->placeholder}}"  required>
                     </div>
                     @endif
                     @if ($item->type == 'medium_text')
@@ -118,7 +118,7 @@
                             {{-- <p class="float-right update_length_{{$k}}">0/140</p> --}}
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" id="" rows="5" 
+                            name="input[text{{++$k}}]" id="" rows="5"
                             required>{{$item->placeholder}} </textarea>
                     </div>
                     @endif
@@ -135,7 +135,7 @@
                             {{-- <p class="float-right update_length_{{$k}}">0/800</p> --}}
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" id="" rows="10" 
+                            name="input[text{{++$k}}]" id="" rows="10"
                             required>{{$item->placeholder}} </textarea>
                     </div>
                     @endif
@@ -152,7 +152,7 @@
                             {{-- <p class="float-right update_length_{{$k}}">0/2</p> --}}
                         </div>
                         <input type="number" class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" value="{{$item->placeholder}}"  required>
+                            name="input[text{{++$k}}]" placeholder="{{$item->placeholder}}"  required>
                     </div>
                     @endif
                     @if ($item->type == 'dropdown')
@@ -168,6 +168,7 @@
                             @endif
                         </p>
                         <select name="input[text{{++$k}}]" class="form-control basic" required>
+                            <option value="">Select Option</option>
                             @foreach ($select_option as $option)
                             <option value="{{$option}}">{{$option}}</option>
                             @endforeach

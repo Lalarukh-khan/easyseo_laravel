@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\Controller;
 use App\Models\GptHistory;
 use App\Models\User;
@@ -167,10 +168,33 @@ class DashboardController extends Controller
             'data' => auth('web')->user(),
 			'words' => (!empty($words) ? $words : 0),
 			'user_package' => (!empty($user_package) ? $user_package : 0),
+            'subcription' => UserPackage::where('user_id', auth('web')->user()->id)->latest()->first(),
 			'total_words' => (!empty($user_package) ? $user_package : 0 ),
         );
 
         return view('front.subscription_details')->with($data);
+    }
+
+    public function concelSubscription($id){
+        // dd(hashids_decode($id) );
+
+        $webhookController = new WebhookController();
+        $webhookController->suspendSubscription();
+
+        $previous_subs = UserPackage::with('package')->where('user_id',$hashids_decode($id))->latest()->get();
+        $packages_sku = ['P20','P50','P200','P500'];
+
+        if (isset($previous_subs[0]) && !empty($previous_subs[0]) && in_array($previous_subs[0]->package->plan_code,$packages_sku)) {
+
+            $webhookController->suspendSubscription($previous_subs[0]->subscription_id);
+        }
+
+        session()->flash('success-msg','Subscription Cancelled Successfully');
+
+        return response()->json([
+            'reload' => true,
+        ]);
+
     }
 
     public function get_report(Request $request)
