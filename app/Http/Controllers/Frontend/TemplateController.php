@@ -11,6 +11,7 @@ use App\Models\TemplateCategory;
 use App\Models\UserPackage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\Helpers;
 
 class TemplateController extends Controller
 {
@@ -104,27 +105,51 @@ class TemplateController extends Controller
     }
 
     public function form_submit(Request $request)
-    {
+    {    
         $settings_arr = json_decode($request->setting);
         $command = $request->command;
-        // $complete_prompt = '';
-        foreach ($request->input as $key => $val) {
-            $a = '[!'. $key .'!]';
-            $command = $command = str_replace($a, $val, $command);
-            // $complete_prompt .= ' '.$val;
-        }
+		$improve_score = $request->improve_score;
+		$improve_content = $request->improve_content;
+		   
+		if($improve_score == true){
+			  
+			/*
+			 *----------------------------------
+			 * START:- Improve score request
+			 *----------------------------------
+			 */
+				//$command = "I need you to act as a SEO enhancement specialist for the content I provide. You will be tasked with integrating strong SEO keywords into my text without altering the overall meaning. Your sole role will be to revise and enhance the SEO strength of my content; you are not to create new content or offer editorial feedback on the content's substance or style. Your revisions should be focused entirely on SEO improvement, ensuring my content is optimized for search engine visibility and ranking. Please remember to use the keywords naturally within the context of my content to maintain readability. The first content I need you to optimize is and at last Provide seo SCORE:- [score/100] :-\n\n";
+				$command = "Please  replace some keywords naturally within the context of my content to maintain readability in below data to increase the seo score and at last Provide seo SCORE:- [score/100] :-\n\n";
+				$command .= '"'.$improve_content.'"';
+				 
+			 /*
+			 *----------------------------------
+			 * END:- Improve score request
+			 *----------------------------------
+			 */
+			 
+		}else{
+			// $complete_prompt = '';
+			
+			foreach ($request->input as $key => $val) {
+				$a = '[!'. $key .'!]';
+				$command = $command = str_replace($a, $val, $command);
+				// $complete_prompt .= ' '.$val;
+			}
 
-        // $command .= ' '.$complete_prompt .' ';
+			// $command .= ' '.$complete_prompt .' ';
 
-        if (isset($request->language) && !empty($request->language)) {
-            $command = $command.'
-Write your answer in '.$request->language.' language';
-        }
+			if (isset($request->language) && !empty($request->language)) {
+				$command = $command.'
+	Write your answer in '.$request->language.' language';
+			}
 
-        if ($request->number_of_conecpet > 1) {
-            $command = $command. ' and write '. $request->number_of_conecpet .' sections';
-        }
-
+			if ($request->number_of_conecpet > 1) {
+				$command = $command. ' and write '. $request->number_of_conecpet .' sections';
+			}
+			//$command .= '\n\n Provide seo SCORE:- [score/100] :-';
+		}
+		 
         // checking remaining words
         // $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
         // $userPackageWords = $user_package->words;
@@ -165,12 +190,14 @@ Write your answer in '.$request->language.' language';
         }
 
         $key = $key::latest()->first();
-
-        if($setting->model == 'gpt-3.5-turbo'){
-            $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
-        }else{
-            $gpt_ans = $this->gpt3_ans($setting,$command,base64_decode($key->api_key));
-        }
+		
+		 
+		if($setting->model == 'gpt-3.5-turbo'){
+			$gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
+		}else{
+			$gpt_ans = $this->gpt3_ans($setting,$command,base64_decode($key->api_key));
+		}
+		 
         // $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
 // dd(trim($gpt_ans['message']));
 
@@ -197,24 +224,33 @@ Write your answer in '.$request->language.' language';
             $history->completion_tokens = $gpt_ans['completion_tokens'];
             $history->total_tokens = $gpt_ans['total_tokens'];
             $history->total_words = str_word_count($gpt_ans['answer']);
-            $history->save();
+			
+			if($improve_score == false){
+				
+				$history->save();
+			}  
+			 
             $msg = [
                 'status' => 200,
-                'message' => $gpt_answer,
+                'message' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['content'],
+				'score' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['seo_score'],
                 'temp_id' => $history->id,
                 'word_count' => $history->total_words,
             ];
             return response()->json($msg);
         }
     }
+	  
     public function seo_form_submit(Request $request)
     {
         // $history =  DB::table('gpt_score_histories');
         $history =  new GptScoreHistory();
         $history->temp_id = $request->temp_id;
         $history->score = $request->score;
-            $history->save();
+		$history->save();
     }
+	 
+	
     private function gpt3_turbo($setting,$prompt,$key = '')
     {
         $prompt =  array(
