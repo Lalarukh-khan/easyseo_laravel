@@ -897,16 +897,23 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 }
 .nwwbedtrtpbtn{
 	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	color: #fff;
+	border-radius: 1.5rem;
+	border: none;
+	font-weight: bolder;
+	padding: 0.5rem 0.75rem;
+	font-size: 20px;
+	border: 2px solid transparent;
+}
+
+.nwwbedtrtpbtn:hover{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	text-fill-color: transparent;
 	border-radius: 1.5rem;
 	border: 2px solid #9200FF;
-	/* border-image: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
-	border-image-slice: 1; */
-	padding: 0.25rem 0.5rem;
-	font-size: 15px;
 }
 .nwwbedtrtpbtnmrrt{
 	margin-right: 20px;
@@ -1086,6 +1093,12 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 .edtrh1 {
 	display: inline;
 	font-size: 2.5rem;
+	margin: 0;
+	padding: 0;
+}
+.edtrbkp{
+	font-size: 21px;
+	display: inline;
 	margin: 0;
 	padding: 0;
 }

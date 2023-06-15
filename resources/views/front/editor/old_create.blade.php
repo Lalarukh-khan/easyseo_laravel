@@ -1,35 +1,54 @@
 @extends('layouts.front')
 @section('after-css')
+<style>
+	body{
+		overflow-y: scroll !important;
+	}
+	/* h1 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	}
+	h2 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	}
+	h3 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	} */
+</style>
 @endsection
 @section('content')
 @include('components.flash-message')
 
-<div class="container">
-    <div class="row">
+<div class="container" style="max-width: inherit !important;">
+    <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
-					<i class="bx bx-arrow-back" id="edtrback"></i>
+					<a href="{{route('user.editor.all')}}"><i class="bx bx-arrow-back" id="edtrback"></i></a>
 					<input type="text" name="docname" placeholder="Untitled document" class="edtdocrname">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
-					<div class="edtrhd">H1</div>
-					<div class="edtrhd">H2</div>
-					<div class="edtrhd">H3</div>
-					<div class="edtrhd">B</div>
-					<div class="edtrhd"><span class="bx bx-italic"></span></div>
-					<div class="edtrhd"><span class="bx bx-list-ul"></span></div>
-					<div class="edtrhd"><span class="bx bx-list-ol"></span></div>
-					<div class="edtrhd"><span class="bx bx-comment"></span></div>
-					<div class="edtrhd"><span class="bx bx-link-alt"></span></div>
-					<div class="edtrhd"><span class="bx bx-copy"></span></div>
-					<!-- <div style="text-align: right; display: inline-block;">
-						<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
-					</div> -->
+					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
+					<button class="edtrhd" id="h2place" onclick="h2placenew()">H2</button>
+					<button class="edtrhd" id="h3place">H3</button>
+					<button class="edtrhd" onclick="pplace()">P</button>
+					<button class="edtrhd" id="bplace" onclick="bplace()">B</button>
+					<button class="edtrhd" id="iplace"><span class="bx bx-italic"></span></button>
+					<button class="edtrhd" id="ulplace"><span class="bx bx-list-ul"></span></button>
+					<button class="edtrhd" id="olplace"><span class="bx bx-list-ol"></span></button>
+					<button class="edtrhd" id="cplace"><span class="bx bx-comment"></span></button>
+					<button class="edtrhd" id="aplace"><span class="bx bx-link-alt"></span></button>
+					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
 					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
 				</div>
+				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
 			<br>
 			<!-- style="height:500px; min-height: 100%; display: flex;flex-direction: column;" -->
@@ -47,7 +66,8 @@
 						<div class="col-lg-3 col-md-3 col-12 col-sm-12 brdrleft"
 						data-bs-toggle="modal" data-bs-target="#toneModal">
 							<p class="edtrrwt">Tone of voice</p>
-							<p class="edtrrws">Professional, informat..</p>
+							<!-- <p class="edtrrws" id="edtrtvvalmain">Professional, informat..</p> -->
+							<p class="edtrrws" id="edtrtvvalmain"></p>
 						</div>
 						<div class="col-lg-3 col-md-3 col-12 col-sm-12 edtrbrdrn"
 						data-bs-toggle="modal" data-bs-target="#blogModal">
@@ -55,28 +75,34 @@
 							<p class="edtrrws" id="takeblgedtraudinp">Blog post</p>
 						</div>
 					</div>
-					<div class="edtrmn">
-						<div style="text-align: right;">
-						 	<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
+					<!-- <div id="wholecntntscore" contenteditable="true"> -->
+						<div class="edtrmn">
+							<div style="text-align: right;">
+								<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
+							</div>
+								<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
+								<br>
+								<br>
+							<!-- <div style="text-align: right;">
+								<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
+							</div> -->
 						</div>
-							<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
-						<div style="text-align: right;">
-							<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
+						<div id="forscoring" contenteditable="true" style="outline: none;">
+							<div id="resultdata" style="display: none !important;"></div>
+							<div class="edtrval" id="extrcttngrsltdata"></div>
+							<div id="quesdata"></div>
 						</div>
-					</div>
-					<div id="ai-loader1" style="text-align:center;display:none">
-						<img src="{{asset('front')}}/images/ai-loader1.gif" alt="ai-loader" style="width:100%; height: auto;">
-					</div>
-					<div id="ans_div1" style="display:none" contenteditable="true">
-						<div id="resultdata" style="display: none !important;"></div>
-						<div class="edtrval" id="extrcttngrsltdata"></div>
-						<div id="quesdata"></div>
-					</div>
+					<!-- </div> -->
 				</div>
 				<div class="edtrbtrwf">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-12 edtrinput-container">
+						<div class="edtrinputwithbutton">
 							<input type="text" placeholder="Fill in instructions for the AI or choose from list" class="edtrchoosefrmlist" id="edtrmyInput">
+							<button type="submit" id="manwrtnbyuser"><img src="{{asset('admin_assets')}}/assets/images/chatsender.png" alt=""></button>
+						</div>
+							<!-- <input type="text" placeholder="Fill in instructions for the AI or choose from list" class="edtrchoosefrmlist" id="edtrmyInput"> -->
+
 							<ul class="edtrdropdownlist">
 								<li id="edtrpara">Paraphrase</li>
 								<li id="edtrttls">Suggest titles</li>
@@ -108,7 +134,21 @@
 			<div class="card" style="min-height: 500px;">
 				<div class="card-body">
 					<div id="ai-loader" style="text-align:center;display:none">
-						<img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;">
+						{{-- <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;"> --}}
+						<div class="sk-circle-fade sk-primary" style="text-align: center; margin: 50% auto 0% auto;">
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+						</div>
 					</div>
 					<div id="ans_div" style="display:none">
 						<h3 id="sww" style="display: none;">Something went wrong!</h3>
@@ -121,7 +161,7 @@
 								<div class="row">
 									<div class="col-lg-2"></div>
 									<div class="col-lg-8">
-									<svg viewBox="0 0 200 160" class="w-full block px-12 relative"><defs><linearGradient id="gradient0.7493432638616075" x1="99%" y1="41%" x2="1%" y2="59%"><stop offset="5.56%" stop-color="#FA517D"></stop><stop offset="39.64%" stop-color="#E49F32"></stop><stop offset="98.89%" stop-color="#43D975"></stop></linearGradient><filter id="filter0_i_6_30" x="0.432007" y="0" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dx="4" dy="4"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="shape" result="effect1_innerShadow_6_30"></feBlend></filter></defs><circle filter="url(#filter0_i_6_30)" transform="rotate(171 100 100)" id="path" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="220.53980428200347" fill="none" stroke="#504E58" stroke-linecap="butt"></circle><circle class="drop-shadow" transform="rotate(171 100 100)" id="takersltdscore" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="247.49466924980385" fill="none" stroke="url(#gradient0.7493432638616075)" stroke-linecap="butt" style="transition: stroke-dashoffset 0.5s ease 0s;"></circle></svg>
+									<svg viewBox="0 0 200 160" class="w-full block px-12 relative"><defs><linearGradient id="gradient0.7493432638616075" x1="99%" y1="41%" x2="1%" y2="59%"><stop offset="5.56%" stop-color="#FA517D"></stop><stop offset="39.64%" stop-color="#E49F32"></stop><stop offset="98.89%" stop-color="#43D975"></stop></linearGradient><filter id="filter0_i_6_30" x="0.432007" y="0" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix><feOffset dx="4" dy="4"></feOffset><feGaussianBlur stdDeviation="2"></feGaussianBlur><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix><feBlend mode="normal" in2="shape" result="effect1_innerShadow_6_30"></feBlend></filter></defs><circle filter="url(#filter0_i_6_30)" transform="rotate(171 100 100)" id="path" cx="100" cy="100" r="78" stroke-width="28" stroke-dasharray="490.0884539600077" stroke-dashoffset="220.53980428200347" fill="none" stroke="#504E58" stroke-linecap="butt"></circle><circle class="drop-shadow" transform="rotate(171 100 100)" id="takersltdscore" cx="100" cy="100" r="78" stroke-width="28" fill="none" stroke="url(#gradient0.7493432638616075)" stroke-linecap="butt" style="transition: stroke-dashoffset 0.5s ease 0s;"></circle></svg>
 										<div id="edtrscore">
 											<div id="resulted_score"></div>
 											<p class="edtrrws text-center" style="margin-top: -15px">SEO Score</p>
@@ -146,16 +186,6 @@
 									<div id="sem8" class="semall"></div>
 									<div id="sem9" class="semall"></div>
 									<div id="sem10" class="semall"></div>
-									<div id="sem11" class="semall"></div>
-									<div id="sem12" class="semall"></div>
-									<div id="sem13" class="semall"></div>
-									<div id="sem14" class="semall"></div>
-									<div id="sem15" class="semall"></div>
-									<div id="sem16" class="semall"></div>
-									<div id="sem17" class="semall"></div>
-									<div id="sem18" class="semall"></div>
-									<div id="sem19" class="semall"></div>
-									<div id="sem20" class="semall"></div>
 								</div>
 							</div>
 							<div class="card radius-10 edtrcard">
@@ -251,13 +281,16 @@
 		</div>
 	</div>
 </div>
+<div id="cpydone" class="edtrhidden">
+ <span class="bx bx-check" style="color: #fff; font-size: 20px !important;"></span> &nbsp; Copied to clipboard successfully
+</div>
 <div class="customdiv" id="ttcustomDiv">
 	<div class="row cstdvfd">
 		<div class="col-lg-10 col-md-10 col-sm-10 col-10">
 			<p class="cstmtttp">Title Competitive Score (TCS)</p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: center;">
-			<button type="button" class="btn-close" id="closettdiv" style="margin-top: 5px; color: #fff !important;"></button>
+			<button type="button" id="closettdiv" style="margin-top: -15px; border: none; font-size: 35px; color: #fff; background: transparent;"><span class="bx bx-x" ></span></button>
 		</div>
 	</div>
 	<hr style="background: rgb(203, 203, 203) !important;">
@@ -285,11 +318,18 @@
 			<h4 class="audttlistval" id="tt2"></h4>
 			<h4 class="audttlistval" id="tt3"></h4>
 			<h4 class="audttlistval" id="tt4"></h4>
-			<h4 class="audttlistval edtnbrdrbtm" id="tt5"></h4>
+			<h4 class="audttlistval" id="tt5"></h4>
+			<div id="ttgenshow" style="display: none;">
+				<h4 class="audttlistval" id="tt6"></h4>
+				<h4 class="audttlistval" id="tt7"></h4>
+				<h4 class="audttlistval" id="tt8"></h4>
+				<h4 class="audttlistval" id="tt9"></h4>
+				<h4 class="audttlistval edtnbrdrbtm" id="tt10"></h4>
+			</div>
 		</div>
 		<br>
 		<div class="text-center">
-			<button class="ttgenm">Generate more</button>
+			<button class="ttgenm" id="ttgenm">Generate more</button>
 		</div>
 	</div>
 </div>
@@ -380,20 +420,20 @@
 	  	<h5 class="text-center">Tone of voice</h5>
 		<p class="text-center">Choose what tone of voice style the AI shall try to <br> write content in.</p>
 		<div class="text-center">
-			<input type="text" class="edtraudinp" value="Professional, informative, straightforward; Write clearly and concisely.">
+			<input type="text" class="edtraudinp" id="edtrtvval" value="Professional, informative, straightforward; Write clearly and concisely.">
 		</div>
 		<h4 class="edtraudfr">Frequent used  Tone of voice</h4>
 		<div class="audttonelist">
-			<h4 class="audtonelistval">Formal, Professional: Showcase your expertise and attention to detail.</h4>
-			<h4 class="audtonelistval">Persuasive, Compelling: Inspire the reader to take action using solid arguments and emotional appeals.</h4>
-			<h4 class="audtonelistval">Conversational, Friendly: Use a casual tone, as if you were talking to a close friend.</h4>
-			<h4 class="audtonelistval">Analytical, Data-Driven: Present logical arguments and support your claims with evidence.</h4>
-			<h4 class="audtonelistval">First Person, Personal Experience: In the first person, use vivid language and sensory details to bring the experience to life.</h4>
-			<h4 class="audtonelistval">Sales-oriented, Persuasive: Create a sense of urgency and highlight the product or service's benefits.</h4>
-			<h4 class="audtonelistval">Empathetic, Compassionate: Connect with the reader emotionally and show that you understand their struggles.</h4>
-			<h4 class="audtonelistval">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
-			<h4 class="audtonelistval">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
-			<h4 class="audtonelistval edtnbrdrbtm">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
+			<h4 class="audtonelistval" id="tv1">Formal, Professional: Showcase your expertise and attention to detail.</h4>
+			<h4 class="audtonelistval" id="tv2">Persuasive, Compelling: Inspire the reader to take action using solid arguments and emotional appeals.</h4>
+			<h4 class="audtonelistval" id="tv3">Conversational, Friendly: Use a casual tone, as if you were talking to a close friend.</h4>
+			<h4 class="audtonelistval" id="tv4">Analytical, Data-Driven: Present logical arguments and support your claims with evidence.</h4>
+			<h4 class="audtonelistval" id="tv5">First Person, Personal Experience: In the first person, use vivid language and sensory details to bring the experience to life.</h4>
+			<h4 class="audtonelistval" id="tv6">Sales-oriented, Persuasive: Create a sense of urgency and highlight the product or service's benefits.</h4>
+			<h4 class="audtonelistval" id="tv7">Empathetic, Compassionate: Connect with the reader emotionally and show that you understand their struggles.</h4>
+			<h4 class="audtonelistval" id="tv8">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
+			<h4 class="audtonelistval" id="tv9">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
+			<h4 class="audtonelistval edtnbrdrbtm" id="tv10">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
       </div>
     </div>
   </div>
@@ -446,20 +486,43 @@
 			}
 		});
 	});
+	let typingTimer;
+    const typingTimeout = 2000; // Set the timeout duration in milliseconds
+	var contentEditable = document.getElementById("forscoring");
+	contentEditable.addEventListener('input', function() {
+		// var freshcetaker = document.getElementById("forscoring");
+		var ceinner = contentEditable.innerText;
+		if(isContentEmpty(contentEditable)){
+			console.log("No content ");
+			document.getElementById("resulted_score").innerHTML = "0";
+			document.getElementById("takersltdscore").setAttribute("stroke-dasharray", "490.0884539600077");
+			document.getElementById("takersltdscore").setAttribute("stroke-dashoffset", "490.49466924980385");
+		}
+		else {
+			clearTimeout(typingTimer);
+			typingTimer = setTimeout(function() {
+				getSeoScore(ceinner);
+			}, typingTimeout);
+			console.log("THis is content "+ ceinner);
+		}
+    });
+	function isContentEmpty(element) {
+      const text = element.textContent.trim();
+      return text === '';
+    }
+
 	var edtrmainval = document.getElementById("edtrmainval");
 	var customDiv = document.getElementById("ttcustomDiv");
-
 	edtrmainval.addEventListener("click", function() {
 	ttcustomDiv.style.display = "block";
 	ttcustomDiv.style.zIndex = "9999";
 	});
-
-	document.addEventListener("click", function(event) {
-	if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
-		ttcustomDiv.style.display = "none";
-		ttcustomDiv.style.zIndex = "-1";
-	}
-	});
+	// document.addEventListener("click", function(event) {
+	// if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
+	// 	ttcustomDiv.style.display = "none";
+	// 	ttcustomDiv.style.zIndex = "-1";
+	// }
+	// });
 	const closettdiv = document.getElementById("closettdiv");
 	closettdiv.addEventListener("click", function() {
 		ttcustomDiv.style.display = "none";
@@ -485,9 +548,7 @@
 	function submitForm(event) {
 		event.preventDefault();
 		$('#ai-loader').show();
-		$('#ai-loader1').show();
     	$('#ans_div').hide();
-    	$('#ans_div1').hide();
 		$('#exampleModalCenter').modal("hide");
 	}
 </script>
@@ -516,7 +577,7 @@
 
             // If the loading indicator has reached three dots, reset it
             if (element.textContent === '....') {
-                element.textContent = '';
+                element.textContent = '.';
             }
         }, 300);
     }
@@ -574,45 +635,29 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-			// write long paragraph in double qoutes and write 9 questions in ordered list and 21 semantic keywords in ordered list without double qoutes about
             body: JSON.stringify({
                 _token: token,
-                prompt: 'write Introduction and Details about ' + data.get('prompt'),
+                prompt: 'write firstly 9 questions and then 11 semantic keywords with maximum 2 words limit in ordered list about ' + data.get('prompt'),
                 old_prompt: data.get('old_prompt')
             })
         })
 		const majorprompt = data.get('prompt');
 		const majoroldprompt = data.get('old_prompt');
+
         clearInterval(loadInterval)
         messageDiv.innerHTML = " "
 
-        if (response.ok) {
-			$('#ai-loader1').hide();
-			$('#ans_div1').show();
-            const data = await response.json();
-            const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-			typeText(messageDiv, parsedData);
-            $('#old_prompt').val(data.old_prompt);
-			extrcttngrsltdata.innerHTML = parsedData;
-				const response2 = await fetch(apiUrl, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						_token: token,
-						prompt: 'write firstly 9 questions and then 21 semantic keywords in ordered list about ' + majorprompt,
-						old_prompt: majoroldprompt
-					})
-				})
-
-				clearInterval(loadInterval)
-				messageDiv.innerHTML = " "
-
-				if (response2.ok) {
+			// $('#ai-loader').hide();
+			// $('#ans_div').show();
+            // const data = await response.json();
+            // const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+			// typeText(messageDiv, parsedData);
+            // $('#old_prompt').val(data.old_prompt);
+			// extrcttngrsltdata.innerHTML = parsedData;
+			if (response.ok) {
 					$('#ai-loader').hide();
 					$('#ans_div').show();
-					const data = await response2.json();
+					const data = await response.json();
 					const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
 					$('#old_prompt').val(data.old_prompt);
 					// const div = document.getElementById(newval);
@@ -621,7 +666,7 @@
 					const startWord1 = "1.";
 					const endWord1 = "9.";
 					const startWord2 = "1.";
-					const endWord2 = "21.";
+					const endWord2 = "11.";
 					const startIndex1 = content.indexOf(startWord1);
 					const endIndex1 = content.indexOf(endWord1, startIndex1 + startWord1.length);
 
@@ -646,10 +691,17 @@
 						// const final_text = trimmedContent1 + trimmedContent2;
 						document.getElementById("semantics").innerHTML = trimmedContent2;
 						document.getElementById("questions").innerHTML = trimmedContent1;
-
-						const upprcontnt = extrcttngrsltdata.innerHTML;
-						const score = upprcontnt + " " + content;
-						getSeoScore(score);
+						const forscoring = document.getElementById("forscoring");
+						const upprcontnt = forscoring.innerText;
+						if (upprcontnt == ''){
+								upprcontnt.innerText = "nothing";
+								getSeoScore(upprcontnt);
+						}
+						else{
+							getSeoScore(upprcontnt);
+						}
+						// const score =  content;
+						
 
 						const semantics = document.getElementById("semantics").innerHTML;
 						startText2_1 = "1.";
@@ -742,97 +794,7 @@
 							const sem10 = document.getElementById("sem10");
 							sem10.innerHTML = trimmedContent2_10;
 						}
-						startText2_11 = "11.";
-						endText2_11 = "12.";
-						const startIndex2_11 = semantics.indexOf(startText2_11);
-						const endIndex2_11 = semantics.indexOf(endText2_11);
-						if (startIndex2_11 !== -1 && endIndex2_11 !== -1 && startIndex2_11 < endIndex2_11) {
-							const trimmedContent2_11 = semantics.substring(startIndex2_11 + startText2_11.length, endIndex2_11);
-							const sem11 = document.getElementById("sem11");
-							sem11.innerHTML = trimmedContent2_11;
-						}
-						startText2_12 = "12.";
-						endText2_12 = "13.";
-						const startIndex2_12 = semantics.indexOf(startText2_12);
-						const endIndex2_12 = semantics.indexOf(endText2_12);
-						if (startIndex2_12 !== -1 && endIndex2_12 !== -1 && startIndex2_12 < endIndex2_12) {
-							const trimmedContent2_12 = semantics.substring(startIndex2_12 + startText2_12.length, endIndex2_12);
-							const sem12 = document.getElementById("sem12");
-							sem12.innerHTML = trimmedContent2_12;
-						}
-						startText2_13 = "13.";
-						endText2_13 = "14.";
-						const startIndex2_13 = semantics.indexOf(startText2_13);
-						const endIndex2_13 = semantics.indexOf(endText2_13);
-						if (startIndex2_13 !== -1 && endIndex2_13 !== -1 && startIndex2_13 < endIndex2_13) {
-							const trimmedContent2_13 = semantics.substring(startIndex2_13 + startText2_13.length, endIndex2_13);
-							const sem13 = document.getElementById("sem13");
-							sem13.innerHTML = trimmedContent2_13;
-						}
-						startText2_14 = "14.";
-						endText2_14 = "15.";
-						const startIndex2_14 = semantics.indexOf(startText2_14);
-						const endIndex2_14 = semantics.indexOf(endText2_14);
-						if (startIndex2_14 !== -1 && endIndex2_14 !== -1 && startIndex2_14 < endIndex2_14) {
-							const trimmedContent2_14 = semantics.substring(startIndex2_14 + startText2_14.length, endIndex2_14);
-							const sem14 = document.getElementById("sem14");
-							sem14.innerHTML = trimmedContent2_14;
-						}
-						startText2_15 = "15.";
-						endText2_15 = "16.";
-						const startIndex2_15 = semantics.indexOf(startText2_15);
-						const endIndex2_15 = semantics.indexOf(endText2_15);
-						if (startIndex2_15 !== -1 && endIndex2_15 !== -1 && startIndex2_15 < endIndex2_15) {
-							const trimmedContent2_15 = semantics.substring(startIndex2_15 + startText2_15.length, endIndex2_15);
-							const sem15 = document.getElementById("sem15");
-							sem15.innerHTML = trimmedContent2_15;
-						}
-						startText2_16 = "16.";
-						endText2_16 = "17.";
-						const startIndex2_16 = semantics.indexOf(startText2_16);
-						const endIndex2_16 = semantics.indexOf(endText2_16);
-						if (startIndex2_16 !== -1 && endIndex2_16 !== -1 && startIndex2_16 < endIndex2_16) {
-							const trimmedContent2_16 = semantics.substring(startIndex2_16 + startText2_16.length, endIndex2_16);
-							const sem16 = document.getElementById("sem16");
-							sem16.innerHTML = trimmedContent2_16;
-						}
-						startText2_17 = "17.";
-						endText2_17 = "18.";
-						const startIndex2_17 = semantics.indexOf(startText2_17);
-						const endIndex2_17 = semantics.indexOf(endText2_17);
-						if (startIndex2_17 !== -1 && endIndex2_17 !== -1 && startIndex2_17 < endIndex2_17) {
-							const trimmedContent2_17 = semantics.substring(startIndex2_17 + startText2_17.length, endIndex2_17);
-							const sem17 = document.getElementById("sem17");
-							sem17.innerHTML = trimmedContent2_17;
-						}
-						startText2_18 = "18.";
-						endText2_18 = "19.";
-						const startIndex2_18 = semantics.indexOf(startText2_18);
-						const endIndex2_18 = semantics.indexOf(endText2_18);
-						if (startIndex2_18 !== -1 && endIndex2_18 !== -1 && startIndex2_18 < endIndex2_18) {
-							const trimmedContent2_18 = semantics.substring(startIndex2_18 + startText2_18.length, endIndex2_18);
-							const sem18 = document.getElementById("sem18");
-							sem18.innerHTML = trimmedContent2_18;
-						}
-						startText2_19 = "19.";
-						endText2_19 = "20.";
-						const startIndex2_19 = semantics.indexOf(startText2_19);
-						const endIndex2_19 = semantics.indexOf(endText2_19);
-						if (startIndex2_19 !== -1 && endIndex2_19 !== -1 && startIndex2_19 < endIndex2_19) {
-							const trimmedContent2_19 = semantics.substring(startIndex2_19 + startText2_19.length, endIndex2_19);
-							const sem19 = document.getElementById("sem19");
-							sem19.innerHTML = trimmedContent2_19;
-						}
-						startText2_20 = "20.";
-						endText2_20 = "21.";
-						const startIndex2_20 = semantics.indexOf(startText2_20);
-						const endIndex2_20 = semantics.indexOf(endText2_20);
-						if (startIndex2_20 !== -1 && endIndex2_20 !== -1 && startIndex2_20 < endIndex2_20) {
-							const trimmedContent2_20 = semantics.substring(startIndex2_20 + startText2_20.length, endIndex2_20);
-							const sem20 = document.getElementById("sem20");
-							sem20.innerHTML = trimmedContent2_20;
-						}
-
+						//QUESTIONS SECTION STARTS FROM HERE
 						const questions = document.getElementById("questions").innerHTML;
 						startText1_1 = "1.";
 						endText1_1 = "2.";
@@ -907,19 +869,19 @@
 							que8.innerHTML = trimmedContent1_8;
 						}
 						
-					const response3 = await fetch(apiUrl, {
+					const response2 = await fetch(apiUrl, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
 						},
 						body: JSON.stringify({
 							_token: token,
-							prompt: 'suggest 6 detailed titles in ordered list based upon ' + majorprompt,
+							prompt: 'suggest 11 detailed titles in ordered list without having double qoutes based upon ' + majorprompt,
 							old_prompt: majoroldprompt
 						})
 					})
-					if (response3.ok) {
-						const data = await response3.json();
+					if (response2.ok) {
+						const data = await response2.json();
 						const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
 						$('#old_prompt').val(data.old_prompt);
 						const sugtitles = String(parsedData);
@@ -968,35 +930,68 @@
 							const tt5 = document.getElementById("tt5");
 							tt5.innerHTML = trimmedContentt_5;
 						}
+						startTextt_6 = "6.";
+						endTextt_6 = "7.";
+						const startIndext_6 = sugtitles.indexOf(startTextt_6);
+						const endIndext_6 = sugtitles.indexOf(endTextt_6);
+						if (startIndext_6 !== -1 && endIndext_6 !== -1 && startIndext_6 < endIndext_6) {
+							const trimmedContentt_6 = sugtitles.substring(startIndext_6 + startTextt_6.length, endIndext_6);
+							const tt6 = document.getElementById("tt6");
+							tt6.innerHTML = trimmedContentt_6;
+						}
+						startTextt_7 = "7.";
+						endTextt_7 = "8.";
+						const startIndext_7 = sugtitles.indexOf(startTextt_7);
+						const endIndext_7 = sugtitles.indexOf(endTextt_7);
+						if (startIndext_7 !== -1 && endIndext_7 !== -1 && startIndext_7 < endIndext_7) {
+							const trimmedContentt_7 = sugtitles.substring(startIndext_7 + startTextt_7.length, endIndext_7);
+							const tt7 = document.getElementById("tt7");
+							tt7.innerHTML = trimmedContentt_7;
+						}
+						startTextt_8 = "8.";
+						endTextt_8 = "9.";
+						const startIndext_8 = sugtitles.indexOf(startTextt_8);
+						const endIndext_8 = sugtitles.indexOf(endTextt_8);
+						if (startIndext_8 !== -1 && endIndext_8 !== -1 && startIndext_8 < endIndext_8) {
+							const trimmedContentt_8 = sugtitles.substring(startIndext_8 + startTextt_8.length, endIndext_8);
+							const tt8 = document.getElementById("tt8");
+							tt8.innerHTML = trimmedContentt_8;
+						}
+						startTextt_9 = "9.";
+						endTextt_9 = "10.";
+						const startIndext_9 = sugtitles.indexOf(startTextt_9);
+						const endIndext_9 = sugtitles.indexOf(endTextt_9);
+						if (startIndext_9 !== -1 && endIndext_9 !== -1 && startIndext_9 < endIndext_9) {
+							const trimmedContentt_9 = sugtitles.substring(startIndext_9 + startTextt_9.length, endIndext_9);
+							const tt9 = document.getElementById("tt9");
+							tt9.innerHTML = trimmedContentt_9;
+						}
+						startTextt_10 = "10.";
+						endTextt_10 = "11.";
+						const startIndext_10 = sugtitles.indexOf(startTextt_10);
+						const endIndext_10 = sugtitles.indexOf(endTextt_10);
+						if (startIndext_10 !== -1 && endIndext_10 !== -1 && startIndext_10 < endIndext_10) {
+							const trimmedContentt_10 = sugtitles.substring(startIndext_10 + startTextt_10.length, endIndext_10);
+							const tt10 = document.getElementById("tt10");
+							tt10.innerHTML = trimmedContentt_10;
+						}
 					}
 					else {
-						const err = await response3.text();
+						const err = await response2.text();
 						messageDiv.innerHTML = "Something went wrong"
 						alert(err)
 					}
 					}
-				} else {
-					const err = await response2.text()
-					$('#ai-loader').hide();
-					$('#ans_div').show();
-					$('#ai-loader1').hide();
-					$('#ans_div1').show();
-					$('#norspnse').hide();
-					$('#sww').show();
-					messageDiv.innerHTML = "Something went wrong"
-					alert(err)
-				}
-        } else {
-            const err = await response.text()
+		} 
+		else {
+			const err = await response.text()
 			$('#ai-loader').hide();
-            $('#ans_div').show();
-			$('#ai-loader1').hide();
-            $('#ans_div1').show();
+			$('#ans_div').show();
 			$('#norspnse').hide();
-            $('#sww').show();
-            messageDiv.innerHTML = "Something went wrong"
-            alert(err)
-        }
+			$('#sww').show();
+			messageDiv.innerHTML = "Something went wrong"
+			alert(err)
+		}
     }
 
     form.addEventListener('submit', handleSubmit_main)
@@ -1075,8 +1070,8 @@
             element.textContent += '.';
 
             // If the loading indicator has reached three dots, reset it
-            if (element.textContent === '....') {
-                element.textContent = '';
+			if (element.textContent === '....') {
+                element.textContent = '.';
             }
         }, 300);
     }
@@ -1148,18 +1143,15 @@
         messageDiv.innerHTML = " "
 
         if (response1.ok) {
-			$('#ai-loader').hide();
-            $('#ans_div').show();
             const data = await response1.json();
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
-			$('#ai-loader').hide();
-            $('#ans_div').show();
-			$('#norspnse').hide();
-            $('#sww').show();
             messageDiv.innerHTML = "Something went wrong"
             alert(err)
         }
@@ -1179,67 +1171,71 @@
 	const edtrshd = document.getElementById("edtrshd");
 	const edtrint = document.getElementById("edtrint");
 	const edtrfct = document.getElementById("edtrfct");
-	// const edtrjstwm = document.getElementById("edtrjstwm");
+	const manwrtnbyuser = document.getElementById("manwrtnbyuser");
 	const edtrmyInput = document.getElementById("edtrmyInput");
 	const contentform = document.getElementById("contentform");
 	const mncontent = document.getElementById("mncontent");
 	const getmnval = document.getElementById("getmnval");
-	// edtrjstwm.addEventListener("click", function(event) {
-	// 	const innerText = edtrmyInput.value;
-	// 	mncontent.value = innerText;
-	// 	const edtrmainval = document.getElementById("edtrmainval").value;
-	// 	getmnval.value = edtrmainval;
-	// 	const totalmainvalue = mncontent.value + " of " + getmnval.value;
-	// 	document.getElementById("mainrval").value =  totalmainvalue;
-	// 	event.preventDefault();
-	// 	document.getElementById("mnsubmit").click();
-	// });
+	manwrtnbyuser.addEventListener("click", function(event) {
+		const innerText = edtrmyInput.value;
+		mncontent.value = innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
+		const totalmainvalue =  mncontent.value
+		document.getElementById("mainrval").value =  totalmainvalue + " having tone of voice as " + edtrtvvalfrtxt;;
+		event.preventDefault();
+		document.getElementById("mnsubmit").click();
+	});
 	edtrpara.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrpara.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrttls.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrttls.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrshd.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrshd.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrint.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrint.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue = mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
 	});
 	edtrfct.addEventListener("click", function(event) {
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").innerText;
+		const edtrtvvalfrtxt = document.getElementById("edtrtvval").value;
 		const innerText = edtrfct.innerText;
 		mncontent.value = innerText;
-		const edtrmainval = document.getElementById("edtrmainval").value;
-		getmnval.value = edtrmainval;
-		const totalmainvalue =  mncontent.value + " of " + getmnval.value;
+		getmnval.value = edtrtrgtkwrd;
+		const totalmainvalue =  mncontent.value + " about " + getmnval.value + " having tone of voice as " + edtrtvvalfrtxt;
 		document.getElementById("mainrval").value =  totalmainvalue;
 		event.preventDefault();
 		document.getElementById("mnsubmit").click();
@@ -1250,7 +1246,7 @@
         const data = new FormData(cntntform)
 
         // user's chatstripe
-        chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
+        // chatContainer1.innerHTML += chatStripe(false, data.get('mainrval'))
 
         // to clear the textarea input
         cntntform.reset()
@@ -1291,6 +1287,9 @@
             // const div = document.getElementById(newval);
             // const content = String(parsedData);
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1349,59 +1348,130 @@
                     const item = finallist[i];
                     for (let j = 0; j < item.response.tasks.length; j++) {
                         const subitem = item.response.tasks[j];
-                        for (let z = 0; z < subitem.result.length; z++) {
-                        const subitem2 = subitem.result[z];
-                        const keyword_density = subitem2.keyword_density;
-                        const automated_readability_index = subitem2.automated_readability_index;
-                        const smog_readability_index = subitem2.smog_readability_index;
-                        let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
-                        let totalWords = content.split(' ').length;
-                        let keywordDensity = keywordCount / totalWords;
+						if(subitem.result == null){
+							document.getElementById("resulted_score").innerHTML = "0";
+						}
+						else{
+							for (let z = 0; z < subitem.result.length; z++) {
+							const subitem2 = subitem.result[z];
+							const keyword_density = subitem2.keyword_density;
+							const automated_readability_index = subitem2.automated_readability_index;
+							const smog_readability_index = subitem2.smog_readability_index;
+							let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
+							let totalWords = content.split(' ').length;
+							let keywordDensity = keywordCount / totalWords;
 
-                        // Calculate meta tags score
-                        let metaTagsScore = 1; 
-                        let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
-                        let roundedscore = Math.round(seoScore);
-                        document.getElementById("resulted_score").innerHTML = roundedscore;
+							// Calculate meta tags score
+							let metaTagsScore = 1; 
+							let seoScore = (keywordDensity * 8) + (metaTagsScore * 2) + (automated_readability_index * 2) + (smog_readability_index * 2);
+							let roundedscore = Math.round(seoScore);
+							document.getElementById("resulted_score").innerHTML = roundedscore;
+							}
+						}
                         const numberEl = document.getElementById("resulted_score");
                         const number = parseInt(numberEl.textContent);
 						const takersltdscore = document.getElementById("takersltdscore");
-                        if (number <= 40) {
-							takersltdscore.setAttribute("stroke-dasharray", "368.0884539600077");
-                        }
-                        else if (number > 40 && number <= 50) {
-							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
-                        }
-                        else if (number > 50 && number <= 55) {
-							takersltdscore.setAttribute("stroke-dasharray", "385.0884539600077");
-                        }
-                        else if (number > 55 && number <= 60) {
-							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
-                        }
-                        else if (number > 60 && number <= 65) {
-							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
-                        }
-                        else if (number > 65 && number <= 70) {
-							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
-                        }
-                        else if (number > 70 && number <= 75) {
-							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
-                        }
-                        else if (number > 75 && number <= 80) {
-							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
-                        }
-                        else if (number > 80 && number <= 85) {
-							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
-                        }
-                        else if (number > 85 && number <= 90) {
+						if (number == 0) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
                         }
-                        else if (number > 90 && number <= 95) {
+                        else if (number < 0) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+							document.getElementById("resulted_score").innerHTML = "0";
+                        }
+                        else if (number > 0 && number <= 5) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
+                        }
+                        else if (number >= 6 && number <= 10) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
+                        }
+                        else if (number >= 11 && number <= 15) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
+                        }
+                        else if (number >= 16 && number <= 20) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
+                        }
+                        else if (number >= 21 && number <= 25) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
+                        }
+                        else if (number >= 26 && number <= 30) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
+                        }
+                        else if (number >= 31 && number <= 35) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
+                        }
+                        else if (number >= 36 && number <= 40) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+                        }
+                        else if (number >= 41 && number <= 45) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+                        }
+                        else if (number >= 46 && number <= 50) {
+							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "367.3554535791462");
+                        }
+                        else if (number >= 51 && number <= 53) {
+							takersltdscore.setAttribute("stroke-dasharray", "359.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 54 && number <= 57) {
+							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 58 && number <= 60) {
+							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 61 && number <= 65) {
+							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 66 && number <= 70) {
+							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 71 && number <= 75) {
+							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 76 && number <= 80) {
+							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 81 && number <= 85) {
+							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 86 && number <= 90) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 91 && number <= 95) {
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number == 100) {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+                        }
+                        else if (number > 100) {
+							document.getElementById("resulted_score").innerHTML = "100";
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
                         }
                         else {
-							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
-                        }
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
                         }
                     }
                     }
@@ -1420,16 +1490,6 @@
 	document.getElementById("sem8").addEventListener("click", handleClick);
 	document.getElementById("sem9").addEventListener("click", handleClick);
 	document.getElementById("sem10").addEventListener("click", handleClick);
-	document.getElementById("sem11").addEventListener("click", handleClick);
-	document.getElementById("sem12").addEventListener("click", handleClick);
-	document.getElementById("sem13").addEventListener("click", handleClick);
-	document.getElementById("sem14").addEventListener("click", handleClick);
-	document.getElementById("sem15").addEventListener("click", handleClick);
-	document.getElementById("sem16").addEventListener("click", handleClick);
-	document.getElementById("sem17").addEventListener("click", handleClick);
-	document.getElementById("sem18").addEventListener("click", handleClick);
-	document.getElementById("sem19").addEventListener("click", handleClick);
-	document.getElementById("sem20").addEventListener("click", handleClick);
 
 	function handleClick(event) {
 		event.target.classList.toggle('semclicked');
@@ -1491,6 +1551,9 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1517,6 +1580,22 @@
 	const tt4 = document.querySelector("#tt4");
 	const tt5 = document.querySelector("#tt5");
 	const edtrmainval1 = document.getElementById("edtrmainval");
+	const edtrtvval = document.getElementById("edtrtvval");
+	const edtrtvvalmain = document.getElementById("edtrtvvalmain");
+	const ttgenm = document.getElementById("ttgenm");
+	var originalText = edtrtvval.value;
+	var truncatedText = originalText.slice(0, 21);
+	if (originalText.length > 21) {
+	truncatedText += "...";
+	}
+	edtrtvvalmain.innerHTML = truncatedText;
+	ttgenm.addEventListener("click", function(event) {
+		$('#ttgenshow').show();
+		ttgenm.disabled = true;
+		ttgenm.className = "edtrdisabled";
+		// ttcustomDiv2.style.display = "block";
+		// ttcustomDiv2.style.zIndex = "9999";
+	});
 	tt1.addEventListener("click", function(event) {
 		const divText = this.innerText;
 		edtrmainval1.value = divText;
@@ -1536,6 +1615,434 @@
 	tt5.addEventListener("click", function(event) {
 		const divText = this.innerText;
 		edtrmainval1.value = divText;
+	});
+	tt6.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt7.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt8.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt9.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tt10.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrmainval1.value = divText;
+	});
+	tv1.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv2.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv3.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv4.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv5.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv6.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv7.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv8.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv9.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+	tv10.addEventListener("click", function(event) {
+		const divText = this.innerText;
+		edtrtvval.value = divText;
+		var originalText = divText;
+		var truncatedText = originalText.slice(0, 21);
+		if (originalText.length > 21) {
+		truncatedText += "...";
+		}
+		edtrtvvalmain.innerHTML = truncatedText;
+		$("#toneModal").hide();
+	});
+
+</script>
+<script>
+	// var h1place = document.getElementById("h1place");
+	// var h2place = document.getElementById("h2place");
+	var h3place = document.getElementById("h3place");
+	// var bplace = document.getElementById("bplace");
+	var iplace = document.getElementById("iplace");
+	var ulplace = document.getElementById("ulplace");
+	var olplace = document.getElementById("olplace");
+	var cplace = document.getElementById("cplace");
+	var aplace = document.getElementById("aplace");
+	var cpplace = document.getElementById("cpplace");
+	var selectedText = "";
+	cpplace.addEventListener('mouseover', function() {
+		var hoverDiv = document.querySelector('.cpyhvtext');
+		hoverDiv.style.display = 'block';
+	});
+	cpplace.addEventListener('mouseout', function() {
+		var hoverDiv = document.querySelector('.cpyhvtext');
+		hoverDiv.style.display = 'none';
+	});
+	cpplace.addEventListener("click", function() {
+		var editableDiv = document.getElementById("forscoring");
+		var selectedRange = window.getSelection().getRangeAt(0);
+
+		if (!selectedRange.toString()) {
+			var range = document.createRange();
+			range.selectNodeContents(editableDiv);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+		}
+
+		try {
+			document.execCommand("copy");
+			console.log("Text copied to clipboard.");
+		} catch (err) {
+			console.error("Unable to copy text: ", err);
+		}
+
+		window.getSelection().removeAllRanges();
+		var cpydone = document.getElementById("cpydone");
+		cpydone.classList.remove("edtrhidden");
+		setTimeout(function() {
+		cpydone.classList.add("edtrhidden");
+		}, 3000);
+	});
+	aplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+
+		if (!selection.isCollapsed) {
+			var linkUrl = prompt("Enter the URL for the link:");
+
+			if (linkUrl) {
+			var linkElement = document.createElement("a");
+			linkElement.href = linkUrl;
+			linkElement.textContent = selection.toString();
+
+			range.deleteContents();
+			range.insertNode(linkElement);
+			}
+		}
+	});
+	cplace.addEventListener("click", function() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+
+		if (!selection.isCollapsed) {
+			var commentSpan = document.createElement("div");
+			commentSpan.className = "edtrcomment";
+			commentSpan.textContent = selection.toString();
+			range.deleteContents();
+			range.insertNode(commentSpan);
+		}
+	}); 
+    function h1place() {
+        // var selection = window.getSelection();
+        // selectedText = selection.toString(); // Store the selected text
+        // var h1Element = document.createElement("h1");
+		// // h1Element.classList.add("edtrh1");
+        // h1Element.innerHTML = selectedText;
+        // selection.getRangeAt(0).surroundContents(h1Element);
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h1Element = document.createElement("span");
+			h1Element.className = "edtrh1";
+			h1Element.textContent = selectedText;
+
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h1Element);
+			}
+		}
+		selection.removeAllRanges();
+    }
+    function h2placenew() {
+        // if (selectedText !== "") {
+        //     var h1Elements = document.getElementsByTagName("h1");
+        //     for (var i = 0; i < h1Elements.length; i++) {
+        //         if (h1Elements[i].innerHTML === selectedText) {
+        //             var h2Element = document.createElement("h2");
+        //             h2Element.innerHTML = selectedText;
+        //             h1Elements[i].parentNode.replaceChild(h2Element, h1Elements[i]);
+        //             break;
+        //         }
+        //     }
+        // }
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h2Element = document.createElement("span");
+			h2Element.className = "edtrh2";
+			h2Element.textContent = selectedText;
+
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh2")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h2Element);
+			}
+		}
+		selection.removeAllRanges();
+    }
+	function pplace() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh1");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh2")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh2");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh3")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh3");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else {
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+		}
+	// 	if (selectedText) {
+    //     // var selectionRange = getSelectionRange();
+    //     var selectedNode = range.commonAncestorContainer;
+
+    //     // Traverse the parent nodes of the selected text to check if any of them match the desired tag
+    //     while (selectedNode) {
+    //       if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+	// 		range.commonAncestorContainer.parentNode.classList.remove("edtrh1");
+    //       } else if (selectedNode.tagName === 'H2') {
+	// 		var parent = selectedNode.parentNode;
+    //         parent.replaceChild(selectedNode.firstChild, selectedNode);
+    //         break;
+    //       }
+	// 	  else if (selectedNode.tagName === 'H3') {
+	// 		var parent = selectedNode.parentNode;
+    //         parent.replaceChild(selectedNode.firstChild, selectedNode);
+    //         break;
+    //       }
+
+    //       selectedNode = selectedNode.parentNode;
+    //     }
+    //   }
+	// 	// var pElement = document.createElement("p");
+	// 	if (range.commonAncestorContainer.parentNode == "h1"){
+	// 		range.commonAncestorContainer.parentNode.remove("h1");
+	// 	}
+		// pElement.appendChild(range.extractContents());
+		// range.insertNode(pElement);
+		selection.removeAllRanges();
+	};
+	// h1place.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var h1Element = document.createElement("h1");
+	// 	h1Element.appendChild(range.extractContents());
+	// 	range.insertNode(h1Element);
+	// });
+	// h2place.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var h2Element = document.createElement("h2");
+	// 	h2Element.appendChild(range.extractContents());
+	// 	range.insertNode(h2Element);
+	// });
+	h3place.addEventListener("click", function() {
+		// var selection = window.getSelection();
+		// var range = selection.getRangeAt(0);
+		// var h3Element = document.createElement("h3");
+		// h3Element.appendChild(range.extractContents());
+		// range.insertNode(h3Element);
+		// selection.removeAllRanges();
+
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h3Element = document.createElement("span");
+			h3Element.className = "edtrh3";
+			h3Element.textContent = selectedText;
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh3")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h3Element);
+			}
+		}
+		selection.removeAllRanges();
+	});
+	function bplace() {
+            var selection = window.getSelection();
+            var range = selection.getRangeAt(0);
+            var boldElement = document.createElement("span");
+
+            if (range.commonAncestorContainer.parentNode.classList.contains("bold")) {
+                // Remove bold if already applied
+                range.commonAncestorContainer.parentNode.classList.remove("bold");
+            } else {
+                // Apply bold if not already applied
+                boldElement.innerHTML = range.extractContents().textContent;
+                boldElement.classList.add("bold");
+                range.insertNode(boldElement);
+            }
+			selection.removeAllRanges();
+    }
+	// bplace.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var boldElement = document.createElement("b");
+	// 	boldElement.appendChild(range.extractContents());
+	// 	range.insertNode(boldElement);
+	// });
+	iplace.addEventListener("click", function() {
+		// var selection = window.getSelection();
+		// var range = selection.getRangeAt(0);
+		// var boldElement = document.createElement("i");
+		// boldElement.appendChild(range.extractContents());
+		// range.insertNode(boldElement);
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var iElement = document.createElement("span");
+			iElement.className = "edtri";
+			iElement.textContent = selectedText;
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtri")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(iElement);
+			}
+		}
+		selection.removeAllRanges();
+	});
+	ulplace.addEventListener("click", function() {
+		var selectedText = window.getSelection().toString().trim();
+		
+		if (selectedText !== "") {
+			var lines = selectedText.split("\n");
+			var outerelemt = "<span>";
+			var listHtml = "<ul>";
+			
+			lines.forEach(function(line) {
+			listHtml += "<li>" + line + "</li>";
+			});
+			
+			listHtml += "</ul>";
+			outerelemt += "</span>";
+			
+			// Replace selected text with the list
+			document.execCommand("insertHTML", false, listHtml);
+		}
+	});
+	olplace.addEventListener("click", function() {
+		var selectedText = window.getSelection().toString().trim();
+		
+		if (selectedText !== "") {
+			var lines = selectedText.split("\n");
+			var outerelemt = "<span>";
+			var listHtml = "<ol>";
+			
+			lines.forEach(function(line) {
+			listHtml += "<li>" + line + "</li>";
+			});
+			
+			listHtml += "</ol>";
+			outerelemt += "</span>";
+			
+			// Replace selected text with the list
+			document.execCommand("insertHTML", false, listHtml);
+		}
 	});
 </script>
 @endsection

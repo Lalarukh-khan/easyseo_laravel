@@ -36,7 +36,7 @@
 					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
 					<button class="edtrhd" id="h2place" onclick="h2placenew()">H2</button>
 					<button class="edtrhd" id="h3place">H3</button>
-					<button class="edtrhd" id="pplace">P</button>
+					<button class="edtrhd" onclick="pplace()">P</button>
 					<button class="edtrhd" id="bplace" onclick="bplace()">B</button>
 					<button class="edtrhd" id="iplace"><span class="bx bx-italic"></span></button>
 					<button class="edtrhd" id="ulplace"><span class="bx bx-list-ul"></span></button>
@@ -115,7 +115,7 @@
 							<p class="edtror">or</p>
 							<form id="semform" style="display: inline-block;">
 							<input type="hidden" id="semmainrval" name="semmainrval">
-							<button type="submit" class="edtrjstwm" id="edtrjstwm">Just write more</button>
+							<button type="submit" class="edtrjstwm" id="edtrjstwm">Write more</button>
 							</form>
 						</div>
 					</div>
@@ -486,19 +486,22 @@
 			}
 		});
 	});
-
+	let typingTimer;
+    const typingTimeout = 2000; // Set the timeout duration in milliseconds
 	var contentEditable = document.getElementById("forscoring");
 	contentEditable.addEventListener('input', function() {
+		// var freshcetaker = document.getElementById("forscoring");
 		var ceinner = contentEditable.innerText;
 		if(isContentEmpty(contentEditable)){
-			console.log("No content ");
 			document.getElementById("resulted_score").innerHTML = "0";
 			document.getElementById("takersltdscore").setAttribute("stroke-dasharray", "490.0884539600077");
 			document.getElementById("takersltdscore").setAttribute("stroke-dashoffset", "490.49466924980385");
 		}
 		else {
-			console.log("THis is content "+ ceinner);
-			getSeoScore(ceinner);
+			clearTimeout(typingTimer);
+			typingTimer = setTimeout(function() {
+				getSeoScore(ceinner);
+			}, typingTimeout);
 		}
     });
 	function isContentEmpty(element) {
@@ -1360,7 +1363,15 @@
 							let metaTagsScore = 1; 
 							let seoScore = (keywordDensity * 8) + (metaTagsScore * 2) + (automated_readability_index * 2) + (smog_readability_index * 2);
 							let roundedscore = Math.round(seoScore);
-							document.getElementById("resulted_score").innerHTML = roundedscore;
+							const mkscoreforbgr = document.getElementById("resulted_score");
+                        	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
+							if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
+								const newvalueforseosc = roundedscore + 8;
+								document.getElementById("resulted_score").innerHTML = newvalueforseosc;
+							}
+							else{
+								document.getElementById("resulted_score").innerHTML = roundedscore;
+							}
 							}
 						}
                         const numberEl = document.getElementById("resulted_score");
@@ -1379,90 +1390,94 @@
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
                         }
-                        else if (number > 5 && number <= 10) {
+                        else if (number >= 6 && number <= 10) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
                         }
-                        else if (number > 10 && number <= 15) {
+                        else if (number >= 11 && number <= 15) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
                         }
-                        else if (number > 15 && number <= 20) {
+                        else if (number >= 16 && number <= 20) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
                         }
-                        else if (number > 20 && number <= 25) {
+                        else if (number >= 21 && number <= 25) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
                         }
-                        else if (number > 25 && number <= 30) {
+                        else if (number >= 26 && number <= 30) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
                         }
-                        else if (number > 30 && number <= 35) {
+                        else if (number >= 31 && number <= 35) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
                         }
-                        else if (number > 35 && number <= 40) {
+                        else if (number >= 36 && number <= 40) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
                         }
-                        else if (number >40 && number <= 45) {
+                        else if (number >= 41 && number <= 45) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
                         }
-                        else if (number > 45 && number <= 50) {
-							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "367.3554535791462");
+                        else if (number >= 46 && number <= 50) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "355.3554535791462");
                         }
-                        else if (number > 50 && number <= 55) {
-							takersltdscore.setAttribute("stroke-dasharray", "385.0884539600077");
+                        else if (number >= 51 && number <= 53) {
+							takersltdscore.setAttribute("stroke-dasharray", "359.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 55 && number <= 60) {
+                        else if (number >= 54 && number <= 57) {
+							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 58 && number <= 60) {
 							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 60 && number <= 65) {
+                        else if (number >= 61 && number <= 65) {
 							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 65 && number <= 70) {
+                        else if (number >= 66 && number <= 70) {
 							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 70 && number <= 75) {
+                        else if (number >= 71 && number <= 75) {
 							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 75 && number <= 80) {
+                        else if (number >= 76 && number <= 80) {
 							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 80 && number <= 85) {
+                        else if (number >= 81 && number <= 85) {
 							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 85 && number <= 90) {
+                        else if (number >= 86 && number <= 90) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 90 && number <= 95) {
+                        else if (number >= 91 && number <= 95) {
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
                         else if (number == 100) {
-							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
                         }
                         else if (number > 100) {
 							document.getElementById("resulted_score").innerHTML = "100";
-							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
                         }
                         else {
-							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
                         }
                     }
                     }
@@ -1772,7 +1787,6 @@
 
 		try {
 			document.execCommand("copy");
-			console.log("Text copied to clipboard.");
 		} catch (err) {
 			console.error("Unable to copy text: ", err);
 		}
@@ -1866,41 +1880,54 @@
 		}
 		selection.removeAllRanges();
     }
-	pplace.addEventListener("click", function() {
+	function pplace() {
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
-		if (selectedText) {
-        // var selectionRange = getSelectionRange();
-        var selectedNode = range.commonAncestorContainer;
-
-        // Traverse the parent nodes of the selected text to check if any of them match the desired tag
-        while (selectedNode) {
-          if (selectedNode.tagName === 'H1') {
-			var parent = selectedNode.parentNode;
-            parent.replaceChild(selectedNode.firstChild, selectedNode);
-            break;
-          } else if (selectedNode.tagName === 'H2') {
-			var parent = selectedNode.parentNode;
-            parent.replaceChild(selectedNode.firstChild, selectedNode);
-            break;
-          }
-		  else if (selectedNode.tagName === 'H3') {
-			var parent = selectedNode.parentNode;
-            parent.replaceChild(selectedNode.firstChild, selectedNode);
-            break;
-          }
-
-          selectedNode = selectedNode.parentNode;
-        }
-      }
-		// var pElement = document.createElement("p");
-		if (range.commonAncestorContainer.parentNode == "h1"){
-			range.commonAncestorContainer.parentNode.remove("h1");
+		if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh1");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh2")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh2");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh3")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh3");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else {
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
 		}
+	// 	if (selectedText) {
+    //     // var selectionRange = getSelectionRange();
+    //     var selectedNode = range.commonAncestorContainer;
+
+    //     // Traverse the parent nodes of the selected text to check if any of them match the desired tag
+    //     while (selectedNode) {
+    //       if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+	// 		range.commonAncestorContainer.parentNode.classList.remove("edtrh1");
+    //       } else if (selectedNode.tagName === 'H2') {
+	// 		var parent = selectedNode.parentNode;
+    //         parent.replaceChild(selectedNode.firstChild, selectedNode);
+    //         break;
+    //       }
+	// 	  else if (selectedNode.tagName === 'H3') {
+	// 		var parent = selectedNode.parentNode;
+    //         parent.replaceChild(selectedNode.firstChild, selectedNode);
+    //         break;
+    //       }
+
+    //       selectedNode = selectedNode.parentNode;
+    //     }
+    //   }
+	// 	// var pElement = document.createElement("p");
+	// 	if (range.commonAncestorContainer.parentNode == "h1"){
+	// 		range.commonAncestorContainer.parentNode.remove("h1");
+	// 	}
 		// pElement.appendChild(range.extractContents());
 		// range.insertNode(pElement);
 		selection.removeAllRanges();
-	});
+	};
 	// h1place.addEventListener("click", function() {
 	// 	var selection = window.getSelection();
 	// 	var range = selection.getRangeAt(0);
