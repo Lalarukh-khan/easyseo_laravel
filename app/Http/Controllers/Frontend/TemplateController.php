@@ -24,12 +24,12 @@ class TemplateController extends Controller
                 $templates = $templates->where('category_id',$request->category);
                 $data = array(
                     'status' => true,
-                    'res_view' => view('front.template.response.load_cat_temp',['templates'=>$templates->orderBy('name')->get()])->render(),
+                    'res_view' => view('front.template.response.load_cat_temp',['templates'=>$templates->orderBy('ordering')->get()])->render(),
                 );
             }else{
                 $data = array(
                     'status' => true,
-                    'res_view' => view('front.template.response.load_all',['categories'=>$teplate_categories->orderBy('name')->get()])->render(),
+                    'res_view' => view('front.template.response.load_all',['categories'=>$teplate_categories->orderBy('ordering')->get()])->render(),
                 );
             }
 
@@ -38,7 +38,7 @@ class TemplateController extends Controller
 
         $data = array(
             'title' => 'Templates',
-            'categories' => $teplate_categories->orderBy('name')->get(),
+            'categories' => $teplate_categories->orderBy('ordering')->get(),
         );
 
         return view('front.template.all')->with($data);

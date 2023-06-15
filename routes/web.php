@@ -30,7 +30,16 @@ Route::middleware(['auth:admin', 'XSS'])->prefix('admin')->as('admin.')->namespa
             Route::post('/save', 'TemplateCategoryController@save')->name('save');
             Route::get('/update-status/{id}', 'TemplateCategoryController@status_update')->name('status');
             Route::get('/delete/{id}', 'TemplateCategoryController@delete')->name('delete');
+
+            Route::get('/sorting', 'TemplateCategoryController@sorting')->name('sorting');
+            Route::post('/sorting/save', 'TemplateCategoryController@sorting_save')->name('sorting.save');
         });
+
+
+        // template sorting category wise
+        Route::get('/sorting/{id}', 'TemplateController@sorting')->name('sorting');
+        Route::post('/sorting/save', 'TemplateController@sorting_save')->name('sorting.save');
+
 
         Route::get('/all', 'TemplateController@index')->name('all');
         Route::get('/add', 'TemplateController@add')->name('add');
@@ -135,6 +144,7 @@ Route::middleware(['auth:admin', 'XSS'])->prefix('oldadmin')->as('oldadmin.')->n
             Route::post('/save', 'TemplateCategoryController@save')->name('save');
             Route::get('/update-status/{id}', 'TemplateCategoryController@status_update')->name('status');
             Route::get('/delete/{id}', 'TemplateCategoryController@delete')->name('delete');
+
         });
 
         Route::get('/all', 'TemplateController@index')->name('all');
@@ -246,7 +256,7 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
     Route::get('/cencel-plain/{id}','DashboardController@concelSubscription')->name('cencel-subscription');
 
     Route::get('/help','HelpController@index')->name('help');
-    
+
     Route::get('/settings','SettingController@index')->name('settings');
 
     Route::prefix('template')->as('template.')->group(function () {

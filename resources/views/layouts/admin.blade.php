@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="{{asset('admin_assets')}}/assets/vendor/libs/typeahead-js/typeahead.css" />
     <link rel="stylesheet" href="{{asset('admin_assets')}}/assets/vendor/libs/apex-charts/apex-charts.css" />
 	<link href="{{ asset('oldadmin') }}/assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -151,7 +151,7 @@
             border-bottom: 3px solid #1f212d;
         }
     </style>
-	
+
   </head>
 
 
@@ -214,6 +214,8 @@
 
     <script src="{{asset('admin_assets')}}/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
+    
+    <script src="{{asset('admin_assets')}}/assets/vendor/libs/sortablejs/sortable.js"></script>
 
     <!-- Vendors JS -->
     <script src="{{asset('admin_assets')}}/assets/vendor/libs/apex-charts/apexcharts.js"></script>

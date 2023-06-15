@@ -107,4 +107,28 @@ class TemplateCategoryController extends Controller
             'reload' => true,
         ]);
     }
+
+    public function sorting(){
+        $data = array(
+          'title'   =>   'Category Sorting',
+          'data'    =>    Category::orderBy('ordering')->get(),
+        );
+        return view('admin.template.category.category_sorting', $data);
+    }
+
+    public function sorting_save(Request $request){
+
+        foreach ($request->category_id as $k => $id) {
+            Category::where('id',$id)->update([
+                'ordering' => $k+1,
+            ]);
+        }
+
+        session()->flash('success-msg','Category Sorted Successfully');
+
+        return response()->json([
+            'success' => 'Category Sorted Successfully',
+            'reload' => true,
+        ]);
+    }
 }

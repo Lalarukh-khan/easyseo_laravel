@@ -396,6 +396,31 @@ class TemplateController extends Controller
         }
     }
 
+    public function sorting($id){
+        $data = array(
+          'title'   =>   'Template Sorting',
+          'data'    =>    Template::where('category_id', hashids_decode($id))->orderBy('ordering')->get(),
+        );
+        return view('admin.template.category.template_sorting', $data);
+    }
+
+    public function sorting_save(Request $request){
+
+        foreach ($request->template_id as $k => $id) {
+            Template::where('id',$id)->update([
+                'ordering' => $k+1,
+            ]);
+        }
+
+        session()->flash('success-msg','Template Sorted Successfully');
+
+        return response()->json([
+            'success' => 'Template Sorted Successfully',
+            'reload' => true,
+        ]);
+    }
+
+
     private function gpt3_turbo($setting,$prompt,$key = '')
     {
         $prompt =  array(

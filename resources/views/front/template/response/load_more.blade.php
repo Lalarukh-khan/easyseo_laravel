@@ -3,7 +3,7 @@
         {{--<span class="nwtmpcatcount">{{$cat->templates()->count()}}</span> --}}
     </h3>
 </div>
-@foreach ($cat->templates as $k => $val)
+@foreach ($cat->templates()->orderBy('ordering')->get() as $k => $val)
 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
     <a href="{{route('user.template.make',$val->hashid)}}">
         <div class="card checked nwcard">
