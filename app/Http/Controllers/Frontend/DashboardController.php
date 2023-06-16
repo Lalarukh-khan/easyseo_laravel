@@ -179,7 +179,7 @@ class DashboardController extends Controller
         // dd(hashids_decode($id) );
 
         $webhookController = new WebhookController();
-        $webhookController->suspendSubscription();
+        // $webhookController->suspendSubscription();
 
         $previous_subs = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->get();
         $packages_sku = ['P20','P50','P200','P500'];
