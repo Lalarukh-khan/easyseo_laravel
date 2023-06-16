@@ -4,6 +4,7 @@
     .chat-content {
         margin-left: 0px;
         padding: 15px 15px 15px 15px;
+        margin-bottom: 100px;
         /* height: 450px; */
     }
 

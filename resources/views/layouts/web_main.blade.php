@@ -594,8 +594,8 @@
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12 col-12">
                     <div class="footer-about">
-                        <a href="javascript:void(0):" id="footerimgwht1"> <img class="seolgo" alt="SEO Logo" src="{{asset('front')}}/images/logo.svg"> </a>
-                        <a href="javascript:void(0):" id="footerimgwht2" style="display: none;"> <img alt="SEO Logo" src="{{asset('front')}}/images/logodark.png"> </a>
+                        <a href="{{route('web.home')}}" id="footerimgwht1"> <img class="seolgo" alt="SEO Logo" src="{{asset('front')}}/images/logo.svg"> </a>
+                        <a href="{{route('web.home')}}" id="footerimgwht2" style="display: none;"> <img alt="SEO Logo" src="{{asset('front')}}/images/logodark.png"> </a>
                         <p class="gnr" id="footerwht1"> Use our AI-powered content generation service to make your concepts come to life! We have developed state-of-the-art technology that makes it quick and simple for you to obtain original material for any objective. Our AI generator will save you time and money with its high accuracy and professionalism </p>
 
                     </div>

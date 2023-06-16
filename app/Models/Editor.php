@@ -12,5 +12,5 @@ class Editor extends Model
 
 	protected $table = 'editor';
 
-	public $fillable = ['user_id', 'name', 'description', 'words', 'status'];
+	public $fillable = ['user_id', 'name', 'description', 'score', 'target_keyword', 'semantics', 'questions','words', 'status'];
 }

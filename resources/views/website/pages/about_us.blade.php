@@ -15,7 +15,7 @@
             <h2 class="abtus nwwbabtus" id="writewhtbtn1">About us:</h2>
         </div>
         <div>
-            <h2 class="col-white bsnshdng nwwbbsnshdng" id="writewhtbtn2">Reach new business heights with easyseo<b><span class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt">.ai</span></b>: <br> A <span class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt"> trusted partner </span> to unlock opportunities and <br class="dn"> increase success with <span class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt"> SEO solutions </span> and <br class="dn"> <span class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt"> artificial intelligence </span>
+            <h2 class="col-white bsnshdng nwwbbsnshdng" id="writewhtbtn2">Reach new business heights with <b><a href="{{route('web.home')}}" class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt">easyseo.ai</a></b>: <br> A <span class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt"> trusted partner </span> to unlock opportunities and <br class="dn"> increase success with <span class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt"> SEO solutions </span> and <br class="dn"> <span class="col-orange bnr-fnt nwwbbsnshdngbnr-fnt"> artificial intelligence </span>
             </h2>
             <p class="efctv nwwbefctv" id="writewhtbtn3">Effective SEO solution based on AI. Be prepared for me to solve complex <br class="dn"> tasks efficiently, automate routine work and speed up execution without <br class="dn"> loss of quality. In addition, I can be used to personalize tasks and <br class="dn"> determine what search results will be offered to the user. </p>
         </div>
@@ -70,7 +70,7 @@
                         <div class="col-lg-12">
                             <div class="bsnsmsn">
                                 <p class="col-white aiwrt3 nwwbaiwrt3 nwwbdfjhdsbf" id="writewht1c"><b>~ What is our company's mission? </b></p>
-                                <br><p class="aiwrt1" id="writewht2c">At easyseo.ai, our mission is to help businesses unlock the power of AI <br class="dn"> to achieve their SEO goals and succeed online & to help businesses achieve <br class="dn"> their SEO goals by harnessing the power of artificial intelligence.</p>
+                                <br><p class="aiwrt1" id="writewht2c">At <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>, our mission is to help businesses unlock the power of AI <br class="dn"> to achieve their SEO goals and succeed online & to help businesses achieve <br class="dn"> their SEO goals by harnessing the power of artificial intelligence.</p>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -82,7 +82,7 @@
                         <div class="col-lg-12">
                             <div class="bsnsmsns">
                                 <h1 class="col-white nwwbaiwrt3" id="prcngwht1a"><b>~ What is our team's background <br class="dn"> and expertise? </b></h1>
-                                <br><p class="aiwrt1" id="prcngwht1b">Our team at easyseo.ai has years of experience in both SEO and AI, <br class="dn"> and we are dedicated to staying on the cutting edge of these rapidly <br class="dn"> evolving fields.</p>
+                                <br><p class="aiwrt1" id="prcngwht1b">Our team at <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> has years of experience in both SEO and AI, <br class="dn"> and we are dedicated to staying on the cutting edge of these rapidly <br class="dn"> evolving fields.</p>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -114,13 +114,13 @@
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50 p-r-20 p-l-20 ">
                 <div class="contact-boxes  bg-black1"  id="chngabtboxshadow">
                     <h2 class="col-white  fcs nwwbaiwrt31"   id="prcngwht3f"> Customer <br class="nomob"> Focus: </h2>
-                    <p class=" pad-bot-20 drvn nwwbaiwrt"  id="prcngwht3g"> At easyseo.ai, we are driven by <br class="dn onlydesk"> our commitment to delivering <br class="dn onlydesk"> exceptional value to our clients. <br class="dn onlydesk"> We prioritize understanding <br class="dn onlydesk"> our clients' unique needs <br class="dn onlydesk"> and goals, and work tirelessly <br class="onlydesk"> to develop customized solutions <br class="dn onlydesk"> that help them achieve success. </p>
+                    <p class=" pad-bot-20 drvn nwwbaiwrt"  id="prcngwht3g"> At <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>, we are driven by <br class="dn onlydesk"> our commitment to delivering <br class="dn onlydesk"> exceptional value to our clients. <br class="dn onlydesk"> We prioritize understanding <br class="dn onlydesk"> our clients' unique needs <br class="dn onlydesk"> and goals, and work tirelessly <br class="onlydesk"> to develop customized solutions <br class="dn onlydesk"> that help them achieve success. </p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50 p-r-20 p-l-20">
                 <div class="contact-boxes  bg-black1"  id="chngabtboxshadow1">
                     <h2 class="col-white  fcs nwwbaiwrt31"  id="prcngwht3h"> Innovation: </h2>
-                    <p class="drvn nwwbaiwrt"  id="prcngwht3i"> At easyseo.ai, we are always <br class="dn onlydesk"> exploring new ideas and <br class="dn onlydesk"> technologies to stay ahead <br class="dn onlydesk"> of the curve and provide <br class="dn"> the most cutting-edge solutions <br class="dn onlydesk"> to our clients. <br class="onlytab"> We are <br class="dn onlydesk"> constantly pushing ourselves <br class="dn onlydesk"> to think outside the box <br class="dn onlydesk"> and find innovative ways <br class="dn onlydesk"> to solve complex problems. </p>
+                    <p class="drvn nwwbaiwrt"  id="prcngwht3i"> At <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>, we are always <br class="dn onlydesk"> exploring new ideas and <br class="dn onlydesk"> technologies to stay ahead <br class="dn onlydesk"> of the curve and provide <br class="dn"> the most cutting-edge solutions <br class="dn onlydesk"> to our clients. <br class="onlytab"> We are <br class="dn onlydesk"> constantly pushing ourselves <br class="dn onlydesk"> to think outside the box <br class="dn onlydesk"> and find innovative ways <br class="dn onlydesk"> to solve complex problems. </p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50 p-r-20 p-l-20">
@@ -172,11 +172,11 @@
                         </div>
                         <div class="col-lg-12  pad-bot-30">
                                 <h3 class="col-white aihd pad-bot-15 nwwbaiwrt3" id="prcngwht222">~  What is our approach to customer service <br> and support? </h3>
-                                <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht223">At easyseo.ai, we are committed to providing exceptional customer service <br> and support, and we are always available to answer any questions or concerns <br> our clients may have.</p>
+                                <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht223">At <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>, we are committed to providing exceptional customer service <br> and support, and we are always available to answer any questions or concerns <br> our clients may have.</p>
                         </div>
                         <div class="col-lg-12  pad-bot-30">
                                 <h3 class="col-white aihd pad-bot-15 nwwbaiwrt3" id="prcngwht224">~  How can potential clients get in touch with <br> us to learn more about our SEO AI solutions? </h3>
-                                <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht3a">To learn more about how easyseo.ai can help you achieve your SEO goals, please <br> contact us today to schedule a consultation.</p>
+                                <br><p class="aiwrt2 nwwbaiwrt" id="prcngwht3a">To learn more about how <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> can help you achieve your SEO goals, please <br> contact us today to schedule a consultation.</p>
                         </div>
                             </div>
                         </div>
@@ -196,7 +196,7 @@
             <div class="col-md-7 col-lg-7 col-sm-12 col-12 order-lg-1 order-md-1 order-sm-2 order-2">
                 <div class="detail-text">
                     <h3 class="col-white" id="prcngwht3b"> Get
-                        <span class="col-orange bnr-fnt"> actionable clicks </span> with AI and improve your SEO for search <br class="dn"> engines with <span class="col-orange bnr-fnt"> easyseo.ai!  </span>
+                        <span class="col-orange bnr-fnt"> actionable clicks </span> with AI and improve your SEO for search <br class="dn"> engines with <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai!</a>
                     </h3>
                     <p class="col-white" id="prcngwht3c">Easily bring AI in your workflow to improve & create SEO content, wherever you are. </p>
                     <a href="{{route('register')}}" class="custom-btn4 nwwbabtcustom-btn4" id="atmwtbckcolor"> Get Start </a>
@@ -220,7 +220,7 @@
                         <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
                             data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo" id="gotwht2a">
-                            What exactly is EasySEO?
+                            What exactly is <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>?
                             <span class="faq-icons">
                                 <img alt="Plus" class="plus-icon" src="{{asset('front')}}/images/plus-icon.png">
                                 <img alt="Minus" class="minus-icon" src="{{asset('front')}}/images/minus-icon.png">
@@ -228,7 +228,7 @@
                         </button>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="tas" id="gotwht2b"> EasySEO is free for small teams. For growing teams that need to track more vendors and contract renewals, easy.ai offers paid plans. </p>
+                                <p class="tas" id="gotwht2b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is free for small teams. For growing teams that need to track more vendors and contract renewals, easy.ai offers paid plans. </p>
                             </div>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
                         <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
                             data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                             aria-controls="collapseThree" id="gotwht3a">
-                            When will I be able to access EasySEO?
+                            When will I be able to access <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>?
                             <span class="faq-icons">
                                 <img alt="Plus" class="plus-icon" src="{{asset('front')}}/images/plus-icon.png">
                                 <img alt="Minus" class="minus-icon" src="{{asset('front')}}/images/minus-icon.png">
@@ -260,7 +260,7 @@
                         </button>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="tas" id="gotwht3b"> EasySEO is free for small teams. For growing teams that need to track more vendors
+                                <p class="tas" id="gotwht3b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is free for small teams. For growing teams that need to track more vendors
                                     and contract renewals, easy.ai offers paid plans. </p>
                             </div>
                         </div>
@@ -269,7 +269,7 @@
                         <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
                             data-toggle="collapse" data-target="#collapse4" aria-expanded="false"
                             aria-controls="collapseTwo" id="gotwht4a">
-                            How does EasySEO help e-commerce teams save time <br> and money?
+                            How does <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> help e-commerce teams save time <br> and money?
                             <span class="faq-icons">
                                 <img alt="Plus" class="plus-icon" src="{{asset('front')}}/images/plus-icon.png">
                                 <img alt="Minus" class="minus-icon" src="{{asset('front')}}/images/minus-icon.png">
@@ -277,7 +277,7 @@
                         </button>
                         <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="tas" id="gotwht4b"> EasySEO is free for small teams. For growing teams that need to track more vendors
+                                <p class="tas" id="gotwht4b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is free for small teams. For growing teams that need to track more vendors
                                     and contract renewals, easy.ai offers paid plans. </p>
                             </div>
                         </div>
@@ -286,7 +286,7 @@
                         <button class="d-flex align-items-center justify-content-between btn btn-link collapsed"
                             data-toggle="collapse" data-target="#collapse5" aria-expanded="false"
                             aria-controls="collapseThree" id="gotwht5a">
-                            Who can benefit from EasySEO?
+                            Who can benefit from <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>?
                             <span class="faq-icons">
                                 <img alt="Plus" class="plus-icon" src="{{asset('front')}}/images/plus-icon.png">
                                 <img alt="Minus" class="minus-icon" src="{{asset('front')}}/images/minus-icon.png">
@@ -294,7 +294,7 @@
                         </button>
                         <div id="collapse5" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div class="card-body">
-                                <p class="tas" id="gotwht5b"> EasySEO is free for small teams. For growing teams that need to track more vendors
+                                <p class="tas" id="gotwht5b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is free for small teams. For growing teams that need to track more vendors
                                     and contract renewals, easy.ai offers paid plans. </p>
                             </div>
                         </div>

@@ -44,6 +44,7 @@
                                 <th style="color: black; text-align: left !important;">SEO Score</th>
                                 <th style="color: black; text-align: left !important;">Words</th>
                                 <th style="color: black; text-align: left !important;">Status</th>
+                                <th style="color: black; text-align: left !important;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,6 +95,11 @@ var table = $('#zero-config').DataTable({
         {
             data: 'status',
             name: 'status'
+        },
+        {
+            data: 'action',
+            name: 'action',
+            className: 'text-center'
         }
     ]
 });

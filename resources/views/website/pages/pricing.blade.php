@@ -143,11 +143,11 @@
                                     <ul>
                                         <li id="prcngwht1e"> <img src="{{asset('front')}}/images/tickorange.svg"> SEO
                                             score</li>
-                                        <li id="prcngwht1e1"> <img src="{{asset('front')}}/images/tickorange.svg"> 40+
+                                        <li id="prcngwht1e1"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+
                                             templates </li>
                                         <li id="prcngwht1e2"> <img src="{{asset('front')}}/images/tickorange.svg"> Live
                                             chat support </li>
-                                        <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> 25+
+                                        <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+
                                             languages </li>
                                         <li class="pad-bot-40" id="cpywht2a"> <img
                                                 src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
@@ -194,7 +194,7 @@
                                 <div class="pricing-detail">
                                     <h4 class="col-white tac" id="prcngwht26"> Plan Includes </h4>
                                     <ul>
-                                        <li id="prcngwht27"> <img src="{{asset('front')}}/images/tickpurple.svg"> 40+
+                                        <li id="prcngwht27"> <img src="{{asset('front')}}/images/tickpurple.svg"> 60+
                                             templates </li>
                                         <li id="prcngwht28"> <img src="{{asset('front')}}/images/tickpurple.svg"> Al
                                             Article Writer </li>
@@ -202,7 +202,7 @@
                                             Keyword Generati </li>
                                         <li id="prcngwht221"> <img src="{{asset('front')}}/images/tickpurple.svg"> SEO
                                             Score improvement </li>
-                                        <li id="prcngwht222"> <img src="{{asset('front')}}/images/tickpurple.svg"> 25+
+                                        <li id="prcngwht222"> <img src="{{asset('front')}}/images/tickpurple.svg"> 20+
                                             languages </li>
                                         <li id="prcngwht223"> <img src="{{asset('front')}}/images/tickpurple.svg">
                                             Ezchat </li>
@@ -246,7 +246,7 @@
                                     <ul>
                                         <li id="prcngwht3e"> <img src="{{asset('front')}}/images/tickorange.svg"> latest
                                             AI models </li>
-                                        <li id="prcngwht3f"> <img src="{{asset('front')}}/images/tickorange.svg"> 40+
+                                        <li id="prcngwht3f"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+
                                             templates </li>
                                         <li id="prcngwht3g"> <img src="{{asset('front')}}/images/tickorange.svg">
                                             Keyword Generation </li>
@@ -256,7 +256,7 @@
                                             Article Writer </li>
                                         <li id="cpywht2b"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat
                                         </li>
-                                        <li id="cpywht1a"> <img src="{{asset('front')}}/images/tickorange.svg"> 25+
+                                        <li id="cpywht1a"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+
                                             languages </li>
                                         <li id="cpywht1b"> <img src="{{asset('front')}}/images/tickorange.svg"> Live
                                             chat support </li>
@@ -330,7 +330,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="mmbr" id="atmtwht6">40+ unique templates<img
+                    <td class="mmbr" id="atmtwht6">60+ unique templates<img
                             src="{{asset('front')}}/images/questionmark.svg"></td>
                     <td id="prcchecking7"><img src="{{asset('front')}}/images/tk.svg" id="bsnsadvntgimg9"><img
                             src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"
@@ -366,7 +366,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="mmbr hgt" id="bxswht1b">25+ languages<img
+                    <td class="mmbr hgt" id="bxswht1b">20+ languages<img
                             src="{{asset('front')}}/images/questionmark.svg"></td>
                     <td id="prcchecking16"><img src="{{asset('front')}}/images/tk.svg" id="atmtwhttimg3"><img
                             src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhttimg4">
@@ -534,7 +534,7 @@
                 <div class="detail-text">
                     <h3 class="col-white" id="cntctbxswht2a"> Get
                         <span class="col-orange bnr-fnt"> actionable clicks </span> with AI and improve your SEO for
-                        search <br class="dn"> engines with <span class="col-orange bnr-fnt"> easyseo.ai! </span>
+                        search <br class="dn"> engines with <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai</a>
                     </h3>
                     <p class="col-white" id="cntctbxswht2b">Easily bring AI in your workflow to improve & create SEO
                         content, wherever you are. </p>

@@ -25,6 +25,7 @@
     padding: 30px;
     border-radius: 10px;
     cursor: pointer;
+    margin: 20px 0px;
 }
 .rsltdwholebox:hover{
     background-color: #ECF2FF;

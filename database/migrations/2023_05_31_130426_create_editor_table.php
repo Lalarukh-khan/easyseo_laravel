@@ -18,6 +18,10 @@ class CreateEditorTable extends Migration
             $table->integer('user_id')->nullable();
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
+            $table->integer('score')->nullable();
+            $table->string('target_keyword')->nullable();
+            $table->longText('semantics')->nullable();
+            $table->longText('questions')->nullable();
             $table->integer('words')->nullable();
             $table->string('status')->nullable();
             $table->softDeletes();

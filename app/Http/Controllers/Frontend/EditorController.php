@@ -8,13 +8,14 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Editor;
-use App\Models\EditorTargetKeyword;
 use App\Models\EditorSeoScore;
+use App\Models\EditorTargetKeyword;
 use Illuminate\Support\Facades\DB;
-use App\Models\ChatBotHistory;
 use App\Models\GptHistory;
 use App\Models\Setting;
 use App\Models\UserPackage;
+use Illuminate\Support\Str;
+
 
 class EditorController extends Controller
 {
@@ -32,25 +33,37 @@ class EditorController extends Controller
                 ->addColumn('name', function ($row) {
                     return $row->name;
                 })
-                ->addColumn('target_keyword', function ($row) {
-                    $editor_id = $row->id;
-                    $target_keyword = EditorTargetKeyword::get('editor_target_keyword.*')->where('editor_id' , $editor_id)->pluck('name');
-                    $string = str_replace(array('["','"]'),'',$target_keyword);
-                    return $string;
-                })
                 ->addColumn('score', function ($row) {
-                    $editor_id = $row->id;
-                    $score = EditorSeoScore::get('editor_seo_score.*')->where('editor_id' , $editor_id)->pluck('score');
-                    $string = str_replace(array('[',']'),'',$score);
-                    return $string;
+                    return $row->score;
                 })
+                ->addColumn('target_keyword', function ($row) {
+                    return $row->target_keyword;
+                })
+                // ->addColumn('target_keyword', function ($row) {
+                //     $editor_id = $row->id;
+                //     $target_keyword = EditorTargetKeyword::get('editor_target_keyword.*')->where('editor_id' , $editor_id)->pluck('name');
+                //     $string = str_replace(array('["','"]'),'',$target_keyword);
+                //     return $string;
+                // })
+                // ->addColumn('score', function ($row) {
+                //     $editor_id = $row->id;
+                //     $score = EditorSeoScore::get('editor_seo_score.*')->where('editor_id' , $editor_id)->pluck('score');
+                //     $string = str_replace(array('[',']'),'',$score);
+                //     return $string;
+                // })
                 ->addColumn('words', function ($row) {
                     return $row->words;
                 })
                 ->addColumn('status', function ($row) {
                     return $row->status;
                 })
-                ->rawColumns(['name', 'target_keyword', 'score', 'words', 'status'])
+                ->addColumn('action', function ($row) {
+                    return '<a href="'.route('user.editor.document',$row->id).'" style="font-size:20px;"><i class="fadeIn animated bx bx-edit"></i></a>';
+                })
+                // ->addColumn('action', function ($row) {
+                //     return view('front.editor.document')->with(['data' => $row])->render();
+                // })
+                ->rawColumns(['name', 'target_keyword', 'score', 'words', 'status', 'action'])
                 ->make(true);
         }   
 
@@ -62,10 +75,52 @@ class EditorController extends Controller
 
     public function create()
     {
+        $row = Editor::create();
+        
         $data = array(
-            'title' => 'Create Document'
+            'title' => 'Create Document',
+            'e_id' => $row->id
         );
         return view('front.editor.create')->with($data);
+    }
+
+    public function document($id)
+    {
+        $data = array(
+        'title' => 'Editor',
+        'data' => Editor::findOrFail($id),
+        );
+        return view('front.editor.document')->with($data);
+    }
+
+    public function saveEditor(Request $request)
+    {
+        $editor = Editor::findOrFail($request->e_id);
+        $auth_user = auth('web')->user();
+
+        $editor->user_id = $auth_user->id;
+        $editor->name = $request->edtitle;
+        $editor->description = $request->eddesc;
+        $editor->words = $request->edwords;
+        $editor->status = "Draft";
+        $editor->score = $request->edscrore;
+        $editor->target_keyword = $request->edtrgtkw;
+        $editor->semantics = $request->edsemantics;
+        $editor->questions = $request->edquestions;
+        $editor->titles = $request->edalltitles;
+        // Save the changes
+        $editor->save();
+    }
+    public function changeEditor(Request $request)
+    {
+        $editor = Editor::findOrFail($request->e_id);
+
+        $editor->name = $request->edtitle;
+        $editor->description = $request->eddesc;
+        $editor->words = $request->edwords;
+        $editor->score = $request->edscrore;
+        // Save the changes
+        $editor->save();
     }
 
     public function keywords()

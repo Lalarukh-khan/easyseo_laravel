@@ -7,9 +7,9 @@
             <h2 class="abtus nwwbctabtus nwwbabtus" id="writewhtbtn1">Contact us:</h2>
         </div>
         <div>
-            <h2 class="col-white bsnshdng nwwbbsnshdng" id="writewhtbtn2"><b>Get in Touch with <br>  <span class="col-orange font-size-45 nwwbbsnshdngbnr-fnt">easyseo.ai </span>for <br class="onlymob">Expert SEO <br class="dn"> AI <br class="onlymob">Solutions and <br class="onlymob"><span class="col-orange font-size-45 nwwbbsnshdngbnr-fnt"> Support </b></span>
+            <h2 class="col-white bsnshdng nwwbbsnshdng" id="writewhtbtn2"><b>Get in Touch with <br> <a href="{{route('web.home')}}" class="col-orange font-size-45 nwwbbsnshdngbnr-fnt">easyseo.ai</a> for <br class="onlymob">Expert SEO <br class="dn"> AI <br class="onlymob">Solutions and <br class="onlymob"><span class="col-orange font-size-45 nwwbbsnshdngbnr-fnt"> Support </b></span>
             </h2>
-            <p class="efctv efctvs nwwbefctv pad-bot-20"  id="writewhtbtn3">Start using all the features of EasySEO and get the best results. Reliable support is a key <br class="dn"> factor for a quality experience and use of the product. We are here to help you achieve <br class="dn"> success and are always ready to help in solving any questions and problems related to the use <br class="dn"> of the service. Don't delay, contact EasySEO and start harnessing the power of AI today! </p>
+            <p class="efctv efctvs nwwbefctv pad-bot-20"  id="writewhtbtn3">Start using all the features of <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> and get the best results. Reliable support is a key <br class="dn"> factor for a quality experience and use of the product. We are here to help you achieve <br class="dn"> success and are always ready to help in solving any questions and problems related to the use <br class="dn"> of the service. Don't delay, contact <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> and start harnessing the power of AI today! </p>
         </div>
     </div>
     <!-- Feature-box Sections Starts Here  -->
@@ -23,7 +23,7 @@
                     <p class="pad-bot-20 font-weight-lighter tac m-b-10" id="writewht2a">If you exceed the standard <br> packages or want a demo </p>
                     <br class="onlytab">
                     <div class="col-lg-12">
-                        <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="{{route('login')}}"id="writewht2b" style="text-align: center !important; width: 100%;">Contact sales team > </a>
+                        <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="mailto:sales@easyseo.ai"id="writewht2b" style="text-align: center !important; width: 100%; color: #fff;">Contact sales team > </a>
                     <br class="onlytab">
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="sales gvngblack" id="prcngwht3">
                     <h2 class="col-white tac pad-top-10"id="writewht1c">Media, Press <br> & Careers </h2>
                     <p class="pad-bot-20 font-weight-lighter tac m-b-10" id="writewht2c">If you are interested in creating a story about our work or join our team</p>
-                    <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="{{route('login')}}" id="writewht3c" style="text-align: center !important; width: 100%;">Contact media  <br class="onlytab"> team ></a>
+                    <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="mailto:pr@easyseo.ai" id="writewht3c" style="text-align: center !important; width: 100%;color: #fff;">Contact media  <br class="onlytab"> team ></a>
                     <br class="onlytab">
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     <h2 class="col-white tac pad-top-10" id="amzngwht3achk">Help & <br class="dn"> Support </h2>
                     <p class="pad-bot-20 font-weight-lighter tac m-b-10"id="writewht3a">Get help and assistance on <br> how to use the platform </p>
                     <br class="onlytab">
-                    <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="{{route('login')}}"id="writewht3b" style="text-align: center !important; width: 100%;">Contact support ></a>
+                    <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="mailto:support@easyseo.ai"id="writewht3b" style="text-align: center !important; width: 100%;color: #fff;">Contact support ></a>
                     <br class="onlytab">
                     <br class="onlytab">
                 </div>
@@ -57,10 +57,12 @@
             <div class="blue-row col-md-5 col-lg-5 col-sm-12 col-12 blue-img">
                 <div class="contact-head">
                     <h3 class="title-text2 col-white"> Contact Information </h3>
-                    <p>Say something to start a live chat! </p>
-                    <p class="nwwbctp"> <img alt="Phone" src="{{asset('front')}}/images/phn.svg"> </a> &nbsp; &nbsp; &nbsp;+1012 3456 789</p>
-                    <p class="nwwbctp"> <img alt="Message" src="{{asset('front')}}/images/msg.svg"> </a>&nbsp; &nbsp; &nbsp;demo@gmail.com</p>
-                    <p class="nwwbctp"> <img alt="Location" src="{{asset('front')}}/images/location.svg"> </a>&nbsp; &nbsp; &nbsp;132 Dartmouth Street Boston, <br class="dn"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Massachusetts 02156 United &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;States</p>
+                    <p>For any inquiries or suggestions, please feel free to email us, utilize our live chat, or use the provided form. We're always here to help. </p>
+                    <div style="display: none;">
+                        <p class="nwwbctp"> <img alt="Phone" src="{{asset('front')}}/images/phn.svg"> </a> &nbsp; &nbsp; &nbsp;+1012 3456 789</p>
+                        <p class="nwwbctp"> <img alt="Message" src="{{asset('front')}}/images/msg.svg"> </a>&nbsp; &nbsp; &nbsp;demo@gmail.com</p>
+                        <p class="nwwbctp"> <img alt="Location" src="{{asset('front')}}/images/location.svg"> </a>&nbsp; &nbsp; &nbsp;132 Dartmouth Street Boston, <br class="dn"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Massachusetts 02156 United &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;States</p>
+                    </div>
                 </div>
                 <div class="col-lg-12 row pad-top-60">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12 scl">
@@ -111,7 +113,7 @@
                                     <input type="number" placeholder="+1 012 3456 789" class="field-style1" name="phone" required id="bsnsadvntg1">
                                 </div>
                             </div>
-                            <div class="col-lg-12 m-b-20 dn">
+                            <div class="col-lg-12 m-b-20 dn" style="display: none;">
                                 <h4 class="col-white" id="bsnsadvntg1o">Select Subject?</h4>
                                 <div class="row">
                                     <div class="col-md-3 col-lg-3 col-sm-12 col-12">

@@ -120,7 +120,7 @@
                         Start </a>
                     <a href="" class="custom-btn5"> See How It Works <img
                             src="{{asset('front')}}/images/right-icon.svg"> </a> -->
-                    <p id="main3wht"> EasySeo is an AI writing tool that helps you create unique seo optimized content
+                    <p id="main3wht"><a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is an AI writing tool that helps you create unique seo optimized content
                         for your E-commerce business, blog, ads, emails, and website without wasting time and effort!
                     </p>
                     <a href="{{route('register')}}" class="custom-btn4 mr-3 strt"> Get
@@ -232,7 +232,7 @@
             <div class="container">
                 <div class="block-element text-center m-b-50 mobtextleft">
                     <h3 class="title-text1" id="amzngwht2"> What <span class="col-orange bnr-fnt">amazing </span>
-                        content will <br class="dn"> you create with <span class="col-orange bnr-fnt">easyseo.ai?</span>
+                        content will <br class="dn"> you create with <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai?</a>
                     </h3>
                 </div>
                 <div class="block-element">
@@ -302,7 +302,7 @@
             <section class="atmt pad-top-40" id="atmtwht">
                 <h1 class="advntg mobtextleft" id="atmtwht1">What is your <span
                         class="col-orange bnr-fnt">advantages</span> to use content <br class="dn">
-                    created with <span class="col-orange bnr-fnt">easyseo.ai?</span></h1>
+                    created with <a class="col-orange bnr-fnt" href="{{route('web.home')}}" >easyseo.ai?</a></h1>
                 <div class="container anlss">
                     <div class="row" style="width: 100%; height: auto;">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12 bd-sec2">
@@ -390,7 +390,7 @@
                                     <h3 class="col-white mobtextleft" id="instwht1"> Turn your
                                         <span class="col-orange bnr-fnt"> keywords </span> into success <br class="dn">
                                         with the help of
-                                        <span class="col-orange bnr-fnt"> EasySEO Ai! <br display="dn"> Actionable
+                                        <span class="col-orange bnr-fnt"> <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai</a> <br display="dn"> Actionable
                                             insights </span>
                                         with AI now!
                                     </h3>
@@ -458,7 +458,7 @@
                                                 optimization: </p>
                                             <p class="anlsslrg" id="atmtwhtt3a">Save writers time while also <br>
                                                 ensuring that the content covers <br> all of the important points about
-                                                <br> the topic. EasySEO can suggest <br> related topics or subtopics to
+                                                <br> the topic. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> can suggest <br> related topics or subtopics to
                                                 include
                                                 <br> in the content to improve SEO.
                                             </p>
@@ -475,7 +475,7 @@
                                                 style="display: none;">
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-8">
-                                            <p class="anlssaccrt anls" id="atmtwhtt4">Chat by <br> Easyseo.ai: </p>
+                                            <p class="anlssaccrt anls" id="atmtwhtt4">Chat by <br> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> </p>
                                             <p class="anlsslrg" id="atmtwhtt4a">Chat feature allows you to <br> expand
                                                 your goals by providing <br> a seamless connection to AI, <br> enabling
                                                 you to conduct research, <br> generate content, and accomplish <br> your
@@ -539,8 +539,7 @@
 
                                         <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                                            <h2 style="font-size: 36px;" class="advntg pad-top-20" id="nowht">Now <span
-                                                    class="col-orange bnr-fnt">easyseo.ai</span> writes content for you,
+                                            <h2 style="font-size: 36px;" class="advntg pad-top-20" id="nowht">Now <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai</a> writes content for you,
                                                 <br class="dn">
                                                 where you do, <span class="col-orange bnr-fnt">easily with Ai!</span>
                                             </h2>
@@ -548,7 +547,7 @@
                                         <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                         <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                                            <p class="bsns" id="nowht1">EasySeo is an AI writing tool that helps you
+                                            <p class="bsns" id="nowht1"><a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is an AI writing tool that helps you
                                                 create unique seo <br class="dn"> optimized content for your E-commerce
                                                 business, blog, ads, emails, <br class="dn"> and website without wasting
                                                 time and effort!</p>
@@ -572,7 +571,7 @@
                                                 <h3 style="font-size: 36px;" class="advntg pad-bot-20" id="prpsl">For what <span
                                                         class="col-orange bnr-fnt">proposals </span> could be <br
                                                         class="dn">
-                                                    <span class="col-orange bnr-fnt">easyseo.ai </span> helpful?
+                                                         <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai</a> helpful?
                                                 </h3>
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
@@ -642,8 +641,7 @@
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                                                     <h4 style="font-size: 36px;" class="advntg pad-bot-40" id="bsnsadvntg"><b>Who will be exited
-                                                            about <span
-                                                                class="col-orange bnr-fnt">easyseo.ai</span>?</b></h4>
+                                                            about <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai</a>?</b></h4>
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                             </div>
@@ -809,7 +807,7 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht1a"> EasySEO is a game changer!
+                                                        <p class="col-white" id="bxswht1a"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is a game changer!
                                                             It has revolutionized the way we create content, and has
                                                             saved us so much time and effort. Highly recommended! </p>
                                                         <h4 id="bxswht1b">
@@ -833,7 +831,7 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht2a"> As a busy marketer, EasySEO
+                                                        <p class="col-white" id="bxswht2a"> As a busy marketer, <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>
                                                             has been a godsend. It's incredibly user-friendly and
                                                             produces high-quality content with ease. I can't imagine
                                                             going back to the old ways.</p>
@@ -858,7 +856,7 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht3a"> EasySEO is the future of
+                                                        <p class="col-white" id="bxswht3a"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is the future of
                                                             content creation. It's efficient, effective, and allows us
                                                             to focus on the bigger picture of our marketing strategy.
                                                             Our team is loving it! </p>
@@ -883,7 +881,7 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht4a"> EasySEO is a game changer!
+                                                        <p class="col-white" id="bxswht4a"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is a game changer!
                                                             It has revolutionized the way we create content, and has
                                                             saved us so much time and effort. Highly recommended! </p>
                                                         <h4 id="bxswht4b">
@@ -914,9 +912,7 @@
                                                     <div class="detail-text">
                                                         <h3 class="col-white" id="getwht"> Get
                                                             <span class="col-orange bnr-fnt"> actionable clicks </span>
-                                                            with AI and improve your SEO for search <br class="dn">
-                                                            engines with <span class="col-orange bnr-fnt"> easyseo.ai!
-                                                            </span>
+                                                            with AI and improve your SEO for search <br class="dn"><a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai!</a>
                                                         </h3>
                                                         <p class="col-white" id="getwht1">Easily bring AI in your
                                                             workflow to improve & create SEO content, wherever you are.
@@ -945,7 +941,7 @@
                                                                 data-toggle="collapse" data-target="#collapseTwo"
                                                                 aria-expanded="false" aria-controls="collapseTwo"
                                                                 id="gotwht2">
-                                                                <span id="gotwht2a">What exactly is EasySEO?</span>
+                                                                <span id="gotwht2a">What exactly is <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai?</a></span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
                                                                         src="{{asset('front')}}/images/plus-icon.png"
@@ -961,7 +957,7 @@
                                                             <div id="collapseTwo" class="collapse"
                                                                 aria-labelledby="headingTwo" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht2d">
-                                                                    <p class="tas" id="gotwht2b"> EasySEO is the world's best AI writing platform for creating SEO-optimized content that drives organic Google traffic to your website. You can increase traffic, sales, and revenue tenfold by strategically placing keywords, internal links, and external links in your generated content. </p>
+                                                                    <p class="tas" id="gotwht2b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is the world's best AI writing platform for creating SEO-optimized content that drives organic Google traffic to your website. You can increase traffic, sales, and revenue tenfold by strategically placing keywords, internal links, and external links in your generated content. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -998,7 +994,7 @@
                                                                 aria-expanded="false" aria-controls="collapseThree"
                                                                 id="gotwht3" id="gotwht3a">
                                                                 <span id="gotwht3a">When will I be able to access
-                                                                    EasySEO?</span>
+                                                                <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai?</a></span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
                                                                         src="{{asset('front')}}/images/plus-icon.png"
@@ -1024,7 +1020,7 @@
                                                                 data-toggle="collapse" data-target="#collapse4"
                                                                 aria-expanded="false" aria-controls="collapseTwo"
                                                                 id="gotwht4">
-                                                                <span id="gotwht4a">How does EasySEO help e-commerce
+                                                                <span id="gotwht4a">How does <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> help e-commerce
                                                                     teams save time <br> and money?</span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
@@ -1041,7 +1037,7 @@
                                                             <div id="collapse4" class="collapse"
                                                                 aria-labelledby="headingTwo" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht4d">
-                                                                    <p class="tas" id="gotwht4b"> Because of our artificial intelligence solution that does the research, brainstorming, and writing for you, your team will spend less time creating and distributing content across your channels. Some EasySEO users claim to have saved a significant amount of time while increasing clicks and conversions by more than 1000%. </p>
+                                                                    <p class="tas" id="gotwht4b"> Because of our artificial intelligence solution that does the research, brainstorming, and writing for you, your team will spend less time creating and distributing content across your channels. Some <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> users claim to have saved a significant amount of time while increasing clicks and conversions by more than 1000%. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1051,7 +1047,7 @@
                                                                 data-toggle="collapse" data-target="#collapse5"
                                                                 aria-expanded="false" aria-controls="collapseThree"
                                                                 id="gotwht5">
-                                                                <span id="gotwht5a">Who can benefit from EasySEO?</span>
+                                                                <span id="gotwht5a">Who can benefit from <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai?</a></span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
                                                                         src="{{asset('front')}}/images/plus-icon.png"
@@ -1067,8 +1063,8 @@
                                                             <div id="collapse5" class="collapse"
                                                                 aria-labelledby="headingThree" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht5d">
-                                                                    <p class="tas" id="gotwht5b"> EasySEO is primarily for content creators, whether they are marketers, entrepreneurs, agencies, or students. EasySEO does not require you to be a professional writer. <br>
-                                                                    EasySEO's AI-generated, SEO-optimized content is also used by thousands of professional writers because it helps them brainstorm new ideas, saves them time, increases productivity, and thus generates more revenue. </p>
+                                                                    <p class="tas" id="gotwht5b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is primarily for content creators, whether they are marketers, entrepreneurs, agencies, or students. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> does not require you to be a professional writer. <br>
+                                                                    <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> AI-generated, SEO-optimized content is also used by thousands of professional writers because it helps them brainstorm new ideas, saves them time, increases productivity, and thus generates more revenue. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1139,13 +1135,13 @@
                                                                                     SEO score</li>
                                                                                 <li id="prcngwht1e1"> <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
-                                                                                    40+ templates </li>
+                                                                                    60+ templates </li>
                                                                                 <li id="prcngwht1e2"> <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
                                                                                     Live chat support </li>
                                                                                 <li id="prcngwht1e3"> <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
-                                                                                    25+ languages </li>
+                                                                                    20+ languages </li>
                                                                                 <li class="pad-bot-40" id="cpywht2a">
                                                                                     <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
@@ -1209,7 +1205,7 @@
                                                                             <ul>
                                                                                 <li id="prcngwht27"> <img
                                                                                         src="{{asset('front')}}/images/tickpurple.svg">
-                                                                                    40+ templates </li>
+                                                                                    60+ templates </li>
                                                                                 <li id="prcngwht28"> <img
                                                                                         src="{{asset('front')}}/images/tickpurple.svg">
                                                                                     Al Article Writer </li>
@@ -1221,7 +1217,7 @@
                                                                                     SEO Score improvement </li>
                                                                                 <li id="prcngwht222"> <img
                                                                                         src="{{asset('front')}}/images/tickpurple.svg">
-                                                                                    25+ languages </li>
+                                                                                    20+ languages </li>
                                                                                 <li id="prcngwht223"> <img
                                                                                         src="{{asset('front')}}/images/tickpurple.svg">
                                                                                     Ezchat </li>
@@ -1284,7 +1280,7 @@
                                                                                     latest AI models </li>
                                                                                 <li id="prcngwht3f"> <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
-                                                                                    40+ templates </li>
+                                                                                    60+ templates </li>
                                                                                 <li id="prcngwht3g"> <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
                                                                                     Keyword Generation </li>
@@ -1299,7 +1295,7 @@
                                                                                     Ezchat </li>
                                                                                 <li id="cpywht1a"> <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
-                                                                                    25+ languages </li>
+                                                                                    20+ languages </li>
                                                                                 <li id="cpywht1b"> <img
                                                                                         src="{{asset('front')}}/images/tickorange.svg">
                                                                                     Live chat support </li>

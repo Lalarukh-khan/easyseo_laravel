@@ -4,26 +4,10 @@
 	body{
 		overflow-y: scroll !important;
 	}
-	/* h1 {
-	display: inline;
-	margin: 0;
-	padding: 0;
-	}
-	h2 {
-	display: inline;
-	margin: 0;
-	padding: 0;
-	}
-	h3 {
-	display: inline;
-	margin: 0;
-	padding: 0;
-	} */
 </style>
 @endsection
 @section('content')
 @include('components.flash-message')
-
 <div class="container" style="max-width: inherit !important;">
     <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
@@ -87,7 +71,8 @@
 								<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
 							</div> -->
 						</div>
-						<div id="forscoring" contenteditable="true" style="outline: none;">
+						<div id="forscoring" contenteditable="true" style="outline: none;" class="edforscoring">
+							<div id="dbdescget"></div>
 							<div id="resultdata" style="display: none !important;"></div>
 							<div class="edtrval" id="extrcttngrsltdata"></div>
 							<div id="quesdata"></div>
@@ -150,8 +135,7 @@
 							<div class="sk-circle-fade-dot"></div>
 						</div>
 					</div>
-					<div id="ans_div" style="display:none">
-						<h3 id="sww" style="display: none;">Something went wrong!</h3>
+					<div id="ans_div">
 						<div id="norspnse">
 							<div id="semantics" style="display: none !important;"></div>
 							<div id="questions" style="display: none !important;"></div>
@@ -282,6 +266,17 @@
 		</div>
 	</div>
 </div>
+<div style="display: none !important;">
+	<input type="text" value="{{ $data->id }}" readonly >
+	<input type="text" value="{{ $data->name }}" id="dbname">
+	<div id="dbdescription">{{ $data->description }}</div>
+	<input type="text" value="{{ $data->words }}" id="dbwords">
+	<input type="text" value="{{ $data->target_keyword }}" id="dbtrgtkw">
+	<input type="text" value="{{ $data->score }}" id="dbscore">
+	<div id="dbsmntcs">{{ $data->semantics }}</div>
+	<div id="dbquess">{{ $data->questions }}</div>
+	<div id="dbttls">{{ $data->titles }}</div>
+</div>
 <div id="cpydone" class="edtrhidden">
  <span class="bx bx-check" style="color: #fff; font-size: 20px !important;"></span> &nbsp; Copied to clipboard successfully
 </div>
@@ -338,52 +333,23 @@
   <input type="hidden" id="quescontent" name="quescontent">
   <button type="submit" id="quesubmit" style="display: none !important;">Submit</button>
 </form>
-
 <form id="contentform">
   <input type="hidden" id="mainrval" name="mainrval">
   <button type="submit" id="mnsubmit" style="display: none !important;">Submit</button>
 </form>
 <form id="savedoc">
 	@csrf
-	<input type="text" value="{{ $e_id }}" readonly name="e_id" style="display: none !important;">
+	<input type="text" value="{{ $data->id }}" readonly name="e_id" style="display: none !important;">
 	<input type="text" name="edtitle" id="edtitle" style="display: none !important;">
 	<textarea name="eddesc" id="eddesc" style="display: none !important;"></textarea>
 	<input type="text" name="edwords" id="edwords" style="display: none !important;">
-	<input type="text" name="edtrgtkw" id="edtrgtkw" style="display: none !important;">
 	<input type="text" name="edscrore" id="edscrore" style="display: none !important;">
-	<textarea name="edsemantics" id="edsemantics" style="display: none !important;"></textarea>
-	<textarea name="edquestions" id="edquestions" style="display: none !important;"></textarea>
-	<textarea name="edalltitles" id="edalltitles" style="display: none !important;"></textarea>
   	<button type="submit" id="docsubmit" style="display: none !important;">Submit</button>
 </form>
 <!-- Main Value taker of titles -->
 <div>
 	<input type="hidden" id="mncontent" name="mncontent">
   	<input type="hidden" id="getmnval" name="getmnval">
-</div>
-  <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-	  	<h3 class="edtrtrgtrp">Target Keyword Report</h3>
-		<p class="edtrp">Type in the primary keyword the content needs to rank for, and get SEO score and AI recommendations based on:</p>
-		<ul>
-			<li class="edtrp">Semantic Keywords</li>
-			<li class="edtrp">Search Intents</li>
-			<li class="edtrp">Title and heading recommendations</li>
-			<li class="edtrp">Word count target</li>
-		</ul>
-		<form id="ajaForm">
-			<div style="text-align: center;">
-				<input type="text" placeholder="Enter Target Keyword..." class="edtrinp" name="prompt" autocomplete="off" class="form-control" required>
-				<button class="edtrrptbtn" type="submit" id="hidemodal">Create report</button>
-			</div>
-			<p class="text-center">Use 1 audit credit to generate</p>
-		</form>
-      </div> 
-    </div>
-  </div>
 </div>
 
 <!-- Brief Modal -->
@@ -403,25 +369,6 @@
     </div>
   </div>
 </div>
-
-<!-- Audience Modal -->
-<!-- <div class="modal" id="audienceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-		<div style="text-align: right !important;">
-        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-	  	<h5 class="text-center">Target audience</h5>
-		<p class="text-center">Setting the right target audience will help the AI <br> create better headlines and stronger content.</p>
-		<div class="text-center">
-			<input type="text" class="edtraudinp" id="audedtraudinp" value="united states">
-		</div>
-		<h4 class="edtraudfr">Frequent used  Target audience</h4>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!-- Tone Modal -->
 <div class="modal" id="toneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
@@ -490,15 +437,10 @@
 @endsection
 @section('page-scripts')
 <script>
-    $(window).on('load', function() {
-        $('#exampleModalCenter').modal('show');
-    });
 	$(document).ready(function() {
-		$(document).on('click', function(event) {
-			if (!$(event.target).closest('.edtrinput-container').length) {
-			$('.edtrdropdownlist').hide();
-			}
-		});
+		getsemquetts();
+		getallothrdbdt();
+		getcolorofscore();
 	});
 	let typingTimer;
     const typingTimeout = 2000; // Set the timeout duration in milliseconds
@@ -529,12 +471,6 @@
 	ttcustomDiv.style.display = "block";
 	ttcustomDiv.style.zIndex = "9999";
 	});
-	// document.addEventListener("click", function(event) {
-	// if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
-	// 	ttcustomDiv.style.display = "none";
-	// 	ttcustomDiv.style.zIndex = "-1";
-	// }
-	// });
 	const closettdiv = document.getElementById("closettdiv");
 	closettdiv.addEventListener("click", function() {
 		ttcustomDiv.style.display = "none";
@@ -543,32 +479,15 @@
 	var inputText = this.value;
 	document.getElementById("takeedtrbrieftext").textContent = inputText;
 	});
-	// document.getElementById("audedtraudinp").addEventListener("input", function() {
-	// var inputText = this.value;
-	// document.getElementById("takeaudedtraudinp").textContent = inputText;
-	// });
 	document.getElementById("blgedtraudinp").addEventListener("input", function() {
 	var inputText = this.value;
 	document.getElementById("takeblgedtraudinp").textContent = inputText;
 	});
-	const newform = document.getElementById("ajaForm");
-	newform.addEventListener("submit", submitForm);
-	const modal = document.getElementById("exampleModalCenter");
-	function closeModal() {
-		modal.style.display = "none";
-	}
-	function submitForm(event) {
-		event.preventDefault();
-		$('#ai-loader').show();
-    	$('#ans_div').hide();
-		$('#exampleModalCenter').modal("hide");
-	}
 </script>
 <script>
     var apiUrl = "{{ route('user.editor.ai_response') }}";
     const token = "{{ csrf_token() }}"
 
-    const form = document.querySelector('#ajaForm')
     const queform = document.querySelector('#quesform')
     const cntntform = document.querySelector('#contentform')
     const chatContainer = document.querySelector('#resultdata');
@@ -620,401 +539,384 @@
             `<p id=${uniqueId}>${value}</p>`
         )
     }
-	const handleSubmit_main = async (e) => {
-        e.preventDefault()
-
-        const data = new FormData(form)
-
-        // user's chatstripe
-        // chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
-
-        // to clear the textarea input
-        form.reset()
-
-        // bot's chatstripe
-        const uniqueId = generateUniqueId()
-        chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
-
-        // to focus scroll to the bottom
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-
-        // specific message div
-        const messageDiv = document.getElementById(uniqueId);
-        // messageDiv.innerHTML = "..."
-        loader(messageDiv)
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                _token: token,
-                prompt: 'write firstly 9 questions and then 11 semantic keywords with maximum 2 words limit in ordered list about ' + data.get('prompt'),
-                old_prompt: data.get('old_prompt')
-            })
-        })
-		const majorprompt = data.get('prompt');
-		const majoroldprompt = data.get('old_prompt');
-
-        clearInterval(loadInterval)
-        messageDiv.innerHTML = " "
-
-			// $('#ai-loader').hide();
-			// $('#ans_div').show();
-            // const data = await response.json();
-            // const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-			// typeText(messageDiv, parsedData);
-            // $('#old_prompt').val(data.old_prompt);
-			// extrcttngrsltdata.innerHTML = parsedData;
-			if (response.ok) {
-					$('#ai-loader').hide();
-					$('#ans_div').show();
-					const data = await response.json();
-					const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-					$('#old_prompt').val(data.old_prompt);
-					// const div = document.getElementById(newval);
-					document.getElementById("edtrtrgtkwrd").innerHTML = majorprompt;
-					const content = String(parsedData);
-					const startWord1 = "1.";
-					const endWord1 = "9.";
-					const startWord2 = "1.";
-					const endWord2 = "11.";
-					const startIndex1 = content.indexOf(startWord1);
-					const endIndex1 = content.indexOf(endWord1, startIndex1 + startWord1.length);
-
-					const startIndex2 = content.indexOf(startWord2, endIndex1 + endWord1.length);
-					const endIndex2 = content.indexOf(endWord2, startIndex2 + startWord2.length);
-
-					if (
-						startIndex1 !== -1 &&
-						endIndex1 !== -1 &&
-						startIndex2 !== -1 &&
-						endIndex2 !== -1 &&
-						endIndex1 < startIndex2
-					) {
-						const startIndex = content.indexOf('"');
-						const endIndex = content.lastIndexOf('"');
-					
-						if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
-							const trimmedContent = content.substring(startIndex + 1, endIndex);
-						}
-						const trimmedContent1 = content.substring(startIndex1, endIndex1 + endWord1.length);
-						const trimmedContent2 = content.substring(startIndex2, endIndex2 + endWord2.length);
-						// const final_text = trimmedContent1 + trimmedContent2;
-						document.getElementById("semantics").innerHTML = trimmedContent2;
-						document.getElementById("questions").innerHTML = trimmedContent1;
-						const forscoring = document.getElementById("forscoring");
-						const upprcontnt = forscoring.innerText;
-						document.getElementById("eddesc").value = upprcontnt;
-						if (upprcontnt == ''){
-								upprcontnt.innerText = "nothing";
-								getSeoScore(upprcontnt);
-						}
-						else{
-							getSeoScore(upprcontnt);
-						}
-						// const score =  content;
-						
-
-						const semantics = document.getElementById("semantics").innerHTML;
-						startText2_1 = "1.";
-						endText2_1 = "2.";
-						const startIndex2_1 = semantics.indexOf(startText2_1);
-						const endIndex2_1 = semantics.indexOf(endText2_1);
-						if (startIndex2_1 !== -1 && endIndex2_1 !== -1 && startIndex2_1 < endIndex2_1) {
-							const trimmedContent2_1 = semantics.substring(startIndex2_1 + startText2_1.length, endIndex2_1);
-							const sem1 = document.getElementById("sem1");
-							sem1.innerHTML = trimmedContent2_1;
-						}
-						startText2_2 = "2.";
-						endText2_2 = "3.";
-						const startIndex2_2 = semantics.indexOf(startText2_2);
-						const endIndex2_2 = semantics.indexOf(endText2_2);
-						if (startIndex2_2 !== -1 && endIndex2_2 !== -1 && startIndex2_2 < endIndex2_2) {
-							const trimmedContent2_2 = semantics.substring(startIndex2_2 + startText2_2.length, endIndex2_2);
-							const sem2 = document.getElementById("sem2");
-							sem2.innerHTML = trimmedContent2_2;
-						}
-						startText2_3 = "3.";
-						endText2_3 = "4.";
-						const startIndex2_3 = semantics.indexOf(startText2_3);
-						const endIndex2_3 = semantics.indexOf(endText2_3);
-						if (startIndex2_3 !== -1 && endIndex2_3 !== -1 && startIndex2_3 < endIndex2_3) {
-							const trimmedContent2_3 = semantics.substring(startIndex2_3 + startText2_3.length, endIndex2_3);
-							const sem3 = document.getElementById("sem3");
-							sem3.innerHTML = trimmedContent2_3;
-						}
-						startText2_4 = "4.";
-						endText2_4 = "5.";
-						const startIndex2_4 = semantics.indexOf(startText2_4);
-						const endIndex2_4 = semantics.indexOf(endText2_4);
-						if (startIndex2_4 !== -1 && endIndex2_4 !== -1 && startIndex2_4 < endIndex2_4) {
-							const trimmedContent2_4 = semantics.substring(startIndex2_4 + startText2_4.length, endIndex2_4);
-							const sem4 = document.getElementById("sem4");
-							sem4.innerHTML = trimmedContent2_4;
-						}
-						startText2_5 = "5.";
-						endText2_5 = "6.";
-						const startIndex2_5 = semantics.indexOf(startText2_5);
-						const endIndex2_5 = semantics.indexOf(endText2_5);
-						if (startIndex2_5 !== -1 && endIndex2_5 !== -1 && startIndex2_5 < endIndex2_5) {
-							const trimmedContent2_5 = semantics.substring(startIndex2_5 + startText2_5.length, endIndex2_5);
-							const sem5 = document.getElementById("sem5");
-							sem5.innerHTML = trimmedContent2_5;
-						}
-						startText2_6 = "6.";
-						endText2_6 = "7.";
-						const startIndex2_6 = semantics.indexOf(startText2_6);
-						const endIndex2_6 = semantics.indexOf(endText2_6);
-						if (startIndex2_6 !== -1 && endIndex2_6 !== -1 && startIndex2_6 < endIndex2_6) {
-							const trimmedContent2_6 = semantics.substring(startIndex2_6 + startText2_6.length, endIndex2_6);
-							const sem6 = document.getElementById("sem6");
-							sem6.innerHTML = trimmedContent2_6;
-						}
-						startText2_7 = "7.";
-						endText2_7 = "8.";
-						const startIndex2_7 = semantics.indexOf(startText2_7);
-						const endIndex2_7 = semantics.indexOf(endText2_7);
-						if (startIndex2_7 !== -1 && endIndex2_7 !== -1 && startIndex2_7 < endIndex2_7) {
-							const trimmedContent2_7 = semantics.substring(startIndex2_7 + startText2_7.length, endIndex2_7);
-							const sem7 = document.getElementById("sem7");
-							sem7.innerHTML = trimmedContent2_7;
-						}
-						startText2_8 = "8.";
-						endText2_8 = "9.";
-						const startIndex2_8 = semantics.indexOf(startText2_8);
-						const endIndex2_8 = semantics.indexOf(endText2_8);
-						if (startIndex2_8 !== -1 && endIndex2_8 !== -1 && startIndex2_8 < endIndex2_8) {
-							const trimmedContent2_8 = semantics.substring(startIndex2_8 + startText2_8.length, endIndex2_8);
-							const sem8 = document.getElementById("sem8");
-							sem8.innerHTML = trimmedContent2_8;
-						}
-						startText2_9 = "9.";
-						endText2_9 = "10.";
-						const startIndex2_9 = semantics.indexOf(startText2_9);
-						const endIndex2_9 = semantics.indexOf(endText2_9);
-						if (startIndex2_9 !== -1 && endIndex2_9 !== -1 && startIndex2_8 < endIndex2_9) {
-							const trimmedContent2_9 = semantics.substring(startIndex2_9 + startText2_9.length, endIndex2_9);
-							const sem9 = document.getElementById("sem9");
-							sem9.innerHTML = trimmedContent2_9;
-						}
-						startText2_10 = "10.";
-						endText2_10 = "11.";
-						const startIndex2_10 = semantics.indexOf(startText2_10);
-						const endIndex2_10 = semantics.indexOf(endText2_10);
-						if (startIndex2_10 !== -1 && endIndex2_10 !== -1 && startIndex2_10 < endIndex2_10) {
-							const trimmedContent2_10 = semantics.substring(startIndex2_10 + startText2_10.length, endIndex2_10);
-							const sem10 = document.getElementById("sem10");
-							sem10.innerHTML = trimmedContent2_10;
-						}
-						//QUESTIONS SECTION STARTS FROM HERE
-						const questions = document.getElementById("questions").innerHTML;
-						startText1_1 = "1.";
-						endText1_1 = "2.";
-						const startIndex1_1 = questions.indexOf(startText1_1);
-						const endIndex1_1 = questions.indexOf(endText1_1);
-						if (startIndex1_1 !== -1 && endIndex1_1 !== -1 && startIndex1_1 < endIndex1_1) {
-							const trimmedContent1_1 = questions.substring(startIndex1_1 + startText1_1.length, endIndex1_1);
-							const que1 = document.getElementById("que1");
-							que1.innerHTML = trimmedContent1_1;
-						}
-						startText1_2 = "2.";
-						endText1_2 = "3.";
-						const startIndex1_2 = questions.indexOf(startText1_2);
-						const endIndex1_2 = questions.indexOf(endText1_2);
-						if (startIndex1_2 !== -1 && endIndex1_2 !== -1 && startIndex1_2 < endIndex1_2) {
-							const trimmedContent1_2 = questions.substring(startIndex1_2 + startText1_2.length, endIndex1_2);
-							const que2 = document.getElementById("que2");
-							que2.innerHTML = trimmedContent1_2;
-						}
-						startText1_3 = "3.";
-						endText1_3 = "4.";
-						const startIndex1_3 = questions.indexOf(startText1_3);
-						const endIndex1_3 = questions.indexOf(endText1_3);
-						if (startIndex1_3 !== -1 && endIndex1_3 !== -1 && startIndex1_3 < endIndex1_3) {
-							const trimmedContent1_3 = questions.substring(startIndex1_3 + startText1_3.length, endIndex1_3);
-							const que3 = document.getElementById("que3");
-							que3.innerHTML = trimmedContent1_3;
-						}
-						startText1_4 = "4.";
-						endText1_4 = "5.";
-						const startIndex1_4 = questions.indexOf(startText1_4);
-						const endIndex1_4 = questions.indexOf(endText1_4);
-						if (startIndex1_4 !== -1 && endIndex1_4 !== -1 && startIndex1_4 < endIndex1_4) {
-							const trimmedContent1_4 = questions.substring(startIndex1_4 + startText1_4.length, endIndex1_4);
-							const que4 = document.getElementById("que4");
-							que4.innerHTML = trimmedContent1_4;
-						}
-						startText1_5 = "5.";
-						endText1_5 = "6.";
-						const startIndex1_5 = questions.indexOf(startText1_5);
-						const endIndex1_5 = questions.indexOf(endText1_5);
-						if (startIndex1_5 !== -1 && endIndex1_5 !== -1 && startIndex1_5 < endIndex1_5) {
-							const trimmedContent1_5 = questions.substring(startIndex1_5 + startText1_5.length, endIndex1_5);
-							const que5 = document.getElementById("que5");
-							que5.innerHTML = trimmedContent1_5;
-						}
-						startText1_6 = "6.";
-						endText1_6 = "7.";
-						const startIndex1_6 = questions.indexOf(startText1_6);
-						const endIndex1_6 = questions.indexOf(endText1_6);
-						if (startIndex1_6 !== -1 && endIndex1_6 !== -1 && startIndex1_6 < endIndex1_6) {
-							const trimmedContent1_6 = questions.substring(startIndex1_6 + startText1_6.length, endIndex1_6);
-							const que6 = document.getElementById("que6");
-							que6.innerHTML = trimmedContent1_6;
-						}
-						startText1_7 = "7.";
-						endText1_7 = "8.";
-						const startIndex1_7 = questions.indexOf(startText1_7);
-						const endIndex1_7 = questions.indexOf(endText1_7);
-						if (startIndex1_7 !== -1 && endIndex1_7 !== -1 && startIndex1_7 < endIndex1_7) {
-							const trimmedContent1_7 = questions.substring(startIndex1_7 + startText1_7.length, endIndex1_7);
-							const que7 = document.getElementById("que7");
-							que7.innerHTML = trimmedContent1_7;
-						}
-						startText1_8 = "8.";
-						endText1_8 = "9.";
-						const startIndex1_8 = questions.indexOf(startText1_8);
-						const endIndex1_8 = questions.indexOf(endText1_8);
-						if (startIndex1_8 !== -1 && endIndex1_8 !== -1 && startIndex1_8 < endIndex1_8) {
-							const trimmedContent1_8 = questions.substring(startIndex1_8 + startText1_8.length, endIndex1_8);
-							const que8 = document.getElementById("que8");
-							que8.innerHTML = trimmedContent1_8;
-						}
-						
-					const response2 = await fetch(apiUrl, {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify({
-							_token: token,
-							prompt: 'suggest 11 detailed titles in ordered list without having double qoutes based upon ' + majorprompt,
-							old_prompt: majoroldprompt
-						})
-					})
-					if (response2.ok) {
-						const data = await response2.json();
-						const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-						$('#old_prompt').val(data.old_prompt);
-						document.getElementById("edsugtitles").innerHTML = String(parsedData);
-						const sugtitles = String(parsedData);
-						startTextt_1 = "1.";
-						endTextt_1 = "2.";
-						const startIndext_1 = sugtitles.indexOf(startTextt_1);
-						const endIndext_1 = sugtitles.indexOf(endTextt_1);
-						if (startIndext_1 !== -1 && endIndext_1 !== -1 && startIndext_1 < endIndext_1) {
-							const trimmedContentt_1 = sugtitles.substring(startIndext_1 + startTextt_1.length, endIndext_1);
-							const tt1 = document.getElementById("tt1");
-							tt1.innerHTML = trimmedContentt_1;
-						}
-						startTextt_2 = "2.";
-						endTextt_2 = "3.";
-						const startIndext_2 = sugtitles.indexOf(startTextt_2);
-						const endIndext_2 = sugtitles.indexOf(endTextt_2);
-						if (startIndext_2 !== -1 && endIndext_2 !== -1 && startIndext_2 < endIndext_2) {
-							const trimmedContentt_2 = sugtitles.substring(startIndext_2 + startTextt_2.length, endIndext_2);
-							const tt2 = document.getElementById("tt2");
-							tt2.innerHTML = trimmedContentt_2;
-						}
-						startTextt_3 = "3.";
-						endTextt_3 = "4.";
-						const startIndext_3 = sugtitles.indexOf(startTextt_3);
-						const endIndext_3 = sugtitles.indexOf(endTextt_3);
-						if (startIndext_3 !== -1 && endIndext_3 !== -1 && startIndext_3 < endIndext_3) {
-							const trimmedContentt_3 = sugtitles.substring(startIndext_3 + startTextt_3.length, endIndext_3);
-							const tt3 = document.getElementById("tt3");
-							tt3.innerHTML = trimmedContentt_3;
-						}
-						startTextt_4 = "4.";
-						endTextt_4 = "5.";
-						const startIndext_4 = sugtitles.indexOf(startTextt_4);
-						const endIndext_4 = sugtitles.indexOf(endTextt_4);
-						if (startIndext_4 !== -1 && endIndext_4 !== -1 && startIndext_4 < endIndext_4) {
-							const trimmedContentt_4 = sugtitles.substring(startIndext_4 + startTextt_4.length, endIndext_4);
-							const tt4 = document.getElementById("tt4");
-							tt4.innerHTML = trimmedContentt_4;
-						}
-						startTextt_5 = "5.";
-						endTextt_5 = "6.";
-						const startIndext_5 = sugtitles.indexOf(startTextt_5);
-						const endIndext_5 = sugtitles.indexOf(endTextt_5);
-						if (startIndext_5 !== -1 && endIndext_5 !== -1 && startIndext_5 < endIndext_5) {
-							const trimmedContentt_5 = sugtitles.substring(startIndext_5 + startTextt_5.length, endIndext_5);
-							const tt5 = document.getElementById("tt5");
-							tt5.innerHTML = trimmedContentt_5;
-						}
-						startTextt_6 = "6.";
-						endTextt_6 = "7.";
-						const startIndext_6 = sugtitles.indexOf(startTextt_6);
-						const endIndext_6 = sugtitles.indexOf(endTextt_6);
-						if (startIndext_6 !== -1 && endIndext_6 !== -1 && startIndext_6 < endIndext_6) {
-							const trimmedContentt_6 = sugtitles.substring(startIndext_6 + startTextt_6.length, endIndext_6);
-							const tt6 = document.getElementById("tt6");
-							tt6.innerHTML = trimmedContentt_6;
-						}
-						startTextt_7 = "7.";
-						endTextt_7 = "8.";
-						const startIndext_7 = sugtitles.indexOf(startTextt_7);
-						const endIndext_7 = sugtitles.indexOf(endTextt_7);
-						if (startIndext_7 !== -1 && endIndext_7 !== -1 && startIndext_7 < endIndext_7) {
-							const trimmedContentt_7 = sugtitles.substring(startIndext_7 + startTextt_7.length, endIndext_7);
-							const tt7 = document.getElementById("tt7");
-							tt7.innerHTML = trimmedContentt_7;
-						}
-						startTextt_8 = "8.";
-						endTextt_8 = "9.";
-						const startIndext_8 = sugtitles.indexOf(startTextt_8);
-						const endIndext_8 = sugtitles.indexOf(endTextt_8);
-						if (startIndext_8 !== -1 && endIndext_8 !== -1 && startIndext_8 < endIndext_8) {
-							const trimmedContentt_8 = sugtitles.substring(startIndext_8 + startTextt_8.length, endIndext_8);
-							const tt8 = document.getElementById("tt8");
-							tt8.innerHTML = trimmedContentt_8;
-						}
-						startTextt_9 = "9.";
-						endTextt_9 = "10.";
-						const startIndext_9 = sugtitles.indexOf(startTextt_9);
-						const endIndext_9 = sugtitles.indexOf(endTextt_9);
-						if (startIndext_9 !== -1 && endIndext_9 !== -1 && startIndext_9 < endIndext_9) {
-							const trimmedContentt_9 = sugtitles.substring(startIndext_9 + startTextt_9.length, endIndext_9);
-							const tt9 = document.getElementById("tt9");
-							tt9.innerHTML = trimmedContentt_9;
-						}
-						startTextt_10 = "10.";
-						endTextt_10 = "11.";
-						const startIndext_10 = sugtitles.indexOf(startTextt_10);
-						const endIndext_10 = sugtitles.indexOf(endTextt_10);
-						if (startIndext_10 !== -1 && endIndext_10 !== -1 && startIndext_10 < endIndext_10) {
-							const trimmedContentt_10 = sugtitles.substring(startIndext_10 + startTextt_10.length, endIndext_10);
-							const tt10 = document.getElementById("tt10");
-							tt10.innerHTML = trimmedContentt_10;
-						}
-					}
-					else {
-						const err = await response2.text();
-						messageDiv.innerHTML = "Something went wrong"
-						alert(err)
-					}
-					}
-		} 
-		else {
-			const err = await response.text()
-			$('#ai-loader').hide();
-			$('#ans_div').show();
-			$('#norspnse').hide();
-			$('#sww').show();
-			messageDiv.innerHTML = "Something went wrong"
-			alert(err)
+	function getsemquetts(){
+		const semantics = document.getElementById("dbsmntcs").innerHTML;
+		startText2_1 = "1.";
+		endText2_1 = "2.";
+		const startIndex2_1 = semantics.indexOf(startText2_1);
+		const endIndex2_1 = semantics.indexOf(endText2_1);
+		if (startIndex2_1 !== -1 && endIndex2_1 !== -1 && startIndex2_1 < endIndex2_1) {
+			const trimmedContent2_1 = semantics.substring(startIndex2_1 + startText2_1.length, endIndex2_1);
+			const sem1 = document.getElementById("sem1");
+			sem1.innerHTML = trimmedContent2_1;
 		}
-    }
-
-    form.addEventListener('submit', handleSubmit_main)
-
-    // form.addEventListener('keyup', (e) => {
-    //     if (e.keyCode === 13) {
-    //         handleSubmit_main(e)
-    //     }
-    // })
+		startText2_2 = "2.";
+		endText2_2 = "3.";
+		const startIndex2_2 = semantics.indexOf(startText2_2);
+		const endIndex2_2 = semantics.indexOf(endText2_2);
+		if (startIndex2_2 !== -1 && endIndex2_2 !== -1 && startIndex2_2 < endIndex2_2) {
+			const trimmedContent2_2 = semantics.substring(startIndex2_2 + startText2_2.length, endIndex2_2);
+			const sem2 = document.getElementById("sem2");
+			sem2.innerHTML = trimmedContent2_2;
+		}
+		startText2_3 = "3.";
+		endText2_3 = "4.";
+		const startIndex2_3 = semantics.indexOf(startText2_3);
+		const endIndex2_3 = semantics.indexOf(endText2_3);
+		if (startIndex2_3 !== -1 && endIndex2_3 !== -1 && startIndex2_3 < endIndex2_3) {
+			const trimmedContent2_3 = semantics.substring(startIndex2_3 + startText2_3.length, endIndex2_3);
+			const sem3 = document.getElementById("sem3");
+			sem3.innerHTML = trimmedContent2_3;
+		}
+		startText2_4 = "4.";
+		endText2_4 = "5.";
+		const startIndex2_4 = semantics.indexOf(startText2_4);
+		const endIndex2_4 = semantics.indexOf(endText2_4);
+		if (startIndex2_4 !== -1 && endIndex2_4 !== -1 && startIndex2_4 < endIndex2_4) {
+			const trimmedContent2_4 = semantics.substring(startIndex2_4 + startText2_4.length, endIndex2_4);
+			const sem4 = document.getElementById("sem4");
+			sem4.innerHTML = trimmedContent2_4;
+		}
+		startText2_5 = "5.";
+		endText2_5 = "6.";
+		const startIndex2_5 = semantics.indexOf(startText2_5);
+		const endIndex2_5 = semantics.indexOf(endText2_5);
+		if (startIndex2_5 !== -1 && endIndex2_5 !== -1 && startIndex2_5 < endIndex2_5) {
+			const trimmedContent2_5 = semantics.substring(startIndex2_5 + startText2_5.length, endIndex2_5);
+			const sem5 = document.getElementById("sem5");
+			sem5.innerHTML = trimmedContent2_5;
+		}
+		startText2_6 = "6.";
+		endText2_6 = "7.";
+		const startIndex2_6 = semantics.indexOf(startText2_6);
+		const endIndex2_6 = semantics.indexOf(endText2_6);
+		if (startIndex2_6 !== -1 && endIndex2_6 !== -1 && startIndex2_6 < endIndex2_6) {
+			const trimmedContent2_6 = semantics.substring(startIndex2_6 + startText2_6.length, endIndex2_6);
+			const sem6 = document.getElementById("sem6");
+			sem6.innerHTML = trimmedContent2_6;
+		}
+		startText2_7 = "7.";
+		endText2_7 = "8.";
+		const startIndex2_7 = semantics.indexOf(startText2_7);
+		const endIndex2_7 = semantics.indexOf(endText2_7);
+		if (startIndex2_7 !== -1 && endIndex2_7 !== -1 && startIndex2_7 < endIndex2_7) {
+			const trimmedContent2_7 = semantics.substring(startIndex2_7 + startText2_7.length, endIndex2_7);
+			const sem7 = document.getElementById("sem7");
+			sem7.innerHTML = trimmedContent2_7;
+		}
+		startText2_8 = "8.";
+		endText2_8 = "9.";
+		const startIndex2_8 = semantics.indexOf(startText2_8);
+		const endIndex2_8 = semantics.indexOf(endText2_8);
+		if (startIndex2_8 !== -1 && endIndex2_8 !== -1 && startIndex2_8 < endIndex2_8) {
+			const trimmedContent2_8 = semantics.substring(startIndex2_8 + startText2_8.length, endIndex2_8);
+			const sem8 = document.getElementById("sem8");
+			sem8.innerHTML = trimmedContent2_8;
+		}
+		startText2_9 = "9.";
+		endText2_9 = "10.";
+		const startIndex2_9 = semantics.indexOf(startText2_9);
+		const endIndex2_9 = semantics.indexOf(endText2_9);
+		if (startIndex2_9 !== -1 && endIndex2_9 !== -1 && startIndex2_8 < endIndex2_9) {
+			const trimmedContent2_9 = semantics.substring(startIndex2_9 + startText2_9.length, endIndex2_9);
+			const sem9 = document.getElementById("sem9");
+			sem9.innerHTML = trimmedContent2_9;
+		}
+		startText2_10 = "10.";
+		endText2_10 = "11.";
+		const startIndex2_10 = semantics.indexOf(startText2_10);
+		const endIndex2_10 = semantics.indexOf(endText2_10);
+		if (startIndex2_10 !== -1 && endIndex2_10 !== -1 && startIndex2_10 < endIndex2_10) {
+			const trimmedContent2_10 = semantics.substring(startIndex2_10 + startText2_10.length, endIndex2_10);
+			const sem10 = document.getElementById("sem10");
+			sem10.innerHTML = trimmedContent2_10;
+		}
+		//QUESTIONS SECTION STARTS FROM HERE
+		const questions = document.getElementById("dbquess").innerHTML;
+		startText1_1 = "1.";
+		endText1_1 = "2.";
+		const startIndex1_1 = questions.indexOf(startText1_1);
+		const endIndex1_1 = questions.indexOf(endText1_1);
+		if (startIndex1_1 !== -1 && endIndex1_1 !== -1 && startIndex1_1 < endIndex1_1) {
+			const trimmedContent1_1 = questions.substring(startIndex1_1 + startText1_1.length, endIndex1_1);
+			const que1 = document.getElementById("que1");
+			que1.innerHTML = trimmedContent1_1;
+		}
+		startText1_2 = "2.";
+		endText1_2 = "3.";
+		const startIndex1_2 = questions.indexOf(startText1_2);
+		const endIndex1_2 = questions.indexOf(endText1_2);
+		if (startIndex1_2 !== -1 && endIndex1_2 !== -1 && startIndex1_2 < endIndex1_2) {
+			const trimmedContent1_2 = questions.substring(startIndex1_2 + startText1_2.length, endIndex1_2);
+			const que2 = document.getElementById("que2");
+			que2.innerHTML = trimmedContent1_2;
+		}
+		startText1_3 = "3.";
+		endText1_3 = "4.";
+		const startIndex1_3 = questions.indexOf(startText1_3);
+		const endIndex1_3 = questions.indexOf(endText1_3);
+		if (startIndex1_3 !== -1 && endIndex1_3 !== -1 && startIndex1_3 < endIndex1_3) {
+			const trimmedContent1_3 = questions.substring(startIndex1_3 + startText1_3.length, endIndex1_3);
+			const que3 = document.getElementById("que3");
+			que3.innerHTML = trimmedContent1_3;
+		}
+		startText1_4 = "4.";
+		endText1_4 = "5.";
+		const startIndex1_4 = questions.indexOf(startText1_4);
+		const endIndex1_4 = questions.indexOf(endText1_4);
+		if (startIndex1_4 !== -1 && endIndex1_4 !== -1 && startIndex1_4 < endIndex1_4) {
+			const trimmedContent1_4 = questions.substring(startIndex1_4 + startText1_4.length, endIndex1_4);
+			const que4 = document.getElementById("que4");
+			que4.innerHTML = trimmedContent1_4;
+		}
+		startText1_5 = "5.";
+		endText1_5 = "6.";
+		const startIndex1_5 = questions.indexOf(startText1_5);
+		const endIndex1_5 = questions.indexOf(endText1_5);
+		if (startIndex1_5 !== -1 && endIndex1_5 !== -1 && startIndex1_5 < endIndex1_5) {
+			const trimmedContent1_5 = questions.substring(startIndex1_5 + startText1_5.length, endIndex1_5);
+			const que5 = document.getElementById("que5");
+			que5.innerHTML = trimmedContent1_5;
+		}
+		startText1_6 = "6.";
+		endText1_6 = "7.";
+		const startIndex1_6 = questions.indexOf(startText1_6);
+		const endIndex1_6 = questions.indexOf(endText1_6);
+		if (startIndex1_6 !== -1 && endIndex1_6 !== -1 && startIndex1_6 < endIndex1_6) {
+			const trimmedContent1_6 = questions.substring(startIndex1_6 + startText1_6.length, endIndex1_6);
+			const que6 = document.getElementById("que6");
+			que6.innerHTML = trimmedContent1_6;
+		}
+		startText1_7 = "7.";
+		endText1_7 = "8.";
+		const startIndex1_7 = questions.indexOf(startText1_7);
+		const endIndex1_7 = questions.indexOf(endText1_7);
+		if (startIndex1_7 !== -1 && endIndex1_7 !== -1 && startIndex1_7 < endIndex1_7) {
+			const trimmedContent1_7 = questions.substring(startIndex1_7 + startText1_7.length, endIndex1_7);
+			const que7 = document.getElementById("que7");
+			que7.innerHTML = trimmedContent1_7;
+		}
+		startText1_8 = "8.";
+		endText1_8 = "9.";
+		const startIndex1_8 = questions.indexOf(startText1_8);
+		const endIndex1_8 = questions.indexOf(endText1_8);
+		if (startIndex1_8 !== -1 && endIndex1_8 !== -1 && startIndex1_8 < endIndex1_8) {
+			const trimmedContent1_8 = questions.substring(startIndex1_8 + startText1_8.length, endIndex1_8);
+			const que8 = document.getElementById("que8");
+			que8.innerHTML = trimmedContent1_8;
+		}
+		//ALL TITLES OF DB
+		const sugtitles = document.getElementById("dbttls").innerHTML;
+		startTextt_1 = "1.";
+		endTextt_1 = "2.";
+		const startIndext_1 = sugtitles.indexOf(startTextt_1);
+		const endIndext_1 = sugtitles.indexOf(endTextt_1);
+		if (startIndext_1 !== -1 && endIndext_1 !== -1 && startIndext_1 < endIndext_1) {
+			const trimmedContentt_1 = sugtitles.substring(startIndext_1 + startTextt_1.length, endIndext_1);
+			const tt1 = document.getElementById("tt1");
+			tt1.innerHTML = trimmedContentt_1;
+		}
+		startTextt_2 = "2.";
+		endTextt_2 = "3.";
+		const startIndext_2 = sugtitles.indexOf(startTextt_2);
+		const endIndext_2 = sugtitles.indexOf(endTextt_2);
+		if (startIndext_2 !== -1 && endIndext_2 !== -1 && startIndext_2 < endIndext_2) {
+			const trimmedContentt_2 = sugtitles.substring(startIndext_2 + startTextt_2.length, endIndext_2);
+			const tt2 = document.getElementById("tt2");
+			tt2.innerHTML = trimmedContentt_2;
+		}
+		startTextt_3 = "3.";
+		endTextt_3 = "4.";
+		const startIndext_3 = sugtitles.indexOf(startTextt_3);
+		const endIndext_3 = sugtitles.indexOf(endTextt_3);
+		if (startIndext_3 !== -1 && endIndext_3 !== -1 && startIndext_3 < endIndext_3) {
+			const trimmedContentt_3 = sugtitles.substring(startIndext_3 + startTextt_3.length, endIndext_3);
+			const tt3 = document.getElementById("tt3");
+			tt3.innerHTML = trimmedContentt_3;
+		}
+		startTextt_4 = "4.";
+		endTextt_4 = "5.";
+		const startIndext_4 = sugtitles.indexOf(startTextt_4);
+		const endIndext_4 = sugtitles.indexOf(endTextt_4);
+		if (startIndext_4 !== -1 && endIndext_4 !== -1 && startIndext_4 < endIndext_4) {
+			const trimmedContentt_4 = sugtitles.substring(startIndext_4 + startTextt_4.length, endIndext_4);
+			const tt4 = document.getElementById("tt4");
+			tt4.innerHTML = trimmedContentt_4;
+		}
+		startTextt_5 = "5.";
+		endTextt_5 = "6.";
+		const startIndext_5 = sugtitles.indexOf(startTextt_5);
+		const endIndext_5 = sugtitles.indexOf(endTextt_5);
+		if (startIndext_5 !== -1 && endIndext_5 !== -1 && startIndext_5 < endIndext_5) {
+			const trimmedContentt_5 = sugtitles.substring(startIndext_5 + startTextt_5.length, endIndext_5);
+			const tt5 = document.getElementById("tt5");
+			tt5.innerHTML = trimmedContentt_5;
+		}
+		startTextt_6 = "6.";
+		endTextt_6 = "7.";
+		const startIndext_6 = sugtitles.indexOf(startTextt_6);
+		const endIndext_6 = sugtitles.indexOf(endTextt_6);
+		if (startIndext_6 !== -1 && endIndext_6 !== -1 && startIndext_6 < endIndext_6) {
+			const trimmedContentt_6 = sugtitles.substring(startIndext_6 + startTextt_6.length, endIndext_6);
+			const tt6 = document.getElementById("tt6");
+			tt6.innerHTML = trimmedContentt_6;
+		}
+		startTextt_7 = "7.";
+		endTextt_7 = "8.";
+		const startIndext_7 = sugtitles.indexOf(startTextt_7);
+		const endIndext_7 = sugtitles.indexOf(endTextt_7);
+		if (startIndext_7 !== -1 && endIndext_7 !== -1 && startIndext_7 < endIndext_7) {
+			const trimmedContentt_7 = sugtitles.substring(startIndext_7 + startTextt_7.length, endIndext_7);
+			const tt7 = document.getElementById("tt7");
+			tt7.innerHTML = trimmedContentt_7;
+		}
+		startTextt_8 = "8.";
+		endTextt_8 = "9.";
+		const startIndext_8 = sugtitles.indexOf(startTextt_8);
+		const endIndext_8 = sugtitles.indexOf(endTextt_8);
+		if (startIndext_8 !== -1 && endIndext_8 !== -1 && startIndext_8 < endIndext_8) {
+			const trimmedContentt_8 = sugtitles.substring(startIndext_8 + startTextt_8.length, endIndext_8);
+			const tt8 = document.getElementById("tt8");
+			tt8.innerHTML = trimmedContentt_8;
+		}
+		startTextt_9 = "9.";
+		endTextt_9 = "10.";
+		const startIndext_9 = sugtitles.indexOf(startTextt_9);
+		const endIndext_9 = sugtitles.indexOf(endTextt_9);
+		if (startIndext_9 !== -1 && endIndext_9 !== -1 && startIndext_9 < endIndext_9) {
+			const trimmedContentt_9 = sugtitles.substring(startIndext_9 + startTextt_9.length, endIndext_9);
+			const tt9 = document.getElementById("tt9");
+			tt9.innerHTML = trimmedContentt_9;
+		}
+		startTextt_10 = "10.";
+		endTextt_10 = "11.";
+		const startIndext_10 = sugtitles.indexOf(startTextt_10);
+		const endIndext_10 = sugtitles.indexOf(endTextt_10);
+		if (startIndext_10 !== -1 && endIndext_10 !== -1 && startIndext_10 < endIndext_10) {
+			const trimmedContentt_10 = sugtitles.substring(startIndext_10 + startTextt_10.length, endIndext_10);
+			const tt10 = document.getElementById("tt10");
+			tt10.innerHTML = trimmedContentt_10;
+		}
+	}
+	function getallothrdbdt(){
+		const dbname = document.getElementById("dbname").value;
+		const dbdescription = document.getElementById("dbdescription").innerText;
+		const dbwords = document.getElementById("dbwords").value;
+		const dbtrgtkw = document.getElementById("dbtrgtkw").value;
+		const dbscore = document.getElementById("dbscore").value;
+		document.getElementById("edtrmainval").value = dbname;
+		document.getElementById("dbdescget").innerText = dbdescription;
+		document.getElementById("edwords").value = dbwords;
+		document.getElementById("edtrtrgtkwrd").innerText = dbtrgtkw;
+		document.getElementById("resulted_score").innerText = dbscore;
+	}
+	function getcolorofscore(){
+		const numberEl = document.getElementById("resulted_score");
+		const number = parseInt(numberEl.textContent);
+		const takersltdscore = document.getElementById("takersltdscore");
+		if (number == 0) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+		}
+		else if (number < 0) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+			document.getElementById("resulted_score").innerHTML = "0";
+		}
+		else if (number > 0 && number <= 5) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
+		}
+		else if (number >= 6 && number <= 10) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
+		}
+		else if (number >= 11 && number <= 15) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
+		}
+		else if (number >= 16 && number <= 20) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
+		}
+		else if (number >= 21 && number <= 25) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
+		}
+		else if (number >= 26 && number <= 30) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
+		}
+		else if (number >= 31 && number <= 35) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
+		}
+		else if (number >= 36 && number <= 40) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+		}
+		else if (number >= 41 && number <= 45) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+		}
+		else if (number >= 46 && number <= 50) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "355.3554535791462");
+		}
+		else if (number >= 51 && number <= 53) {
+			takersltdscore.setAttribute("stroke-dasharray", "359.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 54 && number <= 57) {
+			takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 58 && number <= 60) {
+			takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 61 && number <= 65) {
+			takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 66 && number <= 70) {
+			takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 71 && number <= 75) {
+			takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 76 && number <= 80) {
+			takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 81 && number <= 85) {
+			takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 86 && number <= 90) {
+			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number >= 91 && number <= 95) {
+			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+		}
+		else if (number == 100) {
+			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+		}
+		else if (number > 100) {
+			document.getElementById("resulted_score").innerHTML = "100";
+			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+		}
+		else {
+			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+			takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+		}
+	}
 </script>
 <script>
 	const que1 = document.getElementById("que1");
@@ -1335,20 +1237,12 @@
     function getSeoScore(content) {
 		const getftitle = document.getElementById("edtrmainval").value;
 		const getfdesc = document.getElementById("eddesc").value;
-		const getftrkw = document.getElementById("edtrtrgtkwrd").innerText;
 		var sanitizedContent = getfdesc.replace(/<[^>]+>/g, '');
 		var ttwords = sanitizedContent.split(/\s+/);
 		var getfwords = ttwords.length;
-		const getfsemantics = document.getElementById("semantics").innerText;
-		const getfquestions = document.getElementById("questions").innerText;
-		const getfalltitles = document.getElementById("edsugtitles").innerText;
 		document.getElementById("edtitle").value = getftitle;
 		// document.getElementById("eddesc").value = getfdesc;
 		document.getElementById("edwords").value = getfwords;
-		document.getElementById("edtrgtkw").value = getftrkw;
-		document.getElementById("edsemantics").value = getfsemantics;
-		document.getElementById("edquestions").value = getfquestions;
-		document.getElementById("edalltitles").value = getfalltitles;
 		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
 		const post_array = [];
 		post_array.push({
@@ -1412,112 +1306,7 @@
 							}
 							}
 						}
-                        const numberEl = document.getElementById("resulted_score");
-                        const number = parseInt(numberEl.textContent);
-						const takersltdscore = document.getElementById("takersltdscore");
-						if (number == 0) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
-                        }
-                        else if (number < 0) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
-							document.getElementById("resulted_score").innerHTML = "0";
-                        }
-                        else if (number > 0 && number <= 5) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
-                        }
-                        else if (number >= 6 && number <= 10) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
-                        }
-                        else if (number >= 11 && number <= 15) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
-                        }
-                        else if (number >= 16 && number <= 20) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
-                        }
-                        else if (number >= 21 && number <= 25) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
-                        }
-                        else if (number >= 26 && number <= 30) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
-                        }
-                        else if (number >= 31 && number <= 35) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
-                        }
-                        else if (number >= 36 && number <= 40) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
-                        }
-                        else if (number >= 41 && number <= 45) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
-                        }
-                        else if (number >= 46 && number <= 50) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "355.3554535791462");
-                        }
-                        else if (number >= 51 && number <= 53) {
-							takersltdscore.setAttribute("stroke-dasharray", "359.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 54 && number <= 57) {
-							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 58 && number <= 60) {
-							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 61 && number <= 65) {
-							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 66 && number <= 70) {
-							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 71 && number <= 75) {
-							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 76 && number <= 80) {
-							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 81 && number <= 85) {
-							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 86 && number <= 90) {
-							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number >= 91 && number <= 95) {
-							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-                        }
-                        else if (number == 100) {
-							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
-                        }
-                        else if (number > 100) {
-							document.getElementById("resulted_score").innerHTML = "100";
-							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
-                        }
-                        else {
-							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
-                        }
-						// event.preventDefault();
+						getcolorofscore();
 						document.getElementById("docsubmit").click();
                     }
                     }
@@ -2092,14 +1881,12 @@
 	});
 </script>
 <script>
-// 	// const savefdoc = document.querySelector('#savedoc')
-// 	// savefdoc.addEventListener('submit', saveall)
 	$('#docsubmit').click(function(){
     event.preventDefault();  // Prevent the form from submitting normally
     var form = document.getElementById('savedoc');
     var formData = new FormData(form);
     $.ajax({
-        url: "{{ route('user.editor.saveEditor') }}",
+        url: "{{ route('user.editor.changeEditor') }}",
         method: "POST",
         data: formData,
         dataType: 'json',

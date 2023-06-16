@@ -146,9 +146,9 @@
                             <h4 class="col-white" id="prcngwht1d"> Plan Includes </h4>
                             <ul>
                                 <li id="prcngwht1e"> <img src="{{asset('front')}}/images/tickorange.svg"> SEO score</li>
-                                <li id="prcngwht1e1"> <img src="{{asset('front')}}/images/tickorange.svg"> 40+ templates </li>
+                                <li id="prcngwht1e1"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+ templates </li>
                                 <li id="prcngwht1e2"> <img src="{{asset('front')}}/images/tickorange.svg"> Live chat support </li>
-                                <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> 25+ languages </li>
+                                <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+ languages </li>
                                 <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
                                 <br><br><br><br>
                             </ul>
@@ -190,11 +190,11 @@
                         <div class="pricing-detail">
                             <h4 class="col-white tac" id="prcngwht26"> Plan Includes </h4>
                             <ul>
-                                <li id="prcngwht27"> <img src="{{asset('front')}}/images/tickpurple.svg"> 40+ templates </li>
+                                <li id="prcngwht27"> <img src="{{asset('front')}}/images/tickpurple.svg"> 60+ templates </li>
                                 <li id="prcngwht28"> <img src="{{asset('front')}}/images/tickpurple.svg"> Al Article Writer </li>
                                 <li id="prcngwht29"> <img src="{{asset('front')}}/images/tickpurple.svg"> Keyword Generation </li>
                                 <li id="prcngwht221"> <img src="{{asset('front')}}/images/tickpurple.svg"> SEO Score improvement </li>
-                                <li id="prcngwht222"> <img src="{{asset('front')}}/images/tickpurple.svg"> 25+ languages </li>
+                                <li id="prcngwht222"> <img src="{{asset('front')}}/images/tickpurple.svg"> 20+ languages </li>
                                 <li id="prcngwht223"> <img src="{{asset('front')}}/images/tickpurple.svg"> Ezchat </li>
                                 <li id="prcngwht224">  <img src="{{asset('front')}}/images/tickpurple.svg"> Live chat support </li>
 
@@ -233,12 +233,12 @@
                             <h4 class="col-white" id="prcngwht3d"> Plan Includes </h4>
                             <ul>
                                 <li id="prcngwht3e"> <img src="{{asset('front')}}/images/tickorange.svg"> latest AI models </li>
-                                <li id="prcngwht3f"> <img src="{{asset('front')}}/images/tickorange.svg"> 40+ templates </li>
+                                <li id="prcngwht3f"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+ templates </li>
                                 <li id="prcngwht3g"> <img src="{{asset('front')}}/images/tickorange.svg"> Keyword Generation </li>
                                 <li id="prcngwht3h"> <img src="{{asset('front')}}/images/tickorange.svg"> SEO Score improvement </li>
                                 <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Al Article Writer </li>
                                 <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
-                                <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> 25+ languages </li>
+                                <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+ languages </li>
                                 <li class="pad-bot-30" id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Live chat support </li>
                             </ul>
                         </div>
@@ -291,7 +291,7 @@
                     <td id="prcchecking6"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg7"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="bsnsadvntgimg8"></td>
                 </tr>
                 <tr>
-                <td class="mmbr" id="atmtwht6">40+ unique templates <img src="{{asset('front')}}/images/prplequestion.png"></td>
+                <td class="mmbr" id="atmtwht6">60+ unique templates <img src="{{asset('front')}}/images/prplequestion.png"></td>
                     <td id="prcchecking7"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg9"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="bsnsadvntgimg10"></td>
                     <td id="prcchecking8"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg1"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prpslimg2"></td>
                     <td id="prcchecking9"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg3"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prpslimg4"></td>
@@ -309,7 +309,7 @@
                 <td id="prcchecking15"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg1"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg2"></td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="bxswht1b">25+ languages <img src="{{asset('front')}}/images/prplequestion.png"></td>
+                <td class="mmbr hgt" id="bxswht1b">20+ languages <img src="{{asset('front')}}/images/prplequestion.png"></td>
                 <td id="prcchecking16"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg3"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg4"></td>
                 <td id="prcchecking17"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg5"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg6"></td>
                 <td id="prcchecking18"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg7"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg8"></td>

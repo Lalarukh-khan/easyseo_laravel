@@ -180,7 +180,7 @@ class BlogController extends Controller
 
 
         if ($request->hasFile('image')) {
-            $image = uploadSingleFile($request->file('image'), 'uploads/blogs/');
+            $image = uploadSingleFile($request->file('image'), 'public/uploads/blogs/');
             if (is_array($image)) {
                 return response()->json($image);
             }
