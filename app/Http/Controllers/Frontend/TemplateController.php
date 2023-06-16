@@ -231,10 +231,6 @@ class TemplateController extends Controller
             $history->prompt_tokens = $gpt_ans['prompt_tokens'];
             $history->completion_tokens = $gpt_ans['completion_tokens'];
             $history->total_tokens = $gpt_ans['total_tokens'];
-<<<<<<< HEAD
-            $history->total_words = $total_words;
-            $history->save();
-=======
             $history->total_words = str_word_count($gpt_ans['answer']);
 			
 			if($improve_score == false){
@@ -242,7 +238,6 @@ class TemplateController extends Controller
 				$history->save();
 			}  
 			 
->>>>>>> origin/jas
             $msg = [
                 'status' => 200,
                 'message' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['content'],
