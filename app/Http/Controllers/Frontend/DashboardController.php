@@ -181,7 +181,7 @@ class DashboardController extends Controller
         $webhookController = new WebhookController();
         $webhookController->suspendSubscription();
 
-        $previous_subs = UserPackage::with('package')->where('user_id',$hashids_decode($id))->latest()->get();
+        $previous_subs = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->get();
         $packages_sku = ['P20','P50','P200','P500'];
 
         if (isset($previous_subs[0]) && !empty($previous_subs[0]) && in_array($previous_subs[0]->package->plan_code,$packages_sku)) {
