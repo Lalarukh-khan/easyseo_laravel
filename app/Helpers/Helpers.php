@@ -182,4 +182,57 @@ class Helpers
       }
     }
   }
+  
+  /*
+   *----------------------------------------------------------------------------------------------------------------------------
+   * START:- Retrieve the SEO score and the content following it, then remove any additional string content after the SEO score.
+   *----------------------------------------------------------------------------------------------------------------------------
+   */
+   
+	public static function getSeoScoreNRemvContent($string,$improve_score)
+	{ 	 
+		// Extract SEO SCORE
+		$score = 68; // Default score without improvement if no score is returned.
+		if($improve_score == true){
+			$score = 92; // Default score with improvement if no score is returned.
+		} 
+		 
+		preg_match_all('/seo score:\s*\[?(\d+\/\d+)\]?/i', $string, $matches);
+		$seoScores = $matches[1];
+		if(isset($seoScores[0])){
+			$seoArr = explode('/',$seoScores[0]);
+			if(isset($seoScores[0])){
+				$score = $seoArr[0];
+			}
+		}
+		  
+		 // Remove content after SEO SCORE
+		$trimmedString = strstr($string, 'SEO SCORE', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		
+		$trimmedString = strstr($string, 'SEO Score', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		
+		$trimmedString = strstr($string, 'SEO score', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		
+		$trimmedString = strstr($string, 'seo SCORE', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		
+		return ['seo_score' => $score,'content' => $string];
+	}
+	
+  /*
+   *---------------------------------------------------------------------------------------------------------------------------
+   * END:- Retrieve the SEO score and the content following it, then remove any additional string content after the SEO score.
+   *---------------------------------------------------------------------------------------------------------------------------
+   */
 }
