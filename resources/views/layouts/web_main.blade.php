@@ -606,27 +606,27 @@
                             <h3 class="pad-bot-20 dn" id="footerwht2"> Company </h3>
                             <ul>
                                 <li class="pad-bot-8"> <a href="{{route('web.about_us')}}" id="footerwht3"> About Us </a> </li>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht4"> Careers </a> </li>
-                                <li class="pad-bot-8"> <a href="{{ route('web.blog.all') }}" id="footerwht5"> Blog </a> </li>
+                                <li class="pad-bot-8" style="display: none;"> <a href="javascript:void(0):" id="footerwht4"> Careers </a> </li>
                                 <li class="pad-bot-8"> <a href="{{route('web.pricing')}}" id="footerwht6"> Pricing </a> </li>
+                                <li class="pad-bot-8"> <a href="{{ route('web.blog.all') }}" id="footerwht5"> Blog </a> </li>
                             </ul>
                         </div>
                         <div class="footer-col dn">
-                            <h3 class="pad-bot-20" id="footerwht7"> Product </h3>
+                            <h3 class="pad-bot-20" id="footerwht7"> Support </h3>
                             <ul>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht8"> Sed ut perspiciatis </a> </li>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht9"> Sed ut perspiciatis </a> </li>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht10"> Sed ut perspiciatis </a> </li>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht11"> Sed ut perspiciatis </a> </li>
+                                <li class="pad-bot-8"> <a href="https://easyseo.ai/contact-us" id="footerwht8"> Contact us </a> </li>
+                                <li class="pad-bot-8"> <a href="https://pg51iq3vczx.typeform.com/to/gTTdGWxR" id="footerwht9" target="_title"> Report a bug </a> </li>
+                                <li class="pad-bot-8"> <a href="https://pg51iq3vczx.typeform.com/to/P1zhEGGP" target="_title" id="footerwht10"> Request a new feature </a> </li>
+                                <li class="pad-bot-8" style="display: none;"> <a href="javascript:void(0):" id="footerwht11"> Sed ut perspiciatis </a> </li>
                             </ul>
                         </div>
                         <div class="footer-col dn">
-                            <h3 class="pad-bot-20" id="footerwht16"> Resources </h3>
+                            <h3 class="pad-bot-20" id="footerwht16"> Legal </h3>
                             <ul>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht12"> Sed ut perspiciatis </a> </li>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht13"> Sed ut perspiciatis </a> </li>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht14"> Sed ut perspiciatis </a> </li>
-                                <li class="pad-bot-8"> <a href="javascript:void(0):" id="footerwht15"> Sed ut perspiciatis </a> </li>
+                                <li class="pad-bot-8"> <a href="https://easyseo.ai/term-of-services" id="footerwht12"> Terms of Service </a> </li>
+                                <li class="pad-bot-8"> <a href="https://easyseo.ai/privacy-policy" id="footerwht13"> Privacy Policy </a> </li>
+                                <li class="pad-bot-8"> <a href="https://easyseo.ai/cancellation-&-refund-policy" id="footerwht14"> Cancellation & Refund Policy </a> </li>
+                                <li class="pad-bot-8"> <a href="https://easyseo.ai/prohibited-content-policy" id="footerwht15"> Prohibited Content Guideline </a> </li>
                             </ul>
                         </div>
                     </div>
@@ -664,7 +664,7 @@
         <div class="container">
             <!-- <span  id="cpywht1"> {{date('Y')}} All rights reserved. - <a href="{{route('web.privacy')}}"  id="cpywht2"> Privacy Policy
             </a> - <a href="{{route('web.terms')}}" id="cpywht3"> Terms of Services </a> </span> -->
-            <span  id="cpywht1"> © Branda Stock Ltd. - 2023. The trademarks and logos appearing herein are exclusively owned by Branda
+            <span  id="cpywht1"> © Branda Stock Ltd. - 2023. <br>The trademarks and logos appearing herein are exclusively owned by Branda
 Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invite legal action.</span>
         </div>
     </section>
@@ -1086,7 +1086,8 @@ Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invit
         //     }
         // });
     </script>
-
+   <!-- Tidio Installation -->
+   <script src="//code.tidio.co/c0tygrqeesm82zhrczpvh9pem48rnget.js"></script>
     @yield('js')
 </body>
 <!-- Google Tag Manager (noscript) -->

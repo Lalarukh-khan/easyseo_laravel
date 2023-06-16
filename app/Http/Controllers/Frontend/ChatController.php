@@ -75,7 +75,7 @@ class ChatController extends Controller
     // }
 
     public function ai_response(Request $request)
-    {
+    {    
         // checking remaining words start
         $authUser = session()->get('authUser');
 
@@ -127,14 +127,14 @@ class ChatController extends Controller
 
         // user role chat save to db
         $userChat = new ChatBotHistory();
-        $userChat->user_id = $authUser;
+        $userChat->user_id = $authUser->id;
         $userChat->role = 'user';
         $userChat->content = $request->prompt;
         $userChat->save();
 
         // assistant role chat save to db
         $assistantChat = new ChatBotHistory();
-        $assistantChat->user_id = $authUser;
+        $assistantChat->user_id = $authUser->id;
         $assistantChat->role = 'assistant';
         $assistantChat->content = $save_res->original->bot;
         // $assistantChat->prompt_tokens = $save_res->original->usage->prompt_tokens;
@@ -148,7 +148,7 @@ class ChatController extends Controller
 
         $gpt_history = new GptHistory();
         $gpt_history->type = 'chatbot';
-        $gpt_history->user_id = $authUser;
+        $gpt_history->user_id = $authUser->id;
         $gpt_history->prompt = $request->prompt;
         $gpt_history->answer = $save_res->original->bot;
         // $gpt_history->prompt_tokens = $save_res->original->usage->prompt_tokens;

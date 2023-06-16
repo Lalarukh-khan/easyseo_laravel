@@ -4,37 +4,51 @@
 	body{
 		overflow-y: scroll !important;
 	}
+	/* h1 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	}
+	h2 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	}
+	h3 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	} */
 </style>
 @endsection
 @section('content')
 @include('components.flash-message')
 
 <div class="container" style="max-width: inherit !important;">
-    <div class="row">
+    <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
-					<i class="bx bx-arrow-back" id="edtrback"></i>
+					<a href="{{route('user.editor.all')}}"><i class="bx bx-arrow-back" id="edtrback"></i></a>
 					<input type="text" name="docname" placeholder="Untitled document" class="edtdocrname">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
-					<button class="edtrhd" id="h1place">H1</button>
-					<button class="edtrhd" id="h2place">H2</button>
+					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
+					<button class="edtrhd" id="h2place" onclick="h2placenew()">H2</button>
 					<button class="edtrhd" id="h3place">H3</button>
-					<button class="edtrhd" id="bplace">B</button>
+					<button class="edtrhd" onclick="pplace()">P</button>
+					<button class="edtrhd" id="bplace" onclick="bplace()">B</button>
 					<button class="edtrhd" id="iplace"><span class="bx bx-italic"></span></button>
 					<button class="edtrhd" id="ulplace"><span class="bx bx-list-ul"></span></button>
 					<button class="edtrhd" id="olplace"><span class="bx bx-list-ol"></span></button>
 					<button class="edtrhd" id="cplace"><span class="bx bx-comment"></span></button>
 					<button class="edtrhd" id="aplace"><span class="bx bx-link-alt"></span></button>
 					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
-					<!-- <div style="text-align: right; display: inline-block;">
-						<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
-					</div> -->
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
 					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
 				</div>
+				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
 			<br>
 			<!-- style="height:500px; min-height: 100%; display: flex;flex-direction: column;" -->
@@ -61,22 +75,24 @@
 							<p class="edtrrws" id="takeblgedtraudinp">Blog post</p>
 						</div>
 					</div>
-					<div class="edtrmn">
-						<div style="text-align: right;">
-						 	<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
+					<!-- <div id="wholecntntscore" contenteditable="true"> -->
+						<div class="edtrmn">
+							<div style="text-align: right;">
+								<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
+							</div>
+								<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
+								<br>
+								<br>
+							<!-- <div style="text-align: right;">
+								<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
+							</div> -->
 						</div>
-							<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
-							<br>
-							<br>
-						<!-- <div style="text-align: right;">
-							<p class="edtrttm">Meta desc + Visualisation <i class="bx bx-chevron-down"></i></p>
-						</div> -->
-					</div>
-					<div id="forscoring" contenteditable="true" style="outline: none;">
-						<div id="resultdata" style="display: none !important;"></div>
-						<div class="edtrval" id="extrcttngrsltdata"></div>
-						<div id="quesdata"></div>
-					</div>
+						<div id="forscoring" contenteditable="true" style="outline: none;">
+							<div id="resultdata" style="display: none !important;"></div>
+							<div class="edtrval" id="extrcttngrsltdata"></div>
+							<div id="quesdata"></div>
+						</div>
+					<!-- </div> -->
 				</div>
 				<div class="edtrbtrwf">
 					<div class="row">
@@ -99,7 +115,7 @@
 							<p class="edtror">or</p>
 							<form id="semform" style="display: inline-block;">
 							<input type="hidden" id="semmainrval" name="semmainrval">
-							<button type="submit" class="edtrjstwm" id="edtrjstwm">Just write more</button>
+							<button type="submit" class="edtrjstwm" id="edtrjstwm">Write more</button>
 							</form>
 						</div>
 					</div>
@@ -118,7 +134,21 @@
 			<div class="card" style="min-height: 500px;">
 				<div class="card-body">
 					<div id="ai-loader" style="text-align:center;display:none">
-						<img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;">
+						{{-- <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;"> --}}
+						<div class="sk-circle-fade sk-primary" style="text-align: center; margin: 50% auto 0% auto;">
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+							<div class="sk-circle-fade-dot"></div>
+						</div>
 					</div>
 					<div id="ans_div" style="display:none">
 						<h3 id="sww" style="display: none;">Something went wrong!</h3>
@@ -250,6 +280,9 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div id="cpydone" class="edtrhidden">
+ <span class="bx bx-check" style="color: #fff; font-size: 20px !important;"></span> &nbsp; Copied to clipboard successfully
 </div>
 <div class="customdiv" id="ttcustomDiv">
 	<div class="row cstdvfd">
@@ -453,14 +486,35 @@
 			}
 		});
 	});
+	let typingTimer;
+    const typingTimeout = 2000; // Set the timeout duration in milliseconds
+	var contentEditable = document.getElementById("forscoring");
+	contentEditable.addEventListener('input', function() {
+		// var freshcetaker = document.getElementById("forscoring");
+		var ceinner = contentEditable.innerText;
+		if(isContentEmpty(contentEditable)){
+			document.getElementById("resulted_score").innerHTML = "0";
+			document.getElementById("takersltdscore").setAttribute("stroke-dasharray", "490.0884539600077");
+			document.getElementById("takersltdscore").setAttribute("stroke-dashoffset", "490.49466924980385");
+		}
+		else {
+			clearTimeout(typingTimer);
+			typingTimer = setTimeout(function() {
+				getSeoScore(ceinner);
+			}, typingTimeout);
+		}
+    });
+	function isContentEmpty(element) {
+      const text = element.textContent.trim();
+      return text === '';
+    }
+
 	var edtrmainval = document.getElementById("edtrmainval");
 	var customDiv = document.getElementById("ttcustomDiv");
-
 	edtrmainval.addEventListener("click", function() {
 	ttcustomDiv.style.display = "block";
 	ttcustomDiv.style.zIndex = "9999";
 	});
-
 	// document.addEventListener("click", function(event) {
 	// if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
 	// 	ttcustomDiv.style.display = "none";
@@ -521,7 +575,7 @@
 
             // If the loading indicator has reached three dots, reset it
             if (element.textContent === '....') {
-                element.textContent = '';
+                element.textContent = '.';
             }
         }, 300);
     }
@@ -820,7 +874,7 @@
 						},
 						body: JSON.stringify({
 							_token: token,
-							prompt: 'suggest 11 detailed titles in ordered list not inside double qoutes based upon ' + majorprompt,
+							prompt: 'suggest 11 detailed titles in ordered list without having double qoutes based upon ' + majorprompt,
 							old_prompt: majoroldprompt
 						})
 					})
@@ -1014,8 +1068,8 @@
             element.textContent += '.';
 
             // If the loading indicator has reached three dots, reset it
-            if (element.textContent === '....') {
-                element.textContent = '';
+			if (element.textContent === '....') {
+                element.textContent = '.';
             }
         }, 300);
     }
@@ -1091,6 +1145,9 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
             messageDiv.innerHTML = "Something went wrong"
@@ -1228,6 +1285,9 @@
             // const div = document.getElementById(newval);
             // const content = String(parsedData);
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1301,9 +1361,17 @@
 
 							// Calculate meta tags score
 							let metaTagsScore = 1; 
-							let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
+							let seoScore = (keywordDensity * 8) + (metaTagsScore * 2) + (automated_readability_index * 2) + (smog_readability_index * 2);
 							let roundedscore = Math.round(seoScore);
-							document.getElementById("resulted_score").innerHTML = roundedscore;
+							const mkscoreforbgr = document.getElementById("resulted_score");
+                        	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
+							if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
+								const newvalueforseosc = roundedscore + 8;
+								document.getElementById("resulted_score").innerHTML = newvalueforseosc;
+							}
+							else{
+								document.getElementById("resulted_score").innerHTML = roundedscore;
+							}
 							}
 						}
                         const numberEl = document.getElementById("resulted_score");
@@ -1313,85 +1381,103 @@
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
                         }
+                        else if (number < 0) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+							document.getElementById("resulted_score").innerHTML = "0";
+                        }
                         else if (number > 0 && number <= 5) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
                         }
-                        else if (number > 5 && number <= 10) {
+                        else if (number >= 6 && number <= 10) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
                         }
-                        else if (number > 10 && number <= 15) {
+                        else if (number >= 11 && number <= 15) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
                         }
-                        else if (number > 15 && number <= 20) {
+                        else if (number >= 16 && number <= 20) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
                         }
-                        else if (number > 20 && number <= 25) {
+                        else if (number >= 21 && number <= 25) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
                         }
-                        else if (number > 25 && number <= 30) {
+                        else if (number >= 26 && number <= 30) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
                         }
-                        else if (number > 30 && number <= 35) {
+                        else if (number >= 31 && number <= 35) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
                         }
-                        else if (number > 35 && number <= 40) {
+                        else if (number >= 36 && number <= 40) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
                         }
-                        else if (number >40 && number <= 45) {
+                        else if (number >= 41 && number <= 45) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
                         }
-                        else if (number > 45 && number <= 50) {
-							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "367.3554535791462");
+                        else if (number >= 46 && number <= 50) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "355.3554535791462");
                         }
-                        else if (number > 50 && number <= 55) {
-							takersltdscore.setAttribute("stroke-dasharray", "385.0884539600077");
+                        else if (number >= 51 && number <= 53) {
+							takersltdscore.setAttribute("stroke-dasharray", "359.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 55 && number <= 60) {
+                        else if (number >= 54 && number <= 57) {
+							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 58 && number <= 60) {
 							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 60 && number <= 65) {
+                        else if (number >= 61 && number <= 65) {
 							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 65 && number <= 70) {
+                        else if (number >= 66 && number <= 70) {
 							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 70 && number <= 75) {
+                        else if (number >= 71 && number <= 75) {
 							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 75 && number <= 80) {
+                        else if (number >= 76 && number <= 80) {
 							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 80 && number <= 85) {
+                        else if (number >= 81 && number <= 85) {
 							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 85 && number <= 90) {
+                        else if (number >= 86 && number <= 90) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
-                        else if (number > 90 && number <= 95) {
+                        else if (number >= 91 && number <= 95) {
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
                         }
+                        else if (number == 100) {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+                        }
+                        else if (number > 100) {
+							document.getElementById("resulted_score").innerHTML = "100";
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+                        }
                         else {
-							takersltdscore.setAttribute("stroke-dasharray", "517.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
                         }
                     }
                     }
@@ -1471,6 +1557,9 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1666,38 +1755,48 @@
 
 </script>
 <script>
-
-	var h1place = document.getElementById("h1place");
-	var h2place = document.getElementById("h2place");
+	// var h1place = document.getElementById("h1place");
+	// var h2place = document.getElementById("h2place");
 	var h3place = document.getElementById("h3place");
-	var bplace = document.getElementById("bplace");
+	// var bplace = document.getElementById("bplace");
 	var iplace = document.getElementById("iplace");
 	var ulplace = document.getElementById("ulplace");
 	var olplace = document.getElementById("olplace");
 	var cplace = document.getElementById("cplace");
 	var aplace = document.getElementById("aplace");
 	var cpplace = document.getElementById("cpplace");
-	var contentEditable = document.getElementById("forscoring");
+	var selectedText = "";
+	cpplace.addEventListener('mouseover', function() {
+		var hoverDiv = document.querySelector('.cpyhvtext');
+		hoverDiv.style.display = 'block';
+	});
+	cpplace.addEventListener('mouseout', function() {
+		var hoverDiv = document.querySelector('.cpyhvtext');
+		hoverDiv.style.display = 'none';
+	});
 	cpplace.addEventListener("click", function() {
-		var selection = window.getSelection();
-		var range = selection.getRangeAt(0);
+		var editableDiv = document.getElementById("forscoring");
+		var selectedRange = window.getSelection().getRangeAt(0);
 
-		if (!selection.isCollapsed) {
-			var copiedText = selection.toString();
-			
-			// Copy the selected text to the clipboard
-			navigator.clipboard.writeText(copiedText)
-			.then(function() {
-				// Success callback
-				range.deleteContents();
-				range.insertNode(document.createTextNode(copiedText));
-				alert("Text copied to clipboard!");
-			})
-			.catch(function(error) {
-				// Error callback
-				console.error("Failed to copy text: ", error);
-			});
+		if (!selectedRange.toString()) {
+			var range = document.createRange();
+			range.selectNodeContents(editableDiv);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
 		}
+
+		try {
+			document.execCommand("copy");
+		} catch (err) {
+			console.error("Unable to copy text: ", err);
+		}
+
+		window.getSelection().removeAllRanges();
+		var cpydone = document.getElementById("cpydone");
+		cpydone.classList.remove("edtrhidden");
+		setTimeout(function() {
+		cpydone.classList.add("edtrhidden");
+		}, 3000);
 	});
 	aplace.addEventListener("click", function() {
 		var selection = window.getSelection();
@@ -1721,54 +1820,203 @@
 		var range = selection.getRangeAt(0);
 
 		if (!selection.isCollapsed) {
-			var commentSpan = document.createElement("span");
+			var commentSpan = document.createElement("div");
 			commentSpan.className = "edtrcomment";
 			commentSpan.textContent = selection.toString();
-
 			range.deleteContents();
 			range.insertNode(commentSpan);
 		}
-	});
-	h1place.addEventListener("click", function() {
+	}); 
+    function h1place() {
+        // var selection = window.getSelection();
+        // selectedText = selection.toString(); // Store the selected text
+        // var h1Element = document.createElement("h1");
+		// // h1Element.classList.add("edtrh1");
+        // h1Element.innerHTML = selectedText;
+        // selection.getRangeAt(0).surroundContents(h1Element);
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
-		var h1Element = document.createElement("h1");
-		h1Element.appendChild(range.extractContents());
-		range.insertNode(h1Element);
-	});
-	h2place.addEventListener("click", function() {
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h1Element = document.createElement("span");
+			h1Element.className = "edtrh1";
+			h1Element.textContent = selectedText;
+
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h1Element);
+			}
+		}
+		selection.removeAllRanges();
+    }
+    function h2placenew() {
+        // if (selectedText !== "") {
+        //     var h1Elements = document.getElementsByTagName("h1");
+        //     for (var i = 0; i < h1Elements.length; i++) {
+        //         if (h1Elements[i].innerHTML === selectedText) {
+        //             var h2Element = document.createElement("h2");
+        //             h2Element.innerHTML = selectedText;
+        //             h1Elements[i].parentNode.replaceChild(h2Element, h1Elements[i]);
+        //             break;
+        //         }
+        //     }
+        // }
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
-		var h2Element = document.createElement("h2");
-		h2Element.appendChild(range.extractContents());
-		range.insertNode(h2Element);
-	});
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h2Element = document.createElement("span");
+			h2Element.className = "edtrh2";
+			h2Element.textContent = selectedText;
+
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh2")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h2Element);
+			}
+		}
+		selection.removeAllRanges();
+    }
+	function pplace() {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh1");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh2")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh2");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh3")) {
+			range.commonAncestorContainer.parentNode.classList.remove("edtrh3");
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+        } 
+		else {
+			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
+		}
+	// 	if (selectedText) {
+    //     // var selectionRange = getSelectionRange();
+    //     var selectedNode = range.commonAncestorContainer;
+
+    //     // Traverse the parent nodes of the selected text to check if any of them match the desired tag
+    //     while (selectedNode) {
+    //       if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
+	// 		range.commonAncestorContainer.parentNode.classList.remove("edtrh1");
+    //       } else if (selectedNode.tagName === 'H2') {
+	// 		var parent = selectedNode.parentNode;
+    //         parent.replaceChild(selectedNode.firstChild, selectedNode);
+    //         break;
+    //       }
+	// 	  else if (selectedNode.tagName === 'H3') {
+	// 		var parent = selectedNode.parentNode;
+    //         parent.replaceChild(selectedNode.firstChild, selectedNode);
+    //         break;
+    //       }
+
+    //       selectedNode = selectedNode.parentNode;
+    //     }
+    //   }
+	// 	// var pElement = document.createElement("p");
+	// 	if (range.commonAncestorContainer.parentNode == "h1"){
+	// 		range.commonAncestorContainer.parentNode.remove("h1");
+	// 	}
+		// pElement.appendChild(range.extractContents());
+		// range.insertNode(pElement);
+		selection.removeAllRanges();
+	};
+	// h1place.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var h1Element = document.createElement("h1");
+	// 	h1Element.appendChild(range.extractContents());
+	// 	range.insertNode(h1Element);
+	// });
+	// h2place.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var h2Element = document.createElement("h2");
+	// 	h2Element.appendChild(range.extractContents());
+	// 	range.insertNode(h2Element);
+	// });
 	h3place.addEventListener("click", function() {
+		// var selection = window.getSelection();
+		// var range = selection.getRangeAt(0);
+		// var h3Element = document.createElement("h3");
+		// h3Element.appendChild(range.extractContents());
+		// range.insertNode(h3Element);
+		// selection.removeAllRanges();
+
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
-		var h3Element = document.createElement("h3");
-		h3Element.appendChild(range.extractContents());
-		range.insertNode(h3Element);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var h3Element = document.createElement("span");
+			h3Element.className = "edtrh3";
+			h3Element.textContent = selectedText;
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtrh3")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(h3Element);
+			}
+		}
+		selection.removeAllRanges();
 	});
-	bplace.addEventListener("click", function() {
-		var selection = window.getSelection();
-		var range = selection.getRangeAt(0);
-		var boldElement = document.createElement("b");
-		boldElement.appendChild(range.extractContents());
-		range.insertNode(boldElement);
-	});
+	function bplace() {
+            var selection = window.getSelection();
+            var range = selection.getRangeAt(0);
+            var boldElement = document.createElement("span");
+
+            if (range.commonAncestorContainer.parentNode.classList.contains("bold")) {
+                // Remove bold if already applied
+                range.commonAncestorContainer.parentNode.classList.remove("bold");
+            } else {
+                // Apply bold if not already applied
+                boldElement.innerHTML = range.extractContents().textContent;
+                boldElement.classList.add("bold");
+                range.insertNode(boldElement);
+            }
+			selection.removeAllRanges();
+    }
+	// bplace.addEventListener("click", function() {
+	// 	var selection = window.getSelection();
+	// 	var range = selection.getRangeAt(0);
+	// 	var boldElement = document.createElement("b");
+	// 	boldElement.appendChild(range.extractContents());
+	// 	range.insertNode(boldElement);
+	// });
 	iplace.addEventListener("click", function() {
+		// var selection = window.getSelection();
+		// var range = selection.getRangeAt(0);
+		// var boldElement = document.createElement("i");
+		// boldElement.appendChild(range.extractContents());
+		// range.insertNode(boldElement);
 		var selection = window.getSelection();
 		var range = selection.getRangeAt(0);
-		var boldElement = document.createElement("i");
-		boldElement.appendChild(range.extractContents());
-		range.insertNode(boldElement);
+		var selectedText = range.toString();
+		if (selectedText !== "") {
+			var iElement = document.createElement("span");
+			iElement.className = "edtri";
+			iElement.textContent = selectedText;
+			if (range.commonAncestorContainer.parentNode.classList.contains("edtri")) {
+			range.commonAncestorContainer.parentNode.outerHTML = selectedText;
+			} else {
+			range.deleteContents();
+			range.insertNode(iElement);
+			}
+		}
+		selection.removeAllRanges();
 	});
 	ulplace.addEventListener("click", function() {
 		var selectedText = window.getSelection().toString().trim();
 		
 		if (selectedText !== "") {
 			var lines = selectedText.split("\n");
+			var outerelemt = "<span>";
 			var listHtml = "<ul>";
 			
 			lines.forEach(function(line) {
@@ -1776,6 +2024,7 @@
 			});
 			
 			listHtml += "</ul>";
+			outerelemt += "</span>";
 			
 			// Replace selected text with the list
 			document.execCommand("insertHTML", false, listHtml);
@@ -1786,6 +2035,7 @@
 		
 		if (selectedText !== "") {
 			var lines = selectedText.split("\n");
+			var outerelemt = "<span>";
 			var listHtml = "<ol>";
 			
 			lines.forEach(function(line) {
@@ -1793,6 +2043,7 @@
 			});
 			
 			listHtml += "</ol>";
+			outerelemt += "</span>";
 			
 			// Replace selected text with the list
 			document.execCommand("insertHTML", false, listHtml);

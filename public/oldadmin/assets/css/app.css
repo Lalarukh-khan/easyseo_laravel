@@ -897,16 +897,23 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 }
 .nwwbedtrtpbtn{
 	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	color: #fff;
+	border-radius: 1.5rem;
+	border: none;
+	font-weight: bolder;
+	padding: 0.5rem 0.75rem;
+	font-size: 20px;
+	border: 2px solid transparent;
+}
+
+.nwwbedtrtpbtn:hover{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	text-fill-color: transparent;
 	border-radius: 1.5rem;
 	border: 2px solid #9200FF;
-	/* border-image: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
-	border-image-slice: 1; */
-	padding: 0.25rem 0.5rem;
-	font-size: 15px;
 }
 .nwwbedtrtpbtnmrrt{
 	margin-right: 20px;
@@ -1083,6 +1090,48 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	border-radius: 50%;
 	cursor: pointer;
 }
+.edtrh1 {
+	display: inline;
+	font-size: 2.5rem;
+	margin: 0;
+	padding: 0;
+}
+.edtrbkp{
+	font-size: 21px;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+.edtrh2 {
+	display: inline;
+	font-size: 1.8rem;
+	margin: 0;
+	padding: 0;
+}
+.edtrh3 {
+	display: inline;
+	font-size: 1.5rem;
+	margin: 0;
+	padding: 0;
+}
+.edtri{
+	/* display: inline; */
+	font-style: italic;
+}
+/* h2 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+h3 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+} */
+#edtrback:hover{
+	color: #fff;
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+}
 .brdrleft{
 	border-right: 1px solid rgb(175, 175, 175);
 	border-bottom: 1px solid rgb(175, 175, 175);
@@ -1224,6 +1273,9 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	padding-left: 10px !important;
 	padding-right: 11px !important;
 }
+.edtrwholerow{
+	margin-bottom: 50px;
+}
 .edtrcomment{
 	background-color: rgb(240, 238, 238);
 	padding: 20px;
@@ -1270,6 +1322,39 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	margin-left: 2%;
 	/* background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) ; */
 }
+.cpyhvtext{
+	font-size: 12px;
+	padding: 12px 0px;
+	color: #fff;
+	background: rgb(96, 96, 96);
+	display: none;
+	z-index: 9999;
+	width: 10%;
+	position: fixed;
+	right: 35%;
+	/* margin-left: 65%;
+	margin-top: 5px; */
+	text-align: center;
+}
+#cpydone{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	padding: 10px 8px 15px 8px;
+	width: 300px;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 8px;
+	position: fixed;
+	top: 15%;
+	right: 5%;
+	z-index: 9999;
+	text-align: center;
+}
+.edtrhidden{
+	display: none;
+}
+#cpplace:hover + .cpyhvtext {
+    display: block;
+  }
 .edtrinputwithbutton {
 	position: relative;
 	display: inline-block;
@@ -1277,6 +1362,9 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 	box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25);
 	background: transparent;
 	border-radius: 25px;
+	background: #fff !important;
+	border-top: 2px solid #9200FF;
+	border-bottom: 2px solid #9200FF;
 }
   
 /* .edtrinputwithbutton input[type="text"] {
@@ -2368,6 +2456,7 @@ sup {
 	position: absolute;
 	/* top: 300px !important; */
 	bottom: -20px !important;
+	width: 100%;
 }
 .nwtempcatimg{
 	width: 80px;
@@ -2532,7 +2621,9 @@ sup {
 	transition: all .3s ease-out;
 
 }
-
+.bold{
+	font-weight: bolder;
+}
 .sidebar-wrapper .metismenu a .parent-icon {
 
 	font-size: 24px;
@@ -6296,25 +6387,45 @@ ul.icons li span {
 	.nwcttempsearchbar2{
 		max-width: 80%;
 	}
+	.cpyhvtext{
+		top: 23%;
+		right: 42%;
+	}
 }
 @media only screen and (min-width: 1880px) and (max-width: 1980px) {
 	.nwcttempsearchbar2{
 		max-width: 78%;
+	}
+	.cpyhvtext{
+		top: 25%;
+		right: 40%;
 	}
 }
 @media only screen and (min-width: 1780px) and (max-width: 1880px) {
 	.nwcttempsearchbar2{
 		max-width: 76%;
 	}
+	.cpyhvtext{
+		top: 26%;
+		right: 39%;
+	}
 }
 @media only screen and (min-width: 1580px) and (max-width: 1780px) {
 	.nwcttempsearchbar2{
 		max-width: 73%;
 	}
+	.cpyhvtext{
+		top: 29%;
+		right: 39%;
+	}
 }
 @media only screen and (min-width: 1000px) and (max-width: 1580px) {
 	.nwcttempsearchbar2{
 		max-width: 70%;
+	}
+	.cpyhvtext{
+		top: 33%;
+		right: 35%;
 	}
 }
 /* @media only screen and (max-width: 1280px) and (min-width: 2280px) {
