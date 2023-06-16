@@ -273,6 +273,9 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
         Route::get('/create', 'EditorController@create')->name('create');
         Route::get('/keywords', 'EditorController@keywords')->name('keywords');
         Route::post('/ai_response', 'EditorController@ai_response')->name('ai_response');
+        Route::post('/saveEditor', 'EditorController@saveEditor')->name('saveEditor');
+        Route::post('/changeEditor', 'EditorController@changeEditor')->name('changeEditor');
+        Route::get('/document/{id}', 'EditorController@document')->name('document');
     });
 
     Route::group([
