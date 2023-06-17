@@ -99,7 +99,7 @@
                             {{-- <p class="float-right update_length_{{$k}}">0/800</p> --}}
                         </div>
                         <input type="text" class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" value="{{$item->placeholder}}"  required>
+                            name="input[text{{++$k}}]" placeholder="{{$item->placeholder}}"  required>
                     </div>
                     @endif
                     @if ($item->type == 'medium_text')
@@ -115,8 +115,8 @@
                             {{-- <p class="float-right update_length_{{$k}}">0/140</p> --}}
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" id="" rows="5"
-                            required>{{$item->placeholder}} </textarea>
+                            name="input[text{{++$k}}]" id="" rows="5" placeholder="{{$item->placeholder}}"
+                            required></textarea>
                     </div>
                     @endif
                     @if ($item->type == 'long_text')
@@ -132,8 +132,8 @@
                             {{-- <p class="float-right update_length_{{$k}}">0/800</p> --}}
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
-                            name="input[text{{++$k}}]" id="" rows="10" 
-                            required>{{$item->placeholder}} </textarea>
+                            name="input[text{{++$k}}]" id="" rows="10" placeholder="{{$item->placeholder}}" 
+                            required></textarea>
                     </div>
                     @endif
                     @if ($item->type == 'number')

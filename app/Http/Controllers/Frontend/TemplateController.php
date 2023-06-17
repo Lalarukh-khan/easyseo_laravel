@@ -146,10 +146,9 @@ class TemplateController extends Controller
 
 			if ($request->number_of_conecpet > 1) {
 				$command = $command. ' and write '. $request->number_of_conecpet .' sections';
-			}
+			} 
 			//$command .= '\n\n Provide seo SCORE:- [score/100] :-';
 		}
-		 
         // checking remaining words
         // $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
         // $userPackageWords = $user_package->words;

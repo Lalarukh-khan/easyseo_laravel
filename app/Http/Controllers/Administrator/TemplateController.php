@@ -346,7 +346,6 @@ class TemplateController extends Controller
             $command = $command.' in '.$request->language;
         }
 
-        // dd($complete_prompt);
 
         // if (isset($request->language) && !empty($request->language)) {
         //     $command = $command.' in '.$request->language;

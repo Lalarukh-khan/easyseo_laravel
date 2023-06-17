@@ -38,7 +38,7 @@ class DashboardController extends Controller
                 $dateE = new Carbon($daterage[1]);
                 $hisotry = $hisotry->whereBetween('created_at', [$dateS->format('Y-m-d') . " 00:00:00", $dateE->format('Y-m-d') . " 23:59:59"]);
             }
-            $hisotry = $hisotry->where('user_id' , $authUserId)->get(['gpt_histories.*', DB::raw('@rownum  := @rownum  + 1 AS rownum')]);
+            $hisotry = $hisotry->where('user_id' , $authUserId)->orderBy('id', 'DESC')->get(['gpt_histories.*', DB::raw('@rownum  := @rownum  + 1 AS rownum')]);
             // $hisotry = $hisotry->where('user_id' == $user_id)->orderBy('id', 'DESC')->get([
             //     'gpt_histories.*',
             //     DB::raw('@rownum  := @rownum  + 1 AS rownum')
