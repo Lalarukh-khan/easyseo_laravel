@@ -82,12 +82,35 @@
                   <span>Create an account</span>
                 </a>
               </p>
+              <p class="text-center">
+                <span>By proceeding, you are agreeing to </span>
+                <a href="{{ route('web.home') }}">
+                  <span>easyseo.ai </span>
+                </a>
+                <a href="{{ route('web.terms') }}">
+                  <span> Terms of Service </span>
+                </a>and
+                <a href="{{ route('web.privacy') }}">
+                  <span> Privacy Policy </span>
+                </a>
+              </p>
 
               <div class="divider my-4">
                 <div class="divider-text">or</div>
               </div>
 
-              <div class="d-flex justify-content-center">
+              <a href="{{ route('auth.social.redirect', 'google') }}">
+                <div class="row logingicn">
+                  <div class="col-lg-2 col-md-2 col-sm-3 col-3">
+                      <img src="{{asset('front')}}/assets/images/google.png" alt="" style="width: 100%; height: auto;">
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+                  <div class="col-lg-9 col-md-9 col-sm-9 col-9" style="text-align: right;">
+                    <p style="padding-top: 5px; color: grey;">demo@example.com</p>
+                  </div>
+                </div>
+              </a>
+              <!-- <div class="d-flex justify-content-center">
                 <a href="{{ route('auth.social.redirect', 'facebook') }}" class="btn btn-icon btn-label-facebook me-3">
                   <i class="tf-icons bx bxl-facebook"></i>
                 </a>
@@ -95,7 +118,7 @@
                 <a href="{{ route('auth.social.redirect', 'google') }}" class="btn btn-icon btn-label-google-plus me-3">
                   <i class="tf-icons bx bxl-google-plus"></i>
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

@@ -68,6 +68,11 @@
         background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%);
         color: #FFFFFF;
     }
+    .logingicn{
+        border: 1px solid rgb(192, 192, 192);
+        border-radius: 5px;
+        padding: 8px 12px 0px 12px;
+    }
 </style>
 </head>
 <body>

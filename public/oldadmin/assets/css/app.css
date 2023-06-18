@@ -2420,7 +2420,68 @@ sup {
 	width: 80px;
 	height: 40px;
 }
-
+.temptotop{
+	top: 0; 
+	position: fixed;
+}
+.toplefttemp{
+	border-bottom: 1px solid #cfcfcf;
+	padding: 15px 0px 0px 0px;
+	margin-left: -40px;
+	margin-bottom: 25px;
+}
+.toprightemp{
+	padding-top: 10px;
+	border-bottom: 1px solid #cfcfcf;
+	margin-left: -12px;
+	height: 100%;
+}
+.rsltdvbrdrbtm{
+	/* padding: 15px 7px;
+	border: none;
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 0 0.1rem 0.7rem rgba(0, 0, 0, .10);
+	background: #fff; */
+	border-bottom: 1px solid #cfcfcf; 
+}
+#temprghtsec{
+	border-left: 1px solid #cfcfcf; 
+	margin-left: -12px;
+}
+#tmpbxicrt{
+	color: #d3d3d3;
+	font-size: 15px;
+	display: inline-block;
+	margin: 0px 8px 10px 8px; 
+}
+.tempsideimg{
+	padding: 10px 8px;
+	background: #eae8e8;
+	/* border: 2px solid #e9e9e9; */
+	border-radius: 12px;
+	width: 70%;
+	text-align: center;
+	margin-left: 30%;
+}
+.clrtempimp{
+	background: transparent;
+	border: 1px solid #cfcfcf;
+	border-radius: 8px;
+	padding: 8px 12px;
+	font-size: 14px;
+	font-weight: bolder;
+	color: #7d7d7d;
+}
+.tempbotinp{
+	font-size: 16px;
+	padding: 8px 12px;
+	border: 1px solid #cfcfcf;
+	border-radius: 8px;
+	outline: none;
+	width: 100%;
+	cursor: pointer;
+}
 .nwtmpcatcount{
 	font-weight: 600;
 	font-size: 14px;
@@ -2434,6 +2495,50 @@ sup {
 .nwtmcreatecontent{
 	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) !important;
 	border: none !important;
+	width: 100%;
+	padding: 8px 12px;
+}
+.nwtmimpscrbtn{
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) !important;
+	border: none !important;
+	/* width: 100%; */
+	padding: 8px 12px;
+}
+.tmpnwotp{
+	padding: 8px;
+	color: rgb(59, 59, 255);
+	background-color: rgb(211, 211, 250);
+	font-size: 14px;
+	font-weight: bolder;
+	border: none;
+	border-radius: 8px;
+	margin-left: 10px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+.dfhjesbfjh{
+	color: orange;
+}
+.tmphistry{
+	font-size: 14px;
+	color: rgb(137, 137, 137);
+	margin-left: -20px;
+	margin-top: 10px;
+	display: inline-block;
+	cursor: pointer;
+}
+.tmpclr{
+	font-size: 14px;
+	color: rgb(196, 196, 196);
+	text-align: right;
+	margin-top: 10px;
+	display: inline-block;
+	cursor: pointer;
+}
+.tmpnwotpsp{
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 50%;
 }
 .nwcard{
 	padding: 10px;

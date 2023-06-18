@@ -20,6 +20,12 @@
     color: #28354D;
     font-size: 16px;
 }
+.tempfrstrsltdiv{
+    color: #2e2e2e;
+    font-size: 14px;
+    padding: 10px 10px 10px 10px;
+	/* border-bottom: 1px solid #cfcfcf;  */
+}
 .rsltdwholebox{
     border: 1px solid #d7d8d9;
     padding: 30px;
@@ -29,4 +35,8 @@
 }
 .rsltdwholebox:hover{
     background-color: #ECF2FF;
+}
+#tmprsltdwholebox{
+    /* margin-left: -24px; */
+    background-color: rgb(233, 250, 233);
 }

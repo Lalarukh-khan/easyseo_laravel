@@ -81,8 +81,8 @@
                     <span class="text-danger mt-0 mb-1">{{ $message }}</span>
                     @enderror
                 </div>
-
-                <div class="mb-3">
+                <br>
+                <!-- <div class="mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
                     <label class="form-check-label" for="terms-conditions">
@@ -90,7 +90,7 @@
                       <a href="javascript:void(0);">privacy policy & terms</a>
                     </label>
                   </div>
-                </div>
+                </div> -->
                 <button class="btn d-grid w-100 nwwbauthbtn" type="submit">Sign up</button>
               </form>
 
@@ -99,6 +99,19 @@
                 <a href="{{ route('login') }}">
                   <span>Sign in instead</span>
                 </a>
+              </p>
+
+              <p class="text-center">
+                <span>I agree to the </span>
+                <a href="{{ route('web.terms') }}">
+                  <span> Terms of Service </span>
+                </a>and 
+                <a href="{{ route('web.privacy') }}">
+                  <span> Privacy Policy </span>
+                </a>of
+                <a href="{{ route('web.home') }}">
+                  <span>easyseo.ai </span>
+                </a>to receive information about the product.
               </p>
 
               <div class="divider my-4">
