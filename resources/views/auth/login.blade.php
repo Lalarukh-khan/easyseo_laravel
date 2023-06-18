@@ -101,12 +101,11 @@
 
               <a href="{{ route('auth.social.redirect', 'google') }}">
                 <div class="row logingicn">
-                  <div class="col-lg-2 col-md-2 col-sm-3 col-3">
-                      <img src="{{asset('front')}}/assets/images/google.png" alt="" style="width: 100%; height: auto;">
+                  <div class="col-lg-2 col-md-2 col-sm-3 col-3 gglgimg">
+                      <img src="{{asset('front')}}/assets/images/google.png" alt="" style="width: 100%; height: auto;padding-top: 5px;">
                   </div>
-                  <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
-                  <div class="col-lg-9 col-md-9 col-sm-9 col-9" style="text-align: right;">
-                    <p style="padding-top: 5px; color: grey;">demo@example.com</p>
+                  <div class="col-lg-10 col-md-10 col-sm-10 col-10" style="text-align: center;">
+                    <p style="padding-top: 10px;">Sign in with Google</p>
                   </div>
                 </div>
               </a>

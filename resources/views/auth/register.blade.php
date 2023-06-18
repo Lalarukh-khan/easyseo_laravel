@@ -117,8 +117,17 @@
               <div class="divider my-4">
                 <div class="divider-text">or</div>
               </div>
-
-              <div class="d-flex justify-content-center">
+              <a href="{{ route('auth.social.redirect', 'google') }}">
+                <div class="row logingicn">
+                  <div class="col-lg-2 col-md-2 col-sm-3 col-3 gglgimg">
+                      <img src="{{asset('front')}}/assets/images/google.png" alt="" style="width: 100%; height: auto;padding-top: 5px;">
+                  </div>
+                  <div class="col-lg-10 col-md-10 col-sm-10 col-10" style="text-align: center;">
+                    <p style="padding-top: 10px;">Sign up with Google</p>
+                  </div>
+                </div>
+              </a>
+              <!-- <div class="d-flex justify-content-center">
                 <a href="{{ route('auth.social.redirect', 'facebook') }}" class="btn btn-icon btn-label-facebook me-3">
                   <i class="tf-icons bx bxl-facebook"></i>
                 </a>
@@ -126,7 +135,7 @@
                 <a href="{{ route('auth.social.redirect', 'google') }}" class="btn btn-icon btn-label-google-plus me-3">
                   <i class="tf-icons bx bxl-google-plus"></i>
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

@@ -69,9 +69,14 @@
         color: #FFFFFF;
     }
     .logingicn{
-        border: 1px solid rgb(192, 192, 192);
-        border-radius: 5px;
-        padding: 8px 12px 0px 12px;
+        border: none;
+        padding: 2px 2px 2px 2px;
+        background-color: rgb(53, 117, 255);
+        color: #fff;
+        font-size: 18px;
+    }
+    .gglgimg{
+        background-color: #fff;
     }
 </style>
 </head>
