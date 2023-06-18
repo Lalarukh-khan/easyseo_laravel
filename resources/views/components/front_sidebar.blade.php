@@ -47,6 +47,8 @@
                 <div class="menu-title">Ezchat</div>
             </a>
         </li>
+        @php $package_id = session()->get('UserPackages')->package_id; @endphp
+        @if($package_id != 1)
         <li>
             <a href="{{route('user.keyword-suggestion.index')}}">
                 <div class="parent-icon icon-color-2"><i class="bx bx-share-alt"></i>
@@ -54,6 +56,7 @@
                 <div class="menu-title">Keyword Suggestions</div>
             </a>
         </li>
+        @endif
         {{-- <li>
             <a href="{{route('user.history.all')}}">
                 <div class="parent-icon icon-color-2"><i class="bx bx-history"></i>

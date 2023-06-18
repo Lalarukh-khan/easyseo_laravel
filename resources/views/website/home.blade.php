@@ -142,26 +142,22 @@
                 <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50 p-l-25 p-r-25">
                     <div class="contact-box contact-box2" id="cntctbxswht1">
                         <img alt="Icon" src="{{asset('front')}}/images/click-icon.svg">
-                        <h4 class="col-white" id="cntctbxswht1a"> Write copy & content </h4>
-                        <p class="col-white" id="cntctbxswht1b"> Your AI sidekick is trained to produce high-converting
-                            marketing copy </p>
+                        <h4 class="col-white" id="cntctbxswht1a"> Your SEO-Smart AI Writer </h4>
+                        <p class="col-white" id="cntctbxswht1b"> Our AI solution crafts engaging, SEO-optimized content, enhancing your digital visibility with every word. </p>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50 p-l-25 p-r-25">
                     <div class="contact-box contact-box2" id="cntctbxswht2">
                         <img alt="Icon" src="{{asset('front')}}/images/bulb-icon.svg">
-                        <h4 class="col-white" id="cntctbxswht2a"> Brainstorm new ideas. </h4>
-                        <p class="col-white" id="cntctbxswht2b"> Breakthrough writer’s block with Jasper who will help
-                            you spark fresh ideas. </p>
+                        <h4 class="col-white" id="cntctbxswht2a"> Inspiration with AI </h4>
+                        <p class="col-white" id="cntctbxswht2b"> Easyseo.ai liberates creativity, turning a keyword into a cascade of inspired content ideas.                        </p>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50 p-l-25 p-r-25">
                     <div class="contact-box contact-box2" id="cntctbxswht3">
                         <img alt="Icon" src="{{asset('front')}}/images/thumb-icon.svg">
-                        <h4 class="col-white" id="cntctbxswht3a"> Write better, everywhere. </h4>
-                        <p class="col-white" id="cntctbxswht3b"> Whether you’re writing emails, captions, or love
-                            letters, Jasper will help craft the perfect
-                            message. </p>
+                        <h4 class="col-white" id="cntctbxswht3a"> Real-Time SEO Scoring </h4>
+                        <p class="col-white" id="cntctbxswht3b"> Craft content confidently, our AI constantly evaluates and optimizes your work, ensuring peak SEO performance.                        </p>
                     </div>
                 </div>
             </div>
@@ -1305,7 +1301,7 @@
                                                                             <a  href="{{route('web.pricing')}}" class="custom-btn2"
                                                                                 id="prcngwht3j"><u> View All Details
                                                                                 </u></a>
-                                                                            <a href="" class="custom-btn3"> Upgrade </a>
+                                                                            <a href="mailto:sales@easyseo.ai" class="custom-btn3"> Contact us </a>
                                                                         </div>
                                                                     </div>
                                                                 </div>

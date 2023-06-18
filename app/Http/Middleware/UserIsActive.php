@@ -48,7 +48,7 @@ class UserIsActive
 			$words = GptHistory::where([ ['user_id',$authUserId] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
 
             // dd($words);
-            // dd($user_package);
+            //  dd($user_package->package_id);
 
             session()->put('gpt_words', $words);
 			session()->put('UserPackages', $user_package);

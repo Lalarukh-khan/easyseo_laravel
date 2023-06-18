@@ -244,7 +244,7 @@
                         </div>
                         <div class="pricing-btn">
                             <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht3j"><u> View All Details </u></a>
-                            <a href="" class="custom-btn3"> Contact Sales </a>
+                            <a href="mailto:sales@easyseo.ai" class="custom-btn3"> Contact us </a>
                         </div>
                     </div>
                 </div>
