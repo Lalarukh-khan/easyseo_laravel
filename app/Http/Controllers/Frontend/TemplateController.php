@@ -101,7 +101,7 @@ class TemplateController extends Controller
             'template_data' => $template
         );
 
-        return view('front.template.temp_form')->with($data);
+        return view('front.template.newbackup_temp_form')->with($data);
     }
 
     public function form_submit(Request $request)
