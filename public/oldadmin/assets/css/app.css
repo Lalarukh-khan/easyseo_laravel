@@ -2455,6 +2455,7 @@ sup {
 	font-size: 15px;
 	display: inline-block;
 	margin: 0px 8px 10px 8px; 
+	cursor: pointer;
 }
 .tempsideimg{
 	padding: 10px 8px;
@@ -2504,6 +2505,14 @@ sup {
 	border: none !important;
 	/* width: 100%; */
 	padding: 8px 12px;
+	visibility: hidden;
+}
+.genbtntmpbt{
+	bottom: 0;
+    position: fixed;
+    margin-bottom: 35px;
+    padding-top: 30px;
+    width: 38%;
 }
 .tmpnwotp{
 	padding: 8px;

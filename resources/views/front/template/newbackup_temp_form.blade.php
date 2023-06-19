@@ -202,7 +202,7 @@
                                 value="1" min="1" max="5" required>
                     </div> --}} 
                     @endif
-					<div class="row">
+					<div class="row genbtntmpbt">
 						<div class="col-lg-4 col-md-4 col-sm-4 col-4">
 							<button class="clrtempimp"><i class="bx bx-x"></i> Clear inputs</button>
 						</div>
@@ -212,8 +212,7 @@
 							<input type="text" id="numberInput" min="1" max="3" value="3" class="tempbotinp">
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
-                        	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit" {{
-                            session()->has('package-error') ? 'disabled' : '' }}>Generate</button>
+                        	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit">Generate</button>
 						</div>
 					</div>
                 </form>
@@ -244,16 +243,6 @@
 						<button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
 					</div>
 					<div class="row" id="tmprsltdwholebox">
-						<div id="tkiconsins" style="display:none;">
-								<div class="row">
-									<div class="col-lg-8">
-										<i class="bx bx-copy" id="tmpbxicrt"></i>
-									</div>
-									<div class="col-lg-1">
-									</div>
-									<div class="col-lg-3"></div>
-								</div>
-						</div>
 						<div id="frbrdrbtm" style="display: none;">
 								<br>
 								<br>
@@ -275,14 +264,14 @@
 							</div>
 							<div class="col-lg-3"></div>
 						</div>
-						<div style="display:none;" id="takeimpcntnt">
+						<!-- <div style="display:none;" id="takeimpcntnt">
 						<div class="row">
 							<div class="col-lg-4">
 							<button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore" >Improve Score</button>
 							</div>
 							<div class="col-lg-8"></div>
 						</div>
-						</div>
+						</div> -->
 						<br>
                         <textarea name="content" id="details" cols="30" rows="10" style="display: none !important;"></textarea>
                         {{--<form action="{{route('user.template.form_seo_score')}}" method="post">--}}
@@ -302,9 +291,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
 <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 <script>
-		var tkiconsins = document.getElementById("tkiconsins");
 		var frbrdrbtm = document.getElementById("frbrdrbtm");
-        var existingText = tkiconsins.innerHTML.trim();
         var belowofrslt = frbrdrbtm.innerHTML;
         var result = "";
 	var numberInput = document.getElementById("numberInput");
@@ -452,15 +439,15 @@
 		
 		}
 	}
-    const impscore = document.querySelector('#impscore');
-	impscore.addEventListener('click', function() {
-		// $('#ai-loader').show();
-		templateLoader('#ai-loader','show');
-		$('#ans_div').hide();
-		$('#impscore').hide();
-		const content = document.querySelector('#details').value;
-		results(content);
-	});
+    // const impscore = document.querySelector('#impscore');
+	// impscore.addEventListener('click', function() {
+	// 	// $('#ai-loader').show();
+	// 	templateLoader('#ai-loader','show');
+	// 	$('#ans_div').hide();
+	// 	$('#impscore').hide();
+	// 	const content = document.querySelector('#details').value;
+	// 	results(content);
+	// });
 
     function results(content) {
 		
@@ -727,12 +714,11 @@
 							return false;
 						}else{
 							// $('#ai-loader').hide();
-							console.log("Number "+ number+ " Times"+ times);
 							if(number === times - 1){
 								callansdiv();
 							}
 							const first_result_div = document.getElementById("first_result_div");
-							const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
+							// const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
 							document.getElementById("details").value = data.message;
 							const score = data.score;
 							const content = data.message;
@@ -752,11 +738,15 @@
 							// var paragraph = document.createElement("p"); margin-left: 40%;
 							// paragraph.classList.add("rsltdvbrdrbtm");
 							// paragraph.textContent = data.message;
-							var takepara = '<div class="col-lg-11">'+data.message+'</div>';
+							var takepara = '<div class="col-lg-11" id="datamsg'+number+'">'+data.message+'</div>';
 							var smwhl = takepara + htmlContent;
-							var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'
-							result += existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
-							first_result_div.innerHTML = result;
+							var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
+							var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
+							var takeimpcntnt = '<div class="row"><div class="col-lg-4"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'">Improve Score</button></div><div class="col-lg-8"></div></div>'
+							result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
+							var cnvrtresult = "";
+							cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\')">'+result+'</div>';
+							first_result_div.innerHTML += cnvrtresult;
 							// first_result_div.appendChild(paragraph);
 
 							// $('#first_result_div').val(data.message);
@@ -778,9 +768,32 @@
 					}
 				});
 	}
+	function showHiddenDiv(divId) {
+    var hiddenDiv = document.getElementById(divId);
+    hiddenDiv.style.visibility = 'visible';
+	}
 
+	function hideHiddenDiv(divId) {
+		var hiddenDiv = document.getElementById(divId);
+		hiddenDiv.style.visibility = 'hidden';
+	}
+	function copyContent(divId) {
+		var content = document.getElementById(divId).innerText;
+		console.log("Yeah Here we go again");
+		navigator.clipboard.writeText(content)
+			.then(function() {
+			console.log("Content copied to clipboard.");
+			$(".alert-info").fadeTo(2000, 500).slideUp(500, function() {
+				$(".alert-info").slideUp(500);
+			});
+			})
+			.catch(function(error) {
+			console.error("Unable to copy content to clipboard:", error);
+			});
+	}
     function copyToClipboard(element) {
         var $temp = $("<textarea>");
+		console.log("Yeah Here we go again")
         $("body").append($temp);
         $temp.val($(element).val()).select();
         document.execCommand("copy");
