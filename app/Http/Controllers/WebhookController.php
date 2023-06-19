@@ -233,11 +233,11 @@ class WebhookController extends Controller
     {
 
         $details = [
-            'title' => 'Dailygratitude.io - Webhook Error (New Subscription)',
+            'title' => 'easyseo.io - Webhook Error (New Subscription)',
             'body' => "<p style='font-size:16px;font-weight:600;text-align:center;'> Error occured While fetching data of new subscription via Webhook. Here are the details of Error: <br><br>
 			<strong>Message : </strong> " . $message . "<br>" . $execprionDetails . " <br> <a href='" . $PageUrl . "'>" . $PageUrl . "</a></p></p>",
         ];
-        Mail::to('codventteam@gmail.com')->send(new WebhookErrors($details));
+        Mail::to('m.daniyal.khan399@gmail.com')->send(new WebhookErrors($details));
     }
 
     public function suspendSubscription($subscriptionId)
