@@ -2584,7 +2584,7 @@ sup {
 	width: 100%;
 }
 .nwtempcatimg{
-	width: 80px;
+	width: fit-content;;
 	height: 40px;
 }
 
