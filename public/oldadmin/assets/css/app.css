@@ -2449,7 +2449,7 @@ sup {
 	border-left: 1px solid #cfcfcf; 
 	margin-left: -12px;
 	height: 100vh;
-	overflow-y: scroll !important;
+	overflow-y: scroll !important; 
 	overflow-x: hidden !important;
 }
 #tmpbxicrt{
@@ -2584,7 +2584,7 @@ sup {
 	width: 100%;
 }
 .nwtempcatimg{
-	width: fit-content;;
+	width: 80px;
 	height: 40px;
 }
 

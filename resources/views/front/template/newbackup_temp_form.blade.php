@@ -210,7 +210,7 @@
 						<div class="col-lg-2 col-md-2 col-sm-6 col-6">
 							<!-- <input type="text" name="" id="" value="3" class="tempbotinp"> -->
 							<input type="text" id="numberInput" min="1" max="3" value="3" class="tempbotinp">
-						</div>
+						</div> 
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit">Generate</button>
 						</div>
