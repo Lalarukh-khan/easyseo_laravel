@@ -80,7 +80,7 @@
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-3">
 						<div class="tempsideimg">
-							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 70%; height: auto;">
+							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 50px; height: 50px; margin-left: -4px;">
 						</div>
 					</div>
 					<div class="col-lg-10 col-md-10 col-sm-9 col-9">
@@ -733,7 +733,7 @@
 							// const cdfcv = document.createElement("div");
 							// jvbdjv.innerText = takescore;
 							const ndkjvndkj = jvbdjv.innerHTML;
-							const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-3"></div>';
+							const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-3"></div>';
 							// const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
 							// var paragraph = document.createElement("p"); margin-left: 40%;
 							// paragraph.classList.add("rsltdvbrdrbtm");
@@ -742,7 +742,7 @@
 							var smwhl = takepara + htmlContent;
 							var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
 							var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
-							var takeimpcntnt = '<div class="row"><div class="col-lg-4"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'">Improve Score</button></div><div class="col-lg-8"></div></div>'
+							var takeimpcntnt = '<div class="row"><div class="col-lg-4"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\')">Improve Score</button></div><div class="col-lg-8"></div></div>'
 							result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
 							var cnvrtresult = "";
 							cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\')">'+result+'</div>';
@@ -768,6 +768,111 @@
 					}
 				});
 	}
+	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag)
+	{
+		document.getElementById("form_submit").disabled = true;
+		// $('#ai-loader').show();
+		// templateLoader('#ai-loader','show');
+		// $('#ans_div').hide();
+		var form = document.getElementById('content_form');
+		var formData = new FormData(form);
+		formData.append('improve_score',improve_score);
+		formData.append('improve_content',improve_content);
+            // resultDiv.textContent = ""; // Clear previous content
+				$.ajax({
+					url: "{{ route('user.template.form_submit') }}",
+					method: "POST",
+					data: formData,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: function(data) {
+						
+						if (data.error !== undefined) {
+							$_html = alertMessage(data.error,false);
+							$('.error-msg-div').html($_html);
+							document.getElementById("form_submit").disabled = false;
+							// $('#ai-loader').hide();
+							templateLoader('#ai-loader','hide');
+							return false;
+						}
+						if (data.status == 400) {
+							$_html = alertMessage(data.message,false);
+							$('.error-msg-div').html($_html);
+							document.getElementById("form_submit").disabled = false;
+							// $('#ai-loader').hide();
+							templateLoader('#ai-loader','hide');
+
+							return false;
+						}else{
+						document.getElementById(content_tag).innerHTML = data.message;
+						document.getElementById("details").value = data.message;
+						// $('#first_result_div').val(data.message);
+						// CKEDITOR.instances['first_result_div'].setData(data.message)
+						$('#prompt_word_count').html(`${data.word_count} words`);
+						$('body #first_copy_btn').show();
+						document.getElementById("form_submit").disabled = false;
+						// console.log("data "+data.message);
+
+						// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
+						// const score = $("#first_result_div").text();
+						const score = data.score;
+						// const content = data.message
+						
+						// getSeoScore(score,improve_content,improve_score);
+						if(impscoretag == "rps0"){
+							document.getElementById("resulted_phrase").innerHTML = score;
+							document.getElementById("formscore").value = score;
+							console.log("I'm here 1");
+							const numberEl = document.getElementById("resulted_phrase");
+							const number = parseInt(numberEl.textContent);
+
+							numberEl.style.borderRadius = "50%";
+							numberEl.style.padding = "10px";
+
+							if (number < 50) {
+								numberEl.style.border = "2px solid #f54c36";
+							}
+							else if (number > 50 && number < 70) {
+								numberEl.style.border = "2px solid #f7831e";
+							}
+							else {
+								numberEl.style.border = "2px solid #39942f";
+							}
+						}
+						else{
+							document.getElementById(impscoretag).innerHTML = score;
+							document.getElementById("formscore").value = score;
+							console.log("I'm here 1");
+							const numberEl = document.getElementById(impscoretag);
+							const number = parseInt(numberEl.textContent);
+
+							numberEl.style.borderRadius = "50%";
+							numberEl.style.padding = "10px";
+
+							if (number < 50) {
+								numberEl.style.border = "2px solid #f54c36";
+							}
+							else if (number > 50 && number < 70) {
+								numberEl.style.border = "2px solid #f7831e";
+							}
+							else {
+								numberEl.style.border = "2px solid #39942f";
+							}
+						}
+						document.getElementById("temp_id").value = data.temp_id;
+						// ||||||||||||||||| ENDING SEO SCORE |||||||||||||||||||
+						}
+					}
+				});
+	}
+	function improvescore(divId, ImpScore){
+		var content = document.getElementById(divId).innerText;
+		console.log(content);
+		console.log(ImpScore);
+		formSubmitImp(1,content, ImpScore, divId);
+		
+	}
 	function showHiddenDiv(divId) {
     var hiddenDiv = document.getElementById(divId);
     hiddenDiv.style.visibility = 'visible';
@@ -782,7 +887,6 @@
 		console.log("Yeah Here we go again");
 		navigator.clipboard.writeText(content)
 			.then(function() {
-			console.log("Content copied to clipboard.");
 			$(".alert-info").fadeTo(2000, 500).slideUp(500, function() {
 				$(".alert-info").slideUp(500);
 			});

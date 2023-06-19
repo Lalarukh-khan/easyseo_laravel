@@ -2449,6 +2449,8 @@ sup {
 	border-left: 1px solid #cfcfcf; 
 	margin-left: -12px;
 	height: 100vh;
+	overflow-y: scroll !important;
+	overflow-x: hidden !important;
 }
 #tmpbxicrt{
 	color: #d3d3d3;
@@ -2491,7 +2493,7 @@ sup {
 	border: 2px solid #c9c9c9;
 	padding: 8px;
 	border-radius: 16px;
-	margin-left: 15px; 
+	margin-left: 15px;
 	/* display: inline-block; */
 }
 .nwtmcreatecontent{
@@ -2514,6 +2516,8 @@ sup {
     padding-top: 30px;
     width: 38%;
 }
+/* #tmprsltdwholebox{
+} */
 .tmpnwotp{
 	padding: 8px;
 	color: rgb(59, 59, 255);
