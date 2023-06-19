@@ -18,7 +18,7 @@ class CreateGptHistoriesTable extends Migration
             $table->integer('user_id');
             $table->integer('template_id')->nullable();
             $table->string('template_name')->nullable();
-            $table->enum('type',['complete','template']);
+            $table->enum('type',['complete','template','chatbot','editor']);
             $table->longText('prompt')->nullable();
             $table->longText('answer')->nullable();
             $table->longText('input')->nullable();

@@ -26,7 +26,7 @@ class EditorController extends Controller
 		if (request()->ajax()) {
             DB::statement(DB::raw('set @rownum=0'));
             $editors = new Editor();
-
+            
 			$editors = Editor::get(['editor.*', DB::raw('@rownum  := @rownum  + 1 AS rownum')])->where('user_id' , $user_id);
 			return Datatables::of($editors)
                 ->addIndexColumn()
@@ -65,7 +65,7 @@ class EditorController extends Controller
                 // })
                 ->rawColumns(['name', 'target_keyword', 'score', 'words', 'status', 'action'])
                 ->make(true);
-        }
+        }   
 
         $data = array(
             'title' => 'Editor'
@@ -76,7 +76,7 @@ class EditorController extends Controller
     public function create()
     {
         $row = Editor::create();
-
+        
         $data = array(
             'title' => 'Create Document',
             'e_id' => $row->id
@@ -152,11 +152,8 @@ class EditorController extends Controller
     public function ai_response(Request $request)
     {
         // checking remaining words start
-        $authUser = session()->get('authUser');
 
-        // $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
-        $user_package = session()->get('UserPackages');
-
+        $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
         $userPackageWords = $user_package->words;
 
         $From = $user_package->start_date;
@@ -164,10 +161,7 @@ class EditorController extends Controller
         $tomorrow = date('Y-m-d', strtotime(' +1 day'));
         $end_date = strtotime($user_package->end_date);
 
-        // $used_words = GptHistory::where([ ['user_id',$authUser->user_type == 'workspace' ? $authUser->main_user_id : $authUser->main_user_id] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
-        $used_words = session()->get('gpt_words');
-
-        $remaining_words = $userPackageWords - $used_words;
+        $used_words = GptHistory::where([ ['user_id',auth('web')->id()] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
 
         if (strtotime($currentDate) > $end_date && $used_words >= $userPackageWords) {
             return response()->json(['error' => __('error_msg.word_limit_reached')]);
@@ -181,7 +175,7 @@ class EditorController extends Controller
         $setting = Setting::latest()->first();
         $api_key = !empty($setting) ? base64_decode($setting::latest()->first()->api_key) : null;
 
-        // $user = auth('web')->user();
+        $user = auth('web')->user();
 
         $old_prompt = json_decode($request->old_prompt);
         $old_prompt[] = array(
@@ -191,7 +185,7 @@ class EditorController extends Controller
         $res = $this->get_response($old_prompt,$api_key);
 
         $save_res = json_decode(json_encode($res));
-
+        
         if ($save_res->original->status == 400) {
             $msg = [
                 'status' => 400,
@@ -199,29 +193,9 @@ class EditorController extends Controller
             ];
             return response()->json($msg,400);
         }
-
-        $gpt_answer = removeFirstTwoBrTags($save_res->original->bot);
-        if (str_word_count($gpt_answer) >= $remaining_words) {
-            $gpt_answer = limitWords($gpt_answer,$remaining_words);
-            $total_words = str_word_count($gpt_answer);
-        }else{
-            $total_words = str_word_count($gpt_answer);
-        }
-
-        $gpt_history = new GptHistory();
-        $gpt_history->type = 'editor';
-        $gpt_history->user_id = $authUser->id;
-        $gpt_history->prompt = $request->prompt;
-        $gpt_history->answer = $gpt_answer;
-        $gpt_history->prompt_tokens = $save_res->original->usage->promptTokens;
-        $gpt_history->completion_tokens = $save_res->original->usage->completionTokens;
-        $gpt_history->total_tokens = $save_res->original->usage->totalTokens;
-        $gpt_history->total_words = $total_words;
-        $gpt_history->save();
-
         $msg = [
             'status' => 200,
-            'bot' => $gpt_answer,
+            'bot' => $save_res->original->bot,
             'old_prompt' => $save_res->original->old_prompt,
         ];
 

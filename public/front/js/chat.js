@@ -107,6 +107,12 @@ const handleSubmit = async (e) => {
 
     if (response.ok) {
         const data = await response.json();
+        
+        if (data.error !== undefined) {
+            $_html = alertMessage(data.error,false);
+            $('.error-msg-div').html($_html);
+            return false;
+        }
         const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
         $('#old_prompt').val(data.old_prompt)
         typeText(messageDiv, parsedData)

@@ -62,7 +62,7 @@
 					<!-- <div id="wholecntntscore" contenteditable="true"> -->
 						<div class="edtrmn">
 							<div style="text-align: right;">
-								<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>
+								<p class="edtrttc">Title (H1): <strong>0</strong> characters</p>	
 							</div>
 								<input type="text" class="edtrmainval" name="edtrmainval" id="edtrmainval" placeholder="Enter Title">
 								<br>
@@ -142,7 +142,7 @@
 							<div id="edsugtitles" style="display: none !important;"></div>
 							<div>
 								<h3 id="edtrtrgtkwrd" class="edtrtrgtkwrd"></h3>
-
+								
 								<div class="row">
 									<div class="col-lg-2"></div>
 									<div class="col-lg-8">
@@ -1060,11 +1060,6 @@
 
         if (response1.ok) {
             const data = await response1.json();
-            if (data.error !== undefined) {
-                $_html = alertMessage(data.error,false);
-                $('.error-msg-div').html($_html);
-                return false;
-            }
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
@@ -1072,7 +1067,7 @@
 			const wholetosendsc = upprcontnt + " \n" + parsedData;
 			document.getElementById("eddesc").value = wholetosendsc;
 			getSeoScore(wholetosendsc);
-
+			
         } else {
             const err = await response1.text()
             messageDiv.innerHTML = "Something went wrong"
@@ -1205,11 +1200,6 @@
 			// $('#ai-loader').hide();
             // $('#ans_div').show();
             const data = await response1.json();
-            if (data.error !== undefined) {
-                $_html = alertMessage(data.error,false);
-                $('.error-msg-div').html($_html);
-                return false;
-            }
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
             // const div = document.getElementById(newval);
@@ -1243,7 +1233,7 @@
 	var list = [];
     var listvalues = [];
     var keywords = [];
-
+							
     function getSeoScore(content) {
 		const getftitle = document.getElementById("edtrmainval").value;
 		const getfdesc = document.getElementById("eddesc").value;
@@ -1300,7 +1290,7 @@
 							let keywordDensity = keywordCount / totalWords;
 
 							// Calculate meta tags score
-							let metaTagsScore = 1;
+							let metaTagsScore = 1; 
 							let seoScore = (keywordDensity * 8) + (metaTagsScore * 2) + (automated_readability_index * 2) + (smog_readability_index * 2);
 							let roundedscore = Math.round(seoScore);
 							const mkscoreforbgr = document.getElementById("resulted_score");
@@ -1393,11 +1383,6 @@
 			// $('#ai-loader').hide();
             // $('#ans_div').show();
             const data = await response1.json();
-            if (data.error !== undefined) {
-                $_html = alertMessage(data.error,false);
-                $('.error-msg-div').html($_html);
-                return false;
-            }
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
@@ -1671,7 +1656,7 @@
 			range.deleteContents();
 			range.insertNode(commentSpan);
 		}
-	});
+	}); 
     function h1place() {
         // var selection = window.getSelection();
         // selectedText = selection.toString(); // Store the selected text
@@ -1731,15 +1716,15 @@
 		if (range.commonAncestorContainer.parentNode.classList.contains("edtrh1")) {
 			range.commonAncestorContainer.parentNode.classList.remove("edtrh1");
 			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
-        }
+        } 
 		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh2")) {
 			range.commonAncestorContainer.parentNode.classList.remove("edtrh2");
 			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
-        }
+        } 
 		else if (range.commonAncestorContainer.parentNode.classList.contains("edtrh3")) {
 			range.commonAncestorContainer.parentNode.classList.remove("edtrh3");
 			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
-        }
+        } 
 		else {
 			range.commonAncestorContainer.parentNode.classList.add("edtrbkp");
 		}
@@ -1858,38 +1843,38 @@
 	});
 	ulplace.addEventListener("click", function() {
 		var selectedText = window.getSelection().toString().trim();
-
+		
 		if (selectedText !== "") {
 			var lines = selectedText.split("\n");
 			var outerelemt = "<span>";
 			var listHtml = "<ul>";
-
+			
 			lines.forEach(function(line) {
 			listHtml += "<li>" + line + "</li>";
 			});
-
+			
 			listHtml += "</ul>";
 			outerelemt += "</span>";
-
+			
 			// Replace selected text with the list
 			document.execCommand("insertHTML", false, listHtml);
 		}
 	});
 	olplace.addEventListener("click", function() {
 		var selectedText = window.getSelection().toString().trim();
-
+		
 		if (selectedText !== "") {
 			var lines = selectedText.split("\n");
 			var outerelemt = "<span>";
 			var listHtml = "<ol>";
-
+			
 			lines.forEach(function(line) {
 			listHtml += "<li>" + line + "</li>";
 			});
-
+			
 			listHtml += "</ol>";
 			outerelemt += "</span>";
-
+			
 			// Replace selected text with the list
 			document.execCommand("insertHTML", false, listHtml);
 		}
