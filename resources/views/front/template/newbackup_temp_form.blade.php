@@ -12,6 +12,9 @@
 	.alert-success{
 		display: none !important;
 	}
+	.alert-danger{
+		display: none !important;
+	}
 	.custom-loader {
         width: 200px;
         height: 200px;
@@ -70,9 +73,9 @@
     </div>
 </div> --}}
 @include('components.flash-message')
-<div class="container temptotop">
+<div class="container-fluid temptotop">
 	<div class="row">
-		<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+		<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
 			<div class="toplefttemp">
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-3">
@@ -109,7 +112,7 @@
                         <input type="text" class="form-control input_length_validate" data-key=".update_length_{{$k}}"
                             name="input[text{{++$k}}]" placeholder="{{$item->placeholder}}"  required>
                     </div>
-                    @endif
+                    @endif 
                     @if ($item->type == 'medium_text')
                     <div class="form-group col-lg-12 col-md-12 mb-3">
                         <div class="d-flex justify-content-between">
@@ -200,10 +203,10 @@
                     </div> --}} 
                     @endif
 					<div class="row">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-3">
+						<div class="col-lg-4 col-md-4 col-sm-4 col-4">
 							<button class="clrtempimp"><i class="bx bx-x"></i> Clear inputs</button>
 						</div>
-						<div class="col-lg-4 col-md-4 col-sm-9 col-9"></div>
+						<div class="col-lg-3 col-md-3 col-sm-8 col-8"></div>
 						<div class="col-lg-2 col-md-2 col-sm-6 col-6">
 							<!-- <input type="text" name="" id="" value="3" class="tempbotinp"> -->
 							<input type="text" id="numberInput" min="1" max="3" value="3" class="tempbotinp">
@@ -216,7 +219,7 @@
                 </form>
 			</div>
 		</div>
-		<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" id="temprghtsec">
+		<div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" id="temprghtsec">
 			<div id="ai-loader" style="text-align:center;">
                     {{-- <img src="{{asset('admin_assets')}}/assets/images/ai-loader.gif" alt=""> --}}
                     {{-- <img src="{{asset('admin_assets')}}/assets/images/new-ai-loader.gif" alt=""> --}}
@@ -256,16 +259,29 @@
 								<br>
 								<p class="rsltdvbrdrbtm"> </p>
 						</div>
-						<div class="row">
-							<div class="col-lg-9">
-								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
-							</div>
-							<div class="col-lg-1" style="padding-top: 20px; margin-left: -77px">
+						<!-- <div class="row">
+							<div class="col-lg-8"></div>
+							<div class="col-lg-1">
 									<div id="resulted_phrase"></div>
 							</div>
+							<div class="col-lg-3"></div>
+						</div> -->
+						<div class="row">
+							<div class="col-lg-8">
+								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
+							</div>
+							<div class="col-lg-1" style="padding-top: 20px; margin-left: -70px" >
+									<div id="resulted_phrase"></div>
+							</div>
+							<div class="col-lg-3"></div>
 						</div>
 						<div style="display:none;" id="takeimpcntnt">
+						<div class="row">
+							<div class="col-lg-4">
 							<button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore" >Improve Score</button>
+							</div>
+							<div class="col-lg-8"></div>
+						</div>
 						</div>
 						<br>
                         <textarea name="content" id="details" cols="30" rows="10" style="display: none !important;"></textarea>
@@ -656,25 +672,29 @@
 
         update_length.html(`${inputLength}/${maxlength}`);
     });
-
     $('#form_submit').click(function(){
+		templateLoader('#ai-loader','show');
+		$('#ans_div').hide();
 		var numberInput = document.getElementById("numberInput");
 		var first_result_div = document.getElementById("first_result_div");
 		var times = parseInt(numberInput.value);
 		var nwnumberInput = document.getElementById("numberInput");
 		document.getElementById("tmpnwotpsp").innerText = nwnumberInput.value;
 		for (var i = 0; i < times; i++) {
-           formSubmit(0,'');
+           formSubmit(0,'', i, times);
         }
-
 	});
-		
-	function formSubmit(improve_score,improve_content)
+	function callansdiv(){
+		templateLoader('#ai-loader','hide');
+		$('#ans_div').show();
+
+	}
+	function formSubmit(improve_score,improve_content, number, times)
 	{
 		document.getElementById("form_submit").disabled = true;
 		// $('#ai-loader').show();
-		templateLoader('#ai-loader','show');
-		$('#ans_div').hide();
+		// templateLoader('#ai-loader','show');
+		// $('#ans_div').hide();
 		var form = document.getElementById('content_form');
 		var formData = new FormData(form);
 		formData.append('improve_score',improve_score);
@@ -707,12 +727,13 @@
 							return false;
 						}else{
 							// $('#ai-loader').hide();
-							templateLoader('#ai-loader','hide');
-							$('#ans_div').show();
+							console.log("Number "+ number+ " Times"+ times);
+							if(number === times - 1){
+								callansdiv();
+							}
 							const first_result_div = document.getElementById("first_result_div");
 							const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
 							document.getElementById("details").value = data.message;
-
 							const score = data.score;
 							const content = data.message;
 							const takescore = getSeoScore(score,content,improve_score);
@@ -726,13 +747,15 @@
 							// const cdfcv = document.createElement("div");
 							// jvbdjv.innerText = takescore;
 							const ndkjvndkj = jvbdjv.innerHTML;
-							const htmlContent = '<span style="margin-left: 40%; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</span>';
+							const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-3"></div>';
 							// const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
-							var paragraph = document.createElement("p");
-							paragraph.classList.add("rsltdvbrdrbtm");
-							paragraph.textContent = data.message;
-							var takepara = paragraph.textContent;
-							result += existingText + takepara + htmlContent + takeimpcntnt +  belowofrslt;
+							// var paragraph = document.createElement("p"); margin-left: 40%;
+							// paragraph.classList.add("rsltdvbrdrbtm");
+							// paragraph.textContent = data.message;
+							var takepara = '<div class="col-lg-11">'+data.message+'</div>';
+							var smwhl = takepara + htmlContent;
+							var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'
+							result += existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
 							first_result_div.innerHTML = result;
 							// first_result_div.appendChild(paragraph);
 
