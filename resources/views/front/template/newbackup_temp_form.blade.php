@@ -77,6 +77,9 @@
 </style>
 @endsection
 @section('content')
+<div id="sbsmsg" style="display: none;">
+	@include('components.improve_msg')
+</div>
 <!--breadcrumb-->
 {{-- <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
     <div class="ps-3">
@@ -230,7 +233,8 @@
 							<input type="text" id="numberInput" min="1" max="3" value="3" class="tempbotinp">
 						</div> 
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
-                        	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit">Generate</button>
+                        	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit" {{
+                            session()->has('package-error') ? 'disabled' : '' }}>Generate</button>
 						</div>
 					</div>
                 </form>
@@ -280,7 +284,6 @@
 					<div class="row" id="tmprsltdwholebox">
 						<div id="frbrdrbtm" style="display: none;">
 								<br>
-								<br>
 								<p class="rsltdvbrdrbtm"> </p>
 						</div>
 						<!-- <div class="row">
@@ -326,6 +329,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
 <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 <script>
+	 	var sbsmsg = document.getElementById("sbsmsg").innerHTML;
 		var frbrdrbtm = document.getElementById("frbrdrbtm");
         var belowofrslt = frbrdrbtm.innerHTML;
         var result = "";
@@ -771,10 +775,10 @@
 							var smwhl = takepara + htmlContent;
 							var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
 							var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
-							var takeimpcntnt = '<div class="row"><div class="col-lg-4"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\')">Improve Score</button></div><div class="col-lg-8"></div></div>'
+							var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>'
 							result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
 							var cnvrtresult = "";
-							cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\')">'+result+'</div>';
+							cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
 							first_result_div.innerHTML += cnvrtresult;
 							// first_result_div.appendChild(paragraph);
 
@@ -783,6 +787,7 @@
 							$('#prompt_word_count').html(`${data.word_count} words`);
 							$('body #first_copy_btn').show();
 							document.getElementById("form_submit").disabled = false;
+							disableimpbutton('impscore'+number);
 
 							// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
 							// const score = $("#first_result_div").text();
@@ -891,19 +896,34 @@
 					}
 				});
 	}
-	function improvescore(divId, ImpScore){
-		var content = document.getElementById(divId).innerText;
-		formSubmitImp(1,content, ImpScore, divId);
-		
+	function disableimpbutton(impnumtochk){
+  		var newsbsmsg = document.querySelector('#sbsmsg');
+		var myButtons = document.getElementById(impnumtochk);
+		if (newsbsmsg.textContent.trim() !== '') {
+			myButtons.disabled = true;
+		}
 	}
-	function showHiddenDiv(divId) {
-    var hiddenDiv = document.getElementById(divId);
-    hiddenDiv.style.visibility = 'visible';
+	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg){
+		var content = document.getElementById(divId).innerText;
+		var CImpScoreTagtk = document.getElementById(CImpScoreTag);
+		var outerImpScorergs = document.getElementById(outerImpScorerg);
+		CImpScoreTagtk.style.display = 'none';
+		outerImpScorergs.style.marginBottom = '60px';
+		// CImpScoreTagtk.style.display = 'none !important';
+		formSubmitImp(1,content, ImpScore, divId);
+	}
+	function showHiddenDiv(divId, supidtk) {
+		var hiddenDiv = document.getElementById(divId);
+		var supidtk = document.getElementById(supidtk);
+		hiddenDiv.style.visibility = 'visible';
+		supidtk.style.visibility = 'visible';
 	}
 
-	function hideHiddenDiv(divId) {
-		var hiddenDiv = document.getElementById(divId);
-		hiddenDiv.style.visibility = 'hidden';
+	function hideHiddenDiv(divId, supidtk) {
+			var hiddenDiv = document.getElementById(divId);
+			var supidtk = document.getElementById(supidtk);
+			hiddenDiv.style.visibility = 'hidden';
+			supidtk.style.visibility = 'hidden';
 	}
 	function copyContent(divId) {
 		var content = document.getElementById(divId).innerText;

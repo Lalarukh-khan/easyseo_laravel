@@ -60,6 +60,7 @@ class UserIsActive
             if (strtotime($currentDate) <= $end_date && $words <= $userPackageWords && $user_package->package_id == 1) {
                 session()->put('package-title-sidebar',__('Trial ends in '.$diff_in_days.' days'));
                 session()->put('package-msg-sidebar',__('You are on a free trial of the Starter plan on monthly billing.'));
+                session()->put('package-improve-template',__('Upgrade to '.$premium_plan.' to use this feature.'));
                 session()->put('package-details',__($planExp . ' Upgrade to a '.$premium_plan.' now.'));
 			}elseif (strtotime($currentDate) > $end_date && $words >= $userPackageWords) {
                 session()->put('package-error',__('error_msg.word_limit_reached'));
@@ -72,6 +73,7 @@ class UserIsActive
                 session()->forget('package-details');
                 session()->forget('package-title-sidebar');
                 session()->forget('package-msg-sidebar');
+                session()->forget('package-improve-template');
 
             }
 

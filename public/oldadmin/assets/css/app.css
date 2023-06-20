@@ -2509,6 +2509,10 @@ sup {
 	padding: 8px 12px;
 	visibility: hidden;
 }
+.sbscmsg{
+	margin-top: 10px;
+	visibility: hidden;
+}
 .genbtntmpbt{
 	bottom: 0;
     position: fixed;
