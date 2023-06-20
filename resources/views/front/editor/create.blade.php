@@ -4,21 +4,6 @@
 	body{
 		overflow-y: scroll !important;
 	}
-	/* h1 {
-	display: inline;
-	margin: 0;
-	padding: 0;
-	}
-	h2 {
-	display: inline;
-	margin: 0;
-	padding: 0;
-	}
-	h3 {
-	display: inline;
-	margin: 0;
-	padding: 0;
-	} */
 </style>
 @endsection
 @section('content')
@@ -134,7 +119,6 @@
 			<div class="card" style="min-height: 500px;">
 				<div class="card-body">
 					<div id="ai-loader" style="text-align:center;display:none">
-						{{-- <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;"> --}}
 						<div class="sk-circle-fade sk-primary" style="text-align: center; margin: 50% auto 0% auto;">
 							<div class="sk-circle-fade-dot"></div>
 							<div class="sk-circle-fade-dot"></div>
@@ -501,7 +485,7 @@
 		});
 	});
 	let typingTimer;
-    const typingTimeout = 2000; // Set the timeout duration in milliseconds
+    const typingTimeout = 12000; // Set the timeout duration in milliseconds
 	var contentEditable = document.getElementById("forscoring");
 	contentEditable.addEventListener('input', function() {
 		// var freshcetaker = document.getElementById("forscoring");
@@ -1339,7 +1323,7 @@
 		var sanitizedContent = getfdesc.replace(/<[^>]+>/g, '');
 		var ttwords = sanitizedContent.split(/\s+/);
 		var getfwords = ttwords.length;
-		const getfsemantics = document.getElementById("semantics").innerText;
+		const getfsemantics = document.getElementById("semantics").innerText; 
 		const getfquestions = document.getElementById("questions").innerText;
 		const getfalltitles = document.getElementById("edsugtitles").innerText;
 		document.getElementById("edtitle").value = getftitle;
@@ -1397,7 +1381,7 @@
 
 							// Calculate meta tags score
 							let metaTagsScore = 1; 
-							let seoScore = (keywordDensity * 8) + (metaTagsScore * 2) + (automated_readability_index * 2) + (smog_readability_index * 2);
+							let seoScore = (keywordDensity * 10) + (metaTagsScore * 5) + (automated_readability_index * 3) + (smog_readability_index * 3);
 							let roundedscore = Math.round(seoScore);
 							const mkscoreforbgr = document.getElementById("resulted_score");
                         	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
@@ -1498,11 +1482,15 @@
                         }
                         else if (number >= 86 && number <= 90) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+							takersltdscore.setAttribute("stroke-dashoffset", "242.53980428200347");
                         }
                         else if (number >= 91 && number <= 95) {
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+							takersltdscore.setAttribute("stroke-dashoffset", "248.53980428200347");
+                        }
+                        else if (number >= 96 && number <= 99) {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "240.53980428200347");
                         }
                         else if (number == 100) {
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");

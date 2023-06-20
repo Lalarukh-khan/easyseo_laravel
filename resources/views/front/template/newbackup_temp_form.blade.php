@@ -56,6 +56,24 @@
         transform: rotate(1turn)
       }
     }
+	#ailoadersk{
+		text-align: center; 
+		margin-top: 15%;
+		display: flex;
+		justify-content: center;
+		align-items: center; 
+		margin-left: -30% !important;
+	}
+	@media only screen and (min-width: 1680px) and (max-width: 2280px) {
+		#ailoadersk{
+			margin-left: -25% !important;
+		}
+	}
+	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
+		#ailoadersk{
+			margin-left: -25% !important;
+		}
+	}
 </style>
 @endsection
 @section('content')
@@ -219,14 +237,31 @@
 			</div>
 		</div>
 		<div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" id="temprghtsec">
-			<div id="ai-loader" style="text-align:center;">
+			<!-- <div id="ai-loader" style="text-align:center;">
                     {{-- <img src="{{asset('admin_assets')}}/assets/images/ai-loader.gif" alt=""> --}}
                     {{-- <img src="{{asset('admin_assets')}}/assets/images/new-ai-loader.gif" alt=""> --}}
 
                     {{-- <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader"> --}}
                     <div class="custom-loader"></div>
                     <span id="loader-text">Generating</span>
-            </div>
+            </div> -->
+
+			<div id="ai-loader" style="text-align:center;display:none">
+				<div class="sk-circle-fade sk-primary" id="ailoadersk">
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+					<div class="sk-circle-fade-dot"></div>
+				</div>
+			</div>
 			<div class="form-group" id="ans_div" style="display:none;">
 					<div class="toprightemp">
 						<!-- <div class="row">
@@ -312,7 +347,6 @@
 		    // Obtain a score for improving the content.
 			document.getElementById("resulted_phrase").innerHTML = score;
 			document.getElementById("formscore").value = score;
-			console.log("I'm here 1");
 			const numberEl = document.getElementById("resulted_phrase");
 			const number = parseInt(numberEl.textContent);
 
@@ -331,8 +365,6 @@
 			return false
 			
 		}else{
-			console.log("I'm here 2");
-		  
 			 // Obtain a score for the content.
 			const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
 			const post_array = [];
@@ -361,7 +393,6 @@
 					for (const key of Object.keys(this.list)) {
 						this.listvalues.push(this.list[key]);
 					}
-				// console.log("reached here: "+ JSON.stringify(this.list));
 				const finallist = this.list;
 				// const resulted_phrase = document.querySelector('#resulted_phrase');
 						let html = '';
@@ -398,7 +429,6 @@
 								var seoformData = new FormData(seoform);
 								// const formInputs = document.querySelectorAll('#seo_content_form input');
 								// formInputs.forEach(function(input) {
-								//     console.log(input.name + ': ' + input.value);
 								// });
 								$.ajax({
 									url: "{{ route('user.template.seo_form_submit') }}",
@@ -530,7 +560,6 @@
                     this.listvalues.push(this.list[key]);
                 }
 			// document.getElementById("output").textContent = JSON.stringify(apiResponse, undefined, 2);
-            // console.log("reached here: "+ JSON.stringify(this.list));
             const finallist = this.list;
             // const resulted_phrase = document.querySelector('#resulted_phrase');
                     let html = '';
@@ -754,7 +783,6 @@
 							$('#prompt_word_count').html(`${data.word_count} words`);
 							$('body #first_copy_btn').show();
 							document.getElementById("form_submit").disabled = false;
-							// console.log("data "+data.message);
 
 							// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
 							// const score = $("#first_result_div").text();
@@ -812,7 +840,6 @@
 						$('#prompt_word_count').html(`${data.word_count} words`);
 						$('body #first_copy_btn').show();
 						document.getElementById("form_submit").disabled = false;
-						// console.log("data "+data.message);
 
 						// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
 						// const score = $("#first_result_div").text();
@@ -823,7 +850,6 @@
 						if(impscoretag == "rps0"){
 							document.getElementById("resulted_phrase").innerHTML = score;
 							document.getElementById("formscore").value = score;
-							console.log("I'm here 1");
 							const numberEl = document.getElementById("resulted_phrase");
 							const number = parseInt(numberEl.textContent);
 
@@ -843,7 +869,6 @@
 						else{
 							document.getElementById(impscoretag).innerHTML = score;
 							document.getElementById("formscore").value = score;
-							console.log("I'm here 1");
 							const numberEl = document.getElementById(impscoretag);
 							const number = parseInt(numberEl.textContent);
 
@@ -868,8 +893,6 @@
 	}
 	function improvescore(divId, ImpScore){
 		var content = document.getElementById(divId).innerText;
-		console.log(content);
-		console.log(ImpScore);
 		formSubmitImp(1,content, ImpScore, divId);
 		
 	}
@@ -884,7 +907,6 @@
 	}
 	function copyContent(divId) {
 		var content = document.getElementById(divId).innerText;
-		console.log("Yeah Here we go again");
 		navigator.clipboard.writeText(content)
 			.then(function() {
 			$(".alert-info").fadeTo(2000, 500).slideUp(500, function() {
@@ -897,7 +919,6 @@
 	}
     function copyToClipboard(element) {
         var $temp = $("<textarea>");
-		console.log("Yeah Here we go again")
         $("body").append($temp);
         $temp.val($(element).val()).select();
         document.execCommand("copy");
