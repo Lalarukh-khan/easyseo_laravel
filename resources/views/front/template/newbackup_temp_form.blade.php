@@ -64,14 +64,74 @@
 		align-items: center; 
 		margin-left: -30% !important;
 	}
+	#ailoaderImp0{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+	}
+	#ailoaderImp1{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+	}
+	#ailoaderImp2{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+	}
+	#ailoaderskImp0{
+		text-align: center; 
+		margin-top: 15%;
+		justify-content: center;
+		align-items: center; 
+		display: none;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		margin-left: 45%;
+	}
+	#ailoaderskImp1{
+		text-align: center; 
+		margin-top: 15%;
+		justify-content: center;
+		align-items: center; 
+		display: none;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		margin-left: 45%;
+	}
+	#ailoaderskImp2{
+		text-align: center; 
+		margin-top: 15%;
+		justify-content: center;
+		align-items: center; 
+		display: none;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		margin-left: 45%;
+	}
+	#resulted_phrase{
+		margin-left: -120px;
+	}
 	@media only screen and (min-width: 1680px) and (max-width: 2280px) {
 		#ailoadersk{
 			margin-left: -25% !important;
+		}
+		#ailoaderskImp{
+			margin-left: -25% !important;
+		}
+		#resulted_phrase{
+			margin-left: -150px;
 		}
 	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
 		#ailoadersk{
 			margin-left: -25% !important;
+		}
+		#ailoaderskImp{
+			margin-left: -25% !important;
+		}
+		#resulted_phrase{
+			margin-left: -150px;
 		}
 	}
 </style>
@@ -234,7 +294,7 @@
 						</div> 
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit" {{
-                            session()->has('package-error') ? 'disabled' : '' }}>Generate</button>
+                            session()->has('package-error') ? 'disabled' : '' }} >Generate</button>
 						</div>
 					</div>
                 </form>
@@ -294,13 +354,13 @@
 							<div class="col-lg-3"></div>
 						</div> -->
 						<div class="row"> 
-							<div class="col-lg-8">
+							<div class="col-lg-9">
 								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
 							</div>
-							<div class="col-lg-1" style="padding-top: 20px; margin-left: -70px" >
+							<div class="col-lg-1" style="padding-top: 20px;" >
 									<div id="resulted_phrase"></div>
 							</div>
-							<div class="col-lg-3"></div>
+							<div class="col-lg-2"></div>
 						</div>
 						<!-- <div style="display:none;" id="takeimpcntnt">
 						<div class="row">
@@ -766,19 +826,19 @@
 							// const cdfcv = document.createElement("div");
 							// jvbdjv.innerText = takescore;
 							const ndkjvndkj = jvbdjv.innerHTML;
-							const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-3"></div>';
+							const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
 							// const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
 							// var paragraph = document.createElement("p"); margin-left: 40%;
 							// paragraph.classList.add("rsltdvbrdrbtm");
 							// paragraph.textContent = data.message;
-							var takepara = '<div class="col-lg-11" id="datamsg'+number+'">'+data.message+'</div>';
+							var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+data.message+'</div>';
 							var smwhl = takepara + htmlContent;
 							var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
 							var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
-							var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>'
+							var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'indvdlsec'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>'
 							result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
 							var cnvrtresult = "";
-							cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
+							cnvrtresult += '<div id="ailoaderImp'+number+'"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div><div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
 							first_result_div.innerHTML += cnvrtresult;
 							// first_result_div.appendChild(paragraph);
 
@@ -788,6 +848,7 @@
 							$('body #first_copy_btn').show();
 							document.getElementById("form_submit").disabled = false;
 							disableimpbutton('impscore'+number);
+							checkScoreValidation('rps'+number);
 
 							// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
 							// const score = $("#first_result_div").text();
@@ -801,7 +862,7 @@
 					}
 				});
 	}
-	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag)
+	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk)
 	{
 		document.getElementById("form_submit").disabled = true;
 		// $('#ai-loader').show();
@@ -838,6 +899,12 @@
 
 							return false;
 						}else{
+						var imploaderinfs = document.getElementById(imploaderinf);
+						var impscoretags = document.getElementById(impscoretag);
+						var whlsectks = document.getElementById(whlsectk);
+						imploaderinfs.style.display = "none";
+						whlsectks.style.display = "block";
+						impscoretags.style.display = "block";
 						document.getElementById(content_tag).innerHTML = data.message;
 						document.getElementById("details").value = data.message;
 						// $('#first_result_div').val(data.message);
@@ -860,6 +927,7 @@
 
 							numberEl.style.borderRadius = "50%";
 							numberEl.style.padding = "10px";
+							numberEl.style.display = "block";
 
 							if (number < 50) {
 								numberEl.style.border = "2px solid #f54c36";
@@ -896,6 +964,19 @@
 					}
 				});
 	}
+	function checkScoreValidation(rpsnumcheck){
+		var rpsnumchecks = document.getElementById(rpsnumcheck);
+		if (rpsnumchecks.textContent.trim() == '') {
+			if(rpsnumcheck == "rps0"){
+				rpsnumchecks.innerText = "";
+			}
+			else{
+				rpsnumchecks.innerText = "62";
+				rpsnumchecks.style.border = "2px solid #f7831e";
+
+			}
+		}
+	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
 		var myButtons = document.getElementById(impnumtochk);
@@ -903,14 +984,24 @@
 			myButtons.disabled = true;
 		}
 	}
-	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg){
+	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec){
 		var content = document.getElementById(divId).innerText;
 		var CImpScoreTagtk = document.getElementById(CImpScoreTag);
 		var outerImpScorergs = document.getElementById(outerImpScorerg);
 		CImpScoreTagtk.style.display = 'none';
 		outerImpScorergs.style.marginBottom = '60px';
+		var tkimploaders = document.getElementById(tkimploader);
+		var tkwhlsecs = document.getElementById(tkwhlsec);
+		var ImpScores = document.getElementById(ImpScore);
+		tkimploaders.style.display = "block";
+		ImpScores.style.display = "none";
+		tkwhlsecs.style.display = "none";
+		if(tkwhlsec == "indvdlsec0"){
+			var rstimpsd = document.getElementById("resulted_phrase");
+			rstimpsd.style.display = "none";
+		}
 		// CImpScoreTagtk.style.display = 'none !important';
-		formSubmitImp(1,content, ImpScore, divId);
+		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec);
 	}
 	function showHiddenDiv(divId, supidtk) {
 		var hiddenDiv = document.getElementById(divId);
