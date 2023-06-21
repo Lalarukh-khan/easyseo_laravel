@@ -105,14 +105,14 @@ class TemplateController extends Controller
     }
 
     public function form_submit(Request $request)
-    {    
+    {
         $settings_arr = json_decode($request->setting);
         $command = $request->command;
 		$improve_score = $request->improve_score;
 		$improve_content = $request->improve_content;
-		   
+
 		if($improve_score == true){
-			  
+
 			/*
 			 *----------------------------------
 			 * START:- Improve score request
@@ -120,17 +120,21 @@ class TemplateController extends Controller
 			 */
 				//$command = "I need you to act as a SEO enhancement specialist for the content I provide. You will be tasked with integrating strong SEO keywords into my text without altering the overall meaning. Your sole role will be to revise and enhance the SEO strength of my content; you are not to create new content or offer editorial feedback on the content's substance or style. Your revisions should be focused entirely on SEO improvement, ensuring my content is optimized for search engine visibility and ranking. Please remember to use the keywords naturally within the context of my content to maintain readability. The first content I need you to optimize is and at last Provide seo SCORE:- [score/100] :-\n\n";
 				$command = "Please  replace some keywords naturally within the context of my content to maintain readability in below data to increase the seo score and at last Provide seo SCORE:- [score/88-100] :";
-				$command .= '"'.$improve_content.'"'; 
-				 
+				$command .= '"'.$improve_content.'"';
+
 			 /*
 			 *----------------------------------
 			 * END:- Improve score request
 			 *----------------------------------
 			 */
-			 
-		}else{
+
+		}elseif($request->is_concept == true){
+            $command = "please write another version of this :";
+				$command .= '"'.$request->concept_text.'"';
+        }
+        else{
 			// $complete_prompt = '';
-			
+
 			foreach ($request->input as $key => $val) {
 				$a = '[!'. $key .'!]';
 				$command = $command = str_replace($a, $val, $command);
@@ -144,9 +148,9 @@ class TemplateController extends Controller
 	Write your answer in '.$request->language.' language';
 			}
 
-			if ($request->number_of_conecpet > 1) {
-				$command = $command. ' and write '. $request->number_of_conecpet .' sections';
-			} 
+			// if ($request->number_of_conecpet > 1) {
+			// 	$command = $command. ' and write '. $request->number_of_conecpet .' sections';
+			// }
 			//$command .= '\n\n Provide seo SCORE:- [score/100] :-';
 		}
         // checking remaining words
@@ -191,8 +195,8 @@ class TemplateController extends Controller
         }
 
         $key = $key::latest()->first();
-		
-		 
+
+
 		if($setting->model == 'gpt-3.5-turbo'){
             $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
         }elseif($setting->model == 'gpt-3.5-turbo-0613'){
@@ -204,7 +208,7 @@ class TemplateController extends Controller
         else{
             $gpt_ans = $this->gpt3_ans($setting,$command,base64_decode($key->api_key));
         }
-		 
+
         // $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
 // dd(trim($gpt_ans['message']));
 
@@ -236,13 +240,13 @@ class TemplateController extends Controller
             $history->prompt_tokens = $gpt_ans['prompt_tokens'];
             $history->completion_tokens = $gpt_ans['completion_tokens'];
             $history->total_tokens = $gpt_ans['total_tokens'];
-            $history->total_words = str_word_count($gpt_ans['answer']);
-			
+            $history->total_words = $total_words;
+
 			if($improve_score == false){
-				
+
 				$history->save();
-			}  
-			 
+			}
+
             $msg = [
                 'status' => 200,
                 'message' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['content'],
@@ -253,7 +257,7 @@ class TemplateController extends Controller
             return response()->json($msg);
         }
     }
-	  
+
     public function seo_form_submit(Request $request)
     {
         // $history =  DB::table('gpt_score_histories');
@@ -262,8 +266,8 @@ class TemplateController extends Controller
         $history->score = $request->score;
 		$history->save();
     }
-	 
-	
+
+
     private function gpt3_turbo($setting,$prompt,$key = '')
     {
         $prompt =  array(
@@ -383,7 +387,7 @@ class TemplateController extends Controller
             ];
             return $msg;
             die();
-        }else{ 
+        }else{
         $msg = [
             'status' => 200,
             'message' => '',

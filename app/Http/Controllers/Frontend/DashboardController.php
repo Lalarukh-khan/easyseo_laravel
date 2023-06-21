@@ -187,7 +187,9 @@ class DashboardController extends Controller
         if (isset($previous_subs[0]) && !empty($previous_subs[0]) && in_array($previous_subs[0]->package->plan_code,$packages_sku)) {
 
             $webhookController->suspendSubscription($previous_subs[0]->subscription_id);
-            UserPackage::find($previous_subs[0]->id)->delete();
+            $update_subsc = UserPackage::find($previous_subs[0]->id);
+            $update_subsc->subscription_id = null;
+            $update_subsc->save();
         }
 
         session()->flash('success-msg','Subscription Cancelled Successfully');

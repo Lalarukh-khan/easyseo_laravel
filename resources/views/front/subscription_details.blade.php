@@ -98,12 +98,11 @@
                                         {{ $user_package->words }}
                                     </td>
                                     @if (!empty($user_package->subscription_id) && !session()->has('package-error'))
-                                    <td>
+                                    <td class="text-center">
 
                                             <a href="javascript:void(0);" onclick="ajaxRequest(this)"
                                                 data-url="{{ route('user.cencel-subscription', $data->hashid) }}"
-                                                class="text-danger" title="delete" style="font-size:20px;"><i
-                                                    class="fadeIn animated bx bx-trash"></i></a>&nbsp;&nbsp;
+                                                class="btn btn-danger" title="delete">Cancel Subscription</a>&nbsp;&nbsp;
                                     </td>
                                         @endif
 

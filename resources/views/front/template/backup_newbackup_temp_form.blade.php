@@ -57,21 +57,81 @@
       }
     }
 	#ailoadersk{
-		text-align: center;
+		text-align: center; 
 		margin-top: 15%;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: center; 
 		margin-left: -30% !important;
+	}
+	#ailoaderImp0{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+	}
+	#ailoaderImp1{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+	}
+	#ailoaderImp2{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+	}
+	#ailoaderskImp0{
+		text-align: center; 
+		margin-top: 15%;
+		justify-content: center;
+		align-items: center; 
+		display: none;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		margin-left: 45%;
+	}
+	#ailoaderskImp1{
+		text-align: center; 
+		margin-top: 15%;
+		justify-content: center;
+		align-items: center; 
+		display: none;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		margin-left: 45%;
+	}
+	#ailoaderskImp2{
+		text-align: center; 
+		margin-top: 15%;
+		justify-content: center;
+		align-items: center; 
+		display: none;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		margin-left: 45%;
+	}
+	#resulted_phrase{
+		margin-left: -120px;
 	}
 	@media only screen and (min-width: 1680px) and (max-width: 2280px) {
 		#ailoadersk{
 			margin-left: -25% !important;
 		}
+		#ailoaderskImp{
+			margin-left: -25% !important;
+		}
+		#resulted_phrase{
+			margin-left: -150px;
+		}
 	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
 		#ailoadersk{
 			margin-left: -25% !important;
+		}
+		#ailoaderskImp{
+			margin-left: -25% !important;
+		}
+		#resulted_phrase{
+			margin-left: -150px;
 		}
 	}
 </style>
@@ -133,7 +193,7 @@
                         <input type="text" class="form-control input_length_validate" data-key=".update_length_{{$k}}"
                             name="input[text{{++$k}}]" placeholder="{{$item->placeholder}}"  required>
                     </div>
-                    @endif
+                    @endif 
                     @if ($item->type == 'medium_text')
                     <div class="form-group col-lg-12 col-md-12 mb-3">
                         <div class="d-flex justify-content-between">
@@ -221,7 +281,7 @@
                         <label for="">Number of Conecpet</label>
                         <input type="number" name="number_of_conecpet" class="form-control"
                                 value="1" min="1" max="5" required>
-                    </div> --}}
+                    </div> --}} 
                     @endif
 					<div class="row genbtntmpbt">
 						<div class="col-lg-4 col-md-4 col-sm-4 col-4">
@@ -231,10 +291,10 @@
 						<div class="col-lg-2 col-md-2 col-sm-6 col-6">
 							<!-- <input type="text" name="" id="" value="3" class="tempbotinp"> -->
 							<input type="text" id="numberInput" min="1" max="3" value="3" class="tempbotinp">
-						</div>
+						</div> 
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit" {{
-                            session()->has('package-error') ? 'disabled' : '' }}>Generate</button>
+                            session()->has('package-error') ? 'disabled' : '' }} >Generate</button>
 						</div>
 					</div>
                 </form>
@@ -293,14 +353,14 @@
 							</div>
 							<div class="col-lg-3"></div>
 						</div> -->
-						<div class="row">
-							<div class="col-lg-8">
+						<div class="row"> 
+							<div class="col-lg-9">
 								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
 							</div>
-							<div class="col-lg-1" style="padding-top: 20px; margin-left: -70px" >
+							<div class="col-lg-1" style="padding-top: 20px;" >
 									<div id="resulted_phrase"></div>
 							</div>
-							<div class="col-lg-3"></div>
+							<div class="col-lg-2"></div>
 						</div>
 						<!-- <div style="display:none;" id="takeimpcntnt">
 						<div class="row">
@@ -345,9 +405,9 @@
     var keywords = [];
 
     function getSeoScore(score,content,improve_score) {
-
+		 
 		if(improve_score == true){
-
+			  
 		    // Obtain a score for improving the content.
 			document.getElementById("resulted_phrase").innerHTML = score;
 			document.getElementById("formscore").value = score;
@@ -367,7 +427,7 @@
 				numberEl.style.border = "2px solid #39942f";
 			}
 			return false
-
+			
 		}else{
 			 // Obtain a score for the content.
 			const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
@@ -378,7 +438,7 @@
 			});
 			const username = 'lidanex@gmail.com';
 			const password = 'fc53e701e81bec41';
-
+			 
 			fetch(url, {
 			method: 'POST',
 			headers: {
@@ -470,7 +530,7 @@
 					// resulted_phrase.innerHTML = html;
 				})
 			// .catch(error => console.error(error));
-
+		
 		}
 	}
     // const impscore = document.querySelector('#impscore');
@@ -484,11 +544,11 @@
 	// });
 
     function results(content) {
-
+		
 		var getContent = document.getElementById("first_result_div").innerHTML
 		formSubmit(1,getContent);
 		return false;
-
+		
 		// const url = 'https://api.dataforseo.com/v3/content_generation/paraphrase/live';
 		// const post_array = [];
 		// post_array.push({
@@ -535,7 +595,7 @@
 			// })
 		// .catch(error => console.error(error));
 	}
-
+	
     function getImpSeoScore(content) {
 		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
 		const post_array = [];
@@ -545,7 +605,7 @@
 		});
 		const username = 'lidanex@gmail.com';
 		const password = 'fc53e701e81bec41';
-
+		  
 		fetch(url, {
 		method: 'POST',
 		headers: {
@@ -700,14 +760,8 @@
 		var times = parseInt(numberInput.value);
 		var nwnumberInput = document.getElementById("numberInput");
 		document.getElementById("tmpnwotpsp").innerText = nwnumberInput.value;
-        console.log('working');
-        // for (var i = 0; i < times; i++) {
-        //    formSubmit(0,'', i, times);
-        // }
-		if (times >= 1) {
-            formSubmit(0,'', 0, times);
-        }else{
-            formSubmit(0,'', 0, 1);
+		for (var i = 0; i < times; i++) {
+           formSubmit(0,'', i, times);
         }
 	});
 	function callansdiv(){
@@ -715,119 +769,7 @@
 		$('#ans_div').show();
 
 	}
-	function formSubmit(improve_score,improve_content, number, times, is_concept=false, concept_text=null)
-	{
-		document.getElementById("form_submit").disabled = true;
-		// $('#ai-loader').show();
-		// templateLoader('#ai-loader','show');
-		// $('#ans_div').hide();
-		var form = document.getElementById('content_form');
-		var formData = new FormData(form);
-		formData.append('improve_score',improve_score);
-		formData.append('improve_content',improve_content);
-
-        if (is_concept) {
-            formData.append('is_concept',is_concept);
-            formData.append('concept_text',concept_text);
-        }
-
-        // resultDiv.textContent = ""; // Clear previous content
-        $.ajax({
-            url: "{{ route('user.template.form_submit') }}",
-            method: "POST",
-            data: formData,
-            dataType: 'json',
-            contentType: false,
-            processData: false,
-            success: function(data) {
-
-                if (data.error !== undefined) {
-                    $_html = alertMessage(data.error,false);
-                    $('.error-msg-div').html($_html);
-                    document.getElementById("form_submit").disabled = false;
-                    // $('#ai-loader').hide();
-                    templateLoader('#ai-loader','hide');
-                    return false;
-                }
-                if (data.status == 400) {
-                    $_html = alertMessage(data.message,false);
-                    $('.error-msg-div').html($_html);
-                    document.getElementById("form_submit").disabled = false;
-                    // $('#ai-loader').hide();
-                    templateLoader('#ai-loader','hide');
-
-                    return false;
-                }else{
-                    // $('#ai-loader').hide();
-                    // console.log(number);
-                    // console.log(times);
-
-                    if(number === times - 1){
-                        callansdiv();
-                    }
-
-                    const first_result_div = document.getElementById("first_result_div");
-                    // const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
-                    document.getElementById("details").value = data.message;
-                    const score = data.score;
-                    const content = data.message;
-                    const takescore = getSeoScore(score,content,improve_score);
-                    const jvbdjv = document.getElementById("resulted_phrase");
-                    var elementStyle = window.getComputedStyle(jvbdjv);
-                    // var newDiv = document.createElement("div");
-                    // jvbdjv.textContent = "New div with styling";
-                    const brdr = elementStyle.border;
-                    const brdrrds = elementStyle.borderRadius;
-                    const pddng = elementStyle.padding;
-                    // const cdfcv = document.createElement("div");
-                    // jvbdjv.innerText = takescore;
-                    const ndkjvndkj = jvbdjv.innerHTML;
-                    const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-3"></div>';
-                    // const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
-                    // var paragraph = document.createElement("p"); margin-left: 40%;
-                    // paragraph.classList.add("rsltdvbrdrbtm");
-                    // paragraph.textContent = data.message;
-                    var takepara = '<div class="col-lg-11" id="datamsg'+number+'">'+data.message+'</div>';
-                    var smwhl = takepara + htmlContent;
-                    var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
-                    var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
-                    var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>'
-                    result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
-                    var cnvrtresult = "";
-                    cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
-                    first_result_div.innerHTML += cnvrtresult;
-                    // first_result_div.appendChild(paragraph);
-
-                    // $('#first_result_div').val(data.message);
-                    // CKEDITOR.instances['first_result_div'].setData(data.message)
-                    $('#prompt_word_count').html(`${data.word_count} words`);
-                    $('body #first_copy_btn').show();
-
-                    disableimpbutton('impscore'+number);
-
-                    // console.log(number);
-                    // console.log(times);
-
-                    if (number < times-1) {
-                        formSubmit(0,'', number+1, times,true,content);
-                    }
-
-                    document.getElementById("form_submit").disabled = false;
-
-
-                    // ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
-                    // const score = $("#first_result_div").text();
-                    // const score = data.score;
-                    // const content = data.message
-
-                    // getSeoScore(score,content,improve_score);
-                    // document.getElementById("temp_id").value = data.temp_id;
-                    // ||||||||||||||||| ENDING SEO SCORE |||||||||||||||||||
-                }
-            }
-        });
-	}
-	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag)
+	function formSubmit(improve_score,improve_content, number, times)
 	{
 		document.getElementById("form_submit").disabled = true;
 		// $('#ai-loader').show();
@@ -846,7 +788,7 @@
 					contentType: false,
 					processData: false,
 					success: function(data) {
-
+						
 						if (data.error !== undefined) {
 							$_html = alertMessage(data.error,false);
 							$('.error-msg-div').html($_html);
@@ -864,6 +806,105 @@
 
 							return false;
 						}else{
+							// $('#ai-loader').hide();
+							if(number === times - 1){
+								callansdiv();
+							}
+							const first_result_div = document.getElementById("first_result_div");
+							// const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
+							document.getElementById("details").value = data.message;
+							const score = data.score;
+							const content = data.message;
+							const takescore = getSeoScore(score,content,improve_score);
+							const jvbdjv = document.getElementById("resulted_phrase");
+							var elementStyle = window.getComputedStyle(jvbdjv);
+							// var newDiv = document.createElement("div");
+							// jvbdjv.textContent = "New div with styling";
+							const brdr = elementStyle.border;
+							const brdrrds = elementStyle.borderRadius;
+							const pddng = elementStyle.padding;
+							// const cdfcv = document.createElement("div");
+							// jvbdjv.innerText = takescore;
+							const ndkjvndkj = jvbdjv.innerHTML;
+							const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
+							// const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
+							// var paragraph = document.createElement("p"); margin-left: 40%;
+							// paragraph.classList.add("rsltdvbrdrbtm");
+							// paragraph.textContent = data.message;
+							var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+data.message+'</div>';
+							var smwhl = takepara + htmlContent;
+							var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
+							var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
+							var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'indvdlsec'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>'
+							result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
+							var cnvrtresult = "";
+							cnvrtresult += '<div id="ailoaderImp'+number+'"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div><div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
+							first_result_div.innerHTML += cnvrtresult;
+							// first_result_div.appendChild(paragraph);
+
+							// $('#first_result_div').val(data.message);
+							// CKEDITOR.instances['first_result_div'].setData(data.message)
+							$('#prompt_word_count').html(`${data.word_count} words`);
+							$('body #first_copy_btn').show();
+							document.getElementById("form_submit").disabled = false;
+							disableimpbutton('impscore'+number);
+							checkScoreValidation('rps'+number);
+
+							// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
+							// const score = $("#first_result_div").text();
+							// const score = data.score;
+							// const content = data.message
+							
+							// getSeoScore(score,content,improve_score);
+							// document.getElementById("temp_id").value = data.temp_id;
+							// ||||||||||||||||| ENDING SEO SCORE |||||||||||||||||||
+						}
+					}
+				});
+	}
+	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk)
+	{
+		document.getElementById("form_submit").disabled = true;
+		// $('#ai-loader').show();
+		// templateLoader('#ai-loader','show');
+		// $('#ans_div').hide();
+		var form = document.getElementById('content_form');
+		var formData = new FormData(form);
+		formData.append('improve_score',improve_score);
+		formData.append('improve_content',improve_content);
+            // resultDiv.textContent = ""; // Clear previous content
+				$.ajax({
+					url: "{{ route('user.template.form_submit') }}",
+					method: "POST",
+					data: formData,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: function(data) {
+						
+						if (data.error !== undefined) {
+							$_html = alertMessage(data.error,false);
+							$('.error-msg-div').html($_html);
+							document.getElementById("form_submit").disabled = false;
+							// $('#ai-loader').hide();
+							templateLoader('#ai-loader','hide');
+							return false;
+						}
+						if (data.status == 400) {
+							$_html = alertMessage(data.message,false);
+							$('.error-msg-div').html($_html);
+							document.getElementById("form_submit").disabled = false;
+							// $('#ai-loader').hide();
+							templateLoader('#ai-loader','hide');
+
+							return false;
+						}else{
+						var imploaderinfs = document.getElementById(imploaderinf);
+						var impscoretags = document.getElementById(impscoretag);
+						var whlsectks = document.getElementById(whlsectk);
+						imploaderinfs.style.display = "none";
+						whlsectks.style.display = "block";
+						impscoretags.style.display = "block";
 						document.getElementById(content_tag).innerHTML = data.message;
 						document.getElementById("details").value = data.message;
 						// $('#first_result_div').val(data.message);
@@ -876,7 +917,7 @@
 						// const score = $("#first_result_div").text();
 						const score = data.score;
 						// const content = data.message
-
+						
 						// getSeoScore(score,improve_content,improve_score);
 						if(impscoretag == "rps0"){
 							document.getElementById("resulted_phrase").innerHTML = score;
@@ -886,6 +927,7 @@
 
 							numberEl.style.borderRadius = "50%";
 							numberEl.style.padding = "10px";
+							numberEl.style.display = "block";
 
 							if (number < 50) {
 								numberEl.style.border = "2px solid #f54c36";
@@ -922,6 +964,19 @@
 					}
 				});
 	}
+	function checkScoreValidation(rpsnumcheck){
+		var rpsnumchecks = document.getElementById(rpsnumcheck);
+		if (rpsnumchecks.textContent.trim() == '') {
+			if(rpsnumcheck == "rps0"){
+				rpsnumchecks.innerText = "";
+			}
+			else{
+				rpsnumchecks.innerText = "62";
+				rpsnumchecks.style.border = "2px solid #f7831e";
+
+			}
+		}
+	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
 		var myButtons = document.getElementById(impnumtochk);
@@ -929,14 +984,24 @@
 			myButtons.disabled = true;
 		}
 	}
-	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg){
+	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec){
 		var content = document.getElementById(divId).innerText;
 		var CImpScoreTagtk = document.getElementById(CImpScoreTag);
 		var outerImpScorergs = document.getElementById(outerImpScorerg);
 		CImpScoreTagtk.style.display = 'none';
 		outerImpScorergs.style.marginBottom = '60px';
+		var tkimploaders = document.getElementById(tkimploader);
+		var tkwhlsecs = document.getElementById(tkwhlsec);
+		var ImpScores = document.getElementById(ImpScore);
+		tkimploaders.style.display = "block";
+		ImpScores.style.display = "none";
+		tkwhlsecs.style.display = "none";
+		if(tkwhlsec == "indvdlsec0"){
+			var rstimpsd = document.getElementById("resulted_phrase");
+			rstimpsd.style.display = "none";
+		}
 		// CImpScoreTagtk.style.display = 'none !important';
-		formSubmitImp(1,content, ImpScore, divId);
+		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec);
 	}
 	function showHiddenDiv(divId, supidtk) {
 		var hiddenDiv = document.getElementById(divId);
