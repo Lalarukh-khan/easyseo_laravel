@@ -1009,10 +1009,10 @@
 	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
-		// var myButtons = document.getElementById(impnumtochk);
-		// if (newsbsmsg.textContent.trim() !== '') {
-		// 	myButtons.disabled = true;
-		// }
+		var myButtons = document.getElementById(impnumtochk);
+		if (newsbsmsg.textContent.trim() !== '') {
+			myButtons.disabled = true;
+		}
 	}
 	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec){
 		var content = document.getElementById(divId).innerText;
