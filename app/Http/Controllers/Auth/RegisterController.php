@@ -88,7 +88,7 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        $user = $this->create($request->all());
+        // $user = $this->create($request->all());
         $user->unique_id = mt_rand(111111,999999).now()->timestamp;
         $user->save();
 
