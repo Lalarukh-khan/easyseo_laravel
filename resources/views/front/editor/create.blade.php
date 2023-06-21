@@ -4,6 +4,15 @@
 	body{
 		overflow-y: scroll !important;
 	}
+	.sk-circle-fade{
+		text-align: center; 
+		margin: 50% auto 0% auto;
+	}
+	@media only screen and (min-width: 1980px) and (max-width: 2280px) {
+		.sk-circle-fade{
+			margin: 30% auto 0% auto;
+		}
+	}
 </style>
 @endsection
 @section('content')
@@ -118,8 +127,8 @@
 			<br>
 			<div class="card" style="min-height: 500px;">
 				<div class="card-body">
-					<div id="ai-loader" style="text-align:center;display:none">
-						<div class="sk-circle-fade sk-primary" style="text-align: center; margin: 50% auto 0% auto;">
+					<div id="ai-loader" style="text-align:center;display:none;">
+						<div class="sk-circle-fade sk-primary">
 							<div class="sk-circle-fade-dot"></div>
 							<div class="sk-circle-fade-dot"></div>
 							<div class="sk-circle-fade-dot"></div>
@@ -873,7 +882,7 @@
 						},
 						body: JSON.stringify({
 							_token: token,
-							prompt: 'suggest 11 detailed titles in ordered list without having double qoutes based upon ' + majorprompt,
+							prompt: 'write 11 detailed titles having double qoutes and every title have exclamatery mark after its last word always based upon ' + majorprompt,
 							old_prompt: majoroldprompt
 						})
 					})
@@ -883,8 +892,8 @@
 						$('#old_prompt').val(data.old_prompt);
 						document.getElementById("edsugtitles").innerHTML = String(parsedData);
 						const sugtitles = String(parsedData);
-						startTextt_1 = "1.";
-						endTextt_1 = "2.";
+						startTextt_1 = '1. "';
+						endTextt_1 = '!';
 						const startIndext_1 = sugtitles.indexOf(startTextt_1);
 						const endIndext_1 = sugtitles.indexOf(endTextt_1);
 						if (startIndext_1 !== -1 && endIndext_1 !== -1 && startIndext_1 < endIndext_1) {
@@ -892,82 +901,82 @@
 							const tt1 = document.getElementById("tt1");
 							tt1.innerHTML = trimmedContentt_1;
 						}
-						startTextt_2 = "2.";
-						endTextt_2 = "3.";
+						startTextt_2 = '2. "';
+						endTextt_2 = '!';
 						const startIndext_2 = sugtitles.indexOf(startTextt_2);
-						const endIndext_2 = sugtitles.indexOf(endTextt_2);
+						const endIndext_2 = sugtitles.indexOf(endTextt_2, startIndext_2);
 						if (startIndext_2 !== -1 && endIndext_2 !== -1 && startIndext_2 < endIndext_2) {
 							const trimmedContentt_2 = sugtitles.substring(startIndext_2 + startTextt_2.length, endIndext_2);
 							const tt2 = document.getElementById("tt2");
 							tt2.innerHTML = trimmedContentt_2;
 						}
-						startTextt_3 = "3.";
-						endTextt_3 = "4.";
+						startTextt_3 = '3. "';
+						endTextt_3 = '!';
 						const startIndext_3 = sugtitles.indexOf(startTextt_3);
-						const endIndext_3 = sugtitles.indexOf(endTextt_3);
+						const endIndext_3 = sugtitles.indexOf(endTextt_3, startIndext_3);
 						if (startIndext_3 !== -1 && endIndext_3 !== -1 && startIndext_3 < endIndext_3) {
 							const trimmedContentt_3 = sugtitles.substring(startIndext_3 + startTextt_3.length, endIndext_3);
 							const tt3 = document.getElementById("tt3");
 							tt3.innerHTML = trimmedContentt_3;
 						}
-						startTextt_4 = "4.";
-						endTextt_4 = "5.";
+						startTextt_4 = '4. "';
+						endTextt_4 = '!';
 						const startIndext_4 = sugtitles.indexOf(startTextt_4);
-						const endIndext_4 = sugtitles.indexOf(endTextt_4);
+						const endIndext_4 = sugtitles.indexOf(endTextt_4, startIndext_4);
 						if (startIndext_4 !== -1 && endIndext_4 !== -1 && startIndext_4 < endIndext_4) {
 							const trimmedContentt_4 = sugtitles.substring(startIndext_4 + startTextt_4.length, endIndext_4);
 							const tt4 = document.getElementById("tt4");
 							tt4.innerHTML = trimmedContentt_4;
 						}
-						startTextt_5 = "5.";
-						endTextt_5 = "6.";
+						startTextt_5 = '5. "';
+						endTextt_5 = '!';
 						const startIndext_5 = sugtitles.indexOf(startTextt_5);
-						const endIndext_5 = sugtitles.indexOf(endTextt_5);
+						const endIndext_5 = sugtitles.indexOf(endTextt_5, startIndext_5);
 						if (startIndext_5 !== -1 && endIndext_5 !== -1 && startIndext_5 < endIndext_5) {
 							const trimmedContentt_5 = sugtitles.substring(startIndext_5 + startTextt_5.length, endIndext_5);
 							const tt5 = document.getElementById("tt5");
 							tt5.innerHTML = trimmedContentt_5;
 						}
-						startTextt_6 = "6.";
-						endTextt_6 = "7.";
+						startTextt_6 = '6. "';
+						endTextt_6 = '!';
 						const startIndext_6 = sugtitles.indexOf(startTextt_6);
-						const endIndext_6 = sugtitles.indexOf(endTextt_6);
+						const endIndext_6 = sugtitles.indexOf(endTextt_6, startIndext_6);
 						if (startIndext_6 !== -1 && endIndext_6 !== -1 && startIndext_6 < endIndext_6) {
 							const trimmedContentt_6 = sugtitles.substring(startIndext_6 + startTextt_6.length, endIndext_6);
 							const tt6 = document.getElementById("tt6");
 							tt6.innerHTML = trimmedContentt_6;
 						}
-						startTextt_7 = "7.";
-						endTextt_7 = "8.";
+						startTextt_7 = '7. "';
+						endTextt_7 = '!';
 						const startIndext_7 = sugtitles.indexOf(startTextt_7);
-						const endIndext_7 = sugtitles.indexOf(endTextt_7);
+						const endIndext_7 = sugtitles.indexOf(endTextt_7, startIndext_7);
 						if (startIndext_7 !== -1 && endIndext_7 !== -1 && startIndext_7 < endIndext_7) {
 							const trimmedContentt_7 = sugtitles.substring(startIndext_7 + startTextt_7.length, endIndext_7);
 							const tt7 = document.getElementById("tt7");
 							tt7.innerHTML = trimmedContentt_7;
 						}
-						startTextt_8 = "8.";
-						endTextt_8 = "9.";
+						startTextt_8 = '8. "';
+						endTextt_8 = '!';
 						const startIndext_8 = sugtitles.indexOf(startTextt_8);
-						const endIndext_8 = sugtitles.indexOf(endTextt_8);
+						const endIndext_8 = sugtitles.indexOf(endTextt_8, startIndext_8);
 						if (startIndext_8 !== -1 && endIndext_8 !== -1 && startIndext_8 < endIndext_8) {
 							const trimmedContentt_8 = sugtitles.substring(startIndext_8 + startTextt_8.length, endIndext_8);
 							const tt8 = document.getElementById("tt8");
 							tt8.innerHTML = trimmedContentt_8;
 						}
-						startTextt_9 = "9.";
-						endTextt_9 = "10.";
+						startTextt_9 = '9. "';
+						endTextt_9 = '!';
 						const startIndext_9 = sugtitles.indexOf(startTextt_9);
-						const endIndext_9 = sugtitles.indexOf(endTextt_9);
+						const endIndext_9 = sugtitles.indexOf(endTextt_9, startIndext_9);
 						if (startIndext_9 !== -1 && endIndext_9 !== -1 && startIndext_9 < endIndext_9) {
 							const trimmedContentt_9 = sugtitles.substring(startIndext_9 + startTextt_9.length, endIndext_9);
 							const tt9 = document.getElementById("tt9");
 							tt9.innerHTML = trimmedContentt_9;
 						}
-						startTextt_10 = "10.";
-						endTextt_10 = "11.";
+						startTextt_10 = '10. "';
+						endTextt_10 = '!';
 						const startIndext_10 = sugtitles.indexOf(startTextt_10);
-						const endIndext_10 = sugtitles.indexOf(endTextt_10);
+						const endIndext_10 = sugtitles.indexOf(endTextt_10, startIndext_10);
 						if (startIndext_10 !== -1 && endIndext_10 !== -1 && startIndext_10 < endIndext_10) {
 							const trimmedContentt_10 = sugtitles.substring(startIndext_10 + startTextt_10.length, endIndext_10);
 							const tt10 = document.getElementById("tt10");
@@ -1381,12 +1390,12 @@
 
 							// Calculate meta tags score
 							let metaTagsScore = 1; 
-							let seoScore = (keywordDensity * 10) + (metaTagsScore * 5) + (automated_readability_index * 3) + (smog_readability_index * 3);
+							let seoScore = (keywordDensity * 10) + (metaTagsScore * 8) + (automated_readability_index * 3) + (smog_readability_index * 5);
 							let roundedscore = Math.round(seoScore);
 							const mkscoreforbgr = document.getElementById("resulted_score");
                         	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
 							if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
-								const newvalueforseosc = roundedscore + 8;
+								const newvalueforseosc = roundedscore + 10;
 								document.getElementById("resulted_score").innerHTML = newvalueforseosc;
 								document.getElementById("edscrore").value = newvalueforseosc;
 							}

@@ -43,7 +43,6 @@
                                 <th style="color:black; text-align: left !important;">Target Keyword</th>
                                 <th style="color: black; text-align: left !important;">SEO Score</th>
                                 <th style="color: black; text-align: left !important;">Words</th>
-                                <th style="color: black; text-align: left !important;">Status</th>
                                 <th style="color: black; text-align: left !important;">Action</th>
                             </tr>
                         </thead>
@@ -91,10 +90,6 @@ var table = $('#zero-config').DataTable({
         {
             data: 'words',
             name: 'words'
-        },
-        {
-            data: 'status',
-            name: 'status'
         },
         {
             data: 'action',

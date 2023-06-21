@@ -54,16 +54,16 @@ class EditorController extends Controller
                 ->addColumn('words', function ($row) {
                     return $row->words;
                 })
-                ->addColumn('status', function ($row) {
-                    return $row->status;
-                })
+                // ->addColumn('status', function ($row) {
+                //     return $row->status;
+                // })
                 ->addColumn('action', function ($row) {
                     return '<a href="'.route('user.editor.document',$row->id).'" style="font-size:20px;"><i class="fadeIn animated bx bx-edit"></i></a>';
                 })
                 // ->addColumn('action', function ($row) {
                 //     return view('front.editor.document')->with(['data' => $row])->render();
                 // })
-                ->rawColumns(['name', 'target_keyword', 'score', 'words', 'status', 'action'])
+                ->rawColumns(['name', 'target_keyword', 'score', 'words', 'action'])
                 ->make(true);
         }
 

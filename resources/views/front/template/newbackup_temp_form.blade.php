@@ -111,27 +111,42 @@
 	}
 	#resulted_phrase{
 		margin-left: -120px;
+		margin-top: 20%;
 	}
-	@media only screen and (min-width: 1680px) and (max-width: 2280px) {
+	@media only screen and (min-width: 1980px) and (max-width: 2280px) {
 		#ailoadersk{
-			margin-left: -25% !important;
+			margin-left: -21% !important;
 		}
 		#ailoaderskImp{
 			margin-left: -25% !important;
 		}
 		#resulted_phrase{
-			margin-left: -150px;
+			margin-left: -40px;
+		}
+		#rps1 {
+			margin-left: 130px;
+		}
+		#rps2 {
+			margin-left: 130px;
+		}
+	}
+	@media only screen and (min-width: 1480px) and (max-width: 1980px) {
+		#ailoadersk{
+			margin-left: -25% !important;
+		}
+		#ailoaderskImp{
+			margin-left: -25% !important;
 		}
 	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
-		#ailoadersk{
-			margin-left: -25% !important;
-		}
-		#ailoaderskImp{
-			margin-left: -25% !important;
-		}
 		#resulted_phrase{
-			margin-left: -150px;
+			margin-left: -40px;
+		}
+		#rps1 {
+			margin-left: 115px;
+		}
+		#rps2 {
+			margin-left: 115px;
 		}
 	}
 	textarea::placeholder {
@@ -362,7 +377,7 @@
 								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
 							</div>
 							<div class="col-lg-1" style="padding-top: 20px;" >
-									<div id="resulted_phrase"></div>
+									<div id="resulted_phrase" ></div>
 							</div>
 							<div class="col-lg-2"></div>
 						</div>
@@ -934,7 +949,7 @@
 						var whlsectks = document.getElementById(whlsectk);
 						imploaderinfs.style.display = "none";
 						whlsectks.style.display = "block";
-						impscoretags.style.display = "block";
+						impscoretags.style.display = "flex";
 						document.getElementById(content_tag).innerHTML = data.message;
 						document.getElementById("details").value = data.message;
 						// $('#first_result_div').val(data.message);
@@ -957,7 +972,7 @@
 
 							numberEl.style.borderRadius = "50%";
 							numberEl.style.padding = "10px";
-							numberEl.style.display = "block";
+							numberEl.style.display = "flex";
 
 							if (number < 50) {
 								numberEl.style.border = "2px solid #f54c36";
