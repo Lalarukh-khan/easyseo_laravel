@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\Controller;
+use App\Mail\SubscriptionCancel;
 use App\Models\GptHistory;
 use App\Models\User;
 use App\Models\UserPackage;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use App\Models\GptScoreHistory;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -175,11 +177,9 @@ class DashboardController extends Controller
         return view('front.subscription_details')->with($data);
     }
 
-    public function concelSubscription($id){
-        // dd(hashids_decode($id) );
+    public function concelSubscription($id){ 
 
-        $webhookController = new WebhookController();
-        // $webhookController->suspendSubscription();
+        $webhookController = new WebhookController(); 
 
         $previous_subs = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->get();
         $packages_sku = ['P20','P50','P200','P500'];
@@ -190,11 +190,19 @@ class DashboardController extends Controller
             $update_subsc = UserPackage::find($previous_subs[0]->id);
             $update_subsc->subscription_id = null;
             $update_subsc->save();
+
+            $detail = [
+                'title' => 'Cancelled Subscription',
+                'body' => 'Your Subscription is cancelled successfully',
+            ];
+    
+            Mail::to(auth('web')->user()->email)->send(new SubscriptionCancel($detail));
         }
 
         session()->flash('success-msg','Subscription Cancelled Successfully');
 
         return response()->json([
+            'success' => 'Subscription Cancelled Successfully',
             'reload' => true,
         ]);
 

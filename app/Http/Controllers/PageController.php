@@ -17,6 +17,7 @@ class PageController extends Controller
             'title' => "Generate AI Content with EasySEO.ai: Best AI Writing Tool",
             'blogs' => $blogs,
             'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
+            'packageData' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->package : null
         );
         return view('website.home')->with($data);
     }
@@ -49,6 +50,7 @@ class PageController extends Controller
         $data = array(
             'title' => "Pricing",
             'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
+            'packageData' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->package : null
         );
         return view('website.pages.pricing')->with($data);
     }

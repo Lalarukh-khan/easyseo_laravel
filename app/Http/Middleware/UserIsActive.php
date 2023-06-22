@@ -52,6 +52,7 @@ class UserIsActive
 
             session()->put('gpt_words', $words);
 			session()->put('UserPackages', $user_package);
+			session()->put('PackageData', $user_package->package);
 
             session()->put('authUser',$authUser);
             session()->put('authUserId',$authUserId);

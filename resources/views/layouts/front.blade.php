@@ -148,6 +148,7 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             @include('components.trial_end')
+                            @include('components.flash-message')
                         </div>
                     </div>
                     @yield('content')

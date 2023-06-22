@@ -18,6 +18,7 @@ class BillingController extends Controller
         $data = array(
             'title' => 'Plans & Billing',
             'user_package' => session()->get('UserPackages'),
+            'packageData' => session()->get('PackageData'),
         );
 
         return view('front.billing.index')->with($data);
