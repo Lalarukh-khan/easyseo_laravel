@@ -276,6 +276,7 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
         Route::post('/saveEditor', 'EditorController@saveEditor')->name('saveEditor');
         Route::post('/changeEditor', 'EditorController@changeEditor')->name('changeEditor');
         Route::get('/document/{id}', 'EditorController@document')->name('document');
+        Route::get('/delete/{id}', 'EditorController@delete')->name('delete');
     });
 
     Route::group([

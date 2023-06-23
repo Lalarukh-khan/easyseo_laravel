@@ -15,6 +15,7 @@ use App\Models\GptHistory;
 use App\Models\Setting;
 use App\Models\UserPackage;
 use Illuminate\Support\Str;
+use Exception;
 
 
 class EditorController extends Controller
@@ -39,18 +40,6 @@ class EditorController extends Controller
                 ->addColumn('target_keyword', function ($row) {
                     return $row->target_keyword;
                 })
-                // ->addColumn('target_keyword', function ($row) {
-                //     $editor_id = $row->id;
-                //     $target_keyword = EditorTargetKeyword::get('editor_target_keyword.*')->where('editor_id' , $editor_id)->pluck('name');
-                //     $string = str_replace(array('["','"]'),'',$target_keyword);
-                //     return $string;
-                // })
-                // ->addColumn('score', function ($row) {
-                //     $editor_id = $row->id;
-                //     $score = EditorSeoScore::get('editor_seo_score.*')->where('editor_id' , $editor_id)->pluck('score');
-                //     $string = str_replace(array('[',']'),'',$score);
-                //     return $string;
-                // })
                 ->addColumn('words', function ($row) {
                     return $row->words;
                 })
@@ -58,8 +47,9 @@ class EditorController extends Controller
                 //     return $row->status;
                 // })
                 ->addColumn('action', function ($row) {
-                    return '<a href="'.route('user.editor.document',$row->id).'" style="font-size:20px;"><i class="fadeIn animated bx bx-edit"></i></a>';
+                    return '<a href="'.route('user.editor.document',$row->id).'" style="font-size:20px;"><i class="fadeIn animated bx bx-edit"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="ajaxRequest(this)" data-url="'.route('user.editor.delete',$row->id).'" class="text-danger" title="delete" style="font-size:20px;"><i class="fadeIn animated bx bx-trash"></i></a>&nbsp;&nbsp;';
                 })
+                //  data-url="{{route('admin.template.delete',$data->hashid)}}" 
                 // ->addColumn('action', function ($row) {
                 //     return view('front.editor.document')->with(['data' => $row])->render();
                 // })
@@ -72,7 +62,21 @@ class EditorController extends Controller
         );
         return view('front.editor.index')->with($data);
     }
-
+    public function delete($id)
+    {
+        // $editor = Editor::findOrFail($id);
+        // $editor->delete();
+        try {
+            $editor = Editor::findOrFail($id);
+            $editor->delete();
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+        return response()->json([
+            'success' => 'Document deleted Successfully Test',
+            'reload' => true,
+        ]);
+    }
     public function create()
     {
         $row = Editor::create();

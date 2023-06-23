@@ -501,13 +501,20 @@
 								// let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 1) + (smog_readability_index * 1);
 								let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
 								let roundedscore = Math.round(seoScore);
-								document.getElementById("resulted_phrase").innerHTML = roundedscore;
-								// var showscore  = document.getElementById("resulted_phrase");
-								// var paragraph = document.createElement("span");
-								// paragraph.textContent = roundedscore;
-								// showscore.appendChild(paragraph);
-								// paragraph.classList.add("rsltdvbrdrbtm");
-								document.getElementById("formscore").value = roundedscore;
+								if(roundedscore >100){
+									let abvhndrd = "100";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+								}
+								else{
+									document.getElementById("resulted_phrase").innerHTML = roundedscore;
+									// var showscore  = document.getElementById("resulted_phrase");
+									// var paragraph = document.createElement("span");
+									// paragraph.textContent = roundedscore;
+									// showscore.appendChild(paragraph);
+									// paragraph.classList.add("rsltdvbrdrbtm");
+									document.getElementById("formscore").value = roundedscore;
+								}
 								var seoform = document.getElementById('seo_content_form');
 								var seoformData = new FormData(seoform);
 								// const formInputs = document.querySelectorAll('#seo_content_form input');

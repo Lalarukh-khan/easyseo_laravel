@@ -443,7 +443,7 @@
 		getcolorofscore();
 	});
 	let typingTimer;
-    const typingTimeout = 2000; // Set the timeout duration in milliseconds
+    const typingTimeout = 12000; // Set the timeout duration in milliseconds
 	var contentEditable = document.getElementById("forscoring");
 	contentEditable.addEventListener('input', function() {
 		// var freshcetaker = document.getElementById("forscoring");
@@ -815,107 +815,111 @@
 		const number = parseInt(numberEl.textContent);
 		const takersltdscore = document.getElementById("takersltdscore");
 		if (number == 0) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
-		}
-		else if (number < 0) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
-			document.getElementById("resulted_score").innerHTML = "0";
-		}
-		else if (number > 0 && number <= 5) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
-		}
-		else if (number >= 6 && number <= 10) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
-		}
-		else if (number >= 11 && number <= 15) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
-		}
-		else if (number >= 16 && number <= 20) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
-		}
-		else if (number >= 21 && number <= 25) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
-		}
-		else if (number >= 26 && number <= 30) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
-		}
-		else if (number >= 31 && number <= 35) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
-		}
-		else if (number >= 36 && number <= 40) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
-		}
-		else if (number >= 41 && number <= 45) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
-		}
-		else if (number >= 46 && number <= 50) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "355.3554535791462");
-		}
-		else if (number >= 51 && number <= 53) {
-			takersltdscore.setAttribute("stroke-dasharray", "359.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 54 && number <= 57) {
-			takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 58 && number <= 60) {
-			takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 61 && number <= 65) {
-			takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 66 && number <= 70) {
-			takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 71 && number <= 75) {
-			takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 76 && number <= 80) {
-			takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 81 && number <= 85) {
-			takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 86 && number <= 90) {
-			takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number >= 91 && number <= 95) {
-			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
-		}
-		else if (number == 100) {
-			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
-		}
-		else if (number > 100) {
-			document.getElementById("resulted_score").innerHTML = "100";
-			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
-		}
-		else {
-			takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
-			takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
-		}
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+                        }
+                        else if (number < 0) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
+							document.getElementById("resulted_score").innerHTML = "0";
+                        }
+                        else if (number > 0 && number <= 5) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "479.3065079728876");
+                        }
+                        else if (number >= 6 && number <= 10) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "463.1335889922073");
+                        }
+                        else if (number >= 11 && number <= 15) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "449.6561565083071");
+                        }
+                        else if (number >= 16 && number <= 20) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "444.26518351474704");
+                        }
+                        else if (number >= 21 && number <= 25) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "428.0922645340667");
+                        }
+                        else if (number >= 26 && number <= 30) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "409.22385905660644");
+                        }
+                        else if (number >= 31 && number <= 35) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "395.74642657270624");
+                        }
+                        else if (number >= 36 && number <= 40) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+                        }
+                        else if (number >= 41 && number <= 45) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "380.3554535791462");
+                        }
+                        else if (number >= 46 && number <= 50) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "355.3554535791462");
+                        }
+                        else if (number >= 51 && number <= 53) {
+							takersltdscore.setAttribute("stroke-dasharray", "359.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 54 && number <= 57) {
+							takersltdscore.setAttribute("stroke-dasharray", "372.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 58 && number <= 60) {
+							takersltdscore.setAttribute("stroke-dasharray", "395.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 61 && number <= 65) {
+							takersltdscore.setAttribute("stroke-dasharray", "400.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 66 && number <= 70) {
+							takersltdscore.setAttribute("stroke-dasharray", "420.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 71 && number <= 75) {
+							takersltdscore.setAttribute("stroke-dasharray", "430.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 76 && number <= 80) {
+							takersltdscore.setAttribute("stroke-dasharray", "445.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 81 && number <= 85) {
+							takersltdscore.setAttribute("stroke-dasharray", "460.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "220.53980428200347");
+                        }
+                        else if (number >= 86 && number <= 90) {
+							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "242.53980428200347");
+                        }
+                        else if (number >= 91 && number <= 95) {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "248.53980428200347");
+                        }
+                        else if (number >= 96 && number <= 99) {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "240.53980428200347");
+                        }
+                        else if (number == 100) {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+                        }
+                        else if (number > 100) {
+							document.getElementById("resulted_score").innerHTML = "100";
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+                        }
+                        else {
+							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
+							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
+                        }
 	}
 </script>
 <script>
@@ -1301,12 +1305,12 @@
 
 							// Calculate meta tags score
 							let metaTagsScore = 1;
-							let seoScore = (keywordDensity * 8) + (metaTagsScore * 2) + (automated_readability_index * 2) + (smog_readability_index * 2);
+							let seoScore = (keywordDensity * 10) + (metaTagsScore * 8) + (automated_readability_index * 3) + (smog_readability_index * 5);
 							let roundedscore = Math.round(seoScore);
 							const mkscoreforbgr = document.getElementById("resulted_score");
                         	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
 							if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
-								const newvalueforseosc = roundedscore + 8;
+								const newvalueforseosc = roundedscore + 10;
 								document.getElementById("resulted_score").innerHTML = newvalueforseosc;
 								document.getElementById("edscrore").value = newvalueforseosc;
 							}
