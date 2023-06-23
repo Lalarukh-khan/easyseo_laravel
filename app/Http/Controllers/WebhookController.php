@@ -32,8 +32,6 @@ class WebhookController extends Controller
             $userUniqueId = str_replace('ORDER_CUSTOM_FIELDS=x-user%3d','',$custom_string[4]);
         }
 
-
-
         $IPNTypes = ['OrderCharged', 'SubscriptionChargeSucceed', 'SubscriptionChargeFailed', 'SubscriptionSuspended', 'SubscriptionRenewed', 'SubscriptionTerminated', 'SubscriptionFinished'];
 
         $webCustomerEmail = null;
@@ -100,7 +98,6 @@ class WebhookController extends Controller
     }
 
 
-
     public function newSubscription($data, $PageUrl, $email)
     {
         try {
@@ -126,7 +123,7 @@ class WebhookController extends Controller
 
                 // checking old subscriptions
                 $check_old_subs = UserPackage::with('package')->where('user_id',$CheckEmail[0]->id)->latest()->get();
-                $packages_sku = ['P20','P50','P200','P500'];
+                $packages_sku = ['P1','P20','P50','P200','P500','P20-year','P50-year','P200-year','P500-year'];
 
                 if (isset($check_old_subs[0]) && !empty($check_old_subs[0]) && in_array($check_old_subs[0]->package->plan_code,$packages_sku)) {
 
@@ -242,17 +239,31 @@ class WebhookController extends Controller
 
     public function suspendSubscription($subscriptionId)
     {
+        // for suspend subscription
+        // $data = [
+        //     'cancellationReasonId' => 2,
+        //     'sendCustomerNotification' => true,
+        //     'subscriptionId' => $subscriptionId,
+        //     'vendorAccountId' => 165209,
+        //     'apiSecretKey' => 'ddb1040f-7b68-4805-9266-ac358f3ab645',
+        // ];
+
+        // $endpoint = 'https://store.payproglobal.com/api/Subscriptions/Suspend';
+
+        // for finish subscription
         $data = [
-            'cancellationReasonId' => 2,
             'sendCustomerNotification' => true,
+            'reasonText' => 'I no longer need this product',
             'subscriptionId' => $subscriptionId,
             'vendorAccountId' => 165209,
             'apiSecretKey' => 'ddb1040f-7b68-4805-9266-ac358f3ab645',
         ];
 
+        $endpoint = 'https://store.payproglobal.com/api/Subscriptions/Finish';
+
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://store.payproglobal.com/api/Subscriptions/Suspend',
+            CURLOPT_URL => $endpoint,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -269,4 +280,6 @@ class WebhookController extends Controller
         curl_close($curl);
         // echo $response;
     }
+
+
 }

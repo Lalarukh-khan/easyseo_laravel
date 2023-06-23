@@ -177,12 +177,12 @@ class DashboardController extends Controller
         return view('front.subscription_details')->with($data);
     }
 
-    public function concelSubscription($id){ 
+    public function concelSubscription($id){
 
-        $webhookController = new WebhookController(); 
+        $webhookController = new WebhookController();
 
         $previous_subs = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->get();
-        $packages_sku = ['P20','P50','P200','P500'];
+        $packages_sku = ['P1','P20','P50','P200','P500','P20-year','P50-year','P200-year','P500-year'];
 
         if (isset($previous_subs[0]) && !empty($previous_subs[0]) && in_array($previous_subs[0]->package->plan_code,$packages_sku)) {
 
@@ -195,7 +195,7 @@ class DashboardController extends Controller
                 'title' => 'Cancelled Subscription',
                 'body' => 'Your Subscription is cancelled successfully',
             ];
-    
+
             Mail::to(auth('web')->user()->email)->send(new SubscriptionCancel($detail));
         }
 
