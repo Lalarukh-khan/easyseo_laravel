@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\WebhookErrors;
+use App\Models\MonthlyPack;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\UserPackage;
@@ -84,8 +85,8 @@ class WebhookController extends Controller
         }
 
 
-
         if ($webhook_data->ORDER_STATUS == "Processed" && $webhook_data->SUBSCRIPTION_STATUS_NAME == "Active" && $webhook_data->IPN_TYPE_NAME == "OrderCharged") {
+
             $this->newSubscription($webhook_data, $request->url(), $webCustomerEmail);
         } elseif ($webhook_data->ORDER_STATUS == "Processed" && $webhook_data->SUBSCRIPTION_STATUS_NAME == "Active" && $webhook_data->IPN_TYPE_NAME == "SubscriptionChargeSucceed") {
 
@@ -150,6 +151,51 @@ class WebhookController extends Controller
                 $user_package->start_date = now()->format('Y-m-d');
                 $user_package->end_date = date('Y-m-d', strtotime($data->SUBSCRIPTION_NEXT_CHARGE_DATE));
                 $user_package->save();
+
+                $yearly_sku = ['P20-year','P50-year','P200-year','P500-year'];
+
+                if (in_array($user_package->package->plan_code,$yearly_sku)) {
+
+                    $start_date = date('Y-m-d');
+                    $monthly_packs = [];
+
+                    for ($i=1; $i <= 12 ; $i++) {
+                        if ($i == 1) {
+                            $end_date = date('Y-m-d',strtotime('+30 days'));
+                            $monthly_packs[$i] = [
+                                'user_id' => $user_package->user_id,
+                                'package_id' => $user_package->package_id,
+                                'user_package_id' => $user_package->id,
+                                'words' => $user_package->words,
+                                'research_limit' => $user_package->research_limit,
+                                'workspace_users' => $user_package->workspace_users,
+                                'start_date' => $start_date,
+                                'end_date' => $end_date,
+                                'created_at' => now(),
+                                'updated_at' => now(),
+                            ];
+                        }else{
+                            $start_date = $monthly_packs[($i-1)]['end_date'];
+                            $end_date = date('Y-m-d',strtotime('+30 days',strtotime($start_date)));
+                            $monthly_packs[$i] = [
+                                'user_id' => $user_package->user_id,
+                                'package_id' => $user_package->package_id,
+                                'user_package_id' => $user_package->id,
+                                'words' => $user_package->words,
+                                'research_limit' => $user_package->research_limit,
+                                'workspace_users' => $user_package->workspace_users,
+                                'start_date' => $start_date,
+                                'end_date' => $end_date,
+                                'created_at' => now(),
+                                'updated_at' => now(),
+                            ];
+                        }
+                    }
+
+                    if (!empty($monthly_packs) && count($monthly_packs) > 0) {
+                        MonthlyPack::insert($monthly_packs);
+                    }
+                }
             }
 
             Log::info('new subscription User Not Found With Email');
@@ -190,6 +236,50 @@ class WebhookController extends Controller
                 $user_package->start_date = now()->format('Y-m-d');
                 $user_package->end_date = date('Y-m-d', strtotime($data->SUBSCRIPTION_NEXT_CHARGE_DATE));
                 $user_package->save();
+
+
+                $yearly_sku = ['P20-year','P50-year','P200-year','P500-year'];
+
+                if (in_array($user_package->package->plan_code,$yearly_sku)) {
+
+                    $start_date = date('Y-m-d');
+                    $monthly_packs = [];
+
+                    for ($i=1; $i <= 12 ; $i++) {
+                        if ($i == 1) {
+                            $end_date = date('Y-m-d',strtotime('+30 days'));
+                            $monthly_packs[$i] = [
+                                'user_id' => $user_package->user_id,
+                                'user_package_id' => $user_package->id,
+                                'words' => $user_package->words,
+                                'research_limit' => $user_package->research_limit,
+                                'workspace_users' => $user_package->workspace_users,
+                                'start_date' => $start_date,
+                                'end_date' => $end_date,
+                                'created_at' => now(),
+                                'updated_at' => now(),
+                            ];
+                        }else{
+                            $start_date = $monthly_packs[($i-1)]['end_date'];
+                            $end_date = date('Y-m-d',strtotime('+30 days',strtotime($start_date)));
+                            $monthly_packs[$i] = [
+                                'user_id' => $user_package->user_id,
+                                'user_package_id' => $user_package->id,
+                                'words' => $user_package->words,
+                                'research_limit' => $user_package->research_limit,
+                                'workspace_users' => $user_package->workspace_users,
+                                'start_date' => $start_date,
+                                'end_date' => $end_date,
+                                'created_at' => now(),
+                                'updated_at' => now(),
+                            ];
+                        }
+                    }
+
+                    if (!empty($monthly_packs) && count($monthly_packs) > 0) {
+                        MonthlyPack::insert($monthly_packs);
+                    }
+                }
             }
 
             Log::info('Renew subscription User Not Found With Email and Customer id');
