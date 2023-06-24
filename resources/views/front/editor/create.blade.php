@@ -494,7 +494,7 @@
 		});
 	});
 	let typingTimer;
-    const typingTimeout = 12000; // Set the timeout duration in milliseconds
+    const typingTimeout = 1000; // Set the timeout duration in milliseconds
 	var contentEditable = document.getElementById("forscoring");
 	contentEditable.addEventListener('input', function() {
 		// var freshcetaker = document.getElementById("forscoring");
@@ -507,7 +507,7 @@
 		else {
 			clearTimeout(typingTimer);
 			typingTimer = setTimeout(function() {
-				getSeoScore(ceinner);
+				getSeoScoreType(ceinner);
 			}, typingTimeout);
 		}
     });
@@ -1405,10 +1405,106 @@
 							}
 							}
 						}
-                        const numberEl = document.getElementById("resulted_score");
-                        const number = parseInt(numberEl.textContent);
-						const takersltdscore = document.getElementById("takersltdscore");
-						if (number == 0) {
+						getcolorofscore();
+						// event.preventDefault();
+						document.getElementById("docsubmit").click();
+                    }
+                    }
+			})
+	}
+	function getSeoScoreType(content) {
+		const getftitle = document.getElementById("edtrmainval").value;
+		const getfdesc = document.getElementById("forscoring").innerText;
+		const getftrkw = document.getElementById("edtrtrgtkwrd").innerText;
+		var sanitizedContent = getfdesc.replace(/<[^>]+>/g, '');
+		var ttwords = sanitizedContent.split(/\s+/);
+		var getfwords = ttwords.length;
+		const getfsemantics = document.getElementById("semantics").innerText; 
+		const getfquestions = document.getElementById("questions").innerText;
+		const getfalltitles = document.getElementById("edsugtitles").innerText;
+		document.getElementById("edtitle").value = getftitle;
+		document.getElementById("eddesc").value = getfdesc;
+		document.getElementById("edwords").value = getfwords;
+		document.getElementById("edtrgtkw").value = getftrkw;
+		document.getElementById("edsemantics").value = getfsemantics;
+		document.getElementById("edquestions").value = getfquestions;
+		document.getElementById("edalltitles").value = getfalltitles;
+		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
+		const post_array = [];
+		post_array.push({
+				"text": content,
+				"language_name": "English (United States)"
+		});
+		const username = 'lidanex@gmail.com';
+		const password = 'fc53e701e81bec41';
+
+		fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'Basic ' + btoa(username + ':' + password)
+		},
+		body: JSON.stringify(post_array)
+		})
+		.then(response => response.json())
+		.then(data => {
+			const apiResponse = data;
+            this.list.push({
+				"response": apiResponse
+		        })
+                for (const key of Object.keys(this.list)) {
+                    this.listvalues.push(this.list[key]);
+                }
+            const finallist = this.list;
+                    let html = '';
+                    for (let i = 0; i < finallist.length; i++) {
+                    const item = finallist[i];
+                    for (let j = 0; j < item.response.tasks.length; j++) {
+                        const subitem = item.response.tasks[j];
+						if(subitem.result == null){
+							document.getElementById("resulted_score").innerHTML = "0";
+							document.getElementById("edscrore").value = 0;
+						}
+						else{
+							for (let z = 0; z < subitem.result.length; z++) {
+							const subitem2 = subitem.result[z];
+							const keyword_density = subitem2.keyword_density;
+							const automated_readability_index = subitem2.automated_readability_index;
+							const smog_readability_index = subitem2.smog_readability_index;
+							let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
+							let totalWords = content.split(' ').length;
+							let keywordDensity = keywordCount / totalWords;
+
+							// Calculate meta tags score
+							let metaTagsScore = 1; 
+							let seoScore = (keywordDensity * 2) + (metaTagsScore * 3) + (automated_readability_index * 2) + (smog_readability_index * 2);
+							let roundedscore = Math.round(seoScore);
+							const mkscoreforbgr = document.getElementById("resulted_score");
+                        	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
+							if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
+								const newvalueforseosc = roundedscore + 5;
+								document.getElementById("resulted_score").innerHTML = newvalueforseosc;
+								document.getElementById("edscrore").value = newvalueforseosc;
+							}
+							else{
+								document.getElementById("resulted_score").innerHTML = roundedscore;
+								document.getElementById("edscrore").value = roundedscore;
+							}
+							}
+						}
+						getcolorofscore();
+						// event.preventDefault();
+						document.getElementById("docsubmit").click();
+                    }
+                    }
+			})
+	}
+
+	function getcolorofscore(){
+		const numberEl = document.getElementById("resulted_score");
+		const number = parseInt(numberEl.textContent);
+		const takersltdscore = document.getElementById("takersltdscore");
+		if (number == 0) {
 							takersltdscore.setAttribute("stroke-dasharray", "490.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "490.49466924980385");
                         }
@@ -1514,11 +1610,6 @@
 							takersltdscore.setAttribute("stroke-dasharray", "505.0884539600077");
 							takersltdscore.setAttribute("stroke-dashoffset", "235.53980428200347");
                         }
-						// event.preventDefault();
-						document.getElementById("docsubmit").click();
-                    }
-                    }
-			})
 	}
 </script>
 <script>
