@@ -32,6 +32,13 @@ class UserIsActive
                 $user_package->save();
             }
 
+            if ($user_package->monthly_packs()->count() > 0) {
+                $start_date = now()->format('Y-m-d');
+                $end_data = now()->addDays('30')->format('Y-m-d');
+
+                $user_package = $user_package->monthly_packs()->where('start_date','<=',$start_date)->where('end_date','>=',$end_data)->first();
+            }
+
             $userPackageWords = $user_package->words;
             $From = $user_package->start_date;
 			$currentDate = date('Y-m-d');
