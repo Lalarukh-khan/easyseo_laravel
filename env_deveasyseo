@@ -22,11 +22,11 @@ DB_HOST=127.0.0.1
 
 DB_PORT=3306
 
-DB_DATABASE=easyseo_db_server
+DB_DATABASE=eztrbmsh_easyseo_db
 
-DB_USERNAME=root
+DB_USERNAME=eztrbmsh_easyseo
 
-DB_PASSWORD=
+DB_PASSWORD=TmYb56XYdCiUvuj
 
 
 
@@ -102,11 +102,11 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 
 
-GOOGLE_CLIENT_ID="877073296478-6qcd2detkauaeafo9peg0euoq4aoo59v.apps.googleusercontent.com"
+GOOGLE_CLIENT_ID="877073296478-6j6t0cli269568mkl0p04022t2n127fh.apps.googleusercontent.com"
 
-GOOGLE_CLIENT_SECRET="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"
+GOOGLE_CLIENT_SECRET="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"
 
-GOOGLE_REDIRECT="http://localhost:8000/easyseo/public/auth/social/google/callback"
+GOOGLE_REDIRECT="https://dev.easyseo.ai/easyseo/public/auth/social/google/callback"
 
 
 
