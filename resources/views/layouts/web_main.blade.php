@@ -643,12 +643,12 @@
                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
                     <a href="https://www.instagram.com/easyseo.ai/" target="_blank">
                       <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/insta.svg">
-                    </a>  
+                    </a>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
                     <a href="https://twitter.com/easyseo_ai" target="_blank">
                         <img alt="Icon" class="anlssimg3" src="{{asset('front')}}/images/Vectors.svg">
-                    </a>    
+                    </a>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-3 col-3">
                     <a href="https://www.linkedin.com/company/easy-seo-ai/" target="_blank">
@@ -668,6 +668,20 @@
 Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invite legal action.</span>
         </div>
     </section>
+
+    <div id="cookie-banner" style="background-color: #F5F5F5; position: fixed; bottom: 0; width: 100%; padding: 20px 0; text-align: center; z-index: 1000; display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="color: #333; font-size: 14px;">Our website uses cookies to improve your user experience. If you continue browsing, we assume that you consent to our use of cookies. More information can be found in our
+                        <a href="/cookie-policy" target="_blank" style="color: #337AB7;">Cookies Policy</a> and
+                        <a href="/privacy-policy" target="_blank" style="color: #337AB7;">Privacy Policy</a>.
+                    </p>
+                    <button id="accept-cookies" style="background-color: #337AB7; border: none; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">I Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Copyright Section Ends Here -->
     <!-- Bootstrap Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -679,6 +693,21 @@ Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invit
     <script src="{{asset('front')}}/js/wow.min.js"></script>
     <script>
         new WOW().init();
+    </script>
+    <script>
+        window.onload = function() {
+            var cookieBanner = document.getElementById('cookie-banner');
+            var acceptCookies = document.getElementById('accept-cookies');
+            // Show the banner if user has not accepted cookies
+            if (!localStorage.getItem('cookies_accepted')) {
+                cookieBanner.style.display = 'block';
+            }
+            // When user accepts cookies, hide the banner and set a flag in local storage
+            acceptCookies.onclick = function() {
+                localStorage.setItem('cookies_accepted', 'true');
+                cookieBanner.style.display = 'none';
+            }
+        };
     </script>
     <script type="text/javascript">
         $('.custom-slider1').slick({

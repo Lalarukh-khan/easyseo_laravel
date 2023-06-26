@@ -17,4 +17,9 @@ class MonthlyPack extends Model
     {
         return $this->belongsTo(Package::class,'package_id');
     }
+
+    public function user_package()
+    {
+        return $this->belongsTo(UserPackage::class,'user_package_id');
+    }
 }

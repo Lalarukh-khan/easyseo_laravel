@@ -23,7 +23,8 @@ class UserIsActive
 
             $authUserId = $authUser->user_type != 'main' ? $authUser->main_user_id : $authUser->id;
 
-            $user_package = UserPackage::where('user_id',$authUserId)->latest()->first();
+            $user_package = UserPackage::with(['package','monthly_packs'])->where('user_id',$authUserId)->latest()->first();
+
 
             if($user_package->end_date == null){
                 $date = strtotime($user_package->created_at);
@@ -36,7 +37,7 @@ class UserIsActive
                 $start_date = now()->format('Y-m-d');
                 $end_data = now()->addDays('30')->format('Y-m-d');
 
-                $user_package = $user_package->monthly_packs()->where('start_date','<=',$start_date)->where('end_date','>=',$end_data)->first();
+                $user_package = $user_package->monthly_packs()->where('start_date','<=',$start_date)->where('end_date','<=',$end_data)->first();
             }
 
             $userPackageWords = $user_package->words;

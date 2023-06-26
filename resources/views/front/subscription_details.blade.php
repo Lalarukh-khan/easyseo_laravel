@@ -104,7 +104,14 @@
                                                 data-url="{{ route('user.cencel-subscription', $data->hashid) }}"
                                                 class="btn btn-danger" title="delete">Cancel Subscription</a>&nbsp;&nbsp;
                                     </td>
-                                        @endif
+                                    @elseif(isset($user_package->user_package->subscription_id) && !empty($user_package->user_package->subscription_id) && !session()->has('package-error'))
+                                    <td class="text-center">
+
+                                        <a href="javascript:void(0);" onclick="ajaxRequest(this)"
+                                            data-url="{{ route('user.cencel-subscription', $data->hashid) }}"
+                                            class="btn btn-danger" title="delete">Cancel Subscription</a>&nbsp;&nbsp;
+                                    </td>
+                                    @endif
 
                                 </tr>
                             </tbody>
