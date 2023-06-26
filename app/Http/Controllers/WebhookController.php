@@ -126,8 +126,7 @@ class WebhookController extends Controller
                 $check_old_subs = UserPackage::with('package')->where('user_id',$CheckEmail[0]->id)->latest()->get();
                 $packages_sku = ['P1','P20','P50','P200','P500','P20-year','P50-year','P200-year','P500-year'];
 
-                if (isset($check_old_subs[0]) && !empty($check_old_subs[0]) && in_array($check_old_subs[0]->package->plan_code,$packages_sku)) {
-
+                if (isset($check_old_subs[0]) && !empty($check_old_subs[0]) && in_array($check_old_subs[0]->package->plan_code,$packages_sku) && !empty($check_old_subs[0]->subscription_id)) {
                     $this->suspendSubscription($check_old_subs[0]->subscription_id);
                 }
 

@@ -79,7 +79,9 @@
                                     <th style="color: black;">Package Duration</th>
                                     <th style="color: black;">Package Words</th>
                                     @if (!empty($user_package->subscription_id) && !session()->has('package-error'))
-                                    <th style="color: black;">Action</th>
+                                        <th style="color: black;">Action</th>
+                                    @elseif(isset($user_package->user_package->subscription_id) && !empty($user_package->user_package->subscription_id) && !session()->has('package-error'))
+                                        <th style="color: black;">Action</th>
                                     @endif
                                 </tr>
                             </thead>
