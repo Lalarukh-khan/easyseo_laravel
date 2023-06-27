@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
 					<a href="{{route('user.editor.all')}}"><i class="bx bx-arrow-back" id="edtrback"></i></a>
-					<input type="text" name="docname" placeholder="Untitled document" class="edtdocrname">
+					<input type="text" name="docname" placeholder="Documents" class="edtdocrname">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
 					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
@@ -50,7 +50,7 @@
 				<div class="card-body edtrtpcard">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12 col-sm-12 brdrleft" data-bs-toggle="modal" data-bs-target="#briefModal">
-							<p class="edtrrwt">Brief</p>
+							<p class="edtrrwt">Notes</p>
 							<p class="edtrrws" id="takeedtrbrieftext"> </p>
 						</div>
 						<!-- <div class="col-lg-2 col-md-2 col-12 col-sm-12 brdrleft" data-bs-toggle="modal" data-bs-target="#audienceModal">
@@ -164,7 +164,7 @@
 									<div class="col-lg-2"></div>
 								</div>
 								<p class="edtrrwt text-center">Target Keyword</p>
-								<p class="edtrrwt text-center">Improve score by addressing report elements</p>
+								<p class="edtrrwt text-center">Improve Your Score by Utilizing Our Features</p>
 							</div>
 							<div class="card radius-10 edtrcard">
 								<div class="card-body">
@@ -184,7 +184,7 @@
 							</div>
 							<div class="card radius-10 edtrcard">
 								<div class="card-body">
-									<h5>Search intents <i class="bx bx-chevron-down"></i></h5>
+									<h5>Search Intentions <i class="bx bx-chevron-down"></i></h5>
 									<hr>
 									<div class="queall">
 										<div class="row">
@@ -281,14 +281,14 @@
 <div class="customdiv" id="ttcustomDiv">
 	<div class="row cstdvfd">
 		<div class="col-lg-10 col-md-10 col-sm-10 col-10">
-			<p class="cstmtttp">Title Competitive Score (TCS)</p>
+			<p class="cstmtttp">SEO-friendly titles generated</p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: center;">
 			<button type="button" id="closettdiv" style="margin-top: -15px; border: none; font-size: 35px; color: #fff; background: transparent;"><span class="bx bx-x" ></span></button>
 		</div>
 	</div>
-	<hr style="background: rgb(203, 203, 203) !important;">
-	<div class="row  m-b-20" style="padding-left: 30px;">
+	<!-- <hr style="background: rgb(203, 203, 203) !important;"> -->
+	<!-- <div class="row  m-b-20" style="padding-left: 30px;">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-4 cstm93 text-center">
 			<p class="ttcsm93">93</p>
 			<div class="cstm3p">
@@ -303,7 +303,7 @@
 			<p class="cstmsdtrgt">Between 40-60 characters long</p>
 			<p class="cstmsdtrgt">Uniqueness vs competitors</p>
 		</div>
-	</div>
+	</div> -->
 	<div class="cstmideas">
 		<h5 class="edtrideas">Ideas</h5>
 		<hr style="margin: 0px 0px 10px 0px;">
@@ -363,7 +363,7 @@
 		<p class="edtrp">Type in the primary keyword the content needs to rank for, and get SEO score and AI recommendations based on:</p>
 		<ul>
 			<li class="edtrp">Semantic Keywords</li>
-			<li class="edtrp">Search Intents</li>
+			<li class="edtrp">Search Intentions</li>
 			<li class="edtrp">Title and heading recommendations</li>
 			<li class="edtrp">Word count target</li>
 		</ul>
@@ -387,7 +387,7 @@
 		<div style="text-align: right !important;">
         	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
-	  	<h5 class="text-center">Brief</h5>
+	  	<h5 class="text-center">Notes</h5>
 		<p class="text-center">Provide context for the AI by giving it information on <br> the topic you are writing about.</p>
 		<div class="text-center">
 			<textarea type="text" class="edtrbrieftext" id="edtrbrieftext" required rows="10"></textarea>
@@ -425,25 +425,26 @@
         	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 	  	<h5 class="text-center">Tone of voice</h5>
-		<p class="text-center">Choose what tone of voice style the AI shall try to <br> write content in.</p>
+		<p class="text-center">Select the desired voice style for AI to craft  <br>your content.</p>
 		<div class="text-center">
 			<input type="text" class="edtraudinp" id="edtrtvval" value="Professional, informative, straightforward; Write clearly and concisely.">
 		</div>
-		<h4 class="edtraudfr">Frequent used  Tone of voice</h4>
+		<h4 class="edtraudfr">COMMONLY UTILIZED VOICE STYLES</h4>
 		<div class="audttonelist">
-			<h4 class="audtonelistval" id="tv1">Formal, Professional: Showcase your expertise and attention to detail.</h4>
-			<h4 class="audtonelistval" id="tv2">Persuasive, Compelling: Inspire the reader to take action using solid arguments and emotional appeals.</h4>
-			<h4 class="audtonelistval" id="tv3">Conversational, Friendly: Use a casual tone, as if you were talking to a close friend.</h4>
-			<h4 class="audtonelistval" id="tv4">Analytical, Data-Driven: Present logical arguments and support your claims with evidence.</h4>
-			<h4 class="audtonelistval" id="tv5">First Person, Personal Experience: In the first person, use vivid language and sensory details to bring the experience to life.</h4>
-			<h4 class="audtonelistval" id="tv6">Sales-oriented, Persuasive: Create a sense of urgency and highlight the product or service's benefits.</h4>
-			<h4 class="audtonelistval" id="tv7">Empathetic, Compassionate: Connect with the reader emotionally and show that you understand their struggles.</h4>
-			<h4 class="audtonelistval" id="tv8">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
-			<h4 class="audtonelistval" id="tv9">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
-			<h4 class="audtonelistval edtnbrdrbtm" id="tv10">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
+			<h4 class="audtonelistval" id="tv1">Formal, Professional: Expert Execution & Precision</h4>
+			<h4 class="audtonelistval" id="tv2">Persuasive, Compelling: Action-Inspiring & Motivational</h4>
+			<h4 class="audtonelistval" id="tv3">Conversational, Friendly: Casual Chat & Cordial</h4>
+			<h4 class="audtonelistval" id="tv4">Analytical, Data-Driven: Evidence-Based & Logical</h4>
+			<h4 class="audtonelistval" id="tv5">First Person, Personal Experience: Vividly Personal & Sensory Immersion</h4>
+			<h4 class="audtonelistval" id="tv6">Sales-oriented, Persuasive: Urgency-Creating & Benefit-Driven</h4>
+			<h4 class="audtonelistval" id="tv7">Empathetic, Compassionate: Emotional Bridge & Struggle-Understanding</h4>
+			<h4 class="audtonelistval" id="tv8">Optimistic, Upbeat: Hope-Inducing & Positivity-Spreading</h4>
+			<h4 class="audtonelistval" id="tv9">Steve Jobs, Visionary: Motivational Maven & Futuristic</h4>
+			<h4 class="audtonelistval edtnbrdrbtm" id="tv10">Oprah Winfrey, Empowerment: Emotionally Engaging & Growth-Stimulating</h4>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Blog Modal -->

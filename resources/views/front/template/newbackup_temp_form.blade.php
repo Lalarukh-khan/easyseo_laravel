@@ -148,9 +148,9 @@
 		#ailoaderskImp{
 			margin-left: -25% !important;
 		}
-		/* #resulted_phrase{
-			margin-left: -40px;
-		} */
+		#rps0 {
+			margin-left: 130px;
+		}
 		#rps1 {
 			margin-left: 130px;
 		}
@@ -167,9 +167,9 @@
 		}
 	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
-		/* #resulted_phrase{
-			margin-left: -40px;
-		} */
+		#rps0 {
+			margin-left: 115px;
+		}
 		#rps1 {
 			margin-left: 115px;
 		}
@@ -400,7 +400,7 @@
 							</div>
 							<div class="col-lg-3"></div>
 						</div> -->
-						<div class="row">
+						<div class="row" id="clearitscontent">
 							<div class="col-lg-9">
 								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
 							</div>
@@ -451,7 +451,7 @@
     var listvalues = [];
     var keywords = [];
 
-    function getSeoScore(score,content,improve_score) {
+    function getSeoScore(score,content,improve_score, rpsnum) {
 
 		if(improve_score == true){
 
@@ -574,6 +574,24 @@
 								}
 								else {
 									numberEl.style.border = "2px solid #39942f";
+								}
+								if(rpsnum == "rps2"){
+									const rpss0 = document.getElementById("rps0");
+									var rscselementStyle = window.getComputedStyle(numberEl);
+									var rscsbrdrrds = numberEl.style.borderRadius;
+									var rscspddng = numberEl.style.padding;
+									rpss0.innerHTML = numberEl.innerHTML;
+									rpss0.style.borderRadius = rscsbrdrrds + "!important";
+									rpss0.style.padding = rscspddng + "!important";
+									if (number < 50) {
+										rpss0.style.border = "2px solid #f54c36";
+									}
+									else if (number >= 50 && number <= 70) {
+										rpss0.style.border = "2px solid #f7831e";
+									}
+									else {
+										rpss0.style.border = "2px solid #39942f";
+									}
 								}
 								// html += `<p class="gnrtdtext">${generated_text}</p>`;
 							}
@@ -809,6 +827,8 @@
     $('#form_submit').click(function(){
 		templateLoader('#ai-loader','show');
 		$('#ans_div').hide();
+		document.getElementById("first_result_div").textContent = "";
+		document.getElementById("resulted_phrase").style.display = "none";
 		var numberInput = document.getElementById("numberInput");
 		var first_result_div = document.getElementById("first_result_div");
 		var times = parseInt(numberInput.value);
@@ -885,7 +905,8 @@
                     document.getElementById("details").value = data.message;
                     const score = data.score;
                     const content = data.message;
-                    const takescore = getSeoScore(score,content,improve_score);
+					rpsnumch = "rps"+number;
+                    const takescore = getSeoScore(score,content,improve_score, rpsnumch);
                     const jvbdjv = document.getElementById("resulted_phrase");
                     var elementStyle = window.getComputedStyle(jvbdjv);
                     // var newDiv = document.createElement("div");
@@ -999,27 +1020,27 @@
 						// const content = data.message
 						
 						// getSeoScore(score,improve_content,improve_score);
-						if(impscoretag == "rps0"){
-							document.getElementById("resulted_phrase").innerHTML = score;
-							document.getElementById("formscore").value = score;
-							const numberEl = document.getElementById("resulted_phrase");
-							const number = parseInt(numberEl.textContent);
+						// if(impscoretag == "rps0"){
+						// 	document.getElementById(impscoretag).innerHTML = score;
+						// 	document.getElementById("formscore").value = score;
+						// 	const numberEl = document.getElementById(impscoretag);
+						// 	const number = parseInt(numberEl.textContent);
 
-							numberEl.style.borderRadius = "50%";
-							numberEl.style.padding = "10px";
-							numberEl.style.display = "flex";
+						// 	numberEl.style.borderRadius = "50%";
+						// 	numberEl.style.padding = "10px";
+						// 	numberEl.style.display = "flex";
 
-							if (number < 50) {
-								numberEl.style.border = "2px solid #f54c36";
-							}
-							else if (number > 50 && number < 70) {
-								numberEl.style.border = "2px solid #f7831e";
-							}
-							else {
-								numberEl.style.border = "2px solid #39942f";
-							}
-						}
-						else{
+						// 	if (number < 50) {
+						// 		numberEl.style.border = "2px solid #f54c36";
+						// 	}
+						// 	else if (number > 50 && number < 70) {
+						// 		numberEl.style.border = "2px solid #f7831e";
+						// 	}
+						// 	else {
+						// 		numberEl.style.border = "2px solid #39942f";
+						// 	}
+						// }
+						// else{
 							document.getElementById(impscoretag).innerHTML = score;
 							document.getElementById("formscore").value = score;
 							const numberEl = document.getElementById(impscoretag);
@@ -1037,7 +1058,7 @@
 							else {
 								numberEl.style.border = "2px solid #39942f";
 							}
-						}
+						// }
 						document.getElementById("temp_id").value = data.temp_id;
 						// ||||||||||||||||| ENDING SEO SCORE |||||||||||||||||||
 						}
@@ -1076,10 +1097,10 @@
 		tkimploaders.style.display = "block";
 		ImpScores.style.display = "none";
 		tkwhlsecs.style.display = "none";
-		if(tkwhlsec == "indvdlsec0"){
-			var rstimpsd = document.getElementById("resulted_phrase");
-			rstimpsd.style.display = "none";
-		}
+		// if(tkwhlsec == "indvdlsec0"){
+		// 	var rstimpsd = document.getElementById("resulted_phrase");
+		// 	rstimpsd.style.display = "none";
+		// }
 		// CImpScoreTagtk.style.display = 'none !important';
 		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec);
 	}
