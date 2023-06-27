@@ -36,7 +36,7 @@
 			</div>
 			<br>
 			<!-- style="height:500px; min-height: 100%; display: flex;flex-direction: column;" -->
-			<div class="card" style="min-height: 500px;">
+			<div class="card" style="min-height: 500px;" id="rw1">
 				<div class="card-body edtrtpcard">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12 col-sm-12 brdrleft" data-bs-toggle="modal" data-bs-target="#briefModal">
@@ -116,7 +116,7 @@
 				</div>
 			</div>
 			<br>
-			<div class="card" style="min-height: 500px;">
+			<div class="card" style="min-height: 500px;" id="rw2">
 				<div class="card-body">
 					<div id="ai-loader" style="text-align:center;display:none">
 						{{-- <img src="{{asset('front')}}/images/ai-loader.gif" alt="ai-loader" style="width:100%; height: auto;"> --}}
@@ -441,6 +441,18 @@
 		getsemquetts();
 		getallothrdbdt();
 		getcolorofscore();
+		const rw1 = document.getElementById("rw1");
+		const rw2 = document.getElementById("rw2");
+		var elementStyle2 = window.getComputedStyle(rw2);
+		var elementStyle1 = window.getComputedStyle(rw1);
+		const hght1 = elementStyle1.height;
+		const hght2 = elementStyle2.height;
+		const numhght1 = parseFloat(hght1);
+		const numhght2 = parseFloat(hght2);
+		if(numhght1 < numhght2){
+			const smofhghtrw = numhght2 + 44 + "px";
+			rw1.style.height = smofhghtrw;
+		}
 	});
 	let typingTimer;
     const typingTimeout = 1000; // Set the timeout duration in milliseconds
@@ -456,7 +468,7 @@
 		else {
 			clearTimeout(typingTimer);
 			typingTimer = setTimeout(function() {
-				getSeoScoreType(ceinner);
+				getSeoScore(ceinner);
 			}, typingTimeout);
 		}
     });
@@ -524,7 +536,7 @@
             } else {
                 clearInterval(interval)
             }
-        }, 20)
+        }, -100)
     }
     function generateUniqueId() {
         const timestamp = Date.now();
@@ -1007,7 +1019,7 @@
             } else {
                 clearInterval(interval)
             }
-        }, 20)
+        }, -100)
     }
     function generateUniqueId1() {
         const timestamp = Date.now();
@@ -1248,84 +1260,144 @@
     var listvalues = [];
     var keywords = [];
 
-    function getSeoScore(content) {
+	function getSeoScore(content) {
 		const getftitle = document.getElementById("edtrmainval").value;
 		const getfdesc = document.getElementById("eddesc").value;
 		var sanitizedContent = getfdesc.replace(/<[^>]+>/g, '');
 		var ttwords = sanitizedContent.split(/\s+/);
 		var getfwords = ttwords.length;
+		const getfsemantics = document.getElementById("dbsmntcs").innerText; 
+		const getfquestions = document.getElementById("dbquess").innerText;
+		var lowercaseContent = content.toLowerCase();
+		var lowercaseSemantics = getfsemantics.toLowerCase();
+		var lowercaseQuestions = getfquestions.toLowerCase();
+		var seminnerValues = lowercaseSemantics.match(/\d+\.\s(.+)/g);
+		var qsminnerValues = lowercaseQuestions.match(/\d+\.\s(.+)/g);
+		var semlistArray = seminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var qslistArray = qsminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var totalScore = 0;
+		var semanticKeywordCount = 0;
+		semlistArray.forEach(function(semanticKeyword) {
+			if (lowercaseContent.includes(semanticKeyword)) {
+				semanticKeywordCount++;
+			}
+		});
+		totalScore += semanticKeywordCount * 3;
+		chunkcount = 0;
+		var chunkSize = 40;
+		if(getfdesc == ""){
+			chunkcount = 0;
+		}
+		else{
+			splitContentIntoChunks(content, chunkSize);
+		}
+		function splitContentIntoChunks(content, chunkSize) {
+			var words = content.split(' ');
+			for (var i = 0; i < words.length; i += chunkSize) {
+				var chunk = words.slice(i, i + chunkSize);
+				var chunkString = chunk.join(' ');
+				chunkcount++;
+			}
+		}
+		totalScore += chunkcount * 1;
+		var questionCount = 0;
+		qslistArray.forEach(function(question) {
+			if (lowercaseContent.includes(question)) {
+				questionCount++;
+			}
+		});
+		totalScore += questionCount * 5;
+		let roundedscore = Math.round(totalScore);
+		document.getElementById("resulted_score").innerHTML = roundedscore;
 		document.getElementById("edtitle").value = getftitle;
 		// document.getElementById("eddesc").value = getfdesc;
 		document.getElementById("edwords").value = getfwords;
-		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
-		const post_array = [];
-		post_array.push({
-				"text": content,
-				"language_name": "English (United States)"
-		});
-		const username = 'lidanex@gmail.com';
-		const password = 'fc53e701e81bec41';
-
-		fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': 'Basic ' + btoa(username + ':' + password)
-		},
-		body: JSON.stringify(post_array)
-		})
-		.then(response => response.json())
-		.then(data => {
-			const apiResponse = data;
-            this.list.push({
-				"response": apiResponse
-		        })
-                for (const key of Object.keys(this.list)) {
-                    this.listvalues.push(this.list[key]);
-                }
-            const finallist = this.list;
-                    let html = '';
-                    for (let i = 0; i < finallist.length; i++) {
-                    const item = finallist[i];
-                    for (let j = 0; j < item.response.tasks.length; j++) {
-                        const subitem = item.response.tasks[j];
-						if(subitem.result == null){
-							document.getElementById("resulted_score").innerHTML = "0";
-							document.getElementById("edscrore").value = 0;
-						}
-						else{
-							for (let z = 0; z < subitem.result.length; z++) {
-							const subitem2 = subitem.result[z];
-							const keyword_density = subitem2.keyword_density;
-							const automated_readability_index = subitem2.automated_readability_index;
-							const smog_readability_index = subitem2.smog_readability_index;
-							let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
-							let totalWords = content.split(' ').length;
-							let keywordDensity = keywordCount / totalWords;
-
-							// Calculate meta tags score
-							let metaTagsScore = 1;
-							let seoScore = (keywordDensity * 6) + (metaTagsScore * 5) + (automated_readability_index * 3) + (smog_readability_index * 3);
-							let roundedscore = Math.round(seoScore);
-							const mkscoreforbgr = document.getElementById("resulted_score");
-                        	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
-							if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
-								const newvalueforseosc = roundedscore + 10;
-								document.getElementById("resulted_score").innerHTML = newvalueforseosc;
-								document.getElementById("edscrore").value = newvalueforseosc;
-							}
-							else{
-								document.getElementById("resulted_score").innerHTML = roundedscore;
-								document.getElementById("edscrore").value = roundedscore;
-							}
-							}
-						}
-						getcolorofscore();
-						document.getElementById("docsubmit").click();
-                    }
-                    }
-			})
+		document.getElementById("edscrore").value = roundedscore;
+		getcolorofscore();
+		document.getElementById("docsubmit").click();
 	}
+    // function getSeoScore(content) {
+	// 	const getftitle = document.getElementById("edtrmainval").value;
+	// 	const getfdesc = document.getElementById("eddesc").value;
+	// 	var sanitizedContent = getfdesc.replace(/<[^>]+>/g, '');
+	// 	var ttwords = sanitizedContent.split(/\s+/);
+	// 	var getfwords = ttwords.length;
+	// 	document.getElementById("edtitle").value = getftitle;
+	// 	// document.getElementById("eddesc").value = getfdesc;
+	// 	document.getElementById("edwords").value = getfwords;
+	// 	const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
+	// 	const post_array = [];
+	// 	post_array.push({
+	// 			"text": content,
+	// 			"language_name": "English (United States)"
+	// 	});
+	// 	const username = 'lidanex@gmail.com';
+	// 	const password = 'fc53e701e81bec41';
+
+	// 	fetch(url, {
+	// 	method: 'POST',
+	// 	headers: {
+	// 		'Content-Type': 'application/json',
+	// 		'Authorization': 'Basic ' + btoa(username + ':' + password)
+	// 	},
+	// 	body: JSON.stringify(post_array)
+	// 	})
+	// 	.then(response => response.json())
+	// 	.then(data => {
+	// 		const apiResponse = data;
+    //         this.list.push({
+	// 			"response": apiResponse
+	// 	        })
+    //             for (const key of Object.keys(this.list)) {
+    //                 this.listvalues.push(this.list[key]);
+    //             }
+    //         const finallist = this.list;
+    //                 let html = '';
+    //                 for (let i = 0; i < finallist.length; i++) {
+    //                 const item = finallist[i];
+    //                 for (let j = 0; j < item.response.tasks.length; j++) {
+    //                     const subitem = item.response.tasks[j];
+	// 					if(subitem.result == null){
+	// 						document.getElementById("resulted_score").innerHTML = "0";
+	// 						document.getElementById("edscrore").value = 0;
+	// 					}
+	// 					else{
+	// 						for (let z = 0; z < subitem.result.length; z++) {
+	// 						const subitem2 = subitem.result[z];
+	// 						const keyword_density = subitem2.keyword_density;
+	// 						const automated_readability_index = subitem2.automated_readability_index;
+	// 						const smog_readability_index = subitem2.smog_readability_index;
+	// 						let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
+	// 						let totalWords = content.split(' ').length;
+	// 						let keywordDensity = keywordCount / totalWords;
+
+	// 						// Calculate meta tags score
+	// 						let metaTagsScore = 1;
+	// 						let seoScore = (keywordDensity * 6) + (metaTagsScore * 5) + (automated_readability_index * 3) + (smog_readability_index * 3);
+	// 						let roundedscore = Math.round(seoScore);
+	// 						const mkscoreforbgr = document.getElementById("resulted_score");
+    //                     	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
+	// 						if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
+	// 							const newvalueforseosc = roundedscore + 10;
+	// 							document.getElementById("resulted_score").innerHTML = newvalueforseosc;
+	// 							document.getElementById("edscrore").value = newvalueforseosc;
+	// 						}
+	// 						else{
+	// 							document.getElementById("resulted_score").innerHTML = roundedscore;
+	// 							document.getElementById("edscrore").value = roundedscore;
+	// 						}
+	// 						}
+	// 					}
+	// 					getcolorofscore();
+	// 					document.getElementById("docsubmit").click();
+    //                 }
+    //                 }
+	// 		})
+	// }
 	function getSeoScoreType(content) {
 		const getftitle = document.getElementById("edtrmainval").value;
 		const getfdesc = document.getElementById("forscoring").innerText;
