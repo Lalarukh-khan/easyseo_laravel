@@ -26,11 +26,11 @@ class WebhookController extends Controller
         // $webhook_data =  json_decode($webhookLog->find(13)->data);
 
         $webhook_data =  json_decode($webhookLog->data);
-        $custom_string = explode('&',$webhook_data->CHECKOUT_QUERY_STRING);
+        $custom_string = explode('&', $webhook_data->CHECKOUT_QUERY_STRING);
 
 
-        if(isset($custom_string[4])){
-            $userUniqueId = str_replace('ORDER_CUSTOM_FIELDS=x-user%3d','',$custom_string[4]);
+        if (isset($custom_string[4])) {
+            $userUniqueId = str_replace('ORDER_CUSTOM_FIELDS=x-user%3d', '', $custom_string[4]);
         }
 
         $IPNTypes = ['OrderCharged', 'SubscriptionChargeSucceed', 'SubscriptionChargeFailed', 'SubscriptionSuspended', 'SubscriptionRenewed', 'SubscriptionTerminated', 'SubscriptionFinished'];
@@ -65,24 +65,28 @@ class WebhookController extends Controller
         // }
 
         if (isset($userUniqueId) && !empty($userUniqueId)) {
-            $findUser = User::where('unique_id',$userUniqueId);
-            if($findUser->count() > 0){
-                $webCustomerEmail = $findUser->latest()->first()->email;
-            }else{
-                if (isset($webhook_data->LICENSED_TO_EMAIL) && !empty($webhook_data->LICENSED_TO_EMAIL)) {
-                    $webCustomerEmail = $webhook_data->LICENSED_TO_EMAIL;
-                } else {
-                    $webCustomerEmail = $webhook_data->CUSTOMER_EMAIL;
-                }
-            }
+            $webCustomerEmail = User::where('unique_id', $userUniqueId)->latest()->first()->email;
         }
-        else{
-            if (isset($webhook_data->LICENSED_TO_EMAIL) && !empty($webhook_data->LICENSED_TO_EMAIL)) {
-                $webCustomerEmail = $webhook_data->LICENSED_TO_EMAIL;
-            } else {
-                $webCustomerEmail = $webhook_data->CUSTOMER_EMAIL;
-            }
-        }
+
+        // if (isset($userUniqueId) && !empty($userUniqueId)) {
+        //     $findUser = User::where('unique_id',$userUniqueId);
+        //     if($findUser->count() > 0){
+        //         $webCustomerEmail = $findUser->latest()->first()->email;
+        //     }else{
+        //         if (isset($webhook_data->LICENSED_TO_EMAIL) && !empty($webhook_data->LICENSED_TO_EMAIL)) {
+        //             $webCustomerEmail = $webhook_data->LICENSED_TO_EMAIL;
+        //         } else {
+        //             $webCustomerEmail = $webhook_data->CUSTOMER_EMAIL;
+        //         }
+        //     }
+        // }
+        // else{
+        //     if (isset($webhook_data->LICENSED_TO_EMAIL) && !empty($webhook_data->LICENSED_TO_EMAIL)) {
+        //         $webCustomerEmail = $webhook_data->LICENSED_TO_EMAIL;
+        //     } else {
+        //         $webCustomerEmail = $webhook_data->CUSTOMER_EMAIL;
+        //     }
+        // }
 
 
         if ($webhook_data->ORDER_STATUS == "Processed" && $webhook_data->SUBSCRIPTION_STATUS_NAME == "Active" && $webhook_data->IPN_TYPE_NAME == "OrderCharged") {
@@ -102,6 +106,7 @@ class WebhookController extends Controller
     public function newSubscription($data, $PageUrl, $email)
     {
         try {
+            Log::info('User Email Address ' . $email);
             $CheckEmail = User::where('email', $email)->get();
 
 
@@ -123,17 +128,17 @@ class WebhookController extends Controller
                 }
 
                 // checking old subscriptions
-                $check_old_subs = UserPackage::with('package')->where('user_id',$CheckEmail[0]->id)->latest()->get();
-                $packages_sku = ['P1','P20','P50','P200','P500','P20-year','P50-year','P200-year','P500-year'];
+                $check_old_subs = UserPackage::with('package')->where('user_id', $CheckEmail[0]->id)->latest()->get();
+                $packages_sku = ['P1', 'P20', 'P50', 'P200', 'P500', 'P20-year', 'P50-year', 'P200-year', 'P500-year'];
 
-                if (isset($check_old_subs[0]) && !empty($check_old_subs[0]) && in_array($check_old_subs[0]->package->plan_code,$packages_sku) && !empty($check_old_subs[0]->subscription_id)) {
+                if (isset($check_old_subs[0]) && !empty($check_old_subs[0]) && in_array($check_old_subs[0]->package->plan_code, $packages_sku) && !empty($check_old_subs[0]->subscription_id)) {
                     $this->suspendSubscription($check_old_subs[0]->subscription_id);
                 }
 
 
                 if (empty($CheckEmail[0]->customer_id)) {
 
-                    User::where('email',$email)->update([
+                    User::where('email', $email)->update([
                         'customer_id' => $data->CUSTOMER_ID,
                         'has_package' => $packageId,
                     ]);
@@ -151,16 +156,16 @@ class WebhookController extends Controller
                 $user_package->end_date = date('Y-m-d', strtotime($data->SUBSCRIPTION_NEXT_CHARGE_DATE));
                 $user_package->save();
 
-                $yearly_sku = ['P20-year','P50-year','P200-year','P500-year'];
+                $yearly_sku = ['P20-year', 'P50-year', 'P200-year', 'P500-year'];
 
-                if (in_array($user_package->package->plan_code,$yearly_sku)) {
+                if (in_array($user_package->package->plan_code, $yearly_sku)) {
 
                     $start_date = date('Y-m-d');
                     $monthly_packs = [];
 
-                    for ($i=1; $i <= 12 ; $i++) {
+                    for ($i = 1; $i <= 12; $i++) {
                         if ($i == 1) {
-                            $end_date = date('Y-m-d',strtotime('+30 days'));
+                            $end_date = date('Y-m-d', strtotime('+30 days'));
                             $monthly_packs[$i] = [
                                 'user_id' => $user_package->user_id,
                                 'package_id' => $user_package->package_id,
@@ -173,9 +178,9 @@ class WebhookController extends Controller
                                 'created_at' => now(),
                                 'updated_at' => now(),
                             ];
-                        }else{
-                            $start_date = $monthly_packs[($i-1)]['end_date'];
-                            $end_date = date('Y-m-d',strtotime('+30 days',strtotime($start_date)));
+                        } else {
+                            $start_date = $monthly_packs[($i - 1)]['end_date'];
+                            $end_date = date('Y-m-d', strtotime('+30 days', strtotime($start_date)));
                             $monthly_packs[$i] = [
                                 'user_id' => $user_package->user_id,
                                 'package_id' => $user_package->package_id,
@@ -195,6 +200,9 @@ class WebhookController extends Controller
                         MonthlyPack::insert($monthly_packs);
                     }
                 }
+            } else {
+                $currenturl = $PageUrl;
+                $this->sendErrorDetailsEmail('User Not Found With Email', $currenturl, $email);
             }
 
             Log::info('new subscription User Not Found With Email');
@@ -237,16 +245,16 @@ class WebhookController extends Controller
                 $user_package->save();
 
 
-                $yearly_sku = ['P20-year','P50-year','P200-year','P500-year'];
+                $yearly_sku = ['P20-year', 'P50-year', 'P200-year', 'P500-year'];
 
-                if (in_array($user_package->package->plan_code,$yearly_sku)) {
+                if (in_array($user_package->package->plan_code, $yearly_sku)) {
 
                     $start_date = date('Y-m-d');
                     $monthly_packs = [];
 
-                    for ($i=1; $i <= 12 ; $i++) {
+                    for ($i = 1; $i <= 12; $i++) {
                         if ($i == 1) {
-                            $end_date = date('Y-m-d',strtotime('+30 days'));
+                            $end_date = date('Y-m-d', strtotime('+30 days'));
                             $monthly_packs[$i] = [
                                 'user_id' => $user_package->user_id,
                                 'user_package_id' => $user_package->id,
@@ -258,9 +266,9 @@ class WebhookController extends Controller
                                 'created_at' => now(),
                                 'updated_at' => now(),
                             ];
-                        }else{
-                            $start_date = $monthly_packs[($i-1)]['end_date'];
-                            $end_date = date('Y-m-d',strtotime('+30 days',strtotime($start_date)));
+                        } else {
+                            $start_date = $monthly_packs[($i - 1)]['end_date'];
+                            $end_date = date('Y-m-d', strtotime('+30 days', strtotime($start_date)));
                             $monthly_packs[$i] = [
                                 'user_id' => $user_package->user_id,
                                 'user_package_id' => $user_package->id,
@@ -369,6 +377,4 @@ class WebhookController extends Controller
         curl_close($curl);
         // echo $response;
     }
-
-
 }
