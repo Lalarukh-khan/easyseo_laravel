@@ -370,7 +370,7 @@
 		<form id="ajaForm">
 			<div style="text-align: center;">
 				<input type="text" placeholder="Enter Target Keyword..." class="edtrinp" name="prompt" autocomplete="off" class="form-control" required>
-				<button class="edtrrptbtn" type="submit" id="hidemodal">Create report</button>
+				<button class="edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create report</button>
 			</div>
 			<p class="text-center">Use 1 audit credit to generate</p>
 		</form>

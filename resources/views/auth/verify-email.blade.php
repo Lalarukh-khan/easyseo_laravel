@@ -15,9 +15,9 @@
                   <span class="app-brand-text demo menu-text fw-bolder ms-2" style="margin-top: 5px;"><img alt="Easy Seo Logo" src="{{asset('front')}}/images/logodark.png" ></span>
                 </a>
               </div>
-              <h3 class="mb-2">Verify your email ✉️</h3>
+              <h3 class="mb-2">Verify your email ✉️</h3> 
                 <p class="text-start">
-                Account activation link sent to your email address: hello@example.com Please follow the link inside to
+                Account activation link sent to your email address: {{auth('web')->user()->email}}  Please follow the link inside to
                 continue.
                 </p>
               <!-- /Logo -->
@@ -27,13 +27,13 @@
                     </div>
                 @endif
                 <!-- <br> -->
+                <p class="text-center">
+                    Didn't get the mail?
+                </p>
                 <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
                     @csrf
                     <button type="submit" class="btn nwwbauthbtn w-100 my-3">Resend Verification Link</button>
                 </form>
-                <p class="text-center">
-                    Didn't get the mail?
-                </p>
                 <br>
                 <p style="text-align: right;"><a href="{{ route('auth.logout') }}" onclick="logout(event)"><u>Logout</u></a></p>
             </div>

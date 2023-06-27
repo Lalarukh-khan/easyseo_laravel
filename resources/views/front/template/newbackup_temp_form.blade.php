@@ -208,7 +208,7 @@
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-3">
 						<div class="tempsideimg">
-							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 50px; height: 50px; margin-left: -4px;">
+							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 100%; height: 50px; object-fit: contain;">
 						</div>
 					</div>
 					<div class="col-lg-10 col-md-10 col-sm-9 col-9">
@@ -905,6 +905,7 @@
                     document.getElementById("details").value = data.message;
                     const score = data.score;
                     const content = data.message;
+					var cleanedContent = content.replace(/(<br\s*\/?>)\s*(<br\s*\/?>)\s*(<br\s*\/?>)\s*(<br\s*\/?>)/g, "$1$2");
 					rpsnumch = "rps"+number;
                     const takescore = getSeoScore(score,content,improve_score, rpsnumch);
                     const jvbdjv = document.getElementById("resulted_phrase");
@@ -922,7 +923,7 @@
                     // var paragraph = document.createElement("p"); margin-left: 40%;
                     // paragraph.classList.add("rsltdvbrdrbtm");
                     // paragraph.textContent = data.message;
-                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+data.message+'</div>';
+                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+cleanedContent+'</div>';
                     var smwhl = takepara + htmlContent;
                     var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
                     var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
