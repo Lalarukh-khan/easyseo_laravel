@@ -1306,10 +1306,10 @@ h3 {
 }
 .edtrgnrt{
 	background: transparent ;
-	padding: 4px 10px;
+	padding: 4px;
 	border: 2px solid #9200FF;
 	border-radius: 25px;
-	font-size: 14px;
+	font-size: 13px;
 	color: rgb(48, 48, 48);
 }
 .edtrgnrt:hover{

@@ -40,7 +40,7 @@
 					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
-					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
+					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Auto Writing</button>
 				</div>
 				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
