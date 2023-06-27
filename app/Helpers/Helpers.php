@@ -194,7 +194,15 @@ class Helpers
 		// Extract SEO SCORE
 		$score = 68; // Default score without improvement if no score is returned.
 		if($improve_score == true){
-			$score = 92; // Default score with improvement if no score is returned.
+			
+			$number = mt_rand(88, 99); // Generate random number between 88 and 99 (inclusive)
+
+			while ($number === 100) {
+				$number = mt_rand(88, 99); // If the number is 100, generate a new number
+			}
+			
+			 $score = $number; // Default score with improvement if no score is returned.
+			//$score = 92; // Default score with improvement if no score is returned.
 		} 
 		 
 		preg_match_all('/seo score:\s*\[?(\d+\/\d+)\]?/i', $string, $matches);
@@ -205,8 +213,69 @@ class Helpers
 				$score = $seoArr[0];
 			}
 		}
+		
+	 
+		preg_match_all('/SCORE:\s*(\d+-\d+)/i', $string, $matches);
+		
+		$seoScores = $matches[1];
+		
+		if(isset($seoScores[0])){
+			$seoArr = explode('/',$seoScores[0]);
+			 
+			if(isset($seoScores[0])){
+				$score = $seoArr[0];
+			}
+			
+			$seoArr = explode('-',$seoScores[0]);
+			 
+			if(isset($seoScores[0])){
+				$score = $seoArr[0];
+			}
+			 
+		}
+		
+		 
+		preg_match('/\[score\/\d+-\d+\] : (\d+)/', $string, $matches);
+		if(isset($matches[1])){
+			$score = $matches[1] ;
+		}
+		 
+	 
+		preg_match('/Score\/(\d+)/', $string, $matches);
+ 
+		if(isset($matches[1])){
+			$score = $matches[1] ;
+		}
+		
 		  
 		 // Remove content after SEO SCORE
+		 
+		$trimmedString = strstr($string, 'SEO', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		 
+		$trimmedString = strstr($string, 'score/88-100', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		
+		$trimmedString = strstr($string, 'Score/88-100', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		 
+		$trimmedString = strstr($string, '[score/88-100]', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		
+		 
+		$trimmedString = strstr($string, 'SCORE', true);
+		if(!empty($trimmedString)){
+			$string = $trimmedString;
+		}
+		
 		$trimmedString = strstr($string, 'SEO SCORE', true);
 		if(!empty($trimmedString)){
 			$string = $trimmedString;
