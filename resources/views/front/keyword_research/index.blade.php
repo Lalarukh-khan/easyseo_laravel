@@ -29,7 +29,7 @@
 </style>
 @endsection
 @section('content')
-@include('components.flash-message')
+<!-- @include('components.flash-message') -->
 <!--breadcrumb-->
 <!-- <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
     <div class="ps-3">

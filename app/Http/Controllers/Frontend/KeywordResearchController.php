@@ -80,10 +80,13 @@ class KeywordResearchController extends Controller
     public function find_keywords(Request $request)
     {
         // check user not active free package code
-        // $UserPackages = session()->get('UserPackages');
-        // if($UserPackages->package_id == 1){
-        //     return redirect()->route('user.dashboard');
-        // }        
+        $UserPackages = session()->get('UserPackages');
+        if($UserPackages->package_id == 1){
+            return response()->json([
+                'error' => "You don't have access to this tool. Please upgrade your subscription to use it.",
+            ]);
+            die();
+        }        
         // check user not active free package code
 
         $authUserId = session()->get('authUserId');
