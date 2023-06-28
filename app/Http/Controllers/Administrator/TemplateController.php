@@ -94,7 +94,8 @@ class TemplateController extends Controller
         ];
 
         if (empty($request->id)) {
-            $rules['image'] = 'required|mimes:png,jpg|dimensions:width=50,height=50';
+            // $rules['image'] = 'required|mimes:png,jpg|dimensions:width=50,height=50';
+            $rules['image'] = 'required|mimes:png,jpg';
         }
 
         $validator = Validator::make($request->all(), $rules);

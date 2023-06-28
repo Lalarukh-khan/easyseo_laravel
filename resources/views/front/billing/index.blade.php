@@ -100,6 +100,11 @@
 @section('content')
 @include('components.flash-message')
 
+<!-- payment ifram dev -->
+<div id="append_iframe">
+</div>
+<!-- payment ifram dev -->
+
 <div class="container">
     <div class="block-element text-center m-b-10">
         <div class="row m-b-5">
@@ -1226,8 +1231,12 @@
 
     function showCheckout(event){
         event.preventDefault();
+        if (event.target.href == "javascript:void(0);") {
+            return false;
+        }
         let checkoutUrl = event.target.attributes.href.value;
-        let body = document.getElementsByTagName('body')[0];
+        // let body = document.getElementsByTagName('body')[0];
+        let body = document.getElementById('append_iframe');
         body.innerHTML +=
             `<div class="ppg-checkout-modal ppg-show" id="ppg-checkout-modal">
                 <div class="ppg-btn-close" id="ppg-btn-close" onclick="hideCheckout(event)">
@@ -1236,7 +1245,6 @@
                 <div class="ppg-loader"></div>
                 <iframe class="ppg-iframe" id="ppg-iframe" src="${checkoutUrl}" frameborder="0"></iframe>
             </div>`;
-
             document.getElementById('ppg-iframe').onload = function(){
                 document.getElementsByClassName('ppg-loader')[0].remove();
                 document.getElementById('ppg-btn-close').classList.add('ppg-show');
@@ -1248,7 +1256,7 @@
         document.getElementById('ppg-checkout-modal').remove();
     }
 
-    document.getElementById("solo_proplan").oninput = function() {
+    document.getElementById("solo_proplan").oninput = function() {  
         var value = (this.value-this.min)/(this.max-this.min)*100
         this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
     };

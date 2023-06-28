@@ -54,7 +54,9 @@
                         </div>
 
                         <div class="form-group col-lg-4 col-md-4 mb-2 mt-3">
-                            <label for="" class="mb-3">Image/Icon <span class="text-danger">(size 50x50)</span></label>
+                            <label for="" class="mb-3">Image/Icon 
+                                <!-- <span class="text-danger">(size 50x50)</span> -->
+                            </label>
                             <br>
                             <img class="profile-pic upload-button" src="{{isset($edit->icon) ? asset($edit->icon) :
                             'https://via.placeholder.com/150/?text=upload%20icon'}}"
