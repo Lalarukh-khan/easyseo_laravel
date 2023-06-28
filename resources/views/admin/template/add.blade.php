@@ -290,6 +290,9 @@
                             <option value="gpt-3.5-turbo-0613" {{isset($edit) &&
                                     !empty($edit->setting) && $edit->setting->model == 'gpt-3.5-turbo-0613' ? 'selected' :
                                     null }}>gpt-3.5-turbo-0613</option>
+                            <option value="gpt-4" {{isset($edit) &&
+                                        !empty($edit->setting) && $edit->setting->model == 'gpt-4' ? 'selected' :
+                                        null }}>gpt-4</option>
                             <option value="gpt-4-0613" {{isset($edit) &&
                                         !empty($edit->setting) && $edit->setting->model == 'gpt-4-0613' ? 'selected' :
                                         null }}>gpt-4-0613</option>

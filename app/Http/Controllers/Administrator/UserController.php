@@ -63,7 +63,8 @@ class UserController extends Controller
                     return get_fulltime($row->created_at);
                 })
                 ->addColumn('action', function ($row) {
-                    return '<a href="'.route('admin.user.edit',$row->hashid).'" style="font-size:20px;"><i class="fadeIn animated bx bx-edit"></i></a>';
+                    return '<a href="'.route('admin.user.edit',$row->hashid).'" style="font-size:20px;"><i class="fadeIn animated bx bx-edit"></i></a>
+                    <a href="javascript:void(0);" onclick="ajaxRequest(this)" data-url="'.route('admin.user.delete',$row->hashid).'" style="font-size:20px;color:red;"><i class="fadeIn animated bx bx-trash me-1"></i></a>';
                 })
                 ->rawColumns(['first_name', 'last_name', 'email', 'package','status', 'created_at','action'])
                 ->make(true);

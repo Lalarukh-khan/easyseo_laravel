@@ -85,6 +85,7 @@ Route::middleware(['auth:admin', 'XSS'])->prefix('admin')->as('admin.')->namespa
         Route::get('/edit/{id}', 'UserController@edit')->name('edit');
         Route::post('/update', 'UserController@update')->name('update');
         Route::post('/update-subscription', 'UserController@update_subscription')->name('update_subscription');
+        Route::get('/delete/{id}', 'UserController@delete')->name('delete');
     });
     Route::prefix('profile')->as('profile.')->group(function () {
         Route::get('/', 'DashboardController@edit_profile')->name('edit');

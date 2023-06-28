@@ -1254,6 +1254,7 @@
     function hideCheckout(event){
         event.preventDefault();
         document.getElementById('ppg-checkout-modal').remove();
+        location.reload();
     }
 
     document.getElementById("solo_proplan").oninput = function() {  

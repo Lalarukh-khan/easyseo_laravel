@@ -17,10 +17,10 @@ class KeywordResearchController extends Controller
     public function index()
     {
         // check user not active free package code
-        $UserPackages = session()->get('UserPackages');
-        if($UserPackages->package_id == 1){
-            return redirect()->route('user.dashboard');
-        }        
+        // $UserPackages = session()->get('UserPackages');
+        // if($UserPackages->package_id == 1){
+        //     return redirect()->route('user.dashboard');
+        // }        
         // check user not active free package code
         
         $authUserId = session()->get('authUserId');
@@ -63,10 +63,10 @@ class KeywordResearchController extends Controller
     public function keyword_report($id)
     {
         // check user not active free package code
-        $UserPackages = session()->get('UserPackages');
-        if($UserPackages->package_id == 1){
-            return redirect()->route('user.dashboard');
-        }        
+        // $UserPackages = session()->get('UserPackages');
+        // if($UserPackages->package_id == 1){
+        //     return redirect()->route('user.dashboard');
+        // }        
         // check user not active free package code
 
         $data = array(
@@ -80,10 +80,10 @@ class KeywordResearchController extends Controller
     public function find_keywords(Request $request)
     {
         // check user not active free package code
-        $UserPackages = session()->get('UserPackages');
-        if($UserPackages->package_id == 1){
-            return redirect()->route('user.dashboard');
-        }        
+        // $UserPackages = session()->get('UserPackages');
+        // if($UserPackages->package_id == 1){
+        //     return redirect()->route('user.dashboard');
+        // }        
         // check user not active free package code
 
         $authUserId = session()->get('authUserId');

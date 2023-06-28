@@ -205,6 +205,9 @@ class TemplateController extends Controller
         elseif($setting->model == 'gpt-4-0613'){
             $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
         }
+        elseif($setting->model == 'gpt-4'){
+            $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
+        }
         else{
             $gpt_ans = $this->gpt3_ans($setting,$command,base64_decode($key->api_key));
         }
