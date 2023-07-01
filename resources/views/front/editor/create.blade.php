@@ -40,7 +40,7 @@
 					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
-					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Auto Writing</button>
+					<button class="edtrgnrt" id="autowrite"><i class="bx bx-edit-alt"></i> Auto Writing</button>
 				</div>
 				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
@@ -354,6 +354,11 @@
 	<input type="hidden" id="mncontent" name="mncontent">
   	<input type="hidden" id="getmnval" name="getmnval">
 </div>
+<form id="autoform">
+  <input type="hidden" id="atsemtk" name="atsemtk">
+  <input type="hidden" id="atqstk" name="atqstk">
+  <button type="submit" id="atsubmit" style="display: none !important;">Submit</button>
+</form>
   <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -495,7 +500,7 @@
 		});
 	});
 	let typingTimer;
-    const typingTimeout = 1000; // Set the timeout duration in milliseconds
+    const typingTimeout = 3000; // Set the timeout duration in milliseconds
 	var contentEditable = document.getElementById("forscoring");
 	contentEditable.addEventListener('input', function() {
 		// var freshcetaker = document.getElementById("forscoring");
@@ -520,15 +525,9 @@
 	var edtrmainval = document.getElementById("edtrmainval");
 	var customDiv = document.getElementById("ttcustomDiv");
 	edtrmainval.addEventListener("click", function() {
-	ttcustomDiv.style.display = "block";
-	ttcustomDiv.style.zIndex = "9999";
+		ttcustomDiv.style.display = "block";
+		ttcustomDiv.style.zIndex = "9999";
 	});
-	// document.addEventListener("click", function(event) {
-	// if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
-	// 	ttcustomDiv.style.display = "none";
-	// 	ttcustomDiv.style.zIndex = "-1";
-	// }
-	// });
 	const closettdiv = document.getElementById("closettdiv");
 	closettdiv.addEventListener("click", function() {
 		ttcustomDiv.style.display = "none";
@@ -562,9 +561,10 @@
     var apiUrl = "{{ route('user.editor.ai_response') }}";
     const token = "{{ csrf_token() }}"
 
-    const form = document.querySelector('#ajaForm')
-    const queform = document.querySelector('#quesform')
-    const cntntform = document.querySelector('#contentform')
+    const form = document.querySelector('#ajaForm');
+    const queform = document.querySelector('#quesform');
+    const cntntform = document.querySelector('#contentform');
+	const atform =  document.querySelector('#autoform');
     const chatContainer = document.querySelector('#resultdata');
     const chatContainer1 = document.querySelector('#quesdata');
 
@@ -1175,10 +1175,73 @@
             alert(err)
         }
     }
+	const handleSubmitAW = async (e) => {
+        e.preventDefault()
 
-    queform.addEventListener('submit', handleSubmit1)
+        const data = new FormData(atform);
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").value;
+
+        // user's chatstripe
+        // chatContainer1.innerHTML += chatStripe(false, data.get('quescontent'))
+
+        // to clear the textarea input
+        atform.reset()
+
+        // bot's chatstripe
+        const uniqueId = generateUniqueId1()
+        chatContainer1.innerHTML += chatStripe(true, " ", uniqueId)
+
+        // to focus scroll to the bottom
+        chatContainer1.scrollTop = chatContainer1.scrollHeight;
+
+        // specific message div
+        const messageDiv = document.getElementById(uniqueId)
+
+        // messageDiv.innerHTML = "..."
+        loader1(messageDiv)
+        const response1 = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _token: token,
+                // prompt: "act as a content writer for a blog post. our task is to write full blog content about "+ edtrtrgtkwrd +" and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. After writing in detail about Keywords Then below you need to start writing detailed answers about these questions, firstly mention that question you've been provided then write its detailed answer, the questions are: " + data.get('atqstk'),
+				prompt: "act as a content writer for a blog post. write in detail about "+edtrtrgtkwrd+ "your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + "Atleast write content of minimum 1500 and max 2000 words. After writing all below you need to write detailed answer about these questions, firstly mention that question you've been provided then write its detailed answer, the questions are: " + data.get('atqstk'),
+                old_prompt: data.get('old_prompt')
+            })
+        })
+
+        clearInterval(loadInterval)
+        messageDiv.innerHTML = " "
+
+        if (response1.ok) {
+            const data = await response1.json();
+            const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+            $('#old_prompt').val(data.old_prompt)
+			typeText1(messageDiv, parsedData);
+			const upprcontnt = document.getElementById("forscoring").innerText;
+			const wholetosendsc = upprcontnt + " \n" + parsedData;
+			document.getElementById("eddesc").value = wholetosendsc;
+			getSeoScore(wholetosendsc);
+			
+        } else {
+            const err = await response1.text()
+            messageDiv.innerHTML = "Something went wrong"
+            alert(err)
+        }
+    }
+
+    queform.addEventListener('submit', handleSubmitAW)
 
     queform.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+            handleSubmit1(e)
+        }
+    })
+	atform.addEventListener('submit', handleSubmitAW)
+
+    atform.addEventListener('keyup', (e) => {
         if (e.keyCode === 13) {
             handleSubmit1(e)
         }
@@ -1195,6 +1258,69 @@
 	const contentform = document.getElementById("contentform");
 	const mncontent = document.getElementById("mncontent");
 	const getmnval = document.getElementById("getmnval");
+	const autowrite = document.getElementById("autowrite");
+	autowrite.addEventListener("click", function(event) {
+		const atsemantics = document.getElementById("semantics").innerText;
+		const atquestions = document.getElementById("questions").innerText;
+		const atedsugtitles =  document.getElementById("edsugtitles").innerText;
+		var seminnerValues = atsemantics.match(/\d+\.\s(.+)/g);
+		var qsminnerValues = atquestions.match(/\d+\.\s(.+)/g);
+		var ttinnerValues = atedsugtitles.match(/\d+\.\s(.+)/g);
+		var semlistArray = seminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var qslistArray = qsminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var ttlistArray = ttinnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var randomTitle = Math.floor(Math.random() * ttlistArray.length);
+		var selectedTitle = ttlistArray[randomTitle];
+		var ttstartWord = '"';
+		var ttendWord = '!';
+		var ttstartIndex = selectedTitle.indexOf(ttstartWord);
+		var ttendIndex = selectedTitle.indexOf(ttendWord);
+		if (ttstartIndex !== -1 && ttendIndex !== -1 && ttendIndex > ttstartIndex) {
+		var tttrimmedStr = selectedTitle.substring(ttstartIndex + ttstartWord.length, ttendIndex).trim();
+		}
+		var targetTitle = document.getElementById("edtrmainval");
+		targetTitle.value = tttrimmedStr;
+		var qsselectedValues = [];
+		while (qsselectedValues.length < 4) {
+		var qsrandomIndex = Math.floor(Math.random() * qslistArray.length);
+		var qsselectedValue = qslistArray[qsrandomIndex];
+		if (!qsselectedValues.includes(qsselectedValue)) {
+			qsselectedValues.push(qsselectedValue);
+		}
+		}
+		var qstargetElement = document.getElementById("atqstk");
+		qstargetElement.value = qsselectedValues.join(", ");
+		document.getElementById("atsemtk").value =  semlistArray;
+		var atsem1 = document.getElementById("sem1");
+		var atsem2 = document.getElementById("sem2");
+		var atsem3 = document.getElementById("sem3");
+		var atsem4 = document.getElementById("sem4");
+		var atsem5 = document.getElementById("sem5");
+		var atsem6 = document.getElementById("sem6");
+		var atsem7 = document.getElementById("sem7");
+		var atsem8 = document.getElementById("sem8");
+		var atsem9 = document.getElementById("sem9");
+		var atsem10 = document.getElementById("sem10");
+		atsem1.classList.add("semclicked");
+		atsem2.classList.add("semclicked");
+		atsem3.classList.add("semclicked");
+		atsem4.classList.add("semclicked");
+		atsem5.classList.add("semclicked");
+		atsem6.classList.add("semclicked");
+		atsem7.classList.add("semclicked");
+		atsem8.classList.add("semclicked");
+		atsem9.classList.add("semclicked");
+		atsem10.classList.add("semclicked");
+		event.preventDefault();
+		document.getElementById("atsubmit").click();
+	});
+
 	manwrtnbyuser.addEventListener("click", function(event) {
 		const innerText = edtrmyInput.value;
 		mncontent.value = innerText;
@@ -1717,8 +1843,6 @@
 		$('#ttgenshow').show();
 		ttgenm.disabled = true;
 		ttgenm.className = "edtrdisabled";
-		// ttcustomDiv2.style.display = "block";
-		// ttcustomDiv2.style.zIndex = "9999";
 	});
 	tt1.addEventListener("click", function(event) {
 		const divText = this.innerText;
@@ -2169,8 +2293,6 @@
 	});
 </script>
 <script>
-// 	// const savefdoc = document.querySelector('#savedoc')
-// 	// savefdoc.addEventListener('submit', saveall)
 	$('#docsubmit').click(function(){
     event.preventDefault();  // Prevent the form from submitting normally
     var form = document.getElementById('savedoc');

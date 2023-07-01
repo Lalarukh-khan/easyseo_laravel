@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
 					<a href="{{route('user.editor.all')}}"><i class="bx bx-arrow-back" id="edtrback"></i></a>
-					<input type="text" name="docname" placeholder="Untitled document" class="edtdocrname">
+					<input type="text" name="docname" placeholder="Documents" class="edtdocrname">
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
 					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
@@ -40,7 +40,7 @@
 					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
-					<button class="edtrgnrt"><i class="bx bx-edit-alt"></i> Generate</button>
+					<button class="edtrgnrt"><i class="bx bx-edit-alt" id="autowrite"></i> Auto Writing</button>
 				</div>
 				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
@@ -50,7 +50,7 @@
 				<div class="card-body edtrtpcard">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12 col-sm-12 brdrleft" data-bs-toggle="modal" data-bs-target="#briefModal">
-							<p class="edtrrwt">Brief</p>
+							<p class="edtrrwt">Notes</p>
 							<p class="edtrrws" id="takeedtrbrieftext"> </p>
 						</div>
 						<!-- <div class="col-lg-2 col-md-2 col-12 col-sm-12 brdrleft" data-bs-toggle="modal" data-bs-target="#audienceModal">
@@ -144,7 +144,7 @@
 						</div>
 					</div>
 					<div id="ans_div" style="display:none">
-						<h3 id="sww" style="display: none;">Something went wrong!</h3>
+						<h3 id="sww" style="display: none;">Something went wrong!</h3> 
 						<div id="norspnse">
 							<div id="semantics" style="display: none !important;"></div>
 							<div id="questions" style="display: none !important;"></div>
@@ -164,7 +164,7 @@
 									<div class="col-lg-2"></div>
 								</div>
 								<p class="edtrrwt text-center">Target Keyword</p>
-								<p class="edtrrwt text-center">Improve score by addressing report elements</p>
+								<p class="edtrrwt text-center">Improve Your Score by Utilizing Our Features</p>
 							</div>
 							<div class="card radius-10 edtrcard">
 								<div class="card-body">
@@ -184,7 +184,7 @@
 							</div>
 							<div class="card radius-10 edtrcard">
 								<div class="card-body">
-									<h5>Search intents <i class="bx bx-chevron-down"></i></h5>
+									<h5>Search Intentions <i class="bx bx-chevron-down"></i></h5>
 									<hr>
 									<div class="queall">
 										<div class="row">
@@ -281,14 +281,14 @@
 <div class="customdiv" id="ttcustomDiv">
 	<div class="row cstdvfd">
 		<div class="col-lg-10 col-md-10 col-sm-10 col-10">
-			<p class="cstmtttp">Title Competitive Score (TCS)</p>
+			<p class="cstmtttp">SEO-friendly titles generated</p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-sm-2 col-2" style="text-align: center;">
 			<button type="button" id="closettdiv" style="margin-top: -15px; border: none; font-size: 35px; color: #fff; background: transparent;"><span class="bx bx-x" ></span></button>
 		</div>
 	</div>
-	<hr style="background: rgb(203, 203, 203) !important;">
-	<div class="row  m-b-20" style="padding-left: 30px;">
+	<!-- <hr style="background: rgb(203, 203, 203) !important;"> -->
+	<!-- <div class="row  m-b-20" style="padding-left: 30px;">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-4 cstm93 text-center">
 			<p class="ttcsm93">93</p>
 			<div class="cstm3p">
@@ -303,7 +303,7 @@
 			<p class="cstmsdtrgt">Between 40-60 characters long</p>
 			<p class="cstmsdtrgt">Uniqueness vs competitors</p>
 		</div>
-	</div>
+	</div> -->
 	<div class="cstmideas">
 		<h5 class="edtrideas">Ideas</h5>
 		<hr style="margin: 0px 0px 10px 0px;">
@@ -338,7 +338,7 @@
 </form>
 <form id="savedoc">
 	@csrf
-	{{-- <input type="text" value="{{ $e_id }}" readonly name="e_id" style="display: none !important;">--}}
+	<input type="text" value="{{ $e_id }}" readonly name="e_id" style="display: none !important;">
 	<input type="text" name="edtitle" id="edtitle" style="display: none !important;">
 	<textarea name="eddesc" id="eddesc" style="display: none !important;"></textarea>
 	<input type="text" name="edwords" id="edwords" style="display: none !important;">
@@ -363,14 +363,14 @@
 		<p class="edtrp">Type in the primary keyword the content needs to rank for, and get SEO score and AI recommendations based on:</p>
 		<ul>
 			<li class="edtrp">Semantic Keywords</li>
-			<li class="edtrp">Search Intents</li>
+			<li class="edtrp">Search Intentions</li>
 			<li class="edtrp">Title and heading recommendations</li>
 			<li class="edtrp">Word count target</li>
 		</ul>
 		<form id="ajaForm">
 			<div style="text-align: center;">
 				<input type="text" placeholder="Enter Target Keyword..." class="edtrinp" name="prompt" autocomplete="off" class="form-control" required>
-				<button class="edtrrptbtn" type="submit" id="hidemodal">Create report</button>
+				<button class="edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create report</button>
 			</div>
 			<p class="text-center">Use 1 audit credit to generate</p>
 		</form>
@@ -387,7 +387,7 @@
 		<div style="text-align: right !important;">
         	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
-	  	<h5 class="text-center">Brief</h5>
+	  	<h5 class="text-center">Notes</h5>
 		<p class="text-center">Provide context for the AI by giving it information on <br> the topic you are writing about.</p>
 		<div class="text-center">
 			<textarea type="text" class="edtrbrieftext" id="edtrbrieftext" required rows="10"></textarea>
@@ -425,25 +425,26 @@
         	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 	  	<h5 class="text-center">Tone of voice</h5>
-		<p class="text-center">Choose what tone of voice style the AI shall try to <br> write content in.</p>
+		<p class="text-center">Select the desired voice style for AI to craft  <br>your content.</p>
 		<div class="text-center">
 			<input type="text" class="edtraudinp" id="edtrtvval" value="Professional, informative, straightforward; Write clearly and concisely.">
 		</div>
-		<h4 class="edtraudfr">Frequent used  Tone of voice</h4>
+		<h4 class="edtraudfr">COMMONLY UTILIZED VOICE STYLES</h4>
 		<div class="audttonelist">
-			<h4 class="audtonelistval" id="tv1">Formal, Professional: Showcase your expertise and attention to detail.</h4>
-			<h4 class="audtonelistval" id="tv2">Persuasive, Compelling: Inspire the reader to take action using solid arguments and emotional appeals.</h4>
-			<h4 class="audtonelistval" id="tv3">Conversational, Friendly: Use a casual tone, as if you were talking to a close friend.</h4>
-			<h4 class="audtonelistval" id="tv4">Analytical, Data-Driven: Present logical arguments and support your claims with evidence.</h4>
-			<h4 class="audtonelistval" id="tv5">First Person, Personal Experience: In the first person, use vivid language and sensory details to bring the experience to life.</h4>
-			<h4 class="audtonelistval" id="tv6">Sales-oriented, Persuasive: Create a sense of urgency and highlight the product or service's benefits.</h4>
-			<h4 class="audtonelistval" id="tv7">Empathetic, Compassionate: Connect with the reader emotionally and show that you understand their struggles.</h4>
-			<h4 class="audtonelistval" id="tv8">Optimistic, Upbeat: Inspire hope and positivity, even in difficult situations.</h4>
-			<h4 class="audtonelistval" id="tv9">Steve Jobs, Visionary: Use persuasive rhetoric to motivate the audience.</h4>
-			<h4 class="audtonelistval edtnbrdrbtm" id="tv10">Oprah Winfrey, Empowerment: Connect with readers emotionally and encourage personal growth.</h4>
+			<h4 class="audtonelistval" id="tv1">Formal, Professional: Expert Execution & Precision</h4>
+			<h4 class="audtonelistval" id="tv2">Persuasive, Compelling: Action-Inspiring & Motivational</h4>
+			<h4 class="audtonelistval" id="tv3">Conversational, Friendly: Casual Chat & Cordial</h4>
+			<h4 class="audtonelistval" id="tv4">Analytical, Data-Driven: Evidence-Based & Logical</h4>
+			<h4 class="audtonelistval" id="tv5">First Person, Personal Experience: Vividly Personal & Sensory Immersion</h4>
+			<h4 class="audtonelistval" id="tv6">Sales-oriented, Persuasive: Urgency-Creating & Benefit-Driven</h4>
+			<h4 class="audtonelistval" id="tv7">Empathetic, Compassionate: Emotional Bridge & Struggle-Understanding</h4>
+			<h4 class="audtonelistval" id="tv8">Optimistic, Upbeat: Hope-Inducing & Positivity-Spreading</h4>
+			<h4 class="audtonelistval" id="tv9">Steve Jobs, Visionary: Motivational Maven & Futuristic</h4>
+			<h4 class="audtonelistval edtnbrdrbtm" id="tv10">Oprah Winfrey, Empowerment: Emotionally Engaging & Growth-Stimulating</h4>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Blog Modal -->
@@ -507,7 +508,7 @@
 		else {
 			clearTimeout(typingTimer);
 			typingTimer = setTimeout(function() {
-				getSeoScoreType(ceinner);
+				getSeoScore(ceinner);
 			}, typingTimeout);
 		}
     });
@@ -522,12 +523,6 @@
 	ttcustomDiv.style.display = "block";
 	ttcustomDiv.style.zIndex = "9999";
 	});
-	// document.addEventListener("click", function(event) {
-	// if (event.target !== edtrmainval && event.target !== ttcustomDiv) {
-	// 	ttcustomDiv.style.display = "none";
-	// 	ttcustomDiv.style.zIndex = "-1";
-	// }
-	// });
 	const closettdiv = document.getElementById("closettdiv");
 	closettdiv.addEventListener("click", function() {
 		ttcustomDiv.style.display = "none";
@@ -879,8 +874,8 @@
 						const hght2 = elementStyle2.height;
 						const numhght2 = parseFloat(hght2);
 						const rw1 = document.getElementById("rw1");
-						const smofhghtrw = numhght2 + 44 + "px";
-						rw1.style.height = smofhghtrw;
+						const smofhghtrw = numhght2 + "px";
+						rw1.style.minHeight = smofhghtrw;
 
 						
 					const response2 = await fetch(apiUrl, {
@@ -1344,82 +1339,60 @@
 		const getfsemantics = document.getElementById("semantics").innerText; 
 		const getfquestions = document.getElementById("questions").innerText;
 		const getfalltitles = document.getElementById("edsugtitles").innerText;
+		var lowercaseContent = content.toLowerCase();
+		var lowercaseSemantics = getfsemantics.toLowerCase();
+		var lowercaseQuestions = getfquestions.toLowerCase();
+		var seminnerValues = lowercaseSemantics.match(/\d+\.\s(.+)/g);
+		var qsminnerValues = lowercaseQuestions.match(/\d+\.\s(.+)/g);
+		var semlistArray = seminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var qslistArray = qsminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var totalScore = 0;
+		var semanticKeywordCount = 0;
+		semlistArray.forEach(function(semanticKeyword) {
+			if (lowercaseContent.includes(semanticKeyword)) {
+				semanticKeywordCount++;
+			}
+		});
+		totalScore += semanticKeywordCount * 3;
+		chunkcount = 0;
+		var chunkSize = 40;
+		if(getfdesc == ""){
+			chunkcount = 0;
+		}
+		else{
+			splitContentIntoChunks(content, chunkSize);
+		}
+		function splitContentIntoChunks(content, chunkSize) {
+			var words = content.split(' ');
+			for (var i = 0; i < words.length; i += chunkSize) {
+				var chunk = words.slice(i, i + chunkSize);
+				var chunkString = chunk.join(' ');
+				chunkcount++;
+			}
+		}
+		totalScore += chunkcount * 1;
+		var questionCount = 0;
+		qslistArray.forEach(function(question) {
+			if (lowercaseContent.includes(question)) {
+				questionCount++;
+			}
+		});
+		totalScore += questionCount * 5;
+		let roundedscore = Math.round(totalScore);
+		document.getElementById("resulted_score").innerHTML = roundedscore;
 		document.getElementById("edtitle").value = getftitle;
-		// document.getElementById("eddesc").value = getfdesc;
 		document.getElementById("edwords").value = getfwords;
 		document.getElementById("edtrgtkw").value = getftrkw;
 		document.getElementById("edsemantics").value = getfsemantics;
 		document.getElementById("edquestions").value = getfquestions;
 		document.getElementById("edalltitles").value = getfalltitles;
-		const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
-		const post_array = [];
-		post_array.push({
-				"text": content,
-				"language_name": "English (United States)"
-		});
-		const username = 'lidanex@gmail.com';
-		const password = 'fc53e701e81bec41';
-
-		fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': 'Basic ' + btoa(username + ':' + password)
-		},
-		body: JSON.stringify(post_array)
-		})
-		.then(response => response.json())
-		.then(data => {
-			const apiResponse = data;
-            this.list.push({
-				"response": apiResponse
-		        })
-                for (const key of Object.keys(this.list)) {
-                    this.listvalues.push(this.list[key]);
-                }
-            const finallist = this.list;
-                    let html = '';
-                    for (let i = 0; i < finallist.length; i++) {
-                    const item = finallist[i];
-                    for (let j = 0; j < item.response.tasks.length; j++) {
-                        const subitem = item.response.tasks[j];
-						if(subitem.result == null){
-							document.getElementById("resulted_score").innerHTML = "0";
-							document.getElementById("edscrore").value = 0;
-						}
-						else{
-							for (let z = 0; z < subitem.result.length; z++) {
-							const subitem2 = subitem.result[z];
-							const keyword_density = subitem2.keyword_density;
-							const automated_readability_index = subitem2.automated_readability_index;
-							const smog_readability_index = subitem2.smog_readability_index;
-							let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
-							let totalWords = content.split(' ').length;
-							let keywordDensity = keywordCount / totalWords;
-
-							// Calculate meta tags score
-							let metaTagsScore = 1; 
-							let seoScore = (keywordDensity * 10) + (metaTagsScore * 8) + (automated_readability_index * 3) + (smog_readability_index * 5);
-							let roundedscore = Math.round(seoScore);
-							const mkscoreforbgr = document.getElementById("resulted_score");
-                        	const nwmkscoreforbgr = parseInt(mkscoreforbgr.textContent);
-							if(nwmkscoreforbgr > 0 && nwmkscoreforbgr > roundedscore){
-								const newvalueforseosc = roundedscore + 10;
-								document.getElementById("resulted_score").innerHTML = newvalueforseosc;
-								document.getElementById("edscrore").value = newvalueforseosc;
-							}
-							else{
-								document.getElementById("resulted_score").innerHTML = roundedscore;
-								document.getElementById("edscrore").value = roundedscore;
-							}
-							}
-						}
-						getcolorofscore();
-						// event.preventDefault();
-						// document.getElementById("docsubmit").click();
-                    }
-                    }
-			})
+		document.getElementById("edscrore").value = roundedscore;
+		getcolorofscore();
+		document.getElementById("docsubmit").click();
 	}
 	function getSeoScoreType(content) {
 		const getftitle = document.getElementById("edtrmainval").value;
@@ -1695,7 +1668,6 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
-			console.log("The content is "+parsedData);
 			const upprcontnt = document.getElementById("forscoring").innerText;
 			const wholetosendsc = upprcontnt + " \n" + parsedData;
 			document.getElementById("eddesc").value = wholetosendsc;
@@ -1739,8 +1711,6 @@
 		$('#ttgenshow').show();
 		ttgenm.disabled = true;
 		ttgenm.className = "edtrdisabled";
-		// ttcustomDiv2.style.display = "block";
-		// ttcustomDiv2.style.zIndex = "9999";
 	});
 	tt1.addEventListener("click", function(event) {
 		const divText = this.innerText;

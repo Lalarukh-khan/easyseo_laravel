@@ -119,8 +119,13 @@ class TemplateController extends Controller
 			 *----------------------------------
 			 */
 				//$command = "I need you to act as a SEO enhancement specialist for the content I provide. You will be tasked with integrating strong SEO keywords into my text without altering the overall meaning. Your sole role will be to revise and enhance the SEO strength of my content; you are not to create new content or offer editorial feedback on the content's substance or style. Your revisions should be focused entirely on SEO improvement, ensuring my content is optimized for search engine visibility and ranking. Please remember to use the keywords naturally within the context of my content to maintain readability. The first content I need you to optimize is and at last Provide seo SCORE:- [score/100] :-\n\n";
-				$command = "Please  replace some keywords naturally within the context of my content to maintain readability in below data to increase the seo score and at last Provide seo SCORE:- [score/88-100] :";
-				$command .= '"'.$improve_content.'"';
+				
+				//$command = "Please  replace some keywords naturally within the context of my content to maintain readability in below data to increase the seo score and at last Provide seo SCORE:- [score/88-100] :";
+
+				$command = "I will send you content, Your task is to write this content again and you can just replace a few keywords in the text with better SEO keywords. the content should still read naturally and retain its original message and intent. Write the same numbers of letters as the content. Very Important! Never write more letters than the original content. The content is:";
+                $command .= '"'.$improve_content.'"';
+
+				$command .= "\n  and at last Provide seo SCORE:- [score/88-100] :";
 
 			 /*
 			 *----------------------------------
