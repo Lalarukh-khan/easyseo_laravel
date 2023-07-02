@@ -498,7 +498,6 @@
 			.then(data => {
 				const apiResponse = data;
 				// document.getElementById("output").textContent = JSON.stringify(apiResponse, undefined, 2);
-				console.log("The response it: "+ JSON.stringify(apiResponse));
 				this.list.push({
 					"response": apiResponse
 					})
@@ -1098,10 +1097,10 @@
 	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
-		// var myButtons = document.getElementById(impnumtochk);
-		// if (newsbsmsg.textContent.trim() !== '') {
-		// 	myButtons.disabled = true;
-		// }
+		var myButtons = document.getElementById(impnumtochk);
+		if (newsbsmsg.textContent.trim() !== '') {
+			myButtons.disabled = true;
+		}
 	}
 	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec, tkimploaderouter){
 		var content = document.getElementById(divId).innerText;
@@ -1117,7 +1116,6 @@
 		tkwhlsecs.style.height = "auto";
 		var height = tkwhlsecs.offsetHeight;
 		tkwhlsecs.style.height = originalHeight;
-		console.log("Div Height:", height, "pixels");
 		var nwhght = parseInt(height);
 		tkimploaderotr.style.height = nwhght + "px";
 		tkimploaderotr.style.boxSizing = "border-box";
