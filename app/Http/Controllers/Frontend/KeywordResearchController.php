@@ -226,12 +226,16 @@ class KeywordResearchController extends Controller
 
     private function search_keywords($data)
     {
+        $username = 'lidanex@gmail.com';
+        $password = 'fc53e701e81bec41';
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://api.dataforseo.com/v3/dataforseo_labs/google/keyword_suggestions/live',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
+            CURLOPT_USERPWD => $username . ':' . $password,
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
             CURLOPT_FOLLOWLOCATION => true,
@@ -239,16 +243,12 @@ class KeywordResearchController extends Controller
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => $data,
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Basic d3luaXZlbXV2QG1haWxpbmF0b3IuY29tOjA5YTEyOTE5ZGYzZTBhZGU=',
-                'Content-Type: application/json'
+                'Content-Type: application/json',       
             ),
         ));
-
         $response = curl_exec($curl);
         curl_close($curl);
-
         $data = json_decode($response);
-
         return $data;
         // if (isset($data->status_code) && $data->status_code == 20000 && isset($data->result[0])) {
         //     return $data->result[0];

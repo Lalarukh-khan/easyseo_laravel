@@ -1179,7 +1179,7 @@
         e.preventDefault()
 
         const data = new FormData(atform);
-		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").value;
+		const edtrmainval = document.getElementById("edtrmainval").value;
 
         // user's chatstripe
         // chatContainer1.innerHTML += chatStripe(false, data.get('quescontent'))
@@ -1207,7 +1207,8 @@
             body: JSON.stringify({
                 _token: token,
                 // prompt: "act as a content writer for a blog post. our task is to write full blog content about "+ edtrtrgtkwrd +" and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. After writing in detail about Keywords Then below you need to start writing detailed answers about these questions, firstly mention that question you've been provided then write its detailed answer, the questions are: " + data.get('atqstk'),
-				prompt: "act as a content writer for a blog post. write in detail about "+edtrtrgtkwrd+ "your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + "Atleast write content of minimum 1500 and max 2000 words. After writing all below you need to write detailed answer about these questions, firstly mention that question you've been provided then write its detailed answer, the questions are: " + data.get('atqstk'),
+				// prompt: "act as a content writer for a blog post centered around the blog title "+edtrmainval+ "Your task is to write full blog content and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. write the content of minimum 1500 and maximum 2000 words. Try to write plagiarism free content. Important! After writing in details about keywords then below you need to start writing detailed answers about these questions. Firstly mention that question you've been provided then write its detailed answer. the questions are: " + data.get('atqstk'),
+				prompt: "act as a expert content writer for a blog post for this title  " +edtrmainval+ ". Your task is to write full blog content and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, and You must to use the following exact keywords into your text: " + data.get('atsemtk') + ".  Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. write the content of minimum 1500 and maximum 2000 words. Important! After writing in details about keywords then below you need to start writing detailed answers about these questions. Firstly mention that question you've been provided then write its detailed answer. The questions are:  "+ data.get('atqstk') + ". and don't write the blog title in the start.",
                 old_prompt: data.get('old_prompt')
             })
         })

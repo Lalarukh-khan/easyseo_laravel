@@ -238,7 +238,8 @@ class EditorController extends Controller
         $client = \OpenAI::client($api_key);
 
         $post_array = array(
-            'model'  => 'gpt-3.5-turbo',
+            // 'model'  => 'gpt-3.5-turbo',
+            'model' => 'gpt-3.5-turbo-0613',
             'messages'  => $prompt,
         );
 
