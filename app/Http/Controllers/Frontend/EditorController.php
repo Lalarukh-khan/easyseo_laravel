@@ -79,11 +79,11 @@ class EditorController extends Controller
     }
     public function create()
     {
-        $row = Editor::create();
+        // $row = Editor::create();
 
         $data = array(
             'title' => 'Create Document',
-            'e_id' => $row->id
+            // 'e_id' => $row->id
         );
         return view('front.editor.create')->with($data);
     }

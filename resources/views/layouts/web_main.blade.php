@@ -517,7 +517,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-2 col-sm-1 col-1"></div>
                     <div class="col-lg-6 col-md-8 col-sm-10 col-10 tpbrp">
-                        Save over $1,000, unlock all features, and get 3 bonuses. Get This Deal
+                    Empower Your Business with AI - Discover the Future of SEO Writing
                     </div>
                     <div class="col-lg-3 col-md-2 col-sm-1 col-1"></div>
                 </div>
