@@ -65,7 +65,7 @@ class UserIsActive
             session()->put('authUser',$authUser);
             session()->put('authUserId',$authUserId);
 
-			$premium_plan = '<a href="'.route('web.pricing').'" style="text-decoration:underline; color: #ff750a !important;" class="text-success">premium plan</a>';
+			$premium_plan = '<a href="'.route('user.billing.all').'" style="text-decoration:underline; color: #ff750a !important;" class="text-success">premium plan</a>';
             if (strtotime($currentDate) <= $end_date && $words <= $userPackageWords && $user_package->package_id == 1) {
                 session()->put('package-title-sidebar',__('Trial ends in '.$diff_in_days.' days'));
                 session()->put('package-msg-sidebar',__('You are on a free trial of the Starter plan on monthly billing.'));
