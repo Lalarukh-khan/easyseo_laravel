@@ -44,13 +44,13 @@ class UserIsActive
             $From = $user_package->start_date;
 			$currentDate = date('Y-m-d');
 			$tomorrow = date('Y-m-d', strtotime(' +1 day'));
-            $diff_in_days = now()->diffInDays($user_package->end_date);
+            $diff_in_days = now()->diffInDays($user_package->end_date); 
             // dd($diff_in_days);
 			if($diff_in_days == 0){
 				$planExp = "Your trial expires today.";
 			}
 			else{
-				$planExp = "Your trial expires in <b style='color: #000 !important; font-size: 15px; !important'>".$diff_in_days." days</b>.";
+				$planExp = "Your trial expires in <b style='color: #33302f !important; font-size: 15px; !important'>".$diff_in_days." days</b>.";
 			}
             $end_date = strtotime($user_package->end_date);
 			$words = GptHistory::where([ ['user_id',$authUserId] ])->whereBetween('created_at', [$From,$tomorrow])->sum('total_words');
