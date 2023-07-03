@@ -307,10 +307,7 @@
                                                                         style="font-size: 22px; line-height: 35.2px;">Hi {{ ucfirst($user->full_name) }},
                                                                     </span></p>
                                                                 <p style="font-size: 14px; line-height: 160%;"><span
-                                                                        style="font-size: 18px; line-height: 28.8px;">You're
-                                                                        almost ready to get started. Please click on the
-                                                                        button below to verify your email address and
-                                                                        enjoy exclusive cleaning services with us!
+                                                                        style="font-size: 18px; line-height: 28.8px;">You're almost ready to get started. Please click on the button below to verify your email address.
                                                                     </span></p>
                                                             </div>
 
