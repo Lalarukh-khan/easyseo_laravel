@@ -7,14 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--favicon-->
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDKR7EQ7G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TKDKR7EQ7G');
-</script>
 
 	{{-- <link rel="icon" href="{{asset('admin_assets')}}/assets/images/favicon-32x32.png" type="image/png" /> --}}
 	<!-- loader-->

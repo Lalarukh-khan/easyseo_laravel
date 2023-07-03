@@ -30,12 +30,12 @@
 <div class="container" style="max-width: inherit !important;margin-top: -80px;">
     <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+			<div class="row" id="edtrtp">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-12">
 					<a href="{{route('user.editor.all')}}"><i class="bx bx-arrow-back" id="edtrback"></i></a>
 					<input type="text" name="docname" placeholder="Documents" class="edtdocrname">
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
 					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
 					<button class="edtrhd" id="h2place" onclick="h2placenew()">H2</button>
 					<button class="edtrhd" id="h3place">H3</button>
@@ -55,7 +55,7 @@
 			</div>
 			<br>
 			<!-- style="height:500px; min-height: 100%; display: flex;flex-direction: column;" -->
-			<div class="card" style="min-height: 500px;" id="rw1">
+			<div class="card" style="min-height: 500px; margin-top: 50px;" id="rw1">
 				<div class="card-body edtrtpcard">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12 col-sm-12 brdrleft" data-bs-toggle="modal" data-bs-target="#briefModal">
@@ -72,8 +72,8 @@
 							<!-- <p class="edtrrws" id="edtrtvvalmain">Professional, informat..</p> -->
 							<p class="edtrrws" id="edtrtvvalmain"></p>
 						</div>
-						<div class="col-lg-3 col-md-3 col-12 col-sm-12 edtrbrdrn"
-						data-bs-toggle="modal" data-bs-target="#blogModal">
+						<!-- data-bs-toggle="modal" data-bs-target="#blogModal" -->
+						<div class="col-lg-3 col-md-3 col-12 col-sm-12 edtrbrdrn">
 							<p class="edtrrwt">Type of content</p>
 							<p class="edtrrws" id="takeblgedtraudinp">Blog post</p>
 						</div>
@@ -134,7 +134,7 @@
 				</div>
 			</div>
 			<br>
-			<div class="card" style="min-height: 500px;"  id="rw2">
+			<div class="card" style="min-height: 500px; margin-top: 14px;"  id="rw2">
 				<div class="card-body">
 					<div id="ai-loader" style="text-align:center;display:none;">
 						<div class="sk-circle-fade sk-primary">
@@ -395,7 +395,7 @@
 
 <!-- Brief Modal -->
 <div class="modal" id="briefModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
+  <div class="modal-dialog modal-dialog-centered"><!-- style="align-items: flex-end;" -->
     <div class="modal-content">
       <div class="modal-body">
 		<div style="text-align: right !important;">
@@ -432,7 +432,7 @@
 
 <!-- Tone Modal -->
 <div class="modal" id="toneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
+  <div class="modal-dialog modal-dialog-centered"> <!-- style="align-items: flex-end;" -->
     <div class="modal-content">
       <div class="modal-body">
 		<div style="text-align: right !important;">
@@ -463,7 +463,7 @@
 
 <!-- Blog Modal -->
 <div class="modal" id="blogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
+  <div class="modal-dialog modal-dialog-centered"> <!-- style="align-items: flex-end;" -->
     <div class="modal-content">
       <div class="modal-body">
 		<div style="text-align: right !important;">
@@ -522,6 +522,7 @@
 		else {
 			clearTimeout(typingTimer);
 			typingTimer = setTimeout(function() {
+				document.getElementById("eddesc").value = document.getElementById("forscoring").innerText;
 				getSeoScore(ceinner);
 			}, typingTimeout);
 		}
@@ -605,6 +606,9 @@
                 element.innerHTML += text.charAt(index)
                 index++
                 chatContainer.scrollTop = chatContainer.scrollHeight;
+				if (index === text.length - 1) {
+					callseoscore(text);
+				}
             } else {
                 clearInterval(interval)
             }
@@ -1110,11 +1114,19 @@
                 element.innerHTML += text.charAt(index)
                 index++
                 chatContainer1.scrollTop = chatContainer1.scrollHeight;
+				if (index === text.length - 1) {
+					callseoscore(text);
+				}
             } else {
                 clearInterval(interval)
             }
         }, -100)
     }
+	function callseoscore(val){
+		const upprcontnt = document.getElementById("forscoring").innerText;
+		document.getElementById("eddesc").value = upprcontnt;
+		getSeoScore(upprcontnt);
+	}
     function generateUniqueId1() {
         const timestamp = Date.now();
         const randomNumber = Math.random();
@@ -1173,10 +1185,6 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
-			const upprcontnt = document.getElementById("forscoring").innerText;
-			const wholetosendsc = upprcontnt + " \n" + parsedData;
-			document.getElementById("eddesc").value = wholetosendsc;
-			getSeoScore(wholetosendsc);
 			
         } else {
             const err = await response1.text()
@@ -1230,10 +1238,6 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
-			const upprcontnt = document.getElementById("forscoring").innerText;
-			const wholetosendsc = upprcontnt + " \n" + parsedData;
-			document.getElementById("eddesc").value = wholetosendsc;
-			getSeoScore(wholetosendsc);
 			
         } else {
             const err = await response1.text()
@@ -1442,10 +1446,6 @@
             // const div = document.getElementById(newval);
             // const content = String(parsedData);
 			typeText1(messageDiv, parsedData);
-			const upprcontnt = document.getElementById("forscoring").innerText;
-			const wholetosendsc = upprcontnt + " \n" + parsedData;
-			document.getElementById("eddesc").value = wholetosendsc;
-			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1810,10 +1810,6 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
-			const upprcontnt = document.getElementById("forscoring").innerText;
-			const wholetosendsc = upprcontnt + " \n" + parsedData;
-			document.getElementById("eddesc").value = wholetosendsc;
-			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();

@@ -1304,6 +1304,19 @@ h3 {
 	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
 	opacity: .3 !important;
 }
+#edtrtp{
+	position: fixed; 
+	z-index: 1; 
+	width: -webkit-fill-available; 
+	box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25); 
+	top: 0; 
+	padding: 25px 0px; 
+	background: white; 
+	margin-left: -38px;
+}
+#rw2{
+	border: 3px solid; border-image: linear-gradient(45deg, #ffa600, #003f5c, #58508d, #bc5090, #ff6361,  #003f5c, #58508d, #bc5090, #ff6361, #ffa600) 1;
+}
 .edtrgnrt{
 	background: transparent ;
 	padding: 4px;
@@ -1311,6 +1324,8 @@ h3 {
 	border-radius: 25px;
 	font-size: 13px;
 	color: rgb(48, 48, 48);
+    margin-left: -45px;
+
 }
 .edtrgnrt:hover{
 	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) ;

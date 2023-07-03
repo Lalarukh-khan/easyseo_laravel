@@ -937,7 +937,7 @@
                                                                 data-toggle="collapse" data-target="#collapseTwo"
                                                                 aria-expanded="false" aria-controls="collapseTwo"
                                                                 id="gotwht2">
-                                                                <span id="gotwht2a">What exactly is <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai?</a></span>
+                                                                <span id="gotwht2a">What exactly is easyseo.ai?</span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
                                                                         src="{{asset('front')}}/images/plus-icon.png"
@@ -953,7 +953,7 @@
                                                             <div id="collapseTwo" class="collapse"
                                                                 aria-labelledby="headingTwo" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht2d">
-                                                                    <p class="tas" id="gotwht2b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is the world's best AI writing platform for creating SEO-optimized content that drives organic Google traffic to your website. You can increase traffic, sales, and revenue tenfold by strategically placing keywords, internal links, and external links in your generated content. </p>
+                                                                    <p class="tas" id="gotwht2b"> easyseo.ai is the world's best AI writing platform for creating SEO-optimized content that drives organic Google traffic to your website. You can increase traffic, sales, and revenue tenfold by strategically placing keywords, internal links, and external links in your generated content. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -989,8 +989,7 @@
                                                                 data-toggle="collapse" data-target="#collapseThree"
                                                                 aria-expanded="false" aria-controls="collapseThree"
                                                                 id="gotwht3" id="gotwht3a">
-                                                                <span id="gotwht3a">When will I be able to access
-                                                                <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai?</a></span>
+                                                                <span id="gotwht3a">When will I be able to access easyseo.ai?</span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
                                                                         src="{{asset('front')}}/images/plus-icon.png"
@@ -1016,7 +1015,7 @@
                                                                 data-toggle="collapse" data-target="#collapse4"
                                                                 aria-expanded="false" aria-controls="collapseTwo"
                                                                 id="gotwht4">
-                                                                <span id="gotwht4a">How does <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> help e-commerce
+                                                                <span id="gotwht4a">How does easyseo.ai help e-commerce
                                                                     teams save time <br> and money?</span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
@@ -1033,7 +1032,7 @@
                                                             <div id="collapse4" class="collapse"
                                                                 aria-labelledby="headingTwo" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht4d">
-                                                                    <p class="tas" id="gotwht4b"> Because of our artificial intelligence solution that does the research, brainstorming, and writing for you, your team will spend less time creating and distributing content across your channels. Some <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> users claim to have saved a significant amount of time while increasing clicks and conversions by more than 1000%. </p>
+                                                                    <p class="tas" id="gotwht4b"> Because of our artificial intelligence solution that does the research, brainstorming, and writing for you, your team will spend less time creating and distributing content across your channels. Some easyseo.ai users claim to have saved a significant amount of time while increasing clicks and conversions by more than 1000%. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1043,7 +1042,7 @@
                                                                 data-toggle="collapse" data-target="#collapse5"
                                                                 aria-expanded="false" aria-controls="collapseThree"
                                                                 id="gotwht5">
-                                                                <span id="gotwht5a">Who can benefit from <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai?</a></span>
+                                                                <span id="gotwht5a">Who can benefit from easyseo.ai?</span>
                                                                 <span class="faq-icons">
                                                                     <img alt="Plus" class="plus-icon"
                                                                         src="{{asset('front')}}/images/plus-icon.png"
@@ -1059,8 +1058,7 @@
                                                             <div id="collapse5" class="collapse"
                                                                 aria-labelledby="headingThree" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht5d">
-                                                                    <p class="tas" id="gotwht5b"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is primarily for content creators, whether they are marketers, entrepreneurs, agencies, or students. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> does not require you to be a professional writer. <br>
-                                                                    <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> AI-generated, SEO-optimized content is also used by thousands of professional writers because it helps them brainstorm new ideas, saves them time, increases productivity, and thus generates more revenue. </p>
+                                                                    <p class="tas" id="gotwht5b"> easyseo.ai is primarily for content creators, whether they are marketers, entrepreneurs, agencies, or students. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> does not require you to be a professional writer. <br>easyseo.ai AI-generated, SEO-optimized content is also used by thousands of professional writers because it helps them brainstorm new ideas, saves them time, increases productivity, and thus generates more revenue. </p>
                                                                 </div>
                                                             </div>
                                                         </div>

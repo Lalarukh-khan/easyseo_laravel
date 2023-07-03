@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - {{ config('app.name') }}</title>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TKDKR7EQ7G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TKDKR7EQ7G');
-</script>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('front') }}/auth/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('front') }}/auth/css/fontawesome-all.min.css">
