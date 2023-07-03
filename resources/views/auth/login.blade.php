@@ -48,7 +48,7 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="{{ route('password.request') }}">
+                    <a href="{{ route('forget.password.get') }}">
                       <small>Forgot Password?</small>
                     </a>
                   </div>

@@ -25,7 +25,7 @@
                 </div>
                 @endif
 
-              <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('password.email') }}">
+              <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('forget.password.post') }}">
                 @csrf
 
                 <div class="mb-3">

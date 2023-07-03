@@ -317,3 +317,39 @@ if (!function_exists('limitWords')) {
         return $limitedString;
     }
 }
+
+
+if (!function_exists('mailgunMail')) {
+    function mailGunSendMail($html,$subject,$to)
+    {
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, env('MAILGUN_API_URL','https://api.mailgun.net/v3/easyseo.ai/messages'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Basic ' . env('MAILGUN_SECRET','YXBpOmY0N2Q3ODY4ZTAzN2I0YmVhNjMxMzZiZmJlMTA5NGZiLWU1NDc1Yjg4LWQ1YTYwZDQ2')
+        ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, [
+            'from' => 'support@easyseo.ai',
+            'to' => $to,
+            'subject' => $subject,
+            'html' => $html
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        // Check if the email was sent successfully
+        if ($response === false) {
+            // Handle the error
+            $error = curl_error($ch);
+            return false;
+            // ...
+        } else {
+            // Handle the success
+            // ...
+            return true;
+        }
+    }
+}

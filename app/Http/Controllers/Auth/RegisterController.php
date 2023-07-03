@@ -85,12 +85,14 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
+        // event(new Registered($user = $this->create($request->all())));
 
-        event(new Registered($user = $this->create($request->all())));
-
-        // $user = $this->create($request->all());
+        $user = $this->create($request->all());
         $user->unique_id = mt_rand(111111,999999).now()->timestamp;
         $user->save();
+
+        $mailHtml = view('email.verify-email',['user'=>$user])->render();
+        mailGunSendMail($mailHtml,'Email Verification',$user->email);
 
         if(isset($request->invitation_code) && !empty($request->invitation_code)){
             $workspaceInvite = WorkSpaceInvite::hashidFind($request->invitation_code);

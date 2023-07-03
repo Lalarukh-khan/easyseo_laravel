@@ -18,12 +18,13 @@
                 </a>
               </div>
               <h4 class="mb-2">Reset Password 🔒</h4>
-              <p class="mb-4">for <span class="fw-bold">john.doe@email.com</span></p>
+              <p class="mb-4">for <span class="fw-bold">{{ $email }}</span></p>
               
               <!-- /Logo -->
-              <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('password.update') }}">
+              <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('reset.password.post') }}">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
+                <input type="hidden" name="email" value="{{$email}}">
                 <div class="mb-3">
                   <label for="email" class="form-label">Password</label>
                   <input

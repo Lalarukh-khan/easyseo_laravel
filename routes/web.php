@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+
 
 Auth::routes(['verify' => true]);
 
@@ -221,6 +224,14 @@ Route::namespace('App\Http\Controllers\Auth')->group(function () {
 });
 // web user auth routes end
 
+// routes for forget and reset password
+Route::prefix('auth')->namespace('App\Http\Controller\Auth')->controller('ForgotPasswordController')->group(function(){ 
+    Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('forget-password-email', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+    Route::get('reset-password/{token}/{hash}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+});
+
 // user verify routes
 
 Route::middleware('XSS')->as('verification.')->group(function () {
@@ -228,16 +239,34 @@ Route::middleware('XSS')->as('verification.')->group(function () {
         return view('auth.verify-email')->with('title', 'Verify Email');
     })->middleware('auth:web')->name('notice');
 
-    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-        $request->fulfill();
-        return redirect(route('user.dashboard'));
-    })->middleware(['auth:web', 'signed'])->name('verify');
+    // Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    //     $request->fulfill();
+    //     return redirect(route('user.dashboard'));
+    // })->middleware(['auth:web', 'signed'])->name('verify');
+
+    // Route::post('/email/verification-notification', function (Request $request) {
+    //     $request->user()->sendEmailVerificationNotification();
+    //     return back()->with('message', 'Verification link sent!');
+    // })->middleware(['auth:web', 'throttle:6,1'])->name('send');
+
+    
+    Route::get('/email-verify/{id}', function (Request $request) {
+        $user = User::hashidFind($request->id);
+        $user->email_verified_at = now();
+        $user->save();
+
+        return redirect()->route('user.dashboard');
+    })->middleware(['auth:web'])->name('verify');
+
 
     Route::post('/email/verification-notification', function (Request $request) {
-        $request->user()->sendEmailVerificationNotification();
+        // $request->user()->sendEmailVerificationNotification();
+        $mailHtml = view('email.verify-email',['user'=>$request->user()])->render();
+        mailGunSendMail($mailHtml,'Email Verification',$request->user()->email);
         return back()->with('message', 'Verification link sent!');
-    })->middleware(['auth:web', 'throttle:6,1'])->name('send');
+    })->middleware(['auth:web', 'throttle:6,1'])->name('send'); 
 });
+
 
 // end user verify routes
 
