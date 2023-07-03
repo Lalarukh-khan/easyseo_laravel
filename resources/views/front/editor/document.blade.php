@@ -1,6 +1,15 @@
 @extends('layouts.front')
 @section('after-css')
 <style>
+	header{
+		display: none !important;
+	}
+	.alert-success{
+		display: none !important;
+	}
+	.alert-danger{
+		display: none !important;
+	}
 	body{
 		overflow-y: scroll !important;
 	}
@@ -8,7 +17,7 @@
 @endsection
 @section('content')
 @include('components.flash-message')
-<div class="container" style="max-width: inherit !important;">
+<div class="container" style="max-width: inherit !important;margin-top: -80px;">
     <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
 			<div class="row">
