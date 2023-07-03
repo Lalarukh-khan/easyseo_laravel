@@ -1,6 +1,15 @@
 @extends('layouts.front')
 @section('after-css')
 <style>
+	header{
+		display: none !important;
+	}
+	.alert-success{
+		display: none !important;
+	}
+	.alert-danger{
+		display: none !important;
+	}
 	body{
 		overflow-y: scroll !important;
 	}
@@ -18,7 +27,7 @@
 @section('content')
 @include('components.flash-message')
 
-<div class="container" style="max-width: inherit !important;">
+<div class="container" style="max-width: inherit !important;margin-top: -80px;">
     <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
 			<div class="row">
@@ -364,20 +373,20 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-	  	<h3 class="edtrtrgtrp">Target Keyword Report</h3>
-		<p class="edtrp">Type in the primary keyword the content needs to rank for, and get SEO score and AI recommendations based on:</p>
+	  	<h3 class="edtrtrgtrp">Target Keyword Document</h3>
+		<p class="edtrp">Enter the main keyword that the content should target, and receive an SEO score and AI suggestions based on:</p>
 		<ul>
 			<li class="edtrp">Semantic Keywords</li>
 			<li class="edtrp">Search Intentions</li>
-			<li class="edtrp">Title and heading recommendations</li>
-			<li class="edtrp">Word count target</li>
+			<li class="edtrp">SEO Title Generation</li>
+			<li class="edtrp">SEO Score Calculation</li>
 		</ul>
 		<form id="ajaForm">
 			<div style="text-align: center;">
 				<input type="text" placeholder="Enter Target Keyword..." class="edtrinp" name="prompt" autocomplete="off" class="form-control" required>
-				<button class="edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create report</button>
+				<button class="edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create Document</button>
 			</div>
-			<p class="text-center">Use 1 audit credit to generate</p>
+			<!-- <p class="text-center">Use 1 audit credit to generate</p> -->
 		</form>
       </div> 
     </div>
@@ -1179,7 +1188,7 @@
         e.preventDefault()
 
         const data = new FormData(atform);
-		const edtrmainval = document.getElementById("edtrmainval").value;
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").value;
 
         // user's chatstripe
         // chatContainer1.innerHTML += chatStripe(false, data.get('quescontent'))
@@ -1208,7 +1217,7 @@
                 _token: token,
                 // prompt: "act as a content writer for a blog post. our task is to write full blog content about "+ edtrtrgtkwrd +" and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. After writing in detail about Keywords Then below you need to start writing detailed answers about these questions, firstly mention that question you've been provided then write its detailed answer, the questions are: " + data.get('atqstk'),
 				// prompt: "act as a content writer for a blog post centered around the blog title "+edtrmainval+ "Your task is to write full blog content and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. write the content of minimum 1500 and maximum 2000 words. Try to write plagiarism free content. Important! After writing in details about keywords then below you need to start writing detailed answers about these questions. Firstly mention that question you've been provided then write its detailed answer. the questions are: " + data.get('atqstk'),
-				prompt: "act as a expert content writer for a blog post for this title  " +edtrmainval+ ". Your task is to write full blog content and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, and You must to use the following exact keywords into your text: " + data.get('atsemtk') + ".  Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. write the content of minimum 1500 and maximum 2000 words. Important! After writing in details about keywords then below you need to start writing detailed answers about these questions. Firstly mention that question you've been provided then write its detailed answer. The questions are:  "+ data.get('atqstk') + ". and don't write the blog title in the start.",
+				prompt: 'act as an expert content writer and write around 1500+ words about '+edtrtrgtkwrd+ ' your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: ' + data.get('atsemtk') + '. After writing in detail about this below you need to write detailed answer about these questions.  Firstly mention that question you have been provided then write its detailed answer. the questions are: ' + data.get('atqstk') +'. Remember do not write title in content.',
                 old_prompt: data.get('old_prompt')
             })
         })

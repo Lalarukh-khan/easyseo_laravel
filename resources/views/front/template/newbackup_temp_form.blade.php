@@ -483,16 +483,16 @@
 				"text": content,
 				"language_name": "English (United States)"
 			});
+			const nwpostarray = JSON.stringify(post_array);
 			const username = 'lidanex@gmail.com';
 			const password = 'fc53e701e81bec41';
-
 			fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': 'Basic ' + btoa(username + ':' + password)
 			},
-			body: JSON.stringify(post_array)
+			body:  JSON.stringify(post_array)
 			})
 			.then(response => response.json())
 			.then(data => {
@@ -1097,10 +1097,10 @@
 	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
-		// var myButtons = document.getElementById(impnumtochk);
-		// if (newsbsmsg.textContent.trim() !== '') {
-		// 	myButtons.disabled = true;
-		// }
+		var myButtons = document.getElementById(impnumtochk);
+		if (newsbsmsg.textContent.trim() !== '') {
+			myButtons.disabled = true;
+		}
 	}
 	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec, tkimploaderouter){
 		var content = document.getElementById(divId).innerText;
@@ -1116,20 +1116,16 @@
 		tkwhlsecs.style.height = "auto";
 		var height = tkwhlsecs.offsetHeight;
 		tkwhlsecs.style.height = originalHeight;
-		console.log("Div Height:", height, "pixels");
 		var nwhght = parseInt(height);
 		tkimploaderotr.style.height = nwhght + "px";
 		tkimploaderotr.style.boxSizing = "border-box";
-		tkimploaderotr.style.paddingTop = "15%";
+		// tkimploaderotr.style.paddingTop = "15%";
+		tkimploaderotr.style.display = "flex";
+		tkimploaderotr.style.marginLeft = "-90%";
 		var bdhsbf = tkimploaderotr.style.height;
 		tkimploaders.style.display = "block";
 		ImpScores.style.display = "none";
 		tkwhlsecs.style.display = "none";
-		// if(tkwhlsec == "indvdlsec0"){
-		// 	var rstimpsd = document.getElementById("resulted_phrase");
-		// 	rstimpsd.style.display = "none";
-		// }
-		// CImpScoreTagtk.style.display = 'none !important';
 		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec, tkimploaderouter);
 	}
 	function showHiddenDiv(divId, supidtk) {
