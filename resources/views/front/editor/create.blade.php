@@ -118,7 +118,7 @@
 							<p class="edtror">or</p>
 							<form id="semform" style="display: inline-block;">
 							<input type="hidden" id="semmainrval" name="semmainrval">
-							<button type="submit" class="edtrjstwm" id="edtrjstwm">Write more</button>
+							<button type="submit" class="btn btn-info edtrjstwm" id="edtrjstwm">Write more</button>
 							</form>
 						</div>
 					</div>
@@ -347,7 +347,7 @@
 </form>
 <form id="savedoc">
 	@csrf
-	<input type="text" value="{{ $e_id }}" readonly name="e_id" style="display: none !important;">
+	{{-- <input type="text" value="{{ $e_id }}" readonly name="e_id" style="display: none !important;"> --}}
 	<input type="text" name="edtitle" id="edtitle" style="display: none !important;">
 	<textarea name="eddesc" id="eddesc" style="display: none !important;"></textarea>
 	<input type="text" name="edwords" id="edwords" style="display: none !important;">
@@ -381,10 +381,11 @@
 			<li class="edtrp">SEO Title Generation</li>
 			<li class="edtrp">SEO Score Calculation</li>
 		</ul>
+		<p id="wordserror" class="text-center"></p>
 		<form id="ajaForm">
 			<div style="text-align: center;">
 				<input type="text" placeholder="Enter Target Keyword..." class="edtrinp" name="prompt" autocomplete="off" class="form-control" required>
-				<button class="edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create Document</button>
+				<button class="btn btn-info  edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create Document</button>
 			</div>
 			<!-- <p class="text-center">Use 1 audit credit to generate</p> -->
 		</form>
@@ -507,6 +508,18 @@
 			$('.edtrdropdownlist').hide();
 			}
 		});
+		const wordserror = document.getElementById("wordserror");
+		const wordsalert = document.querySelector('.alert-danger');
+			const trmalrt = wordsalert.innerHTML;
+			if(trmalrt !== ""){
+				var alrthidemodal = document.getElementById("hidemodal");
+				alrthidemodal.disabled = true;
+				const alrtindex = trmalrt.indexOf("<button");
+				if (alrtindex !== -1) {
+					const alerttrimmedContent = trmalrt.substring(0, alrtindex);
+					wordserror.innerHTML = alerttrimmedContent;
+				}
+			}
 	});
 	let typingTimer;
     const typingTimeout = 3000; // Set the timeout duration in milliseconds
@@ -533,7 +546,7 @@
     }
 
 	var edtrmainval = document.getElementById("edtrmainval");
-	var customDiv = document.getElementById("ttcustomDiv");
+	var customDiv = document.getElementById("ttcustomDiv")
 	edtrmainval.addEventListener("click", function() {
 		ttcustomDiv.style.display = "block";
 		ttcustomDiv.style.zIndex = "9999";
@@ -649,254 +662,8 @@
         const messageDiv = document.getElementById(uniqueId);
         // messageDiv.innerHTML = "..."
         loader(messageDiv)
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                _token: token,
-                prompt: 'write firstly 9 questions and then 11 semantic keywords with maximum 2 words limit in ordered list about ' + data.get('prompt'),
-                old_prompt: data.get('old_prompt')
-            })
-        })
-		const majorprompt = data.get('prompt');
-		const majoroldprompt = data.get('old_prompt');
-
-        clearInterval(loadInterval)
-        messageDiv.innerHTML = " "
-
-			// $('#ai-loader').hide();
-			// $('#ans_div').show();
-            // const data = await response.json();
-            // const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-			// typeText(messageDiv, parsedData);
-            // $('#old_prompt').val(data.old_prompt);
-			// extrcttngrsltdata.innerHTML = parsedData;
-			if (response.ok) {
-					$('#ai-loader').hide();
-					$('#ans_div').show();
-					const data = await response.json();
-					const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
-					$('#old_prompt').val(data.old_prompt);
-					// const div = document.getElementById(newval);
-					document.getElementById("edtrtrgtkwrd").innerHTML = majorprompt;
-					const content = String(parsedData);
-					const startWord1 = "1.";
-					const endWord1 = "9.";
-					const startWord2 = "1.";
-					const endWord2 = "11.";
-					const startIndex1 = content.indexOf(startWord1);
-					const endIndex1 = content.indexOf(endWord1, startIndex1 + startWord1.length);
-
-					const startIndex2 = content.indexOf(startWord2, endIndex1 + endWord1.length);
-					const endIndex2 = content.indexOf(endWord2, startIndex2 + startWord2.length);
-
-					if (
-						startIndex1 !== -1 &&
-						endIndex1 !== -1 &&
-						startIndex2 !== -1 &&
-						endIndex2 !== -1 &&
-						endIndex1 < startIndex2
-					) {
-						const startIndex = content.indexOf('"');
-						const endIndex = content.lastIndexOf('"');
-					
-						if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
-							const trimmedContent = content.substring(startIndex + 1, endIndex);
-						}
-						const trimmedContent1 = content.substring(startIndex1, endIndex1 + endWord1.length);
-						const trimmedContent2 = content.substring(startIndex2, endIndex2 + endWord2.length);
-						// const final_text = trimmedContent1 + trimmedContent2;
-						document.getElementById("semantics").innerHTML = trimmedContent2;
-						document.getElementById("questions").innerHTML = trimmedContent1;
-						const forscoring = document.getElementById("forscoring");
-						const upprcontnt = forscoring.innerText;
-						document.getElementById("eddesc").value = upprcontnt;
-						if (upprcontnt == ''){
-								upprcontnt.innerText = "nothing";
-								getSeoScore(upprcontnt);
-						}
-						else{
-							getSeoScore(upprcontnt);
-						}
-						// const score =  content;
-						
-
-						const semantics = document.getElementById("semantics").innerHTML;
-						startText2_1 = "1.";
-						endText2_1 = "2.";
-						const startIndex2_1 = semantics.indexOf(startText2_1);
-						const endIndex2_1 = semantics.indexOf(endText2_1);
-						if (startIndex2_1 !== -1 && endIndex2_1 !== -1 && startIndex2_1 < endIndex2_1) {
-							const trimmedContent2_1 = semantics.substring(startIndex2_1 + startText2_1.length, endIndex2_1);
-							const sem1 = document.getElementById("sem1");
-							sem1.innerHTML = trimmedContent2_1;
-						}
-						startText2_2 = "2.";
-						endText2_2 = "3.";
-						const startIndex2_2 = semantics.indexOf(startText2_2);
-						const endIndex2_2 = semantics.indexOf(endText2_2);
-						if (startIndex2_2 !== -1 && endIndex2_2 !== -1 && startIndex2_2 < endIndex2_2) {
-							const trimmedContent2_2 = semantics.substring(startIndex2_2 + startText2_2.length, endIndex2_2);
-							const sem2 = document.getElementById("sem2");
-							sem2.innerHTML = trimmedContent2_2;
-						}
-						startText2_3 = "3.";
-						endText2_3 = "4.";
-						const startIndex2_3 = semantics.indexOf(startText2_3);
-						const endIndex2_3 = semantics.indexOf(endText2_3);
-						if (startIndex2_3 !== -1 && endIndex2_3 !== -1 && startIndex2_3 < endIndex2_3) {
-							const trimmedContent2_3 = semantics.substring(startIndex2_3 + startText2_3.length, endIndex2_3);
-							const sem3 = document.getElementById("sem3");
-							sem3.innerHTML = trimmedContent2_3;
-						}
-						startText2_4 = "4.";
-						endText2_4 = "5.";
-						const startIndex2_4 = semantics.indexOf(startText2_4);
-						const endIndex2_4 = semantics.indexOf(endText2_4);
-						if (startIndex2_4 !== -1 && endIndex2_4 !== -1 && startIndex2_4 < endIndex2_4) {
-							const trimmedContent2_4 = semantics.substring(startIndex2_4 + startText2_4.length, endIndex2_4);
-							const sem4 = document.getElementById("sem4");
-							sem4.innerHTML = trimmedContent2_4;
-						}
-						startText2_5 = "5.";
-						endText2_5 = "6.";
-						const startIndex2_5 = semantics.indexOf(startText2_5);
-						const endIndex2_5 = semantics.indexOf(endText2_5);
-						if (startIndex2_5 !== -1 && endIndex2_5 !== -1 && startIndex2_5 < endIndex2_5) {
-							const trimmedContent2_5 = semantics.substring(startIndex2_5 + startText2_5.length, endIndex2_5);
-							const sem5 = document.getElementById("sem5");
-							sem5.innerHTML = trimmedContent2_5;
-						}
-						startText2_6 = "6.";
-						endText2_6 = "7.";
-						const startIndex2_6 = semantics.indexOf(startText2_6);
-						const endIndex2_6 = semantics.indexOf(endText2_6);
-						if (startIndex2_6 !== -1 && endIndex2_6 !== -1 && startIndex2_6 < endIndex2_6) {
-							const trimmedContent2_6 = semantics.substring(startIndex2_6 + startText2_6.length, endIndex2_6);
-							const sem6 = document.getElementById("sem6");
-							sem6.innerHTML = trimmedContent2_6;
-						}
-						startText2_7 = "7.";
-						endText2_7 = "8.";
-						const startIndex2_7 = semantics.indexOf(startText2_7);
-						const endIndex2_7 = semantics.indexOf(endText2_7);
-						if (startIndex2_7 !== -1 && endIndex2_7 !== -1 && startIndex2_7 < endIndex2_7) {
-							const trimmedContent2_7 = semantics.substring(startIndex2_7 + startText2_7.length, endIndex2_7);
-							const sem7 = document.getElementById("sem7");
-							sem7.innerHTML = trimmedContent2_7;
-						}
-						startText2_8 = "8.";
-						endText2_8 = "9.";
-						const startIndex2_8 = semantics.indexOf(startText2_8);
-						const endIndex2_8 = semantics.indexOf(endText2_8);
-						if (startIndex2_8 !== -1 && endIndex2_8 !== -1 && startIndex2_8 < endIndex2_8) {
-							const trimmedContent2_8 = semantics.substring(startIndex2_8 + startText2_8.length, endIndex2_8);
-							const sem8 = document.getElementById("sem8");
-							sem8.innerHTML = trimmedContent2_8;
-						}
-						startText2_9 = "9.";
-						endText2_9 = "10.";
-						const startIndex2_9 = semantics.indexOf(startText2_9);
-						const endIndex2_9 = semantics.indexOf(endText2_9);
-						if (startIndex2_9 !== -1 && endIndex2_9 !== -1 && startIndex2_8 < endIndex2_9) {
-							const trimmedContent2_9 = semantics.substring(startIndex2_9 + startText2_9.length, endIndex2_9);
-							const sem9 = document.getElementById("sem9");
-							sem9.innerHTML = trimmedContent2_9;
-						}
-						startText2_10 = "10.";
-						endText2_10 = "11.";
-						const startIndex2_10 = semantics.indexOf(startText2_10);
-						const endIndex2_10 = semantics.indexOf(endText2_10);
-						if (startIndex2_10 !== -1 && endIndex2_10 !== -1 && startIndex2_10 < endIndex2_10) {
-							const trimmedContent2_10 = semantics.substring(startIndex2_10 + startText2_10.length, endIndex2_10);
-							const sem10 = document.getElementById("sem10");
-							sem10.innerHTML = trimmedContent2_10;
-						}
-						//QUESTIONS SECTION STARTS FROM HERE
-						const questions = document.getElementById("questions").innerHTML;
-						startText1_1 = "1.";
-						endText1_1 = "2.";
-						const startIndex1_1 = questions.indexOf(startText1_1);
-						const endIndex1_1 = questions.indexOf(endText1_1);
-						if (startIndex1_1 !== -1 && endIndex1_1 !== -1 && startIndex1_1 < endIndex1_1) {
-							const trimmedContent1_1 = questions.substring(startIndex1_1 + startText1_1.length, endIndex1_1);
-							const que1 = document.getElementById("que1");
-							que1.innerHTML = trimmedContent1_1;
-						}
-						startText1_2 = "2.";
-						endText1_2 = "3.";
-						const startIndex1_2 = questions.indexOf(startText1_2);
-						const endIndex1_2 = questions.indexOf(endText1_2);
-						if (startIndex1_2 !== -1 && endIndex1_2 !== -1 && startIndex1_2 < endIndex1_2) {
-							const trimmedContent1_2 = questions.substring(startIndex1_2 + startText1_2.length, endIndex1_2);
-							const que2 = document.getElementById("que2");
-							que2.innerHTML = trimmedContent1_2;
-						}
-						startText1_3 = "3.";
-						endText1_3 = "4.";
-						const startIndex1_3 = questions.indexOf(startText1_3);
-						const endIndex1_3 = questions.indexOf(endText1_3);
-						if (startIndex1_3 !== -1 && endIndex1_3 !== -1 && startIndex1_3 < endIndex1_3) {
-							const trimmedContent1_3 = questions.substring(startIndex1_3 + startText1_3.length, endIndex1_3);
-							const que3 = document.getElementById("que3");
-							que3.innerHTML = trimmedContent1_3;
-						}
-						startText1_4 = "4.";
-						endText1_4 = "5.";
-						const startIndex1_4 = questions.indexOf(startText1_4);
-						const endIndex1_4 = questions.indexOf(endText1_4);
-						if (startIndex1_4 !== -1 && endIndex1_4 !== -1 && startIndex1_4 < endIndex1_4) {
-							const trimmedContent1_4 = questions.substring(startIndex1_4 + startText1_4.length, endIndex1_4);
-							const que4 = document.getElementById("que4");
-							que4.innerHTML = trimmedContent1_4;
-						}
-						startText1_5 = "5.";
-						endText1_5 = "6.";
-						const startIndex1_5 = questions.indexOf(startText1_5);
-						const endIndex1_5 = questions.indexOf(endText1_5);
-						if (startIndex1_5 !== -1 && endIndex1_5 !== -1 && startIndex1_5 < endIndex1_5) {
-							const trimmedContent1_5 = questions.substring(startIndex1_5 + startText1_5.length, endIndex1_5);
-							const que5 = document.getElementById("que5");
-							que5.innerHTML = trimmedContent1_5;
-						}
-						startText1_6 = "6.";
-						endText1_6 = "7.";
-						const startIndex1_6 = questions.indexOf(startText1_6);
-						const endIndex1_6 = questions.indexOf(endText1_6);
-						if (startIndex1_6 !== -1 && endIndex1_6 !== -1 && startIndex1_6 < endIndex1_6) {
-							const trimmedContent1_6 = questions.substring(startIndex1_6 + startText1_6.length, endIndex1_6);
-							const que6 = document.getElementById("que6");
-							que6.innerHTML = trimmedContent1_6;
-						}
-						startText1_7 = "7.";
-						endText1_7 = "8.";
-						const startIndex1_7 = questions.indexOf(startText1_7);
-						const endIndex1_7 = questions.indexOf(endText1_7);
-						if (startIndex1_7 !== -1 && endIndex1_7 !== -1 && startIndex1_7 < endIndex1_7) {
-							const trimmedContent1_7 = questions.substring(startIndex1_7 + startText1_7.length, endIndex1_7);
-							const que7 = document.getElementById("que7");
-							que7.innerHTML = trimmedContent1_7;
-						}
-						startText1_8 = "8.";
-						endText1_8 = "9.";
-						const startIndex1_8 = questions.indexOf(startText1_8);
-						const endIndex1_8 = questions.indexOf(endText1_8);
-						if (startIndex1_8 !== -1 && endIndex1_8 !== -1 && startIndex1_8 < endIndex1_8) {
-							const trimmedContent1_8 = questions.substring(startIndex1_8 + startText1_8.length, endIndex1_8);
-							const que8 = document.getElementById("que8");
-							que8.innerHTML = trimmedContent1_8;
-						}
-						const rw2 = document.getElementById("rw2");
-						var elementStyle2 = window.getComputedStyle(rw2);
-						const hght2 = elementStyle2.height;
-						const numhght2 = parseFloat(hght2);
-						const rw1 = document.getElementById("rw1");
-						const smofhghtrw = numhght2 + "px";
-						rw1.style.minHeight = smofhghtrw;
-
-						
+					const majorprompt = data.get('prompt');
+					const majoroldprompt = data.get('old_prompt');
 					const response2 = await fetch(apiUrl, {
 						method: 'POST',
 						headers: {
@@ -1005,23 +772,263 @@
 							const tt10 = document.getElementById("tt10");
 							tt10.innerHTML = trimmedContentt_10;
 						}
-					}
+
+						const response = await fetch(apiUrl, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							_token: token,
+							prompt: 'write firstly 9 questions and then 11 semantic keywords with maximum 2 words limit in ordered list about ' + majorprompt,
+							old_prompt: majoroldprompt
+							})
+						})
+
+						clearInterval(loadInterval)
+						messageDiv.innerHTML = " "
+
+						if (response.ok) {
+						$('#ai-loader').hide();
+						$('#ans_div').show();
+						const data = await response.json();
+						const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+						$('#old_prompt').val(data.old_prompt);
+						// const div = document.getElementById(newval);
+						document.getElementById("edtrtrgtkwrd").innerHTML = majorprompt;
+						const content = String(parsedData);
+						const startWord1 = "1.";
+						const endWord1 = "9.";
+						const startWord2 = "1.";
+						const endWord2 = "11.";
+						const startIndex1 = content.indexOf(startWord1);
+						const endIndex1 = content.indexOf(endWord1, startIndex1 + startWord1.length);
+
+						const startIndex2 = content.indexOf(startWord2, endIndex1 + endWord1.length);
+						const endIndex2 = content.indexOf(endWord2, startIndex2 + startWord2.length);
+
+						if (
+							startIndex1 !== -1 &&
+							endIndex1 !== -1 &&
+							startIndex2 !== -1 &&
+							endIndex2 !== -1 &&
+							endIndex1 < startIndex2
+						) {
+							const startIndex = content.indexOf('"');
+							const endIndex = content.lastIndexOf('"');
+						
+							if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
+								const trimmedContent = content.substring(startIndex + 1, endIndex);
+							}
+							const trimmedContent1 = content.substring(startIndex1, endIndex1 + endWord1.length);
+							const trimmedContent2 = content.substring(startIndex2, endIndex2 + endWord2.length);
+							// const final_text = trimmedContent1 + trimmedContent2;
+							document.getElementById("semantics").innerHTML = trimmedContent2;
+							document.getElementById("questions").innerHTML = trimmedContent1;
+							const forscoring = document.getElementById("forscoring");
+							const upprcontnt = forscoring.innerText;
+							document.getElementById("eddesc").value = upprcontnt;
+							if (upprcontnt == ''){
+									upprcontnt.innerText = "nothing";
+									getSeoScore(upprcontnt);
+							}
+							else{
+								getSeoScore(upprcontnt);
+							}
+							// const score =  content;
+							
+
+							const semantics = document.getElementById("semantics").innerHTML;
+							startText2_1 = "1.";
+							endText2_1 = "2.";
+							const startIndex2_1 = semantics.indexOf(startText2_1);
+							const endIndex2_1 = semantics.indexOf(endText2_1);
+							if (startIndex2_1 !== -1 && endIndex2_1 !== -1 && startIndex2_1 < endIndex2_1) {
+								const trimmedContent2_1 = semantics.substring(startIndex2_1 + startText2_1.length, endIndex2_1);
+								const sem1 = document.getElementById("sem1");
+								sem1.innerHTML = trimmedContent2_1;
+							}
+							startText2_2 = "2.";
+							endText2_2 = "3.";
+							const startIndex2_2 = semantics.indexOf(startText2_2);
+							const endIndex2_2 = semantics.indexOf(endText2_2);
+							if (startIndex2_2 !== -1 && endIndex2_2 !== -1 && startIndex2_2 < endIndex2_2) {
+								const trimmedContent2_2 = semantics.substring(startIndex2_2 + startText2_2.length, endIndex2_2);
+								const sem2 = document.getElementById("sem2");
+								sem2.innerHTML = trimmedContent2_2;
+							}
+							startText2_3 = "3.";
+							endText2_3 = "4.";
+							const startIndex2_3 = semantics.indexOf(startText2_3);
+							const endIndex2_3 = semantics.indexOf(endText2_3);
+							if (startIndex2_3 !== -1 && endIndex2_3 !== -1 && startIndex2_3 < endIndex2_3) {
+								const trimmedContent2_3 = semantics.substring(startIndex2_3 + startText2_3.length, endIndex2_3);
+								const sem3 = document.getElementById("sem3");
+								sem3.innerHTML = trimmedContent2_3;
+							}
+							startText2_4 = "4.";
+							endText2_4 = "5.";
+							const startIndex2_4 = semantics.indexOf(startText2_4);
+							const endIndex2_4 = semantics.indexOf(endText2_4);
+							if (startIndex2_4 !== -1 && endIndex2_4 !== -1 && startIndex2_4 < endIndex2_4) {
+								const trimmedContent2_4 = semantics.substring(startIndex2_4 + startText2_4.length, endIndex2_4);
+								const sem4 = document.getElementById("sem4");
+								sem4.innerHTML = trimmedContent2_4;
+							}
+							startText2_5 = "5.";
+							endText2_5 = "6.";
+							const startIndex2_5 = semantics.indexOf(startText2_5);
+							const endIndex2_5 = semantics.indexOf(endText2_5);
+							if (startIndex2_5 !== -1 && endIndex2_5 !== -1 && startIndex2_5 < endIndex2_5) {
+								const trimmedContent2_5 = semantics.substring(startIndex2_5 + startText2_5.length, endIndex2_5);
+								const sem5 = document.getElementById("sem5");
+								sem5.innerHTML = trimmedContent2_5;
+							}
+							startText2_6 = "6.";
+							endText2_6 = "7.";
+							const startIndex2_6 = semantics.indexOf(startText2_6);
+							const endIndex2_6 = semantics.indexOf(endText2_6);
+							if (startIndex2_6 !== -1 && endIndex2_6 !== -1 && startIndex2_6 < endIndex2_6) {
+								const trimmedContent2_6 = semantics.substring(startIndex2_6 + startText2_6.length, endIndex2_6);
+								const sem6 = document.getElementById("sem6");
+								sem6.innerHTML = trimmedContent2_6;
+							}
+							startText2_7 = "7.";
+							endText2_7 = "8.";
+							const startIndex2_7 = semantics.indexOf(startText2_7);
+							const endIndex2_7 = semantics.indexOf(endText2_7);
+							if (startIndex2_7 !== -1 && endIndex2_7 !== -1 && startIndex2_7 < endIndex2_7) {
+								const trimmedContent2_7 = semantics.substring(startIndex2_7 + startText2_7.length, endIndex2_7);
+								const sem7 = document.getElementById("sem7");
+								sem7.innerHTML = trimmedContent2_7;
+							}
+							startText2_8 = "8.";
+							endText2_8 = "9.";
+							const startIndex2_8 = semantics.indexOf(startText2_8);
+							const endIndex2_8 = semantics.indexOf(endText2_8);
+							if (startIndex2_8 !== -1 && endIndex2_8 !== -1 && startIndex2_8 < endIndex2_8) {
+								const trimmedContent2_8 = semantics.substring(startIndex2_8 + startText2_8.length, endIndex2_8);
+								const sem8 = document.getElementById("sem8");
+								sem8.innerHTML = trimmedContent2_8;
+							}
+							startText2_9 = "9.";
+							endText2_9 = "10.";
+							const startIndex2_9 = semantics.indexOf(startText2_9);
+							const endIndex2_9 = semantics.indexOf(endText2_9);
+							if (startIndex2_9 !== -1 && endIndex2_9 !== -1 && startIndex2_8 < endIndex2_9) {
+								const trimmedContent2_9 = semantics.substring(startIndex2_9 + startText2_9.length, endIndex2_9);
+								const sem9 = document.getElementById("sem9");
+								sem9.innerHTML = trimmedContent2_9;
+							}
+							startText2_10 = "10.";
+							endText2_10 = "11.";
+							const startIndex2_10 = semantics.indexOf(startText2_10);
+							const endIndex2_10 = semantics.indexOf(endText2_10);
+							if (startIndex2_10 !== -1 && endIndex2_10 !== -1 && startIndex2_10 < endIndex2_10) {
+								const trimmedContent2_10 = semantics.substring(startIndex2_10 + startText2_10.length, endIndex2_10);
+								const sem10 = document.getElementById("sem10");
+								sem10.innerHTML = trimmedContent2_10;
+							}
+							//QUESTIONS SECTION STARTS FROM HERE
+							const questions = document.getElementById("questions").innerHTML;
+							startText1_1 = "1.";
+							endText1_1 = "2.";
+							const startIndex1_1 = questions.indexOf(startText1_1);
+							const endIndex1_1 = questions.indexOf(endText1_1);
+							if (startIndex1_1 !== -1 && endIndex1_1 !== -1 && startIndex1_1 < endIndex1_1) {
+								const trimmedContent1_1 = questions.substring(startIndex1_1 + startText1_1.length, endIndex1_1);
+								const que1 = document.getElementById("que1");
+								que1.innerHTML = trimmedContent1_1;
+							}
+							startText1_2 = "2.";
+							endText1_2 = "3.";
+							const startIndex1_2 = questions.indexOf(startText1_2);
+							const endIndex1_2 = questions.indexOf(endText1_2);
+							if (startIndex1_2 !== -1 && endIndex1_2 !== -1 && startIndex1_2 < endIndex1_2) {
+								const trimmedContent1_2 = questions.substring(startIndex1_2 + startText1_2.length, endIndex1_2);
+								const que2 = document.getElementById("que2");
+								que2.innerHTML = trimmedContent1_2;
+							}
+							startText1_3 = "3.";
+							endText1_3 = "4.";
+							const startIndex1_3 = questions.indexOf(startText1_3);
+							const endIndex1_3 = questions.indexOf(endText1_3);
+							if (startIndex1_3 !== -1 && endIndex1_3 !== -1 && startIndex1_3 < endIndex1_3) {
+								const trimmedContent1_3 = questions.substring(startIndex1_3 + startText1_3.length, endIndex1_3);
+								const que3 = document.getElementById("que3");
+								que3.innerHTML = trimmedContent1_3;
+							}
+							startText1_4 = "4.";
+							endText1_4 = "5.";
+							const startIndex1_4 = questions.indexOf(startText1_4);
+							const endIndex1_4 = questions.indexOf(endText1_4);
+							if (startIndex1_4 !== -1 && endIndex1_4 !== -1 && startIndex1_4 < endIndex1_4) {
+								const trimmedContent1_4 = questions.substring(startIndex1_4 + startText1_4.length, endIndex1_4);
+								const que4 = document.getElementById("que4");
+								que4.innerHTML = trimmedContent1_4;
+							}
+							startText1_5 = "5.";
+							endText1_5 = "6.";
+							const startIndex1_5 = questions.indexOf(startText1_5);
+							const endIndex1_5 = questions.indexOf(endText1_5);
+							if (startIndex1_5 !== -1 && endIndex1_5 !== -1 && startIndex1_5 < endIndex1_5) {
+								const trimmedContent1_5 = questions.substring(startIndex1_5 + startText1_5.length, endIndex1_5);
+								const que5 = document.getElementById("que5");
+								que5.innerHTML = trimmedContent1_5;
+							}
+							startText1_6 = "6.";
+							endText1_6 = "7.";
+							const startIndex1_6 = questions.indexOf(startText1_6);
+							const endIndex1_6 = questions.indexOf(endText1_6);
+							if (startIndex1_6 !== -1 && endIndex1_6 !== -1 && startIndex1_6 < endIndex1_6) {
+								const trimmedContent1_6 = questions.substring(startIndex1_6 + startText1_6.length, endIndex1_6);
+								const que6 = document.getElementById("que6");
+								que6.innerHTML = trimmedContent1_6;
+							}
+							startText1_7 = "7.";
+							endText1_7 = "8.";
+							const startIndex1_7 = questions.indexOf(startText1_7);
+							const endIndex1_7 = questions.indexOf(endText1_7);
+							if (startIndex1_7 !== -1 && endIndex1_7 !== -1 && startIndex1_7 < endIndex1_7) {
+								const trimmedContent1_7 = questions.substring(startIndex1_7 + startText1_7.length, endIndex1_7);
+								const que7 = document.getElementById("que7");
+								que7.innerHTML = trimmedContent1_7;
+							}
+							startText1_8 = "8.";
+							endText1_8 = "9.";
+							const startIndex1_8 = questions.indexOf(startText1_8);
+							const endIndex1_8 = questions.indexOf(endText1_8);
+							if (startIndex1_8 !== -1 && endIndex1_8 !== -1 && startIndex1_8 < endIndex1_8) {
+								const trimmedContent1_8 = questions.substring(startIndex1_8 + startText1_8.length, endIndex1_8);
+								const que8 = document.getElementById("que8");
+								que8.innerHTML = trimmedContent1_8;
+							}
+							const rw2 = document.getElementById("rw2");
+							var elementStyle2 = window.getComputedStyle(rw2);
+							const hght2 = elementStyle2.height;
+							const numhght2 = parseFloat(hght2);
+							const rw1 = document.getElementById("rw1");
+							const smofhghtrw = numhght2 + "px";
+							rw1.style.minHeight = smofhghtrw;
+
+					} 
 					else {
-						const err = await response2.text();
+						// const err = await response.text()
+						$('#ai-loader').hide();
+						$('#ans_div').show();
+						$('#norspnse').hide();
+						$('#sww').show();
 						messageDiv.innerHTML = "Something went wrong"
 						alert(err)
 					}
+				}
+			else {
+				const err = await response2.text();
+				messageDiv.innerHTML = "Something went wrong"
+				alert(err)
+			}
 					}
-		} 
-		else {
-			const err = await response.text()
-			$('#ai-loader').hide();
-			$('#ans_div').show();
-			$('#norspnse').hide();
-			$('#sww').show();
-			messageDiv.innerHTML = "Something went wrong"
-			alert(err)
-		}
+		
     }
 
     form.addEventListener('submit', handleSubmit_main)
@@ -1534,7 +1541,7 @@
 		document.getElementById("edalltitles").value = getfalltitles;
 		document.getElementById("edscrore").value = roundedscore;
 		getcolorofscore();
-		document.getElementById("docsubmit").click();
+		// document.getElementById("docsubmit").click();
 	}
 	function getSeoScoreType(content) {
 		const getftitle = document.getElementById("edtrmainval").value;
@@ -1618,7 +1625,6 @@
 						}
 						getcolorofscore();
 						// event.preventDefault();
-						// document.getElementById("docsubmit").click();
                     }
                     }
 			})
@@ -1804,6 +1810,8 @@
         messageDiv.innerHTML = " "
 
         if (response1.ok) {
+			const edtrjstwm = document.getElementById("edtrjstwm");
+			edtrjstwm.disabled = true;
 			// $('#ai-loader').hide();
             // $('#ans_div').show();
             const data = await response1.json();
@@ -1822,7 +1830,6 @@
     }
 
     semform.addEventListener('submit', handleSubmit3)
-
     semform.addEventListener('keyup', (e) => {
         if (e.keyCode === 13) {
             handleSubmit3(e)

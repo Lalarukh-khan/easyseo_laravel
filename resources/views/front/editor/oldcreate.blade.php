@@ -1,6 +1,15 @@
 @extends('layouts.front')
 @section('after-css')
 <style>
+	header{
+		display: none !important;
+	}
+	.alert-success{
+		display: none !important;
+	}
+	.alert-danger{
+		display: none !important;
+	}
 	body{
 		overflow-y: scroll !important;
 	}
@@ -18,15 +27,15 @@
 @section('content')
 @include('components.flash-message')
 
-<div class="container" style="max-width: inherit !important;">
+<div class="container" style="max-width: inherit !important;margin-top: -80px;">
     <div class="row edtrwholerow">
 		<div class="col-xl-8 col-lg-8 col-8">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+			<div class="row" id="edtrtp">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-12">
 					<a href="{{route('user.editor.all')}}"><i class="bx bx-arrow-back" id="edtrback"></i></a>
 					<input type="text" name="docname" placeholder="Documents" class="edtdocrname">
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12 col-12 text-center">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
 					<button class="edtrhd" id="h1place" onclick="h1place()">H1</button>
 					<button class="edtrhd" id="h2place" onclick="h2placenew()">H2</button>
 					<button class="edtrhd" id="h3place">H3</button>
@@ -40,13 +49,13 @@
 					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
-					<button class="edtrgnrt"><i class="bx bx-edit-alt" id="autowrite"></i> Auto Writing</button>
+					<button class="edtrgnrt" id="autowrite"><i class="bx bx-edit-alt"></i> Auto Writing</button>
 				</div>
 				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
 			<br>
 			<!-- style="height:500px; min-height: 100%; display: flex;flex-direction: column;" -->
-			<div class="card" style="min-height: 500px;" id="rw1">
+			<div class="card" style="min-height: 500px; margin-top: 50px;" id="rw1">
 				<div class="card-body edtrtpcard">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12 col-sm-12 brdrleft" data-bs-toggle="modal" data-bs-target="#briefModal">
@@ -63,8 +72,8 @@
 							<!-- <p class="edtrrws" id="edtrtvvalmain">Professional, informat..</p> -->
 							<p class="edtrrws" id="edtrtvvalmain"></p>
 						</div>
-						<div class="col-lg-3 col-md-3 col-12 col-sm-12 edtrbrdrn"
-						data-bs-toggle="modal" data-bs-target="#blogModal">
+						<!-- data-bs-toggle="modal" data-bs-target="#blogModal" -->
+						<div class="col-lg-3 col-md-3 col-12 col-sm-12 edtrbrdrn">
 							<p class="edtrrwt">Type of content</p>
 							<p class="edtrrws" id="takeblgedtraudinp">Blog post</p>
 						</div>
@@ -125,7 +134,7 @@
 				</div>
 			</div>
 			<br>
-			<div class="card" style="min-height: 500px;"  id="rw2">
+			<div class="card" style="min-height: 500px; margin-top: 14px;"  id="rw2">
 				<div class="card-body">
 					<div id="ai-loader" style="text-align:center;display:none;">
 						<div class="sk-circle-fade sk-primary">
@@ -354,25 +363,30 @@
 	<input type="hidden" id="mncontent" name="mncontent">
   	<input type="hidden" id="getmnval" name="getmnval">
 </div>
+<form id="autoform">
+  <input type="hidden" id="atsemtk" name="atsemtk">
+  <input type="hidden" id="atqstk" name="atqstk">
+  <button type="submit" id="atsubmit" style="display: none !important;">Submit</button>
+</form>
   <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-	  	<h3 class="edtrtrgtrp">Target Keyword Report</h3>
-		<p class="edtrp">Type in the primary keyword the content needs to rank for, and get SEO score and AI recommendations based on:</p>
+	  	<h3 class="edtrtrgtrp">Target Keyword Document</h3>
+		<p class="edtrp">Enter the main keyword that the content should target, and receive an SEO score and AI suggestions based on:</p>
 		<ul>
 			<li class="edtrp">Semantic Keywords</li>
 			<li class="edtrp">Search Intentions</li>
-			<li class="edtrp">Title and heading recommendations</li>
-			<li class="edtrp">Word count target</li>
+			<li class="edtrp">SEO Title Generation</li>
+			<li class="edtrp">SEO Score Calculation</li>
 		</ul>
 		<form id="ajaForm">
 			<div style="text-align: center;">
 				<input type="text" placeholder="Enter Target Keyword..." class="edtrinp" name="prompt" autocomplete="off" class="form-control" required>
-				<button class="edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create report</button>
+				<button class="edtrrptbtn" type="submit" id="hidemodal"  {{ session()->has('package-error') ? 'disabled' : '' }}>Create Document</button>
 			</div>
-			<p class="text-center">Use 1 audit credit to generate</p>
+			<!-- <p class="text-center">Use 1 audit credit to generate</p> -->
 		</form>
       </div> 
     </div>
@@ -381,7 +395,7 @@
 
 <!-- Brief Modal -->
 <div class="modal" id="briefModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
+  <div class="modal-dialog modal-dialog-centered"><!-- style="align-items: flex-end;" -->
     <div class="modal-content">
       <div class="modal-body">
 		<div style="text-align: right !important;">
@@ -418,7 +432,7 @@
 
 <!-- Tone Modal -->
 <div class="modal" id="toneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
+  <div class="modal-dialog modal-dialog-centered"> <!-- style="align-items: flex-end;" -->
     <div class="modal-content">
       <div class="modal-body">
 		<div style="text-align: right !important;">
@@ -449,7 +463,7 @@
 
 <!-- Blog Modal -->
 <div class="modal" id="blogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
-  <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
+  <div class="modal-dialog modal-dialog-centered"> <!-- style="align-items: flex-end;" -->
     <div class="modal-content">
       <div class="modal-body">
 		<div style="text-align: right !important;">
@@ -495,7 +509,7 @@
 		});
 	});
 	let typingTimer;
-    const typingTimeout = 1000; // Set the timeout duration in milliseconds
+    const typingTimeout = 3000; // Set the timeout duration in milliseconds
 	var contentEditable = document.getElementById("forscoring");
 	contentEditable.addEventListener('input', function() {
 		// var freshcetaker = document.getElementById("forscoring");
@@ -508,6 +522,7 @@
 		else {
 			clearTimeout(typingTimer);
 			typingTimer = setTimeout(function() {
+				document.getElementById("eddesc").value = document.getElementById("forscoring").innerText;
 				getSeoScore(ceinner);
 			}, typingTimeout);
 		}
@@ -520,8 +535,8 @@
 	var edtrmainval = document.getElementById("edtrmainval");
 	var customDiv = document.getElementById("ttcustomDiv");
 	edtrmainval.addEventListener("click", function() {
-	ttcustomDiv.style.display = "block";
-	ttcustomDiv.style.zIndex = "9999";
+		ttcustomDiv.style.display = "block";
+		ttcustomDiv.style.zIndex = "9999";
 	});
 	const closettdiv = document.getElementById("closettdiv");
 	closettdiv.addEventListener("click", function() {
@@ -556,9 +571,10 @@
     var apiUrl = "{{ route('user.editor.ai_response') }}";
     const token = "{{ csrf_token() }}"
 
-    const form = document.querySelector('#ajaForm')
-    const queform = document.querySelector('#quesform')
-    const cntntform = document.querySelector('#contentform')
+    const form = document.querySelector('#ajaForm');
+    const queform = document.querySelector('#quesform');
+    const cntntform = document.querySelector('#contentform');
+	const atform =  document.querySelector('#autoform');
     const chatContainer = document.querySelector('#resultdata');
     const chatContainer1 = document.querySelector('#quesdata');
 
@@ -590,6 +606,9 @@
                 element.innerHTML += text.charAt(index)
                 index++
                 chatContainer.scrollTop = chatContainer.scrollHeight;
+				if (index === text.length - 1) {
+					callseoscore(text);
+				}
             } else {
                 clearInterval(interval)
             }
@@ -1095,11 +1114,19 @@
                 element.innerHTML += text.charAt(index)
                 index++
                 chatContainer1.scrollTop = chatContainer1.scrollHeight;
+				if (index === text.length - 1) {
+					callseoscore(text);
+				}
             } else {
                 clearInterval(interval)
             }
         }, -100)
     }
+	function callseoscore(val){
+		const upprcontnt = document.getElementById("forscoring").innerText;
+		document.getElementById("eddesc").value = upprcontnt;
+		getSeoScore(upprcontnt);
+	}
     function generateUniqueId1() {
         const timestamp = Date.now();
         const randomNumber = Math.random();
@@ -1158,10 +1185,59 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
-			const upprcontnt = document.getElementById("forscoring").innerText;
-			const wholetosendsc = upprcontnt + " \n" + parsedData;
-			document.getElementById("eddesc").value = wholetosendsc;
-			getSeoScore(wholetosendsc);
+			
+        } else {
+            const err = await response1.text()
+            messageDiv.innerHTML = "Something went wrong"
+            alert(err)
+        }
+    }
+	const handleSubmitAW = async (e) => {
+        e.preventDefault()
+
+        const data = new FormData(atform);
+		const edtrtrgtkwrd = document.getElementById("edtrtrgtkwrd").value;
+
+        // user's chatstripe
+        // chatContainer1.innerHTML += chatStripe(false, data.get('quescontent'))
+
+        // to clear the textarea input
+        atform.reset()
+
+        // bot's chatstripe
+        const uniqueId = generateUniqueId1()
+        chatContainer1.innerHTML += chatStripe(true, " ", uniqueId)
+
+        // to focus scroll to the bottom
+        chatContainer1.scrollTop = chatContainer1.scrollHeight;
+
+        // specific message div
+        const messageDiv = document.getElementById(uniqueId)
+
+        // messageDiv.innerHTML = "..."
+        loader1(messageDiv)
+        const response1 = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _token: token,
+                // prompt: "act as a content writer for a blog post. our task is to write full blog content about "+ edtrtrgtkwrd +" and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. After writing in detail about Keywords Then below you need to start writing detailed answers about these questions, firstly mention that question you've been provided then write its detailed answer, the questions are: " + data.get('atqstk'),
+				// prompt: "act as a content writer for a blog post centered around the blog title "+edtrmainval+ "Your task is to write full blog content and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. write the content of minimum 1500 and maximum 2000 words. Try to write plagiarism free content. Important! After writing in details about keywords then below you need to start writing detailed answers about these questions. Firstly mention that question you've been provided then write its detailed answer. the questions are: " + data.get('atqstk'),
+				prompt: 'act as an expert content writer and write around 1500+ words about '+edtrtrgtkwrd+ ' your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: ' + data.get('atsemtk') + '. After writing in detail about this below you need to write detailed answer about these questions.  Firstly mention that question you have been provided then write its detailed answer. the questions are: ' + data.get('atqstk') +'. Remember do not write title in content.',
+                old_prompt: data.get('old_prompt')
+            })
+        })
+
+        clearInterval(loadInterval)
+        messageDiv.innerHTML = " "
+
+        if (response1.ok) {
+            const data = await response1.json();
+            const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
+            $('#old_prompt').val(data.old_prompt)
+			typeText1(messageDiv, parsedData);
 			
         } else {
             const err = await response1.text()
@@ -1170,9 +1246,16 @@
         }
     }
 
-    queform.addEventListener('submit', handleSubmit1)
+    queform.addEventListener('submit', handleSubmitAW)
 
     queform.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13) {
+            handleSubmit1(e)
+        }
+    })
+	atform.addEventListener('submit', handleSubmitAW)
+
+    atform.addEventListener('keyup', (e) => {
         if (e.keyCode === 13) {
             handleSubmit1(e)
         }
@@ -1189,6 +1272,69 @@
 	const contentform = document.getElementById("contentform");
 	const mncontent = document.getElementById("mncontent");
 	const getmnval = document.getElementById("getmnval");
+	const autowrite = document.getElementById("autowrite");
+	autowrite.addEventListener("click", function(event) {
+		const atsemantics = document.getElementById("semantics").innerText;
+		const atquestions = document.getElementById("questions").innerText;
+		const atedsugtitles =  document.getElementById("edsugtitles").innerText;
+		var seminnerValues = atsemantics.match(/\d+\.\s(.+)/g);
+		var qsminnerValues = atquestions.match(/\d+\.\s(.+)/g);
+		var ttinnerValues = atedsugtitles.match(/\d+\.\s(.+)/g);
+		var semlistArray = seminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var qslistArray = qsminnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var ttlistArray = ttinnerValues.map(function(item) {
+			return item.replace(/^\d+\.\s/, '');
+		});
+		var randomTitle = Math.floor(Math.random() * ttlistArray.length);
+		var selectedTitle = ttlistArray[randomTitle];
+		var ttstartWord = '"';
+		var ttendWord = '!';
+		var ttstartIndex = selectedTitle.indexOf(ttstartWord);
+		var ttendIndex = selectedTitle.indexOf(ttendWord);
+		if (ttstartIndex !== -1 && ttendIndex !== -1 && ttendIndex > ttstartIndex) {
+		var tttrimmedStr = selectedTitle.substring(ttstartIndex + ttstartWord.length, ttendIndex).trim();
+		}
+		var targetTitle = document.getElementById("edtrmainval");
+		targetTitle.value = tttrimmedStr;
+		var qsselectedValues = [];
+		while (qsselectedValues.length < 4) {
+		var qsrandomIndex = Math.floor(Math.random() * qslistArray.length);
+		var qsselectedValue = qslistArray[qsrandomIndex];
+		if (!qsselectedValues.includes(qsselectedValue)) {
+			qsselectedValues.push(qsselectedValue);
+		}
+		}
+		var qstargetElement = document.getElementById("atqstk");
+		qstargetElement.value = qsselectedValues.join(", ");
+		document.getElementById("atsemtk").value =  semlistArray;
+		var atsem1 = document.getElementById("sem1");
+		var atsem2 = document.getElementById("sem2");
+		var atsem3 = document.getElementById("sem3");
+		var atsem4 = document.getElementById("sem4");
+		var atsem5 = document.getElementById("sem5");
+		var atsem6 = document.getElementById("sem6");
+		var atsem7 = document.getElementById("sem7");
+		var atsem8 = document.getElementById("sem8");
+		var atsem9 = document.getElementById("sem9");
+		var atsem10 = document.getElementById("sem10");
+		atsem1.classList.add("semclicked");
+		atsem2.classList.add("semclicked");
+		atsem3.classList.add("semclicked");
+		atsem4.classList.add("semclicked");
+		atsem5.classList.add("semclicked");
+		atsem6.classList.add("semclicked");
+		atsem7.classList.add("semclicked");
+		atsem8.classList.add("semclicked");
+		atsem9.classList.add("semclicked");
+		atsem10.classList.add("semclicked");
+		event.preventDefault();
+		document.getElementById("atsubmit").click();
+	});
+
 	manwrtnbyuser.addEventListener("click", function(event) {
 		const innerText = edtrmyInput.value;
 		mncontent.value = innerText;
@@ -1300,10 +1446,6 @@
             // const div = document.getElementById(newval);
             // const content = String(parsedData);
 			typeText1(messageDiv, parsedData);
-			const upprcontnt = document.getElementById("forscoring").innerText;
-			const wholetosendsc = upprcontnt + " \n" + parsedData;
-			document.getElementById("eddesc").value = wholetosendsc;
-			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -1668,10 +1810,6 @@
             const parsedData = data.bot.trim() // trims any trailing spaces/'\n'
             $('#old_prompt').val(data.old_prompt)
 			typeText1(messageDiv, parsedData);
-			const upprcontnt = document.getElementById("forscoring").innerText;
-			const wholetosendsc = upprcontnt + " \n" + parsedData;
-			document.getElementById("eddesc").value = wholetosendsc;
-			getSeoScore(wholetosendsc);
         } else {
             const err = await response1.text()
 			// $('#ai-loader').hide();
@@ -2161,8 +2299,6 @@
 	});
 </script>
 <script>
-// 	// const savefdoc = document.querySelector('#savedoc')
-// 	// savefdoc.addEventListener('submit', saveall)
 	$('#docsubmit').click(function(){
     event.preventDefault();  // Prevent the form from submitting normally
     var form = document.getElementById('savedoc');
