@@ -28,6 +28,15 @@ class PageController extends Controller
         );
         return view('website.pages.privacy')->with($data);
     }
+
+    public function cookie_policy()
+    {
+        $data = array(
+            'title' => "Privacy Policy"
+        );
+        return view('website.pages.cookie_policy')->with($data);
+    }
+    
     public function about_us()
     {
         $data = array(

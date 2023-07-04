@@ -664,8 +664,8 @@ Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invit
             <div class="row">
                 <div class="col-md-12">
                     <p style="color: #333; font-size: 14px;">Our website uses cookies to improve your user experience. If you continue browsing, we assume that you consent to our use of cookies. More information can be found in our
-                        <a href="/cookie-policy" target="_blank" style="color: #337AB7;">Cookies Policy</a> and
-                        <a href="/privacy-policy" target="_blank" style="color: #337AB7;">Privacy Policy</a>.
+                        <a href="{{route('web.cookie_policy')}}" target="_blank" style="color: #337AB7;">Cookies Policy</a> and
+                        <a href="{{route('web.privacy')}}" target="_blank" style="color: #337AB7;">Privacy Policy</a>.
                     </p>
                     <button id="accept-cookies" style="background-color: #337AB7; border: none; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">I Accept</button>
                 </div>

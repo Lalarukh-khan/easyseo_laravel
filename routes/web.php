@@ -124,6 +124,8 @@ Route::middleware('XSS')->as('web.')->namespace('App\Http\Controllers')->group(f
     Route::get('/blogs', 'PageController@blogs')->name('blog.all');
     Route::get('/blog/get-by-cat', 'PageController@get_blog_by_cat')->name('blog.get_by_cat');
     Route::get('/blog-details/{slug}', 'PageController@blog_details')->name('blog.details');
+
+    Route::get('/cookie-policy', 'PageController@cookie_policy')->name('cookie_policy');
 });
 
 
