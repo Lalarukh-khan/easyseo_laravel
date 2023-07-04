@@ -32,7 +32,7 @@ class PageController extends Controller
     public function cookie_policy()
     {
         $data = array(
-            'title' => "Privacy Policy"
+            'title' => "Cookie Policy"
         );
         return view('website.pages.cookie_policy')->with($data);
     }
