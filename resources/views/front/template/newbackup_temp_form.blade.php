@@ -203,7 +203,7 @@
 @include('components.flash-message')
 <div class="container-fluid temptotop">
 	<div class="row">
-		<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
+		<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12" id="tmpleftinpsec">
 			<div class="toplefttemp">
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-3">
@@ -322,7 +322,7 @@
                             </select>
                         </div>
                     @endif
-
+					<br><br><br><br>
                     @if ($template_data->has_number_of_concepts == 1)
                    {{-- <div class="form-group col-md-12 mb-3">
                         <label for="">Number of Conecpet</label>
@@ -332,12 +332,12 @@
                     @endif
 					<div class="row genbtntmpbt">
 						<div class="col-lg-4 col-md-4 col-sm-4 col-4">
-							<button class="clrtempimp"><i class="bx bx-x"></i> Clear inputs</button>
+							<button class="clrtempimp" id="clrtempimp"><i class="bx bx-x"></i> Clear inputs</button>
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-8 col-8"></div>
 						<div class="col-lg-2 col-md-2 col-sm-6 col-6">
 							<!-- <input type="text" name="" id="" value="3" class="tempbotinp"> -->
-							<input type="text" id="numberInput" min="1" max="3" value="3" class="tempbotinp">
+							<input type="text" id="numberInput" min="1" max="3" value="{{$template_data->setting->results}}" class="tempbotinp">
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit" {{
@@ -436,6 +436,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
 <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 <script>
+	var tmpleftinpsec = document.getElementById('tmpleftinpsec');
+    tmpleftinpsec.addEventListener('scroll', function() {
+      var clrtempimp = document.getElementById('clrtempimp');
+      var scrollPosition = tmpleftinpsec.scrollTop;
+
+      if (scrollPosition > 200) {
+        clrtempimp.style.display = "none";
+      }
+    });
 	 	var sbsmsg = document.getElementById("sbsmsg").innerHTML;
 		var frbrdrbtm = document.getElementById("frbrdrbtm");
         var belowofrslt = frbrdrbtm.innerHTML;

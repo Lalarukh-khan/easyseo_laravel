@@ -49,7 +49,7 @@
 					<button class="edtrhd" id="cpplace"><span class="bx bx-copy"></span></button>
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-12">
-					<button class="edtrgnrt" id="autowrite"><i class="bx bx-edit-alt"></i> Auto Writing</button>
+					<button class="btn edtrgnrt" id="autowrite"><i class="bx bx-edit-alt"></i> Auto Writing</button>
 				</div>
 				<div class="cpyhvtext">Copy to clipboard</div>
 			</div>
@@ -347,7 +347,7 @@
 </form>
 <form id="savedoc">
 	@csrf
-	{{-- <input type="text" value="{{ $e_id }}" readonly name="e_id" style="display: none !important;"> --}}
+	<input type="text" value="{{ $e_id }}" readonly name="e_id" style="display: none !important;">
 	<input type="text" name="edtitle" id="edtitle" style="display: none !important;">
 	<textarea name="eddesc" id="eddesc" style="display: none !important;"></textarea>
 	<input type="text" name="edwords" id="edwords" style="display: none !important;">
@@ -1215,6 +1215,9 @@
         const uniqueId = generateUniqueId1()
         chatContainer1.innerHTML += chatStripe(true, " ", uniqueId)
 
+		const dsautowrite = document.getElementById("autowrite");
+		dsautowrite.disabled = true;
+
         // to focus scroll to the bottom
         chatContainer1.scrollTop = chatContainer1.scrollHeight;
 
@@ -1541,7 +1544,7 @@
 		document.getElementById("edalltitles").value = getfalltitles;
 		document.getElementById("edscrore").value = roundedscore;
 		getcolorofscore();
-		// document.getElementById("docsubmit").click();
+		document.getElementById("docsubmit").click();
 	}
 	function getSeoScoreType(content) {
 		const getftitle = document.getElementById("edtrmainval").value;
@@ -1810,8 +1813,6 @@
         messageDiv.innerHTML = " "
 
         if (response1.ok) {
-			const edtrjstwm = document.getElementById("edtrjstwm");
-			edtrjstwm.disabled = true;
 			// $('#ai-loader').hide();
             // $('#ans_div').show();
             const data = await response1.json();

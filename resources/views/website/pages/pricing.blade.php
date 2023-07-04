@@ -239,8 +239,8 @@
                                         <img src="{{asset('front')}}/images/dollar-icon.svg">
                                     </div>
                                     <div class="pricing-title tas">
-                                        <h4 class="col-white" id="prcngwht3b"> $119.80/Mon </h4>
-                                        <p id="prcngwht3c"> 300 000 words <br> 10 reports </p>
+                                        <h4 class="col-white" id="prcngwht3b"> Custom Pricing </h4>
+                                        <p id="prcngwht3c"> 300,000 words <br> 200+ reports </p>
                                     </div>
                                 </div>
                                 <div class="pricing-detail">

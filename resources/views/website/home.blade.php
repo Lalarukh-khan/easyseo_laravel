@@ -199,7 +199,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rbtbrdr container m-t-60" id="atmwtbckcolor2">
+            <!-- <div class="rbtbrdr container m-t-60" id="atmwtbckcolor2">
                 <div class="row" style="width: 100%; height: auto;">
                     <div class="col-md-1 col-lg-1 col-sm-12 col-12"></div>
                     <div class="col-md-11 col-lg-11 col-sm-12 col-12 nwwbrbtbrdr">
@@ -222,7 +222,7 @@
                         <p class="col-white pad-top-10 d-f j-c-e">*Explanation video - our advantages</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
         <section class="pad-top-40 bg-sec6" id="amzngwht">
             <div class="container">
