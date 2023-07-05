@@ -313,6 +313,8 @@
 
 
 <section>
+    <div id="cpywht2"></div>
+    <div id="cpywht3"></div>
     <div id="solo_proprice2"></div>
     <div id="solo_protoken2"></div>
     <div id="solo_proreport"></div>
@@ -637,6 +639,12 @@
     <div id="atmtwhttimg7"></div>
     <div id="atmtwhttimg8"></div>
 </section>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var element = document.getElementById('pg2');
+        element.classList.add('pghovered');
+    });
+</script>
 <!-- <div id="atmtwhtimg6"></div>
 <div id="atmtwhtimg6"></div> -->
 <!-- <div id=""></div> -->

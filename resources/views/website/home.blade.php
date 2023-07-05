@@ -1,6 +1,22 @@
 @extends('layouts.web_main')
 @section('css')
 <style>
+    /* .hmaep:is([aria-expanded="true"]) {
+      background-color: green;
+    }
+    .accordion-block[aria-expanded="false"],
+    .accordion-block :not([aria-expanded]) {
+      background-color: #000000;
+    } */
+    .hmaep:not(:is([aria-expanded="true"])), .accordion-block {
+        background-color: #000000;    
+        box-shadow: -2px -2px 24px #653bff;
+    }
+    
+    .hmaep:is([aria-expanded="true"]), .accordion-block {
+      background-color: rgb(38, 38, 38);
+      box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
+    }
     .ppg-buy-now-btn {
         display: inline-block;
         /* background: #19cb92; */
@@ -199,7 +215,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="rbtbrdr container m-t-60" id="atmwtbckcolor2">
+            <div class="rbtbrdr container m-t-60" id="atmwtbckcolor2" style="display: none;">
                 <div class="row" style="width: 100%; height: auto;">
                     <div class="col-md-1 col-lg-1 col-sm-12 col-12"></div>
                     <div class="col-md-11 col-lg-11 col-sm-12 col-12 nwwbrbtbrdr">
@@ -222,7 +238,7 @@
                         <p class="col-white pad-top-10 d-f j-c-e">*Explanation video - our advantages</p>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </section>
         <section class="pad-top-40 bg-sec6" id="amzngwht">
             <div class="container">
@@ -585,7 +601,7 @@
                                                     <h2 class="col-white cntntm" id="prpsl2"> Content Marketing </h2>
                                                     <p class="cpy col-white" id="prpsl3"> Excellent for copywriters,
                                                         content <br> and social media marketers </p>
-                                                    <p class="pad-bot-20 col-grey nwwbcpy" id="prpsl4">With just a few
+                                                    <p class="pad-bot-20 nwwbcpy" id="prpsl4">With just a few
                                                         clicks, you can produce on-brand content for any audience on
                                                         various platforms, including social media, landing pages, blogs,
                                                         website content, emails, and more.</p>
@@ -603,7 +619,7 @@
                                                     </h2>
                                                     <p class="cpy col-white" id="prpsl6"> Excellent for PPC, growth, and
                                                         <br> acquisition managers </p>
-                                                    <p class="pad-bot-20 col-grey nwwbcpy" id="prpsl7">Create ad copy
+                                                    <p class="pad-bot-20 nwwbcpy" id="prpsl7">Create ad copy
                                                         for Google, <br> Facebook, and other media to <br> help you Grow
                                                         conversions, <br> CTRs, and lower your CPC. Using our
                                                         high-quality tools, your <br> brand will get fast and effective
@@ -622,7 +638,7 @@
                                                     <h2 class="col-white cntntm" id="prpsl8"> SEO optimization </h2>
                                                     <p class="cpy col-white" id="prpsl9"> Excellent for SEO
                                                         agencies,<br> freelance seo specialists </p>
-                                                    <p class="pad-bot-20 col-grey nwwbcpy" id="prpsl10">Our tool is the
+                                                    <p class="pad-bot-20 nwwbcpy" id="prpsl10">Our tool is the
                                                         secret weapon you've been looking for to take your SEO game to
                                                         the next level. Create keyword-rich SEO articles and meta
                                                         descriptions to help you rank at the top of Google searches.</p>
@@ -788,7 +804,7 @@
                                                     class="col-orange bnr-fnt"> Happy User </span> Says: </h3>
                                         </div>
                                         <div class="block-element">
-                                            <div class="custom-slider1 no-arrows dots-1">
+                                            <div class="custom-slider2 no-arrows dots-2"><!-- custom-slider1 no-arrows dots-1 -->
                                                 <div class="testimonial-box">
                                                     <div id="bxswht1">
                                                         <h6>
@@ -933,7 +949,7 @@
                                                     <div id="accordion" class="myaccordion">
                                                         <div class="card accordion-block">
                                                             <button
-                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed hmaep"
                                                                 data-toggle="collapse" data-target="#collapseTwo"
                                                                 aria-expanded="false" aria-controls="collapseTwo"
                                                                 id="gotwht2">
@@ -953,13 +969,13 @@
                                                             <div id="collapseTwo" class="collapse"
                                                                 aria-labelledby="headingTwo" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht2d">
-                                                                    <p class="tas" id="gotwht2b"> easyseo.ai is the world's best AI writing platform for creating SEO-optimized content that drives organic Google traffic to your website. You can increase traffic, sales, and revenue tenfold by strategically placing keywords, internal links, and external links in your generated content. </p>
+                                                                    <p class="tas nwhstas" id="gotwht2b"> easyseo.ai is the world's best AI writing platform for creating SEO-optimized content that drives organic Google traffic to your website. You can increase traffic, sales, and revenue tenfold by strategically placing keywords, internal links, and external links in your generated content. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="card accordion-block">
                                                             <button
-                                                                class="d-flex align-items-center justify-content-between btn btn-link"
+                                                                class="d-flex align-items-center justify-content-between btn btn-link hmaep"
                                                                 data-toggle="collapse" data-target="#collapseOne"
                                                                 aria-expanded="false" aria-controls="collapseOne"
                                                                 id="gotwht1">
@@ -979,13 +995,13 @@
                                                             <div id="collapseOne" class="collapse"
                                                                 aria-labelledby="headingOne" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht1d">
-                                                                    <p class="tas" id="gotwht1b"> Yes, the output generated by our AI is entirely original and passes all standard plagiarism checks. </p>
+                                                                    <p class="tas nwhstas" id="gotwht1b"> Yes, the output generated by our AI is entirely original and passes all standard plagiarism checks. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="card accordion-block">
                                                             <button
-                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed hmaep"
                                                                 data-toggle="collapse" data-target="#collapseThree"
                                                                 aria-expanded="false" aria-controls="collapseThree"
                                                                 id="gotwht3" id="gotwht3a">
@@ -1005,13 +1021,13 @@
                                                             <div id="collapseThree" class="collapse"
                                                                 aria-labelledby="headingThree" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht3d">
-                                                                    <p class="tas" id="gotwht3b"> After completing your order, you will have immediate access. </p>
+                                                                    <p class="tas nwhstas" id="gotwht3b"> After completing your order, you will have immediate access. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="card accordion-block">
                                                             <button
-                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed hmaep"
                                                                 data-toggle="collapse" data-target="#collapse4"
                                                                 aria-expanded="false" aria-controls="collapseTwo"
                                                                 id="gotwht4">
@@ -1032,13 +1048,13 @@
                                                             <div id="collapse4" class="collapse"
                                                                 aria-labelledby="headingTwo" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht4d">
-                                                                    <p class="tas" id="gotwht4b"> Because of our artificial intelligence solution that does the research, brainstorming, and writing for you, your team will spend less time creating and distributing content across your channels. Some easyseo.ai users claim to have saved a significant amount of time while increasing clicks and conversions by more than 1000%. </p>
+                                                                    <p class="tas nwhstas" id="gotwht4b"> Because of our artificial intelligence solution that does the research, brainstorming, and writing for you, your team will spend less time creating and distributing content across your channels. Some easyseo.ai users claim to have saved a significant amount of time while increasing clicks and conversions by more than 1000%. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="card accordion-block">
                                                             <button
-                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed"
+                                                                class="d-flex align-items-center justify-content-between btn btn-link collapsed hmaep"
                                                                 data-toggle="collapse" data-target="#collapse5"
                                                                 aria-expanded="false" aria-controls="collapseThree"
                                                                 id="gotwht5">
@@ -1058,7 +1074,7 @@
                                                             <div id="collapse5" class="collapse"
                                                                 aria-labelledby="headingThree" data-parent="#accordion">
                                                                 <div class="card-body" id="gotwht5d">
-                                                                    <p class="tas" id="gotwht5b"> easyseo.ai is primarily for content creators, whether they are marketers, entrepreneurs, agencies, or students. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> does not require you to be a professional writer. <br>easyseo.ai AI-generated, SEO-optimized content is also used by thousands of professional writers because it helps them brainstorm new ideas, saves them time, increases productivity, and thus generates more revenue. </p>
+                                                                    <p class="tas nwhstas" id="gotwht5b"> easyseo.ai is primarily for content creators, whether they are marketers, entrepreneurs, agencies, or students. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> does not require you to be a professional writer. <br>easyseo.ai AI-generated, SEO-optimized content is also used by thousands of professional writers because it helps them brainstorm new ideas, saves them time, increases productivity, and thus generates more revenue. </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1330,14 +1346,14 @@
                                                         <div class="feature-boxes nwwbfeature-boxes" id="writewht1">
                                                             <img class="pad-bot-20" alt="Icon"
                                                                 src="{{asset('front')}}/images/Imge6.svg">
-                                                            <p class="col-white pad-bot-20 p-l-20 p-r-20"
+                                                            <p class="pad-bot-20 p-l-20 p-r-20"
                                                                 id="writewht2a"><span
                                                                     class="blkchn">Engineering</span>&nbsp; &nbsp;
                                                                 &nbsp; 5 min read</p>
-                                                            <h4 class="col-white p-l-20 p-r-20 font-size-20"
+                                                            <h4 class="p-l-20 p-r-20 font-size-20"
                                                                 id="writewht2b">What is a Decentralized Autonomous
                                                                 Organization ? </h4>
-                                                            <p class="pad-bot-30 font-size-15 font-weight-lighter col-white p-l-20 p-r-20 col-grey"
+                                                            <p class="pad-bot-30 font-size-15 font-weight-lighter p-l-20 p-r-20 col-grey"
                                                                 id="writewht3a">Lorem ipsum dolor sit amet, consectetur
                                                                 adipiscing elit. Suspendisse varius enim in eros. </p>
                                                             <a class="hdrbtn m-b-20 m-l-25" href="{{route('login')}}"
@@ -1385,14 +1401,14 @@
                                                         <div class="feature-boxes nwwbfeature-boxes ftr-bx">
                                                             <img class="pad-bot-20 blkchnimg nwwbblkchnimg" alt="Icon"
                                                                 src="{{ check_file($blog->image) }}">
-                                                            <p class="col-white pad-bot-20 p-l-20 p-r-20 blkchnpara">
+                                                            <p class="pad-bot-20 p-l-20 p-r-20 blkchnpara">
                                                                 <span class="blkchn">{{ $blog->category->name }}
                                                                 </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
-                                                                <a class="col-white p-l-20 p-r-20 font-size-20" style="color: white !important;" href="{{ route('web.blog.details',$blog->slug) }}"> {{ $blog->title }} </a>
+                                                                <a class="p-l-20 p-r-20 font-size-20 nwacolc" href="{{ route('web.blog.details',$blog->slug) }}"> {{ $blog->title }} </a>
                                                              <p
-                                                                class="pad-bot-15 font-size-15 font-weight-lighter col-white p-l-20 p-r-20 lrm">
+                                                                class="pad-bot-15 font-size-15 font-weight-lighter p-l-20 p-r-20 lrm">
                                                                 {{Str::limit(strip_tags($blog->description,150))}} </p>
-                                                            <a class="hdrbtn hdrbtns m-b-20 m-l-25"
+                                                            <a class="hdrbtn hdrbtns m-b-20 m-l-25 nwacolc"
                                                                 href="{{ route('web.blog.details',$blog->slug) }}"> Read
                                                                 more > </a>
                                                         </div>
@@ -1424,7 +1440,10 @@
 </section>
 <section>
     <div id="blgstayuptodate1"></div>
+    <div id="cpywht2"></div>
+    <div id="cpywht3"></div>
     <div id="menuitemwht"></div>
+    <div id="menuitemwht5"></div>
     <div id="prcngwht22b"></div>
     <div id="prcngwht23c"></div>
     <div id="prcngwht24d"></div>

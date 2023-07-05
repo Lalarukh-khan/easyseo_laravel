@@ -34,8 +34,8 @@
         <div class="col-lg-4 col-md-3 col-sm-12 col-12"></div>
         <div class="blg col-lg-4 col-md-6 col-sm-12 col-12">
             <span class="font-size-20" id="writewhtbtn1">Blog <img alt="Icon" src="{{asset('front')}}/images/stars.svg"id="bsnsadvntgimg5"></span>
-            <p class="font-size-43 col-white instnws"  id="writewhtbtn2"> News and <span class="font-size-45 col-orange instnwsspn newsinsights">insights</span> </p>
-            <p class="font-size-15 font-weight-light col-white blk" id="writewhtbtn3"> Learn about cryptocurrency, Ai`s, and <br class="nomob"> blockchain, discover our latest product updates, <br class="nomob"> partnership announcements, user stories, and <br class="nomob"> more. </p>
+            <p class="col-white instnws"  id="writewhtbtn2"> News and <span class="font-size-45 col-orange instnwsspn newsinsights">insights</span> </p>
+            <p class="font-size-15 font-weight-light col-white blk" id="writewhtbtn3"> Learn about cryptocurrency, Ai`s, and blockchain, discover <br class="nomob">our latest product updates, partnership announcements, <br class="nomob"> user stories, and more. </p>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-12 col-12"></div>
     </div>
@@ -49,11 +49,11 @@
             <div class="col-lg-1 col-md-1 col-sm-12 col-12"></div>
             <div class="blgul col-lg-10 col-md-10 col-sm-12 col-12 dn">
                 <ul class="row" id="prcngwht3" style="text-align: center !important;">
-                    <li class="nwwbliviewall"><a class="nav-link col-white font-size-15 font-weight-light" role="tab" href="javascript:void(0)" data-id="all">View all</a></li>
+                    <li class="nwwbliviewall"><a class="nav-link font-weight-light " role="tab" href="javascript:void(0)" data-id="all">View all</a></li>
                     <!-- <li><a class="col-white font-size-15 font-weight-light" href="#" role="button"id="writewht1b">Crypto</a></li>-->
                     @foreach ($categories as $cat)
                     <li>
-                        <a class="nav-link col-white font-size-15 font-weight-light" data-toggle="tab" href="javascript:void(0)" role="tab" data-id="{{ $cat->hashid }}">{{ $cat->name }}</a>
+                        <a class="nav-link font-size-15 font-weight-light nwacolc" data-toggle="tab" href="javascript:void(0)" role="tab" data-id="{{ $cat->hashid }}">{{ $cat->name }}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -161,10 +161,10 @@
                         <div class="col-md-6 col-lg-4 col-sm-6 col-12 p-l-20 p-r-20 m-b-20 engn">
                             <div class="feature-boxes nwwbfeature-boxes ftr-bx" id="amzngwht3">
                                 <img class="pad-bot-20 blkchnimg nwwbblkchnimg" alt="Icon" src="{{ check_file($blog->image) }}">
-                                <p class="col-white pad-bot-20 p-l-20 p-r-20 blkchnpara"  id="prcngwht1b"><span class="blkchn">{{ $blog->category->name }} </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
-                                <a class="col-white p-l-20 p-r-20 font-size-20" style="color: white !important;" id="prcngwht1c"  href="{{ route('web.blog.details',$blog->slug) }}"> {{ $blog->title }} </a>
-                                <p class="pad-bot-15 font-size-15 font-weight-lighter col-white p-l-20 p-r-20 lrm"  id="prcngwht1d">{{Str::limit(strip_tags($blog->description,150))}} </p>
-                                <a class= "hdrbtn hdrbtns m-b-20 m-l-25"  style="color: white !important;"  href="{{ route('web.blog.details',$blog->slug) }}"> Read more > </a>
+                                <p class="pad-bot-20 p-l-20 p-r-20 blkchnpara"  id="prcngwht1b"><span class="blkchn">{{ $blog->category->name }} </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
+                                <a class="p-l-20 p-r-20 font-size-20 nwacolc" id="prcngwht1c"  href="{{ route('web.blog.details',$blog->slug) }}"> {{ $blog->title }} </a>
+                                <p class="pad-bot-15 font-size-15 font-weight-lighter p-l-20 p-r-20 lrm"  id="prcngwht1d">{{Str::limit(strip_tags($blog->description,150))}} </p>
+                                <a class= "hdrbtn hdrbtns m-b-20 m-l-25 nwacolc"  href="{{ route('web.blog.details',$blog->slug) }}"> Read more > </a>
                             </div>
                         </div>
                         <br class="onlymob">
@@ -212,6 +212,8 @@
 <!-- News and Insight Section Ends here  -->
 
 <section>
+    <div id="cpywht2"></div>
+    <div id="cpywht3"></div>
     <div id="writewht2a"></div>
     <div id="writewht2b"></div>
     <div id="writewht3a"></div>
@@ -644,6 +646,10 @@
 @endsection
 @section('js')
 <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var element = document.getElementById('pg1');
+        element.classList.add('pghovered');
+    });
     $('body').on('click','.nav-link',function(){
         $('#searchInput').val('');
         $tab = $(this);

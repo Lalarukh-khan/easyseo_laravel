@@ -318,6 +318,9 @@ a {
 .tas{
     text-align: start;
 }
+.nwhstas:hover{
+    color: grey !important;
+}
 .tar{
     text-align: right;
 }
@@ -424,11 +427,12 @@ header {
     z-index: 99;
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
-    background: black;
+    background: #141517;
+    height: 86px;
 }
 
 .header-fixed header {
-    background: black;
+    background: #141517;
 }
 .header-row {
     display: flex;
@@ -533,7 +537,7 @@ section.bg-sec1 {
     box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
 }
 .accordion-block button.btn {
-    background: #000000;
+    /* background: #000000; */
     border: 1px solid #000000;
     border-radius: 10px;
     padding: 30px 20px 30px 90px;
@@ -575,7 +579,7 @@ img.minus-icon {
     padding: 25px 20px 25px 90px;
     box-shadow: 0px 13px 18px 5px rgb(120 0 209 / 10%);
     border-radius: 0px 0px 12px 12px;
-    background: black;
+    /* background: black; */
 }
 .accordion-block button[aria-expanded="true"] {
 	 box-shadow: 0px -7px 15px 5px rgb(120 0 209 / 10%);
@@ -988,10 +992,9 @@ box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.75), 4px 4px 4px rgba(0, 10, 255
     font-weight: 600;
     padding: 10px 60px;
     letter-spacing: 0.4px;
-    box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.75), 4px 4px 4px rgba(0, 10, 255, 0.25), 2px 4px 9px rgba(246, 127, 0, 0.43), -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
 }
 .custom-btn4:hover {
-    background: #8f01f9;
+    background: linear-gradient(90.04deg, #F47300  0.68%, #F47300 99.99%);
     color: white;
 }
 .feature-box {
@@ -1011,6 +1014,10 @@ box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.75), 4px 4px 4px rgba(0, 10, 255
     background: #1E1E1E;
     border: 1px solid rgba(17, 17, 17, 0.1);
     border-radius: 6px;
+    color: #fff;
+}
+.nwacolc{
+    color: white;
 }
 .feature-box:hover {
     box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
