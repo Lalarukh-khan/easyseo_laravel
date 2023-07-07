@@ -90,11 +90,39 @@
             padding-left: 80px !important;
         }
         .lghtprpletxtback{
-            background: #b99bfa !important;
+            background: #C7B3F0 !important;
+        }
+        .bgwhttxtblck{
+            background-color: white !important;
+            color: black !important;
+        }
+        .pghovered {
+            border: solid #F47300 1px;
+            border-radius: 6px;
+            color: #F47300;
+        }
+        .blueimgback{
+            background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%) !important;
         }
     </style>
     <script>
         function testFunction() {
+            var prelements = document.getElementsByClassName('hmnwtbbck');
+            var blgelements = document.getElementsByClassName('nwwbfeature-boxes');
+            var blgnwacolc = document.getElementsByClassName('nwacolc');
+            var blueimgf = document.getElementsByClassName('blue-img');
+            for (var i = 0; i < prelements.length; i++) {
+                prelements[i].classList.toggle('whitetxtback');
+            }
+            for (var i = 0; i < blgelements.length; i++) {
+                blgelements[i].classList.toggle('bgwhttxtblck');
+            }
+            for (var i = 0; i < blgnwacolc.length; i++) {
+                blgnwacolc[i].classList.toggle('blacktxtcolor');
+            }
+            for (var i = 0; i < blueimgf.length; i++) {
+                blueimgf[i].classList.toggle('blueimgback');
+            }
             document.getElementById("hmamazonimg1").classList.toggle("dsplynone");
             document.getElementById("hmamazonimg2").classList.toggle("dsplyblock");
             document.getElementById("hmamazonimg3").classList.toggle("dsplynone");
@@ -541,16 +569,16 @@
                     {{-- <div class="menu-item">
                         <a href="javascript:void(0):"> Product <img alt="Angle Arrow" src="{{asset('front')}}/images/angle-down.svg"> </a>
                     </div> --}}
-                    <div class="menu-item hdr-btn">
+                    <div class="menu-item hdr-btn" id="pg1">
                         <a href="{{ route('web.blog.all') }}" id="menuitemwht1"> Blog </a>
                     </div>
-                    <div class="menu-item hdr-btn menuitemwht" id="menuitem1">
+                    <div class="menu-item hdr-btn menuitemwht" id="pg2">
                         <a href="{{route('web.about_us')}}" id="menuitemwht2"> About Us </a>
                     </div>
-                    <div class="menu-item hdr-btn menuitemwht">
+                    <div class="menu-item hdr-btn menuitemwht" id="pg3">
                         <a href="{{route('web.pricing')}}" id="menuitemwht3"> Pricing </a>
                     </div>
-                    <div class="menu-item hdr-btn menuitemwht">
+                    <div class="menu-item hdr-btn menuitemwht"id="pg4">
                         <a href="{{route('web.contact_us')}}" id="menuitemwht4"> Contact Us </a>
                     </div>
                     @if (auth('web')->check())

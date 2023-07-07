@@ -533,6 +533,14 @@
                                 == 20 ? 'selected' : null }}>20</option>
                         </select>
                     </div>
+                    <div class="form-group  mb-2 mt-3">
+                        <label>Results
+                            <i class="fadeIn animated bx bx-info-circle" data-toggle="tooltip" data-placement="top"
+                                title="Number of results to show user as default.">
+                            </i>
+                        </label>
+                        <input type="text" name="results" id="rslts" class="form-control basic" value="{{$edit->setting->results ?? ''}}">
+                    </div>
                 </div>
             </div>
         </div>
@@ -547,6 +555,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
 <script>
+        var rslts = document.getElementById("rslts");
+        rslts.addEventListener("input", function() {
+            var input = parseInt(rslts.value);
+            if (input > 3) {
+                rslts.value = 3;
+            }
+        });
     $(document).ready(function() {
         $('.basic').select2({
 			theme: 'bootstrap4',

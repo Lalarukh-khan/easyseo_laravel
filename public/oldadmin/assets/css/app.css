@@ -44,7 +44,7 @@ body {
 
 	font-family: 'Open Sans', sans-serif;
 
-	font-family: 'Roboto', sans-serif;
+	/* font-family: 'Roboto', sans-serif; */
 
 	/* background-color: #f6f6f6; */
 
@@ -1315,8 +1315,27 @@ h3 {
 	margin-left: -38px;
 }
 #rw2{
-	border: 3px solid; border-image: linear-gradient(45deg, #ffa600, #003f5c, #58508d, #bc5090, #ff6361,  #003f5c, #58508d, #bc5090, #ff6361, #ffa600) 1;
+	border: 5px solid; 
+	border-image: linear-gradient(45deg, #ffa600, #003f5c, #58508d, #bc5090, #ff6361,  #003f5c, #58508d, #bc5090, #ff6361, #ffa600) 1;
 }
+#tmpleftinpsec{
+	height: 100vh;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+#tmpleftinpsec::-webkit-scrollbar {
+	/* width: 0.5em; */
+	display: none;
+  }
+
+/* #tmpleftinpsec::-webkit-scrollbar-track {
+	background: transparent !important;
+  }
+
+#tmpleftinpsec::-webkit-scrollbar-thumb {
+	background: transparent !important;
+	box-shadow: none !important;
+  } */
 .edtrgnrt{
 	background: transparent ;
 	padding: 4px;
@@ -1325,7 +1344,6 @@ h3 {
 	font-size: 13px;
 	color: rgb(48, 48, 48);
     margin-left: -45px;
-
 }
 .edtrgnrt:hover{
 	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%) ;
@@ -2442,7 +2460,7 @@ sup {
 .toplefttemp{
 	border-bottom: 1px solid #cfcfcf;
 	padding: 15px 0px 0px 0px;
-	margin-left: -40px;
+	margin-left: -30px;
 	margin-bottom: 25px;
 }
 .toprightemp{
@@ -2481,7 +2499,7 @@ sup {
 	border-radius: 12px;
 	/*width: 70%; */
 	text-align: center;
-	margin-left: 22%;
+	margin-left: 30%;
 }
 .clrtempimp{
 	background: transparent;

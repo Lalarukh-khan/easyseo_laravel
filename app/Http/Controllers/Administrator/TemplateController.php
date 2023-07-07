@@ -177,6 +177,7 @@ class TemplateController extends Controller
         $template_setting->freq_penalty = $request->frequency;
         $template_setting->pre_penalty = $request->penalty;
         $template_setting->best_of = $request->best_of;
+        $template_setting->results = $request->results;
         $template_setting->save();
 
         session()->flash('success-msg', $msg['success']);
@@ -314,6 +315,7 @@ class TemplateController extends Controller
         $template_setting->freq_penalty = $request->frequency;
         $template_setting->pre_penalty = $request->penalty;
         $template_setting->best_of = $request->best_of;
+        $template_setting->results = $request->results;
         $template_setting->save();
 
         session()->flash('success-msg', $msg['success']);

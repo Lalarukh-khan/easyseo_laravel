@@ -239,8 +239,8 @@
                                         <img src="{{asset('front')}}/images/dollar-icon.svg">
                                     </div>
                                     <div class="pricing-title tas">
-                                        <h4 class="col-white" id="prcngwht3b"> $119.80/Mon </h4>
-                                        <p id="prcngwht3c"> 300 000 words <br> 10 reports </p>
+                                        <h4 class="col-white" id="prcngwht3b"> Custom Pricing </h4>
+                                        <p id="prcngwht3c"> 300,000 words <br> 200+ reports </p>
                                     </div>
                                 </div>
                                 <div class="pricing-detail">
@@ -282,7 +282,13 @@
         </div>
         <div class="table-responsive">
             <table class="col-lg-12 " id="tblpricbckcolor">
-                <tr>
+                <tr style="display: none;">
+                    <th class="wrkspc">Features</th>
+                    <th>Basic (free trial)</th>
+                    <th>Premium</th>
+                    <th>Enterprise</th>
+                </tr>
+                <tr class="hmnwtbbck" style="line-height: 80px;">
                     <th class="wrkspc" id="bxswht1c">Features</th>
                     <th id="prc1">Basic (free trial)</th>
                     <th id="prc2">Premium</th>
@@ -295,7 +301,7 @@
                     <td id="amzngwht9b">20,000 - 300,000</td>
                     <td id="amzngwht10a">300,000 - unlimited</td>
                 </tr>
-                <tr>
+                <tr class="hmnwtbbck">
                     <td class="mmbr hgt" id="hm1">User Logins <img src="{{asset('front')}}/images/questionmark.svg">
                     </td>
                     <td class="hgt" id="hm2">1</td>
@@ -318,7 +324,7 @@
                             src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="bsnsadvntgimg6">
                     </td>
                 </tr>
-                <tr>
+                <tr class="hmnwtbbck">
                     <td class="mmbr hgt" id="getwht1">AI models for improved <br> reliability and performance. <img
                             src="{{asset('front')}}/images/questionmark.svg"></td>
                     <td id="prcchecking4"><img src="{{asset('front')}}/images/tk.svg" id="prcwttick31"><img
@@ -342,7 +348,7 @@
                     <td id="prcchecking9"><img src="{{asset('front')}}/images/tk.svg" id="prpslimg3"><img
                             src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prpslimg4"></td>
                 </tr>
-                <tr>
+                <tr class="hmnwtbbck">
                     <td class="mmbr hgt" id="bxswht1a">Access to SEO score to <br> maximize SEO potential<img
                             src="{{asset('front')}}/images/questionmark.svg"></td>
                     <td id="prcchecking10"><img src="{{asset('front')}}/images/tk.svg" id="prpslimg5"><img
@@ -367,7 +373,7 @@
                             src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhttimg2">
                     </td>
                 </tr>
-                <tr>
+                <tr class="hmnwtbbck">
                     <td class="mmbr hgt" id="bxswht1b">20+ languages<img
                             src="{{asset('front')}}/images/questionmark.svg"></td>
                     <td id="prcchecking16"><img src="{{asset('front')}}/images/tk.svg" id="atmtwhttimg3"><img
@@ -489,7 +495,7 @@
             </tr>
             <tr>
                 <td class="mmbr hgt" id="cpywht3">Live chat customer support <img
-                        src="{{asset('front')}}/images/purpleques.svg"></td>
+                            src="{{asset('front')}}/images/questionmark.svg"></td>
                 <td id="prcchecking32"><img src="{{asset('front')}}/images/tk.svg" id="prcwttick41"><img
                         src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick42"></td>
                 <td id="prcchecking35"><img src="{{asset('front')}}/images/tk.svg" id="prcwttick43"><img
@@ -498,7 +504,8 @@
                         src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick46"></td>
             </tr>
             <tr>
-                <td class="mmbr hgt" id="bxswht">Technical support <img src="{{asset('front')}}/images/purpleques.svg">
+                <td class="mmbr hgt" id="bxswht">Technical support <img
+                            src="{{asset('front')}}/images/questionmark.svg">
                 </td>
 
                 <td id="prcchecking33"><img src="{{asset('front')}}/images/tk.svg" id="prcwttick19"><img
@@ -509,8 +516,8 @@
                         src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick24"></td>
             </tr>
             <tr>
-                <td class="mmbr hgt" id="cntctbxswht1b">Learning Resources<img
-                        src="{{asset('front')}}/images/purpleques.svg"></td>
+                <td class="mmbr hgt" id="cntctbxswht1b">Learning Resources <img
+                            src="{{asset('front')}}/images/questionmark.svg"></td>
                 <td id="prcchecking34"><img src="{{asset('front')}}/images/tk.svg" id="prcwttick25"><img
                         src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick26"></td>
                 <td id="prcchecking37"><img src="{{asset('front')}}/images/tk.svg" id="prcwttick27"><img
@@ -540,7 +547,7 @@
                     </h3>
                     <p class="col-white" id="cntctbxswht2b">Easily bring AI in your workflow to improve & create SEO
                         content, wherever you are. </p>
-                    <a href="{{route('register')}}" class="custom-btn4 nwwbabtcustom-btn4" id="cntctbxswht3a"> Get Start
+                    <a href="{{route('register')}}" class="custom-btn4 nwwbabtcustom-btn4"> Get Start
                     </a>
                 </div>
             </div>
@@ -549,7 +556,9 @@
     </div>
 </section>
 <section>
+    <div id="cpywht2"></div>
     <div id="gotwht2"></div>
+    <div id="cntctbxswht3a"></div>
     <div id="gotwht2a"></div>
     <div id="gotwht2b"></div>
     <div id="gotwht2c"></div>
@@ -799,6 +808,11 @@
 @endsection
 @section('js')
 <script>
+
+    window.addEventListener('DOMContentLoaded', function() {
+        var element = document.getElementById('pg3');
+        element.classList.add('pghovered');
+    });
     $(document).ready(function () {
         var packageToggle = 1;
         var isLogin = $('#is-login').val();

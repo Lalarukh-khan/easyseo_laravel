@@ -23,6 +23,7 @@ class CreateTemplateSettingsTable extends Migration
             $table->double('freq_penalty');
             $table->double('pre_penalty');
             $table->double('best_of');
+            $table->integer('results');
             $table->softDeletes();
             $table->timestamps();
         });

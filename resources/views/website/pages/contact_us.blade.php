@@ -3,8 +3,8 @@
 <!-- Page Banner Section Starts Here -->
 <section class="bg-sec13 gvngblack pad-top-40" id="writewht1">
     <div class="container">
-        <div class="pad-bot-15">
-            <h2 class="abtus nwwbctabtus nwwbabtus" id="writewhtbtn1">Contact us:</h2>
+        <div class="pad-bot-20">
+            <h2 class="abtus nwwbctabtus nwwbabtus text-center" id="writewhtbtn1">Contact us:</h2>
         </div>
         <div>
             <h2 class="col-white bsnshdng nwwbbsnshdng" id="writewhtbtn2"><b>Get in Touch with <br> <a href="{{route('web.home')}}" class="col-orange font-size-45 nwwbbsnshdngbnr-fnt">easyseo.ai</a> for <br class="onlymob">Expert SEO <br class="dn"> AI <br class="onlymob">Solutions and <br class="onlymob"><span class="col-orange font-size-45 nwwbbsnshdngbnr-fnt"> Support </b></span>
@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50">
                 <div class="sales  gvngblack" id="writewht3">
-                    <h2 class="col-white tac pad-top-10" id="writewht1b">Sales & <br class="dn"> Inquiries </h2>
+                    <h1 style="font-size: 40px;" class="col-white tac pad-top-10" id="writewht1b">Sales & <br class="dn"> Inquiries </h1>
                     <p class="pad-bot-20 font-weight-lighter tac m-b-10" id="writewht2a">If you exceed the standard <br> packages or want a demo </p>
                     <br class="onlytab">
                     <div class="col-lg-12">
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50">
                 <div class="sales gvngblack" id="prcngwht3">
-                    <h2 class="col-white tac pad-top-10"id="writewht1c">Media, Press <br> & Careers </h2>
+                    <h1 style="font-size: 40px;" class="col-white tac pad-top-10"id="writewht1c">Media, Press <br> & Careers </h1>
                     <p class="pad-bot-20 font-weight-lighter tac m-b-10" id="writewht2c">If you are interested in creating a story about our work or join our team</p>
                     <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="mailto:pr@easyseo.ai" id="writewht3c" style="text-align: center !important; width: 100%;color: #fff;">Contact media  <br class="onlytab"> team ></a>
                     <br class="onlytab">
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 m-b-50">
                 <div class="sales  gvngblack" id="prcngwht2">
-                    <h2 class="col-white tac pad-top-10" id="amzngwht3achk">Help & <br class="dn"> Support </h2>
+                    <h1 style="font-size: 40px;" class="col-white tac pad-top-10" id="amzngwht3achk">Help & <br class="dn"> Support </h1>
                     <p class="pad-bot-20 font-weight-lighter tac m-b-10"id="writewht3a">Get help and assistance on <br> how to use the platform </p>
                     <br class="onlytab">
                     <a class= "hdrbtn hdrbtns m-b-10 font-size-20" href="mailto:support@easyseo.ai"id="writewht3b" style="text-align: center !important; width: 100%;color: #fff;">Contact support ></a>
@@ -164,6 +164,8 @@
 
 
 <section>
+    <div id="cpywht2"></div>
+    <div id="cpywht3"></div>
     <div id="solo_proprice2"></div>
     <div id="solo_protoken2"></div>
     <div id="solo_proreport"></div>
@@ -510,6 +512,12 @@
     <div id="atmtwhttimg7"></div>
     <div id="atmtwhttimg8"></div>
 </section>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var element = document.getElementById('pg4');
+        element.classList.add('pghovered');
+    });
+</script>
 <!-- Get In Touch Section Ends Here -->
 <!-- Contact Us Blocks Starts Here -->
 <!-- <section class="pad-top-100 pad-bot-40 bg-black1">

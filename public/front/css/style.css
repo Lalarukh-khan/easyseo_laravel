@@ -28,7 +28,7 @@
     margin: 0px 5px;
 }
 .hdrbtn{
-    color: white;
+    /* color: white; */
     border: solid  #F47300 1px;
     border-radius: 8px;
     padding: 10px 15px;
@@ -182,9 +182,6 @@
     font-family: 'Merienda', cursive;
     font-size: 46px;
 }
-.nwwbfeature-boxes{
-    background: #1E1E1E;
-}
 .cntctbxs{
     background-repeat: no-repeat no-repeat;
     background-image: url('../images/ellipse67.svg');
@@ -240,6 +237,10 @@ border-radius: 15px;
 }
 .nwwbcpy{
     font-size: 16px !important;
+    color: #fff;
+}
+.nwwbcpy:hover{
+    color: grey;
 }
 .fvr{
     height: 31px;
@@ -480,6 +481,7 @@ font-size: 24px;
 }
 .nwwbcontact-box2{
     border-radius: 5px !important;
+    background: #000000;
 }
 .contact-boxes{
     box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
@@ -626,16 +628,19 @@ span{
     background-image: url(../images/bg-circle5.svg);
     background-repeat: no-repeat;
     background-position: 100% 0%;
-    background-size: 2700px 500px;
+    background-size: 2700px 800px;
 }
 td img{
     margin-left: 7px;
 }
+.hmnwtbbck{
+    background: #000000;
+}
 .thrdtbl{
-    background-image: url(../images/bg-circle6.svg);
+    /* background-image: url(../images/bg-circle6.svg); */
     background-repeat: no-repeat no-repeat;
     background-position: top right, -15% 80%;
-    background-size: 2900px 270px;
+    background-size: 200px 500px;
 }
 .blg{
     text-align: center;
@@ -645,7 +650,7 @@ td img{
 }
 .blgul ul{
     list-style-type: none;
-    border: 1px solid #F47300;
+    /* border: 1px solid #F47300; */
     padding: 13px 23px;
     border-radius: 8px;
     background-color: #1c1e22;
@@ -673,9 +678,9 @@ td img{
     color: #fff !important;
 }
 .blgul ul li a{
-    color: #F47300;
+    /* color: #F47300; */
     padding: 10px 0;
-    font-size: 15px;
+    font-size: 18px;
 }
 .hdrbtns{
     padding: 10px;
@@ -807,6 +812,11 @@ td img{
     padding: 8px 80px 8px 15px;
     font-size: 15px;
     color: #fff;
+}
+.instnws{
+    font-size: 50px;
+    font-weight: bolder;
+    font-weight: bold;
 }
 .sbscrbbtn{
     background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
@@ -1108,6 +1118,7 @@ td img{
         font-weight: bolder;
         line-height: 75px;
         padding-bottom: 10px ;
+        font-weight: bold;
     }
     .instnwsspn{
         font-size: 50px;
