@@ -57,11 +57,11 @@
       }
     }
 	#ailoadersk{
-		text-align: center; 
+		text-align: center;
 		margin-top: 15%;
 		display: flex;
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		margin-left: -30% !important;
 	}
 	#ailoaderImp0{
@@ -80,33 +80,33 @@
         align-items: center;
 	}
 	#ailoaderskImp0{
-		text-align: center; 
-		/* margin-top: 15%; */
+		text-align: center;
+		margin-top: 15%;
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		display: none;
-		/* margin-top: 100px; */
-		/* margin-bottom: 100px; */
+		margin-top: 100px;
+		margin-bottom: 100px;
 		margin-left: 45%;
 	}
 	#ailoaderskImp1{
-		text-align: center; 
-		/* margin-top: 15%; */
+		text-align: center;
+		margin-top: 15%;
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		display: none;
-		/* margin-top: 100px; */
-		/* margin-bottom: 100px; */
+		margin-top: 100px;
+		margin-bottom: 100px;
 		margin-left: 45%;
 	}
 	#ailoaderskImp2{
-		text-align: center; 
-		/* margin-top: 15%; */
+		text-align: center;
+		margin-top: 15%;
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		display: none;
-		/* margin-top: 100px; */
-		/* margin-bottom: 100px; */
+		margin-top: 100px;
+		margin-bottom: 100px;
 		margin-left: 45%;
 	}
 	#resulted_phrase{
@@ -120,7 +120,7 @@
 			#resulted_phrase{
 				margin-left: -40px !important;
 			}
-	} 
+	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
 		#resulted_phrase{
 			margin-left: -40px !important;
@@ -148,9 +148,9 @@
 		#ailoaderskImp{
 			margin-left: -25% !important;
 		}
-		#rps0 {
-			margin-left: 130px;
-		}
+		/* #resulted_phrase{
+			margin-left: -40px;
+		} */
 		#rps1 {
 			margin-left: 130px;
 		}
@@ -167,9 +167,9 @@
 		}
 	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
-		#rps0 {
-			margin-left: 115px;
-		}
+		/* #resulted_phrase{
+			margin-left: -40px;
+		} */
 		#rps1 {
 			margin-left: 115px;
 		}
@@ -208,7 +208,7 @@
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-3">
 						<div class="tempsideimg">
-							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 100%; height: 50px; object-fit: contain;">
+							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 50px; height: 50px; margin-left: -4px;">
 						</div>
 					</div>
 					<div class="col-lg-10 col-md-10 col-sm-9 col-9">
@@ -341,7 +341,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit" {{
-                            session()->has('package-error') ? 'disabled' : '' }}>Generate</button>
+                            session()->has('package-error') ? 'disabled' : '' }} >Generate</button>
 						</div>
 					</div>
                 </form>
@@ -357,7 +357,62 @@
                     <span id="loader-text">Generating</span>
             </div> -->
 
-			<div id="ai-loader" style="text-align:center;display:none">
+            <div class="form-group" id="ans_div" style="display:none;">
+                <div class="toprightemp">
+                    <!-- <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-3 col-3">
+                            <p class="tmphistry">History</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-5 col-5">
+                            <p class="tmpclr">Clear</p>
+                        </div>
+                    </div> -->
+                    <button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
+                </div>
+                <div class="row" id="tmprsltdwholebox">
+                    <div id="frbrdrbtm" style="display: none;">
+                            <br>
+                            <p class="rsltdvbrdrbtm"> </p>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-1">
+                                <div id="resulted_phrase"></div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
+                        </div>
+                        <div class="col-lg-1" style="padding-top: 20px;" >
+                                <div id="resulted_phrase" ></div>
+                        </div>
+                        <div class="col-lg-2"></div>
+                    </div>
+                    <!-- <div style="display:none;" id="takeimpcntnt">
+                    <div class="row">
+                        <div class="col-lg-4">
+                        <button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore" >Improve Score</button>
+                        </div>
+                        <div class="col-lg-8"></div>
+                    </div>
+                    </div> -->
+                    <br>
+                    <textarea name="content" id="details" cols="30" rows="10" style="display: none !important;"></textarea>
+                    {{--<form action="{{route('user.template.form_seo_score')}}" method="post">--}}
+                    <form id="seo_content_form" style="display: none !important;">
+                        @csrf
+                        <input type="text" name="score" id="formscore">
+                        <input type="text" name="temp_id" id="temp_id">
+                    </form>
+                </div>
+            </div>
+
+			{{-- <div id="ai-loader" style="text-align:center;display:none">
 				<div class="sk-circle-fade sk-primary" id="ailoadersk">
 					<div class="sk-circle-fade-dot"></div>
 					<div class="sk-circle-fade-dot"></div>
@@ -372,61 +427,8 @@
 					<div class="sk-circle-fade-dot"></div>
 					<div class="sk-circle-fade-dot"></div>
 				</div>
-			</div>
-			<div class="form-group" id="ans_div" style="display:none;">
-					<div class="toprightemp">
-						<!-- <div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-4 col-4">
-								<button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
-							</div>
-							<div class="col-lg-4 col-md-4 col-sm-3 col-3">
-								<p class="tmphistry">History</p>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-5 col-5">
-								<p class="tmpclr">Clear</p>
-							</div>
-						</div> -->
-						<button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
-					</div>
-					<div class="row" id="tmprsltdwholebox">
-						<div id="frbrdrbtm" style="display: none;">
-								<br>
-								<p class="rsltdvbrdrbtm"> </p>
-						</div>
-						<!-- <div class="row">
-							<div class="col-lg-8"></div>
-							<div class="col-lg-1">
-									<div id="resulted_phrase"></div>
-							</div>
-							<div class="col-lg-3"></div>
-						</div> -->
-						<div class="row" id="clearitscontent">
-							<div class="col-lg-9">
-								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
-							</div>
-							<div class="col-lg-1" style="padding-top: 20px;" >
-									<div id="resulted_phrase" ></div>
-							</div>
-							<div class="col-lg-2"></div>
-						</div>
-						<!-- <div style="display:none;" id="takeimpcntnt">
-						<div class="row">
-							<div class="col-lg-4">
-							<button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore" >Improve Score</button>
-							</div>
-							<div class="col-lg-8"></div>
-						</div>
-						</div> -->
-						<br>
-                        <textarea name="content" id="details" cols="30" rows="10" style="display: none !important;"></textarea>
-                        {{--<form action="{{route('user.template.form_seo_score')}}" method="post">--}}
-                        <form id="seo_content_form" style="display: none !important;">
-                            @csrf
-                            <input type="text" name="score" id="formscore">
-                            <input type="text" name="temp_id" id="temp_id">
-                        </form>
-                    </div>
-			</div>
+			</div> --}}
+
 		</div>
 	</div>
 </div>
@@ -451,7 +453,8 @@
     var listvalues = [];
     var keywords = [];
 
-    function getSeoScore(score,content,improve_score, rpsnum) {
+
+    function getSeoScore(score,content,improve_score) {
 
 		if(improve_score == true){
 
@@ -483,16 +486,16 @@
 				"text": content,
 				"language_name": "English (United States)"
 			});
-			const nwpostarray = JSON.stringify(post_array);
 			const username = 'lidanex@gmail.com';
 			const password = 'fc53e701e81bec41';
+
 			fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': 'Basic ' + btoa(username + ':' + password)
 			},
-			body:  JSON.stringify(post_array)
+			body: JSON.stringify(post_array)
 			})
 			.then(response => response.json())
 			.then(data => {
@@ -574,43 +577,6 @@
 								}
 								else {
 									numberEl.style.border = "2px solid #39942f";
-								}
-								if(rpsnum == "rps2"){
-									const rpss0 = document.getElementById("rps0");
-									var rscselementStyle = window.getComputedStyle(numberEl);
-									var rscsbrdrrds = numberEl.style.borderRadius;
-									var rscspddng = numberEl.style.padding;
-									rpss0.innerHTML = numberEl.innerHTML;
-									rpss0.style.borderRadius = rscsbrdrrds + "!important";
-									rpss0.style.padding = rscspddng + "!important";
-									if (number < 50) {
-										rpss0.style.border = "2px solid #f54c36";
-									}
-									else if (number >= 50 && number <= 70) {
-										rpss0.style.border = "2px solid #f7831e";
-									}
-									else {
-										rpss0.style.border = "2px solid #39942f";
-									}
-								}
-								else{
-									const rpss0 = document.getElementById("rps0");
-									var rscselementStyle = window.getComputedStyle(numberEl);
-									var rscsbrdrrds = numberEl.style.borderRadius;
-									var rscspddng = numberEl.style.padding;
-									rpss0.innerHTML = numberEl.innerHTML;
-									rpss0.style.borderRadius = rscsbrdrrds + "!important";
-									rpss0.style.padding = rscspddng + "!important";
-									if (number < 50) {
-										rpss0.style.border = "2px solid #f54c36";
-									}
-									else if (number >= 50 && number <= 70) {
-										rpss0.style.border = "2px solid #f7831e";
-									}
-									else {
-										rpss0.style.border = "2px solid #39942f";
-									}
-
 								}
 								// html += `<p class="gnrtdtext">${generated_text}</p>`;
 							}
@@ -846,17 +812,16 @@
     $('#form_submit').click(function(){
 		templateLoader('#ai-loader','show');
 		$('#ans_div').hide();
-		document.getElementById("first_result_div").textContent = "";
-		document.getElementById("resulted_phrase").style.display = "none";
 		var numberInput = document.getElementById("numberInput");
 		var first_result_div = document.getElementById("first_result_div");
 		var times = parseInt(numberInput.value);
 		var nwnumberInput = document.getElementById("numberInput");
 		document.getElementById("tmpnwotpsp").innerText = nwnumberInput.value;
-        // console.log('working');
+        console.log('working');
         // for (var i = 0; i < times; i++) {
         //    formSubmit(0,'', i, times);
         // }
+
 		if (times >= 1) {
             formSubmit(0,'', 0, times);
         }else{
@@ -871,6 +836,7 @@
 	function formSubmit(improve_score,improve_content, number, times, is_concept=false, concept_text=null)
 	{
 		document.getElementById("form_submit").disabled = true;
+        document.getElementById("form_submit").innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`;
 		// $('#ai-loader').show();
 		// templateLoader('#ai-loader','show');
 		// $('#ans_div').hide();
@@ -912,19 +878,25 @@
                     return false;
                 }else{
                     // $('#ai-loader').hide();
+                    // console.log(number);
+                    // console.log(times);
 
-                    if(number === times - 1){
-                        callansdiv();
-                    }
+                    // if(number === times - 1){
+                    //     // callansdiv();
+                    //     // templateLoader('#ai-loader','hide');
+
+                    // }else{
+                    //     $('#ans_div').show();
+                    // }
+                    $('#ans_div').show();
+
 
                     const first_result_div = document.getElementById("first_result_div");
                     // const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
                     document.getElementById("details").value = data.message;
                     const score = data.score;
                     const content = data.message;
-					var cleanedContent = content.replace(/(<br\s*\/?>)\s*(<br\s*\/?>)\s*(<br\s*\/?>)\s*(<br\s*\/?>)/g, "$1$2");
-					rpsnumch = "rps"+number;
-                    const takescore = getSeoScore(score,content,improve_score, rpsnumch);
+                    const takescore = getSeoScore(score,content,improve_score);
                     const jvbdjv = document.getElementById("resulted_phrase");
                     var elementStyle = window.getComputedStyle(jvbdjv);
                     // var newDiv = document.createElement("div");
@@ -940,14 +912,15 @@
                     // var paragraph = document.createElement("p"); margin-left: 40%;
                     // paragraph.classList.add("rsltdvbrdrbtm");
                     // paragraph.textContent = data.message;
-                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+cleanedContent+'</div>';
+                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+data.message+'</div>';
                     var smwhl = takepara + htmlContent;
                     var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
                     var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
-					var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'indvdlsec'+number+'\', \'ailoaderImp'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>';
+					var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'indvdlsec'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>';
                     result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
                     var cnvrtresult = "";
-					cnvrtresult += '<div id="ailoaderImp'+number+'"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div><div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
+                    var cnvrtresultID = `ailoaderImp${number}`;
+					cnvrtresult += '<div id="ailoaderImp'+number+'" style="display:none;"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div><div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
 					first_result_div.innerHTML += cnvrtresult;
                     // first_result_div.appendChild(paragraph);
 
@@ -959,10 +932,14 @@
                     disableimpbutton('impscore'+number);
 					checkScoreValidation('rps'+number);
 
+                    // console.log(number);
+                    // console.log(times);
+
                     if (number < times-1) {
                         formSubmit(0,'', number+1, times,true,content);
+                        return false;
                     }
-
+                    document.getElementById("form_submit").innerHTML = 'Generate';
                     document.getElementById("form_submit").disabled = false;
 
 
@@ -978,7 +955,7 @@
             }
         });
 	}
-	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk, imploaderottr)
+	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk)
 	{
 		document.getElementById("form_submit").disabled = true;
 		// $('#ai-loader').show();
@@ -997,7 +974,7 @@
 					contentType: false,
 					processData: false,
 					success: function(data) {
-						
+
 						if (data.error !== undefined) {
 							$_html = alertMessage(data.error,false);
 							$('.error-msg-div').html($_html);
@@ -1016,11 +993,9 @@
 							return false;
 						}else{
 						var imploaderinfs = document.getElementById(imploaderinf);
-						var imploaderotttr = document.getElementById(imploaderottr);
 						var impscoretags = document.getElementById(impscoretag);
 						var whlsectks = document.getElementById(whlsectk);
 						imploaderinfs.style.display = "none";
-						imploaderotttr.style.display = "none";
 						whlsectks.style.display = "block";
 						impscoretags.style.display = "flex";
 						document.getElementById(content_tag).innerHTML = data.message;
@@ -1035,29 +1010,29 @@
 						// const score = $("#first_result_div").text();
 						const score = data.score;
 						// const content = data.message
-						
+
 						// getSeoScore(score,improve_content,improve_score);
-						// if(impscoretag == "rps0"){
-						// 	document.getElementById(impscoretag).innerHTML = score;
-						// 	document.getElementById("formscore").value = score;
-						// 	const numberEl = document.getElementById(impscoretag);
-						// 	const number = parseInt(numberEl.textContent);
+						if(impscoretag == "rps0"){
+							document.getElementById("resulted_phrase").innerHTML = score;
+							document.getElementById("formscore").value = score;
+							const numberEl = document.getElementById("resulted_phrase");
+							const number = parseInt(numberEl.textContent);
 
-						// 	numberEl.style.borderRadius = "50%";
-						// 	numberEl.style.padding = "10px";
-						// 	numberEl.style.display = "flex";
+							numberEl.style.borderRadius = "50%";
+							numberEl.style.padding = "10px";
+							numberEl.style.display = "flex";
 
-						// 	if (number < 50) {
-						// 		numberEl.style.border = "2px solid #f54c36";
-						// 	}
-						// 	else if (number > 50 && number < 70) {
-						// 		numberEl.style.border = "2px solid #f7831e";
-						// 	}
-						// 	else {
-						// 		numberEl.style.border = "2px solid #39942f";
-						// 	}
-						// }
-						// else{
+							if (number < 50) {
+								numberEl.style.border = "2px solid #f54c36";
+							}
+							else if (number > 50 && number < 70) {
+								numberEl.style.border = "2px solid #f7831e";
+							}
+							else {
+								numberEl.style.border = "2px solid #39942f";
+							}
+						}
+						else{
 							document.getElementById(impscoretag).innerHTML = score;
 							document.getElementById("formscore").value = score;
 							const numberEl = document.getElementById(impscoretag);
@@ -1075,7 +1050,7 @@
 							else {
 								numberEl.style.border = "2px solid #39942f";
 							}
-						// }
+						}
 						document.getElementById("temp_id").value = data.temp_id;
 						// ||||||||||||||||| ENDING SEO SCORE |||||||||||||||||||
 						}
@@ -1102,7 +1077,7 @@
 			myButtons.disabled = true;
 		}
 	}
-	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec, tkimploaderouter){
+	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec){
 		var content = document.getElementById(divId).innerText;
 		var CImpScoreTagtk = document.getElementById(CImpScoreTag);
 		var outerImpScorergs = document.getElementById(outerImpScorerg);
@@ -1110,23 +1085,16 @@
 		outerImpScorergs.style.marginBottom = '60px';
 		var tkimploaders = document.getElementById(tkimploader);
 		var tkwhlsecs = document.getElementById(tkwhlsec);
-		var tkimploaderotr = document.getElementById(tkimploaderouter);
 		var ImpScores = document.getElementById(ImpScore);
-		var originalHeight = tkwhlsecs.style.height;
-		tkwhlsecs.style.height = "auto";
-		var height = tkwhlsecs.offsetHeight;
-		tkwhlsecs.style.height = originalHeight;
-		var nwhght = parseInt(height);
-		tkimploaderotr.style.height = nwhght + "px";
-		tkimploaderotr.style.boxSizing = "border-box";
-		// tkimploaderotr.style.paddingTop = "15%";
-		tkimploaderotr.style.display = "flex";
-		tkimploaderotr.style.marginLeft = "-90%";
-		var bdhsbf = tkimploaderotr.style.height;
 		tkimploaders.style.display = "block";
 		ImpScores.style.display = "none";
 		tkwhlsecs.style.display = "none";
-		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec, tkimploaderouter);
+		if(tkwhlsec == "indvdlsec0"){
+			var rstimpsd = document.getElementById("resulted_phrase");
+			rstimpsd.style.display = "none";
+		}
+		// CImpScoreTagtk.style.display = 'none !important';
+		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec);
 	}
 	function showHiddenDiv(divId, supidtk) {
 		var hiddenDiv = document.getElementById(divId);
