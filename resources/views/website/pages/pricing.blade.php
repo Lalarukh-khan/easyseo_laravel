@@ -111,7 +111,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-4 col-4">
                             <label class="switch2">
                                 <input type="checkbox" id="toggleyearly" checked>
-                                <span class="slider2 round2"></span>
+                                <span class="slider2 round2 hmnwtbbck"></span>
                             </label>
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-4 col-4">
@@ -809,6 +809,9 @@
 @section('js')
 <script>
 
+function detailFunction(value) {
+      value;
+    }
     window.addEventListener('DOMContentLoaded', function() {
         var element = document.getElementById('pg3');
         element.classList.add('pghovered');

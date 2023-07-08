@@ -373,15 +373,30 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-	  	<h3 class="edtrtrgtrp">Target Keyword Document</h3>
+		<!-- <div>
+			<p>
+				<a href="">
+				<button type="button" style="margin-top: -15px; border: none; font-size: 35px; color: #000000; background: transparent;"><span class="bx bx-x" ></span></button> 
+				</a>
+			</p>
+		</div> -->
+		<div class="row" style="margin-top: -20px;">
+			<div class="col-lg-10 col-md-10 col-sm-10 col-10">
+				<h3 class="edtrtrgtrp">Target Keyword Document</h3>
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-2">
+				<a  href="{{route('user.editor.all')}}"><button type="button" style="margin-top: 15px; border: none; font-size: 40px; color: #000000; background: transparent;"><span class="bx bx-x" ></span></button> </a>
+			</div>
+		</div>
+	  	<!-- <h3 class="edtrtrgtrp">Target Keyword Document</h3> -->
 		<p class="edtrp">Enter the main keyword that the content should target, and receive an SEO score and AI suggestions based on:</p>
-		<ul>
+		<ul style="padding-left: 1.1rem;">
 			<li class="edtrp">Semantic Keywords</li>
 			<li class="edtrp">Search Intentions</li>
 			<li class="edtrp">SEO Title Generation</li>
 			<li class="edtrp">SEO Score Calculation</li>
 		</ul>
-		<p id="wordserror" class="text-center"></p>
+		<p id="wordserror"></p>
 		<form id="ajaForm">
 			<div style="text-align: center;">
 				<input type="text" placeholder="Enter Target Keyword..." class="edtrinp" name="prompt" autocomplete="off" class="form-control" required>
@@ -1848,8 +1863,8 @@
 	const edtrtvvalmain = document.getElementById("edtrtvvalmain");
 	const ttgenm = document.getElementById("ttgenm");
 	var originalText = edtrtvval.value;
-	var truncatedText = originalText.slice(0, 21);
-	if (originalText.length > 21) {
+	var truncatedText = originalText.slice(0, 19);
+	if (originalText.length > 19) {
 	truncatedText += "...";
 	}
 	edtrtvvalmain.innerHTML = truncatedText;

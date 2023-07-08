@@ -19,6 +19,7 @@ class CreateTemplatesTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->longText('command_box');
+            $table->longText('improve_box')->nullable();
             $table->text('icon');
             $table->text('video_url')->nullable();
             $table->boolean('has_language')->default(0);

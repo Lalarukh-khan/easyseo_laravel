@@ -129,6 +129,7 @@ class TemplateController extends Controller
         $template->name = $request->template_name;
         $template->description = $request->description;
         $template->command_box = $request->command_box;
+        $template->improve_box = $request->improve_box;
         $template->status = $request->template_status;
         // $template->video_url = $request->video_url;
         // $template->has_number_of_concepts = isset($request->has_number_of_concepts) && $request->has_number_of_concepts == 1 ? 1 : 0;
@@ -267,6 +268,7 @@ class TemplateController extends Controller
         $template->name = $request->template_name;
         $template->description = $request->description;
         $template->command_box = $request->command_box;
+        $template->improve_box = $request->improve_box; 
         // $template->video_url = $request->video_url;
         $template->status = $request->template_status;
         // $template->has_number_of_concepts = isset($request->has_number_of_concepts) && $request->has_number_of_concepts == 1 ? 1 : 0;

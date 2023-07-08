@@ -23,7 +23,7 @@
               <h4 class="mb-2">Welcome Back 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-              <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('auth.login.submit') }}">
+              <form id="loginformAuthentication" class="mb-3" method="POST" action="{{ route('auth.login.submit') }}">
                 @csrf
 
                 @error('email')

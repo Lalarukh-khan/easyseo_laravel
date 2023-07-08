@@ -157,10 +157,15 @@ class PageController extends Controller
 
         $relevant_blogs = Blog::where(['category_id' => $blog->category_id, 'status' => 1])->where('id', '!=', $blog->id)->latest()->limit(3)->get();
 
+        $latestblogs = Blog::where('status', 1)->take(2)->get();
+        $latestblogs2 = Blog::where('status', 1)->take(3)->get();
+
         $data = array(
             'title' => $blog->title,
             'data' => $blog,
-            'relevant_blogs' => $relevant_blogs
+            'relevant_blogs' => $relevant_blogs,
+            'latestblogs' => $latestblogs,
+            'latestblogs2' => $latestblogs2,
         );
 
         return view('website.pages.blog.detail')->with($data);

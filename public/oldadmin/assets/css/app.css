@@ -394,7 +394,7 @@ a:hover {
 }
 .nwbtn-search{
 	border: 2px solid rgba(67, 0, 202, 0.3) !important;
-	height: 80px !important;
+	height: 70px !important;
 	border-top-left-radius: 12px !important;
 	border-bottom-left-radius: 12px !important;
 }
@@ -444,7 +444,7 @@ a:hover {
 }
 #nwtempsearchbar{
 	border: 2px solid rgba(67, 0, 202, 0.3);
-	padding: 38px !important;
+	padding: 33px 38px 33px 15px !important;
 	font-size: 24px;
 	font-weight: 600;
 	border-left: none !important;
@@ -928,13 +928,14 @@ box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0,
 }
 .edtrinp{
 	color: #000 !important;
-	border-radius: 1.5rem;
+	border-radius: 12px;
+	border: 2px solid #9200FF;
 	padding: 9px 20px;
-	border: 2px solid transparent;
-	width: 80%;
+	/* border: 2px solid transparent; */
+	width: 98%;
 	font-size: 17px;
-	border-image: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
-	border-image-slice: 1;
+	/* border-image: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+	border-image-slice: 1; */
 	outline: none;
 }
 .edtrinp::placeholder{
@@ -1657,7 +1658,7 @@ h3 {
 .wrkspcbtnimp{
     width: 150px;
     color: #fff !important;
-    background: linear-gradient(180deg, #E35F01 0%, #FD7E00 100%) !important;
+    background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%);
     border-radius: 8px;
     font-size: 16px;
     padding: 12px 0px;

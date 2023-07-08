@@ -110,6 +110,7 @@ class TemplateController extends Controller
         $command = $request->command;
 		$improve_score = $request->improve_score;
 		$improve_content = $request->improve_content;
+		$improve_box = $request->improve;
 
 		if($improve_score == true){
 
@@ -122,8 +123,9 @@ class TemplateController extends Controller
 				
 				//$command = "Please  replace some keywords naturally within the context of my content to maintain readability in below data to increase the seo score and at last Provide seo SCORE:- [score/88-100] :";
 
-				$command = "I will send you content, Your task is to write this content again and you can just replace a few keywords in the text with better SEO keywords. the content should still read naturally and retain its original message and intent. Write the same numbers of letters as the content. Very Important! Never write more letters than the original content. The content is:";
-                $command .= '"'.$improve_content.'"';
+				// $command = "I will send you content, Your task is to write this content again and you can just replace a few keywords in the text with better SEO keywords. the content should still read naturally and retain its original message and intent. Write the same numbers of letters as the content. Very Important! Never write more letters than the original content. The content is:";
+                // $command = $improve_box;
+                $command = $improve_box.' The content is: "'.$improve_content.'"';
 
 				$command .= "\n  and at last Provide seo SCORE:- [score/88-100] :";
 
@@ -150,7 +152,7 @@ class TemplateController extends Controller
 
 			if (isset($request->language) && !empty($request->language)) {
 				$command = $command.'
-	Write your answer in '.$request->language.' language';
+	        Write your answer in '.$request->language.' language';
 			}
 
 			// if ($request->number_of_conecpet > 1) {

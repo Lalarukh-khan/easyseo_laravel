@@ -62,7 +62,7 @@
                             <input type="text" class="form-control" name="auther" placeholder="Author" value="{{$edit->auther ?? ''}}" required>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 mb-2 mt-3">
-                            <label for="" class="mb-3">Image/Icon <span class="text-danger">(size 800x400)</span></label>
+                            <label for="" class="mb-3">Image/Icon <span class="text-danger">(size 500x500)</span></label>
                             <br>
                             <img class="profile-pic upload-button" src="{{isset($edit->image) ? asset($edit->image) :
                             'https://via.placeholder.com/150/?text=upload%20icon'}}"

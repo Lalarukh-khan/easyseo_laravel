@@ -104,13 +104,18 @@
         .blueimgback{
             background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%) !important;
         }
+        .brdrlft{
+            border-right: 1px solid #000000 !important;
+        }
     </style>
     <script>
-        function testFunction() {
+        function testFunction(callback) {
+            callback();
             var prelements = document.getElementsByClassName('hmnwtbbck');
             var blgelements = document.getElementsByClassName('nwwbfeature-boxes');
             var blgnwacolc = document.getElementsByClassName('nwacolc');
             var blueimgf = document.getElementsByClassName('blue-img');
+            var dateblg = document.getElementsByClassName('dateblg');
             for (var i = 0; i < prelements.length; i++) {
                 prelements[i].classList.toggle('whitetxtback');
             }
@@ -122,6 +127,9 @@
             }
             for (var i = 0; i < blueimgf.length; i++) {
                 blueimgf[i].classList.toggle('blueimgback');
+            }
+            for (var i = 0; i < dateblg.length; i++) {
+                dateblg[i].classList.toggle('brdrlft');
             }
             document.getElementById("hmamazonimg1").classList.toggle("dsplynone");
             document.getElementById("hmamazonimg2").classList.toggle("dsplyblock");
@@ -545,7 +553,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-2 col-sm-1 col-1"></div>
                     <div class="col-lg-6 col-md-8 col-sm-10 col-10 tpbrp">
-                    Empower Your Business with AI - Discover the Future of SEO Writing
+                    <img alt="Icon" src="{{asset('front')}}/images/stars.svg"id="bsnsadvntgimg5"></span> Empower Your Business with AI - Discover the Future of SEO Writing
                     </div>
                     <div class="col-lg-3 col-md-2 col-sm-1 col-1"></div>
                 </div>
@@ -595,7 +603,7 @@
                     @endif
 
                     <label class="switch">
-                        <input type="checkbox" checked onclick="testFunction()">
+                        <input type="checkbox" checked onclick="testFunction(() => detailFunction('sending'))">
                         <span class="slider round"></span>
                     </label>
                 </div>

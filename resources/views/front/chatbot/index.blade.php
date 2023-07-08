@@ -46,8 +46,9 @@
     .profile {
         width: 47px;
         height: 47px;
-        border-radius: 5px;
-
+        border-radius: 50px;
+        box-shadow: inset 0 0 10px 5px #C0ACEF;
+        /* border: 2px solid #C0ACEF; */
         background: #5436DA;
 
         /* margin-top: -10px; */
@@ -62,6 +63,7 @@
         width: 60%;
         height: 60%;
         object-fit: contain;
+        margin: 7px 0px 0px 9px;
     }
 
     .ai .profile {
@@ -169,7 +171,7 @@
                     <i class="fadeIn animated bx bx-right-arrow-alt"></i></button>
             </div> -->
             <div class="input-group nwctinput-group chatform">
-                <button class="btn btn-search nwctbtn-search" type="button"><i class="lni lni-emoji-smile"></i></button>
+                <button class="btn btn-search nwctbtn-search" type="button"><i class="lni lni-user"></i></button>
                 <textarea type="text" name="prompt" id="prompt" class="form-control nwcttempsearchbar2" placeholder="Message" required></textarea>
                 <button class="btn btn-search nwctbtn-search2" type="submit" id="submit-btn" {{
                     session()->has('package-error') ? 'disabled' : '' }}>

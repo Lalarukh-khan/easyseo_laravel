@@ -35,7 +35,7 @@
         <div class="blg col-lg-4 col-md-6 col-sm-12 col-12">
             <span class="font-size-20" id="writewhtbtn1">Blog <img alt="Icon" src="{{asset('front')}}/images/stars.svg"id="bsnsadvntgimg5"></span>
             <p class="col-white instnws"  id="writewhtbtn2"> News and <span class="font-size-45 col-orange instnwsspn newsinsights">insights</span> </p>
-            <p class="font-size-15 font-weight-light col-white blk" id="writewhtbtn3"> Learn about cryptocurrency, Ai`s, and blockchain, discover <br class="nomob">our latest product updates, partnership announcements, <br class="nomob"> user stories, and more. </p>
+            <p class="font-size-15 font-weight-light col-white blk" id="writewhtbtn3">Learn about AIs, SEO, Marketing, and E-commerce businesses. <br class="nomob">Discover our latest product updates, partnership announcements, <br class="nomob">user stories, and more</p>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-12 col-12"></div>
     </div>
@@ -646,6 +646,9 @@
 @endsection
 @section('js')
 <script>
+    function detailFunction(value) {
+      value;
+    }
     window.addEventListener('DOMContentLoaded', function() {
         var element = document.getElementById('pg1');
         element.classList.add('pghovered');

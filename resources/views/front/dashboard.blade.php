@@ -124,7 +124,7 @@
             </div>
             <div class="col-lg-3 col-md-3" style="margin-top: 20px;">
                 <button type="button" name="filter" id="filter" class="btn btn-primary">Search</button>
-                <button type="button" name="refresh" id="refresh" class="btn btn-info">Reset</button>
+                <button type="button" name="refresh" id="refresh" class="btn btn-info" style="background: #FF4B4B; border: 1px solid #FF4B4B;">Reset</button>
             </div>
         </div>
     </div>

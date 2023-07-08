@@ -457,7 +457,7 @@
                 <div class="col-md-5 col-lg-5 col-sm-12 col-12 order-lg-1 order-md-1 order-sm-2 order-2">
                     <div class="detail-text wow fadeInLeft" data-wow-delay="0.6s">
                         <h3 class="col-white col-lg-12 cntntm pad-bot-40" style="text-align: left !important;"> Still have questions?<br> Contact
-                            <span class="col-orange"> easyseo.ai </span> for Expert SEO AI Solutions  <br> and <span class="col-orange bnr-fnt"> Support  </span>
+                            <span class="col-orange"> easyseo.ai </span> for Expert SEO AI Solutions  <br> and <span class="col-orange"> Support  </span>
                         </h3>
                         <p class="col-white col-lg-12 cntntm pad-bot-40" style="text-align: left !important;">We are here to help you achieve success and are always ready to help in solving any questions and problems related to the use of the service  </p>
                         <button class="wrkspcbtnimp wrkspcbtnimp3"> Contact Support </button>

@@ -111,7 +111,7 @@
             </li>
             @endif
             <li>
-                <a href="{{route('user.help')}}" >
+                <a href="#" >
                     <div class="parent-icon icon-color-2">
                         <img src="{{asset('front')}}/assets/images/mark.svg" alt="" class="sdftrbtmimg">
                     </div>

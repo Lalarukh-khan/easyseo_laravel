@@ -682,12 +682,32 @@ td img{
     padding: 10px 0;
     font-size: 18px;
 }
+.blgdtt{
+    font-weight: bolder;
+}
+.dateblg{
+    font-size: 18px;
+    border-right: 1px solid #fff;
+}
+.dateblg1{
+    font-size: 18px;
+}
 .hdrbtns{
     padding: 10px;
 }
 .psprt{
     background-color: #1c1e22;
     border-radius: 8px;
+}
+.bgdtbckimg{
+    background-image: url(../images/bgdbck.png);
+    background-repeat: no-repeat;
+    margin: 40px 0px 0px 0px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 480px;
+    padding: 25px 40px;
 }
 .bg-sec8{
     background-image: url(../images/ellipse8new.svg);
@@ -854,10 +874,23 @@ td img{
     width: 100%;
     height: 250px;
 }
+.blgdtwhtr{
+    background-color: #fff;
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 15px;
+}
+.blgdtwhrc{
+    font-size: 20px;
+    color: #F47300;
+    font-weight: bold;
+}
 .nwwbbldtimg{
     float: right;
     margin-left: 20px;
-    width: 600px;
+    max-width: 500px !important;
+    height: 500px;
     height: auto;
 }
 .nwwbmancr{

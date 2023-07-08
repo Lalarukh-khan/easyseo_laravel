@@ -158,7 +158,7 @@ class BlogController extends Controller
         ];
 
         if (empty($request->id)) {
-            $rules['image'] = 'required|mimes:jpeg,png,jpg|max:2048|dimensions:width=800,height=400';
+            $rules['image'] = 'required|mimes:jpeg,png,jpg|max:2048|dimensions:width=500,height=500';
         }
 
         $validator = Validator::make($request->all(), $rules);

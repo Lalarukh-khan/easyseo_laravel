@@ -394,7 +394,7 @@ a:hover {
 }
 .nwbtn-search{
 	border: 2px solid rgba(67, 0, 202, 0.3) !important;
-	height: 80px !important;
+	height: 70px !important;
 	border-top-left-radius: 12px !important;
 	border-bottom-left-radius: 12px !important;
 }
@@ -444,7 +444,7 @@ a:hover {
 }
 #nwtempsearchbar{
 	border: 2px solid rgba(67, 0, 202, 0.3);
-	padding: 38px !important;
+	padding: 38px 38px 38px 20px !important;
 	font-size: 24px;
 	font-weight: 600;
 	border-left: none !important;

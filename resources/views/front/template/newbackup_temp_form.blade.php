@@ -221,6 +221,7 @@
 				<form id="content_form">
                     @csrf
                     <input type="hidden" name="command" value="{{$template_data->command_box}}">
+                    <input type="hidden" name="improve" value="{{$template_data->improve_box}}">
                     <input type="hidden" name="setting" value="{{$template_data->setting ?? ''}}">
                     <input type="hidden" name="template_id" value="{{$template_data->id}}">
                     <input type="hidden" name="template_name" value="{{$template_data->name}}">
@@ -541,8 +542,8 @@
 								// let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 1) + (smog_readability_index * 1);
 								let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
 								let roundedscore = Math.round(seoScore);
-								if(roundedscore >100){
-									let abvhndrd = "100";
+								if(roundedscore >85){
+									let abvhndrd = "85";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
 								}

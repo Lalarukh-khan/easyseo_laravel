@@ -806,7 +806,7 @@
                                         <div class="block-element">
                                             <div class="custom-slider2 no-arrows dots-2"><!-- custom-slider1 no-arrows dots-1 -->
                                                 <div class="testimonial-box">
-                                                    <div id="bxswht1">
+                                                    <div class="hmnwtbbck">
                                                         <h6>
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
@@ -819,18 +819,18 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht1a"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is a game changer!
+                                                        <p class="nwacolc"> <a href="{{route('web.home')}}" class="nwacolc">easyseo.ai</a> is a game changer!
                                                             It has revolutionized the way we create content, and has
                                                             saved us so much time and effort. Highly recommended! </p>
-                                                        <h4 id="bxswht1b">
+                                                        <h4 class="nwacolc">
                                                             <img src="{{asset('front')}}/images/avatar-new-1.png">
-                                                            Andrew Kozic 1
-                                                            <span id="bxswht1c"> CEO and Founder at Perfomance </span>
+                                                            Andrew Kozic
+                                                            <span class="nwacolc"> CEO and Founder at Perfomance </span>
                                                         </h4>
                                                     </div>
                                                 </div>
                                                 <div class="testimonial-box">
-                                                    <div id="bxswht2">
+                                                    <div class="hmnwtbbck">
                                                         <h6>
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
@@ -843,14 +843,14 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht2a"> As a busy marketer, <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a>
+                                                        <p class="nwacolc"> As a busy marketer, <a href="{{route('web.home')}}" class="nwacolc">easyseo.ai</a>
                                                             has been a godsend. It's incredibly user-friendly and
                                                             produces high-quality content with ease. I can't imagine
                                                             going back to the old ways.</p>
-                                                        <h4 id="bxswht2b">
+                                                        <h4 class="nwacolc">
                                                             <img src="{{asset('front')}}/images/avatar-new-2.png">
-                                                            Brian Hartman 2
-                                                            <span id="bxswht2c"> CEO and Founder at Perfomance </span>
+                                                            Brian Hartman
+                                                            <span class="nwacolc"> CEO and Founder at Perfomance </span>
                                                         </h4>
                                                     </div>
                                                 </div>
@@ -868,13 +868,13 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht3a"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is the future of
+                                                        <p class="col-white" id="bxswht3a"> <a href="{{route('web.home')}}" class="nwacolc">easyseo.ai</a> is the future of
                                                             content creation. It's efficient, effective, and allows us
                                                             to focus on the bigger picture of our marketing strategy.
                                                             Our team is loving it! </p>
                                                         <h4 id="bxswht3b">
                                                             <img src="{{asset('front')}}/images/avatar-new-3.png">
-                                                            Arthur Isaksson 3
+                                                            Arthur Isaksson
                                                             <span id="bxswht3c"> CEO and Founder at Perfomance </span>
                                                         </h4>
                                                     </div>
@@ -893,12 +893,12 @@
                                                             <img alt="Star Icon"
                                                                 src="{{asset('front')}}/images/star-icon.svg">
                                                         </h6>
-                                                        <p class="col-white" id="bxswht4a"> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is a game changer!
+                                                        <p class="col-white" id="bxswht4a"> <a href="{{route('web.home')}}" class="nwacolc">easyseo.ai</a> is a game changer!
                                                             It has revolutionized the way we create content, and has
                                                             saved us so much time and effort. Highly recommended! </p>
                                                         <h4 id="bxswht4b">
                                                             <img src="{{asset('front')}}/images/avatar-new-4.png">
-                                                            Andrew Kozic 4
+                                                            Andrew Kozic
                                                             <span id="bxswht4c"> CEO and Founder at Perfomance </span>
                                                         </h4>
                                                     </div>
@@ -1439,6 +1439,14 @@
     </section>
 </section>
 <section>
+    <div id="bxswht2"></div>
+    <div id="bxswht2a"></div>
+    <div id="bxswht2b"></div>
+    <div id="bxswht2c"></div>
+    <div id="bxswht1"></div>
+    <div id="bxswht1a"></div>
+    <div id="bxswht1b"></div>
+    <div id="bxswht1c"></div>
     <div id="blgstayuptodate1"></div>
     <div id="cpywht2"></div>
     <div id="cpywht3"></div>
@@ -1844,6 +1852,9 @@
     });
 </script> --}}
 <script>
+    function detailFunction(value) {
+      value;
+    }
      $(document).ready(function () {
         var packageToggle = 1;
         var isLogin = $('#is-login').val();

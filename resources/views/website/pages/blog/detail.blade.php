@@ -14,44 +14,191 @@
 	<meta property="og:description" content="{{ $data->meta_description }}" />
 	<meta property="og:site_name" content="easyseo.ai">
 	<meta property="og:locale" content="en_US">
+    <style>
+        .blacktextcnvrtrdt{
+            color: black !important;
+        }
+    </style>
 @endsection
 @section('content')
 <!-- Page Banner Section Starts Here -->
 <section class="abtbsnss pad-top-40 bg-secblgs gvngblack" id="writewht1">
     <div class="container">
-        <div class="block-element m-b-50 m-t-50">
-            <h1 class="col-white m-b-50" id="writewhtbtn1">{{ $data->title }}</h1>
+        <div class="row" style="width: 100%; height: auto;">
+            <div class="blg col-lg-12 col-md-12 col-sm-12 col-12">
+                <span class="font-size-20" id="writewhtbtn1">Blog <img alt="Icon" src="{{asset('front')}}/images/stars.svg"id="bsnsadvntgimg5"></span>
+                <p class="col-white instnws"  id="writewhtbtn2"> {{ $data->title }} </p>
+            </div>
+        </div>
+        <div class="block-element m-b-50 m-t-50"> 
             <div class="blog-detail-image">
                 <img class="nwwbbldtimg" src="{{ check_file($data->image) }}">
             </div>
-            <div class="blog-detail-text text-light" style="text-align: justify;" id="writewhtbtn2">
-                    {!!  $data->description  !!}
+            <div class="blog-detail-text text-light" id="writewhtbtn2">
+                <h2 id="sub1tt" class="nwacolc"></h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <p class="dateblg nwacolc" id="dateblg"></p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <p class="dateblg nwacolc">{{ $data->category->name }}</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <p class="dateblg1 nwacolc">{{ $data->auther }}</p> 
+                    </div>
+                </div>
+                <br>
+                <p id="fp1"></p>
             </div>
-        </div>
-        
-        <div class="block-element text-left m-t-40 m-b-40 wow fadeInUp" data-wow-delay="0.3s">
-            <h3 class="title-text1" id="writewhtbtn3"> Relevant <span class="col-orange"> Blogs </span> </h3>
-        </div>
-        <div class="block-element">
-            <div class="row">
-                @foreach ($relevant_blogs as $blog)
-                <div class="col-md-6 col-lg-4 col-sm-6 col-12 p-l-20 p-r-20 m-b-20 engn">
-                            <div class="feature-boxes nwwbfeature-boxes ftr-bx" id="amzngwht3">
-                                <img class="pad-bot-20 blkchnimg nwwbblkchnimg" alt="Icon" src="{{ check_file($blog->image) }}">
-                                <p class="col-white pad-bot-20 p-l-20 p-r-20 blkchnpara"  id="prcngwht1b"><span class="blkchn">{{ $blog->category->name }} </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
-                                <h4 class="col-white p-l-20 p-r-20 font-size-20"  id="prcngwht1c"> {{ $blog->title }} </h4>
-                                <p class="pad-bot-15 font-size-15 font-weight-lighter col-white p-l-20 p-r-20 lrm"  id="prcngwht1d">{{Str::limit(strip_tags($blog->description,150))}}</p>
-                                <a class= "hdrbtn hdrbtns m-b-20 m-l-25"  href="{{ route('web.blog.details',$blog->slug) }}" id="writewht1c"> Read more > </a>
-                            </div>
+            <br><br><br><br><br>
+            <div class="container-fluid bgdtbckimg">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <h3 class="nwacolc">Recent Posts</h3>
                         </div>
-                        <br class="onlymob">
-                @endforeach
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                            <p style="text-align: right;">
+                                <a class="nwacolc" href="{{ route('web.blog.all') }}">
+                                    <u>View all</u>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        @forelse ($latestblogs as $latestblog)
+                            <div class="col-md-6 col-lg-6 col-sm-6 col-12 p-l-20 p-r-20 m-b-20 engn">
+                                <div class="feature-boxes nwwbfeature-boxes ftr-bx">
+                                    <br>
+                                    <a class="p-l-20 p-r-20 font-size-30 nwacolc" href="{{ route('web.blog.details',$latestblog->slug) }}"> {{ $latestblog->title }} </a>
+                                    <br><br>
+                                    <div class="row" style="padding-left: 20px;">
+                                        <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+                                            <p class="dateblg nwacolc">{{ $latestblog->created_at->format('d F Y') }}</p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <p class="dateblg1 nwacolc">{{ $data->category->name }}</p> 
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <p class="pad-bot-15 font-size-15 font-weight-lighter p-l-20 p-r-20 lrm">{{Str::limit(strip_tags($latestblog->description), 300, '...')}} </p>
+                                </div>
+                            </div>
+                            <br class="onlymob">
+                            @empty
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-12 p-5">
+                                <h3 class="text-light text-center"> No Blog Found </h3>
+                            </div>
+                        @endforelse
+                    </div>
+            </div>
+            <div id="sp1" class="blog-detail-text  text-light nwacolc"></div>
+            <div id="img1" class="blog-detail-text  text-light text-center"></div>
+            <div id="sp2" class="blog-detail-text  text-light nwacolc"></div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div id="sp3" class="blog-detail-text  text-light nwacolc" style="text-align: justify;"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div id="img2" class="blog-detail-image"></div>
+                </div>
+            </div>
+            <div id="sp4" class="blog-detail-text text-light nwacolc"></div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div id="img3" class="blog-detail-image"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div id="lastp" class="blog-detail-text  text-light nwacolc" style="text-align: justify;"></div>
+                </div>
+            </div>
+            <br><br>
+            <div class="block-element text-left m-t-40 m-b-40">
+                <h3 class="title-text1" id="writewhtbtn3"> Featured posts</h3>
+            </div>
+            <div class="block-element m-b-50">
+                <div class="row">
+                    @foreach ($relevant_blogs as $blog)
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-12 p-l-20 engn">
+                                <div class="feature-boxes nwwbfeature-boxes ftr-bx">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                            <img class="blkchnimg nwwbblkchnimg" alt="Icon" src="{{ check_file($blog->image) }}">
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+                                            <a class="p-l-20 p-r-20 font-size-30 font-weight-bolder nwacolc pad-top-20" href="{{ route('web.blog.details',$blog->slug) }}"> {{ $blog->title }} </a>
+                                            <br><br>
+                                            <div class="row p-l-20">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                    <p class="blgdtwhtr"></p>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                                                    <p class="blgdtwhrc">{{ $blog->category->name }}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <p class="pad-bot-15 font-size-15 font-weight-lighter p-l-20 p-r-20 lrm">{{Str::limit(strip_tags($latestblog->description), 250, '...')}} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br class="onlymob">
+                    @endforeach
 
+                </div>
+            </div>
+
+            <br><br><br><br>
+                                            <div class="row">
+                                                <div class="col-md-8 col-lg-8 col-sm-6 col-12">
+                                                    <p class="tls col-white pad-bot-30 font-size-40" id="writewht1a">
+                                                        <b>Our latest <span class="col-orange font-size-40">blog</span>
+                                                            topics: </b></p>
+                                                </div>
+                                                <div class="col-md-4 col-lg-4 col-sm-6 col-12">
+                                                    <a class="col-white font-size-15 m-t-20 tae d-f j-c-e dn"
+                                                        id="writewht1b" href="{{route('web.blog.all')}}"><u>See all
+                                                            topics</u></a>
+                                                </div>
+                                            </div>
+                                            
+
+            <div class="row">
+                                                    @forelse ($latestblogs2 as $latestblog2)
+                                                    <div
+                                                        class="col-md-6 col-lg-4 col-sm-6 col-12 p-l-20 p-r-20 m-b-20 engn">
+                                                        <div class="feature-boxes nwwbfeature-boxes ftr-bx">
+                                                            <img class="pad-bot-20 blkchnimg nwwbblkchnimg" alt="Icon"
+                                                                src="{{ check_file($latestblog2->image) }}">
+                                                            <p class="pad-bot-20 p-l-20 p-r-20 blkchnpara">
+                                                                <span class="blkchn">{{ $latestblog2->category->name }}
+                                                                </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
+                                                                <a class="p-l-20 p-r-20 font-size-20 nwacolc" href="{{ route('web.blog.details',$latestblog2->slug) }}"> {{ $latestblog2->title }} </a>
+                                                             <p
+                                                                class="pad-bot-15 font-size-15 font-weight-lighter p-l-20 p-r-20 lrm">
+                                                                {{Str::limit(strip_tags($latestblog2->description,150))}} </p>
+                                                            <a class="hdrbtn hdrbtns m-b-20 m-l-25 nwacolc"
+                                                                href="{{ route('web.blog.details',$latestblog2->slug) }}"> Read
+                                                                more > </a>
+                                                        </div>
+                                                    </div>
+                                                    <br class="onlymob">
+                                                    @empty
+                                                    <div class="col-md-12 col-lg-12 col-sm-12 col-12 p-5">
+                                                        <h3 class="text-light text-center" id="writewht1a"> No Blog
+                                                            Found </h3>
+                                                    </div>
+                                                    @endforelse
             </div>
         </div>
     </div>
+    <div style="display: none;" id="wholedesc">{!!  $data->description  !!}</div>
+    <div  style="display: none;" id="blgdate">{{ $data->created_at}} </div>
 </section>
 <section>
+    <div id="cpywht2"></div>
+    <div id="cpywht3"></div>
     <div id="writewht2"></div>
     <div id="writewht1a"></div>
     <div id="writewht3"></div>
@@ -436,20 +583,103 @@
     <div id="atmtwhttimg8"></div>
 </section>
 <script>
+    var wholedesc = document.getElementById("wholedesc");
+    const content = wholedesc.innerHTML;
+    const ttword = '</h5>';
+    const fpword = '</p>';
+    const spword = '<img';
+    const imgword = '">';
+    const sp2word = '<h5><strong';
+    const ttindex = content.indexOf(ttword);
+    if (ttindex !== -1) {
+        const tttrimmedContent = content.substring(0, ttindex + ttword.length);
+        document.getElementById("sub1tt").innerHTML = tttrimmedContent;
+    }
+    var rstindex = content.indexOf(fpword);
+    if (rstindex !== -1) {
+        var trimmedContent = content.substring(rstindex + fpword.length).trim();
+        const fpindex = trimmedContent.indexOf(fpword);
+        const fptrimmedContent = trimmedContent.substring(0, fpindex + fpword.length);
+        const spremainingContent = trimmedContent.slice(fpindex + fpword.length);
+        const spindex = spremainingContent.indexOf(spword);
+        const sptrimmedContent = spremainingContent.substring(0, spindex);
+        const imgremainingContent = spremainingContent.slice(spindex + spword.length);
+        const imgindex = imgremainingContent.indexOf(imgword);
+        const imgtrimmedContent = "<img " + imgremainingContent.substring(0, imgindex + imgword.length);
+        const sp2remainingContent = imgremainingContent.slice(imgindex + imgword.length);
+        const sp2index = sp2remainingContent.indexOf(sp2word);
+        const sp2trimmedContent = sp2remainingContent.substring(0, sp2index);
+        const sp3remainingContent = sp2remainingContent.slice(sp2index + sp2word.length);
+        const sp3index = sp3remainingContent.indexOf(spword);
+        const sp3trimmedContent = "<h5><strong" + sp3remainingContent.substring(0, sp3index);
+        const img2remainingContent = sp3remainingContent.slice(sp3index + spword.length);
+        const img2index = img2remainingContent.indexOf(imgword);
+        const imgstart = "<img class='nwwbbldtimg'";
+        const img2trimmedContent = imgstart + img2remainingContent.substring(0, img2index + imgword.length);
+        const sp4remainingContent = img2remainingContent.slice(img2index + imgword.length);
+        const sp4index = sp4remainingContent.indexOf(spword);
+        const sp4trimmedContent =  sp4remainingContent.substring(0, sp4index);
+        const img3remainingContent = sp4remainingContent.slice(sp4index + spword.length);
+        const img3index = img3remainingContent.indexOf(imgword);
+        const img3trimmedContent = imgstart + img3remainingContent.substring(0, img3index + imgword.length);
+        const lastremainingContent = img3remainingContent.slice(img3index + imgword.length);
+        document.getElementById("fp1").innerHTML = fptrimmedContent;
+        document.getElementById("sp1").innerHTML = sptrimmedContent;
+        document.getElementById("img1").innerHTML = imgtrimmedContent;
+        document.getElementById("sp2").innerHTML = sp2trimmedContent;
+        document.getElementById("sp3").innerHTML = sp3trimmedContent;
+        document.getElementById("img2").innerHTML = img2trimmedContent;
+        document.getElementById("sp4").innerHTML = sp4trimmedContent;
+        document.getElementById("img3").innerHTML = img3trimmedContent;
+        document.getElementById("lastp").innerHTML = lastremainingContent;
+    }
+    function convertDateFormat(dateString) {
+        var date = new Date(dateString);
+        var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+        var monthName = monthNames[monthIndex];
+        return day + ' ' + monthName + ' ' + year;
+    }
+    var dateString = document.getElementById("blgdate").textContent;
+    var formattedDate = convertDateFormat(dateString);
+    document.getElementById("dateblg").innerHTML = formattedDate;
+
+    // console.log("Here's the desc: "+content);
+</script>
+<script>
     var spans = document.getElementsByTagName("span");
     var ems = document.getElementsByTagName("em");
     var strongs = document.getElementsByTagName("strong");
 
     for (var i = 0; i < spans.length; i++) {
     spans[i].style.color = "white"; // Replace "red" with the desired color
+    spans[i].style.fontSize = "18px";
     }
     for (var i = 0; i < ems.length; i++) {
     ems[i].style.color = "white"; // Replace "red" with the desired color
+    spans[i].style.fontSize = "18px";
     }
     for (var i = 0; i < strongs.length; i++) {
     strongs[i].style.color = "white"; // Replace "red" with the desired color
+    spans[i].style.fontSize = "18px";
     }
+    function detailFunction(value) {
+        var spans = document.getElementsByTagName("span");
+        var ems = document.getElementsByTagName("em");
+        var strongs = document.getElementsByTagName("strong");
 
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].classList.toggle('blacktextcnvrtrdt');
+        }
+        for (var i = 0; i < ems.length; i++) {
+            ems[i].classList.toggle('blacktextcnvrtrdt');
+        }
+        for (var i = 0; i < strongs.length; i++) {
+            strongs[i].classList.toggle('blacktextcnvrtrdt');
+        }
+    }
 </script>
 <!-- Page Banner Section Ends Here -->
 @endsection

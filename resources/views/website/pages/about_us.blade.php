@@ -640,6 +640,9 @@
     <div id="atmtwhttimg8"></div>
 </section>
 <script>
+    function detailFunction(value) {
+      value;
+    }
     window.addEventListener('DOMContentLoaded', function() {
         var element = document.getElementById('pg2');
         element.classList.add('pghovered');

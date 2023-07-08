@@ -190,6 +190,11 @@
                             <textarea name="command_box" class="form-control" id="command_box" cols="30"
                                 rows="10">{{$edit->command_box ?? ''}}</textarea>
                         </div>
+                        <div class="form-group col-lg-12 col-md-12  mb-2 mt-3">
+                            <label for="">Improve Box </label>
+                            <textarea name="improve_box" class="form-control" id="improve_box" cols="30"
+                                rows="6">{{$edit->improve_box ?? ''}}</textarea>
+                        </div>
 
                         {{-- <div class="form-group col-lg-5 col-md-5  mb-2 mt-3">
                             <label for="">Video Url</label>
