@@ -256,7 +256,7 @@
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
                             name="input[text{{++$k}}]" id="" rows="3" placeholder="{{$item->placeholder}}"
-                            required></textarea>
+                            required></textarea> 
                     </div>
                     @endif
                     @if ($item->type == 'long_text')
