@@ -120,21 +120,33 @@
 			#resulted_phrase{
 				margin-left: -40px !important;
 			}
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
 	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
 		#resulted_phrase{
 			margin-left: -40px !important;
 		}
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
 	}
 	@media only screen and (min-width: 1780px) and (max-width: 1880px) {
 		#resulted_phrase{
 			margin-left: -145px !important;
 		}
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
 	}
 	@media only screen and (min-width: 1580px) and (max-width: 1780px) {
 		#resulted_phrase{
 			margin-left: -131px !important;
 		}
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
 	}
 	@media only screen and (min-width: 1200px) and (max-width: 1580px) {
 		#resulted_phrase{
@@ -208,7 +220,7 @@
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-3">
 						<div class="tempsideimg">
-							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 80%; height: 50px; margin-left: 0px;">
+							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 100%; height: 50px; margin-left: 0px;object-fit: contain;">
 						</div>
 					</div>
 					<div class="col-lg-10 col-md-10 col-sm-9 col-9">
