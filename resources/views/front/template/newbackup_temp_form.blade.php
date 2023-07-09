@@ -116,6 +116,9 @@
 		/* margin-right: 30px !important; */
 		/* position: fixed; */
 	}
+	#rps0{
+		display: none !important;
+	}
 	@media only screen and (min-width: 1980px) and (max-width: 2280px) {
 			#resulted_phrase{
 				margin-left: -40px !important;
@@ -832,6 +835,8 @@
         update_length.html(`${inputLength}/${maxlength}`);
     });
     $('#form_submit').click(function(){
+		var tmprsltdwholeboxs = document.getElementById("first_result_div");
+		tmprsltdwholeboxs.innerHTML = "";
 		templateLoader('#ai-loader','show');
 		$('#ans_div').hide();
 		var numberInput = document.getElementById("numberInput");
@@ -886,7 +891,7 @@
                     $_html = alertMessage(data.error,false);
                     $('.error-msg-div').html($_html);
                     document.getElementById("form_submit").disabled = false;
-                    // $('#ai-loader').hide();
+                    // $('#ai-loader').hide(); 
                     templateLoader('#ai-loader','hide');
                     return false;
                 }
