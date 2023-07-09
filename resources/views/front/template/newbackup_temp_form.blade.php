@@ -81,32 +81,32 @@
 	}
 	#ailoaderskImp0{
 		text-align: center;
-		margin-top: 15%;
+		/* margin-top: 15%; */
 		justify-content: center;
 		align-items: center;
 		display: none;
-		margin-top: 100px;
-		margin-bottom: 100px;
+		/* margin-top: 100px; */
+		/* margin-bottom: 100px; */
 		margin-left: 45%;
 	}
 	#ailoaderskImp1{
 		text-align: center;
-		margin-top: 15%;
+		/* margin-top: 15%; */
 		justify-content: center;
 		align-items: center;
 		display: none;
-		margin-top: 100px;
-		margin-bottom: 100px;
+		/* margin-top: 100px; */
+		/* margin-bottom: 100px; */
 		margin-left: 45%;
 	}
 	#ailoaderskImp2{
 		text-align: center;
-		margin-top: 15%;
+		/* margin-top: 15%; */
 		justify-content: center;
 		align-items: center;
 		display: none;
-		margin-top: 100px;
-		margin-bottom: 100px;
+		/* margin-top: 100px; */
+		/* margin-bottom: 100px; */
 		margin-left: 45%;
 	}
 	#resulted_phrase{
@@ -936,13 +936,14 @@
                     // paragraph.textContent = data.message;
                     var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+data.message+'</div>';
                     var smwhl = takepara + htmlContent;
-                    var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
+                    var cnrtsmwhlt = '<div id="nwhdngimprv'+number+'"><div class="row">'+smwhl+'</div></div>'; //onclick="copyContent('contentToCopy')"
                     var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
-					var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'indvdlsec'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>';
-                    result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
+					var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'nwhdngimprv'+number+'\', \'ailoaderImp'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>';
+					var thewholeloader = '<div id="ailoaderImp'+number+'"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div>';
+                    result = existingText + thewholeloader + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
                     var cnvrtresult = "";
-                    var cnvrtresultID = `ailoaderImp${number}`;
-					cnvrtresult += '<div id="ailoaderImp'+number+'" style="display:none;"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div><div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
+                    // var cnvrtresultID = `ailoaderImp${number}`;
+					cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
 					first_result_div.innerHTML += cnvrtresult;
                     // first_result_div.appendChild(paragraph);
 
@@ -977,7 +978,7 @@
             }
         });
 	}
-	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk)
+	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk, imploaderottr)
 	{
 		document.getElementById("form_submit").disabled = true;
 		// $('#ai-loader').show();
@@ -1015,9 +1016,11 @@
 							return false;
 						}else{
 						var imploaderinfs = document.getElementById(imploaderinf);
+						var imploaderotttr = document.getElementById(imploaderottr);
 						var impscoretags = document.getElementById(impscoretag);
 						var whlsectks = document.getElementById(whlsectk);
 						imploaderinfs.style.display = "none";
+						imploaderotttr.style.display = "none";
 						whlsectks.style.display = "block";
 						impscoretags.style.display = "flex";
 						document.getElementById(content_tag).innerHTML = data.message;
@@ -1094,29 +1097,42 @@
 	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
-		var myButtons = document.getElementById(impnumtochk);
-		if (newsbsmsg.textContent.trim() !== '') {
-			myButtons.disabled = true;
-		}
+		// var myButtons = document.getElementById(impnumtochk);
+		// if (newsbsmsg.textContent.trim() !== '') {
+		// 	myButtons.disabled = true;
+		// }
 	}
-	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec){
+	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec, tkimploaderouter){
 		var content = document.getElementById(divId).innerText;
 		var CImpScoreTagtk = document.getElementById(CImpScoreTag);
 		var outerImpScorergs = document.getElementById(outerImpScorerg);
-		CImpScoreTagtk.style.display = 'none';
-		outerImpScorergs.style.marginBottom = '60px';
+		// CImpScoreTagtk.style.display = 'block';
+		// outerImpScorergs.style.marginBottom = '60px';
 		var tkimploaders = document.getElementById(tkimploader);
 		var tkwhlsecs = document.getElementById(tkwhlsec);
 		var ImpScores = document.getElementById(ImpScore);
+		var tkimploaderotr = document.getElementById(tkimploaderouter);
+		var originalHeight = tkwhlsecs.style.height;
+		tkwhlsecs.style.height = "auto";
+		var height = tkwhlsecs.offsetHeight;
+		tkwhlsecs.style.height = originalHeight;
+		console.log("Div Height:", height, "pixels");
+		var nwhght = parseInt(height);
+		tkimploaderotr.style.height = nwhght + "px";
+		tkimploaderotr.style.boxSizing = "border-box";
+		tkimploaderotr.style.paddingTop = "10%";
+		tkimploaderotr.style.display = "flex";
+		tkimploaderotr.style.marginLeft = "-80%";
+		var bdhsbf = tkimploaderotr.style.height;
 		tkimploaders.style.display = "block";
 		ImpScores.style.display = "none";
 		tkwhlsecs.style.display = "none";
-		if(tkwhlsec == "indvdlsec0"){
+		if(tkwhlsec == "nwhdngimprv0"){
 			var rstimpsd = document.getElementById("resulted_phrase");
 			rstimpsd.style.display = "none";
 		}
 		// CImpScoreTagtk.style.display = 'none !important';
-		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec);
+		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec, tkimploaderouter);
 	}
 	function showHiddenDiv(divId, supidtk) {
 		var hiddenDiv = document.getElementById(divId);
