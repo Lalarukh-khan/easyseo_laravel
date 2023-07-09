@@ -212,7 +212,7 @@
                 <li class="breadcrumb-item" aria-current="page">Template</li>
                 <li class="breadcrumb-item active" aria-current="page">{{$template_data->name}}</li>
             </ol>
-        </nav>
+        </nav> 
     </div>
 </div> --}}
 @include('components.flash-message')
