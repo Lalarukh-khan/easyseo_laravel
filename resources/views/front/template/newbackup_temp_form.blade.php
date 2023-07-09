@@ -116,9 +116,6 @@
 		/* margin-right: 30px !important; */
 		/* position: fixed; */
 	}
-	#rps0{
-		display: none !important;
-	}
 	@media only screen and (min-width: 1980px) and (max-width: 2280px) {
 			#resulted_phrase{
 				margin-left: -40px !important;
@@ -163,9 +160,9 @@
 		#ailoaderskImp{
 			margin-left: -25% !important;
 		}
-		/* #resulted_phrase{
-			margin-left: -40px;
-		} */
+		#rps0 {
+			margin-left: 130px;
+		}
 		#rps1 {
 			margin-left: 130px;
 		}
@@ -182,9 +179,9 @@
 		}
 	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
-		/* #resulted_phrase{
-			margin-left: -40px;
-		} */
+		#rps0 {
+			margin-left: 115px;
+		}
 		#rps1 {
 			margin-left: 115px;
 		}
@@ -479,7 +476,7 @@
     var keywords = [];
 
 
-    function getSeoScore(score,content,improve_score) {
+    function getSeoScore(score,content,improve_score,rpsnum) {
 
 		if(improve_score == true){
 
@@ -603,6 +600,42 @@
 								else {
 									numberEl.style.border = "2px solid #39942f";
 								}
+								if(rpsnum == "rps2"){
+									const rpss0 = document.getElementById("rps0");
+									var rscselementStyle = window.getComputedStyle(numberEl);
+									var rscsbrdrrds = numberEl.style.borderRadius;
+									var rscspddng = numberEl.style.padding;
+									rpss0.innerHTML = numberEl.innerHTML;
+									rpss0.style.borderRadius = rscsbrdrrds + "!important";
+									rpss0.style.padding = rscspddng + "!important";
+									if (number < 50) {
+										rpss0.style.border = "2px solid #f54c36";
+									}
+									else if (number >= 50 && number <= 70) {
+										rpss0.style.border = "2px solid #f7831e";
+									}
+									else {
+										rpss0.style.border = "2px solid #39942f";
+									}
+								}
+								else{
+									const rpss0 = document.getElementById("rps0");
+									var rscselementStyle = window.getComputedStyle(numberEl);
+									var rscsbrdrrds = numberEl.style.borderRadius;
+									var rscspddng = numberEl.style.padding;
+									rpss0.innerHTML = numberEl.innerHTML;
+									rpss0.style.borderRadius = rscsbrdrrds + "!important";
+									rpss0.style.padding = rscspddng + "!important";
+									if (number < 50) {
+										rpss0.style.border = "2px solid #f54c36";
+									}
+									else if (number >= 50 && number <= 70) {
+										rpss0.style.border = "2px solid #f7831e";
+									}
+									else {
+										rpss0.style.border = "2px solid #39942f";
+									}
+								}
 								// html += `<p class="gnrtdtext">${generated_text}</p>`;
 							}
 						}
@@ -614,68 +647,6 @@
 			// .catch(error => console.error(error));
 
 		}
-	}
-    // const impscore = document.querySelector('#impscore');
-	// impscore.addEventListener('click', function() {
-	// 	// $('#ai-loader').show();
-	// 	templateLoader('#ai-loader','show');
-	// 	$('#ans_div').hide();
-	// 	$('#impscore').hide();
-	// 	const content = document.querySelector('#details').value;
-	// 	results(content);
-	// });
-
-    function results(content) {
-
-		var getContent = document.getElementById("first_result_div").innerHTML
-		formSubmit(1,getContent);
-		return false;
-
-		// const url = 'https://api.dataforseo.com/v3/content_generation/paraphrase/live';
-		// const post_array = [];
-		// post_array.push({
-				// "text": content,
-				// "language_name": "English (United States)"
-		// });
-		// const username = 'lidanex@gmail.com';
-		// const password = 'fc53e701e81bec41';
-
-		// fetch(url, {
-		// method: 'POST',
-		// headers: {
-			// 'Content-Type': 'application/json',
-			// 'Authorization': 'Basic ' + btoa(username + ':' + password)
-		// },
-		// body: JSON.stringify(post_array)
-		// })
-		// .then(response => response.json())
-		// .then(data => {
-			// const apiResponse = data;
-			// this.list.push({
-				// "response": apiResponse
-		        // })
-                // for (const key of Object.keys(this.list)) {
-                    // this.listvalues.push(this.list[key]);
-                // }
-            // const finallist = this.list;
-                    // for (let i = 0; i < finallist.length; i++) {
-                    // const item = finallist[i];
-                    // for (let j = 0; j < item.response.tasks.length; j++) {
-                        // const subitem = item.response.tasks[j];
-                        // for (let z = 0; z < subitem.result.length; z++) {
-                        // const subitem2 = subitem.result[z];
-                        // const generated_text = subitem2.generated_text;
-                        $('#ai-loader').hide();
-                        // templateLoader('#ai-loader','hide');
-                        // $('#ans_div').show();
-                        // document.getElementById("first_result_div").innerHTML = generated_text;
-                        // const score = generated_text;
-	                    // getImpSeoScore(score);
-                        // }
-                    // }
-                    // }
-			// })
-		// .catch(error => console.error(error));
 	}
 
     function getImpSeoScore(content) {
@@ -837,6 +808,7 @@
     $('#form_submit').click(function(){
 		var tmprsltdwholeboxs = document.getElementById("first_result_div");
 		tmprsltdwholeboxs.innerHTML = "";
+		document.getElementById("resulted_phrase").style.display = "none";
 		templateLoader('#ai-loader','show');
 		$('#ans_div').hide();
 		var numberInput = document.getElementById("numberInput");
@@ -923,7 +895,8 @@
                     document.getElementById("details").value = data.message;
                     const score = data.score;
                     const content = data.message;
-                    const takescore = getSeoScore(score,content,improve_score);
+                    var rpsnumch = "rps"+number;
+                    const takescore = getSeoScore(score,content,improve_score, rpsnumch);
                     const jvbdjv = document.getElementById("resulted_phrase");
                     var elementStyle = window.getComputedStyle(jvbdjv);
                     // var newDiv = document.createElement("div");
@@ -1090,14 +1063,14 @@
 	function checkScoreValidation(rpsnumcheck){
 		var rpsnumchecks = document.getElementById(rpsnumcheck);
 		if (rpsnumchecks.textContent.trim() == '') {
-			if(rpsnumcheck == "rps0"){
-				rpsnumchecks.innerText = "";
-			}
-			else{
+			// if(rpsnumcheck == "rps0"){
+			// 	rpsnumchecks.innerText = "";
+			// }
+			// else{
 				rpsnumchecks.innerText = "62";
 				rpsnumchecks.style.border = "2px solid #f7831e";
 
-			}
+			// }
 		}
 	}
 	function disableimpbutton(impnumtochk){
