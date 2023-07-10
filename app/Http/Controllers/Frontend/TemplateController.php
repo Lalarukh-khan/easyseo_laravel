@@ -105,7 +105,7 @@ class TemplateController extends Controller
     }
 
     public function form_submit(Request $request)
-    {
+    {    
         $settings_arr = json_decode($request->setting);
         $command = $request->command;
 		$improve_score = $request->improve_score;
@@ -261,8 +261,8 @@ class TemplateController extends Controller
 
             $msg = [
                 'status' => 200,
-                'message' =>  $gpt_answer,
-                // 'message' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['content'],
+                // 'message' =>  $gpt_answer,
+                'message' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['content'],
 				'score' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['seo_score'],
                 'temp_id' => $history->id,
                 'word_count' => $history->total_words,
