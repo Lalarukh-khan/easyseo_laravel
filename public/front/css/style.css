@@ -706,8 +706,14 @@ td img{
     width: 100%;
     background-size: cover;
     background-position: center;
-    height: 480px;
+    height: 530px;
     padding: 25px 40px;
+}
+.blgftrbxsnw{
+	height: 125px;
+}
+.blgtthgt{
+    height: 100px;
 }
 .bg-sec8{
     background-image: url(../images/ellipse8new.svg);
@@ -889,8 +895,8 @@ td img{
 .nwwbbldtimg{
     float: right;
     margin-left: 20px;
-    max-width: 500px !important;
-    height: 500px;
+    width: 500px !important;
+    height: 500px !important;
     height: auto;
 }
 .nwwbmancr{
