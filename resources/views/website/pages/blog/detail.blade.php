@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="block-element m-b-50 m-t-50"> 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="blog-detail-text text-light" id="writewhtbtn2">
