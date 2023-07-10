@@ -50,7 +50,7 @@
                 <br>
                 <p id="fp1"></p>
             </div>
-            <br><br><br><br><br>
+            <br><br>
             <div class="container-fluid bgdtbckimg">
                     <div class="row">
                         <div class="col-md-6 col-lg-6 col-sm-6 col-6">
@@ -71,7 +71,7 @@
                             <div class="col-md-6 col-lg-6 col-sm-6 col-12 p-l-20 p-r-20 m-b-20 engn">
                                 <div class="feature-boxes nwwbfeature-boxes ftr-bx">
                                     <br>
-                                    <a class="p-l-20 p-r-20 font-size-30 nwacolc" href="{{ route('web.blog.details',$latestblog->slug) }}"> {{ $latestblog->title }} </a>
+                                    <a class="p-l-20 p-r-20 font-size-30 nwacolc blgftrbxsnw" href="{{ route('web.blog.details',$latestblog->slug) }}"> {{ $latestblog->title }} </a>
                                     <br><br>
                                     <div class="row" style="padding-left: 20px;">
                                         <div class="col-lg-5 col-md-5 col-sm-12 col-12">
@@ -174,7 +174,7 @@
                                                             <p class="pad-bot-20 p-l-20 p-r-20 blkchnpara">
                                                                 <span class="blkchn">{{ $latestblog2->category->name }}
                                                                 </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
-                                                                <a class="p-l-20 p-r-20 font-size-20 nwacolc" href="{{ route('web.blog.details',$latestblog2->slug) }}"> {{ $latestblog2->title }} </a>
+                                                                <a class="p-l-20 p-r-20 font-size-20 nwacolc blgtthgt" href="{{ route('web.blog.details',$latestblog2->slug) }}"> {{ $latestblog2->title }} </a>
                                                              <p
                                                                 class="pad-bot-15 font-size-15 font-weight-lighter p-l-20 p-r-20 lrm">
                                                                 {{Str::limit(strip_tags($latestblog2->description,150))}} </p>
