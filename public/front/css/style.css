@@ -895,8 +895,8 @@ td img{
 .nwwbbldtimg{
     float: right;
     margin-left: 20px;
-    max-width: 500px !important;
-    height: 500px;
+    width: 500px !important;
+    height: 500px !important;
     height: auto;
 }
 .nwwbmancr{

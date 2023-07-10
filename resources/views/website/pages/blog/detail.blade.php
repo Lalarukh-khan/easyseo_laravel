@@ -31,26 +31,34 @@
             </div>
         </div>
         <div class="block-element m-b-50 m-t-50"> 
-            <div class="blog-detail-image">
-                <img class="nwwbbldtimg" src="{{ check_file($data->image) }}">
-            </div>
-            <div class="blog-detail-text text-light" id="writewhtbtn2">
-                <h2 id="sub1tt" class="nwacolc"></h2>
+            <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                        <p class="dateblg nwacolc" id="dateblg"></p>
+                    <div class="col-lg-6">
+                        <div class="blog-detail-text text-light" id="writewhtbtn2">
+                            <h2 id="sub1tt" class="nwacolc"></h2>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <p class="dateblg nwacolc" id="dateblg"></p>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <p class="dateblg nwacolc">{{ $data->category->name }}</p>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <p class="dateblg1 nwacolc">{{ $data->auther }}</p> 
+                                </div>
+                            </div>
+                            <br>
+                            <p id="fp1"></p>
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                        <p class="dateblg nwacolc">{{ $data->category->name }}</p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                        <p class="dateblg1 nwacolc">{{ $data->auther }}</p> 
+                    <div class="col-lg-6">
+                        <div class="blog-detail-image">
+                            <img class="nwwbbldtimg" src="{{ check_file($data->image) }}">
+                        </div>
                     </div>
                 </div>
-                <br>
-                <p id="fp1"></p>
             </div>
-            <br><br>
+            <!-- <br><br> -->
             <div class="container-fluid bgdtbckimg">
                     <div class="row">
                         <div class="col-md-6 col-lg-6 col-sm-6 col-6">
