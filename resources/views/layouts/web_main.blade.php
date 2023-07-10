@@ -570,13 +570,16 @@
                     </button>
                 </div>
                 <div class="logo">
-                    <a class= "esylogo" href="{{route('web.home')}}" id="blcklogo"> <img alt="Easy Seo Logo" src="{{asset('front')}}/images/logo.svg"> </a>
-                    <a class= "esylogo" href="{{route('web.home')}}" style="display: none;" id="whtlogo"> <img alt="Easy Seo Logo" src="{{asset('front')}}/images/logodark.png" > </a>
+                    <a href="{{route('web.home')}}" id="blcklogo"> <img class= "esylogo" alt="Easy Seo Logo" src="{{asset('front')}}/images/logo.svg"> </a>
+                    <a href="{{route('web.home')}}" style="display: none;" id="whtlogo"> <img class= "esylogo" alt="Easy Seo Logo" src="{{asset('front')}}/images/logodark.png" > </a>
                 </div>
                 <div class="navbar-custom">
                     {{-- <div class="menu-item">
                         <a href="javascript:void(0):"> Product <img alt="Angle Arrow" src="{{asset('front')}}/images/angle-down.svg"> </a>
                     </div> --}}
+                    <div class="menu-item hdr-btn" id="pg0">
+                        <a href="{{ route('web.home') }}" class="nwacolc"> Home </a>
+                    </div>
                     <div class="menu-item hdr-btn" id="pg1">
                         <a href="{{ route('web.blog.all') }}" id="menuitemwht1"> Blog </a>
                     </div>
