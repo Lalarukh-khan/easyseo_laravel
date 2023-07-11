@@ -250,7 +250,7 @@ class Helpers
 
 		 // Remove content after SEO SCORE
 
-     $trimmedString = strstr($string, 'SEO', true);
+    //  $trimmedString = strstr($string, 'SEO', true);
 		// if(!empty($trimmedString)){
 		// 	$string = $trimmedString;
 		// }
