@@ -18,6 +18,9 @@
         .blacktextcnvrtrdt{
             color: black !important;
         }
+        #sub1tt h5{
+            font-size: 33px;
+        }
     </style>
 @endsection
 @section('content')

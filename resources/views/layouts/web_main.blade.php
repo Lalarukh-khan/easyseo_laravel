@@ -116,6 +116,7 @@
             var blgnwacolc = document.getElementsByClassName('nwacolc');
             var blueimgf = document.getElementsByClassName('blue-img');
             var dateblg = document.getElementsByClassName('dateblg');
+            var onlybackwhts = document.getElementsByClassName('onlybackwht');
             for (var i = 0; i < prelements.length; i++) {
                 prelements[i].classList.toggle('whitetxtback');
             }
@@ -130,6 +131,9 @@
             }
             for (var i = 0; i < dateblg.length; i++) {
                 dateblg[i].classList.toggle('brdrlft');
+            }
+            for (var i = 0; i < onlybackwhts.length; i++) {
+                onlybackwhts[i].classList.toggle('bgwhttxtblck');
             }
             document.getElementById("hmamazonimg1").classList.toggle("dsplynone");
             document.getElementById("hmamazonimg2").classList.toggle("dsplyblock");
@@ -580,14 +584,14 @@
                     <div class="menu-item hdr-btn" id="pg0">
                         <a href="{{ route('web.home') }}" class="nwacolc"> Home </a>
                     </div>
-                    <div class="menu-item hdr-btn" id="pg1">
-                        <a href="{{ route('web.blog.all') }}" id="menuitemwht1"> Blog </a>
-                    </div>
                     <div class="menu-item hdr-btn menuitemwht" id="pg2">
                         <a href="{{route('web.about_us')}}" id="menuitemwht2"> About Us </a>
                     </div>
                     <div class="menu-item hdr-btn menuitemwht" id="pg3">
                         <a href="{{route('web.pricing')}}" id="menuitemwht3"> Pricing </a>
+                    </div>
+                    <div class="menu-item hdr-btn" id="pg1">
+                        <a href="{{ route('web.blog.all') }}" id="menuitemwht1"> Blog </a>
                     </div>
                     <div class="menu-item hdr-btn menuitemwht"id="pg4">
                         <a href="{{route('web.contact_us')}}" id="menuitemwht4"> Contact Us </a>

@@ -53,8 +53,11 @@
     margin-right: 15px;
     margin-top: 4px;
 }
+.btn-trial:hover{
+    background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%);
+}
 .btn-trial a:hover{
-    color: #FFFFFF !important;
+    color: #fff !important;
 }
 .switch {
     position: relative;
@@ -216,9 +219,9 @@
     color: #6701B8;
 }
 .brdimg{
-background: linear-gradient(180deg, #E35F01 0%, #FD7E00 100%);
-border-radius: 8px;
-/* padding: 12px 38px; */
+    background: linear-gradient(180deg, #E35F01 0%, #FD7E00 100%);
+    border-radius: 8px;
+    /* padding: 12px 38px; */
 }
 
 .ftr{
