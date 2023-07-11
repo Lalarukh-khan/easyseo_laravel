@@ -105,7 +105,7 @@ class TemplateController extends Controller
     }
 
     public function form_submit(Request $request)
-    {
+    {    
         $settings_arr = json_decode($request->setting);
         $command = $request->command;
 		$improve_score = $request->improve_score;
@@ -120,7 +120,7 @@ class TemplateController extends Controller
 			 *----------------------------------
 			 */
 				//$command = "I need you to act as a SEO enhancement specialist for the content I provide. You will be tasked with integrating strong SEO keywords into my text without altering the overall meaning. Your sole role will be to revise and enhance the SEO strength of my content; you are not to create new content or offer editorial feedback on the content's substance or style. Your revisions should be focused entirely on SEO improvement, ensuring my content is optimized for search engine visibility and ranking. Please remember to use the keywords naturally within the context of my content to maintain readability. The first content I need you to optimize is and at last Provide seo SCORE:- [score/100] :-\n\n";
-				
+
 				//$command = "Please  replace some keywords naturally within the context of my content to maintain readability in below data to increase the seo score and at last Provide seo SCORE:- [score/88-100] :";
 
 				// $command = "I will send you content, Your task is to write this content again and you can just replace a few keywords in the text with better SEO keywords. the content should still read naturally and retain its original message and intent. Write the same numbers of letters as the content. Very Important! Never write more letters than the original content. The content is:";
@@ -160,6 +160,8 @@ class TemplateController extends Controller
 			// }
 			//$command .= '\n\n Provide seo SCORE:- [score/100] :-';
 		}
+
+        // dd($command);
         // checking remaining words
         // $user_package = UserPackage::where('user_id',auth('web')->id())->latest()->first();
         // $userPackageWords = $user_package->words;
@@ -219,18 +221,18 @@ class TemplateController extends Controller
             $gpt_ans = $this->gpt3_ans($setting,$command,base64_decode($key->api_key));
         }
 
+        // dd($gpt_ans);
         // $gpt_ans = $this->gpt3_turbo($setting,$command,base64_decode($key->api_key));
 // dd(trim($gpt_ans['message']));
 
         $gpt_answer = removeFirstTwoBrTags($gpt_ans['answer']);
+
         if (str_word_count($gpt_answer) >= $remaining_words) {
             $gpt_answer = limitWords($gpt_answer,$remaining_words);
             $total_words = str_word_count($gpt_answer);
         }else{
             $total_words = str_word_count($gpt_answer);
         }
-
-
         $history = new GptHistory();
 
         if(isset($gpt_ans['status']) && $gpt_ans['status'] == 400){
@@ -257,9 +259,20 @@ class TemplateController extends Controller
 				$history->save();
 			}
 
+            if($improve_score == true){
+                $str = $gpt_answer;
+                $start = strpos($str, '"') + 1; // " ke baad ka index
+                $end = strpos($str, '"', $start); // Dusra " ka index
+
+                $result = substr($str, $start, $end - $start); // " ke beech ka data
+            }else{
+                $result = $gpt_answer;
+            }
+
             $msg = [
                 'status' => 200,
-                'message' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['content'],
+                'gpt_answer' =>  $gpt_answer,
+                'message' =>  Helpers::getSeoScoreNRemvContent($result,$improve_score)['content'],
 				'score' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['seo_score'],
                 'temp_id' => $history->id,
                 'word_count' => $history->total_words,

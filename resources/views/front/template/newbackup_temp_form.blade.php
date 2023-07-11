@@ -554,7 +554,27 @@
 								// let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 1) + (smog_readability_index * 1);
 								let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
 								let roundedscore = Math.round(seoScore);
-								if(roundedscore >85){
+								if(roundedscore == 85){
+									let abvhndrd = "81";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+								}
+								else if(roundedscore >= 86 && roundedscore <= 90){
+									let abvhndrd = "82";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+								}
+								else if(roundedscore >= 91 && roundedscore <= 94){
+									let abvhndrd = "83";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+								}
+								else if(roundedscore >= 95 && roundedscore <= 99){
+									let abvhndrd = "84";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+								}
+								else if(roundedscore >= 100){
 									let abvhndrd = "85";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
@@ -574,7 +594,7 @@
 								// formInputs.forEach(function(input) {
 								// });
 								$.ajax({
-									url: "{{ route('user.template.seo_form_submit') }}",
+									url: "{{ route('user.template.seo_form_submit') }}", 
 									method: "POST",
 									data: seoformData,
 									dataType: 'json',
