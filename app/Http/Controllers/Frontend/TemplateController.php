@@ -258,11 +258,15 @@ class TemplateController extends Controller
 
 				$history->save();
 			}
+            $str = $gpt_answer;
+            $start = strpos($str, '"') + 1; // " ke baad ka index
+            $end = strpos($str, '"', $start); // Dusra " ka index
 
+            $result = substr($str, $start, $end - $start); // " ke beech ka data
             $msg = [
                 'status' => 200,
                 // 'message' =>  $gpt_answer,
-                'message' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['content'],
+                'message' =>  $result,
 				'score' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['seo_score'],
                 'temp_id' => $history->id,
                 'word_count' => $history->total_words,
