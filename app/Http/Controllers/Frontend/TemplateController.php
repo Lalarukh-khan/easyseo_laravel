@@ -266,7 +266,7 @@ class TemplateController extends Controller
             $msg = [
                 'status' => 200,
                 // 'message' =>  $gpt_answer,
-                'message' =>  $result,
+                'message' =>  Helpers::getSeoScoreNRemvContent($result,$improve_score)['content'],
 				'score' =>  Helpers::getSeoScoreNRemvContent($gpt_answer,$improve_score)['seo_score'],
                 'temp_id' => $history->id,
                 'word_count' => $history->total_words,
