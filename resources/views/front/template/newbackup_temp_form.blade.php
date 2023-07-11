@@ -913,6 +913,7 @@
                     const first_result_div = document.getElementById("first_result_div");
                     // const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
                     document.getElementById("details").value = data.message;
+					console.log("The result is : "+data.message);
                     const score = data.score;
                     const content = data.message;
                     var rpsnumch = "rps"+number;
@@ -1013,6 +1014,7 @@
 
 							return false;
 						}else{
+					console.log("The improvement result is : "+ data.message);
 						var imploaderinfs = document.getElementById(imploaderinf);
 						var imploaderotttr = document.getElementById(imploaderottr);
 						var impscoretags = document.getElementById(impscoretag);
