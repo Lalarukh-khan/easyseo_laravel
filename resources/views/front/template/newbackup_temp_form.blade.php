@@ -956,7 +956,7 @@
             }
         });
 	}
-	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk, imploaderottr)
+	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk, imploaderottr, CImpScoreTagtken)
 	{
 		document.getElementById("form_submit").disabled = true;
 		// $('#ai-loader').show();
@@ -1000,6 +1000,7 @@
 						imploaderinfs.style.display = "none";
 						imploaderotttr.style.display = "none";
 						whlsectks.style.display = "block";
+						whlsectks.style.marginBottom = "50px";
 						impscoretags.style.display = "flex";
 						document.getElementById(content_tag).innerHTML = data.message;
 						document.getElementById("details").value = data.message;
@@ -1015,27 +1016,30 @@
 						// const content = data.message
 
 						// getSeoScore(score,improve_content,improve_score);
-						if(impscoretag == "rps0"){
-							document.getElementById("resulted_phrase").innerHTML = score;
-							document.getElementById("formscore").value = score;
-							const numberEl = document.getElementById("resulted_phrase");
-							const number = parseInt(numberEl.textContent);
+						// if(impscoretag == "rps0"){ 
+						// 	console.log("YESSSS");
+						// 	document.getElementById("resulted_phrase").innerHTML = score;
+						// 	document.getElementById("formscore").value = score;
+						// 	const numberEl = document.getElementById("resulted_phrase");
+						// 	const number = parseInt(numberEl.textContent);
 
-							numberEl.style.borderRadius = "50%";
-							numberEl.style.padding = "10px";
-							numberEl.style.display = "flex";
+						// 	numberEl.style.borderRadius = "50%";
+						// 	numberEl.style.padding = "10px";
+						// 	numberEl.style.display = "flex";
 
-							if (number < 50) {
-								numberEl.style.border = "2px solid #f54c36";
-							}
-							else if (number > 50 && number < 70) {
-								numberEl.style.border = "2px solid #f7831e";
-							}
-							else {
-								numberEl.style.border = "2px solid #39942f";
-							}
-						}
-						else{
+						// 	if (number < 50) {
+						// 		numberEl.style.border = "2px solid #f54c36";
+						// 	}
+						// 	else if (number > 50 && number < 70) {
+						// 		numberEl.style.border = "2px solid #f7831e";
+						// 	}
+						// 	else {
+						// 		numberEl.style.border = "2px solid #39942f";
+						// 	}
+						// }
+						// else{
+							var impinrwhlbtn = document.getElementById(CImpScoreTagtken);
+							impinrwhlbtn.style.display = "none";
 							document.getElementById(impscoretag).innerHTML = score;
 							document.getElementById("formscore").value = score;
 							const numberEl = document.getElementById(impscoretag);
@@ -1053,7 +1057,7 @@
 							else {
 								numberEl.style.border = "2px solid #39942f";
 							}
-						}
+						// }
 						document.getElementById("temp_id").value = data.temp_id;
 						// ||||||||||||||||| ENDING SEO SCORE |||||||||||||||||||
 						}
@@ -1075,10 +1079,10 @@
 	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
-		var myButtons = document.getElementById(impnumtochk);
-		if (newsbsmsg.textContent.trim() !== '') {
-			myButtons.disabled = true;
-		}
+		// var myButtons = document.getElementById(impnumtochk);
+		// if (newsbsmsg.textContent.trim() !== '') {
+		// 	myButtons.disabled = true;
+		// }
 	}
 	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec, tkimploaderouter){
 		var content = document.getElementById(divId).innerText;
@@ -1094,7 +1098,7 @@
 		tkwhlsecs.style.height = "auto";
 		var height = tkwhlsecs.offsetHeight;
 		tkwhlsecs.style.height = originalHeight;
-		console.log("Div Height:", height, "pixels");
+		// console.log("Div Height:", height, "pixels");
 		var nwhght = parseInt(height);
 		tkimploaderotr.style.height = nwhght + "px";
 		tkimploaderotr.style.boxSizing = "border-box";
@@ -1109,8 +1113,7 @@
 			var rstimpsd = document.getElementById("resulted_phrase");
 			rstimpsd.style.display = "none";
 		}
-		// CImpScoreTagtk.style.display = 'none !important';
-		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec, tkimploaderouter);
+		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec, tkimploaderouter, CImpScoreTag);
 	}
 	function showHiddenDiv(divId, supidtk) {
 		var hiddenDiv = document.getElementById(divId);

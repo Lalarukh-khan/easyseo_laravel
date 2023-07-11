@@ -49,10 +49,10 @@
             <div class="col-lg-1 col-md-1 col-sm-12 col-12"></div>
             <div class="blgul col-lg-10 col-md-10 col-sm-12 col-12 dn">
                 <ul class="row" id="prcngwht3" style="text-align: center !important;">
-                    <li class="nwwbliviewall"><a class="nav-link font-weight-light " role="tab" href="javascript:void(0)" data-id="all">View all</a></li>
+                    <li class="nwwbliviewall checktheclass" onclick="addactvbtn(this)"><a class="nav-link font-weight-light nwacolc" role="tab" href="javascript:void(0)" data-id="all">View all</a></li>
                     <!-- <li><a class="col-white font-size-15 font-weight-light" href="#" role="button"id="writewht1b">Crypto</a></li>-->
                     @foreach ($categories as $cat)
-                    <li>
+                    <li class="checktheclass" onclick="addactvbtn(this)">
                         <a class="nav-link font-size-15 font-weight-light nwacolc" data-toggle="tab" href="javascript:void(0)" role="tab" data-id="{{ $cat->hashid }}">{{ $cat->name }}</a>
                     </li>
                     @endforeach
@@ -646,6 +646,13 @@
 @endsection
 @section('js')
 <script>
+    function addactvbtn(button) {
+        var prelements = document.getElementsByClassName('checktheclass');
+        for (var i = 0; i < prelements.length; i++) {
+            prelements[i].classList.remove('nwwbliviewall');
+        }
+        button.classList.add("nwwbliviewall");  
+    }
     function detailFunction(value) {
       value;
     }

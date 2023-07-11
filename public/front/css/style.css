@@ -668,6 +668,10 @@ td img{
     background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
     border-radius: 4px;
 }
+/* .blgul ul li.active{
+    background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+    border-radius: 4px;
+} */
 .blgul ul li a:hover{
     color: #fff !important;
 }
@@ -679,8 +683,8 @@ td img{
     border-radius: 4px;
 }
 .nwwbliviewall a{
-    color: #fff !important;
-}
+    color: #fff !important; 
+ }
 .blgul ul li a{
     /* color: #F47300; */
     padding: 10px 0;
