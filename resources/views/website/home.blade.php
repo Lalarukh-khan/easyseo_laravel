@@ -10,7 +10,8 @@
     } */
     .hmaep:not(:is([aria-expanded="true"])), .accordion-block {
         background-color: #000000;    
-        box-shadow: -2px -2px 24px #653bff;
+        /* box-shadow: -2px -2px 24px #653bff; */
+        box-shadow: -2px -2px 15px #4c1aff;
     }
     
     .hmaep:is([aria-expanded="true"]), .accordion-block {
@@ -648,20 +649,137 @@
 
                                         <!-- ||||||||||||||||| Exited with easyseo.ai |||||||||||||||||||||| -->
 
-                                        <section class="bsnsadvntg pad-top-40">
+                                        <section class="bsnsadvntg">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
-                                                <div class="col-lg-8 col-md-8 col-sm-12 col-12 pad-bot-40">
+                                                <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                                                     <h4 style="font-size: 36px;" class="advntg" id="bsnsadvntg"><b>You｀ll be exited about <a href="{{route('web.home')}}" class="col-orange bnr-fnt">easyseo.ai!</a></b></h4>
                                                     <p class="strhmnw nwacolc">Stories of marketers, writers and entrepreneurs using Easyseo.ai </p>
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                             </div>
-                                            <div class="row">
+                                            <div style="text-align: center;">
+                                                <button class="nwhmextd nwhmextdactv">Business</button>
+                                                <button class="nwhmextd onlybackwht">SEO</button>
+                                                <button class="nwhmextd onlybackwht">Blogger</button>
+                                                <button class="nwhmextd onlybackwht">Influencer</button>
+                                                <button class="nwhmextd onlybackwht">Blogger</button>
+                                                <button class="nwhmextd onlybackwht">Agency</button>
+                                                <button class="nwhmextd onlybackwht">SEO Specialists</button>
+                                            </div>
+                                            <div class="nwwbfeature-boxes nwhmextwhlbx">
+                                                <div class="row">
+                                                    <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
+                                                        <p class="nwhmextdp"><</p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-10 col-sm-12 col-12">
+                                                        <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10">Small business owner</h2>
+                                                        <p class="nwhmexthd2 nwacolc pad-bot-20">Who are looking to improve their online visibility and increase traffic <br>to their website.</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30" id="bsnsadvntg1">
+                                                                <div class="pad-bot-20">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15" style="margin-left: -20px;"  id="bsnsadvntg2">
+                                                                <div class="pad-bot-40 m-t-60">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="m-t-20 m-l-20">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <img src="admin_assets/assets/images/userimage.png">
+                                                                        </div>
+                                                                        <div class="col-lg-7 pad-top-10" style="margin-left: -10px">
+                                                                            <h4 class="nwacolc">Andrew Kozic</h4>
+                                                                            <p class="nwhmextceo nwacolc">CEO and Founder at Perfomance</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <h6>
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                    </h6>
+                                                                    <br>
+                                                                    <p class="nwhmextsmp nwacolc"> EasySEO is a game changer! It has revolutionized the way we create content, and has saved us so much time and effort. <br> Highly recommended!</p>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center m-b-25">
+                                                            <img src="admin_assets/assets/images/orngdots.png" alt="" style="cursor: pointer;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
+                                                        <p class="nwhmextdp">></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                </ol>
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                    <div class="card-img-overlay">
+                                                        11111 Some text here as well...
+                                                        </div>
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                            <h5>First Slide</h5>
+                                                            <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block"> 
+                                                            <h5>Second Slide</h5>
+                                                            <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                            <h5>Third Slide</h5>
+                                                            <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div> -->
+                                            <div class="row" style="display: none;">
                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                                     <div class="row m-t-100">
                                                         <div class="col-lg-12 p-l-20 p-r-20">
-                                                            <div class="row bsnsonr nwwbcontact-box2" id="bsnsadvntg1">
+                                                            <div class="row bsnsonr nwwbcontact-box2" >
                                                                 <div class="col-lg-5">
                                                                     <img class="mnimg" alt="Icon"
                                                                         src="{{asset('front')}}/images/man1.svg"
@@ -688,7 +806,7 @@
                                                         </div>
                                                         <br>
                                                         <div class="col-lg-12 p-l-20 p-r-20">
-                                                            <div class="row bsnsonr nwwbcontact-box2" id="bsnsadvntg2">
+                                                            <div class="row bsnsonr nwwbcontact-box2">
                                                                 <div class="col-lg-5">
                                                                     <img class="mnimg" alt="Icon"
                                                                         src="{{asset('front')}}/images/man3.svg"

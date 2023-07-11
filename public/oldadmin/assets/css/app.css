@@ -1626,7 +1626,7 @@ h3 {
     color: #8f01f9;
 }
 .custom-btn3:hover {
-    background: #8f01f9;
+	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);;
     color: white;
 }
 .nwprtable {
