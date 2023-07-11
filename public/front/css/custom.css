@@ -594,8 +594,12 @@ img.minus-icon {
 .contact-box {
     background: #141517;
     box-shadow: 0px 4px 21px 5px rgb(146 0 255 / 4%);
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 40px 30px;
+}
+.strhmnw{
+    font-size: 20px;
+    text-align: center;
 }
 .contact-box img {
     height: 42px;
@@ -985,7 +989,8 @@ a.custom-btn2 {
 }
 .custom-btn4 {
     background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%);
-box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.75), 4px 4px 4px rgba(0, 10, 255, 0.25), 2px 4px 9px rgba(246, 127, 0, 0.43), -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
+    box-shadow: 4px 4px 4px rgba(0, 10, 255, 0.25), 2px 4px 9px rgba(246, 127, 0, 0.43), -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
+    /* box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.75), 4px 4px 4px rgba(0, 10, 255, 0.25), 2px 4px 9px rgba(246, 127, 0, 0.43), -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25); */
     border-radius: 10px;
     color: white;
     font-size: 16px;
