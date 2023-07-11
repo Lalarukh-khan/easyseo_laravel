@@ -46,7 +46,8 @@
 }
 .btn-trial{
     background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
-    box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25);
+    /* box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25); */
+    box-shadow: -2px -2px 15px rgba(89, 11, 255, 0.25), -2px -2px 15px rgba(146, 0, 255, 0.25);
     border-radius: 8px;
     color: #FFFFFF;
     padding: 0 10px;
