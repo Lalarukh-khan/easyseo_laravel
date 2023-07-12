@@ -41,6 +41,18 @@
     })(window,document,'script','dataLayer','GTM-P57DBTR');</script>
     <!-- End Google Tag Manager -->
     <style>
+       /* Hide scrollbar for Chrome, Safari and Opera */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+    <style>
         .onesixpadleft{
             padding-left: 160px !important;
         }
@@ -96,9 +108,7 @@
             background-color: white !important;
             color: black !important;
         }
-        .pghovered {
-            border: solid #F47300 1px;
-            border-radius: 6px;
+        .pghovered a{
             color: #F47300;
         }
         .blueimgback{

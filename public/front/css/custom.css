@@ -624,7 +624,7 @@ img.minus-icon {
     text-align: center;
 }
 .contact-box img {
-    height: 42px;
+    height: 30px;
     margin-bottom: 15px;
 }
 .contact-box h4 {
@@ -876,7 +876,7 @@ a.custom-btn2 {
     color: #8f01f9;
 }
 .custom-btn3:hover {
-	background: linear-gradient(90.04deg, #9200FF 0.68%, #1519FF 99.99%);
+    background: linear-gradient(90.04deg, #F47300  0.68%, #F47300 99.99%);
     color: white;
 }
 .testimonial-box {
@@ -1142,7 +1142,7 @@ a.custom-btn2 {
     letter-spacing: 0.7px;
     max-width: 110%;
     width: 110%;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 a.custom-btn5 {
     color: white;
@@ -1165,7 +1165,7 @@ a.custom-btn5:hover  img {
     color: white;
     font-weight: 300;
     letter-spacing: 0.6px;
-    margin: 25px 0px 30px 0px;
+    margin: 15px 0px 25px 0px;
     max-width: 480px;
     line-height: 25px;
     font-size: 15px;

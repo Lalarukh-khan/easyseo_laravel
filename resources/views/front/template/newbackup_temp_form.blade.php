@@ -554,30 +554,37 @@
 								// let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 1) + (smog_readability_index * 1);
 								let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
 								let roundedscore = Math.round(seoScore);
+								var randomNumber = Math.floor(Math.random() * 10) + 1;
+								let roundedscorerps0 = roundedscore + randomNumber;
 								if(roundedscore == 85){
 									let abvhndrd = "81";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "81";
 								}
 								else if(roundedscore >= 86 && roundedscore <= 90){
 									let abvhndrd = "82";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "82";
 								}
 								else if(roundedscore >= 91 && roundedscore <= 94){
 									let abvhndrd = "83";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "83";
 								}
 								else if(roundedscore >= 95 && roundedscore <= 99){
 									let abvhndrd = "84";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "84";
 								}
 								else if(roundedscore >= 100){
 									let abvhndrd = "85";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "85";
 								}
 								else{
 									document.getElementById("resulted_phrase").innerHTML = roundedscore;
@@ -604,10 +611,8 @@
 										console.log(data);
 									}
 								});
-
 								const numberEl = document.getElementById("resulted_phrase");
 								const number = parseInt(numberEl.textContent);
-
 								numberEl.style.borderRadius = "50%";
 								numberEl.style.padding = "10px";
 
@@ -620,42 +625,62 @@
 								else {
 									numberEl.style.border = "2px solid #39942f";
 								}
-								if(rpsnum == "rps2"){
+								if(rpsnum == "rps0"){
 									const rpss0 = document.getElementById("rps0");
-									var rscselementStyle = window.getComputedStyle(numberEl);
-									var rscsbrdrrds = numberEl.style.borderRadius;
-									var rscspddng = numberEl.style.padding;
-									rpss0.innerHTML = numberEl.innerHTML;
-									rpss0.style.borderRadius = rscsbrdrrds + "!important";
-									rpss0.style.padding = rscspddng + "!important";
-									if (number < 50) {
-										rpss0.style.border = "2px solid #f54c36";
-									}
-									else if (number >= 50 && number <= 70) {
-										rpss0.style.border = "2px solid #f7831e";
-									}
-									else {
-										rpss0.style.border = "2px solid #39942f";
+									if(rpss0.innerText == ""){
+										rpss0.innerHTML = roundedscorerps0;
+										var rscselementStyle = window.getComputedStyle(numberEl);
+										var rscsbrdrrds = numberEl.style.borderRadius;
+										var rscspddng = numberEl.style.padding;
+										rpss0.style.borderRadius = rscsbrdrrds + "!important";
+										rpss0.style.padding = rscspddng + "!important";
+										if (roundedscorerps0 < 50) {
+											rpss0.style.border = "2px solid #f54c36";
+										}
+										else if (roundedscorerps0 >= 50 && roundedscorerps0 <= 70) {
+											rpss0.style.border = "2px solid #f7831e";
+										}
+										else {
+											rpss0.style.border = "2px solid #39942f";
+										}
 									}
 								}
-								else{
-									const rpss0 = document.getElementById("rps0");
-									var rscselementStyle = window.getComputedStyle(numberEl);
-									var rscsbrdrrds = numberEl.style.borderRadius;
-									var rscspddng = numberEl.style.padding;
-									rpss0.innerHTML = numberEl.innerHTML;
-									rpss0.style.borderRadius = rscsbrdrrds + "!important";
-									rpss0.style.padding = rscspddng + "!important";
-									if (number < 50) {
-										rpss0.style.border = "2px solid #f54c36";
-									}
-									else if (number >= 50 && number <= 70) {
-										rpss0.style.border = "2px solid #f7831e";
-									}
-									else {
-										rpss0.style.border = "2px solid #39942f";
-									}
-								}
+								// if(rpsnum == "rps2"){
+								// 	const rpss0 = document.getElementById("rps0");
+								// 	var rscselementStyle = window.getComputedStyle(numberEl);
+								// 	var rscsbrdrrds = numberEl.style.borderRadius;
+								// 	var rscspddng = numberEl.style.padding;
+								// 	rpss0.innerHTML = numberEl.innerHTML;
+								// 	rpss0.style.borderRadius = rscsbrdrrds + "!important";
+								// 	rpss0.style.padding = rscspddng + "!important";
+								// 	if (number < 50) {
+								// 		rpss0.style.border = "2px solid #f54c36";
+								// 	}
+								// 	else if (number >= 50 && number <= 70) {
+								// 		rpss0.style.border = "2px solid #f7831e";
+								// 	}
+								// 	else {
+								// 		rpss0.style.border = "2px solid #39942f";
+								// 	}
+								// }
+								// else{
+								// 	const rpss0 = document.getElementById("rps0");
+								// 	var rscselementStyle = window.getComputedStyle(numberEl);
+								// 	var rscsbrdrrds = numberEl.style.borderRadius;
+								// 	var rscspddng = numberEl.style.padding;
+								// 	rpss0.innerHTML = numberEl.innerHTML;
+								// 	rpss0.style.borderRadius = rscsbrdrrds + "!important";
+								// 	rpss0.style.padding = rscspddng + "!important";
+								// 	if (number < 50) {
+								// 		rpss0.style.border = "2px solid #f54c36";
+								// 	}
+								// 	else if (number >= 50 && number <= 70) {
+								// 		rpss0.style.border = "2px solid #f7831e";
+								// 	}
+								// 	else {
+								// 		rpss0.style.border = "2px solid #39942f";
+								// 	}
+								// }
 								// html += `<p class="gnrtdtext">${generated_text}</p>`;
 							}
 						}
@@ -1132,14 +1157,13 @@
 	function checkScoreValidation(rpsnumcheck){
 		var rpsnumchecks = document.getElementById(rpsnumcheck);
 		if (rpsnumchecks.textContent.trim() == '') {
-			// if(rpsnumcheck == "rps0"){
-			// 	rpsnumchecks.innerText = "";
-			// }
-			// else{
+			if(rpsnumcheck == "rps0"){
+				rpsnumchecks.innerText = "";
+			}
+			else{
 				rpsnumchecks.innerText = "62";
 				rpsnumchecks.style.border = "2px solid #f7831e";
-
-			// }
+			}
 		}
 	}
 	function disableimpbutton(impnumtochk){
