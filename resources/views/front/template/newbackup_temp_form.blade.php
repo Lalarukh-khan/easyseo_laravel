@@ -915,25 +915,49 @@
                     document.getElementById("details").value = data.message;
 					console.log("The result is : "+data.message);
                     const score = data.score;
-                    const content = data.message;
+                    var content = data.message;
                     var rpsnumch = "rps"+number;
                     const takescore = getSeoScore(score,content,improve_score, rpsnumch);
                     const jvbdjv = document.getElementById("resulted_phrase");
                     var elementStyle = window.getComputedStyle(jvbdjv);
-                    // var newDiv = document.createElement("div");
-                    // jvbdjv.textContent = "New div with styling";
                     const brdr = elementStyle.border;
                     const brdrrds = elementStyle.borderRadius;
                     const pddng = elementStyle.padding;
-                    // const cdfcv = document.createElement("div");
-                    // jvbdjv.innerText = takescore;
                     const ndkjvndkj = jvbdjv.innerHTML;
+					let content2 = "";
+					let content3 = "";
+					// Define the specific words
+					var firstSpecificWord = "2.";
+					var firstSpecificWordWithSpace = "<br />";
+					var secondSpecificWord = "3.";
+					var secondSpecificWordWithSpace = "<br />";
+					var words = content.trim().split(/\s+/);
+					var firstIndex = words.findIndex(function(word) {
+						return word === firstSpecificWord;
+					});
+					if (firstIndex !== -1 && firstIndex > 0) {
+						var wordBefore = words[firstIndex - 1];
+						if (wordBefore !== firstSpecificWordWithSpace) {
+						words.splice(firstIndex, 0, firstSpecificWordWithSpace);
+						}
+					}
+					var secondIndex = words.findIndex(function(word) {
+						return word === secondSpecificWord;
+					});
+					if (secondIndex !== -1 && secondIndex > 0) {
+						var wordBefore = words[secondIndex - 1];
+						if (wordBefore !== secondSpecificWordWithSpace) {
+						words.splice(secondIndex, 0, secondSpecificWordWithSpace);
+						}
+					}
+					content = words.join(" ");
+					console.log("New content "+content);
                     const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
                     // const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
                     // var paragraph = document.createElement("p"); margin-left: 40%;
                     // paragraph.classList.add("rsltdvbrdrbtm");
                     // paragraph.textContent = data.message;
-                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+data.message+'</div>';
+                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+content+'</div>';
                     var smwhl = takepara + htmlContent;
                     var cnrtsmwhlt = '<div id="nwhdngimprv'+number+'"><div class="row">'+smwhl+'</div></div>'; //onclick="copyContent('contentToCopy')"
                     var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
@@ -1014,7 +1038,7 @@
 
 							return false;
 						}else{
-					console.log("The improvement result is : "+ data.message);
+						console.log("The improvement result is : "+ data.message);
 						var imploaderinfs = document.getElementById(imploaderinf);
 						var imploaderotttr = document.getElementById(imploaderottr);
 						var impscoretags = document.getElementById(impscoretag);
