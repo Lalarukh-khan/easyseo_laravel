@@ -913,7 +913,6 @@
                     const first_result_div = document.getElementById("first_result_div");
                     // const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
                     document.getElementById("details").value = data.message;
-					console.log("The result is : "+data.message);
                     const score = data.score;
                     var content = data.message;
                     var rpsnumch = "rps"+number;
@@ -924,8 +923,6 @@
                     const brdrrds = elementStyle.borderRadius;
                     const pddng = elementStyle.padding;
                     const ndkjvndkj = jvbdjv.innerHTML;
-					let content2 = "";
-					let content3 = "";
 					// Define the specific words
 					var firstSpecificWord = "2.";
 					var firstSpecificWordWithSpace = "<br />";
@@ -951,7 +948,6 @@
 						}
 					}
 					content = words.join(" ");
-					console.log("New content "+content);
                     const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
                     // const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
                     // var paragraph = document.createElement("p"); margin-left: 40%;
@@ -1038,7 +1034,6 @@
 
 							return false;
 						}else{
-						console.log("The improvement result is : "+ data.message);
 						var imploaderinfs = document.getElementById(imploaderinf);
 						var imploaderotttr = document.getElementById(imploaderottr);
 						var impscoretags = document.getElementById(impscoretag);
@@ -1048,7 +1043,32 @@
 						whlsectks.style.display = "block";
 						whlsectks.style.marginBottom = "50px";
 						impscoretags.style.display = "flex";
-						document.getElementById(content_tag).innerHTML = data.message;
+						var content =  data.message;
+						var firstSpecificWord = "2.";
+						var firstSpecificWordWithSpace = "<br />";
+						var secondSpecificWord = "3.";
+						var secondSpecificWordWithSpace = "<br />";
+						var words = content.trim().split(/\s+/);
+						var firstIndex = words.findIndex(function(word) {
+							return word === firstSpecificWord;
+						});
+						if (firstIndex !== -1 && firstIndex > 0) {
+							var wordBefore = words[firstIndex - 1];
+							if (wordBefore !== firstSpecificWordWithSpace) {
+							words.splice(firstIndex, 0, firstSpecificWordWithSpace);
+							}
+						}
+						var secondIndex = words.findIndex(function(word) {
+							return word === secondSpecificWord;
+						});
+						if (secondIndex !== -1 && secondIndex > 0) {
+							var wordBefore = words[secondIndex - 1];
+							if (wordBefore !== secondSpecificWordWithSpace) {
+							words.splice(secondIndex, 0, secondSpecificWordWithSpace);
+							}
+						}
+						content = words.join(" ");
+						document.getElementById(content_tag).innerHTML = content;
 						document.getElementById("details").value = data.message;
 						// $('#first_result_div').val(data.message);
 						// CKEDITOR.instances['first_result_div'].setData(data.message)
@@ -1063,7 +1083,6 @@
 
 						// getSeoScore(score,improve_content,improve_score);
 						// if(impscoretag == "rps0"){ 
-						// 	console.log("YESSSS");
 						// 	document.getElementById("resulted_phrase").innerHTML = score;
 						// 	document.getElementById("formscore").value = score;
 						// 	const numberEl = document.getElementById("resulted_phrase");
@@ -1144,7 +1163,6 @@
 		tkwhlsecs.style.height = "auto";
 		var height = tkwhlsecs.offsetHeight;
 		tkwhlsecs.style.height = originalHeight;
-		// console.log("Div Height:", height, "pixels");
 		var nwhght = parseInt(height);
 		tkimploaderotr.style.height = nwhght + "px";
 		tkimploaderotr.style.boxSizing = "border-box";

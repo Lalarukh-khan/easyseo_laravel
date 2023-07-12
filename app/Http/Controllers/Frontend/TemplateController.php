@@ -261,10 +261,12 @@ class TemplateController extends Controller
 
             if($improve_score == true){
                 $str = $gpt_answer;
-                $start = strpos($str, '"') + 1; // " ke baad ka index
-                $end = strpos($str, '"', $start); // Dusra " ka index
-
-                $result = substr($str, $start, $end - $start); // " ke beech ka data
+                // $start = strpos($str, '"') + 1; // " ke baad ka index
+                // $end = strpos($str, '"', $start); // Dusra " ka index
+                // $result = substr($str, $start, $end - $start); // " ke beech ka data
+                $startPos = strpos($str, '"');
+                $endPos = strrpos($str, '"');
+                $result = substr($str, $startPos + 1, $endPos - $startPos - 1);
             }else{
                 $result = $gpt_answer;
             }
