@@ -44,7 +44,7 @@ class UserIsActive
             $From = $user_package->start_date;
 			$currentDate = date('Y-m-d');
 			$tomorrow = date('Y-m-d', strtotime(' +1 day'));
-            $diff_in_days = now()->diffInDays($user_package->end_date); 
+            $diff_in_days = now()->diffInDays($user_package->end_date);
             // dd($diff_in_days);
 			if($diff_in_days == 0){
 				$planExp = "Your trial expires today.";
@@ -73,20 +73,20 @@ class UserIsActive
                 session()->put('package-details',__($planExp . ' Upgrade to a '.$premium_plan.' now.'));
 			}elseif (strtotime($currentDate) > $end_date && $words >= $userPackageWords) {
                 session()->put('package-error',__('error_msg.word_limit_reached'));
-                session()->put('package-template-error',__('error_msg.word_template_limit'));
+                session()->put('package-title-sidebar','Package ends');
+                session()->put('package-msg-sidebar','You have reached your word limit. Please upgrade your subscription to continue using the service.');
             }elseif (strtotime($currentDate) > $end_date) {
                 session()->put('package-error',__('error_msg.expired'));
             }elseif ($words >= $userPackageWords) {
                 session()->put('package-error',__('error_msg.word_ended'));
-                session()->put('package-template-error',__('error_msg.word_template_limit'));
+                session()->put('package-title-sidebar','Package ends');
+                session()->put('package-msg-sidebar','You have reached your word limit. Please upgrade your subscription to continue using the service.');
             }else{
                 session()->forget('package-error');
                 session()->forget('package-details');
                 session()->forget('package-title-sidebar');
                 session()->forget('package-msg-sidebar');
                 session()->forget('package-improve-template');
-                session()->forget('package-template-error');
-
             }
 
             return $next($request);

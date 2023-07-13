@@ -1369,15 +1369,14 @@
             },
             success: function (res) {
 
-                if (res.payLink !== undefined) {
+                if (res.status == true) {
                     let payLinkBtn = document.getElementById('paddle-pay-btn');
-                    payLinkBtn.setAttribute('data-override',res.payLink);
-                    payLinkBtn.click();
-
+                    payLinkBtn.setAttribute('data-override', res.payLink);
+                    payLinkBtn.getElementById('paddle-pay-btn').click();
                     return false;
+                } else {
+                    alert('Cannot upgrade or downgrade the package at this moment.');
                 }
-
-                alert('Cannot Upgrade or downgrade the package at this momment');
             }
         });
 

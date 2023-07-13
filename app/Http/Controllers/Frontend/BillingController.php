@@ -41,6 +41,7 @@ class BillingController extends Controller
             ->create();
 
             return response()->json([
+                'status' => true,
                 'payLink' => $payLink
             ]);
         }
