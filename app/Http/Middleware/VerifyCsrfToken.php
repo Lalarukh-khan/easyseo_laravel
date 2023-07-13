@@ -14,5 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'webhook/payment-handler',
         'user/dashboard',
+        '/paddle/*',
+        'user/billing/paylink',
     ];
 }

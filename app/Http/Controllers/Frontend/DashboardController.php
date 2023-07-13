@@ -179,6 +179,12 @@ class DashboardController extends Controller
 
     public function concelSubscription($id){
 
+        // session()->flash('success-msg','This Service Is Not Available At This Moment');
+
+        return response()->json([
+            'error' => 'This Service Is Not Available At This Moment',
+        ]);
+
         $webhookController = new WebhookController();
 
         $previous_subs = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->get();

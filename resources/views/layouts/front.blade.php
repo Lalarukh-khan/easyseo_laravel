@@ -28,12 +28,13 @@
 	<link rel="stylesheet" href="{{asset('oldadmin')}}/assets/css/dark-theme.css" />
     <link rel="stylesheet" href="{{asset('admin_assets')}}/assets/vendor/libs/spinkit/spinkit.css" />
     <link href="{{ asset('oldadmin') }}/assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    
+
     <!-- Outer Bootstrap For modal in Help Desk -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  
+
+  @paddleJS
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -97,20 +98,20 @@
         ::-webkit-scrollbar-track {
             background: linear-gradient(0deg, rgba(146, 0, 255, 0.25), rgba(146, 0, 255, 0.25)), rgba(255, 255, 255, 0.5);
             border-radius: 5px;
-            transform: rotate(90deg); 
+            transform: rotate(90deg);
         }
-        
+
         /* Handle */
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%);
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 5px;
-            transform: rotate(90deg); 
+            transform: rotate(90deg);
         }
 
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(90.04deg, #e89402 0.68%, #e06900 99.99%); 
+            background: linear-gradient(90.04deg, #e89402 0.68%, #e06900 99.99%);
         }
     </style>
 </head>

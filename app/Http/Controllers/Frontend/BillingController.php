@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Laravel\Paddle\Subscription;
 
 class BillingController extends Controller
 {
@@ -15,6 +16,10 @@ class BillingController extends Controller
             die();
         }
 
+        if (request()->input('paddle-success-msg')) {
+            session()->flash('success-msg',request()->input('paddle-success-msg'));
+        }
+
         $data = array(
             'title' => 'Plans & Billing',
             'user_package' => session()->get('UserPackages'),
@@ -22,5 +27,36 @@ class BillingController extends Controller
         );
 
         return view('front.billing.index')->with($data);
+    }
+
+    public function get_paylink(Request $request) {
+
+        $package = Package::find($request->package_id);
+
+        $current_plan = session()->get('PackageData');
+
+        if ($current_plan->plan_code == 'FRP0' ||  Subscription::query()->active()->count() == 0) {
+            $payLink = auth('web')->user()->newSubscription($package->title, $package->paddle_plan_id)
+            ->returnTo(route('user.billing.all',['paddle-success-msg' => 'Package Purchased Successfully']))
+            ->create();
+
+            return response()->json([
+                'payLink' => $payLink
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+        ]);
+
+        // dd(Subscription::query()->active()->count());
+
+        // $payLink = auth('web')->user()->newSubscription($package->title, $package->paddle_plan_id)
+        //     ->returnTo(route('user.subscription'))
+        //     ->create();
+
+        // return response()->json([
+        //     'payLink' => $payLink
+        // ]);
     }
 }

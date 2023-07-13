@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\PaddleWebhookController;
 use App\Models\User;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -227,9 +228,9 @@ Route::namespace('App\Http\Controllers\Auth')->group(function () {
 // web user auth routes end
 
 // routes for forget and reset password
-Route::prefix('auth')->namespace('App\Http\Controller\Auth')->controller('ForgotPasswordController')->group(function(){ 
+Route::prefix('auth')->namespace('App\Http\Controller\Auth')->controller('ForgotPasswordController')->group(function(){
     Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-    Route::post('forget-password-email', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+    Route::post('forget-password-email', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
     Route::get('reset-password/{token}/{hash}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
     Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
@@ -251,7 +252,7 @@ Route::middleware('XSS')->as('verification.')->group(function () {
     //     return back()->with('message', 'Verification link sent!');
     // })->middleware(['auth:web', 'throttle:6,1'])->name('send');
 
-    
+
     Route::get('/email-verify/{id}', function (Request $request) {
         $user = User::hashidFind($request->id);
         $user->email_verified_at = now();
@@ -266,7 +267,7 @@ Route::middleware('XSS')->as('verification.')->group(function () {
         $mailHtml = view('email.verify-email',['user'=>$request->user()])->render();
         mailGunSendMail($mailHtml,'Email Verification',$request->user()->email);
         return back()->with('message', 'Verification link sent!');
-    })->middleware(['auth:web', 'throttle:6,1'])->name('send'); 
+    })->middleware(['auth:web', 'throttle:6,1'])->name('send');
 });
 
 
@@ -326,6 +327,10 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
 
     Route::prefix('billing')->as('billing.')->group(function(){
         Route::get('/','BillingController@index')->name('all');
+
+        // paddle routes
+        Route::post('/paylink','BillingController@get_paylink')->name('get_paylink');
+
     });
 
     Route::prefix('keyword-suggestion')->as('keyword-suggestion.')->group(function(){
@@ -341,10 +346,12 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
         Route::post('/send-invite','InvitationController@send_invitation')->name('send_invitation');
         Route::get('/delete/{id}','InvitationController@delete')->name('delete');
     });
+
 });
 
 
 // webhook routes
-Route::prefix('webhook')->namespace('App\Http\Controllers')->group(function () {
-    Route::any('/payment-handler', 'WebhookController@payment_handler');
-});
+// Route::prefix('webhook')->namespace('App\Http\Controllers')->group(function () {
+//     Route::any('/payment-handler', 'WebhookController@payment_handler');
+// });
+Route::post('/paddle/webhook', PaddleWebhookController::class)->name('webhook');
