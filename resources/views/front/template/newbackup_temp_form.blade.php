@@ -199,6 +199,9 @@
 <div id="sbsmsg" style="display: none;">
 	@include('components.improve_msg')
 </div>
+<div id="wrdtmpsmsg" style="display: none;">
+	@include('components.template_words_msg')
+</div>
 <!--breadcrumb-->
 {{-- <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
     <div class="ps-3">
@@ -344,6 +347,7 @@
                     </div> --}}
                     @endif
 					<div class="row genbtntmpbt">
+						<div id="wrdserrortemp" class="text-center" style="margin-bottom: 20px"></div>
 						<div class="col-lg-4 col-md-4 col-sm-4 col-4">
 							<button class="clrtempimp" id="clrtempimp"><i class="bx bx-x"></i> Clear inputs</button>
 						</div>
@@ -461,9 +465,14 @@
       }
     });
 	 	var sbsmsg = document.getElementById("sbsmsg").innerHTML;
+	 	var wrdtmpsmsg = document.getElementById("wrdtmpsmsg");
 		var frbrdrbtm = document.getElementById("frbrdrbtm");
         var belowofrslt = frbrdrbtm.innerHTML;
         var result = "";
+		if(wrdtmpsmsg.textContent.trim() !== ''){
+			console.log("I'm here "+wrdtmpsmsg.innerHTML)
+			document.getElementById("wrdserrortemp").innerHTML = wrdtmpsmsg.innerHTML;
+		}
 	var numberInput = document.getElementById("numberInput");
         numberInput.addEventListener("input", function() {
             var input = parseInt(numberInput.value);
@@ -948,7 +957,6 @@
                     const brdrrds = elementStyle.borderRadius;
                     const pddng = elementStyle.padding;
                     const ndkjvndkj = jvbdjv.innerHTML;
-					// Define the specific words
 					var firstSpecificWord = "2.";
 					var firstSpecificWordWithSpace = "<br />";
 					var secondSpecificWord = "3.";
@@ -973,12 +981,16 @@
 						}
 					}
 					content = words.join(" ");
+					console.log("New content "+content);
+					let content2 = "";
+					content2 = content.replace(/(<br\s*\/?>){3}/gi, "<br><br>");
+					console.log("COntent 2: "+content2);
                     const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
                     // const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
                     // var paragraph = document.createElement("p"); margin-left: 40%;
                     // paragraph.classList.add("rsltdvbrdrbtm");
                     // paragraph.textContent = data.message;
-                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+content+'</div>';
+                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+content2+'</div>';
                     var smwhl = takepara + htmlContent;
                     var cnrtsmwhlt = '<div id="nwhdngimprv'+number+'"><div class="row">'+smwhl+'</div></div>'; //onclick="copyContent('contentToCopy')"
                     var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
