@@ -981,7 +981,7 @@
 						}
 					}
 					content = words.join(" ");
-					console.log("New content "+content);
+					console.log("New content "+content); 
 					let content2 = "";
 					content2 = content.replace(/(<br\s*\/?>){3}/gi, "<br><br>");
 					console.log("COntent 2: "+content2);
