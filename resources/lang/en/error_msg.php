@@ -13,14 +13,12 @@ return [
     |
     */
 
-    'trial_end' => 'Your 7 days trial has ended. Please <a href="'.route('web.pricing').'" class="text-danger" style="text-decoration:underline;">purchase a subscription plan here</a>.',
+    'trial_end' => 'Your 7 days trial has ended. Please <a href="'.route('user.billing.all').'" class="text-danger" style="text-decoration:underline;">purchase a subscription plan here</a>.',
 
-    'word_ended' => 'You have reached your words limit. please <a href="'.route('web.pricing').'" class="text-danger" style="text-decoration:underline;">upgrade here</a> to a higher plan for purchase additional words',
+    'word_ended' => 'You have reached your word limit. Please <a href="'.route('user.billing.all').'" class="text-danger" style="text-decoration:underline;">upgrade</a> your subscription to continue using the service.',
 
-    'word_limit_reached' => 'You have reached your words limit. please <a href="'.route('web.pricing').'" class="text-danger" style="text-decoration:underline;">upgrade here</a> to a higher plan for purchase additional words',
+    'word_limit_reached' => 'You have reached your word limit. Please <a href="'.route('user.billing.all').'" class="text-danger" style="text-decoration:underline;">upgrade</a> your subscription to continue using the service.',
 
-    'word_template_limit' => 'You have reached your words limit. Please <a href="'.route('web.pricing').'" class="text-danger" style="text-decoration:underline;">upgrade your subscription</a> to continue using the service',
-
-    'expired' => 'Your subscription is expired. please <a href="'.route('web.pricing').'" class="text-danger" style="text-decoration:underline;">Buy here</a> to a new plan',
+    'expired' => 'Your subscription is expired. please <a href="'.route('user.billing.all').'" class="text-danger" style="text-decoration:underline;">Buy here</a> to a new plan',
 
 ];
