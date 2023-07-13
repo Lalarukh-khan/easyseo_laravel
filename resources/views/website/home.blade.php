@@ -1251,7 +1251,7 @@
                                                                                     id="prcngwht1b"><b> 7 Days <br> free
                                                                                         trial </b></h5>
                                                                                 <p id="prcngwht1c">
-                                                                                    to 2 000 words </p>
+                                                                                    to 5,000 words </p>
                                                                             </div>
                                                                         </div>
                                                                         <div class="pricing-detail">

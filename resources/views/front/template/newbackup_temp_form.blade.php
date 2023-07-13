@@ -1023,7 +1023,7 @@
                     $('#prompt_word_count').html(`${data.word_count} words`);
                     $('body #first_copy_btn').show();
 
-                    disableimpbutton('impscore'+number);
+                    // disableimpbutton('impscore'+number);
 					checkScoreValidation('rps'+number);
 
                     // console.log(number);

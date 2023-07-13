@@ -144,7 +144,7 @@
                             </div>
                             <div class="pricing-title">
                                 <h5 class="col-white d-f j-c-e"><b> 7 Days <br> free trial </b></h5>
-                                <p > to 2,000 words </p>
+                                <p > to 5,000 words </p>
                             </div>
                         </div>
                         <div class="pricing-detail">
