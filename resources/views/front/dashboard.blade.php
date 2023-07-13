@@ -188,6 +188,7 @@
         </div>
     </div>
 </div>
+<!-- <div id="view_data_div2"></div> -->
 @endsection
 @section('page-scripts')
 <script src="{{ asset('admin_assets') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
@@ -416,7 +417,8 @@
                 // text += '\n \n \nAnswer: \n';
                 text += 'Answer: \n';
                 text += $(lasetdata).data('answer');
-                $('#view_data_div').val(text);
+                var result = text.replace(/<br\s*\/?>/gi, "");
+                $('#view_data_div').val(result);
                 return false;
             }
             if (type == 'template') {
@@ -431,7 +433,8 @@
                 // text += '\n \n \nAnswer: \n';
                 text += 'Answer: \n';
                 text += $(lasetdata).data('answer');
-                $('#view_data_div').val(text);
+                var result = text.replace(/<br\s*\/?>/gi, "");
+                $('#view_data_div').val(result);
                 return false;
             }
         })
