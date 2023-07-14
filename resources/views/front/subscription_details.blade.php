@@ -8,7 +8,10 @@
                     <div class="d-flex align-items-center">
                         <div class="">
                             <p class="mb-0">Expiry Date</p>
-                            <h4 class="mb-0 font-weight-bold">{{ date('M d,Y', strtotime($user_package->end_date)) }}</h4>
+                            @php
+                                $end_date = now()->parse($user_package->start_dat)->addDays(30)->format('M d,Y');
+                            @endphp
+                            <h4 class="mb-0 font-weight-bold">{{ $end_date }}</h4>
                         </div>
                         <div class="widgets-icons bg-light-primary text-primary rounded-circle ms-auto"><i
                                 class="bx bx-calendar"></i>
@@ -92,7 +95,10 @@
                                     </td>
                                     <td>
                                         @php
-                                            $diff_in_days = now()->diffInDays($user_package->end_date);
+                                            $date1 = now()->parse($user_package->start_date);
+                                            $date2 = now()->parse($end_date);
+
+                                            $diff_in_days = $date1->diffInDays($date2);
                                         @endphp
                                         <p class="badge bg-success">{{ $diff_in_days }} days</p>
                                     </td>

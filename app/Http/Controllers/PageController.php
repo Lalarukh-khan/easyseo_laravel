@@ -13,11 +13,21 @@ class PageController extends Controller
     {
         $authUser = auth('web')->user();
         $blogs = Blog::where('status', 1)->take(3)->get();
+
+        if (auth('web')->check()) {
+            $user_package = UserPackage::with('package')->where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first();
+            $packageData = $user_package->package;
+        }else{
+            $user_package = null;
+            $packageData = null;
+        }
+
         $data = array(
             'title' => "Generate AI Content with EasySEO.ai: Best AI Writing Tool",
             'blogs' => $blogs,
-            'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
-            'packageData' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->package : null
+            'words'=> $user_package->words ?? null,
+            'packageData' => $packageData,
+            'user_package' => $user_package,
         );
         return view('website.home')->with($data);
     }
@@ -36,7 +46,7 @@ class PageController extends Controller
         );
         return view('website.pages.cookie_policy')->with($data);
     }
-    
+
     public function about_us()
     {
         $data = array(
@@ -56,10 +66,22 @@ class PageController extends Controller
     public function pricing()
     {
         $authUser = auth('web')->user();
+
+        if (auth('web')->check()) {
+            $user_package = UserPackage::with('package')->where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first();
+            $packageData = $user_package->package;
+        }else{
+            $user_package = null;
+            $packageData = null;
+        }
+
         $data = array(
             'title' => "Pricing",
-            'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
-            'packageData' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->package : null
+            // 'words' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->words : 0,
+            // 'packageData' => auth('web')->check() ? UserPackage::where('user_id',$authUser->user_type == 'main' ? $authUser->id : $authUser->main_user_id)->latest()->first()->package : null
+            'words'=> $user_package->words ?? null,
+            'packageData' => $packageData,
+            'user_package' => $user_package,
         );
         return view('website.pages.pricing')->with($data);
     }

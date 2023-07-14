@@ -163,6 +163,7 @@ class DashboardController extends Controller
             abort(403,'You are not authorized to access that page');
             die();
         }
+
         $user_package = session()->get('UserPackages');
 		$words  = session()->get('gpt_words');
         $data = array(
@@ -179,31 +180,19 @@ class DashboardController extends Controller
 
     public function concelSubscription($id){
 
-        // session()->flash('success-msg','This Service Is Not Available At This Moment');
+        $user_package = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->first();
 
-        return response()->json([
-            'error' => 'This Service Is Not Available At This Moment',
-        ]);
+        auth('web')->user()->subscription($user_package->package->title)->cancelNow();
 
-        $webhookController = new WebhookController();
+        $user_package->subscription_id = null;
+        $user_package->save();
 
-        $previous_subs = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->get();
-        $packages_sku = ['P1','P20','P50','P200','P500','P20-year','P50-year','P200-year','P500-year'];
+        $detail = [
+            'title' => 'Cancelled Subscription',
+            'body' => 'Your Subscription is cancelled successfully',
+        ];
 
-        if (isset($previous_subs[0]) && !empty($previous_subs[0]) && in_array($previous_subs[0]->package->plan_code,$packages_sku)) {
-
-            $webhookController->suspendSubscription($previous_subs[0]->subscription_id);
-            $update_subsc = UserPackage::find($previous_subs[0]->id);
-            $update_subsc->subscription_id = null;
-            $update_subsc->save();
-
-            $detail = [
-                'title' => 'Cancelled Subscription',
-                'body' => 'Your Subscription is cancelled successfully',
-            ];
-
-            Mail::to(auth('web')->user()->email)->send(new SubscriptionCancel($detail));
-        }
+        Mail::to(auth('web')->user()->email)->send(new SubscriptionCancel($detail));
 
         session()->flash('success-msg','Subscription Cancelled Successfully');
 

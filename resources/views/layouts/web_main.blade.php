@@ -41,12 +41,15 @@
     })(window,document,'script','dataLayer','GTM-P57DBTR');</script>
     <!-- End Google Tag Manager -->
     <style>
+       /* Hide scrollbar for Chrome, Safari and Opera */
         body::-webkit-scrollbar {
             display: none;
         }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
         body {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
     <style>
@@ -555,6 +558,17 @@
         }
     </script>
     <!-- End Google Tag Manager -->
+
+    @php($vendor = ['vendor' => (int) config('cashier.vendor_id')])
+
+    <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+    <script type="text/javascript">
+        @if (config('cashier.sandbox'))
+            Paddle.Environment.set('sandbox');
+        @endif
+
+        Paddle.Setup(@json($vendor));
+    </script>
     @yield('css')
 </head>
 
@@ -722,6 +736,12 @@ Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invit
             </div>
         </div>
     </div>
+
+    {{-- paylink btn div --}}
+    <div id="paylink-div" style="display: none;">
+        <a href="#!" data-override="" class="paddle_button" id="paddle-pay-btn">Pay</a>
+    </div>
+
     <!-- Copyright Section Ends Here -->
     <!-- Bootstrap Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -731,6 +751,8 @@ Stock Ltd., and/or its licensors, and are protected. Unauthorized use will invit
     <script src="{{asset('front')}}/js/slick-slider.js"> </script>
     <script src="{{asset('front')}}/js/slick-functions.js"> </script>
     <script src="{{asset('front')}}/js/wow.min.js"></script>
+    <script src="{{ asset('oldadmin') }}/assets/js/danidev.js"></script>
+
     <script>
         new WOW().init();
     </script>
