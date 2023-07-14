@@ -351,7 +351,7 @@ Route::prefix('user')->as('user.')->middleware(['auth:web', 'XSS', 'is_active', 
 
 
 // webhook routes
-Route::prefix('webhook')->namespace('App\Http\Controllers')->group(function () {
-    Route::any('/payment-handler', 'WebhookController@payment_handler');
-});
-// Route::post('/paddle/webhook', PaddleWebhookController::class)->name('webhook');
+// Route::prefix('webhook')->namespace('App\Http\Controllers')->group(function () {
+//     Route::any('/payment-handler', 'WebhookController@payment_handler');
+// });
+Route::post('/paddle/webhook', PaddleWebhookController::class)->name('webhook');
