@@ -35,6 +35,17 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
   {{-- @paddleJS --}}
+  @php($vendor = ['vendor' => (int) config('cashier.vendor_id')])
+
+<script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+<script type="text/javascript">
+    @if (config('cashier.sandbox'))
+        Paddle.Environment.set('sandbox');
+    @endif
+
+    Paddle.Setup(@json($vendor));
+</script>
+
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
