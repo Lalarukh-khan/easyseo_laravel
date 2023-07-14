@@ -137,7 +137,7 @@
                         Start </a>
                     <a href="" class="custom-btn5"> See How It Works <img
                             src="{{asset('front')}}/images/right-icon.svg"> </a> -->
-                    <p id="main3wht"><a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is an AI writing tool that helps you create unique seo optimized content
+                    <p id="main3wht"><a href="{{route('web.home')}}" class="nwacolc">easyseo.ai</a> is an AI writing tool that helps you create unique seo optimized content
                         for your E-commerce business, blog, ads, emails, and website without wasting time and effort!
                     </p>
                     <a href="{{route('register')}}" class="custom-btn4 mr-3 strt"> Get
@@ -236,7 +236,7 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-9 col-sm-6 col-12"></div>
                     <div class="col-md-4 col-lg-3 col-sm-6 col-12">
-                        <p class="col-white pad-top-10 d-f j-c-e">*Explanation video - our advantages</p>
+                        <p class="col-white pad-top-10 d-f j-c-e" style="display: none;">*Explanation video - our advantages</p>
                     </div>
                 </div>
             </div>
@@ -471,7 +471,7 @@
                                                 optimization: </p>
                                             <p class="anlsslrg" id="atmtwhtt3a">Save writers time while also <br>
                                                 ensuring that the content covers <br> all of the important points about
-                                                <br> the topic. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> can suggest <br> related topics or subtopics to
+                                                <br> the topic. <a href="{{route('web.home')}}"  class="nwacolc">easyseo.ai</a> can suggest <br> related topics or subtopics to
                                                 include
                                                 <br> in the content to improve SEO.
                                             </p>
@@ -488,7 +488,7 @@
                                                 style="display: none;">
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-8">
-                                            <p class="anlssaccrt anls" id="atmtwhtt4">Chat by <br> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> </p>
+                                            <p class="anlssaccrt anls" id="atmtwhtt4">Chat by <br> <a href="{{route('web.home')}}"  class="nwacolc">easyseo.ai</a> </p>
                                             <p class="anlsslrg" id="atmtwhtt4a">Chat feature allows you to <br> expand
                                                 your goals by providing <br> a seamless connection to AI, <br> enabling
                                                 you to conduct research, <br> generate content, and accomplish <br> your
@@ -560,7 +560,7 @@
                                         <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                         <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                                            <p class="bsns" id="nowht1"><a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is an AI writing tool that helps you
+                                            <p class="bsns" id="nowht1"><a href="{{route('web.home')}}"  class="nwacolc">easyseo.ai</a> is an AI writing tool that helps you
                                                 create unique seo <br class="dn"> optimized content for your E-commerce
                                                 business, blog, ads, emails, <br class="dn"> and website without wasting
                                                 time and effort!</p>
@@ -649,7 +649,7 @@
 
                                         <!-- ||||||||||||||||| Exited with easyseo.ai |||||||||||||||||||||| -->
 
-                                        <section class="bsnsadvntg" style="display: none;">
+                                        <section class="bsnsadvntg">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-12">
@@ -667,7 +667,7 @@
                                                 <button class="nwhmextd onlybackwht">Agency</button>
                                                 <button class="nwhmextd onlybackwht">SEO Specialists</button>
                                             </div>
-                                            <div class="nwwbfeature-boxes nwhmextwhlbx">
+                                            <div class="nwwbfeature-boxes nwhmextwhlbx" style="display: none;">
                                                 <div class="row">
                                                     <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
                                                         <p class="nwhmextdp"><</p>
@@ -734,7 +734,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                                 <ol class="carousel-indicators">
                                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -742,21 +742,84 @@
                                                 </ol>
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
-                                                    <div class="card-img-overlay">
+                                                    <!-- <div class="card-img-overlay">
                                                         11111 Some text here as well...
+                                                    </div> -->
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block"> 
+                                                    <div class="row">
+                                                    <!-- <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
+                                                        <p class="nwhmextdp"><</p>
+                                                    </div> -->
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10">Small business owner</h2>
+                                                        <p class="nwhmexthd2 nwacolc pad-bot-20">Who are looking to improve their online visibility and increase traffic <br>to their website.</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30" id="bsnsadvntg1">
+                                                                <div class="pad-bot-20">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15" style="margin-left: -20px;"  id="bsnsadvntg2">
+                                                                <div class="pad-bot-40 m-t-60">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="m-t-20 m-l-20">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <img src="admin_assets/assets/images/userimage.png">
+                                                                        </div>
+                                                                        <div class="col-lg-7 pad-top-10" style="margin-left: -10px">
+                                                                            <h4 class="nwacolc">Andrew Kozic</h4>
+                                                                            <p class="nwhmextceo nwacolc">CEO and Founder at Perfomance</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <h6>
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                    </h6>
+                                                                    <br>
+                                                                    <p class="nwhmextsmp nwacolc"> EasySEO is a game changer! It has revolutionized the way we create content, and has saved us so much time and effort. <br> Highly recommended!</p>
+                                                                    
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="First slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                            <h5>First Slide</h5>
-                                                            <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
+                                                        <div class="text-center m-b-25">
+                                                            <img src="admin_assets/assets/images/orngdots.png" alt="" style="cursor: pointer;">
                                                         </div>
                                                     </div>
-                                                    <div class="carousel-item">
+                                                    <!-- <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
+                                                        <p class="nwhmextdp">></p>
+                                                    </div> -->
+                                                </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- <div class="carousel-item">
                                                     <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="Second slide">
                                                     <div class="carousel-caption d-none d-md-block">
                                                             <h5>Second Slide</h5>
                                                             <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
-                                                        </div>
+                                                    </div>
                                                     </div>
                                                     <div class="carousel-item">
                                                     <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="Third slide">
@@ -764,7 +827,7 @@
                                                             <h5>Third Slide</h5>
                                                             <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -774,7 +837,7 @@
                                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                     <span class="sr-only">Next</span>
                                                 </a>
-                                            </div> -->
+                                            </div>
                                             <div class="row" style="display: none;">
                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                                     <div class="row m-t-100">

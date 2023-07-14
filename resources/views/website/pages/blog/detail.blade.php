@@ -65,11 +65,11 @@
             <div class="container-fluid bgdtbckimg">
                     <div class="row">
                         <div class="col-md-6 col-lg-6 col-sm-6 col-6">
-                            <h3 class="nwacolc">Recent Posts</h3>
+                            <h3 style="color: #fff;">Recent Posts</h3>
                         </div>
                         <div class="col-md-6 col-lg-6 col-sm-6 col-6">
                             <p style="text-align: right;">
-                                <a class="nwacolc" href="{{ route('web.blog.all') }}">
+                                <a  style="color: #fff;" href="{{ route('web.blog.all') }}">
                                     <u>View all</u>
                                 </a>
                             </p>

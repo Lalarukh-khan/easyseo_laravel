@@ -470,7 +470,6 @@
         var belowofrslt = frbrdrbtm.innerHTML;
         var result = "";
 		if(wrdtmpsmsg.textContent.trim() !== ''){
-			console.log("I'm here "+wrdtmpsmsg.innerHTML)
 			document.getElementById("wrdserrortemp").innerHTML = wrdtmpsmsg.innerHTML;
 		}
 	var numberInput = document.getElementById("numberInput");
@@ -569,7 +568,6 @@
 									let abvhndrd = "81";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
-									roundedscorerps0 = "81";
 								}
 								else if(roundedscore >= 86 && roundedscore <= 90){
 									let abvhndrd = "82";
@@ -603,6 +601,25 @@
 									// showscore.appendChild(paragraph);
 									// paragraph.classList.add("rsltdvbrdrbtm");
 									document.getElementById("formscore").value = roundedscore;
+								}
+								if(roundedscorerps0 == 85){
+									roundedscorerps0 = "81";
+								}
+								else if(roundedscorerps0 >= 86 && roundedscorerps0 <= 90){
+									roundedscorerps0 = "82";
+								}
+								else if(roundedscorerps0 >= 91 && roundedscorerps0 <= 94){
+									roundedscorerps0 = "83";
+								}
+								else if(roundedscorerps0 >= 95 && roundedscorerps0 <= 99){
+									roundedscorerps0 = "84";
+								}
+								else if(roundedscorerps0 >= 100){
+									roundedscorerps0 = "85";
+								}
+								else{
+									document.getElementById("resulted_phrase").innerHTML = roundedscorerps0;
+									document.getElementById("formscore").value = roundedscorerps0;
 								}
 								var seoform = document.getElementById('seo_content_form');
 								var seoformData = new FormData(seoform);
@@ -981,10 +998,8 @@
 						}
 					}
 					content = words.join(" ");
-					console.log("New content "+content); 
 					let content2 = "";
 					content2 = content.replace(/(<br\s*\/?>){3}/gi, "<br><br>");
-					console.log("COntent 2: "+content2);
                     const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
                     // const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
                     // var paragraph = document.createElement("p"); margin-left: 40%;
@@ -1008,7 +1023,7 @@
                     $('#prompt_word_count').html(`${data.word_count} words`);
                     $('body #first_copy_btn').show();
 
-                    disableimpbutton('impscore'+number);
+                    // disableimpbutton('impscore'+number);
 					checkScoreValidation('rps'+number);
 
                     // console.log(number);
@@ -1078,7 +1093,7 @@
 						imploaderinfs.style.display = "none";
 						imploaderotttr.style.display = "none";
 						whlsectks.style.display = "block";
-						whlsectks.style.marginBottom = "50px";
+						// whlsectks.style.marginBottom = "50px";
 						impscoretags.style.display = "flex";
 						var content =  data.message;
 						var firstSpecificWord = "2.";
@@ -1189,8 +1204,8 @@
 		var content = document.getElementById(divId).innerText;
 		var CImpScoreTagtk = document.getElementById(CImpScoreTag);
 		var outerImpScorergs = document.getElementById(outerImpScorerg);
-		// CImpScoreTagtk.style.display = 'block';
-		// outerImpScorergs.style.marginBottom = '60px';
+		CImpScoreTagtk.style.display = 'none';
+		outerImpScorergs.style.marginTop = '60px';
 		var tkimploaders = document.getElementById(tkimploader);
 		var tkwhlsecs = document.getElementById(tkwhlsec);
 		var ImpScores = document.getElementById(ImpScore);

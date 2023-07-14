@@ -20,7 +20,7 @@
                 </a>
               </div>
               <!-- /Logo -->
-              <h5 class="mb-2">Get started with 2,000 free words 🚀</h5>
+              <h5 class="mb-2">Get started with 5,000 free words 🚀</h5>
               <p class="mb-4">No credit card required!</p>
 
               <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('auth.register.submit') }}">
