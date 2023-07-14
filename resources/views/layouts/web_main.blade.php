@@ -41,17 +41,6 @@
     })(window,document,'script','dataLayer','GTM-P57DBTR');</script>
     <!-- End Google Tag Manager -->
     <style>
-<<<<<<< HEAD
-       /* Hide scrollbar for Chrome, Safari and Opera */
-        body::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Hide scrollbar for IE, Edge and Firefox */
-        body {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-=======
         /* width */
         ::-webkit-scrollbar {
         width: 10px;
@@ -75,7 +64,6 @@
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(90.04deg, #e89402 0.68%, #e06900 99.99%);
->>>>>>> ed467363483baff770349a2036e00a983e8f966e
         }
     </style>
     <style>
