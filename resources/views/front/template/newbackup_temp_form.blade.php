@@ -1015,7 +1015,7 @@
                     var cnvrtresult = "";
                     // var cnvrtresultID = `ailoaderImp${number}`;
 					cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
-					first_result_div.innerHTML += cnvrtresult;
+					first_result_div.innerHTML += cnvrtresult; 
                     // first_result_div.appendChild(paragraph);
 
                     // $('#first_result_div').val(data.message);
