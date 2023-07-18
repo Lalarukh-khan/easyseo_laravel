@@ -6,6 +6,8 @@ use App\Models\MonthlyPack;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\UserPackage;
+use App\Models\UserSubscriptionLog;
+use App\Models\WebhookLog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -49,13 +51,16 @@ class PaddleWebhookController extends Controller
     {
         $payload = $request->all();
 
-
         if (!isset($payload['alert_name'])) {
             return new Response();
         }
 
         $method = 'handle' . Str::studly($payload['alert_name']);
 
+        $webhookLog = new WebhookLog();
+        $webhookLog->data = json_encode($payload);
+        $webhookLog->type = Str::studly($payload['alert_name']);
+        $webhookLog->save();
 
         WebhookReceived::dispatch($payload);
 
@@ -132,10 +137,6 @@ class PaddleWebhookController extends Controller
             'paid_at' => Carbon::createFromFormat('Y-m-d H:i:s', $payload['event_time'], 'UTC'),
         ]);
 
-        $user = User::find($billable->id);
-
-        $this->createUserPackage($user, $payload);
-
         SubscriptionPaymentSucceeded::dispatch($billable, $receipt, $payload);
     }
 
@@ -182,6 +183,10 @@ class PaddleWebhookController extends Controller
             'quantity' => $payload['quantity'],
             'trial_ends_at' => $trialEndsAt,
         ]);
+        $user = User::find($subscription->billable_id);
+
+        $this->createUserPackage($user, $payload);
+
 
         SubscriptionCreated::dispatch($customer, $subscription, $payload);
     }
@@ -202,6 +207,99 @@ class PaddleWebhookController extends Controller
         if (isset($payload['subscription_plan_id'])) {
             $subscription->paddle_plan = $payload['subscription_plan_id'];
         }
+
+
+            // get the upgrade or downgrade plan using the payload subscription_plan_id
+            $newPackageData = Package::where('paddle_plan_id', $payload['subscription_plan_id'])->latest()->first();
+
+
+
+            // get the user package using the subscription billable_id
+            $userPackageData = UserPackage::with('package', 'monthly_packs')->where('user_id', $subscription->billable_id)->latest()->first();
+
+            $monthly_package = ['P20', 'P50', 'P200', 'P500'];
+            $yearly_sku = ['P20-year', 'P50-year', 'P200-year', 'P500-year'];
+
+            $userSubscriptionLog = new UserSubscriptionLog();
+            $userSubscriptionLog->user_id = $userPackageData->user_id;
+            $userSubscriptionLog->user_package_id = $userPackageData->id;
+            $userSubscriptionLog->old_package_id = $userPackageData->package_id;
+            $userSubscriptionLog->new_package_id = $newPackageData->id;
+            $userSubscriptionLog->paddle_subscription_id = $userPackageData->subscription_id;
+            $userSubscriptionLog->save();
+
+            if (in_array($newPackageData->plan_code, $monthly_package)) {
+                if ($userPackageData->monthly_packs()->count() > 0) {
+                    $userPackageData->monthly_packs()->delete();
+                }
+
+                $userPackageData->package_id = $newPackageData->id;
+                $userPackageData->words = $newPackageData->words;
+                $userPackageData->research_limit = $newPackageData->research_limit;
+                $userPackageData->workspace_users = $newPackageData->workspace_users;
+                $userPackageData->save();
+            }
+
+
+            if (in_array($newPackageData->plan_code, $yearly_sku)) {
+                if ($userPackageData->monthly_packs()->count() > 0) {
+                    $userPackageData->monthly_packs()->update([
+                        'package_id' => $newPackageData->id,
+                        'words' => $newPackageData->words,
+                        'research_limit' => $newPackageData->research_limit,
+                        'workspace_users' => $newPackageData->workspace_users,
+                    ]);
+                } else {
+                    $start_date = $userPackageData->start_date;
+                    $monthly_packs = [];
+
+                    for ($i = 1; $i <= 12; $i++) {
+                        if ($i == 1) {
+                            $end_date = date('Y-m-d', strtotime('+30 days',strtotime($userPackageData->start_date)));
+                            $monthly_packs[$i] = [
+                                'user_id' => $userPackageData->user_id,
+                                'package_id' => $newPackageData->id,
+                                'user_package_id' => $newPackageData->id,
+                                'words' => $newPackageData->words,
+                                'research_limit' => $newPackageData->research_limit,
+                                'workspace_users' => $newPackageData->workspace_users,
+                                'start_date' => $start_date,
+                                'end_date' => $end_date,
+                                'created_at' => now(),
+                                'updated_at' => now(),
+                            ];
+                        } else {
+                            $start_date = $monthly_packs[($i - 1)]['end_date'];
+                            $end_date = date('Y-m-d', strtotime('+30 days', strtotime($start_date)));
+                            $monthly_packs[$i] = [
+                                'user_id' => $userPackageData->user_id,
+                                'package_id' => $newPackageData->id,
+                                'user_package_id' => $newPackageData->id,
+                                'words' => $newPackageData->words,
+                                'research_limit' => $newPackageData->research_limit,
+                                'workspace_users' => $newPackageData->workspace_users,
+                                'start_date' => $start_date,
+                                'end_date' => $end_date,
+                                'created_at' => now(),
+                                'updated_at' => now(),
+                            ];
+                        }
+                    }
+
+                    if (!empty($monthly_packs) && count($monthly_packs) > 0) {
+                        MonthlyPack::insert($monthly_packs);
+                    }
+                }
+
+                $userPackageData->package_id = $newPackageData->id;
+                $userPackageData->words = $newPackageData->words;
+                $userPackageData->research_limit = $newPackageData->research_limit;
+                $userPackageData->workspace_users = $newPackageData->workspace_users;
+                $userPackageData->end_date = $payload['next_bill_date'];
+                $userPackageData->save();
+            }
+
+            $subscription->name = $newPackageData->title;
 
         // Status...
         if (isset($payload['status'])) {
@@ -300,23 +398,6 @@ class PaddleWebhookController extends Controller
         return Cashier::$receiptModel::where('order_id', $orderId)->count() > 0;
     }
 
-    // protected function createUserPackage($user, $subscription){
-    //     DB::transaction(function()use($user,$subscription) {
-    //         $package = Package::where('paddle_plan_id',$subscription->paddle_plan)->latest()->first();
-
-    //         $user_package = new UserPackage();
-    //         $user_package->user_id = $user->id;
-    //         $user_package->package_id = $package->id;
-    //         $user_package->subscription_id = $subscription->paddle_id;
-    //         $user_package->words = $package->words;
-    //         $user_package->research_limit = $package->research_limit;
-    //         $user_package->workspace_users = $package->workspace_users;
-    //         $user_package->start_date = now()->format('Y-m-d');
-    //         $user_package->end_date = $subscription->nextPayment()->date()->format('Y-m-d');
-    //         $user_package->save();
-    //     });
-    // }
-
     protected function createUserPackage($user, $payload)
     {
         DB::transaction(function () use ($user, $payload) {
@@ -376,6 +457,12 @@ class PaddleWebhookController extends Controller
                     MonthlyPack::insert($monthly_packs);
                 }
             }
+            $userSubscriptionLog = new UserSubscriptionLog();
+            $userSubscriptionLog->user_id = $user_package->user_id;
+            $userSubscriptionLog->user_package_id = $user_package->id;
+            $userSubscriptionLog->new_package_id = $package->id;
+            $userSubscriptionLog->paddle_subscription_id = $user_package->subscription_id;
+            $userSubscriptionLog->save();
         });
     }
 }

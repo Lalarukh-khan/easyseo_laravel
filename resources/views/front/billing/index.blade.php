@@ -111,21 +111,21 @@
             <div class="col-lg-3 col-md-3 col-sm-12 col-12"></div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="row col-lg-12">
-                    <h3 class="nwprmaintitle" >Pricing</h3>
+                    <h3 class="nwprmaintitle">Pricing</h3>
                     <div class="col-lg-5 col-md-5 col-sm-4 col-4  wow fadeInUp" data-wow-delay="0.3s">
                         <span class="billyear col-grey">Billed monthly</span>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-4 col-4">
                         <label class="switch wow fadeInUp" data-wow-delay="0.3s">
                             <input type="checkbox" id="toggleyearly" checked>
-                                <span class="slider round"></span>
+                            <span class="slider round"></span>
                         </label>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-4 col-4  wow fadeInUp" data-wow-delay="0.3s">
                         <span class="p-l-40 billmonth nwwbuserbillmonth">Billed yearly</span>
                     </div>
                 </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-12"></div>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-12"></div>
             </div>
         </div>
         <br>
@@ -134,136 +134,157 @@
     <br>
     <br><br>
     <div class="block-element">
-            <div class="row align-items-center">
-                <div class="col-md-4 col-lg-4 col-sm-12 col-12 m-b-40">
-                    <div class="pricing-box wow fadeInUp" data-wow-delay="0.5s">
-                    <h2 class="col-white col-lg-12 cntntm" > Basic </h2>
-                        <div class="pricing-box-head">
-                            <div class="pricing-icon">
-                                <img src="{{asset('front')}}/images/dollar-icon.svg">
-                            </div>
-                            <div class="pricing-title">
-                                <h5 class="col-white d-f j-c-e"><b> 7 Days <br> free trial </b></h5>
-                                <p > to 5,000 words </p>
-                            </div>
+        <div class="row align-items-center">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-12 m-b-40">
+                <div class="pricing-box wow fadeInUp" data-wow-delay="0.5s">
+                    <h2 class="col-white col-lg-12 cntntm"> Basic </h2>
+                    <div class="pricing-box-head">
+                        <div class="pricing-icon">
+                            <img src="{{asset('front')}}/images/dollar-icon.svg">
                         </div>
-                        <div class="pricing-detail">
-                            <h4 class="col-white" id="prcngwht1d"> Plan Includes </h4>
-                            <ul>
-                                <li id="prcngwht1e"> <img src="{{asset('front')}}/images/tickorange.svg"> SEO score</li>
-                                <li id="prcngwht1e1"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+ templates </li>
-                                <li id="prcngwht1e2"> <img src="{{asset('front')}}/images/tickorange.svg"> Live chat support </li>
-                                <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+ languages </li>
-                                <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
-                                <br><br><br><br>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn">
-                            <a  href="{{route('web.pricing')}}" class="custom-btn2"> <u> View All Details</u> </a>
-                            @if (auth('web')->check() && $packageData->plan_code == 'FRP0')
-                                    <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Current Plan </a>
-                                    @elseif (auth('web')->check() && $packageData->plan_code != 'FRP0')
-                                    <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Downgrade Plan </a>
-                                    @else
-                                    <a href="{{route('login')}}" class="custom-btn3"> Start Free </a>
-                                    @endif
+                        <div class="pricing-title">
+                            <h5 class="col-white d-f j-c-e"><b> 7 Days <br> free trial </b></h5>
+                            <p> to 5,000 words </p>
                         </div>
                     </div>
+                    <div class="pricing-detail">
+                        <h4 class="col-white" id="prcngwht1d"> Plan Includes </h4>
+                        <ul>
+                            <li id="prcngwht1e"> <img src="{{asset('front')}}/images/tickorange.svg"> SEO score</li>
+                            <li id="prcngwht1e1"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+ templates
+                            </li>
+                            <li id="prcngwht1e2"> <img src="{{asset('front')}}/images/tickorange.svg"> Live chat support
+                            </li>
+                            <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+ languages
+                            </li>
+                            <li id="prcngwht1e3"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
+                            <br><br><br><br>
+                        </ul>
+                    </div>
+                    <div class="pricing-btn">
+                        <a href="{{route('web.pricing')}}" class="custom-btn2"> <u> View All Details</u> </a>
+                        @if (auth('web')->check() && $packageData->plan_code == 'FRP0')
+                        <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Current Plan </a>
+                        @elseif (auth('web')->check() && $packageData->plan_code != 'FRP0')
+                        <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Downgrade Plan </a>
+                        @else
+                        <a href="{{route('login')}}" class="custom-btn3"> Start Free </a>
+                        @endif
+                    </div>
                 </div>
-                <div class="col-md-4 col-lg-4 col-sm-12 col-12 m-b-40 nwprsecmrgn">
-                    <div class="pricing-box wow fadeInUp" data-wow-delay="0.7s">
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 col-12 m-b-40 nwprsecmrgn">
+                <div class="pricing-box wow fadeInUp" data-wow-delay="0.7s">
                     <h2 class="col-white col-lg-12 cntntm"> Premium </h2>
-                        <div class="pricing-box-head">
-                            <div class="pricing-icon">
-                                <img src="{{asset('front')}}/images/dollar-icon.svg">
-                            </div>
-                            <div class="pricing-title">
-                                <h4 id="solo_proprice2"> $19.90/Mon </h4>
-                                <p class="tas" id="solo_protoken2">20,000 words </p>
-                                <p class="tas" id="solo_proreport">10 reports</p>
-                            </div>
+                    <div class="pricing-box-head">
+                        <div class="pricing-icon">
+                            <img src="{{asset('front')}}/images/dollar-icon.svg">
                         </div>
-                        <div class="package-price w-100 text-center mb-4" id="professional">
-                            <h1 id="solo_proprice"> $ 19.90 </h1>
-                            <div>
-                                <div class="demo">
-                                    <div class="range-slider">
-                                        <input type="range" id="solo_proplan" value="@if($user_package->words == '20000' || $user_package->words < '20000'){{ 0 }}@elseif ($user_package->words == '50000'){{ 1 }}@elseif ($user_package->words == '200000'){{ 2 }}@elseif ($user_package->words == '500000'){{ 3 }}@endif" min="0" steps="1" max="3">
-                                    </div>
+                        <div class="pricing-title">
+                            <h4 id="solo_proprice2"> $19.90/Mon </h4>
+                            <p class="tas" id="solo_protoken2">20,000 words </p>
+                            <p class="tas" id="solo_proreport">10 reports</p>
+                        </div>
+                    </div>
+                    <div class="package-price w-100 text-center mb-4" id="professional">
+                        <h1 id="solo_proprice"> $ 19.90 </h1>
+                        <div>
+                            <div class="demo">
+                                <div class="range-slider">
+                                    <input type="range" id="solo_proplan"
+                                        value="@if($user_package->words == '20000' || $user_package->words < '20000'){{ 0 }}@elseif ($user_package->words == '50000'){{ 1 }}@elseif ($user_package->words == '200000'){{ 2 }}@elseif ($user_package->words == '500000'){{ 3 }}@endif"
+                                        min="0" steps="1" max="3">
                                 </div>
                             </div>
-                            <h4 id="solo_protoken" style="margin-top: 15px;"> 20,000 words</h4>
                         </div>
-                        <div class="pricing-detail">
-                            <h4 class="col-white tac" id="prcngwht26"> Plan Includes </h4>
-                            <ul>
-                                <li id="prcngwht27"> <img src="{{asset('front')}}/images/tickpurple.svg"> 60+ templates </li>
-                                <li id="prcngwht28"> <img src="{{asset('front')}}/images/tickpurple.svg"> Al Article Writer </li>
-                                <li id="prcngwht29"> <img src="{{asset('front')}}/images/tickpurple.svg"> Keyword Generation </li>
-                                <li id="prcngwht221"> <img src="{{asset('front')}}/images/tickpurple.svg"> SEO Score improvement </li>
-                                <li id="prcngwht222"> <img src="{{asset('front')}}/images/tickpurple.svg"> 20+ languages </li>
-                                <li id="prcngwht223"> <img src="{{asset('front')}}/images/tickpurple.svg"> Ezchat </li>
-                                <li id="prcngwht224">  <img src="{{asset('front')}}/images/tickpurple.svg"> Live chat support </li>
+                        <h4 id="solo_protoken" style="margin-top: 15px;"> 20,000 words</h4>
+                    </div>
+                    <div class="pricing-detail">
+                        <h4 class="col-white tac" id="prcngwht26"> Plan Includes </h4>
+                        <ul>
+                            <li id="prcngwht27"> <img src="{{asset('front')}}/images/tickpurple.svg"> 60+ templates
+                            </li>
+                            <li id="prcngwht28"> <img src="{{asset('front')}}/images/tickpurple.svg"> Al Article Writer
+                            </li>
+                            <li id="prcngwht29"> <img src="{{asset('front')}}/images/tickpurple.svg"> Keyword Generation
+                            </li>
+                            <li id="prcngwht221"> <img src="{{asset('front')}}/images/tickpurple.svg"> SEO Score
+                                improvement </li>
+                            <li id="prcngwht222"> <img src="{{asset('front')}}/images/tickpurple.svg"> 20+ languages
+                            </li>
+                            <li id="prcngwht223"> <img src="{{asset('front')}}/images/tickpurple.svg"> Ezchat </li>
+                            <li id="prcngwht224"> <img src="{{asset('front')}}/images/tickpurple.svg"> Live chat support
+                            </li>
 
-                            </ul>
-                        </div>
-                        <div class="pricing-btn">
-                            <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht225"><u> View All Details </u></a>
-                            @if (auth('web')->check())
-                            <a  href="javascript:void(0);" onclick="setPaymentBtn(this);" data-packageid="6"
-                                class="custom-btn3" id="buy-plan" data-plancode="{{ $packageData->plan_code }}" data-current="{{ $user_package->words }}"> Upgrade Plan</a>
-                                <input type="hidden" id="is-login" value="1">
-                                <input type="hidden" id="logged-email" value="{{ auth('web')->user()->unique_id }}">
-                            @else
-                                <a href="{{ route('login') }}"
-                                class="custom-btn3"> Upgrade Plan</a>
-                                <input type="hidden" id="is-login" value="0">
-                            @endif
-                            {{-- <a href="https://store.payproglobal.com/checkout?products[1][id]=81908&use-test-mode=false&secret-key=htYBPBo@nV"
-                                class="custom-btn3"> Current Plan </a> --}}
-                        </div>
+                        </ul>
+                    </div>
+                    <div class="pricing-btn">
+                        <a href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht225"><u> View All Details
+                            </u></a>
+                        @if (auth('web')->check())
+                        <a href="javascript:void(0);" onclick="setPaymentBtn(this);" data-packageid="6"
+                            class="custom-btn3" id="buy-plan" data-plancode="{{ $packageData->plan_code }}"
+                            data-current="{{ $user_package->words }}"> Upgrade Plan</a>
+                        <input type="hidden" id="is-login" value="1">
+                        <input type="hidden" id="logged-email" value="{{ auth('web')->user()->unique_id }}">
+                        @else
+                        <a href="{{ route('login') }}" class="custom-btn3"> Upgrade Plan</a>
+                        <input type="hidden" id="is-login" value="0">
+                        @endif
+                        {{-- <a
+                            href="https://store.payproglobal.com/checkout?products[1][id]=81908&use-test-mode=false&secret-key=htYBPBo@nV"
+                            class="custom-btn3"> Current Plan </a> --}}
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-4 col-sm-12 col-12 m-b-40 nwprsecmrgn">
-                    <div class="pricing-box wow fadeInUp" data-wow-delay="0.9s">
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 col-12 m-b-40 nwprsecmrgn">
+                <div class="pricing-box wow fadeInUp" data-wow-delay="0.9s">
                     <h2 class="col-white col-lg-12 cntntm pad-bot-40"> Enterprise </h2>
-                        <div class="pricing-box-head">
-                            <div class="pricing-icon">
-                                <img src="{{asset('front')}}/images/dollar-icon.svg">
-                            </div>
-                            <div class="pricing-title tas pad-bot-30">
-                                <h4 class="col-white" id="prcngwht3b"> Custom Pricing </h4>
-                                <p id="prcngwht3c"> 300,000+ words <br> 200+ reports </p>
-                            </div>
+                    <div class="pricing-box-head">
+                        <div class="pricing-icon">
+                            <img src="{{asset('front')}}/images/dollar-icon.svg">
                         </div>
-                        <div class="pricing-detail">
-                            <h4 class="col-white" id="prcngwht3d"> Plan Includes </h4>
-                            <ul>
-                                <li id="prcngwht3e"> <img src="{{asset('front')}}/images/tickorange.svg"> latest AI models </li>
-                                <li id="prcngwht3f"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+ templates </li>
-                                <li id="prcngwht3g"> <img src="{{asset('front')}}/images/tickorange.svg"> Keyword Generation </li>
-                                <li id="prcngwht3h"> <img src="{{asset('front')}}/images/tickorange.svg"> SEO Score improvement </li>
-                                <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Al Article Writer </li>
-                                <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
-                                <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+ languages </li>
-                                <li class="pad-bot-30" id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Live chat support </li>
-                            </ul>
+                        <div class="pricing-title tas pad-bot-30">
+                            <h4 class="col-white" id="prcngwht3b"> Custom Pricing </h4>
+                            <p id="prcngwht3c"> 300,000+ words <br> 200+ reports </p>
                         </div>
-                        <div class="pricing-btn">
-                            <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht3j"><u> View All Details </u></a>
-                            <a href="mailto:sales@easyseo.ai" class="custom-btn3"> Contact us </a>
-                        </div>
+                    </div>
+                    <div class="pricing-detail">
+                        <h4 class="col-white" id="prcngwht3d"> Plan Includes </h4>
+                        <ul>
+                            <li id="prcngwht3e"> <img src="{{asset('front')}}/images/tickorange.svg"> latest AI models
+                            </li>
+                            <li id="prcngwht3f"> <img src="{{asset('front')}}/images/tickorange.svg"> 60+ templates
+                            </li>
+                            <li id="prcngwht3g"> <img src="{{asset('front')}}/images/tickorange.svg"> Keyword Generation
+                            </li>
+                            <li id="prcngwht3h"> <img src="{{asset('front')}}/images/tickorange.svg"> SEO Score
+                                improvement </li>
+                            <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Al Article Writer
+                            </li>
+                            <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> Ezchat </li>
+                            <li id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg"> 20+ languages
+                            </li>
+                            <li class="pad-bot-30" id="prcngwht3i"> <img src="{{asset('front')}}/images/tickorange.svg">
+                                Live chat support </li>
+                        </ul>
+                    </div>
+                    <div class="pricing-btn">
+                        <a href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht3j"><u> View All Details
+                            </u></a>
+                        <a href="mailto:sales@easyseo.ai" class="custom-btn3"> Contact us </a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <br>
     <br><br>
-            <div class="block-element text-center m-b-40 wow fadeInUp" data-wow-delay="0.3s">
-                <h2 class="col-white col-lg-12 cntntm pad-bot-40"> Compare plans </h2>
-                <!-- <h3 class="title-text1" id="amzngwht6a"> Compare plans </h3> -->
-            </div>
-            <br>
+    <div class="block-element text-center m-b-40 wow fadeInUp" data-wow-delay="0.3s">
+        <h2 class="col-white col-lg-12 cntntm pad-bot-40"> Compare plans </h2>
+        <!-- <h3 class="title-text1" id="amzngwht6a"> Compare plans </h3> -->
+    </div>
+    <br>
     <section class="pad-top-40 pad-bot-20 abtbsns gvngblack nwprtabsec">
         <div class="container table-responsive">
             <table class="col-lg-12  wow fadeInUp nwprtb nwprtable" data-wow-delay="0.3s">
@@ -274,58 +295,105 @@
                     <th class="nwprwrkspc">Enterprise</th>
                 </tr>
                 <tr>
-                    <td class="mmbr" id="amzngwht8b">Word credits per month <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td  id="amzngwht9a">5,000</td>
+                    <td class="mmbr" id="amzngwht8b">Word credits per month <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="amzngwht9a">5,000</td>
                     <td id="amzngwht9b">20,000 - 300,000</td>
                     <td id="amzngwht10a">300,000 - unlimited</td>
                 </tr>
                 <tr>
-                    <td class="mmbr hgt" id="hm1">User Logins  <img src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td class="mmbr hgt" id="hm1">User Logins <img src="{{asset('front')}}/images/prplequestion.png">
+                    </td>
                     <td class="hgt" id="hm2">1</td>
                     <td class="hgt" id="gotwht">up to 10</td>
                     <td class="hgt" id="getwht">More than 10</td>
                 </tr>
                 <tr>
-                <td class="mmbr" id="atmtwht4">Continuously updated with <br> the latest AI models <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td id="prcchecking1"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg1"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="bsnsadvntgimg2"></td>
-                    <td id="prcchecking2"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg3"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="bsnsadvntgimg4"></td>
-                    <td id="prcchecking3"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg5"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="bsnsadvntgimg6"></td>
+                    <td class="mmbr" id="atmtwht4">Continuously updated with <br> the latest AI models <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="prcchecking1"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg1"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="bsnsadvntgimg2">
+                    </td>
+                    <td id="prcchecking2"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg3"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="bsnsadvntgimg4">
+                    </td>
+                    <td id="prcchecking3"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg5"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="bsnsadvntgimg6">
+                    </td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="getwht1">AI models for improved <br> reliability and performance. <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td id="prcchecking4"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick31"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick32"></td>
-                    <td id="prcchecking5"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick33"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick34"></td>
-                    <td id="prcchecking6"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg7"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="bsnsadvntgimg8"></td>
+                    <td class="mmbr hgt" id="getwht1">AI models for improved <br> reliability and performance. <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="prcchecking4"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick31"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick32">
+                    </td>
+                    <td id="prcchecking5"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick33"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick34">
+                    </td>
+                    <td id="prcchecking6"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg7"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="bsnsadvntgimg8">
+                    </td>
                 </tr>
                 <tr>
-                <td class="mmbr" id="atmtwht6">60+ unique templates <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td id="prcchecking7"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg9"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="bsnsadvntgimg10"></td>
-                    <td id="prcchecking8"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg1"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prpslimg2"></td>
-                    <td id="prcchecking9"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg3"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prpslimg4"></td>
+                    <td class="mmbr" id="atmtwht6">60+ unique templates <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="prcchecking7"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="bsnsadvntgimg9"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"
+                            id="bsnsadvntgimg10"></td>
+                    <td id="prcchecking8"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg1"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prpslimg2"></td>
+                    <td id="prcchecking9"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg3"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prpslimg4"></td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="bxswht1a">Access to SEO score to <br> maximize SEO potential <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                <td id="prcchecking10"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg5"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prpslimg6"></td>
-                <td id="prcchecking11"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg1"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhtimg2"></td>
-                <td id="prcchecking12"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg3"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhtimg4"></td>
+                    <td class="mmbr hgt" id="bxswht1a">Access to SEO score to <br> maximize SEO potential <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="prcchecking10"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prpslimg5"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prpslimg6"></td>
+                    <td id="prcchecking11"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg1"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhtimg2">
+                    </td>
+                    <td id="prcchecking12"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg3"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhtimg4">
+                    </td>
                 </tr>
                 <tr>
-                <td class="mmbr" id="atmtwht8">Al Article Writer <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                <td id="prcchecking13"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg5"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhtimg6"></td>
-                <td id="prcchecking14"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg7"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhtimg8"></td>
-                <td id="prcchecking15"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg1"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg2"></td>
+                    <td class="mmbr" id="atmtwht8">Al Article Writer <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="prcchecking13"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg5"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhtimg6">
+                    </td>
+                    <td id="prcchecking14"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhtimg7"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhtimg8">
+                    </td>
+                    <td id="prcchecking15"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg1"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhttimg2">
+                    </td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="bxswht1b">20+ languages <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                <td id="prcchecking16"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg3"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg4"></td>
-                <td id="prcchecking17"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg5"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg6"></td>
-                <td id="prcchecking18"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg7"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="atmtwhttimg8"></td>
+                    <td class="mmbr hgt" id="bxswht1b">20+ languages <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="prcchecking16"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg3"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhttimg4">
+                    </td>
+                    <td id="prcchecking17"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg5"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhttimg6">
+                    </td>
+                    <td id="prcchecking18"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="atmtwhttimg7"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="atmtwhttimg8">
+                    </td>
                 </tr>
                 <tr>
-                <td class="mmbr" id="instwht1">Ezchat <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                <td id="prcchecking19"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick1"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick2"></td>
-                <td id="prcchecking20"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick3"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick4"></td>
-                <td id="prcchecking21"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick5"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick6"></td>
+                    <td class="mmbr" id="instwht1">Ezchat <img src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="prcchecking19"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick1"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick2">
+                    </td>
+                    <td id="prcchecking20"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick3"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick4">
+                    </td>
+                    <td id="prcchecking21"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick5"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick6">
+                    </td>
                 </tr>
             </table>
         </div>
@@ -349,39 +417,53 @@
                     <th class="nwprwrkspc" style="visibility: hidden !important;">Enterprise</th>
                 </tr>
                 <tr style="background-color: #fff !important;border-color: #fff !important;">
-                    <td class="mmbr" id="amzngwht8b">Keyword Generation <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td  id="amzngwht9a"><a href=""style="visibility: hidden !important;"> 300,000 - unlimited unlimiteds</a></td>
+                    <td class="mmbr" id="amzngwht8b">Keyword Generation <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td id="amzngwht9a"><a href="" style="visibility: hidden !important;"> 300,000 - unlimited
+                            unlimiteds</a></td>
                     <td id="amzngwht9b">10-200 keywords</td>
                     <td id="amzngwht10a">200-unlimited keywords</td>
                 </tr>
                 <tr>
-                    <td class="mmbr hgt" id="hm1">SEO Score improvement  <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td class="hgt" id="hm2"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;"></td>
-                    <td class="hgt" id="gotwht"><img src="{{asset('front')}}/images/Checkmarkblk.png" ></td>
+                    <td class="mmbr hgt" id="hm1">SEO Score improvement <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td class="hgt" id="hm2"><img src="{{asset('front')}}/images/Checkmarkblk.png"
+                            style="visibility: hidden !important;"></td>
+                    <td class="hgt" id="gotwht"><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                     <td class="hgt" id="getwht"><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                 </tr>
                 <tr>
-                <td class="mmbr" id="atmtwht4">Plagiarism detection <br> tool access <span class="nwprsoon" style="margin-left: 80px !important;">soon</span> <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png"  style="visibility: hidden !important;"></td>
+                    <td class="mmbr" id="atmtwht4">Plagiarism detection <br> tool access <span class="nwprsoon"
+                            style="margin-left: 80px !important;">soon</span> <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;">
+                    </td>
                     <td><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                     <td><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="getwht1">Access to newest features <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;"></td>
+                    <td class="mmbr hgt" id="getwht1">Access to newest features <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;">
+                    </td>
                     <td><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                     <td><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="getwht1">Custom AI models <span class="nwprsoon">soon</span>  <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;"></td>
+                    <td class="mmbr hgt" id="getwht1">Custom AI models <span class="nwprsoon">soon</span> <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;">
+                    </td>
                     <td><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                     <td><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="getwht1">API Access <span class="nwprsoon">soon</span>  <img src="{{asset('front')}}/images/prplequestion.png"></td>
-                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;"></td>
-                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;"></td>
+                    <td class="mmbr hgt" id="getwht1">API Access <span class="nwprsoon">soon</span> <img
+                            src="{{asset('front')}}/images/prplequestion.png"></td>
+                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;">
+                    </td>
+                    <td><img src="{{asset('front')}}/images/Checkmarkblk.png" style="visibility: hidden !important;">
+                    </td>
                     <td><img src="{{asset('front')}}/images/Checkmarkblk.png"></td>
                 </tr>
             </table>
@@ -393,13 +475,14 @@
         <div class="container table-responsive">
             <table class="col-lg-12  wow fadeInUp nwprtb nwprtable" data-wow-delay="0.3s" id="tblpricbckcolor2">
                 <tr>
-                    <th class="wrkspc hgt mmbr"  id="bxswht4c">SUPPORT</th>
+                    <th class="wrkspc hgt mmbr" id="bxswht4c">SUPPORT</th>
                     <th style="visibility: hidden !important;">Premium Premium PRRR</th>
                     <th style="visibility: hidden !important;">PremiumP</th>
                     <th style="visibility: hidden !important;">PremiumPP PRRRRr</th>
                 </tr>
                 <tr>
-                    <td class="mmbr hgt" id="cpywht3">Live chat customer support <img src="{{asset('front')}}/images/purpleques.svg"></td>
+                    <td class="mmbr hgt" id="cpywht3">Live chat customer support <img
+                            src="{{asset('front')}}/images/purpleques.svg"></td>
                     <td>
                         <img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick41">
                     </td>
@@ -411,29 +494,37 @@
                     </td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="bxswht">Technical support <img src="{{asset('front')}}/images/purpleques.svg"></td>
+                    <td class="mmbr hgt" id="bxswht">Technical support <img
+                            src="{{asset('front')}}/images/purpleques.svg"></td>
 
-                <td id="prcchecking28"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick19"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick20"></td>
-                <td id="prcchecking29"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick21"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick22"></td>
-                <td id="prcchecking30"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick23"><img src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;"  id="prcwttick24"></td>
+                    <td id="prcchecking28"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick19"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick20">
+                    </td>
+                    <td id="prcchecking29"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick21"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick22">
+                    </td>
+                    <td id="prcchecking30"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick23"><img
+                            src="{{asset('front')}}/images/Checkmarkblk.png" style="display: none;" id="prcwttick24">
+                    </td>
                 </tr>
                 <tr>
-                <td class="mmbr hgt" id="cntctbxswht1b">Learning Resources<img src="{{asset('front')}}/images/purpleques.svg"></td>
-                <td id="prcchecking31"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick25"></td>
-                <td id="prcchecking32"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick27"></td>
-                <td id="prcchecking33"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick29"></td>
+                    <td class="mmbr hgt" id="cntctbxswht1b">Learning Resources<img
+                            src="{{asset('front')}}/images/purpleques.svg"></td>
+                    <td id="prcchecking31"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick25"></td>
+                    <td id="prcchecking32"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick27"></td>
+                    <td id="prcchecking33"><img src="{{asset('front')}}/images/Checkmarkblk.png" id="prcwttick29"></td>
                 </tr>
                 <tr>
-                <td class="wrkspc hgt mmbr">CHOOSE YOUR PLAN:</td>
-                <td style="text-align: center;">
-                    <button class="wrkspcbtnimp wrkspcbtnimp2" >Get Start</button>
-                </td>
-                <td style="text-align: center;">
-                    <button class="wrkspcbtnimp">Upgrade</button>
-                </td>
-                <td style="text-align: center;">
-                    <button class="wrkspcbtnimp">Upgrade</button>
-                </td>
+                    <td class="wrkspc hgt mmbr">CHOOSE YOUR PLAN:</td>
+                    <td style="text-align: center;">
+                        <button class="wrkspcbtnimp wrkspcbtnimp2">Get Start</button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="wrkspcbtnimp">Upgrade</button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="wrkspcbtnimp">Upgrade</button>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -456,10 +547,14 @@
                 <div class="col-md-1 col-lg-1 col-sm-12 col-12 order-lg-1 order-md-1 order-sm-2 order-2"></div>
                 <div class="col-md-5 col-lg-5 col-sm-12 col-12 order-lg-1 order-md-1 order-sm-2 order-2">
                     <div class="detail-text wow fadeInLeft" data-wow-delay="0.6s">
-                        <h3 class="col-white col-lg-12 cntntm pad-bot-40" style="text-align: left !important;"> Still have questions?<br> Contact
-                            <span class="col-orange"> easyseo.ai </span> for Expert SEO AI Solutions  <br> and <span class="col-orange"> Support  </span>
+                        <h3 class="col-white col-lg-12 cntntm pad-bot-40" style="text-align: left !important;"> Still
+                            have questions?<br> Contact
+                            <span class="col-orange"> easyseo.ai </span> for Expert SEO AI Solutions <br> and <span
+                                class="col-orange"> Support </span>
                         </h3>
-                        <p class="col-white col-lg-12 cntntm pad-bot-40" style="text-align: left !important;">We are here to help you achieve success and are always ready to help in solving any questions and problems related to the use of the service  </p>
+                        <p class="col-white col-lg-12 cntntm pad-bot-40" style="text-align: left !important;">We are
+                            here to help you achieve success and are always ready to help in solving any questions and
+                            problems related to the use of the service </p>
                         <button class="wrkspcbtnimp wrkspcbtnimp3"> Contact Support </button>
                     </div>
                 </div>
@@ -1364,6 +1459,10 @@
         let package_id = $(_self).data('packageid');
         let plan_code = $(_self).data('plancode');
 
+        // console.log(package_id == '{{ $packageData->id }}' && '{{ $user_package->subscription_id }}' != '');
+
+        // return false;
+
         if (package_id == '{{ $packageData->id }}' && '{{ $user_package->subscription_id }}' != '') {
             return false;
         }
@@ -1384,17 +1483,23 @@
             },
             success: function (res) {
 
+                if (res.status == true && res.route) {
+                    window.location = res.route;
+                    return true;
+                }
+
                 if (res.status == true) {
                     let payLinkBtn = document.getElementById('paddle-pay-btn');
                     payLinkBtn.setAttribute('data-override', res.payLink);
                     document.getElementById('paddle-pay-btn').click();
                     return false;
-                } else {
-                    alert('Cannot upgrade or downgrade the package at this moment.');
                 }
+
+                // alert('Cannot upgrade or downgrade the package at this moment.');
             }
         });
 
     }
+
 </script>
 @endsection

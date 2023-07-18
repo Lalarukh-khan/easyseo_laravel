@@ -41,29 +41,15 @@
     })(window,document,'script','dataLayer','GTM-P57DBTR');</script>
     <!-- End Google Tag Manager -->
     <style>
-        /* width */
-        ::-webkit-scrollbar {
-        width: 10px;
+       /* Hide scrollbar for Chrome, Safari and Opera */
+        body::-webkit-scrollbar {
+            display: none;
         }
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: linear-gradient(0deg, rgba(146, 0, 255, 0.25), rgba(146, 0, 255, 0.25)), rgba(255, 255, 255, 0.5);
-            border-radius: 5px;
-            transform: rotate(90deg);
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(90.04deg, #FFA200 0.68%, #F47300 99.99%);
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
-            transform: rotate(90deg);
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(90.04deg, #e89402 0.68%, #e06900 99.99%);
+        /* Hide scrollbar for IE, Edge and Firefox */
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
     <style>

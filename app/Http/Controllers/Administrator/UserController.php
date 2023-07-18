@@ -41,15 +41,15 @@ class UserController extends Controller
                         if ($row->user_package->package_id == 1) {
                             $span = '<span class="badge bg-success">Free - 5000</span>';
                         }
-                        if ($row->user_package->package_id == 2) {
+                        if ($row->user_package->package_id == 2 || $row->user_package->package_id == 6) {
                             $span = '<span class="badge bg-info">Pro - 20000</span>';
                         }
-                        if ($row->user_package->package_id == 3) {
+                        if ($row->user_package->package_id == 3 || $row->user_package->package_id == 7) {
                             $span = '<span class="badge bg-primary">Pro - 50000</span>';
                         }
-                        if ($row->user_package->package_id == 4) {
+                        if ($row->user_package->package_id == 4 || $row->user_package->package_id == 8) {
                             $span = '<span class="badge bg-warning">Pro - 200000</span>';
-                        }if ($row->user_package->package_id == 5) {
+                        }if ($row->user_package->package_id == 5 || $row->user_package->package_id == 9) {
                             $span = '<span class="badge bg-secondary">Pro - 500000</span>';
                         }
                     }
