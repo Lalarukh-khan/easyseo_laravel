@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Package;
+use App\Models\UserPackage;
 use Illuminate\Http\Request;
 // use Laravel\Paddle\Subscription;
 
@@ -36,19 +37,35 @@ class BillingController extends Controller
 
         $current_plan = session()->get('PackageData');
         $UserPackages = session()->get('UserPackages');
+        $authUser = auth('web')->user(); 
+         
+            if($current_plan->plan_code == 'FRP0'){
+                $payLink = $authUser->newSubscription($package->title, $package->paddle_plan_id)
+                ->returnTo(route('user.billing.all', ['paddle-success-msg' => 'Package Purchased Successfully']))
+                ->create();
 
-        $authUser = auth('web')->user();
+                return response()->json([
+                    'status' => true,
+                    'payLink' => $payLink
+                ]);
+            }
+            
+        $user_pkg =   UserPackage::where('user_id',$authUser->id)->latest()->first();  
+            
+            if(empty($user_pkg->subscription_id)){ dd($current_plan);
+                $payLink = $authUser->newSubscription($package->title, $package->paddle_plan_id)
+                ->returnTo(route('user.billing.all', ['paddle-success-msg' => 'Package Purchased Successfully']))
+                ->create();
 
-        if ($current_plan->plan_code == 'FRP0' || ($authUser->subscriptions()->where('ends_at', null)->where('paddle_status', '!=', 'deleted')->count() == 0 && empty($UserPackages->subscription_id))) {
-            $payLink = $authUser->newSubscription($package->title, $package->paddle_plan_id)
-            ->returnTo(route('user.billing.all', ['paddle-success-msg' => 'Package Purchased Successfully']))
-            ->create();
-
-            return response()->json([
-                'status' => true,
-                'payLink' => $payLink
-            ]);
-        }
+                return response()->json([
+                    'status' => true,
+                    'payLink' => $payLink
+                ]);
+            }
+            
+            
+      
+  
 
         $isUpgrade = false;
         // dd($current_plan->paddle_plan_id,$package->paddle_plan_id);
@@ -107,6 +124,8 @@ class BillingController extends Controller
             'route' => route('user.billing.all'),
             'isUpgrade' => $isUpgrade
         ]);
+
+
 
         return response()->json([
             'status' => false,
