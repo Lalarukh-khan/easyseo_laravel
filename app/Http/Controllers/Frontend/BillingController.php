@@ -52,7 +52,7 @@ class BillingController extends Controller
             
         $user_pkg =   UserPackage::where('user_id',$authUser->id)->latest()->first();  
             
-            if(empty($user_pkg->subscription_id)){ dd($current_plan);
+            if(empty($user_pkg->subscription_id)){ 
                 $payLink = $authUser->newSubscription($package->title, $package->paddle_plan_id)
                 ->returnTo(route('user.billing.all', ['paddle-success-msg' => 'Package Purchased Successfully']))
                 ->create();
