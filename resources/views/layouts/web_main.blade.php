@@ -32,7 +32,7 @@
     <script type="text/javascript" src="{{asset('front')}}/js/jquery-3.2.1.min.js"></script>
 
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-
+    <meta name="facebook-domain-verification" content="nfs371pt7cc2cc20nzb553nvp5xo72" />
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
