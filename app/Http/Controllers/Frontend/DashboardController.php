@@ -171,7 +171,7 @@ class DashboardController extends Controller
             'data' => auth('web')->user(),
 			'words' => (!empty($words) ? $words : 0),
 			'user_package' => (!empty($user_package) ? $user_package : 0),
-            'subcription' => UserPackage::where('user_id', auth('web')->user()->id)->latest()->first(),
+            'subscription' => UserPackage::where('user_id', auth('web')->user()->id)->latest()->first(),
 			'total_words' => (!empty($user_package) ? $user_package : 0 ),
         );
 
@@ -179,7 +179,6 @@ class DashboardController extends Controller
     }
 
     public function concelSubscription($id){
-
         $user_package = UserPackage::with('package')->where('user_id',hashids_decode($id))->latest()->first();
 
         auth('web')->user()->subscription($user_package->package->title)->cancelNow();
@@ -198,7 +197,7 @@ class DashboardController extends Controller
 
         return response()->json([
             'success' => 'Subscription Cancelled Successfully',
-            'reload' => true,
+            'redirect' => route('user.subscription'),
         ]);
 
     }

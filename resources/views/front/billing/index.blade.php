@@ -166,7 +166,7 @@
                         @if (auth('web')->check() && $packageData->plan_code == 'FRP0')
                         <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Current Plan </a>
                         @elseif (auth('web')->check() && $packageData->plan_code != 'FRP0')
-                        <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Downgrade Plan </a>
+                        <a href="javascript:void(0);" class="btn custom-btn3" data-plancode="{{ $packageData->plan_code }}" onclick="backToBasic(this);" data-check="{{ $user_package->subscription_id }}"> Downgrade Plan </a>
                         @else
                         <a href="{{route('login')}}" class="custom-btn3"> Start Free </a>
                         @endif
@@ -224,7 +224,7 @@
                         @if (auth('web')->check())
                         <a href="javascript:void(0);" onclick="setPaymentBtn(this);" data-packageid="6"
                             class="custom-btn3" id="buy-plan" data-plancode="{{ $packageData->plan_code }}"
-                            data-current="{{ $user_package->words }}"> Upgrade Plan</a>
+                            data-current="{{ $user_package->words }}" data-check="{{ $user_package->subscription_id }}"> Upgrade Plan</a>
                         <input type="hidden" id="is-login" value="1">
                         <input type="hidden" id="logged-email" value="{{ auth('web')->user()->unique_id }}">
                         @else
@@ -581,6 +581,12 @@
         var loggedEmail = $('#logged-email').val();
         var current = $('#buy-plan').data('current');
         var planCode = $('#buy-plan').data('plancode');
+        var subId = $('#buy-plan').data('check');
+
+        if(subId == ""){
+            planCode = "FRP0";
+            current = "5000";
+        }
 
         // alert(planCode);
 
@@ -596,8 +602,6 @@
         let slideChanger = (value,current,packageToggle,monthlyCode,yearlyCode,loggedEmail) => {
             $("input#solo_proplan").val(value);
             $('#level').val(value);
-
-            // alert(value);
 
             if (value == 0) {
                 $('#solo_proprice').html('$24.90');
@@ -1467,39 +1471,89 @@
             return false;
         }
 
-        page_loader('show');
 
-        $.ajax({
-            type: "post",
-            url: "{{ route('user.billing.get_paylink') }}",
-            data: {'package_id':package_id,'plan_code':plan_code},
-            dataType: "json",
-            complete: function () {
-                page_loader('hide');
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                page_loader('hide');
-                ajaxErrorHandling(jqXHR, errorThrown);
-            },
-            success: function (res) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do You Want To Buy This Plan?",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+        }).then(function (t) {
+            if (t.value) {
+                page_loader('show');
 
-                if (res.status == true && res.route) {
-                    window.location = res.route;
-                    return true;
-                }
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('user.billing.get_paylink') }}",
+                    data: {'package_id':package_id,'plan_code':plan_code},
+                    dataType: "json",
+                    complete: function () {
+                        page_loader('hide');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        page_loader('hide');
+                        ajaxErrorHandling(jqXHR, errorThrown);
+                    },
+                    success: function (res) {
 
-                if (res.status == true) {
-                    let payLinkBtn = document.getElementById('paddle-pay-btn');
-                    payLinkBtn.setAttribute('data-override', res.payLink);
-                    document.getElementById('paddle-pay-btn').click();
-                    return false;
-                }
+                        if (res.status == true && res.route) {
+                            window.location = res.route;
+                            return true;
+                        }
 
-                // alert('Cannot upgrade or downgrade the package at this moment.');
+                        if (res.status == true) {
+                            let payLinkBtn = document.getElementById('paddle-pay-btn');
+                            payLinkBtn.setAttribute('data-override', res.payLink);
+                            document.getElementById('paddle-pay-btn').click();
+                            return false;
+                        }
+
+                        // alert('Cannot upgrade or downgrade the package at this moment.');
+                    }
+                });
             }
-        });
+        })
+
+
 
     }
+
+    @if (auth('web')->check())
+        function backToBasic(_self) {
+
+            let plan_code = $(_self).data('plancode');
+            let subId = $(_self).data('check');
+
+            if(plan_code == 'FRP0' || subId == ''){
+                Swal.fire({
+                    title: plan_code == 'FRP0' ? "Cancel" : "Downgrade",
+                    text: plan_code == 'FRP0' ? 'You are already on a basic plan.' : 'You have aleardy cancelled your subscription',
+                    type: "warning",
+                    timer: 3000,
+                })
+                return false;
+            }
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to cancel your current plan?",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes!"
+            }).then(function (t) {
+                if (t.value) {
+                    getAjaxRequests("{{ route('user.cencel-subscription',hashids_encode(auth('web')->user()->id)) }}",{},'get',true,function(){
+
+                    });
+                }
+            })
+
+        }
+    @endif
 
 </script>
 @endsection

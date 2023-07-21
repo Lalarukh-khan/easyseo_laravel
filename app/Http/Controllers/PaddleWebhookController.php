@@ -62,6 +62,7 @@ class PaddleWebhookController extends Controller
         $webhookLog->type = Str::studly($payload['alert_name']);
         $webhookLog->save();
 
+
         WebhookReceived::dispatch($payload);
 
         if (method_exists($this, $method)) {
@@ -121,6 +122,12 @@ class PaddleWebhookController extends Controller
 
         if ($subscription = $this->findSubscription($payload['subscription_id'])) {
             $billable = $subscription->billable;
+
+            UserPackage::where('subscription_id',$payload['subscription_id'])->update([
+                'start_date' => now()->format('Y-m-d'),
+                'end_date' => $payload['next_bill_date']
+            ]);
+
         } else {
             $billable = $this->findOrCreateCustomer($payload['passthrough']);
         }
@@ -183,10 +190,10 @@ class PaddleWebhookController extends Controller
             'quantity' => $payload['quantity'],
             'trial_ends_at' => $trialEndsAt,
         ]);
+
         $user = User::find($subscription->billable_id);
 
         $this->createUserPackage($user, $payload);
-
 
         SubscriptionCreated::dispatch($customer, $subscription, $payload);
     }
@@ -206,7 +213,6 @@ class PaddleWebhookController extends Controller
         // Plan...
         if (isset($payload['subscription_plan_id'])) {
             $subscription->paddle_plan = $payload['subscription_plan_id'];
-        }
 
 
             // get the upgrade or downgrade plan using the payload subscription_plan_id
@@ -215,9 +221,9 @@ class PaddleWebhookController extends Controller
 
 
             // get the user package using the subscription billable_id
-            $userPackageData = UserPackage::with('package', 'monthly_packs')->where('user_id', $subscription->billable_id)->latest()->first();
+            $userPackageData = UserPackage::where('user_id', $subscription->billable_id)->latest()->first();
 
-            $monthly_package = ['P20', 'P50', 'P200', 'P500'];
+            $monthly_package = ['P20', 'P50', 'P200', 'P500','P5'];
             $yearly_sku = ['P20-year', 'P50-year', 'P200-year', 'P500-year'];
 
             $userSubscriptionLog = new UserSubscriptionLog();
@@ -228,22 +234,15 @@ class PaddleWebhookController extends Controller
             $userSubscriptionLog->paddle_subscription_id = $userPackageData->subscription_id;
             $userSubscriptionLog->save();
 
-            if (in_array($newPackageData->plan_code, $monthly_package)) {
-                if ($userPackageData->monthly_packs()->count() > 0) {
-                    $userPackageData->monthly_packs()->delete();
-                }
-
-                $userPackageData->package_id = $newPackageData->id;
-                $userPackageData->words = $newPackageData->words;
-                $userPackageData->research_limit = $newPackageData->research_limit;
-                $userPackageData->workspace_users = $newPackageData->workspace_users;
-                $userPackageData->save();
+            if (in_array($newPackageData->plan_code, $monthly_package) && $userPackageData->monthly_packs()->count() > 0) {
+                MonthlyPack::where('user_package_id',$userPackageData->id)->delete();
             }
 
 
             if (in_array($newPackageData->plan_code, $yearly_sku)) {
                 if ($userPackageData->monthly_packs()->count() > 0) {
-                    $userPackageData->monthly_packs()->update([
+
+                    MonthlyPack::where('user_package_id',$userPackageData->id)->update([
                         'package_id' => $newPackageData->id,
                         'words' => $newPackageData->words,
                         'research_limit' => $newPackageData->research_limit,
@@ -259,7 +258,7 @@ class PaddleWebhookController extends Controller
                             $monthly_packs[$i] = [
                                 'user_id' => $userPackageData->user_id,
                                 'package_id' => $newPackageData->id,
-                                'user_package_id' => $newPackageData->id,
+                                'user_package_id' => $userPackageData->id,
                                 'words' => $newPackageData->words,
                                 'research_limit' => $newPackageData->research_limit,
                                 'workspace_users' => $newPackageData->workspace_users,
@@ -274,12 +273,12 @@ class PaddleWebhookController extends Controller
                             $monthly_packs[$i] = [
                                 'user_id' => $userPackageData->user_id,
                                 'package_id' => $newPackageData->id,
-                                'user_package_id' => $newPackageData->id,
+                                'user_package_id' => $userPackageData->id,
                                 'words' => $newPackageData->words,
                                 'research_limit' => $newPackageData->research_limit,
                                 'workspace_users' => $newPackageData->workspace_users,
                                 'start_date' => $start_date,
-                                'end_date' => $end_date,
+                                'end_date' => $i == 12 ? $payload['next_bill_date'] : $end_date,
                                 'created_at' => now(),
                                 'updated_at' => now(),
                             ];
@@ -291,15 +290,18 @@ class PaddleWebhookController extends Controller
                     }
                 }
 
-                $userPackageData->package_id = $newPackageData->id;
-                $userPackageData->words = $newPackageData->words;
-                $userPackageData->research_limit = $newPackageData->research_limit;
-                $userPackageData->workspace_users = $newPackageData->workspace_users;
                 $userPackageData->end_date = $payload['next_bill_date'];
-                $userPackageData->save();
             }
 
+
+            $userPackageData->package_id = $newPackageData->id;
+            $userPackageData->words = $newPackageData->words;
+            $userPackageData->research_limit = $newPackageData->research_limit;
+            $userPackageData->workspace_users = $newPackageData->workspace_users;
+            $userPackageData->save();
+
             $subscription->name = $newPackageData->title;
+        }
 
         // Status...
         if (isset($payload['status'])) {
@@ -340,6 +342,10 @@ class PaddleWebhookController extends Controller
             $subscription->ends_at = $subscription->onTrial()
                 ? $subscription->trial_ends_at
                 : Carbon::createFromFormat('Y-m-d', $payload['cancellation_effective_date'], 'UTC')->startOfDay();
+
+            UserPackage::where('subscription_id',$payload['subscription_id'])->update([
+                'subscription_id' => null
+            ]);
         }
 
         // Status...
@@ -446,7 +452,7 @@ class PaddleWebhookController extends Controller
                             'research_limit' => $user_package->research_limit,
                             'workspace_users' => $user_package->workspace_users,
                             'start_date' => $start_date,
-                            'end_date' => $end_date,
+                            'end_date' => $i == 12 ? $user_package->end_date : $end_date,
                             'created_at' => now(),
                             'updated_at' => now(),
                         ];
@@ -457,6 +463,7 @@ class PaddleWebhookController extends Controller
                     MonthlyPack::insert($monthly_packs);
                 }
             }
+
             $userSubscriptionLog = new UserSubscriptionLog();
             $userSubscriptionLog->user_id = $user_package->user_id;
             $userSubscriptionLog->user_package_id = $user_package->id;

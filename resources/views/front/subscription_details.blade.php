@@ -1,5 +1,4 @@
 @extends('layouts.front')
-
 @section('content')
     <div class="row">
         <div class="col-12 col-lg-6 col-md-6">
@@ -9,7 +8,7 @@
                         <div class="">
                             <p class="mb-0">Expiry Date</p>
                             @php
-                                $end_date = now()->parse($user_package->start_dat)->addDays(30)->format('M d,Y');
+                                $end_date = now()->parse($subscription->end_date)->format('M d,Y');
                             @endphp
                             <h4 class="mb-0 font-weight-bold">{{ $end_date }}</h4>
                         </div>
@@ -81,29 +80,34 @@
                                     <th style="color: black;">Package</th>
                                     <th style="color: black;">Package Duration</th>
                                     <th style="color: black;">Package Words</th>
+                                    <th style="color: black;">Package Status</th>
                                     @if (!empty($user_package->subscription_id) && !session()->has('package-error'))
                                         <th style="color: black;">Action</th>
-                                    @elseif(isset($user_package->user_package->subscription_id) && !empty($user_package->user_package->subscription_id) && !session()->has('package-error'))
+                                    @elseif(isset($subscription->subscription_id) && !empty($subscription->subscription_id) && !session()->has('package-error'))
                                         <th style="color: black;">Action</th>
                                     @endif
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-dark">
+                                    <td class="text-dark text-center">
                                         {{ $user_package->package->title }}
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         @php
-                                            $date1 = now()->parse($user_package->start_date);
-                                            $date2 = now()->parse($end_date);
-
-                                            $diff_in_days = $date1->diffInDays($date2);
+                                            if (in_array($user_package->package->plan_code,['P20-year', 'P50-year', 'P200-year', 'P500-year'])) {
+                                                $subsction_cycle = '1 year';
+                                            }else{
+                                                $subsction_cycle = '30 days';
+                                            }
                                         @endphp
-                                        <p class="badge bg-success">{{ $diff_in_days }} days</p>
+                                        <p class="badge bg-success">{{ $subsction_cycle }}</p>
                                     </td>
-                                    <td class="text-dark">
+                                    <td class="text-dark text-center">
                                         {{ $user_package->words }}
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-{{ !empty($subscription->subscription_id) ? 'info' : 'danger' }}">{{ !empty($subscription->subscription_id) ? 'Active' : 'Cancelled' }}</span>
                                     </td>
                                     @if (!empty($user_package->subscription_id) && !session()->has('package-error'))
                                     <td class="text-center">
@@ -112,7 +116,7 @@
                                                 data-url="{{ route('user.cencel-subscription', $data->hashid) }}"
                                                 class="btn btn-danger" title="delete">Cancel Subscription</a>&nbsp;&nbsp;
                                     </td>
-                                    @elseif(isset($user_package->user_package->subscription_id) && !empty($user_package->user_package->subscription_id) && !session()->has('package-error'))
+                                    @elseif(isset($subscription->subscription_id) && !empty($subscription->subscription_id) && !session()->has('package-error'))
                                     <td class="text-center">
 
                                         <a href="javascript:void(0);" onclick="ajaxRequest(this)"
