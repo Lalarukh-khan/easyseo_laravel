@@ -108,9 +108,11 @@
                                     <td class="text-dark text-center">
                                         {{ $user_package->words }}
                                     </td>
-                                    <td class="text-center">
+                                    @if ($user_package->package->plan_code == 'FRP0')
+                                            <span class="badge bg-info">Active</span>
+                                    @else
                                         <span class="badge bg-{{ !empty($subscription->subscription_id) ? 'info' : 'danger' }}">{{ !empty($subscription->subscription_id) ? 'Active' : 'Cancelled' }}</span>
-                                    </td>
+                                    @endif
                                     @if (!empty($user_package->subscription_id) && !session()->has('package-error'))
                                     <td class="text-center">
 
