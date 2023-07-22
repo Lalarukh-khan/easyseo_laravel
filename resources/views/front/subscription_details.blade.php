@@ -97,6 +97,8 @@
                                         @php
                                             if (in_array($user_package->package->plan_code,['P20-year', 'P50-year', 'P200-year', 'P500-year'])) {
                                                 $subsction_cycle = '1 year';
+                                            }else if($user_package->package->plan_code == 'FRP0'){
+                                                $subsction_cycle = '7 days';
                                             }else{
                                                 $subsction_cycle = '30 days';
                                             }
