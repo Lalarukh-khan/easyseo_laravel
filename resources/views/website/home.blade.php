@@ -9,11 +9,11 @@
       background-color: #000000;
     } */
     .hmaep:not(:is([aria-expanded="true"])), .accordion-block {
-        background-color: #000000;    
+        background-color: #000000;
         /* box-shadow: -2px -2px 24px #653bff; */
         box-shadow: -2px -2px 15px #4c1aff;
     }
-    
+
     .hmaep:is([aria-expanded="true"]), .accordion-block {
       background-color: rgb(38, 38, 38);
       box-shadow: -2px -2px 24px rgba(255, 138, 0, 0.25), 2px 2px 24px rgba(255, 0, 0, 0.25);
@@ -719,7 +719,7 @@
                                                                     </h6>
                                                                     <br>
                                                                     <p class="nwhmextsmp nwacolc"> EasySEO is a game changer! It has revolutionized the way we create content, and has saved us so much time and effort. <br> Highly recommended!</p>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -744,7 +744,7 @@
                                                     <div class="carousel-item active">
                                                     <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="First slide" style="visibility: hidden;">
                                                     <div class="carousel-caption d-none d-md-block" style="width: 83%;
-    margin-left: -70px;"> 
+    margin-left: -70px;">
                                                     <div class="row">
                                                     <!-- <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
                                                         <p class="nwhmextdp"><</p>
@@ -798,7 +798,7 @@
                                                                     </h6>
                                                                     <br>
                                                                     <p class="nwhmextsmp nwacolc"> Easyseo is a must-have for eBay and Etsy sellers! The keyword suggestion feature boosts visibility and sales. It's perfect for multi-platform success! </p>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -815,7 +815,7 @@
                                                     <div class="carousel-item">
                                                     <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Second slide" style="visibility: hidden;">
                                                     <div class="carousel-caption d-none d-md-block" style="width: 83%;
-    margin-left: -70px;"> 
+    margin-left: -70px;">
                                                     <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <h2 class="nwhmexthd1 nwacolc pad-top-10">Freelancers or workers offering online services</h2>
@@ -866,7 +866,7 @@
                                                                     </h6>
                                                                     <br>
                                                                     <p class="nwhmextsmp nwacolc"> Easyseo is my secret weapon on Fiverr! The keyword suggestions and templates saved me time and boosted my gig performance. It's been crucial to my success on Fiverr!</p>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -880,7 +880,7 @@
                                                     <div class="carousel-item">
                                                     <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Third slide" style="visibility: hidden;">
                                                     <div class="carousel-caption d-none d-md-block" style="width: 83%;
-    margin-left: -70px;"> 
+    margin-left: -70px;">
                                                     <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <h2 class="nwhmexthd1 nwacolc pad-top-10">Website owners or SEO service providers</h2>
@@ -889,7 +889,7 @@
                                                             <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30 onlybackwht">
                                                                 <div class="pad-bot-20">
                                                                     <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
-                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> SEO takes a lot of time <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and research.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> SEO takes a lot of time <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and research.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Need to pay for several  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;platforms to find the  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;right keywords.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Limited SEO knowledge <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;makes it hard to see <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;results.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Difficult to be sure if <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;the work is good enough.</p>
@@ -899,7 +899,7 @@
                                                                 <div class="pad-bot-40 m-t-60">
                                                                     <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> SEO time decreases by  90%,<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; giving time for your business.</p>
-                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> One platform covers all the <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;needs of online business.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> One platform covers all the <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;needs of online business.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> No need to spend money <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;on an SEO agency.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Our SEO score gives the  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;confidence that the content <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;is good to go.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> You can expect faster organic <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;growth than regular work.</p>
@@ -931,7 +931,7 @@
                                                                     </h6>
                                                                     <br>
                                                                     <p class="nwhmextsmp nwacolc"> Easyseo revolutionized my self-taught SEO journey! The editor, SEO score, and keyword suggestion features are invaluable. My website's rankings and organic traffic have soared!</p>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -945,7 +945,7 @@
                                                     <div class="carousel-item">
                                                     <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Third slide" style="visibility: hidden;">
                                                     <div class="carousel-caption d-none d-md-block" style="width: 83%;
-    margin-left: -70px;"> 
+    margin-left: -70px;">
                                                     <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <h2 class="nwhmexthd1 nwacolc pad-top-10">Bloggers or content writers</h2>
@@ -964,7 +964,7 @@
                                                                 <div class="pad-bot-40 m-t-60">
                                                                     <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Blogs get noticed quickly by<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;by search engines, driving<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;more traffic and visibility.</p>
-                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> easyseo suggestions give <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;content that attracts readers</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> easyseo suggestions give <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;content that attracts readers</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> The keyword research <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;provides relevant keywords.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> The SEO score system <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;measures the effectiveness.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Save a lot of time by <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;writing good and attractive <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;content manually.</p>
@@ -996,7 +996,7 @@
                                                                     </h6>
                                                                     <br>
                                                                     <p class="nwhmextsmp nwacolc"> Your platform worked wonders for my blog! Templates and SEO score propelled visibility. I highly recommend it to bloggers craving more views!</p>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1010,7 +1010,7 @@
                                                     <div class="carousel-item">
                                                     <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Third slide" style="visibility: hidden;">
                                                     <div class="carousel-caption d-none d-md-block" style="width: 83%;
-    margin-left: -70px;"> 
+    margin-left: -70px;">
                                                     <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                                         <h2 class="nwhmexthd1 nwacolc pad-top-10">SEO agency or Marketing agency</h2>
@@ -1022,8 +1022,8 @@
                                                                     <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Missing out on relevant <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;keywords SEO performance <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for client websites. </p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Manual keyword research <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;consumes time without<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;easyseo’s efficient tools.</p>
-                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Paying for multiple tools<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for all team members.</p> 
-                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Limited in time and can’t <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;acquire more clients.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Paying for multiple tools<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for all team members.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Limited in time and can’t <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;acquire more clients.</p>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 onlybackwht" style="margin-left: -20px;">
@@ -1032,7 +1032,7 @@
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Relevant keywords and <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;improve SEO performance.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Efficient tools streamline <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;keyword research, saving time.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> All team members work on <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;one subscription.</p>
-                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Work faster, increase earnings <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by getting more customers.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Work faster, increase earnings <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by getting more customers.</p>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Increase our website traffic <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and keep on Google rank.<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
                                                                 </div>
                                                             </div>
@@ -1062,7 +1062,7 @@
                                                                     </h6>
                                                                     <br>
                                                                     <p class="nwhmextsmp nwacolc"> This website is a game-changer for our agency! Its fast and effective solutions attract more clients and deliver exceptional results, improving rankings and organic traffic.</p>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -2014,7 +2014,7 @@
         var element = document.getElementById('pg0');
         element.classList.add('pghovered');
     });
-     $(document).ready(function () {
+    $(document).ready(function () {
         var targetButton0 = $('#hmsldbtn0');
         targetButton0.addClass('nwhmextdactv');
         var packageToggle = 1;
@@ -2131,19 +2131,19 @@
                     }
                     if(packageToggle == 1 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                       
+
                         $('#buy-plan').data('packageid',7);
                         return false;
                     }
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                        
+
                         $('#buy-plan').data('packageid',3);
                         return false;
                     }
                 }
                 if(current > 50000){
-                
+
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
                     }else{
@@ -2382,7 +2382,7 @@
                 }
                 if(packageToggle == 0 && yearlyCode.includes(planCode)){
                     $('#buy-plan').html('Downgrade Plan');
-                    $('#buy-plan').data('packageid',6);
+                    $('#buy-plan').data('packageid',2);
                         return false;
                 }
             }
@@ -2469,42 +2469,36 @@
                 $('#solo_protoken').html('20,000 words');
                 $('#solo_protoken2').html('20,000 words');
                 $('#solo_proreport').html('10 reports');
-
-
                 if (current == 20000) {
-
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',2);
                         return false;
                     }
-
                     if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
-                        return false;
-                    }
-
-                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
-                        $('#buy-plan').html('Upgrade Plan');
                         $('#buy-plan').data('packageid',6);
                         return false;
                     }
-
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',6);
+                        return false;
+                    }
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
                         $('#buy-plan').data('packageid',2);
                         return false;
                     }
                 }
-
                 if(current < 20000){
                     $('#buy-plan').html('Upgrade Plan');
-
                     if(packageToggle == 0){
-                       $('#buy-plan').data('packageid',2);
+                        $('#buy-plan').data('packageid',2);
                         return false;
                     }else{
                         $('#buy-plan').data('packageid',6);
@@ -2513,7 +2507,6 @@
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current > 20000){
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
@@ -2524,14 +2517,13 @@
                         $('#buy-plan').data('packageid',2);
                         return false;
                     }else{
-                       $('#buy-plan').data('packageid',6);
+                        $('#buy-plan').data('packageid',6);
                         return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
             }
-
             if (value == 1) {
                 $('#solo_proprice').html('$34.90');
                 $('.solo_proprice_y').html('$29.90');
@@ -2540,38 +2532,36 @@
                 $('#solo_protoken').html('50,000 words');
                 $('#solo_protoken2').html('50,000 words');
                 $('#solo_proreport').html('30 reports');
-
                 if (current == 50000) {
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',3);
                         return false;
                     }
-
                     if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
-                        return false;
-                    }
-                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
-                        $('#buy-plan').html('Upgrade Plan');
-                        
                         $('#buy-plan').data('packageid',7);
                         return false;
                     }
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
 
+                        $('#buy-plan').data('packageid',7);
+                        return false;
+                    }
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                        
+
                         $('#buy-plan').data('packageid',3);
                         return false;
                     }
                 }
-
                 if(current > 50000){
-                   
+
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
                     }else{
@@ -2587,7 +2577,6 @@
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current < 50000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
@@ -2601,7 +2590,6 @@
                     return false;
                 }
             }
-
             if (value == 2) {
                 $('#solo_proprice').html('$99.90');
                 $('.solo_proprice_y').html('$79.90');
@@ -2610,38 +2598,33 @@
                 $('#solo_protoken').html('200,000 words');
                 $('#solo_protoken2').html('200,000 words');
                 $('#solo_proreport').html('80 reports');
-
                 if (current == 200000) {
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',4);
                         return false;
                     }
-
                     if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
-                        return false;
-                    }
-                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
-                        $('#buy-plan').html('Upgrade Plan');
-                        
                         $('#buy-plan').data('packageid',8);
                         return false;
                     }
-
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',8);
+                        return false;
+                    }
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                       
                         $('#buy-plan').data('packageid',4);
                         return false;
                     }
                 }
-
                 if(current > 200000){
-                  
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
                     }else{
@@ -2651,13 +2634,12 @@
                         $('#buy-plan').data('packageid',4);
                         return false;
                     }else{
-                       $('#buy-plan').data('packageid',8);
+                        $('#buy-plan').data('packageid',8);
                         return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current < 200000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
@@ -2671,7 +2653,6 @@
                     return false;
                 }
             }
-
             if (value == 3) {
                 $('#solo_proprice').html('$159.90');
                 $('.solo_proprice_y').html('$129.90');
@@ -2680,34 +2661,32 @@
                 $('#solo_protoken').html('500,000 words');
                 $('#solo_protoken2').html('500,000 words');
                 $('#solo_proreport').html('200 reports');
-
                 if (current == 500000) {
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',5);
                         return false;
                     }
-
                     if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
-                        return false;
-                    }
-                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
-                        $('#buy-plan').html('Upgrade Plan');
                         $('#buy-plan').data('packageid',9);
                         return false;
                     }
-
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',9);
+                        return false;
+                    }
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
                         $('#buy-plan').data('packageid',5);
                         return false;
                     }
                 }
-
                 if(current > 500000){
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
@@ -2724,7 +2703,6 @@
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current < 500000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
@@ -2749,54 +2727,93 @@
     function setPaymentBtn(_self) {
         let package_id = $(_self).data('packageid');
         let plan_code = $(_self).data('plancode');
-       
+
+
         if (package_id == '{{ $packageData->id ?? null }}' && '{{ $user_package->subscription_id ?? null }}' != '') {
             return false;
         }
 
-        Swal.fire({
-            title: "Are you sure?",
-            text: "Do You Want To Buy This Plan?",
-            type: "warning",
-            showCancelButton: !0,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes!"
-        }).then(function (t) {
-            if (t.value) {
-                page_loader('show');
+        if((package_id > "{{ $packageData->id ?? null }}" || package_id < "{{ $packageData->id ?? null }}") && (plan_code != 'FRP0' && '{{ $user_package->subscription_id ?? null }}' != '')){
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Do You Want To Buy This Plan?",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes!"
+            }).then(function (t) {
+                if (t.value) {
+                    page_loader('show');
 
-                $.ajax({
-                    type: "post",
-                    url: "{{ route('user.billing.get_paylink') }}",
-                    data: {'package_id':package_id,'plan_code':plan_code},
-                    dataType: "json",
-                    complete: function () {
-                        page_loader('hide');
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        page_loader('hide');
-                        ajaxErrorHandling(jqXHR, errorThrown);
-                    },
-                    success: function (res) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{ route('user.billing.get_paylink') }}",
+                        data: {'package_id':package_id,'plan_code':plan_code},
+                        dataType: "json",
+                        complete: function () {
+                            page_loader('hide');
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            page_loader('hide');
+                            ajaxErrorHandling(jqXHR, errorThrown);
+                        },
+                        success: function (res) {
 
-                        if (res.status == true && res.route) {
-                            window.location = res.route;
-                            return true;
+                            if (res.status == true && res.route) {
+                                window.location = res.route;
+                                return true;
+                            }
+
+                            if (res.status == true) {
+                                let payLinkBtn = document.getElementById('paddle-pay-btn');
+                                payLinkBtn.setAttribute('data-override', res.payLink);
+                                document.getElementById('paddle-pay-btn').click();
+                                return false;
+                            }
+
+                            // alert('Cannot upgrade or downgrade the package at this moment.');
                         }
+                    });
+                }
+            })
 
-                        if (res.status == true) {
-                            let payLinkBtn = document.getElementById('paddle-pay-btn');
-                            payLinkBtn.setAttribute('data-override', res.payLink);
-                            document.getElementById('paddle-pay-btn').click();
-                            return false;
-                        }
+            return false;
+        }
 
-                     
-                    }
-                });
+
+        page_loader('show');
+
+        $.ajax({
+            type: "post",
+            url: "{{ route('user.billing.get_paylink') }}",
+            data: {'package_id':package_id,'plan_code':plan_code},
+            dataType: "json",
+            complete: function () {
+                page_loader('hide');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                page_loader('hide');
+                ajaxErrorHandling(jqXHR, errorThrown);
+            },
+            success: function (res) {
+
+                if (res.status == true && res.route) {
+                    window.location = res.route;
+                    return true;
+                }
+
+                if (res.status == true) {
+                    let payLinkBtn = document.getElementById('paddle-pay-btn');
+                    payLinkBtn.setAttribute('data-override', res.payLink);
+                    document.getElementById('paddle-pay-btn').click();
+                    return false;
+                }
+
+                // alert('Cannot upgrade or downgrade the package at this moment.');
             }
-        })
+        });
+
     }
 
 

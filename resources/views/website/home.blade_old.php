@@ -137,7 +137,7 @@
                         Start </a>
                     <a href="" class="custom-btn5"> See How It Works <img
                             src="{{asset('front')}}/images/right-icon.svg"> </a> -->
-                    <p id="main3wht"><a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is an AI writing tool that helps you create unique seo optimized content
+                    <p id="main3wht"><a href="{{route('web.home')}}" class="nwacolc">easyseo.ai</a> is an AI writing tool that helps you create unique seo optimized content
                         for your E-commerce business, blog, ads, emails, and website without wasting time and effort!
                     </p>
                     <a href="{{route('register')}}" class="custom-btn4 mr-3 strt"> Get
@@ -236,7 +236,7 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-9 col-sm-6 col-12"></div>
                     <div class="col-md-4 col-lg-3 col-sm-6 col-12">
-                        <p class="col-white pad-top-10 d-f j-c-e">*Explanation video - our advantages</p>
+                        <p class="col-white pad-top-10 d-f j-c-e" style="display: none;">*Explanation video - our advantages</p>
                     </div>
                 </div>
             </div>
@@ -471,7 +471,7 @@
                                                 optimization: </p>
                                             <p class="anlsslrg" id="atmtwhtt3a">Save writers time while also <br>
                                                 ensuring that the content covers <br> all of the important points about
-                                                <br> the topic. <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> can suggest <br> related topics or subtopics to
+                                                <br> the topic. <a href="{{route('web.home')}}"  class="nwacolc">easyseo.ai</a> can suggest <br> related topics or subtopics to
                                                 include
                                                 <br> in the content to improve SEO.
                                             </p>
@@ -488,7 +488,7 @@
                                                 style="display: none;">
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-8">
-                                            <p class="anlssaccrt anls" id="atmtwhtt4">Chat by <br> <a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> </p>
+                                            <p class="anlssaccrt anls" id="atmtwhtt4">Chat by <br> <a href="{{route('web.home')}}"  class="nwacolc">easyseo.ai</a> </p>
                                             <p class="anlsslrg" id="atmtwhtt4a">Chat feature allows you to <br> expand
                                                 your goals by providing <br> a seamless connection to AI, <br> enabling
                                                 you to conduct research, <br> generate content, and accomplish <br> your
@@ -560,7 +560,7 @@
                                         <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                         <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                         <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                                            <p class="bsns" id="nowht1"><a href="{{route('web.home')}}" style="color: #fff;">easyseo.ai</a> is an AI writing tool that helps you
+                                            <p class="bsns" id="nowht1"><a href="{{route('web.home')}}"  class="nwacolc">easyseo.ai</a> is an AI writing tool that helps you
                                                 create unique seo <br class="dn"> optimized content for your E-commerce
                                                 business, blog, ads, emails, <br class="dn"> and website without wasting
                                                 time and effort!</p>
@@ -649,7 +649,7 @@
 
                                         <!-- ||||||||||||||||| Exited with easyseo.ai |||||||||||||||||||||| -->
 
-                                        <section class="bsnsadvntg" style="display: none;">
+                                        <section class="bsnsadvntg">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-12">
@@ -659,15 +659,13 @@
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-12"></div>
                                             </div>
                                             <div style="text-align: center;">
-                                                <button class="nwhmextd nwhmextdactv">Business</button>
-                                                <button class="nwhmextd onlybackwht">SEO</button>
-                                                <button class="nwhmextd onlybackwht">Blogger</button>
-                                                <button class="nwhmextd onlybackwht">Influencer</button>
-                                                <button class="nwhmextd onlybackwht">Blogger</button>
-                                                <button class="nwhmextd onlybackwht">Agency</button>
-                                                <button class="nwhmextd onlybackwht">SEO Specialists</button>
+                                                <button class="nwhmextd onlybackwht" id="hmsldbtn0" data-target="#carouselExampleIndicators" data-slide-to="0">E-Commerce</button>
+                                                <button class="nwhmextd onlybackwht" id="hmsldbtn1" data-target="#carouselExampleIndicators" data-slide-to="1">Freelancer</button>
+                                                <button class="nwhmextd onlybackwht" id="hmsldbtn2" data-target="#carouselExampleIndicators" data-slide-to="2">SEO</button>
+                                                <button class="nwhmextd onlybackwht" id="hmsldbtn3" data-target="#carouselExampleIndicators" data-slide-to="3">Blogger</button>
+                                                <button class="nwhmextd onlybackwht" id="hmsldbtn4" data-target="#carouselExampleIndicators" data-slide-to="4">Agency</button>
                                             </div>
-                                            <div class="nwwbfeature-boxes nwhmextwhlbx">
+                                            <div class="nwwbfeature-boxes nwhmextwhlbx" style="display: none;">
                                                 <div class="row">
                                                     <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
                                                         <p class="nwhmextdp"><</p>
@@ -676,7 +674,7 @@
                                                         <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10">Small business owner</h2>
                                                         <p class="nwhmexthd2 nwacolc pad-bot-20">Who are looking to improve their online visibility and increase traffic <br>to their website.</p>
                                                         <div class="row">
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30" id="bsnsadvntg1">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30">
                                                                 <div class="pad-bot-20">
                                                                     <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
@@ -685,7 +683,7 @@
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Some point should <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;be here</p>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15" style="margin-left: -20px;"  id="bsnsadvntg2">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15" style="margin-left: -20px;">
                                                                 <div class="pad-bot-40 m-t-60">
                                                                     <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
                                                                     <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Some point should be here</p>
@@ -734,47 +732,357 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                                 <ol class="carousel-indicators">
                                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                                                 </ol>
-                                                <div class="carousel-inner">
+                                                <div class="carousel-inner nwhmextwhlbx onlybackwht">
                                                     <div class="carousel-item active">
-                                                    <div class="card-img-overlay">
-                                                        11111 Some text here as well...
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="First slide" style="visibility: hidden;">
+                                                    <div class="carousel-caption d-none d-md-block" style="width: 83%;
+    margin-left: -70px;"> 
+                                                    <div class="row">
+                                                    <!-- <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
+                                                        <p class="nwhmextdp"><</p>
+                                                    </div> -->
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <h2 class="nwhmexthd1 nwacolc pad-top-10">E-Commerce and Marketplace sellers</h2>
+                                                        <p class="nwhmexthd2 nwacolc pad-bot-10">Who are looking to boost their online visibility and drive more sales.</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30 onlybackwht">
+                                                                <div class="pad-bot-20">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Struggling with ranking well <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;in search results and  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;keywords.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Limited SEO knowledge <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hampers optimization efforts.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Generating targeted traffic <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and increasing sales is  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;a struggle.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> It’s hard to get impressions <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for product listings.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 onlybackwht" style="margin-left: -20px;">
+                                                                <div class="pad-bot-40 m-t-60">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> easyseo unlocks higher  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;rankings and generates more  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sales. </p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Advanced keyword  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;research optimizes visibility. </p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Find the correct keywords  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;to rank products. </p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> No need to spend time  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;writing good titles  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and descriptions. </p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Faster product uploads with  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;easyseo features. </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="m-t-20 m-l-20">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <img src="admin_assets/assets/images/sld1.png">
+                                                                        </div>
+                                                                        <div class="col-lg-7 pad-top-10" style="margin-left: -10px">
+                                                                            <h4 class="nwacolc">William Johnson</h4>
+                                                                            <p class="nwhmextceo nwacolc">CEO and Founder at Perfomance</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <h6>
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                    </h6>
+                                                                    <br>
+                                                                    <p class="nwhmextsmp nwacolc"> Easyseo is a must-have for eBay and Etsy sellers! The keyword suggestion feature boosts visibility and sales. It's perfect for multi-platform success! </p>
+                                                                    
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="First slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                            <h5>First Slide</h5>
-                                                            <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
+                                                        <div class="text-center m-b-25" style="display: none;">
+                                                            <img src="admin_assets/assets/images/orngdots.png" alt="" style="cursor: pointer;">
                                                         </div>
                                                     </div>
-                                                    <div class="carousel-item">
-                                                    <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="Second slide">
-                                                    <div class="carousel-caption d-none d-md-block"> 
-                                                            <h5>Second Slide</h5>
-                                                            <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
-                                                        </div>
+                                                    <!-- <div class="col-lg-1 col-md-1 col-sm-12 col-12 nwhmextdpotr">
+                                                        <p class="nwhmextdp">></p>
+                                                    </div> -->
+                                                </div>
+                                                    </div>
                                                     </div>
                                                     <div class="carousel-item">
-                                                    <img class="d-block w-100" src="admin_assets/assets/images/image-not-found.jpg" alt="Third slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                            <h5>Third Slide</h5>
-                                                            <p>dnjkdfefjkvne vjenv ferf en fjer fke r erknvoekl venv lnpevn ev ev </p>
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Second slide" style="visibility: hidden;">
+                                                    <div class="carousel-caption d-none d-md-block" style="width: 83%;
+    margin-left: -70px;"> 
+                                                    <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <h2 class="nwhmexthd1 nwacolc pad-top-10">Freelancers or workers offering online services</h2>
+                                                        <p class="nwhmexthd2 nwacolc pad-bot-20">Who are looking to establish a strong online presence and attract <br> clients in their niche.</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30 onlybackwht">
+                                                                <div class="pad-bot-20">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Struggled to get clients <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;as a freelancer due to  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;poor rankings.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Low engagement and  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;conversions on social media  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;content.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Difficult to increase sales <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and increasing sales is  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for posting services online.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> It’s hard to stand out <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if you’re one of many.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 onlybackwht" style="margin-left: -20px;">
+                                                                <div class="pad-bot-40 m-t-60">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Improved rankings and  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attracted more clients.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Generated blog ideas and <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;drove website traffic.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Templates and editor enhance <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;your online presence.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Increase the services  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;provided with the help <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;of easyseo features.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Write catchy and SEO <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;optimized portfolios & gigs.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="m-t-20 m-l-20">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <img src="admin_assets/assets/images/sld2.png">
+                                                                        </div>
+                                                                        <div class="col-lg-7 pad-top-10" style="margin-left: -10px">
+                                                                            <h4 class="nwacolc">Oleksandr Petrovych</h4>
+                                                                            <p class="nwhmextceo nwacolc">CEO and Founder at Perfomance</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <h6>
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                    </h6>
+                                                                    <br>
+                                                                    <p class="nwhmextsmp nwacolc"> Easyseo is my secret weapon on Fiverr! The keyword suggestions and templates saved me time and boosted my gig performance. It's been crucial to my success on Fiverr!</p>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center m-b-25" style="display: none;">
+                                                            <img src="admin_assets/assets/images/orngdots.png" alt="" style="cursor: pointer;">
                                                         </div>
                                                     </div>
                                                 </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Third slide" style="visibility: hidden;">
+                                                    <div class="carousel-caption d-none d-md-block" style="width: 83%;
+    margin-left: -70px;"> 
+                                                    <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <h2 class="nwhmexthd1 nwacolc pad-top-10">Website owners or SEO service providers</h2>
+                                                        <p class="nwhmexthd2 nwacolc pad-bot-20">Who are looking to drive targeted traffic to their website and <br>increase their online visibility.</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30 onlybackwht">
+                                                                <div class="pad-bot-20">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> SEO takes a lot of time <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and research.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Need to pay for several  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;platforms to find the  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;right keywords.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Limited SEO knowledge <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;makes it hard to see <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;results.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Difficult to be sure if <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;the work is good enough.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 onlybackwht" style="margin-left: -20px;">
+                                                                <div class="pad-bot-40 m-t-60">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> SEO time decreases by  90%,<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; giving time for your business.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> One platform covers all the <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;needs of online business.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> No need to spend money <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;on an SEO agency.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Our SEO score gives the  <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;confidence that the content <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;is good to go.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> You can expect faster organic <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;growth than regular work.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="m-t-20 m-l-20">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <img src="admin_assets/assets/images/sld3.png">
+                                                                        </div>
+                                                                        <div class="col-lg-7 pad-top-10" style="margin-left: -10px">
+                                                                            <h4 class="nwacolc">Alexander Schmidt</h4>
+                                                                            <p class="nwhmextceo nwacolc">CEO and Founder at Perfomance</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <h6>
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                    </h6>
+                                                                    <br>
+                                                                    <p class="nwhmextsmp nwacolc"> Easyseo revolutionized my self-taught SEO journey! The editor, SEO score, and keyword suggestion features are invaluable. My website's rankings and organic traffic have soared!</p>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center m-b-25" style="display: none;">
+                                                            <img src="admin_assets/assets/images/orngdots.png" alt="" style="cursor: pointer;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Third slide" style="visibility: hidden;">
+                                                    <div class="carousel-caption d-none d-md-block" style="width: 83%;
+    margin-left: -70px;"> 
+                                                    <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <h2 class="nwhmexthd1 nwacolc pad-top-10">Bloggers or content writers</h2>
+                                                        <p class="nwhmexthd2 nwacolc pad-bot-20">Who are looking to boost their online visibility and attract more readers.</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30 onlybackwht">
+                                                                <div class="pad-bot-20">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Content struggles to get <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;noticed by search engines in<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;limited traffic and visibility. </p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Couldn’t gauge the SEO <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;effectiveness of the content.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Missed out on using relevant<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;keywords that could have <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;boosted the SEO performance.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Takes a lot of time to <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;write a full blog post.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 onlybackwht" style="margin-left: -20px;">
+                                                                <div class="pad-bot-40 m-t-60">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Blogs get noticed quickly by<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;by search engines, driving<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;more traffic and visibility.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> easyseo suggestions give <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;content that attracts readers</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> The keyword research <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;provides relevant keywords.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> The SEO score system <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;measures the effectiveness.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Save a lot of time by <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;writing good and attractive <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;content manually.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="m-t-20 m-l-20">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <img src="admin_assets/assets/images/sld4.png">
+                                                                        </div>
+                                                                        <div class="col-lg-7 pad-top-10" style="margin-left: -10px">
+                                                                            <h4 class="nwacolc">Samantha Taylor</h4>
+                                                                            <p class="nwhmextceo nwacolc">CEO and Founder at Perfomance</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <h6>
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                    </h6>
+                                                                    <br>
+                                                                    <p class="nwhmextsmp nwacolc"> Your platform worked wonders for my blog! Templates and SEO score propelled visibility. I highly recommend it to bloggers craving more views!</p>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center m-b-25" style="display: none;">
+                                                            <img src="admin_assets/assets/images/orngdots.png" alt="" style="cursor: pointer;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                    <img class="d-block w-100" src="admin_assets/assets/images/black.jpg" alt="Third slide" style="visibility: hidden;">
+                                                    <div class="carousel-caption d-none d-md-block" style="width: 83%;
+    margin-left: -70px;"> 
+                                                    <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <h2 class="nwhmexthd1 nwacolc pad-top-10">SEO agency or Marketing agency</h2>
+                                                        <p class="nwhmexthd2 nwacolc pad-bot-20">Who are looking to deliver exceptional SEO services and drive <br>
+                                                        significant results for their clients.</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 m-t-15 m-b-30 onlybackwht">
+                                                                <div class="pad-bot-20">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">Without Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Missing out on relevant <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;keywords SEO performance <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for client websites. </p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Manual keyword research <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;consumes time without<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;easyseo’s efficient tools.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Paying for multiple tools<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for all team members.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconno.svg" alt=""> Limited in time and can’t <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;acquire more clients.</p> 
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4 col-sm-12 col-12 nwhmextdv m-b-15 onlybackwht" style="margin-left: -20px;">
+                                                                <div class="pad-bot-40 m-t-60">
+                                                                    <h2 class="nwhmexthd1 nwacolc pad-bot-10 pad-top-10 m-l-12">With Easyseo</h2>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Relevant keywords and <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;improve SEO performance.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Efficient tools streamline <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;keyword research, saving time.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> All team members work on <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;one subscription.</p>
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Work faster, increase earnings <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; by getting more customers.</p> 
+                                                                    <p class="nwhmextsmp nwacolc"><img src="admin_assets/assets/images/iconyes.svg" alt=""> Increase our website traffic <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and keep on Google rank.<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="m-t-20 m-l-20">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-5">
+                                                                            <img src="admin_assets/assets/images/sld5.png">
+                                                                        </div>
+                                                                        <div class="col-lg-7 pad-top-10" style="margin-left: -10px">
+                                                                            <h4 class="nwacolc">David Brown</h4>
+                                                                            <p class="nwhmextceo nwacolc">CEO and Founder at Perfomance</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <h6>
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                        <img alt="Star Icon"
+                                                                            src="{{asset('front')}}/images/star-icon.svg">
+                                                                    </h6>
+                                                                    <br>
+                                                                    <p class="nwhmextsmp nwacolc"> This website is a game-changer for our agency! Its fast and effective solutions attract more clients and deliver exceptional results, improving rankings and organic traffic.</p>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center m-b-25" style="display: none;">
+                                                            <img src="admin_assets/assets/images/orngdots.png" alt="" style="cursor: pointer;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
                                                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="carousel-control-prev-icon nwhmextdp" aria-hidden="true"><</span>
                                                     <span class="sr-only">Previous</span>
                                                 </a>
                                                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="carousel-control-next-icon nwhmextdp"  style="margin-left: -50px;" aria-hidden="true">></span>
                                                     <span class="sr-only">Next</span>
                                                 </a>
-                                            </div> -->
+                                            </div>
                                             <div class="row" style="display: none;">
                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                                     <div class="row m-t-100">
@@ -1251,7 +1559,7 @@
                                                                                     id="prcngwht1b"><b> 7 Days <br> free
                                                                                         trial </b></h5>
                                                                                 <p id="prcngwht1c">
-                                                                                    to 2 000 words </p>
+                                                                                    to 5,000 words </p>
                                                                             </div>
                                                                         </div>
                                                                         <div class="pricing-detail">
@@ -1284,7 +1592,7 @@
                                                                                     @if (auth('web')->check() && $packageData->plan_code == 'FRP0')
                                                                                     <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Current Plan </a>
                                                                                     @elseif (auth('web')->check() && $packageData->plan_code != 'FRP0')
-                                                                                    <a href="javascript:void(0);" class="btn custom-btn3 disabled"> Downgrade Plan </a>
+                                                                                    <a href="javascript:void(0);" class="btn custom-btn3" data-plancode="{{ $packageData->plan_code }}" onclick="backToBasic(this);" data-check="{{ $user_package->subscription_id }}"> Downgrade Plan </a>
                                                                                     @else
                                                                                     <a href="{{route('login')}}" class="custom-btn3"> Start Free </a>
                                                                                     @endif
@@ -1355,30 +1663,18 @@
                                                                             </ul>
                                                                         </div>
                                                                         <div class="pricing-btn">
-                                                                            <a  href="{{route('web.pricing')}}" class="custom-btn2"
-                                                                                id="prcngwht225"><u> View All Details
-                                                                                </u></a>
-                                                                            @if (auth('web')->check())
-                                                                            <a href="https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user={{ auth('web')->user()->unique_id }}&exfo=742"
-                                                                                class="custom-btn3"
-                                                                                onclick="showCheckout(event);"
-                                                                                id="buy-plan" data-plancode="{{ $packageData->plan_code }}" 
-                                                                                data-current="{{ $words }}"> Upgrade
-                                                                            </a>
-                                                                            <input type="hidden" id="is-login"
-                                                                                value="1">
-                                                                            <input type="hidden" id="logged-email"
-                                                                                value="{{ auth('web')->user()->unique_id }}">
-                                                                            @else
+                                                                        <a  href="{{route('web.pricing')}}" class="custom-btn2" id="prcngwht225"><u> View All Details </u></a>
+                                                                        @if (auth('web')->check())
+                        <a href="javascript:void(0);" onclick="setPaymentBtn(this);" data-packageid="6"
+                            class="custom-btn3" id="buy-plan" data-plancode="{{ $packageData->plan_code }}"
+                            data-current="{{ $user_package->words }}" data-check="{{ $user_package->subscription_id }}"> Upgrade Plan</a>
+                        <input type="hidden" id="is-login" value="1">
+                        <input type="hidden" id="logged-email" value="{{ auth('web')->user()->unique_id }}">
+                        @else
                                                                             <a href="{{ route('login') }}"
-                                                                                class="custom-btn3"> Upgrade </a>
-                                                                            <input type="hidden" id="is-login"
-                                                                                value="0">
-                                                                            @endif
-                                                                            {{-- <a
-                                                                                href="https://store.payproglobal.com/checkout?products[1][id]=81908&use-test-mode=false&secret-key=htYBPBo@nV"
-                                                                                class="custom-btn3"> Current Plan </a>
-                                                                            --}}
+                                                                            class="custom-btn3"> Upgrade Plan</a>
+                                                                            <input type="hidden" id="is-login" value="0">
+                                                                        @endif
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1522,7 +1818,7 @@
                                                             <p class="pad-bot-20 p-l-20 p-r-20 blkchnpara">
                                                                 <span class="blkchn">{{ $blog->category->name }}
                                                                 </span>&nbsp; &nbsp; &nbsp; 5 min read</p>
-                                                                <a class="p-l-20 p-r-20 font-size-20 nwacolc" href="{{ route('web.blog.details',$blog->slug) }}"> {{ $blog->title }} </a>
+                                                                <a class="p-l-20 p-r-20 font-size-20 nwacolc blgtthgt " href="{{ route('web.blog.details',$blog->slug) }}"> {{ $blog->title }} </a>
                                                              <p
                                                                 class="pad-bot-15 font-size-15 font-weight-lighter p-l-20 p-r-20 lrm">
                                                                 {{Str::limit(strip_tags($blog->description,150))}} </p>
@@ -1557,6 +1853,8 @@
     </section>
 </section>
 <section>
+    <div id="bsnsadvntg1"></div>
+    <div id="bsnsadvntg2"></div>
     <div id="bxswht2"></div>
     <div id="bxswht2a"></div>
     <div id="bxswht2b"></div>
@@ -1680,127 +1978,71 @@
 </section>
 @endsection
 @section('js')
-{{-- <script>
+<script>
+    function detailFunction(value) {
+      value;
+    }
+    $('#carouselExampleIndicators').on('slid.bs.carousel', function() {
+        var activeSlideIndex = $('.carousel-item.active').index();
+        var targetButton0 = $('#hmsldbtn0');
+        var targetButton1 = $('#hmsldbtn1');
+        var targetButton2 = $('#hmsldbtn2');
+        var targetButton3 = $('#hmsldbtn3');
+        var targetButton4 = $('#hmsldbtn4');
+        targetButton0.removeClass('nwhmextdactv');
+        targetButton1.removeClass('nwhmextdactv');
+        targetButton2.removeClass('nwhmextdactv');
+        targetButton3.removeClass('nwhmextdactv');
+        targetButton4.removeClass('nwhmextdactv');
+        if (activeSlideIndex === 0) {
+            targetButton0.addClass('nwhmextdactv');
+        }
+        if (activeSlideIndex === 1) {
+            targetButton1.addClass('nwhmextdactv');
+        }
+        if (activeSlideIndex === 2) {
+            targetButton2.addClass('nwhmextdactv');
+        }
+        if (activeSlideIndex === 3) {
+            targetButton3.addClass('nwhmextdactv');
+        }
+        if (activeSlideIndex === 4) {
+            targetButton4.addClass('nwhmextdactv');
+        }
+    });
+    window.addEventListener('DOMContentLoaded', function() {
+        var element = document.getElementById('pg0');
+        element.classList.add('pghovered');
+    });
      $(document).ready(function () {
+        var targetButton0 = $('#hmsldbtn0');
+        targetButton0.addClass('nwhmextdactv');
         var packageToggle = 1;
         var isLogin = $('#is-login').val();
         var loggedEmail = $('#logged-email').val();
         var current = $('#buy-plan').data('current');
+        var planCode = $('#buy-plan').data('plancode');
+        var subId = $('#buy-plan').data('check');
 
+        if(subId == ""){
+            planCode = "FRP0";
+            current = "5000";
+        }
 
+        var monthlyCode = ['P20','P50','P200','P500'];
+        var yearlyCode = ['P20-year','P50-year','P200-year','P500-year'];
+
+        var slideIndex = 0;
 
         const toggleyearly = document.getElementById('toggleyearly');
         const solo_proprice = document.getElementById('solo_proprice');
         const solo_proprice2 = document.getElementById('solo_proprice2');
 
-
         soloyearlyplan();
-        solo_proprice.classList.add('solo_proprice_y');
-        solo_proprice2.classList.add('solo_proprice2_y');
-        solo_proprice.classList.remove('solo_proprice');
-        solo_proprice2.classList.remove('solo_proprice2');
-
-
-        // solo_proplan.classList.add('solo_proplan_y');
-        toggleyearly.addEventListener('click', function() {
-           const checkingd =  document.getElementById("solo_proplan");
-           checkingd.setAttribute("style", "background: linear-gradient(to right,  #e3bfff  0%,  #e3bfff  ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%);");
-            if (solo_proprice.classList.contains('solo_proprice_y')) {
-                solomonthlyplan();
-                packageToggle = 0;
-                solo_proprice.classList.remove('solo_proprice_y');
-                solo_proprice.classList.add('solo_proprice');
-                solo_proprice2.classList.add('solo_proprice2');
-                solo_proprice2.classList.remove('solo_proprice2_y');
-            } else {
-                soloyearlyplan();
-                packageToggle = 1;
-                solo_proprice.classList.add('solo_proprice_y');
-                solo_proprice2.classList.add('solo_proprice2_y');
-                solo_proprice.classList.remove('solo_proprice');
-                solo_proprice2.classList.remove('solo_proprice2');
-            }
-            console.log(packageToggle);
-        });
-
-        function soloyearlyplan(){
-            $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$19.90');
-            $('.solo_proprice_y').html('$19.90');
-            $('#solo_proprice2').html('$19.90/Mon');
-            $('.solo_proprice2_y').html('$19.90/Mon');
-            $('#solo_protoken').html('20,000 words');
-            $('#solo_protoken2').html('20,000 words');
-            $('#solo_proreport').html('10 reports');
-
-
-            if (current == 20000) {
-                $('#buy-plan').html('Current Plan');
-                Newhref = `javascript:void(0);`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
-            }
-
-            if(current < 20000){
-                $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
-            }
-
-            if(current > 20000){
-                $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&exfo=742&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
-            }
-        };
-
-        function solomonthlyplan(){
-            $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$24.90');
-            $('.solo_proprice_y').html('$24.90');
-            $('#solo_proprice2').html('$24.90/Mon');
-            $('.solo_proprice2_y').html('$24.90/Mon');
-            $('#solo_protoken').html('20,000 words');
-            $('#solo_protoken2').html('20,000 words');
-            $('#solo_proreport').html('10 reports');
-            // document.getElementById("solo_proplan"), function() {
-            //     // var value = (this.value-this.min)/(this.max-this.min)*100
-            //     this.style.display = 'none !important';
-            // };
-            //  document.getElementById("solo_proplan").oninput = function() {
-            //     var value = (this.value-this.min)/(this.max-this.min)*100
-            //     this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
-            // };
-
-
-            if (current == 20000) {
-                $('#buy-plan').html('Current Plan');
-                Newhref = `javascript:void(0);`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
-            }
-
-            if(current < 20000){
-                $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
-            }
-
-            if(current > 20000){
-                $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&exfo=742&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
-            }
-        };
-
-        $("input#solo_proplan").on('change', function() {
-            var value = $(this).val();
+        let slideChanger = (value,current,packageToggle,monthlyCode,yearlyCode,loggedEmail) => {
+            $("input#solo_proplan").val(value);
             $('#level').val(value);
-            // var current = $('#buy-plan').data('current');
+            // alert(value);
             if (value == 0) {
                 $('#solo_proprice').html('$24.90');
                 $('.solo_proprice_y').html('$19.90');
@@ -1809,39 +2051,61 @@
                 $('#solo_protoken').html('20,000 words');
                 $('#solo_protoken2').html('20,000 words');
                 $('#solo_proreport').html('10 reports');
-
-
                 if (current == 20000) {
-                    $('#buy-plan').html('Current Plan');
-                    Newhref = `javascript:void(0);`;
-                    $('#buy-plan').attr('href',Newhref);
-                    return false;
+                    if(packageToggle == 0 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',2);
+                        return false;
+                    }
+                    if(packageToggle == 1 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',6);
+                        return false;
+                    }
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',6);
+                        return false;
+                    }
+                    if(packageToggle == 0 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',2);
+                        return false;
+                    }
                 }
-
                 if(current < 20000){
                     $('#buy-plan').html('Upgrade Plan');
-
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',2);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',6);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current > 20000){
-                    $('#buy-plan').html('Downgrade Plan');
-                    if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                    if (packageToggle == 1 && monthlyCode.includes(planCode)) {
+                        $('#buy-plan').html('Upgrade Plan');
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').html('Downgrade Plan');
+                    }
+                    if(packageToggle == 0){
+                        $('#buy-plan').data('packageid',2);
+                        return false;
+                    }else{
+                        $('#buy-plan').data('packageid',6);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
             }
-
             if (value == 1) {
                 $('#solo_proprice').html('$34.90');
                 $('.solo_proprice_y').html('$29.90');
@@ -1850,39 +2114,64 @@
                 $('#solo_protoken').html('50,000 words');
                 $('#solo_protoken2').html('50,000 words');
                 $('#solo_proreport').html('30 reports');
-
-                // Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82640&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
-
                 if (current == 50000) {
-                    $('#buy-plan').html('Current Plan');
-                    Newhref = `javascript:void(0);`;
-                    $('#buy-plan').attr('href',Newhref);
-                    return false;
+                    if(packageToggle == 0 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',3);
+                        return false;
+                    }
+                    if(packageToggle == 1 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',7);
+                        return false;
+                    }
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                       
+                        $('#buy-plan').data('packageid',7);
+                        return false;
+                    }
+                    if(packageToggle == 0 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        
+                        $('#buy-plan').data('packageid',3);
+                        return false;
+                    }
                 }
-
                 if(current > 50000){
-                    $('#buy-plan').html('Downgrade Plan');
-                    if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                
+                    if (packageToggle == 1 && monthlyCode.includes(planCode)) {
+                        $('#buy-plan').html('Upgrade Plan');
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').html('Downgrade Plan');
+                    }
+                    if(packageToggle == 0){
+                        $('#buy-plan').data('packageid',3);
+                        return false;
+                    }else{
+                        $('#buy-plan').data('packageid',7);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current < 50000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',3);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',7);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
             }
-
             if (value == 2) {
                 $('#solo_proprice').html('$99.90');
                 $('.solo_proprice_y').html('$79.90');
@@ -1891,40 +2180,61 @@
                 $('#solo_protoken').html('200,000 words');
                 $('#solo_protoken2').html('200,000 words');
                 $('#solo_proreport').html('80 reports');
-
-                // Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82641&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
-                // $('#buy-plan').attr('href',Newhref);
-
                 if (current == 200000) {
-                    $('#buy-plan').html('Current Plan');
-                    Newhref = `javascript:void(0);`;
-                    $('#buy-plan').attr('href',Newhref);
-                    return false;
+                    if(packageToggle == 0 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',4);
+                        return false;
+                    }
+                    if(packageToggle == 1 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',8);
+                        return false;
+                    }
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',8);
+                        return false;
+                    }
+                    if(packageToggle == 0 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',4);
+                        return false;
+                    }
                 }
-
                 if(current > 200000){
-                    $('#buy-plan').html('Downgrade Plan');
-                    if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                    if (packageToggle == 1 && monthlyCode.includes(planCode)) {
+                        $('#buy-plan').html('Upgrade Plan');
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').html('Downgrade Plan');
+                    }
+                    if(packageToggle == 0){
+                        $('#buy-plan').data('packageid',4);
+                        return false;
+                    }else{
+                        $('#buy-plan').data('packageid',8);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current < 200000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',4);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',8);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
             }
-
             if (value == 3) {
                 $('#solo_proprice').html('$159.90');
                 $('.solo_proprice_y').html('$129.90');
@@ -1933,71 +2243,90 @@
                 $('#solo_protoken').html('500,000 words');
                 $('#solo_protoken2').html('500,000 words');
                 $('#solo_proreport').html('200 reports');
-
-                // Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82642&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
-                $('#buy-plan').attr('href',Newhref);
-
                 if (current == 500000) {
-                    $('#buy-plan').html('Current Plan');
-                    Newhref = `javascript:void(0);`;
-                    $('#buy-plan').attr('href',Newhref);
-                    return false;
+                    if(packageToggle == 0 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',5);
+                        return false;
+                    }
+                    if(packageToggle == 1 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Current Plan');
+                        Newhref = `javascript:void(0);`;
+                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',9);
+                        return false;
+                    }
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',9);
+                        return false;
+                    }
+                    if(packageToggle == 0 && yearlyCode.includes(planCode)){
+                        $('#buy-plan').html('Downgrade Plan');
+                        $('#buy-plan').data('packageid',5);
+                        return false;
+                    }
                 }
-
                 if(current > 500000){
-                    $('#buy-plan').html('Downgrade Plan');
-                    if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                    if (packageToggle == 1 && monthlyCode.includes(planCode)) {
+                        $('#buy-plan').html('Upgrade Plan');
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').html('Downgrade Plan');
+                    }
+                    if(packageToggle == 0){
+                        $('#buy-plan').data('packageid',5);
+                        return false;
+                    }else{
+                        $('#buy-plan').data('packageid',9);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-
                 if(current < 500000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',5);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',9);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
             }
-        });
-    });
-</script> --}}
-<script>
-    function detailFunction(value) {
-      value;
-    }
-    window.addEventListener('DOMContentLoaded', function() {
-        var element = document.getElementById('pg0');
-        element.classList.add('pghovered');
-    });
-     $(document).ready(function () {
-        var packageToggle = 1;
-        var isLogin = $('#is-login').val();
-        var loggedEmail = $('#logged-email').val();
-        var current = $('#buy-plan').data('current');
-        var planCode = $('#buy-plan').data('plancode');
-
-        var monthlyCode = ['P20','P50','P200','P500'];
-        var yearlyCode = ['P20-year','P50-year','P200-year','P500-year'];
-
-        const toggleyearly = document.getElementById('toggleyearly');
-        const solo_proprice = document.getElementById('solo_proprice');
-        const solo_proprice2 = document.getElementById('solo_proprice2');
-
-        soloyearlyplan();
-        solo_proprice.classList.add('solo_proprice_y');
-        solo_proprice2.classList.add('solo_proprice2_y');
-        solo_proprice.classList.remove('solo_proprice');
-        solo_proprice2.classList.remove('solo_proprice2');
-
-
+        }
+        if (monthlyCode.includes(planCode)) {
+            $('#toggleyearly').trigger("click");
+            slideIndex = monthlyCode.indexOf(planCode);
+            packageToggle = 0;
+            solomonthlyplan();
+            solo_proprice.classList.remove('solo_proprice_y');
+            solo_proprice.classList.add('solo_proprice');
+            solo_proprice2.classList.add('solo_proprice2');
+            solo_proprice2.classList.remove('solo_proprice2_y');
+            slideChanger(slideIndex,current,packageToggle,monthlyCode,yearlyCode,loggedEmail);
+        }
+        if (yearlyCode.includes(planCode)) {
+            slideIndex = yearlyCode.indexOf(planCode);
+            packageToggle = 1;
+            soloyearlyplan();
+            solo_proprice.classList.add('solo_proprice_y');
+            solo_proprice2.classList.add('solo_proprice2_y');
+            solo_proprice.classList.remove('solo_proprice');
+            solo_proprice2.classList.remove('solo_proprice2');
+            slideChanger(slideIndex,current,packageToggle,monthlyCode,yearlyCode,loggedEmail);
+        }
+        if (!monthlyCode.includes(planCode) && !yearlyCode.includes(planCode)) {
+            soloyearlyplan();
+            solo_proprice.classList.add('solo_proprice_y');
+            solo_proprice2.classList.add('solo_proprice2_y');
+            solo_proprice.classList.remove('solo_proprice');
+            solo_proprice2.classList.remove('solo_proprice2');
+        }
         // solo_proplan.classList.add('solo_proplan_y');
         toggleyearly.addEventListener('click', function() {
            const checkingd =  document.getElementById("solo_proplan");
@@ -2039,37 +2368,29 @@
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-                // else{
-                //     $('#buy-plan').html('Upgrade Plan');
-                //     Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                //     $('#buy-plan').attr('href',Newhref);
-                //     return false;
-                // }
 
                 if(packageToggle == 1 && yearlyCode.includes(planCode)){
                     $('#buy-plan').html('Current Plan');
                     Newhref = `javascript:void(0);`;
                     $('#buy-plan').attr('href',Newhref);
                     return false;
-                } 
-
-                // else{
-                //     $('#buy-plan').html('Downgrade Plan');
-                //     Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&exfo=742&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                //     $('#buy-plan').attr('href',Newhref);
-                //     return false;
-                // }
-                // $('#buy-plan').html('Current Plan');
-                // Newhref = `javascript:void(0);`;
-                // $('#buy-plan').attr('href',Newhref);
-                // return false;
+                }
+                if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                    $('#buy-plan').html('Upgrade Plan');
+                    $('#buy-plan').data('packageid',6);
+                        return false;
+                }
+                if(packageToggle == 0 && yearlyCode.includes(planCode)){
+                    $('#buy-plan').html('Downgrade Plan');
+                    $('#buy-plan').data('packageid',6);
+                        return false;
+                }
             }
 
             if(current < 20000){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
+                $('#buy-plan').data('packageid',6);
+                        return false;
             }
 
             if(current > 20000){
@@ -2078,10 +2399,8 @@
                 }else{
                     $('#buy-plan').html('Downgrade Plan');
                 }
-                // $('#buy-plan').html('Downgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&exfo=742&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
+                $('#buy-plan').data('packageid',6);
+                        return false;
             }
         };
 
@@ -2094,70 +2413,47 @@
             $('#solo_protoken').html('20,000 words');
             $('#solo_protoken2').html('20,000 words');
             $('#solo_proreport').html('10 reports');
-            // document.getElementById("solo_proplan"), function() {
-            //     // var value = (this.value-this.min)/(this.max-this.min)*100
-            //     this.style.display = 'none !important';
-            // };
-            //  document.getElementById("solo_proplan").oninput = function() {
-            //     var value = (this.value-this.min)/(this.max-this.min)*100
-            //     this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
-            // };
 
-            if (current == 20000) {  
-                if(packageToggle == 0 && monthlyCode.includes(planCode)){ 
+            if (current == 20000) {
+                if(packageToggle == 0 && monthlyCode.includes(planCode)){
                     $('#buy-plan').html('Current Plan');
                     Newhref = `javascript:void(0);`;
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
-                // else{
-                //     $('#buy-plan').html('Upgrade Plan');
-                //     Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                //     $('#buy-plan').attr('href',Newhref);
-                //     return false;
-                // }
 
-                if(packageToggle == 1 && yearlyCode.includes(planCode)){ 
+                if(packageToggle == 1 && yearlyCode.includes(planCode)){
                     $('#buy-plan').html('Current Plan');
                     Newhref = `javascript:void(0);`;
                     $('#buy-plan').attr('href',Newhref);
                     return false;
+                }
+                if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                    $('#buy-plan').html('Upgrade Plan');
+                    $('#buy-plan').data('packageid',6);
+                        return false;
                 }
 
                 if(packageToggle == 0 && yearlyCode.includes(planCode)){
                     $('#buy-plan').html('Downgrade Plan');
-                    Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    $('#buy-plan').attr('href',Newhref);
-                    $('#buy-plan').attr('href',Newhref);
+                    $('#buy-plan').data('packageid',2);
                     return false;
                 }
-                // else{
-                //     $('#buy-plan').html('Downgrade Plan');
-                //     Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&exfo=742&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                //     $('#buy-plan').attr('href',Newhref);
-                //     return false;
-                // }
-                // $('#buy-plan').html('Current Plan');
-                // Newhref = `javascript:void(0);`;
-                // $('#buy-plan').attr('href',Newhref);
-                // return false;
             }
 
             if(current < 20000){
                 $('#buy-plan').html('Upgrade Plan');
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
-                return false;
+                $('#buy-plan').data('packageid',2);
+                        return false;
             }
 
-            if(current > 20000){ 
+            if(current > 20000){
                 if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                     $('#buy-plan').html('Upgrade Plan');
                 }else{
                     $('#buy-plan').html('Downgrade Plan');
                 }
-                Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&exfo=742&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                $('#buy-plan').attr('href',Newhref);
+                $('#buy-plan').data('packageid',2);
                 return false;
             }
         };
@@ -2165,7 +2461,6 @@
         $("input#solo_proplan").on('change', function() {
             var value = $(this).val();
             $('#level').val(value);
-            // var current = $('#buy-plan').data('current');
             if (value == 0) {
                 $('#solo_proprice').html('$24.90');
                 $('.solo_proprice_y').html('$19.90');
@@ -2176,7 +2471,7 @@
                 $('#solo_proreport').html('10 reports');
 
 
-                if (current == 20000) { 
+                if (current == 20000) {
 
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
@@ -2184,75 +2479,53 @@
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
-                    // else{
-                    //     $('#buy-plan').html('Upgrade Plan');
 
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-                    //     return false;
-                    // }
-
-                    if(packageToggle == 1 && yearlyCode.includes(planCode)){ 
+                    if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
                         Newhref = `javascript:void(0);`;
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
 
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Upgrade Plan');
+                        $('#buy-plan').data('packageid',6);
+                        return false;
+                    }
+
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`; 
-                        $('#buy-plan').attr('href',Newhref);
+                        $('#buy-plan').data('packageid',2);
                         return false;
-                    } 
-                    // else{
-                    //     $('#buy-plan').html('Downgrade Plan');
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-                    //     return false;
-                    // }
-                    // if(packageToggle == 0 && monthlyCode.includes(planCode)){
-                    //     $('#buy-plan').html('Current Plan');
-                    // }else{
-                    //     $('#buy-plan').html('Upgrade Plan');
-                    // }
-                    // // $('#buy-plan').html('Current Plan');
-                    // Newhref = `javascript:void(0);`;
-                    // $('#buy-plan').attr('href',Newhref);
-                    // return false;
+                    }
                 }
 
-                if(current < 20000){  
+                if(current < 20000){
                     $('#buy-plan').html('Upgrade Plan');
 
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                       $('#buy-plan').data('packageid',2);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',6);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
                 }
 
-                if(current > 20000){  
+                if(current > 20000){
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
                     }else{
                         $('#buy-plan').html('Downgrade Plan');
                     }
-                    // $('#buy-plan').html('Downgrade Plan');
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84335&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',2);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84432&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                       $('#buy-plan').data('packageid',6);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
@@ -2268,8 +2541,6 @@
                 $('#solo_protoken2').html('50,000 words');
                 $('#solo_proreport').html('30 reports');
 
-                // Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82640&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
-
                 if (current == 50000) {
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
@@ -2277,16 +2548,6 @@
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
-                    // else{
-                    //     $('#buy-plan').html('Upgrade Plan');
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-                    //     return false;
-                    // }
 
                     if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
@@ -2294,45 +2555,34 @@
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Upgrade Plan');
+                        
+                        $('#buy-plan').data('packageid',7);
+                        return false;
+                    }
 
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                        $('#buy-plan').attr('href',Newhref); 
+                        
+                        $('#buy-plan').data('packageid',3);
                         return false;
                     }
-                    // else{
-                    //     $('#buy-plan').html('Downgrade Plan');
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-                    //     return false;
-                    // }
-                    // if(packageToggle == 0 && monthlyCode.includes(planCode)){
-                    //     $('#buy-plan').html('Current Plan');
-                    // }else{
-                    //     $('#buy-plan').html('Upgrade Plan');
-                    // }
-                    // // $('#buy-plan').html('Current Plan');
-                    // Newhref = `javascript:void(0);`;
-                    // $('#buy-plan').attr('href',Newhref);
-                    // return false;
                 }
 
                 if(current > 50000){
-                    // $('#buy-plan').html('Downgrade Plan');
+                   
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
                     }else{
                         $('#buy-plan').html('Downgrade Plan');
                     }
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',3);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',7);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
@@ -2341,9 +2591,11 @@
                 if(current < 50000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84429&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',3);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84433&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',7);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
@@ -2359,9 +2611,6 @@
                 $('#solo_protoken2').html('200,000 words');
                 $('#solo_proreport').html('80 reports');
 
-                // Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82641&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
-                // $('#buy-plan').attr('href',Newhref);
-
                 if (current == 200000) {
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
@@ -2369,17 +2618,6 @@
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
-                    // else{
-                    //     $('#buy-plan').html('Upgrade Plan');
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-
-                    //     return false;
-                    // }
 
                     if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
@@ -2387,47 +2625,34 @@
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
-
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Upgrade Plan');
+                        
+                        $('#buy-plan').data('packageid',8);
+                        return false;
+                    }
 
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                        $('#buy-plan').attr('href',Newhref); 
+                       
+                        $('#buy-plan').data('packageid',4);
                         return false;
                     }
-                    // else{
-                    //     $('#buy-plan').html('Downgrade Plan');
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-                    //     alert('yearly ok');
-                    //     return false;
-                    // }
-                    // if(packageToggle == 0 && monthlyCode.includes(planCode)){
-                    //     $('#buy-plan').html('Current Plan');
-                    // }else{
-                    //     $('#buy-plan').html('Upgrade Plan');
-                    // }
-                    // // $('#buy-plan').html('Current Plan');
-                    // Newhref = `javascript:void(0);`;
-                    // $('#buy-plan').attr('href',Newhref);
-                    // return false;
                 }
 
                 if(current > 200000){
-                    // $('#buy-plan').html('Downgrade Plan');
+                  
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
                     }else{
                         $('#buy-plan').html('Downgrade Plan');
                     }
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',4);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                       $('#buy-plan').data('packageid',8);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
@@ -2436,9 +2661,11 @@
                 if(current < 200000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84430&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',4);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84434&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',8);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
@@ -2454,9 +2681,6 @@
                 $('#solo_protoken2').html('500,000 words');
                 $('#solo_proreport').html('200 reports');
 
-                // Newhref = `https://store.payproglobal.com/checkout?products[1][id]=82642&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}`;
-                $('#buy-plan').attr('href',Newhref);
-
                 if (current == 500000) {
                     if(packageToggle == 0 && monthlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
@@ -2464,16 +2688,6 @@
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
-                    // else{
-                    //     $('#buy-plan').html('Upgrade Plan');
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-                    //     return false;
-                    // }
 
                     if(packageToggle == 1 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Current Plan');
@@ -2481,41 +2695,31 @@
                         $('#buy-plan').attr('href',Newhref);
                         return false;
                     }
+                    if(packageToggle == 1 && monthlyCode.includes(planCode)){
+                        $('#buy-plan').html('Upgrade Plan');
+                        $('#buy-plan').data('packageid',9);
+                        return false;
+                    }
 
                     if(packageToggle == 0 && yearlyCode.includes(planCode)){
                         $('#buy-plan').html('Downgrade Plan');
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                        $('#buy-plan').attr('href',Newhref); 
+                        $('#buy-plan').data('packageid',5);
                         return false;
                     }
-                    // else{
-                    //     $('#buy-plan').html('Downgrade Plan');
-                    //     if(packageToggle == 0){
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }else{
-                    //         Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
-                    //     }
-                    //     $('#buy-plan').attr('href',Newhref);
-                    //     return false;
-                    // }
-
-                    // $('#buy-plan').html('Current Plan');
-                    // Newhref = `javascript:void(0);`;
-                    // $('#buy-plan').attr('href',Newhref);
-                    // return false;
                 }
 
                 if(current > 500000){
-                    // $('#buy-plan').html('Downgrade Plan');
                     if (packageToggle == 1 && monthlyCode.includes(planCode)) {
                         $('#buy-plan').html('Upgrade Plan');
                     }else{
                         $('#buy-plan').html('Downgrade Plan');
                     }
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',5);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',9);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
@@ -2524,9 +2728,11 @@
                 if(current < 500000){
                     $('#buy-plan').html('Upgrade Plan');
                     if(packageToggle == 0){
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84431&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',5);
+                        return false;
                     }else{
-                        Newhref = `https://store.payproglobal.com/checkout?products[1][id]=84435&page-template=16802&use-test-mode=false&secret-key=htYBPBo@nV&ORDER_CUSTOM_FIELDS=x-user=${loggedEmail}&exfo=742`;
+                        $('#buy-plan').data('packageid',9);
+                        return false;
                     }
                     $('#buy-plan').attr('href',Newhref);
                     return false;
@@ -2535,39 +2741,99 @@
         });
     });
 
-
-    function showCheckout(event){
-        event.preventDefault();
-        let checkoutUrl = event.target.attributes.href.value;
-        let body = document.getElementsByTagName('body')[0];
-        body.innerHTML +=
-            `<div class="ppg-checkout-modal ppg-show" id="ppg-checkout-modal">
-                <div class="ppg-btn-close" id="ppg-btn-close" onclick="hideCheckout(event)">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIj48cGF0aCBkPSJNNDQzLjYgMzg3LjEgMzEyLjQgMjU1LjRsMTMxLjUtMTMwYzUuNC01LjQgNS40LTE0LjIgMC0xOS42bC0zNy40LTM3LjZjLTIuNi0yLjYtNi4xLTQtOS44LTQtMy43IDAtNy4yIDEuNS05LjggNEwyNTYgMTk3LjggMTI0LjkgNjguM2MtMi42LTIuNi02LjEtNC05LjgtNC0zLjcgMC03LjIgMS41LTkuOCA0TDY4IDEwNS45Yy01LjQgNS40LTUuNCAxNC4yIDAgMTkuNmwxMzEuNSAxMzBMNjguNCAzODcuMWMtMi42IDIuNi00LjEgNi4xLTQuMSA5LjggMCAzLjcgMS40IDcuMiA0LjEgOS44bDM3LjQgMzcuNmMyLjcgMi43IDYuMiA0LjEgOS44IDQuMSAzLjUgMCA3LjEtMS4zIDkuOC00LjFMMjU2IDMxMy4xbDEzMC43IDEzMS4xYzIuNyAyLjcgNi4yIDQuMSA5LjggNC4xIDMuNSAwIDcuMS0xLjMgOS44LTQuMWwzNy40LTM3LjZjMi42LTIuNiA0LjEtNi4xIDQuMS05LjgtLjEtMy42LTEuNi03LjEtNC4yLTkuN3oiIGZpbGw9IiNmZmZmZmYiIGNsYXNzPSJmaWxsLTAwMDAwMCI+PC9wYXRoPjwvc3ZnPg==" >
-                </div>
-                <div class="ppg-loader"></div>
-                <iframe class="ppg-iframe" id="ppg-iframe" src="${checkoutUrl}" frameborder="0"></iframe>
-            </div>`;
-
-            document.getElementById('ppg-iframe').onload = function(){
-                document.getElementsByClassName('ppg-loader')[0].remove();
-                document.getElementById('ppg-btn-close').classList.add('ppg-show');
-            };
-    }
-
-    function hideCheckout(event){
-        event.preventDefault();
-        document.getElementById('ppg-checkout-modal').remove();
-    }
-
     document.getElementById("solo_proplan").oninput = function() {
         var value = (this.value-this.min)/(this.max-this.min)*100
         this.style.background = 'linear-gradient(to right,  #F47300 0%,  #F47300 ' + value + '%, #e3bfff ' + value + '%, #e3bfff 100%)';
     };
 
+    function setPaymentBtn(_self) {
+        let package_id = $(_self).data('packageid');
+        let plan_code = $(_self).data('plancode');
+       
+        if (package_id == '{{ $packageData->id ?? null }}' && '{{ $user_package->subscription_id ?? null }}' != '') {
+            return false;
+        }
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do You Want To Buy This Plan?",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+        }).then(function (t) {
+            if (t.value) {
+                page_loader('show');
+
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('user.billing.get_paylink') }}",
+                    data: {'package_id':package_id,'plan_code':plan_code},
+                    dataType: "json",
+                    complete: function () {
+                        page_loader('hide');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        page_loader('hide');
+                        ajaxErrorHandling(jqXHR, errorThrown);
+                    },
+                    success: function (res) {
+
+                        if (res.status == true && res.route) {
+                            window.location = res.route;
+                            return true;
+                        }
+
+                        if (res.status == true) {
+                            let payLinkBtn = document.getElementById('paddle-pay-btn');
+                            payLinkBtn.setAttribute('data-override', res.payLink);
+                            document.getElementById('paddle-pay-btn').click();
+                            return false;
+                        }
+
+                     
+                    }
+                });
+            }
+        })
+    }
 
 
+    @if (auth('web')->check())
+        function backToBasic(_self) {
 
+            let plan_code = $(_self).data('plancode');
+            let subId = $(_self).data('check');
+
+            if(plan_code == 'FRP0' || subId == ''){
+                Swal.fire({
+                    title: plan_code == 'FRP0' ? "Cancel" : "Downgrade",
+                    text: plan_code == 'FRP0' ? 'You are already on a basic plan.' : 'You have aleardy cancelled your subscription',
+                    type: "warning",
+                    timer: 3000,
+                })
+                return false;
+            }
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to cancel your current plan?",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes!"
+            }).then(function (t) {
+                if (t.value) {
+                    getAjaxRequests("{{ route('user.cencel-subscription',hashids_encode(auth('web')->user()->id)) }}",{},'get',true,function(){
+
+                    });
+                }
+            })
+
+        }
+    @endif
 
 </script>
 @endsection
