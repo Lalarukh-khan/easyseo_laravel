@@ -518,7 +518,7 @@
                                                     service
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0);">Link</a>
+                                                    <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Link</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -624,7 +624,7 @@
                                                     For Twitter marketing and ads.
                                                 </td>
                                                 <td>
-                                                    <a href="https://www.facebook.com/privacy/policy">Link</a>
+                                                    <a href="https://twitter.com/en/privacy">Link</a>
                                                 </td>
                                             </tr>
                                             <tr>

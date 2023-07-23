@@ -205,6 +205,13 @@
     background-color: #181a1d;
     padding: 20px 0px 0px 0px;
 }
+.vidrbtbrdr{
+    border: 1px solid;
+    box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25);
+    border-radius: 8px;
+    background-color: #181a1d;
+    /* padding: 20px 0px 0px 0px; */
+}
 .nwwbrbtbrdr{
     background-image: url('../images/esyseo.svg');
     background-repeat: no-repeat;

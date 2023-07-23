@@ -216,19 +216,30 @@
                     </div>
                 </div>
             </div>
-            <div class="rbtbrdr container m-t-60" id="atmwtbckcolor2" style="display: none;">
-                <div class="row" style="width: 100%; height: auto;">
-                    <div class="col-md-1 col-lg-1 col-sm-12 col-12"></div>
-                    <div class="col-md-11 col-lg-11 col-sm-12 col-12 nwwbrbtbrdr">
-                        <div class="row" style="width: 100%; height: auto;">
-                            <div class="col-md-6 col-lg-6 col-sm-6 col-6">
-                                <img alt="Icon" class="img-fluid" src="{{asset('front')}}/images/robotopac.svg">
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-sm-6 col-6">
-                                <img alt="Icon" class="img-fluid playrbt m-t-180"
-                                    src="{{asset('front')}}/images/play.svg">
+            <div id="rplcimghm">
+                <div class="rbtbrdr container m-t-60" id="atmwtbckcolor2">
+                    <div class="row" style="width: 100%; height: auto;">
+                        <div class="col-md-1 col-lg-1 col-sm-12 col-12"></div>
+                        <div class="col-md-11 col-lg-11 col-sm-12 col-12 nwwbrbtbrdr">
+                            <div class="row" style="width: 100%; height: auto;">
+                                <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                                    <img alt="Icon" class="img-fluid" src="{{asset('front')}}/images/robotopac.svg">
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                                    <img alt="Icon" class="img-fluid playrbt m-t-180" id="rplcplayhm"
+                                        src="{{asset('front')}}/images/play.svg">
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div id="rplcvidhm" style="display: none;">
+                <div class="vidrbtbrdr container m-t-60">
+                    <div class="row">
+                        <!-- <div class="col-lg-12 col-mg-12 col-sm-12 col-12"> -->
+                            <video src="admin_assets/assets/images/reviewvid.mp4" style="width: 100%; height: 515px;" id="rplcvidmain" controls=""></video>
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -236,7 +247,7 @@
                 <div class="row">
                     <div class="col-md-8 col-lg-9 col-sm-6 col-12"></div>
                     <div class="col-md-4 col-lg-3 col-sm-6 col-12">
-                        <p class="col-white pad-top-10 d-f j-c-e" style="display: none;">*Explanation video - our advantages</p>
+                        <p class="col-white pad-top-10 d-f j-c-e">*Explanation video - our advantages</p>
                     </div>
                 </div>
             </div>
@@ -1979,6 +1990,17 @@
 @endsection
 @section('js')
 <script>
+    const rplcimghm = document.getElementById("rplcimghm");
+    const rplcvidhm = document.getElementById("rplcvidhm");
+    const rplcplayhm = document.getElementById("rplcplayhm");
+    const rplcvidmain = document.getElementById("rplcvidmain");
+    rplcplayhm.style.cursor = "pointer";
+    rplcplayhm.addEventListener('click', () => {
+        rplcimghm.style.display = "none";
+        rplcvidhm.style.display = "block";
+        rplcvidmain.play();
+    });
+
     function detailFunction(value) {
       value;
     }

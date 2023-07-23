@@ -705,6 +705,7 @@
                                 <li class="pad-bot-8"> <a href="https://easyseo.ai/privacy-policy" id="footerwht13"> Privacy Policy </a> </li>
                                 <li class="pad-bot-8"> <a href="https://easyseo.ai/cancellation-&-refund-policy" id="footerwht14"> Cancellation & Refund Policy </a> </li>
                                 <li class="pad-bot-8"> <a href="https://easyseo.ai/prohibited-content-policy" id="footerwht15"> Prohibited Content Guideline </a> </li>
+                                <li class="pad-bot-8 nwacolc"> <a href="https://easyseo.ai/cookie-policy"> Cookie Policy </a> </li>
                             </ul>
                         </div>
                     </div>
