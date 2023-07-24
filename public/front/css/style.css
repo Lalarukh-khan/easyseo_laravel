@@ -202,10 +202,9 @@
     border: 1px solid;
     box-shadow: -2px -2px 24px rgba(89, 11, 255, 0.25), 2px 2px 24px rgba(146, 0, 255, 0.25);
     border-radius: 8px;
-    background-image: url('../images/easyseovid.png');
-    background-size: cover;
+    background-color: #000000;
     padding: 20px 0px 0px 0px;
-    height: 600px
+    height: 645px;
 }
 .esyseorbt{
         margin-top: -8rem;
@@ -1072,6 +1071,7 @@ td img{
     }
     .rbtbrdr{
         display: block;
+        height: 245px;
     }
     .playrbt{
         margin-top: 50px !important;

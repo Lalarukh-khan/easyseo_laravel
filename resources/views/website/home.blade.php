@@ -105,65 +105,6 @@
             transform: rotate(360deg);
         }
     }
-#fade {
-  display: none;
-  position: fixed;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index: 1001;
-  -moz-opacity: 0.8;
-  opacity: .80;
-  filter: alpha(opacity=80);
-}
-
-#light {
-    display: none;
-    position: absolute;
-    /* top: 50%; */
-    left: 33%;
-    max-width: 100%;
-    max-height: 515px;
-    margin-left: -300px;
-    margin-top: -630px;
-    /* border: 2px solid #FFF; */
-    background: #FFF;
-    z-index: 1002;
-    overflow: visible;
-}
-
-#boxclose {
-  float: right;
-  cursor: pointer;
-  color: #fff;
-  /* border: 1px solid #AEAEAE; */
-  border-radius: 3px;
-  /* background: #222222; */
-  font-size: 31px;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 0px;
-  padding: 11px 3px;
-  position: absolute;
-  right: 2px;
-  top: 2px;
-  z-index: 1002;
-  opacity: 0.9;
-}
-
-.boxclose:before {
-  content: "×";
-}
-
-#fade:hover ~ #boxclose {
-  display:none;
-}
-/* 
-.test:hover ~ .test2 {
-  display: none;
-} */
 </style>
 
 
@@ -287,25 +228,17 @@
                                     <img alt="Icon" class="img-fluid playrbt m-t-180" style="margin-left: 100px;" id="rplcplayhm" onclick="lightbox_open();" src="{{asset('front')}}/images/play.png">
                                 </div> -->
 
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; margin-top: -20px; width: 1180px"><iframe src="https://www.loom.com/embed/1eb1abbf156b4f9c9325110466f255d1?sid=b52c8b13-6605-4c07-8c2b-a92976891d2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; margin-top: -20px; max-width: 1180px; margin-left: 30px;"><iframe src="https://www.loom.com/embed/1eb1abbf156b4f9c9325110466f255d1?sid=b52c8b13-6605-4c07-8c2b-a92976891d2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; max-width: 1200px;"></iframe></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="row" style="margin-top: 50px;">
+                <div class="row" style="margin-top: 50px;" >
                     <div class="col-lg-12 col-lg-12 col-sm-12 col-12 text-center">
                         <a href="{{route('register')}}" class="custom-btn4 nwwbhmgtstrt"> Get Started For Free</a>
                     </div>
                 </div>
-            <div id="light">
-                <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-                <video id="VisaChipCardVideo" style="width: 100%; height: 600px;" controls>
-                    <source src="admin_assets/assets/images/reviewvid.mp4" type="video/mp4">
-                    </video>
-            </div>
-
-            <div id="fade" onClick="lightbox_close();"></div>
             <!-- <div class="expln container">
                 <div class="row">
                     <div class="col-md-8 col-lg-9 col-sm-6 col-12"></div>
@@ -2053,31 +1986,6 @@
 @endsection
 @section('js')
 <script>
-    const rplcplayhm = document.getElementById("rplcplayhm");
-    rplcplayhm.style.cursor = "pointer";
-    window.document.onkeydown = function(e) {
-    if (!e) {
-        e = event;
-    }
-    if (e.keyCode == 27) {
-        lightbox_close();
-    }
-    }
-
-    function lightbox_open() {
-    var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-    document.getElementById('light').style.display = 'block';
-    document.getElementById('fade').style.display = 'block';
-    lightBoxVideo.play();
-    }
-
-    function lightbox_close() {
-    var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-    document.getElementById('light').style.display = 'none';
-    document.getElementById('fade').style.display = 'none';
-    lightBoxVideo.pause();
-    }
-
     function detailFunction(value) {
       value;
     }
