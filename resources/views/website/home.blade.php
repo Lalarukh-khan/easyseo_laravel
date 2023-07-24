@@ -123,11 +123,11 @@
     display: none;
     position: absolute;
     /* top: 50%; */
-    left: 38%;
+    left: 33%;
     max-width: 100%;
     max-height: 515px;
     margin-left: -300px;
-    margin-top: -580px;
+    margin-top: -630px;
     /* border: 2px solid #FFF; */
     background: #FFF;
     z-index: 1002;
