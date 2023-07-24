@@ -127,7 +127,7 @@
     max-width: 100%;
     max-height: 515px;
     margin-left: -300px;
-    margin-top: -480px;
+    margin-top: -580px;
     /* border: 2px solid #FFF; */
     background: #FFF;
     z-index: 1002;
@@ -275,24 +275,27 @@
                     </div>
                 </div>
             </div>
-            <div id="rplcimghm">
                 <div class="rbtbrdr container m-t-60" id="atmwtbckcolor2">
                     <div class="row" style="width: 100%; height: auto;">
-                        <div class="col-md-1 col-lg-1 col-sm-12 col-12"></div>
-                        <div class="col-md-11 col-lg-11 col-sm-12 col-12 nwwbrbtbrdr">
-                            <div class="row" style="width: 100%; height: auto;">
-                                <div class="col-md-6 col-lg-6 col-sm-6 col-6">
-                                    <img alt="Icon" class="img-fluid" src="{{asset('front')}}/images/robotopac.svg">
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-sm-6 col-6">
-                                    <img alt="Icon" class="img-fluid playrbt m-t-180" id="rplcplayhm" onclick="lightbox_open();"
-                                        src="{{asset('front')}}/images/play.svg">
+                        <!-- <div class="col-md-1 col-lg-1 col-sm-12 col-12"></div> -->
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                            <div class="row" style="width: 100%; height: auto; margin-top: 40px;">
+                                <!-- <div class="col-md-6 col-lg-6 col-sm-6 col-6">
+                                    <img alt="Icon" class="img-fluid" src="{{asset('front')}}/images/robotopac.svg" style="visibility: hidden;"> 
+                                </div> -->
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-12 text-center" >
+                                    <img alt="Icon" class="img-fluid playrbt m-t-180" style="margin-left: 100px;" id="rplcplayhm" onclick="lightbox_open();" src="{{asset('front')}}/images/play.png">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12 col-lg-12 col-sm-12 col-12 text-center">
+                        <a href="{{route('register')}}" class="custom-btn4 nwwbhmgtstrt"> Get Started For Free</a>
+                    </div>
+                </div>
             <div id="light">
                 <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
                 <video id="VisaChipCardVideo" style="width: 100%; height: 515px;" controls>
@@ -301,25 +304,14 @@
             </div>
 
             <div id="fade" onClick="lightbox_close();"></div>
-
-                <div>
-                <!-- <a href="#" onclick="lightbox_open();">Watch video</a> -->
-            </div>
-            <!-- <div id="rplcvidhm" style="display: none;">
-                <div class="vidrbtbrdr container m-t-60">
-                    <div class="row">
-                            <video src="admin_assets/assets/images/reviewvid.mp4" style="width: 100%; height: 515px;" id="rplcvidmain" controls=""></video>
-                    </div>
-                </div>
-            </div> -->
-            <div class="expln container">
+            <!-- <div class="expln container">
                 <div class="row">
                     <div class="col-md-8 col-lg-9 col-sm-6 col-12"></div>
                     <div class="col-md-4 col-lg-3 col-sm-6 col-12">
                         <p class="col-white pad-top-10 d-f j-c-e">*Explanation video - our advantages</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
         <section class="pad-top-40 bg-sec6" id="amzngwht">
             <div class="container">
@@ -2059,38 +2051,30 @@
 @endsection
 @section('js')
 <script>
-    const rplcimghm = document.getElementById("rplcimghm");
-    const rplcvidhm = document.getElementById("rplcvidhm");
     const rplcplayhm = document.getElementById("rplcplayhm");
-    const rplcvidmain = document.getElementById("rplcvidmain");
     rplcplayhm.style.cursor = "pointer";
     window.document.onkeydown = function(e) {
-  if (!e) {
-    e = event;
-  }
-  if (e.keyCode == 27) {
-    lightbox_close();
-  }
-}
+    if (!e) {
+        e = event;
+    }
+    if (e.keyCode == 27) {
+        lightbox_close();
+    }
+    }
 
-function lightbox_open() {
-  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-  document.getElementById('light').style.display = 'block';
-  document.getElementById('fade').style.display = 'block';
-  lightBoxVideo.play();
-}
+    function lightbox_open() {
+    var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+    document.getElementById('light').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+    lightBoxVideo.play();
+    }
 
-function lightbox_close() {
-  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-  document.getElementById('light').style.display = 'none';
-  document.getElementById('fade').style.display = 'none';
-  lightBoxVideo.pause();
-}
-    // rplcplayhm.addEventListener('click', () => {
-    //     rplcimghm.style.display = "none";
-    //     rplcvidhm.style.display = "block";
-    //     rplcvidmain.play();
-    // });
+    function lightbox_close() {
+    var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+    document.getElementById('light').style.display = 'none';
+    document.getElementById('fade').style.display = 'none';
+    lightBoxVideo.pause();
+    }
 
     function detailFunction(value) {
       value;
