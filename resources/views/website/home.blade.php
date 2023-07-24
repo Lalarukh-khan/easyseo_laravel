@@ -298,7 +298,7 @@
                 </div>
             <div id="light">
                 <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-                <video id="VisaChipCardVideo" style="width: 100%; height: 515px;" controls>
+                <video id="VisaChipCardVideo" style="width: 100%; height: 600px;" controls>
                     <source src="admin_assets/assets/images/reviewvid.mp4" type="video/mp4">
                     </video>
             </div>
