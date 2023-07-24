@@ -279,19 +279,21 @@
                     <div class="row" style="width: 100%; height: auto;">
                         <!-- <div class="col-md-1 col-lg-1 col-sm-12 col-12"></div> -->
                         <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-                            <div class="row" style="width: 100%; height: auto; margin-top: 40px;">
+                            <!-- <div class="row" style="width: 100%; height: auto; margin-top: 40px;"> -->
                                 <!-- <div class="col-md-6 col-lg-6 col-sm-6 col-6">
                                     <img alt="Icon" class="img-fluid" src="{{asset('front')}}/images/robotopac.svg" style="visibility: hidden;"> 
                                 </div> -->
-                                <div class="col-md-12 col-lg-12 col-sm-12 col-12 text-center" >
+                                <!-- <div class="col-md-12 col-lg-12 col-sm-12 col-12 text-center" >
                                     <img alt="Icon" class="img-fluid playrbt m-t-180" style="margin-left: 100px;" id="rplcplayhm" onclick="lightbox_open();" src="{{asset('front')}}/images/play.png">
-                                </div>
+                                </div> -->
+
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; margin-top: -20px; width: 1180px"><iframe src="https://www.loom.com/embed/1eb1abbf156b4f9c9325110466f255d1?sid=b52c8b13-6605-4c07-8c2b-a92976891d2f" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row" style="margin-top: 50px;">
                     <div class="col-lg-12 col-lg-12 col-sm-12 col-12 text-center">
                         <a href="{{route('register')}}" class="custom-btn4 nwwbhmgtstrt"> Get Started For Free</a>
                     </div>
