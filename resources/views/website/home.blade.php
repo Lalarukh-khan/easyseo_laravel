@@ -105,6 +105,65 @@
             transform: rotate(360deg);
         }
     }
+#fade {
+  display: none;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+
+#light {
+    display: none;
+    position: absolute;
+    /* top: 50%; */
+    left: 38%;
+    max-width: 100%;
+    max-height: 515px;
+    margin-left: -300px;
+    margin-top: -480px;
+    /* border: 2px solid #FFF; */
+    background: #FFF;
+    z-index: 1002;
+    overflow: visible;
+}
+
+#boxclose {
+  float: right;
+  cursor: pointer;
+  color: #fff;
+  /* border: 1px solid #AEAEAE; */
+  border-radius: 3px;
+  /* background: #222222; */
+  font-size: 31px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 0px;
+  padding: 11px 3px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  z-index: 1002;
+  opacity: 0.9;
+}
+
+.boxclose:before {
+  content: "×";
+}
+
+#fade:hover ~ #boxclose {
+  display:none;
+}
+/* 
+.test:hover ~ .test2 {
+  display: none;
+} */
 </style>
 
 
@@ -226,7 +285,7 @@
                                     <img alt="Icon" class="img-fluid" src="{{asset('front')}}/images/robotopac.svg">
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-sm-6 col-6">
-                                    <img alt="Icon" class="img-fluid playrbt m-t-180" id="rplcplayhm"
+                                    <img alt="Icon" class="img-fluid playrbt m-t-180" id="rplcplayhm" onclick="lightbox_open();"
                                         src="{{asset('front')}}/images/play.svg">
                                 </div>
                             </div>
@@ -234,15 +293,25 @@
                     </div>
                 </div>
             </div>
-            <div id="rplcvidhm" style="display: none;">
+            <div id="light">
+                <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+                <video id="VisaChipCardVideo" style="width: 100%; height: 515px;" controls>
+                    <source src="admin_assets/assets/images/reviewvid.mp4" type="video/mp4">
+                    </video>
+            </div>
+
+            <div id="fade" onClick="lightbox_close();"></div>
+
+                <div>
+                <!-- <a href="#" onclick="lightbox_open();">Watch video</a> -->
+            </div>
+            <!-- <div id="rplcvidhm" style="display: none;">
                 <div class="vidrbtbrdr container m-t-60">
                     <div class="row">
-                        <!-- <div class="col-lg-12 col-mg-12 col-sm-12 col-12"> -->
                             <video src="admin_assets/assets/images/reviewvid.mp4" style="width: 100%; height: 515px;" id="rplcvidmain" controls=""></video>
-                        <!-- </div> -->
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="expln container">
                 <div class="row">
                     <div class="col-md-8 col-lg-9 col-sm-6 col-12"></div>
@@ -1995,11 +2064,33 @@
     const rplcplayhm = document.getElementById("rplcplayhm");
     const rplcvidmain = document.getElementById("rplcvidmain");
     rplcplayhm.style.cursor = "pointer";
-    rplcplayhm.addEventListener('click', () => {
-        rplcimghm.style.display = "none";
-        rplcvidhm.style.display = "block";
-        rplcvidmain.play();
-    });
+    window.document.onkeydown = function(e) {
+  if (!e) {
+    e = event;
+  }
+  if (e.keyCode == 27) {
+    lightbox_close();
+  }
+}
+
+function lightbox_open() {
+  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  document.getElementById('light').style.display = 'block';
+  document.getElementById('fade').style.display = 'block';
+  lightBoxVideo.play();
+}
+
+function lightbox_close() {
+  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  document.getElementById('light').style.display = 'none';
+  document.getElementById('fade').style.display = 'none';
+  lightBoxVideo.pause();
+}
+    // rplcplayhm.addEventListener('click', () => {
+    //     rplcimghm.style.display = "none";
+    //     rplcvidhm.style.display = "block";
+    //     rplcvidmain.play();
+    // });
 
     function detailFunction(value) {
       value;
