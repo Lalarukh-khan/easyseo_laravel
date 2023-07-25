@@ -1000,11 +1000,6 @@
 					content = words.join(" ");
 					let content2 = "";
 					content2 = content.replace(/(<br\s*\/?>){3}/gi, "<br><br>");
-					if (content2.charAt(0) === '.') {
-						return content2.substring(1);
-					} else {
-						return content2;
-					}
                     const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
                     // const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
                     // var paragraph = document.createElement("p"); margin-left: 40%;
@@ -1031,6 +1026,13 @@
                     disableimpbutton('impscore'+number);
 					checkScoreValidation('rps'+number);
 
+					content3 = document.getElementById("datamsg"+number);
+					testcontent = content3.innerHTML;
+					if (testcontent.charAt(0) === '.') {
+						const newcontent = testcontent.substring(1);
+						document.getElementById("datamsg"+number).innerHTML = newcontent;
+					}
+					
                     // console.log(number);
                     // console.log(times);
 
