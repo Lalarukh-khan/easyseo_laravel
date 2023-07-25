@@ -1028,9 +1028,9 @@
 
 					content3 = document.getElementById("datamsg"+number);
 					testcontent = content3.innerHTML;
-					const cntntresult = testcontent.replace(new RegExp(/<br>\s*<br>(?=\s*(2\.|3\.))/g), "<br>");
+					var cntntresult = testcontent.replace(new RegExp(/<br>\s*<br>(?=\s*(2\.|3\.))/g), "<br>");
 					if (cntntresult.charAt(0) === '.') {
-						const newcontent = cntntresult.substring(1);
+						var newcontent = cntntresult.substring(1);
 						document.getElementById("datamsg"+number).innerHTML = newcontent;
 					}
 					else{
