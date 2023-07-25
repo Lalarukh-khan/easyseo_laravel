@@ -1028,9 +1028,13 @@
 
 					content3 = document.getElementById("datamsg"+number);
 					testcontent = content3.innerHTML;
-					if (testcontent.charAt(0) === '.') {
-						const newcontent = testcontent.substring(1);
+					const cntntresult = testcontent.replace(new RegExp(/<br>\s*<br>(?=\s*(2\.|3\.))/g), "<br>");
+					if (cntntresult.charAt(0) === '.') {
+						const newcontent = cntntresult.substring(1);
 						document.getElementById("datamsg"+number).innerHTML = newcontent;
+					}
+					else{
+						document.getElementById("datamsg"+number).innerHTML = cntntresult;
 					}
 					
                     // console.log(number);
