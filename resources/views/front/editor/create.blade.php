@@ -688,6 +688,7 @@
 							_token: token,
 							// prompt: 'write 11 detailed titles having double qoutes and every title have exclamatery mark after its last word always based upon ' + majorprompt,
 							prompt: 'I want you to act as a brainstorming aid for generating SEO-optimized blog post titles. I will provide you with a word or phrase, and you need to respond with eleven distinct, compelling, and SEO-friendly blog title suggestions. The titles should be directly related to the word or phrase I provide and should be designed to draw in web traffic. Your responses should only contain the suggested titles and no further explanation or detail. And every title should have exclamatery mark after its last word. My first word is: '+ majorprompt,
+                			model: "gpt-3.5-turbo-0613",
 							old_prompt: majoroldprompt
 						})
 					})
@@ -796,10 +797,10 @@
 						body: JSON.stringify({
 							_token: token,
 							prompt: 'write firstly 9 questions and then 11 semantic keywords with maximum 2 words limit in ordered list about ' + majorprompt,
+                			model: "gpt-3.5-turbo-0613",
 							old_prompt: majoroldprompt
 							})
 						})
-
 						clearInterval(loadInterval)
 						messageDiv.innerHTML = " "
 
@@ -1063,7 +1064,7 @@
 	const que6 = document.getElementById("que6");
 	const que7 = document.getElementById("que7");
 	const que8 = document.getElementById("que8");
-	const quesform = document.getElementById("quesform");
+	// const quesform = document.getElementById("quesform");
 	const quescontent = document.getElementById("quescontent");
 
 	que1.addEventListener("click", function(event) {
@@ -1185,7 +1186,7 @@
         // specific message div
         const messageDiv = document.getElementById(uniqueId)
 
-        // messageDiv.innerHTML = "..."
+        messageDiv.innerHTML = "..."
         loader1(messageDiv)
         const response1 = await fetch(apiUrl, {
             method: 'POST',
@@ -1194,8 +1195,9 @@
             },
             body: JSON.stringify({
                 _token: token,
-                prompt: data.get('quescontent'),
-                old_prompt: data.get('old_prompt')
+                prompt: "I will write you question and you will provide short answer for it, Use strong SEO keywords. You need to answer like human. The question is: "+data.get('quescontent'),
+                model: "gpt-3.5-turbo",
+                old_prompt: data.get('quescontent')
             })
         })
 
@@ -1251,10 +1253,10 @@
                 // prompt: "act as a content writer for a blog post. our task is to write full blog content about "+ edtrtrgtkwrd +" and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. After writing in detail about Keywords Then below you need to start writing detailed answers about these questions, firstly mention that question you've been provided then write its detailed answer, the questions are: " + data.get('atqstk'),
 				// prompt: "act as a content writer for a blog post centered around the blog title "+edtrmainval+ "Your task is to write full blog content and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " + data.get('atsemtk') + ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. write the content of minimum 1500 and maximum 2000 words. Try to write plagiarism free content. Important! After writing in details about keywords then below you need to start writing detailed answers about these questions. Firstly mention that question you've been provided then write its detailed answer. the questions are: " + data.get('atqstk'),
 				prompt: 'act as an expert content writer and write around 1500+ words about '+edtrtrgtkwrd+ ' your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: ' + data.get('atsemtk') + '. After writing in detail about this below you need to write detailed answer about these questions.  Firstly mention that question you have been provided then write its detailed answer. the questions are: ' + data.get('atqstk') +'. Remember do not write title in content.',
+                model: "gpt-3.5-turbo-0613",
                 old_prompt: data.get('old_prompt')
             })
         })
-
         clearInterval(loadInterval)
         messageDiv.innerHTML = " "
 
@@ -1271,7 +1273,7 @@
         }
     }
 
-    queform.addEventListener('submit', handleSubmitAW)
+    queform.addEventListener('submit', handleSubmit1)
 
     queform.addEventListener('keyup', (e) => {
         if (e.keyCode === 13) {
@@ -1282,7 +1284,7 @@
 
     atform.addEventListener('keyup', (e) => {
         if (e.keyCode === 13) {
-            handleSubmit1(e)
+            handleSubmitAW(e)
         }
     })
 </script>
@@ -1455,10 +1457,10 @@
             body: JSON.stringify({
                 _token: token,
                 prompt: data.get('mainrval'),
+				model: "gpt-3.5-turbo-0613",
                 old_prompt: data.get('old_prompt')
             })
         })
-
         clearInterval(loadInterval)
         messageDiv.innerHTML = " "
 
@@ -1820,10 +1822,10 @@
                 _token: token,
                 // prompt: "write about " + edtrmainval + " having these keywords " +data.get('semmainrval'),
                 prompt: "act as a content writer for a blog post centered around the blog title. our task is to write full blog content and you need to use in your writing H2, H3 and use Bold function for catch eyes of the readers, Additionally, your writing should be rich in SEO-friendly language, effectively incorporating the following keywords into your text: " +data.get('semmainrval')+ ". Remember, the goal is not only to weave these keywords seamlessly into your content, but also to ensure that the content remains engaging and informative for the readers. Try to write plagiarism free content. Important! You must to use this words " + edtrmainval + " in the first 150 characters. Don't write the title in the start.",
+				model: "gpt-3.5-turbo-0613",
                 old_prompt: data.get('old_prompt')
             })
         })
-
         clearInterval(loadInterval)
         messageDiv.innerHTML = " "
 

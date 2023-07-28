@@ -192,7 +192,8 @@ class EditorController extends Controller
             'role' => 'user',
             "content" => $request->prompt,
         );
-        $res = $this->get_response($old_prompt,$api_key);
+        $model = $request->model;
+        $res = $this->get_response($old_prompt,$api_key, $model);
 
         $save_res = json_decode(json_encode($res));
 
@@ -233,13 +234,14 @@ class EditorController extends Controller
         // return $res;
     }
 
-    public function get_response($prompt, $api_key)
+    public function get_response($prompt, $api_key, $model)
     {
         $client = \OpenAI::client($api_key);
 
         $post_array = array(
             // 'model'  => 'gpt-3.5-turbo',
-            'model' => 'gpt-3.5-turbo-0613',
+            // 'model' => 'gpt-3.5-turbo-0613',
+            'model' => $model,
             'messages'  => $prompt,
         );
 

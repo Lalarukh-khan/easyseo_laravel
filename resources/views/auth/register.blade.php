@@ -30,30 +30,16 @@
                 <input type="hidden" name="country" value="{{$currentUserInfo->countryName ?? 'Unknown'}}">
                 <input type="hidden" name="city" value="{{$currentUserInfo->cityName ?? 'Unknown'}}">
                 <div class="mb-3">
-                  <label for="username" class="form-label">First Name</label>
+                  <label for="username" class="form-label">Name</label>
                   <input
                     type="text"
                     class="form-control"
                     id="username"
-                    name="first_name" value="{{ old('first_name') }}" required
-                    placeholder="Enter your First Name"
+                    name="name" value="{{ old('name') }}" required
+                    placeholder="Enter your Name"
                     autofocus
                   />
-                    @error('first_name')
-                    <span class="text-danger mt-0 mb-1">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                  <label for="username" class="form-label">Last Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="last_name" value="{{ old('last_name') }}" required
-                    placeholder="Enter your Last Name"
-                    autofocus
-                  />
-                    @error('last_name')
+                    @error('name')
                     <span class="text-danger mt-0 mb-1">{{ $message }}</span>
                     @enderror
                 </div>

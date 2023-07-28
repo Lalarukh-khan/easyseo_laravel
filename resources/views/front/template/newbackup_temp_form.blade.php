@@ -50,7 +50,9 @@
         font-size: 18px;
         font-weight: 600;
     }
-
+	#indvdlsec0{
+		display: none !important;
+	}
     @keyframes s4 {
       to {
         transform: rotate(1turn)
@@ -79,6 +81,11 @@
         justify-content: center;
         align-items: center;
 	}
+	#ailoaderImp3{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+	}
 	#ailoaderskImp0{
 		text-align: center;
 		/* margin-top: 15%; */
@@ -91,22 +98,23 @@
 	}
 	#ailoaderskImp1{
 		text-align: center;
-		/* margin-top: 15%; */
 		justify-content: center;
 		align-items: center;
 		display: none;
-		/* margin-top: 100px; */
-		/* margin-bottom: 100px; */
 		margin-left: 45%;
 	}
 	#ailoaderskImp2{
 		text-align: center;
-		/* margin-top: 15%; */
 		justify-content: center;
 		align-items: center;
 		display: none;
-		/* margin-top: 100px; */
-		/* margin-bottom: 100px; */
+		margin-left: 45%;
+	}
+	#ailoaderskImp3{
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		display: none;
 		margin-left: 45%;
 	}
 	#resulted_phrase{
@@ -169,6 +177,9 @@
 		#rps2 {
 			margin-left: 130px;
 		}
+		#rps3 {
+			margin-left: 130px;
+		}
 	}
 	@media only screen and (min-width: 1480px) and (max-width: 1980px) {
 		#ailoadersk{
@@ -186,6 +197,9 @@
 			margin-left: 115px;
 		}
 		#rps2 {
+			margin-left: 115px;
+		}
+		#rps3 {
 			margin-left: 115px;
 		}
 	}
@@ -563,7 +577,7 @@
 								let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
 								let roundedscore = Math.round(seoScore);
 								var randomNumber = Math.floor(Math.random() * 10) + 1;
-								let roundedscorerps0 = roundedscore + randomNumber;
+								// let roundedscorerps0 = roundedscore + randomNumber;
 								if(roundedscore == 85){
 									let abvhndrd = "81";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
@@ -602,25 +616,25 @@
 									// paragraph.classList.add("rsltdvbrdrbtm");
 									document.getElementById("formscore").value = roundedscore;
 								}
-								if(roundedscorerps0 == 85){
-									roundedscorerps0 = "81";
-								}
-								else if(roundedscorerps0 >= 86 && roundedscorerps0 <= 90){
-									roundedscorerps0 = "82";
-								}
-								else if(roundedscorerps0 >= 91 && roundedscorerps0 <= 94){
-									roundedscorerps0 = "83";
-								}
-								else if(roundedscorerps0 >= 95 && roundedscorerps0 <= 99){
-									roundedscorerps0 = "84";
-								}
-								else if(roundedscorerps0 >= 100){
-									roundedscorerps0 = "85";
-								}
-								else{
-									document.getElementById("resulted_phrase").innerHTML = roundedscorerps0;
-									document.getElementById("formscore").value = roundedscorerps0;
-								}
+								// if(roundedscorerps0 == 85){
+								// 	roundedscorerps0 = "81";
+								// }
+								// else if(roundedscorerps0 >= 86 && roundedscorerps0 <= 90){
+								// 	roundedscorerps0 = "82";
+								// }
+								// else if(roundedscorerps0 >= 91 && roundedscorerps0 <= 94){
+								// 	roundedscorerps0 = "83";
+								// }
+								// else if(roundedscorerps0 >= 95 && roundedscorerps0 <= 99){
+								// 	roundedscorerps0 = "84";
+								// }
+								// else if(roundedscorerps0 >= 100){
+								// 	roundedscorerps0 = "85";
+								// }
+								// else{
+								// 	document.getElementById("resulted_phrase").innerHTML = roundedscorerps0;
+								// 	document.getElementById("formscore").value = roundedscorerps0;
+								// }
 								var seoform = document.getElementById('seo_content_form');
 								var seoformData = new FormData(seoform);
 								// const formInputs = document.querySelectorAll('#seo_content_form input');
@@ -651,26 +665,26 @@
 								else {
 									numberEl.style.border = "2px solid #39942f";
 								}
-								if(rpsnum == "rps0"){
-									const rpss0 = document.getElementById("rps0");
-									if(rpss0.innerText == ""){
-										rpss0.innerHTML = roundedscorerps0;
-										var rscselementStyle = window.getComputedStyle(numberEl);
-										var rscsbrdrrds = numberEl.style.borderRadius;
-										var rscspddng = numberEl.style.padding;
-										rpss0.style.borderRadius = rscsbrdrrds + "!important";
-										rpss0.style.padding = rscspddng + "!important";
-										if (roundedscorerps0 < 50) {
-											rpss0.style.border = "2px solid #f54c36";
-										}
-										else if (roundedscorerps0 >= 50 && roundedscorerps0 <= 70) {
-											rpss0.style.border = "2px solid #f7831e";
-										}
-										else {
-											rpss0.style.border = "2px solid #39942f";
-										}
-									}
-								}
+								// if(rpsnum == "rps0"){
+								// 	const rpss0 = document.getElementById("rps0");
+								// 	if(rpss0.innerText == ""){
+								// 		rpss0.innerHTML = roundedscorerps0;
+								// 		var rscselementStyle = window.getComputedStyle(numberEl);
+								// 		var rscsbrdrrds = numberEl.style.borderRadius;
+								// 		var rscspddng = numberEl.style.padding;
+								// 		rpss0.style.borderRadius = rscsbrdrrds + "!important";
+								// 		rpss0.style.padding = rscspddng + "!important";
+								// 		if (roundedscorerps0 < 50) {
+								// 			rpss0.style.border = "2px solid #f54c36";
+								// 		}
+								// 		else if (roundedscorerps0 >= 50 && roundedscorerps0 <= 70) {
+								// 			rpss0.style.border = "2px solid #f7831e";
+								// 		}
+								// 		else {
+								// 			rpss0.style.border = "2px solid #39942f";
+								// 		}
+								// 	}
+								// }
 								// if(rpsnum == "rps2"){
 								// 	const rpss0 = document.getElementById("rps0");
 								// 	var rscselementStyle = window.getComputedStyle(numberEl);
@@ -958,7 +972,9 @@
                     // }else{
                     //     $('#ans_div').show();
                     // }
-                    $('#ans_div').show();
+					if(number == 1){
+                    	$('#ans_div').show();
+					}
 
 
                     const first_result_div = document.getElementById("first_result_div");
@@ -1037,10 +1053,10 @@
 						document.getElementById("datamsg"+number).innerHTML = cntntresult;
 					}
 					
-                    // console.log(number);
-                    // console.log(times);
-
-                    if (number < times-1) {
+                    // console.log("number"+number);
+                    // console.log("times"+times);
+					const newtimes = times+1;
+                    if (number < newtimes-1) {
                         formSubmit(0,'', number+1, times,true,content);
                         return false;
                     }
@@ -1107,30 +1123,34 @@
 						// whlsectks.style.marginBottom = "50px";
 						impscoretags.style.display = "flex";
 						var content =  data.message;
-						var firstSpecificWord = "2.";
-						var firstSpecificWordWithSpace = "<br />";
-						var secondSpecificWord = "3.";
-						var secondSpecificWordWithSpace = "<br />";
-						var words = content.trim().split(/\s+/);
-						var firstIndex = words.findIndex(function(word) {
-							return word === firstSpecificWord;
-						});
-						if (firstIndex !== -1 && firstIndex > 0) {
-							var wordBefore = words[firstIndex - 1];
-							if (wordBefore !== firstSpecificWordWithSpace) {
-							words.splice(firstIndex, 0, firstSpecificWordWithSpace);
-							}
-						}
-						var secondIndex = words.findIndex(function(word) {
-							return word === secondSpecificWord;
-						});
-						if (secondIndex !== -1 && secondIndex > 0) {
-							var wordBefore = words[secondIndex - 1];
-							if (wordBefore !== secondSpecificWordWithSpace) {
-							words.splice(secondIndex, 0, secondSpecificWordWithSpace);
-							}
-						}
-						content = words.join(" ");
+						// var nwcontent = data.message;
+						// console.log("recieved messgae "+nwcontent);
+						// var content = nwcontent.replace(new RegExp(/<br>\s*<br>(?=\s*(2\.|3\.))/g), "<br>");
+						// console.log("after messgae "+content);
+						// var firstSpecificWord = "2.";
+						// var firstSpecificWordWithSpace = "<br />";
+						// var secondSpecificWord = "3.";
+						// var secondSpecificWordWithSpace = "<br />";
+						// var words = content.trim().split(/\s+/);
+						// var firstIndex = words.findIndex(function(word) {
+						// 	return word === firstSpecificWord;
+						// });
+						// if (firstIndex !== -1 && firstIndex > 0) {
+						// 	var wordBefore = words[firstIndex - 1];
+						// 	if (wordBefore !== firstSpecificWordWithSpace) {
+						// 	words.splice(firstIndex, 0, firstSpecificWordWithSpace);
+						// 	}
+						// }
+						// var secondIndex = words.findIndex(function(word) {
+						// 	return word === secondSpecificWord;
+						// });
+						// if (secondIndex !== -1 && secondIndex > 0) {
+						// 	var wordBefore = words[secondIndex - 1];
+						// 	if (wordBefore !== secondSpecificWordWithSpace) {
+						// 	words.splice(secondIndex, 0, secondSpecificWordWithSpace);
+						// 	}
+						// }
+						// content = words.join(" ");
 						document.getElementById(content_tag).innerHTML = content;
 						document.getElementById("details").value = data.message;
 						// $('#first_result_div').val(data.message);
@@ -1142,30 +1162,6 @@
 						// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
 						// const score = $("#first_result_div").text();
 						const score = data.score;
-						// const content = data.message
-
-						// getSeoScore(score,improve_content,improve_score);
-						// if(impscoretag == "rps0"){ 
-						// 	document.getElementById("resulted_phrase").innerHTML = score;
-						// 	document.getElementById("formscore").value = score;
-						// 	const numberEl = document.getElementById("resulted_phrase");
-						// 	const number = parseInt(numberEl.textContent);
-
-						// 	numberEl.style.borderRadius = "50%";
-						// 	numberEl.style.padding = "10px";
-						// 	numberEl.style.display = "flex";
-
-						// 	if (number < 50) {
-						// 		numberEl.style.border = "2px solid #f54c36";
-						// 	}
-						// 	else if (number > 50 && number < 70) {
-						// 		numberEl.style.border = "2px solid #f7831e";
-						// 	}
-						// 	else {
-						// 		numberEl.style.border = "2px solid #39942f";
-						// 	}
-						// }
-						// else{
 							var impinrwhlbtn = document.getElementById(CImpScoreTagtken);
 							impinrwhlbtn.style.display = "none";
 							document.getElementById(impscoretag).innerHTML = score;

@@ -110,7 +110,7 @@
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-4 col-4">
                             <label class="switch2">
-                                <input type="checkbox" id="toggleyearly" checked>
+                                <input type="checkbox" id="toggleyearly">
                                 <span class="slider2 round2 hmnwtbbck"></span>
                             </label>
                         </div>
@@ -175,13 +175,13 @@
                                         <img src="{{asset('front')}}/images/dollar-icon.svg">
                                     </div>
                                     <div class="pricing-title">
-                                        <h4 class="col-white" id="solo_proprice2"> $19.90/Mon </h4>
+                                        <h4 class="col-white" id="solo_proprice2"> $18/Mon </h4>
                                         <p class="tas" id="solo_protoken2">20,000 words</p>
                                         <p class="tas" id="solo_proreport">10 reports</p>
                                     </div>
                                 </div>
                                 <div class="package-price w-100 text-center mb-4" id="professional">
-                                    <h4 id="solo_proprice"> $ 19.90 </h4>
+                                    <h4 id="solo_proprice"> $ 18 </h4>
                                     <div>
                                         <div class="demo">
                                             <div class="range-slider">
@@ -848,10 +848,10 @@ function detailFunction(value) {
             $('#level').val(value);
             // alert(value);
             if (value == 0) {
-                $('#solo_proprice').html('$24.90');
-                $('.solo_proprice_y').html('$19.90');
-                $('#solo_proprice2').html('$24.90/Mon');
-                $('.solo_proprice2_y').html('$19.90/Mon');
+                $('#solo_proprice').html('$15');
+                $('.solo_proprice_y').html('$18');
+                $('#solo_proprice2').html('$15/Mon');
+                $('.solo_proprice2_y').html('$18/Mon');
                 $('#solo_protoken').html('20,000 words');
                 $('#solo_protoken2').html('20,000 words');
                 $('#solo_proreport').html('10 reports');
@@ -911,10 +911,10 @@ function detailFunction(value) {
                 }
             }
             if (value == 1) {
-                $('#solo_proprice').html('$34.90');
-                $('.solo_proprice_y').html('$29.90');
-                $('#solo_proprice2').html('$34.90/Mon');
-                $('.solo_proprice2_y').html('$29.90/Mon');
+                $('#solo_proprice').html('$22');
+                $('.solo_proprice_y').html('$28');
+                $('#solo_proprice2').html('$22/Mon');
+                $('.solo_proprice2_y').html('$28/Mon');
                 $('#solo_protoken').html('50,000 words');
                 $('#solo_protoken2').html('50,000 words');
                 $('#solo_proreport').html('30 reports');
@@ -977,10 +977,10 @@ function detailFunction(value) {
                 }
             }
             if (value == 2) {
-                $('#solo_proprice').html('$99.90');
-                $('.solo_proprice_y').html('$79.90');
-                $('#solo_proprice2').html('$99.90/Mon');
-                $('.solo_proprice2_y').html('$79.90/Mon');
+                $('#solo_proprice').html('$39');
+                $('.solo_proprice_y').html('$49');
+                $('#solo_proprice2').html('$39/Mon');
+                $('.solo_proprice2_y').html('$49/Mon');
                 $('#solo_protoken').html('200,000 words');
                 $('#solo_protoken2').html('200,000 words');
                 $('#solo_proreport').html('80 reports');
@@ -1040,10 +1040,10 @@ function detailFunction(value) {
                 }
             }
             if (value == 3) {
-                $('#solo_proprice').html('$159.90');
-                $('.solo_proprice_y').html('$129.90');
-                $('#solo_proprice2').html('$159.90/Mon');
-                $('.solo_proprice2_y').html('$129.90/Mon');
+                $('#solo_proprice').html('$71');
+                $('.solo_proprice_y').html('$89');
+                $('#solo_proprice2').html('$71/Mon');
+                $('.solo_proprice2_y').html('$89/Mon');
                 $('#solo_protoken').html('500,000 words');
                 $('#solo_protoken2').html('500,000 words');
                 $('#solo_proreport').html('200 reports');
@@ -1156,10 +1156,10 @@ function detailFunction(value) {
 
         function soloyearlyplan(){
             $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$19.90');
-            $('.solo_proprice_y').html('$19.90');
-            $('#solo_proprice2').html('$19.90/Mon');
-            $('.solo_proprice2_y').html('$19.90/Mon');
+            $('#solo_proprice').html('$18');
+            $('.solo_proprice_y').html('$18');
+            $('#solo_proprice2').html('$18/Mon');
+            $('.solo_proprice2_y').html('$18/Mon');
             $('#solo_protoken').html('20,000 words');
             $('#solo_protoken2').html('20,000 words');
             $('#solo_proreport').html('10 reports');
@@ -1210,10 +1210,10 @@ function detailFunction(value) {
 
         function solomonthlyplan(){
             $("input#solo_proplan").val(0);
-            $('#solo_proprice').html('$24.90');
-            $('.solo_proprice_y').html('$24.90');
-            $('#solo_proprice2').html('$24.90/Mon');
-            $('.solo_proprice2_y').html('$24.90/Mon');
+            $('#solo_proprice').html('$15');
+            $('.solo_proprice_y').html('$15');
+            $('#solo_proprice2').html('$15/Mon');
+            $('.solo_proprice2_y').html('$15/Mon');
             $('#solo_protoken').html('20,000 words');
             $('#solo_protoken2').html('20,000 words');
             $('#solo_proreport').html('10 reports');
@@ -1266,10 +1266,10 @@ function detailFunction(value) {
             var value = $(this).val();
             $('#level').val(value);
             if (value == 0) {
-                $('#solo_proprice').html('$24.90');
-                $('.solo_proprice_y').html('$19.90');
-                $('#solo_proprice2').html('$24.90/Mon');
-                $('.solo_proprice2_y').html('$19.90/Mon');
+                $('#solo_proprice').html('$15');
+                $('.solo_proprice_y').html('$18');
+                $('#solo_proprice2').html('$15/Mon');
+                $('.solo_proprice2_y').html('$18/Mon');
                 $('#solo_protoken').html('20,000 words');
                 $('#solo_protoken2').html('20,000 words');
                 $('#solo_proreport').html('10 reports');
@@ -1329,10 +1329,10 @@ function detailFunction(value) {
                 }
             }
             if (value == 1) {
-                $('#solo_proprice').html('$34.90');
-                $('.solo_proprice_y').html('$29.90');
-                $('#solo_proprice2').html('$34.90/Mon');
-                $('.solo_proprice2_y').html('$29.90/Mon');
+                $('#solo_proprice').html('$22');
+                $('.solo_proprice_y').html('$28');
+                $('#solo_proprice2').html('$22/Mon');
+                $('.solo_proprice2_y').html('$28/Mon');
                 $('#solo_protoken').html('50,000 words');
                 $('#solo_protoken2').html('50,000 words');
                 $('#solo_proreport').html('30 reports');
@@ -1395,10 +1395,10 @@ function detailFunction(value) {
                 }
             }
             if (value == 2) {
-                $('#solo_proprice').html('$99.90');
-                $('.solo_proprice_y').html('$79.90');
-                $('#solo_proprice2').html('$99.90/Mon');
-                $('.solo_proprice2_y').html('$79.90/Mon');
+                $('#solo_proprice').html('$39');
+                $('.solo_proprice_y').html('$49');
+                $('#solo_proprice2').html('$39/Mon');
+                $('.solo_proprice2_y').html('$49/Mon');
                 $('#solo_protoken').html('200,000 words');
                 $('#solo_protoken2').html('200,000 words');
                 $('#solo_proreport').html('80 reports');
@@ -1458,10 +1458,10 @@ function detailFunction(value) {
                 }
             }
             if (value == 3) {
-                $('#solo_proprice').html('$159.90');
-                $('.solo_proprice_y').html('$129.90');
-                $('#solo_proprice2').html('$159.90/Mon');
-                $('.solo_proprice2_y').html('$129.90/Mon');
+                $('#solo_proprice').html('$71');
+                $('.solo_proprice_y').html('$89');
+                $('#solo_proprice2').html('$71/Mon');
+                $('.solo_proprice2_y').html('$89/Mon');
                 $('#solo_protoken').html('500,000 words');
                 $('#solo_protoken2').html('500,000 words');
                 $('#solo_proreport').html('200 reports');

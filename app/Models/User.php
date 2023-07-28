@@ -20,8 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
         'email',
         'password',
     ];
@@ -47,7 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getFullNameAttribute()
     {
-        return ucwords($this->first_name . ' ' . $this->last_name);
+        // return ucwords($this->first_name . ' ' . $this->last_name);
+        return ucwords($this->name);
     }
 
     public function history()

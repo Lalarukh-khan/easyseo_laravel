@@ -43,12 +43,8 @@
                                         <form method="POST" action="{{route('user.profile.update')}}" class="row g-3 ajaxForm" enctype="multipart/form-data">
                                             @csrf
                                             <div class="col-6">
-                                                <label class="form-label">First Name</label>
-                                                <input type="text" name="first_name" value="{{$edit->first_name}}" class="form-control">
-                                            </div>
-                                            <div class="col-6">
-                                                <label class="form-label">Last Name</label>
-                                                <input type="text" name="last_name" value="{{$edit->last_name}}" class="form-control">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" name="name" value="{{$edit->name}}" class="form-control">
                                             </div>
                                             <div class="col-6">
                                                 <label class="form-label">Email</label>

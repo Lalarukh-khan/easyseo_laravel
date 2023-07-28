@@ -23,8 +23,7 @@
                 <thead>
                     <tr>
                         <th style="color: black; display:none">id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Name</th>
                         <th>Email</th>
                         <th>Status</th>
                         <th>Package</th>
@@ -60,12 +59,8 @@ var table = $('#zero-config').DataTable({
             visible: false,
         },
         {
-            data: 'first_name',
-            name: 'first_name'
-        },
-        {
-            data: 'last_name',
-            name: 'last_name'
+            data: 'name',
+            name: 'name'
         },
         {
             data: 'email',

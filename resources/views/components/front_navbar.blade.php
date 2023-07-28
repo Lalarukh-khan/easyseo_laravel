@@ -21,7 +21,7 @@
                         data-bs-toggle="dropdown">
                         <div class="d-flex user-box align-items-center">
                             <div class="user-info">
-                                <p class="user-name mb-0 nwuser-name">{{auth('web')->user()->first_name .' '.auth('web')->user()->last_name}} </p>
+                                <p class="user-name mb-0 nwuser-name">{{auth('web')->user()->name}} </p>
                             </div>
                             <img src="{{asset(check_file(auth('web')->user()->image,'user'))}}" class="user-img"
                                 alt="user avatar">

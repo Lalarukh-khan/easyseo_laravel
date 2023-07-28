@@ -44,8 +44,9 @@ class SocialController extends Controller
                 $newUser                    = new User;
                 $newUser->provider_name     = $provider;
                 $newUser->provider_id       = $user->id;
-                $newUser->first_name        = @$userName[0];
-                $newUser->last_name        = @$userName[1];
+                // $newUser->first_name        = @$userName[0];
+                // $newUser->last_name        = @$userName[1];
+                $newUser->name        = @$userName[0];
                 $newUser->email             = $user->email;
                 $newUser->unique_id = mt_rand(111111,999999);
                 $newUser->email_verified_at = now();
@@ -62,8 +63,9 @@ class SocialController extends Controller
                 $newUser                    = new User;
                 $newUser->provider_name     = $provider;
                 $newUser->provider_id       = $user->getId();
-                $newUser->first_name        = @$userName[0];
-                $newUser->last_name        = @$userName[1];
+                // $newUser->first_name        = @$userName[0];
+                // $newUser->last_name        = @$userName[1];
+                $newUser->name        = @$userName[0];
                 $newUser->email             = $user->getEmail();
                 $newUser->unique_id = mt_rand(111111,999999);
                 // we set email_verified_at because the user's email is already veridied by social login portal

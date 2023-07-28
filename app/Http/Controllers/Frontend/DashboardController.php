@@ -115,7 +115,7 @@ class DashboardController extends Controller
     public function update_profile(Request $request)
     {
         $rules = [
-            'first_name' => 'string|max:50',
+            'name' => 'string|max:50',
             'last_name' => 'string|max:50',
             'password' => 'string|min:8|max:16',
         ];
@@ -131,8 +131,7 @@ class DashboardController extends Controller
         }
 
         $user = User::find($request->id);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
+        $user->name = $request->name;
         if ($request->hasFile('profile_image')) {
             $profile_img = uploadSingleFile($request->file('profile_image'), 'uploads/profile_images/');
             if (is_array($profile_img)) {

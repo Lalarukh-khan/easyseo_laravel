@@ -57,11 +57,11 @@
       }
     }
 	#ailoadersk{
-		text-align: center; 
+		text-align: center;
 		margin-top: 15%;
 		display: flex;
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		margin-left: -30% !important;
 	}
 	#ailoaderImp0{
@@ -80,30 +80,30 @@
         align-items: center;
 	}
 	#ailoaderskImp0{
-		text-align: center; 
+		text-align: center;
 		/* margin-top: 15%; */
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		display: none;
 		/* margin-top: 100px; */
 		/* margin-bottom: 100px; */
 		margin-left: 45%;
 	}
 	#ailoaderskImp1{
-		text-align: center; 
+		text-align: center;
 		/* margin-top: 15%; */
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		display: none;
 		/* margin-top: 100px; */
 		/* margin-bottom: 100px; */
 		margin-left: 45%;
 	}
 	#ailoaderskImp2{
-		text-align: center; 
+		text-align: center;
 		/* margin-top: 15%; */
 		justify-content: center;
-		align-items: center; 
+		align-items: center;
 		display: none;
 		/* margin-top: 100px; */
 		/* margin-bottom: 100px; */
@@ -120,21 +120,33 @@
 			#resulted_phrase{
 				margin-left: -40px !important;
 			}
-	} 
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
+	}
 	@media only screen and (min-width: 1880px) and (max-width: 1980px) {
 		#resulted_phrase{
 			margin-left: -40px !important;
 		}
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
 	}
 	@media only screen and (min-width: 1780px) and (max-width: 1880px) {
 		#resulted_phrase{
 			margin-left: -145px !important;
 		}
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
 	}
 	@media only screen and (min-width: 1580px) and (max-width: 1780px) {
 		#resulted_phrase{
 			margin-left: -131px !important;
 		}
+			.tempsideimg {
+				margin-left: 15% !important;
+			}
 	}
 	@media only screen and (min-width: 1200px) and (max-width: 1580px) {
 		#resulted_phrase{
@@ -187,6 +199,9 @@
 <div id="sbsmsg" style="display: none;">
 	@include('components.improve_msg')
 </div>
+<div id="wrdtmpsmsg" style="display: none;">
+	@include('components.template_words_msg')
+</div>
 <!--breadcrumb-->
 {{-- <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
     <div class="ps-3">
@@ -197,7 +212,7 @@
                 <li class="breadcrumb-item" aria-current="page">Template</li>
                 <li class="breadcrumb-item active" aria-current="page">{{$template_data->name}}</li>
             </ol>
-        </nav>
+        </nav> 
     </div>
 </div> --}}
 @include('components.flash-message')
@@ -208,7 +223,7 @@
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-3">
 						<div class="tempsideimg">
-							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 100%; height: 50px; object-fit: contain;">
+							<img src="{{asset($template_data->icon)}}" alt="template logo" style="width: 100%; height: 50px; margin-left: 0px;object-fit: contain;">
 						</div>
 					</div>
 					<div class="col-lg-10 col-md-10 col-sm-9 col-9">
@@ -256,7 +271,7 @@
                         </div>
                         <textarea class="form-control input_length_validate" data-key=".update_length_{{$k}}"
                             name="input[text{{++$k}}]" id="" rows="3" placeholder="{{$item->placeholder}}"
-                            required></textarea>
+                            required></textarea> 
                     </div>
                     @endif
                     @if ($item->type == 'long_text')
@@ -332,6 +347,7 @@
                     </div> --}}
                     @endif
 					<div class="row genbtntmpbt">
+						<div id="wrdserrortemp" class="text-center" style="margin-bottom: 20px"></div>
 						<div class="col-lg-4 col-md-4 col-sm-4 col-4">
 							<button class="clrtempimp" id="clrtempimp"><i class="bx bx-x"></i> Clear inputs</button>
 						</div>
@@ -342,7 +358,7 @@
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-6">
                         	<button class="btn btn-info nwtmcreatecontent" type="button" id="form_submit" {{
-                            session()->has('package-error') ? 'disabled' : '' }}>Generate</button>
+                            session()->has('package-error') ? 'disabled' : '' }} >Generate</button>
 						</div>
 					</div>
                 </form>
@@ -358,7 +374,62 @@
                     <span id="loader-text">Generating</span>
             </div> -->
 
-			<div id="ai-loader" style="text-align:center;display:none">
+            <div class="form-group" id="ans_div" style="display:none;">
+                <div class="toprightemp">
+                    <!-- <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-3 col-3">
+                            <p class="tmphistry">History</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-5 col-5">
+                            <p class="tmpclr">Clear</p>
+                        </div>
+                    </div> -->
+                    <button class="tmpnwotp">New outputs <span id="rps0taker"></span><span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
+                </div>
+                <div class="row" id="tmprsltdwholebox">
+                    <div id="frbrdrbtm" style="display: none;">
+                            <br>
+                            <p class="rsltdvbrdrbtm"> </p>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-1">
+                                <div id="resulted_phrase"></div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
+                        </div>
+                        <div class="col-lg-1" style="padding-top: 20px;" >
+                                <div id="resulted_phrase" ></div>
+                        </div>
+                        <div class="col-lg-2"></div>
+                    </div>
+                    <!-- <div style="display:none;" id="takeimpcntnt">
+                    <div class="row">
+                        <div class="col-lg-4">
+                        <button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore" >Improve Score</button>
+                        </div>
+                        <div class="col-lg-8"></div>
+                    </div>
+                    </div> -->
+                    <br>
+                    <textarea name="content" id="details" cols="30" rows="10" style="display: none !important;"></textarea>
+                    {{--<form action="{{route('user.template.form_seo_score')}}" method="post">--}}
+                    <form id="seo_content_form" style="display: none !important;">
+                        @csrf
+                        <input type="text" name="score" id="formscore">
+                        <input type="text" name="temp_id" id="temp_id">
+                    </form>
+                </div>
+            </div>
+
+			{{-- <div id="ai-loader" style="text-align:center;display:none">
 				<div class="sk-circle-fade sk-primary" id="ailoadersk">
 					<div class="sk-circle-fade-dot"></div>
 					<div class="sk-circle-fade-dot"></div>
@@ -373,61 +444,8 @@
 					<div class="sk-circle-fade-dot"></div>
 					<div class="sk-circle-fade-dot"></div>
 				</div>
-			</div>
-			<div class="form-group" id="ans_div" style="display:none;">
-					<div class="toprightemp">
-						<!-- <div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-4 col-4">
-								<button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
-							</div>
-							<div class="col-lg-4 col-md-4 col-sm-3 col-3">
-								<p class="tmphistry">History</p>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-5 col-5">
-								<p class="tmpclr">Clear</p>
-							</div>
-						</div> -->
-						<button class="tmpnwotp">New outputs <span class="tmpnwotpsp" id="tmpnwotpsp"></span></button>
-					</div>
-					<div class="row" id="tmprsltdwholebox">
-						<div id="frbrdrbtm" style="display: none;">
-								<br>
-								<p class="rsltdvbrdrbtm"> </p>
-						</div>
-						<!-- <div class="row">
-							<div class="col-lg-8"></div>
-							<div class="col-lg-1">
-									<div id="resulted_phrase"></div>
-							</div>
-							<div class="col-lg-3"></div>
-						</div> -->
-						<div class="row" id="clearitscontent">
-							<div class="col-lg-9">
-								<div name="" id="first_result_div" class="tempfrstrsltdiv"></div>
-							</div>
-							<div class="col-lg-1" style="padding-top: 20px;" >
-									<div id="resulted_phrase" ></div>
-							</div>
-							<div class="col-lg-2"></div>
-						</div>
-						<!-- <div style="display:none;" id="takeimpcntnt">
-						<div class="row">
-							<div class="col-lg-4">
-							<button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore" >Improve Score</button>
-							</div>
-							<div class="col-lg-8"></div>
-						</div>
-						</div> -->
-						<br>
-                        <textarea name="content" id="details" cols="30" rows="10" style="display: none !important;"></textarea> 
-                        {{--<form action="{{route('user.template.form_seo_score')}}" method="post">--}}
-                        <form id="seo_content_form" style="display: none !important;">
-                            @csrf
-                            <input type="text" name="score" id="formscore">
-                            <input type="text" name="temp_id" id="temp_id">
-                        </form>
-                    </div>
-			</div>
+			</div> --}}
+
 		</div>
 	</div>
 </div>
@@ -447,9 +465,13 @@
       }
     });
 	 	var sbsmsg = document.getElementById("sbsmsg").innerHTML;
+	 	var wrdtmpsmsg = document.getElementById("wrdtmpsmsg");
 		var frbrdrbtm = document.getElementById("frbrdrbtm");
         var belowofrslt = frbrdrbtm.innerHTML;
         var result = "";
+		if(wrdtmpsmsg.textContent.trim() !== ''){
+			document.getElementById("wrdserrortemp").innerHTML = wrdtmpsmsg.innerHTML;
+		}
 	var numberInput = document.getElementById("numberInput");
         numberInput.addEventListener("input", function() {
             var input = parseInt(numberInput.value);
@@ -461,7 +483,8 @@
     var listvalues = [];
     var keywords = [];
 
-    function getSeoScore(score,content,improve_score, rpsnum) {
+
+    function getSeoScore(score,content,improve_score,rpsnum) {
 
 		if(improve_score == true){
 
@@ -493,16 +516,16 @@
 				"text": content,
 				"language_name": "English (United States)"
 			});
-			const nwpostarray = JSON.stringify(post_array);
 			const username = 'lidanex@gmail.com';
 			const password = 'fc53e701e81bec41';
+
 			fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': 'Basic ' + btoa(username + ':' + password)
 			},
-			body:  JSON.stringify(post_array)
+			body: JSON.stringify(post_array)
 			})
 			.then(response => response.json())
 			.then(data => {
@@ -539,10 +562,36 @@
 								// let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 1) + (smog_readability_index * 1);
 								let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
 								let roundedscore = Math.round(seoScore);
-								if(roundedscore > 85){
+								var randomNumber = Math.floor(Math.random() * 10) + 1;
+								let roundedscorerps0 = roundedscore + randomNumber;
+								if(roundedscore == 85){
+									let abvhndrd = "81";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+								}
+								else if(roundedscore >= 86 && roundedscore <= 90){
+									let abvhndrd = "82";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "82";
+								}
+								else if(roundedscore >= 91 && roundedscore <= 94){
+									let abvhndrd = "83";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "83";
+								}
+								else if(roundedscore >= 95 && roundedscore <= 99){
+									let abvhndrd = "84";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "84";
+								}
+								else if(roundedscore >= 100){
 									let abvhndrd = "85";
 									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
 									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "85";
 								}
 								else{
 									document.getElementById("resulted_phrase").innerHTML = roundedscore;
@@ -553,13 +602,32 @@
 									// paragraph.classList.add("rsltdvbrdrbtm");
 									document.getElementById("formscore").value = roundedscore;
 								}
+								if(roundedscorerps0 == 85){
+									roundedscorerps0 = "81";
+								}
+								else if(roundedscorerps0 >= 86 && roundedscorerps0 <= 90){
+									roundedscorerps0 = "82";
+								}
+								else if(roundedscorerps0 >= 91 && roundedscorerps0 <= 94){
+									roundedscorerps0 = "83";
+								}
+								else if(roundedscorerps0 >= 95 && roundedscorerps0 <= 99){
+									roundedscorerps0 = "84";
+								}
+								else if(roundedscorerps0 >= 100){
+									roundedscorerps0 = "85";
+								}
+								else{
+									document.getElementById("resulted_phrase").innerHTML = roundedscorerps0;
+									document.getElementById("formscore").value = roundedscorerps0;
+								}
 								var seoform = document.getElementById('seo_content_form');
 								var seoformData = new FormData(seoform);
 								// const formInputs = document.querySelectorAll('#seo_content_form input');
 								// formInputs.forEach(function(input) {
 								// });
 								$.ajax({
-									url: "{{ route('user.template.seo_form_submit') }}",
+									url: "{{ route('user.template.seo_form_submit') }}", 
 									method: "POST",
 									data: seoformData,
 									dataType: 'json',
@@ -569,10 +637,8 @@
 										console.log(data);
 									}
 								});
-
 								const numberEl = document.getElementById("resulted_phrase");
 								const number = parseInt(numberEl.textContent);
-
 								numberEl.style.borderRadius = "50%";
 								numberEl.style.padding = "10px";
 
@@ -585,43 +651,66 @@
 								else {
 									numberEl.style.border = "2px solid #39942f";
 								}
-								if(rpsnum == "rps2"){
+								console.log("THe socre is: "+roundedscore);
+								if(rpsnum == "rps0"){
 									const rpss0 = document.getElementById("rps0");
-									var rscselementStyle = window.getComputedStyle(numberEl);
-									var rscsbrdrrds = numberEl.style.borderRadius;
-									var rscspddng = numberEl.style.padding;
-									rpss0.innerHTML = numberEl.innerHTML;
-									rpss0.style.borderRadius = rscsbrdrrds + "!important";
-									rpss0.style.padding = rscspddng + "!important";
-									if (number < 50) {
-										rpss0.style.border = "2px solid #f54c36";
-									}
-									else if (number >= 50 && number <= 70) {
-										rpss0.style.border = "2px solid #f7831e";
-									}
-									else {
-										rpss0.style.border = "2px solid #39942f";
+									if(rpss0.innerText == ""){
+										rpss0.innerHTML = roundedscorerps0;
+										var rscselementStyle = window.getComputedStyle(numberEl);
+										var rscsbrdrrds = numberEl.style.borderRadius;
+										var rscspddng = numberEl.style.padding;
+										rpss0.style.borderRadius = rscsbrdrrds + "!important";
+										rpss0.style.padding = rscspddng + "!important";
+										// rpss0.innerHTML = roundedscore;
+										// rpss0.style.borderRadius = "50% !important";
+										// rpss0.style.padding = "10px !important";
+										if (roundedscorerps0 < 50) {
+											rpss0.style.border = "2px solid #f54c36";
+										}
+										else if (roundedscorerps0 >= 50 && roundedscorerps0 <= 70) {
+											rpss0.style.border = "2px solid #f7831e";
+										}
+										else {
+											rpss0.style.border = "2px solid #39942f";
+										}
 									}
 								}
-								else{
-									const rpss0 = document.getElementById("rps0");
-									var rscselementStyle = window.getComputedStyle(numberEl);
-									var rscsbrdrrds = numberEl.style.borderRadius;
-									var rscspddng = numberEl.style.padding;
-									rpss0.innerHTML = numberEl.innerHTML;
-									rpss0.style.borderRadius = rscsbrdrrds + "!important";
-									rpss0.style.padding = rscspddng + "!important";
-									if (number < 50) {
-										rpss0.style.border = "2px solid #f54c36";
-									}
-									else if (number >= 50 && number <= 70) {
-										rpss0.style.border = "2px solid #f7831e";
-									}
-									else {
-										rpss0.style.border = "2px solid #39942f";
-									}
-
-								}
+								// if(rpsnum == "rps2"){
+								// 	const rpss0 = document.getElementById("rps0");
+								// 	var rscselementStyle = window.getComputedStyle(numberEl);
+								// 	var rscsbrdrrds = numberEl.style.borderRadius;
+								// 	var rscspddng = numberEl.style.padding;
+								// 	rpss0.innerHTML = numberEl.innerHTML;
+								// 	rpss0.style.borderRadius = rscsbrdrrds + "!important";
+								// 	rpss0.style.padding = rscspddng + "!important";
+								// 	if (number < 50) {
+								// 		rpss0.style.border = "2px solid #f54c36";
+								// 	}
+								// 	else if (number >= 50 && number <= 70) {
+								// 		rpss0.style.border = "2px solid #f7831e";
+								// 	}
+								// 	else {
+								// 		rpss0.style.border = "2px solid #39942f";
+								// 	}
+								// }
+								// else{
+								// 	const rpss0 = document.getElementById("rps0");
+								// 	var rscselementStyle = window.getComputedStyle(numberEl);
+								// 	var rscsbrdrrds = numberEl.style.borderRadius;
+								// 	var rscspddng = numberEl.style.padding;
+								// 	rpss0.innerHTML = numberEl.innerHTML;
+								// 	rpss0.style.borderRadius = rscsbrdrrds + "!important";
+								// 	rpss0.style.padding = rscspddng + "!important";
+								// 	if (number < 50) {
+								// 		rpss0.style.border = "2px solid #f54c36";
+								// 	}
+								// 	else if (number >= 50 && number <= 70) {
+								// 		rpss0.style.border = "2px solid #f7831e";
+								// 	}
+								// 	else {
+								// 		rpss0.style.border = "2px solid #39942f";
+								// 	}
+								// }
 								// html += `<p class="gnrtdtext">${generated_text}</p>`;
 							}
 						}
@@ -633,68 +722,6 @@
 			// .catch(error => console.error(error));
 
 		}
-	}
-    // const impscore = document.querySelector('#impscore');
-	// impscore.addEventListener('click', function() {
-	// 	// $('#ai-loader').show();
-	// 	templateLoader('#ai-loader','show');
-	// 	$('#ans_div').hide();
-	// 	$('#impscore').hide();
-	// 	const content = document.querySelector('#details').value;
-	// 	results(content);
-	// });
-
-    function results(content) {
-
-		var getContent = document.getElementById("first_result_div").innerHTML
-		formSubmit(1,getContent);
-		return false;
-
-		// const url = 'https://api.dataforseo.com/v3/content_generation/paraphrase/live';
-		// const post_array = [];
-		// post_array.push({
-				// "text": content,
-				// "language_name": "English (United States)"
-		// });
-		// const username = 'lidanex@gmail.com';
-		// const password = 'fc53e701e81bec41';
-
-		// fetch(url, {
-		// method: 'POST',
-		// headers: {
-			// 'Content-Type': 'application/json',
-			// 'Authorization': 'Basic ' + btoa(username + ':' + password)
-		// },
-		// body: JSON.stringify(post_array)
-		// })
-		// .then(response => response.json())
-		// .then(data => {
-			// const apiResponse = data;
-			// this.list.push({
-				// "response": apiResponse
-		        // })
-                // for (const key of Object.keys(this.list)) {
-                    // this.listvalues.push(this.list[key]);
-                // }
-            // const finallist = this.list;
-                    // for (let i = 0; i < finallist.length; i++) {
-                    // const item = finallist[i];
-                    // for (let j = 0; j < item.response.tasks.length; j++) {
-                        // const subitem = item.response.tasks[j];
-                        // for (let z = 0; z < subitem.result.length; z++) {
-                        // const subitem2 = subitem.result[z];
-                        // const generated_text = subitem2.generated_text;
-                        $('#ai-loader').hide();
-                        // templateLoader('#ai-loader','hide');
-                        // $('#ans_div').show();
-                        // document.getElementById("first_result_div").innerHTML = generated_text;
-                        // const score = generated_text;
-	                    // getImpSeoScore(score);
-                        // }
-                    // }
-                    // }
-			// })
-		// .catch(error => console.error(error));
 	}
 
     function getImpSeoScore(content) {
@@ -854,19 +881,21 @@
         update_length.html(`${inputLength}/${maxlength}`);
     });
     $('#form_submit').click(function(){
+		var tmprsltdwholeboxs = document.getElementById("first_result_div");
+		tmprsltdwholeboxs.innerHTML = "";
+		document.getElementById("resulted_phrase").style.display = "none";
 		templateLoader('#ai-loader','show');
 		$('#ans_div').hide();
-		document.getElementById("first_result_div").textContent = "";
-		document.getElementById("resulted_phrase").style.display = "none";
 		var numberInput = document.getElementById("numberInput");
 		var first_result_div = document.getElementById("first_result_div");
 		var times = parseInt(numberInput.value);
 		var nwnumberInput = document.getElementById("numberInput");
 		document.getElementById("tmpnwotpsp").innerText = nwnumberInput.value;
-        // console.log('working');
+        console.log('working');
         // for (var i = 0; i < times; i++) {
         //    formSubmit(0,'', i, times);
         // }
+
 		if (times >= 1) {
             formSubmit(0,'', 0, times);
         }else{
@@ -881,6 +910,7 @@
 	function formSubmit(improve_score,improve_content, number, times, is_concept=false, concept_text=null)
 	{
 		document.getElementById("form_submit").disabled = true;
+        document.getElementById("form_submit").innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`;
 		// $('#ai-loader').show();
 		// templateLoader('#ai-loader','show');
 		// $('#ans_div').hide();
@@ -908,7 +938,7 @@
                     $_html = alertMessage(data.error,false);
                     $('.error-msg-div').html($_html);
                     document.getElementById("form_submit").disabled = false;
-                    // $('#ai-loader').hide();
+                    // $('#ai-loader').hide(); 
                     templateLoader('#ai-loader','hide');
                     return false;
                 }
@@ -922,44 +952,256 @@
                     return false;
                 }else{
                     // $('#ai-loader').hide();
+                    // console.log(number);
+                    // console.log(times);
 
-                    if(number === times - 1){
-                        callansdiv();
-                    }
+                    // if(number === times - 1){
+                    //     // callansdiv();
+                    //     // templateLoader('#ai-loader','hide');
+
+                    // }else{
+                    //     $('#ans_div').show();
+                    // }
+                    $('#ans_div').show();
+
 
                     const first_result_div = document.getElementById("first_result_div");
                     // const takeimpcntnt = document.getElementById("takeimpcntnt").innerHTML
                     document.getElementById("details").value = data.message;
                     const score = data.score;
-                    const content = data.message;
-					var cleanedContent = content.replace(/(<br\s*\/?>)\s*(<br\s*\/?>)\s*(<br\s*\/?>)\s*(<br\s*\/?>)/g, "$1$2");
-					rpsnumch = "rps"+number;
-                    const takescore = getSeoScore(score,content,improve_score, rpsnumch);
+                    var content = data.message;
+                    var rpsnumch = "rps"+number;
+                    // const takescore = getSeoScore(score,content,improve_score, rpsnumch);
+					const url = 'https://api.dataforseo.com/v3/content_generation/text_summary/live';
+			const post_array = [];
+			post_array.push({
+				"text": content,
+				"language_name": "English (United States)"
+			});
+			const username = 'lidanex@gmail.com';
+			const password = 'fc53e701e81bec41';
+			fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': 'Basic ' + btoa(username + ':' + password)
+			},
+			body: JSON.stringify(post_array)
+			})
+			.then(response => response.json())
+			.then(data => {
+				const apiResponse = data;
+				const newlist = [];
+				list.push({
+					"response": apiResponse
+					})
+					for (const key of Object.keys(list)) {
+						listvalues.push(list[key]);
+					}
+				const finallist = list;
+				// const resulted_phrase = document.querySelector('#resulted_phrase');
+						let html = '';
+						for (let i = 0; i < finallist.length; i++) {
+						const item = finallist[i];
+						// html += `<li>${item.response.status_message}<ul>`;
+						for (let j = 0; j < item.response.tasks.length; j++) {
+							const subitem = item.response.tasks[j];
+							// html += `<li>${subitem.result_count}</li><ul>`;
+							for (let z = 0; z < subitem.result.length; z++) {
+								const subitem2 = subitem.result[z];
+								const keyword_density = subitem2.keyword_density;
+								const automated_readability_index = subitem2.automated_readability_index;
+								const smog_readability_index = subitem2.smog_readability_index;
+								let keywordCount = (content.match(new RegExp(keyword_density, 'gi')) || []).length;
+								let totalWords = content.split(' ').length;
+								let keywordDensity = keywordCount / totalWords;
+
+								// Calculate meta tags score
+								let metaTagsScore = 1; // Set to 1 if all meta tags are present, else 0
+
+								// Calculate weighted average
+								// let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 1) + (smog_readability_index * 1);
+								let seoScore = (keywordDensity * 10) + (metaTagsScore * 3) + (automated_readability_index * 3) + (smog_readability_index * 3);
+								let roundedscore = Math.round(seoScore);
+								var randomNumber = Math.floor(Math.random() * 10) + 1;
+								let roundedscorerps0 = roundedscore + randomNumber;
+								if(roundedscore == 85){
+									let abvhndrd = "81";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+								}
+								else if(roundedscore >= 86 && roundedscore <= 90){
+									let abvhndrd = "82";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "82";
+								}
+								else if(roundedscore >= 91 && roundedscore <= 94){
+									let abvhndrd = "83";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "83";
+								}
+								else if(roundedscore >= 95 && roundedscore <= 99){
+									let abvhndrd = "84";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "84";
+								}
+								else if(roundedscore >= 100){
+									let abvhndrd = "85";
+									document.getElementById("resulted_phrase").innerHTML = abvhndrd;
+									document.getElementById("formscore").value = abvhndrd;
+									roundedscorerps0 = "85";
+								}
+								else{
+									document.getElementById("resulted_phrase").innerHTML = roundedscore;
+									// var showscore  = document.getElementById("resulted_phrase");
+									// var paragraph = document.createElement("span");
+									// paragraph.textContent = roundedscore;
+									// showscore.appendChild(paragraph);
+									// paragraph.classList.add("rsltdvbrdrbtm");
+									document.getElementById("formscore").value = roundedscore;
+								}
+								if(roundedscorerps0 == 85){
+									roundedscorerps0 = "81";
+								}
+								else if(roundedscorerps0 >= 86 && roundedscorerps0 <= 90){
+									roundedscorerps0 = "82";
+								}
+								else if(roundedscorerps0 >= 91 && roundedscorerps0 <= 94){
+									roundedscorerps0 = "83";
+								}
+								else if(roundedscorerps0 >= 95 && roundedscorerps0 <= 99){
+									roundedscorerps0 = "84";
+								}
+								else if(roundedscorerps0 >= 100){
+									roundedscorerps0 = "85";
+								}
+								else{
+									document.getElementById("resulted_phrase").innerHTML = roundedscorerps0;
+									document.getElementById("formscore").value = roundedscorerps0;
+								}
+								var seoform = document.getElementById('seo_content_form');
+								var seoformData = new FormData(seoform);
+								// const formInputs = document.querySelectorAll('#seo_content_form input');
+								// formInputs.forEach(function(input) {
+								// });
+								$.ajax({
+									url: "{{ route('user.template.seo_form_submit') }}", 
+									method: "POST",
+									data: seoformData,
+									dataType: 'json',
+									contentType: false,
+									processData: false,
+									success: function(data) {
+										console.log(data);
+									}
+								});
+								const numberEl = document.getElementById("resulted_phrase");
+								const number = parseInt(numberEl.textContent);
+								numberEl.style.borderRadius = "50%";
+								numberEl.style.padding = "10px";
+
+								if (number < 50) {
+									numberEl.style.border = "2px solid #f54c36";
+								}
+								else if (number >= 50 && number <= 70) {
+									numberEl.style.border = "2px solid #f7831e";
+								}
+								else {
+									numberEl.style.border = "2px solid #39942f";
+								}
+								var rpsnum = rpsnumch;
+								if(rpsnum == "rps0"){
+									const rpss0 = document.getElementById("rps0taker");
+									if(rpss0.innerText == ""){
+										rpss0.innerHTML = roundedscorerps0;
+										var rscselementStyle = window.getComputedStyle(numberEl);
+										var rscsbrdrrds = numberEl.style.borderRadius;
+										var rscspddng = numberEl.style.padding;
+										rpss0.style.borderRadius = rscsbrdrrds + "!important";
+										rpss0.style.padding = rscspddng + "!important";
+										if (roundedscorerps0 < 50) {
+											rpss0.style.border = "2px solid #f54c36";
+										}
+										else if (roundedscorerps0 >= 50 && roundedscorerps0 <= 70) {
+											rpss0.style.border = "2px solid #f7831e";
+										}
+										else {
+											rpss0.style.border = "2px solid #39942f";
+										}
+									}
+								}
+							}
+						}
+					}
+				})
+					// console.log("The conten is "+content);
                     const jvbdjv = document.getElementById("resulted_phrase");
                     var elementStyle = window.getComputedStyle(jvbdjv);
-                    // var newDiv = document.createElement("div");
-                    // jvbdjv.textContent = "New div with styling";
                     const brdr = elementStyle.border;
                     const brdrrds = elementStyle.borderRadius;
                     const pddng = elementStyle.padding;
-                    // const cdfcv = document.createElement("div");
-                    // jvbdjv.innerText = takescore;
-                    const ndkjvndkj = jvbdjv.innerHTML;
-                    const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
-                    // const htmlContent = '<h1 style="color: blue; font-size: 24px;">'+ndkjvndkj+'</h1>';
-                    // var paragraph = document.createElement("p"); margin-left: 40%;
-                    // paragraph.classList.add("rsltdvbrdrbtm");
-                    // paragraph.textContent = data.message;
-                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+cleanedContent+'</div>';
+					var firstSpecificWord = "2.";
+					var firstSpecificWordWithSpace = "<br />";
+					var secondSpecificWord = "3.";
+					var secondSpecificWordWithSpace = "<br />";
+					var words = content.trim().split(/\s+/);
+					var firstIndex = words.findIndex(function(word) {
+						return word === firstSpecificWord;
+					});
+					if (firstIndex !== -1 && firstIndex > 0) {
+						var wordBefore = words[firstIndex - 1];
+						if (wordBefore !== firstSpecificWordWithSpace) {
+						words.splice(firstIndex, 0, firstSpecificWordWithSpace);
+						}
+					}
+					var secondIndex = words.findIndex(function(word) {
+						return word === secondSpecificWord;
+					});
+					if (secondIndex !== -1 && secondIndex > 0) {
+						var wordBefore = words[secondIndex - 1];
+						if (wordBefore !== secondSpecificWordWithSpace) {
+						words.splice(secondIndex, 0, secondSpecificWordWithSpace);
+						}
+					}
+					content = words.join(" ");
+					let content2 = "";
+					content2 = content.replace(/(<br\s*\/?>){3}/gi, "<br><br>");
+					var htmlContent;
+					if(number == 0){
+						var ndkjvndkj = document.getElementById("rps0taker");
+						console.log("score"+ndkjvndkj.textContent);
+						htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj.innerHTML+'</div></div><div class="col-lg-1"></div>';
+					}else{
+						console.log("Other score "+jvbdjv.innerHTML);
+						var ndkjvndkj = document.getElementById("rps0taker");
+						console.log("score"+ndkjvndkj.innerText);
+						htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+jvbdjv.innerHTML+'</div></div><div class="col-lg-1"></div>';
+						// ndkjvndkj = jvbdjv.innerHTML;
+					}
+                    // const htmlContent = '<div class="col-lg-1" style="padding: 0px !important"><div id="rps'+number+'" style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; font-size: 15px; color: #292828; background-color: transparent; border: '+brdr+'; border-radius: '+brdrrds+'; padding: '+pddng+'">'+ndkjvndkj+'</div></div><div class="col-lg-1"></div>';
+                    var takepara = '<div class="col-lg-10" id="datamsg'+number+'">'+content2+'</div>';
                     var smwhl = takepara + htmlContent;
-                    var cnrtsmwhlt = '<div class="row">'+smwhl+'</div>'; //onclick="copyContent('contentToCopy')"
+                    var cnrtsmwhlt = '<div id="nwhdngimprv'+number+'"><div class="row">'+smwhl+'</div></div>'; //onclick="copyContent('contentToCopy')"
                     var existingText = '<div class="row"><div class="col-lg-8"><i class="bx bx-copy" id="tmpbxicrt" onclick="copyContent(\'datamsg'+number+'\')"></i></div><div class="col-lg-1"></div><div class="col-lg-3"></div></div>';
-					var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'indvdlsec'+number+'\', \'ailoaderImp'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>';
-                    result = existingText + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
+					var takeimpcntnt = '<div class="row"><div class="col-lg-8" id="impdivscore'+number+'"><button class="mt-4 btn btn-info nwtmimpscrbtn" id="impscore'+number+'" onclick="improvescore(\'datamsg'+number+'\', \'rps'+number+'\', \'impscore'+number+'\', \'impdivscore'+number+'\', \'ailoaderskImp'+number+'\', \'nwhdngimprv'+number+'\', \'ailoaderImp'+number+'\')">Improve Score</button><div class="sbscmsg" id="subscrpup'+number+'">'+sbsmsg+'</div></div><div class="col-lg-4"></div></div>';
+					var thewholeloader = '<div id="ailoaderImp'+number+'"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div>';
+                    result = existingText + thewholeloader + cnrtsmwhlt + takeimpcntnt +  belowofrslt;
                     var cnvrtresult = "";
-					cnvrtresult += '<div id="ailoaderImp'+number+'"><div class="sk-circle-fade sk-primary" id="ailoaderskImp'+number+'"><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div><div class="sk-circle-fade-dot"></div></div></div><div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
-					first_result_div.innerHTML += cnvrtresult;
-                    // first_result_div.appendChild(paragraph);
+                    // var cnvrtresultID = `ailoaderImp${number}`;
+					cnvrtresult += '<div id="indvdlsec'+number+'" onmouseover="showHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')" onmouseout="hideHiddenDiv(\'impscore'+number+'\', \'subscrpup'+number+'\')">'+result+'</div>';
+					// var takenumc = "datamsg"+number;
+					// if(takenumc == "datamsg0"){
+					// 	setTimeout(() => {
+					// 		first_result_div.innerHTML += cnvrtresult;
+					// 	}, 10000);
+					// }
+					// else{
+						first_result_div.innerHTML += cnvrtresult; 
+					// }
+					// first_result_div.innerHTML += cnvrtresult; 
 
                     // $('#first_result_div').val(data.message);
                     // CKEDITOR.instances['first_result_div'].setData(data.message)
@@ -969,10 +1211,24 @@
                     disableimpbutton('impscore'+number);
 					checkScoreValidation('rps'+number);
 
+					content3 = document.getElementById("datamsg"+number);
+					testcontent = content3.innerHTML;
+					var cntntresult = testcontent.replace(new RegExp(/<br>\s*<br>(?=\s*(2\.|3\.))/g), "<br>");
+					if (cntntresult.charAt(0) === '.') {
+						var newcontent = cntntresult.substring(1);
+						document.getElementById("datamsg"+number).innerHTML = newcontent;
+					}
+					else{
+						document.getElementById("datamsg"+number).innerHTML = cntntresult;
+					}
+                    // console.log(number);
+                    // console.log(times);
+
                     if (number < times-1) {
                         formSubmit(0,'', number+1, times,true,content);
+                        return false;
                     }
-
+                    document.getElementById("form_submit").innerHTML = 'Generate';
                     document.getElementById("form_submit").disabled = false;
 
 
@@ -988,7 +1244,7 @@
             }
         });
 	}
-	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk, imploaderottr)
+	function formSubmitImp(improve_score,improve_content, impscoretag, content_tag, imploaderinf, whlsectk, imploaderottr, CImpScoreTagtken)
 	{
 		document.getElementById("form_submit").disabled = true;
 		// $('#ai-loader').show();
@@ -1007,7 +1263,7 @@
 					contentType: false,
 					processData: false,
 					success: function(data) {
-						
+
 						if (data.error !== undefined) {
 							$_html = alertMessage(data.error,false);
 							$('.error-msg-div').html($_html);
@@ -1032,8 +1288,34 @@
 						imploaderinfs.style.display = "none";
 						imploaderotttr.style.display = "none";
 						whlsectks.style.display = "block";
+						// whlsectks.style.marginBottom = "50px";
 						impscoretags.style.display = "flex";
-						document.getElementById(content_tag).innerHTML = data.message;
+						var content =  data.message;
+						var firstSpecificWord = "2.";
+						var firstSpecificWordWithSpace = "<br />";
+						var secondSpecificWord = "3.";
+						var secondSpecificWordWithSpace = "<br />";
+						var words = content.trim().split(/\s+/);
+						var firstIndex = words.findIndex(function(word) {
+							return word === firstSpecificWord;
+						});
+						if (firstIndex !== -1 && firstIndex > 0) {
+							var wordBefore = words[firstIndex - 1];
+							if (wordBefore !== firstSpecificWordWithSpace) {
+							words.splice(firstIndex, 0, firstSpecificWordWithSpace);
+							}
+						}
+						var secondIndex = words.findIndex(function(word) {
+							return word === secondSpecificWord;
+						});
+						if (secondIndex !== -1 && secondIndex > 0) {
+							var wordBefore = words[secondIndex - 1];
+							if (wordBefore !== secondSpecificWordWithSpace) {
+							words.splice(secondIndex, 0, secondSpecificWordWithSpace);
+							}
+						}
+						content = words.join(" ");
+						document.getElementById(content_tag).innerHTML = content;
 						document.getElementById("details").value = data.message;
 						// $('#first_result_div').val(data.message);
 						// CKEDITOR.instances['first_result_div'].setData(data.message)
@@ -1042,7 +1324,34 @@
 						document.getElementById("form_submit").disabled = false;
 
 						// ||||||||||||||||| STARTING SEO SCORE |||||||||||||||||||
+						// const score = $("#first_result_div").text();
 						const score = data.score;
+						// const content = data.message
+
+						// getSeoScore(score,improve_content,improve_score);
+						// if(impscoretag == "rps0"){ 
+						// 	document.getElementById("resulted_phrase").innerHTML = score;
+						// 	document.getElementById("formscore").value = score;
+						// 	const numberEl = document.getElementById("resulted_phrase");
+						// 	const number = parseInt(numberEl.textContent);
+
+						// 	numberEl.style.borderRadius = "50%";
+						// 	numberEl.style.padding = "10px";
+						// 	numberEl.style.display = "flex";
+
+						// 	if (number < 50) {
+						// 		numberEl.style.border = "2px solid #f54c36";
+						// 	}
+						// 	else if (number > 50 && number < 70) {
+						// 		numberEl.style.border = "2px solid #f7831e";
+						// 	}
+						// 	else {
+						// 		numberEl.style.border = "2px solid #39942f";
+						// 	}
+						// }
+						// else{
+							var impinrwhlbtn = document.getElementById(CImpScoreTagtken);
+							impinrwhlbtn.style.display = "none";
 							document.getElementById(impscoretag).innerHTML = score;
 							document.getElementById("formscore").value = score;
 							const numberEl = document.getElementById(impscoretag);
@@ -1076,27 +1385,26 @@
 			else{
 				rpsnumchecks.innerText = "62";
 				rpsnumchecks.style.border = "2px solid #f7831e";
-
 			}
 		}
 	}
 	function disableimpbutton(impnumtochk){
   		var newsbsmsg = document.querySelector('#sbsmsg');
-		// var myButtons = document.getElementById(impnumtochk);
-		// if (newsbsmsg.textContent.trim() !== '') {
-		// 	myButtons.disabled = true;
-		// }
+		var myButtons = document.getElementById(impnumtochk);
+		if (newsbsmsg.textContent.trim() !== '') {
+			myButtons.disabled = true;
+		}
 	}
 	function improvescore(divId, ImpScore, CImpScoreTag, outerImpScorerg, tkimploader, tkwhlsec, tkimploaderouter){
 		var content = document.getElementById(divId).innerText;
 		var CImpScoreTagtk = document.getElementById(CImpScoreTag);
 		var outerImpScorergs = document.getElementById(outerImpScorerg);
 		CImpScoreTagtk.style.display = 'none';
-		outerImpScorergs.style.marginBottom = '60px';
+		outerImpScorergs.style.marginTop = '60px';
 		var tkimploaders = document.getElementById(tkimploader);
 		var tkwhlsecs = document.getElementById(tkwhlsec);
-		var tkimploaderotr = document.getElementById(tkimploaderouter);
 		var ImpScores = document.getElementById(ImpScore);
+		var tkimploaderotr = document.getElementById(tkimploaderouter);
 		var originalHeight = tkwhlsecs.style.height;
 		tkwhlsecs.style.height = "auto";
 		var height = tkwhlsecs.offsetHeight;
@@ -1104,14 +1412,18 @@
 		var nwhght = parseInt(height);
 		tkimploaderotr.style.height = nwhght + "px";
 		tkimploaderotr.style.boxSizing = "border-box";
-		// tkimploaderotr.style.paddingTop = "15%";
+		tkimploaderotr.style.paddingTop = "10%";
 		tkimploaderotr.style.display = "flex";
-		tkimploaderotr.style.marginLeft = "-90%";
+		tkimploaderotr.style.marginLeft = "-80%";
 		var bdhsbf = tkimploaderotr.style.height;
 		tkimploaders.style.display = "block";
 		ImpScores.style.display = "none";
 		tkwhlsecs.style.display = "none";
-		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec, tkimploaderouter);
+		if(tkwhlsec == "nwhdngimprv0"){
+			var rstimpsd = document.getElementById("resulted_phrase");
+			rstimpsd.style.display = "none";
+		}
+		formSubmitImp(1,content, ImpScore, divId, tkimploader, tkwhlsec, tkimploaderouter, CImpScoreTag);
 	}
 	function showHiddenDiv(divId, supidtk) {
 		var hiddenDiv = document.getElementById(divId);
