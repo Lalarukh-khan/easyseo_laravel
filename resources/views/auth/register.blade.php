@@ -21,8 +21,7 @@
               </div>
               <!-- /Logo -->
               <h5 class="mb-2">Get started with 5,000 free words 🚀</h5>
-              <p class="mb-4">No credit card required!</p>
-              <br>
+              <p class="mb-3">No credit card required!</p>
               <a href="{{ route('auth.social.redirect', 'google') }}">
                 <div class="row logingicn">
                   <div class="col-lg-2 col-md-2 col-sm-3 col-3 gglgimg">
