@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
 use App\Models\GptHistory;
+use App\Models\MonthlyPack;
 use App\Models\Package;
 use App\Models\UserPackage;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserSubscriptionLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
@@ -98,7 +100,7 @@ class UserController extends Controller
             'user_packages_id' => UserPackage::get('user_packages.*')->where('user_id' , $final)->last(),
             // 'allusers' => UserPackage::get('user_packages.*'),
             // 'user_packages_id' => $final,   ->where('price','>',0)
-            'packages' => Package::select('id','words','price','plan_code')->orderBy('words')->get()
+            'packages' => Package::select('id','words','price','plan_code','title')->orderBy('id')->get()
         );
         return view('admin.users.edit')->with($data);
     }
@@ -185,6 +187,59 @@ class UserController extends Controller
         $user_package->start_date = now()->format('Y-m-d');
         $user_package->end_date = $end_date;
         $user_package->save();
+
+        $yearly_sku = ['P20-year', 'P50-year', 'P200-year', 'P500-year'];
+
+        if (in_array($package->plan_code, $yearly_sku)) {
+            $start_date = date('Y-m-d');
+            $monthly_packs = [];
+
+            for ($i = 1; $i <= 12; $i++) {
+                if ($i == 1) {
+                    $end_date = date('Y-m-d', strtotime('+30 days'));
+                    $monthly_packs[$i] = [
+                        'user_id' => $user_package->user_id,
+                        'package_id' => $user_package->package_id,
+                        'user_package_id' => $user_package->id,
+                        'words' => $user_package->words,
+                        'research_limit' => $user_package->research_limit,
+                        'workspace_users' => $user_package->workspace_users,
+                        'start_date' => $start_date,
+                        'end_date' => $end_date,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ];
+                } else {
+                    $start_date = $monthly_packs[($i - 1)]['end_date'];
+                    $end_date = date('Y-m-d', strtotime('+30 days', strtotime($start_date)));
+                    $monthly_packs[$i] = [
+                        'user_id' => $user_package->user_id,
+                        'package_id' => $user_package->package_id,
+                        'user_package_id' => $user_package->id,
+                        'words' => $user_package->words,
+                        'research_limit' => $user_package->research_limit,
+                        'workspace_users' => $user_package->workspace_users,
+                        'start_date' => $start_date,
+                        'end_date' => $end_date,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ];
+                }
+            }
+
+            if (!empty($monthly_packs) && count($monthly_packs) > 0) {
+                MonthlyPack::insert($monthly_packs);
+                $user_package->end_date = now()->addYear()->format('Y-m-d');
+                $user_package->save();
+            }
+        }
+
+        $userSubscriptionLog = new UserSubscriptionLog();
+        $userSubscriptionLog->user_id = $user_package->user_id;
+        $userSubscriptionLog->user_package_id = $user_package->id;
+        $userSubscriptionLog->new_package_id = $package->id;
+        $userSubscriptionLog->buy_from = 'admin';
+        $userSubscriptionLog->save();
 
         $user = User::find($request->user_id);
         $user->has_package = $package->id;

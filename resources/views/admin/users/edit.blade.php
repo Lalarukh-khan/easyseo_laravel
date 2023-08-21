@@ -111,7 +111,13 @@
                             <select name="subscription" id="package" class="form-control">
                                 <option value="">Choose Subscription</option>
                                 @foreach ($packages as $val)
-                                    <option value="{{ $val->id }}" data-data="{{ $val }}"> {{$val->plan_code == 'FRP0' ? 'Free -' : 'Pro -' }}  {{ number_format($val->words,0,',') }}</option>
+                                    <option value="{{ $val->id }}" data-data="{{ $val }}">
+                                        @if ($val->plan_code == 'FRP0')
+                                        Free Basic
+                                        @else
+                                        {{ $val->title }}
+                                        @endif
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

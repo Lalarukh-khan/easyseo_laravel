@@ -188,9 +188,11 @@ class DashboardController extends Controller
         $detail = [
             'title' => 'Cancelled Subscription',
             'body' => 'Your Subscription is cancelled successfully',
+            'subject' => 'Subscription Cancellation From easyseo.ai',
         ];
 
-        Mail::to(auth('web')->user()->email)->send(new SubscriptionCancel($detail));
+        $mailHtml = view('email.suscription_cancel',['details'=>$detail])->render();
+        mailGunSendMail($mailHtml,'Subscription Cancellation From easyseo.ai',auth('web')->user()->email);
 
         session()->flash('success-msg','Subscription Cancelled Successfully');
 

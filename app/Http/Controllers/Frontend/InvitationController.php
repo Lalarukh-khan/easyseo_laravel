@@ -91,11 +91,13 @@ class InvitationController extends Controller
 
         $detail = [
             'title' => 'WorkSpace Invitation',
+            'subject' => 'Workspace Invitation From easyseo.ai',
             'body' => 'You are invited by '.$auth_user->full_name.' on his/her workspace to join his team',
             'url' => route('register',['invitation_code'=>$invitation->hashid]),
         ];
 
-        Mail::to($request->email)->send(new SendInvite($detail));
+        $mailHtml = view('email.send_invite',['details'=>$detail])->render();
+        mailGunSendMail($mailHtml,'Workspace Invitation From easyseo.ai',$request->email);
 
         session()->flash('success-msg','Invitation sent to '.$invitation->email);
 

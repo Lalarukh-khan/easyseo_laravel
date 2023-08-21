@@ -24,7 +24,8 @@ class ContactUsController extends Controller
             'body' => 'Your Contact Us Details Sent To easyseo.ai Management Teams'
         ];
 
-        Mail::to($request->email)->send(new ContactMail($details));
+        $mailHtml = view('email.contact',['details'=>$details])->render();
+        mailGunSendMail($mailHtml,'Mail from easyseo.ai',$request->email);
 
         $details = [
             'title' => 'Mail From easyseo.ai',
@@ -32,7 +33,8 @@ class ContactUsController extends Controller
             'body' => 'Contact Us Form Submited By The '.$request->email
         ];
 
-        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($details));
+        $mailHtml = view('email.contact',['details'=>$details])->render();
+        mailGunSendMail($mailHtml,'Mail from easyseo.ai',env('MAIL_FROM_ADDRESS'));
 
         return redirect()->route('web.contact_us')->with('message','Contact Us Form Summitted Successfully');
     }
