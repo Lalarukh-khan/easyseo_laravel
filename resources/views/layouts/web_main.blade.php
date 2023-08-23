@@ -695,6 +695,8 @@
                                 <li class="pad-bot-8"> <a href="https://easyseo.ai/contact-us" id="footerwht8"> Contact us </a> </li>
                                 <li class="pad-bot-8"> <a href="https://pg51iq3vczx.typeform.com/to/gTTdGWxR" id="footerwht9" target="_title"> Report a bug </a> </li>
                                 <li class="pad-bot-8"> <a href="https://pg51iq3vczx.typeform.com/to/P1zhEGGP" target="_title" id="footerwht10"> Request a new feature </a> </li>
+                                <!-- Try featured2.png...featured6.png to find the best style. -->
+                                <li class="pad-bot-8"> <a href="https://theresanaiforthat.com/ai/easyseo/?ref=embed&v=220554" target="_blank"><img width="300" src="https://media.theresanaiforthat.com/featured3.png"></a> </li>
                                 <li class="pad-bot-8" style="display: none;"> <a href="javascript:void(0):" id="footerwht11"> Sed ut perspiciatis </a> </li>
                             </ul>
                         </div>
