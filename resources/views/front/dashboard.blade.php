@@ -25,7 +25,7 @@
     .pointer {
         cursor: pointer;
     }
-</style>
+</style> 
 @endsection
 @section('content') 
 @if (auth('web')->user()->user_type == 'main')
