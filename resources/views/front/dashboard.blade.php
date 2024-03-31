@@ -22,7 +22,7 @@
         background-color: #673ab7 !important;
     }
 
-    .pointer {  
+    .pointer {
         cursor: pointer;
     }
 </style>
