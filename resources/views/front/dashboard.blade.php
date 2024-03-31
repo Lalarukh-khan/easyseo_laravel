@@ -27,7 +27,7 @@
     }
 </style>
 @endsection
-@section('content')
+@section('content')  
 @if (auth('web')->user()->user_type == 'main')
 <div class="row">
     <div class="col-12 col-lg-3">
